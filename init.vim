@@ -20,7 +20,7 @@
 " not recommend downloading this file and replace your own init.vim. Good
 " configurations are built over time and take your time to polish.
 " Author: jdhao (jdhao@hotmail.com). Blog: https://jdhao.github.io
-" Update: 2019-04-25 21:11:43+0800
+" Update: 2019-04-26 17:07:12+0800
 "}}
 
 "{{ License: MIT License
@@ -279,7 +279,7 @@ set foldlevel=0  " the level we start to fold
 set history=500  " the number of command and search history to keep
 
 " use list mode and customized listchars
-set list listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:+,trail:·  " ,eol:¬
+set list listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:+  ",trail:·,eol:¬
 
 " string to show before the lines that have been soft-wrapped
 set showbreak=↪
@@ -663,7 +663,7 @@ Plug 'deathlyfrantic/deoplete-spell'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Python syntax highlighting
-Plug 'vim-python/python-syntax', { 'for': 'python' }
+" Plug 'vim-python/python-syntax', { 'for': 'python' }
 
 " python syntax highlighting and more
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
@@ -1075,8 +1075,11 @@ let g:jedi#show_call_signatures = '2'
 
 """""""""""""""""""""""""python-syntax highlight settings"""""""""""""""""""
 
-" highlight all
-let g:python_highlight_all = 1
+" " don't highlight space error, really annoying!!!!!
+" let g:python_highlight_space_errors = 0
+
+" " highlight all
+" let g:python_highlight_all = 1
 
 """""""""""""""""""""""""" semshi settings """""""""""""""""""""""""""""""
 
