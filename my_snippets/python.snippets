@@ -1,0 +1,14 @@
+snippet head "Python source file header" b
+"""
+Description: $1
+Author: Jie-dong Hao
+Date: `!v strftime("%Y-%m-%d %H:%M:%S%z")`
+Update: `!v strftime("%Y-%m-%d %H:%M:%S%z")`
+"""
+$0
+endsnippet
+
+snippet print "Print value of some variable"
+print("$1".format($2))
+$0
+endsnippet

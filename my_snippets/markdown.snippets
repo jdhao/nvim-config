@@ -1,0 +1,17 @@
+snippet kbd "HTML kbd tag"
+<kbd>${1:KEY}</kbd>$0
+endsnippet
+
+snippet head "Markdown header" b
+---
+title: "$1"
+date: `!v strftime("%Y-%m-%d %H:%M:%S%z")`
+tags: [$3]
+categories: [$4]
+---
+$0
+endsnippet
+
+snippet more "HTML more tag"
+<!--more-->
+endsnippet
