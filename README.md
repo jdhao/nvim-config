@@ -129,4 +129,12 @@ To make deoplete work, you have to set the correct value for
 executable. Find this setting in this `init.vim` and change it in accordance
 with your system.
 
+## Further reading
+
++ [Config nvim on Linux for Python development](https://jdhao.github.io/2018/12/24/centos_nvim_install_use_guide_en/)
+
++ [Nvim config on Windows 10](https://jdhao.github.io/2018/11/15/neovim_configuration_windows/)
+
++ [Nvim-qt config on Windows 10](https://jdhao.github.io/2019/01/17/nvim_qt_settings_on_windows/)
+
 [^1]: Use `echo %userprofile%` to see where your `$HOME` is.
