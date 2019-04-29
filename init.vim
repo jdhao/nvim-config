@@ -20,7 +20,7 @@
 " not recommend downloading this file and replace your own init.vim. Good
 " configurations are built over time and take your time to polish.
 " Author: jdhao (jdhao@hotmail.com). Blog: https://jdhao.github.io
-" Update: 2019-04-26 17:07:12+0800
+" Update: 2019-04-29 21:07:02+0800
 "}}
 
 "{{ License: MIT License
@@ -342,6 +342,9 @@ set matchpairs+=<:>,「:」
 " popup menu settings
 set pumheight=15  " maximum number of items to show in popup menu
 set pumblend=15  " pesudo-blend effect for popup menu
+
+" tilde ~ is an operator (thus must be followed by motion like `c` or `d`)
+set tildeop
 "}
 
 "{ Custom key mappings
@@ -398,8 +401,8 @@ inoremap <Right> <nop>
 
 " insert a blank line below or above current line (do not move the cursor)
 " see https://stackoverflow.com/a/16136133/6064933
-nnoremap oo m`o<ESC>``
-nnoremap OO m`O<ESC>``
+nnoremap oo @='m`o<c-v><Esc>``'<cr>
+nnoremap OO @='m`O<c-v><Esc>``'<cr>
 
 " insert a space after current character
 nnoremap <silent> <Space><Space> a<Space><ESC>h
@@ -481,16 +484,21 @@ nnoremap <C-H> :%s/\v
 
 " change current working locally to where the opened file resides
 " see https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
-nnoremap <leader>cd :lcd %:p:h<CR>:pwd<CR>
+nnoremap <silent> <leader>cd :lcd %:p:h<CR>:pwd<CR>
 
 " reduce indent level in insert mode with shift+tab
 inoremap <S-Tab> <ESC><<i
 
-" use esc to quit builtin terminal
+" use Esc to quit builtin terminal
 tnoremap <ESC>   <C-\><C-n>
 
-" tilde ~ is an operator (thus must be followed by motion like `c` or `d`)
-set tildeop
+" toggle spell checking (autosave does not play well with z=, so we disable it
+" when we are doing spell checking)
+nnoremap <silent> <F11> :set spell! <bar> :AutoSaveToggle<cr>
+inoremap <silent> <F11> <C-O>:set spell! <bar> :AutoSaveToggle<cr>
+
+" spell checking related mapping, take from http://tinyurl.com/y5gwgs3d
+nnoremap <C-s> ]s1z=
 "}
 
 "{ Auto commands
@@ -663,7 +671,7 @@ Plug 'deathlyfrantic/deoplete-spell'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Python syntax highlighting
-" Plug 'vim-python/python-syntax', { 'for': 'python' }
+Plug 'vim-python/python-syntax', { 'for': 'python' }
 
 " python syntax highlighting and more
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
@@ -1075,11 +1083,11 @@ let g:jedi#show_call_signatures = '2'
 
 """""""""""""""""""""""""python-syntax highlight settings"""""""""""""""""""
 
-" " don't highlight space error, really annoying!!!!!
-" let g:python_highlight_space_errors = 0
+" highlight all
+let g:python_highlight_all = 1
 
-" " highlight all
-" let g:python_highlight_all = 1
+" don't highlight space error, really annoying!!!!!
+let g:python_highlight_space_errors = 0
 
 """""""""""""""""""""""""" semshi settings """""""""""""""""""""""""""""""
 
