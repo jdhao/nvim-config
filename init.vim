@@ -20,7 +20,7 @@
 " not recommend downloading this file and replace your own init.vim. Good
 " configurations are built over time and take your time to polish.
 " Author: jdhao (jdhao@hotmail.com). Blog: https://jdhao.github.io
-" Update: 2019-04-29 21:07:02+0800
+" Update: 2019-04-30 19:31:40+0800
 "}}
 
 "{{ License: MIT License
@@ -304,7 +304,7 @@ set undofile  " persistent undo even after you close and file and reopen it
 set shortmess+=c
 
 set completeopt+=noinsert  " auto select the first completion entry
-
+set completeopt+=menuone  " show menu even if there is only one item
 " disable the preview window during autocompletion, see also https://goo.gl/18zNPD
 set completeopt-=preview
 
@@ -326,11 +326,8 @@ set signcolumn=yes  " always show sign column
 set formatoptions+=mM
 
 " dictionary files for different systems
-if has('unix')
-    set dictionary+=/usr/share/dict/words
-else
-    set dictionary+=~/AppData/Local/nvim/words
-endif
+let $MY_DICT = stdpath('config') . '/dict/words'
+set dictionary+=$MY_DICT
 
 set spelllang=en,cjk  " spell languages
 
@@ -368,8 +365,8 @@ vnoremap / /\v
 nnoremap <leader>p o<ESC>p
 nnoremap <leader>P O<ESC>p
 
-" shortcut for faster quit
-" nmap <silent> <leader>w :w<CR>
+" shortcut for faster save and quit
+nmap <silent> <leader>w :w<CR>
 nnoremap <silent> <leader>q :q<CR>
 nnoremap <silent> <leader>Q :qa<CR>
 
@@ -401,8 +398,16 @@ inoremap <Right> <nop>
 
 " insert a blank line below or above current line (do not move the cursor)
 " see https://stackoverflow.com/a/16136133/6064933
-nnoremap oo @='m`o<c-v><Esc>``'<cr>
-nnoremap OO @='m`O<c-v><Esc>``'<cr>
+nnoremap <expr> oo 'm`' . v:count1 . 'o<Esc>``'
+nnoremap <expr> OO 'm`' . v:count1 . 'O<Esc>``'
+
+" nnoremap oo @='m`o<c-v><Esc>``'<cr>
+" nnoremap OO @='m`O<c-v><Esc>``'<cr>
+
+" the following two mappings work, but if you change double quote to single, it
+" work not work
+" nnoremap oo @="m`o\<lt>Esc>``"<cr>
+" nnoremap oo @="m`o\e``"<cr>
 
 " insert a space after current character
 nnoremap <silent> <Space><Space> a<Space><ESC>h
@@ -496,9 +501,6 @@ tnoremap <ESC>   <C-\><C-n>
 " when we are doing spell checking)
 nnoremap <silent> <F11> :set spell! <bar> :AutoSaveToggle<cr>
 inoremap <silent> <F11> <C-O>:set spell! <bar> :AutoSaveToggle<cr>
-
-" spell checking related mapping, take from http://tinyurl.com/y5gwgs3d
-nnoremap <C-s> ]s1z=
 "}
 
 "{ Auto commands
@@ -729,7 +731,7 @@ Plug 'morhetz/gruvbox'
 Plug 'sickill/vim-monokai'
 Plug 'ajmwagar/vim-deus'
 Plug 'hzchirs/vim-material'
-Plug 'nanotech/jellybeans.vim'
+Plug 'sjl/badwolf'
 " Plug 'joshdick/onedark.vim'
 " Plug 'challenger-deep-theme/vim'
 " Plug 'lifepillar/vim-solarized8'
@@ -1227,11 +1229,11 @@ let g:highlighturl_underline=1
 
 " toggle nerdtree window and keep cursor in file window,
 " adapted from http://tinyurl.com/y2kt8cy9
-nnoremap <silent> <C-k><C-B> :NERDTreeToggle<CR>:wincmd p<CR>
+nnoremap <silent> <Space>s :NERDTreeToggle<CR>:wincmd p<CR>
 
 " reveal currently editted file in nerdtree widnow,
 " see https://goo.gl/kbxDVK
-nnoremap <silent> ,nf :NERDTreeFind<CR>
+nnoremap <silent> <Space>f :NERDTreeFind<CR>
 
 " ignore certain files and folders
 let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
@@ -1260,7 +1262,7 @@ let NERDTreeMinimalUI=0
 """"""""""""""""""""""""""" tagbar settings """"""""""""""""""""""""""""""""""
 
 " shortcut to toggle tagbar window
-nnoremap <silent> <C-K><C-T> :TagbarToggle<CR>
+nnoremap <silent> <Space>t :TagbarToggle<CR>
 "}}
 
 "{{ file editting
@@ -1474,6 +1476,7 @@ if has('win32') || has('macunix')
 
     " shortcut to start markdown previewing
     nnoremap <M-m> :MarkdownPreview<CR>
+    nnoremap <M-S-m> :MarkdownPreviewStop<CR>
 endif
 
 """"""""""""""""""""""""vim-markdownfootnotes settings""""""""""""""""""""""""
@@ -1595,7 +1598,7 @@ let g:indentLine_concealcursor = ''
 " disable indentline for certain filetypes
 augroup indentline_disable_ft
     autocmd!
-    autocmd FileType help,startify let g:indentLine_enabled = 0
+    autocmd FileType help,startify :IndentLinesDisable
 augroup END
 
 """""""""""""""""""""""""""vim-airline setting""""""""""""""""""""""""""""""
@@ -1739,6 +1742,7 @@ if HasColorscheme('gruvbox')
     " see https://goo.gl/8nXhcp
     let g:gruvbox_italic=1
     let g:gruvbox_contrast_dark='hard'
+    let g:gruvbox_italicize_strings=1
 
     colorscheme gruvbox
 else
