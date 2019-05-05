@@ -20,7 +20,7 @@
 " not recommend downloading this file and replace your own init.vim. Good
 " configurations are built over time and take your time to polish.
 " Author: jdhao (jdhao@hotmail.com). Blog: https://jdhao.github.io
-" Update: 2019-04-30 19:31:40+0800
+" Update: 2019-05-05 22:47:43+0800
 "}}
 
 "{{ License: MIT License
@@ -367,22 +367,30 @@ nnoremap <leader>P O<ESC>p
 
 " shortcut for faster save and quit
 nmap <silent> <leader>w :w<CR>
-nnoremap <silent> <leader>q :q<CR>
+" saves the file if modified and quit
+nnoremap <silent> <leader>q :x<CR>
+" quit all opened buffers
 nnoremap <silent> <leader>Q :qa<CR>
 
 " go to previous and next item in location list
 nnoremap [l :lprevious<CR>zv
 nnoremap ]l :lnext<CR>zv
+" go to first and last item in location list (less used)
+nnoremap [L :lfirst<CR>zv
+nnoremap ]L :llast<CR>zv
 
 " go to previous and next item in quickfix list
 nnoremap [q :cprevious<CR>zv
 nnoremap ]q :cnext<CR>zv
+" go to first and last item in quickfix list
+nnoremap [Q :cfirst<CR>zv
+nnoremap ]Q :clast<CR>zv
 
 " close location list or quickfix list if they are present,
 " see https://goo.gl/uXncnS
-nnoremap<silent> \x :windo lclose\|cclose<CR>
+nnoremap<silent> \x :windo lclose <bar> cclose<CR>
 
-" toggle highlight search, see https://goo.gl/3H85hh
+" toggle search highlight, see https://goo.gl/3H85hh
 nnoremap <silent><expr> <Leader>hl (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
 
 " Disable arrow key in vim, see https://goo.gl/s1yfh4
@@ -728,15 +736,11 @@ endif
 "{{ color, theme, look
 " A list of colorscheme plugin you may want to try. Find what suits you.
 Plug 'morhetz/gruvbox'
-Plug 'sickill/vim-monokai'
-Plug 'ajmwagar/vim-deus'
-Plug 'hzchirs/vim-material'
 Plug 'sjl/badwolf'
-" Plug 'joshdick/onedark.vim'
-" Plug 'challenger-deep-theme/vim'
+Plug 'ajmwagar/vim-deus'
 " Plug 'lifepillar/vim-solarized8'
+" Plug 'sickill/vim-monokai'
 " Plug 'whatyouhide/vim-gotham'
-" Plug 'yous/vim-open-color'
 " Plug 'arcticicestudio/nord-vim'
 " Plug 'rakr/vim-one'
 " Plug 'kaicataldo/material.vim'
@@ -837,10 +841,8 @@ Plug 'tpope/vim-eunuch'
 "}}
 
 "{{ linting, formating
-" auto format tool
-Plug 'sbdchd/neoformat'
-
-" another auto format tool
+" auto format tools
+" Plug 'sbdchd/neoformat'
 " Plug 'Chiel92/vim-autoformat'
 
 " syntax check and make
@@ -1275,6 +1277,9 @@ autocmd!
 
     " add `<>` pair to filetype vim
     au FileType vim let b:AutoPairs = AutoPairsDefine({'<' : '>'})
+
+    " do not use " for vim script since " is also used for comment
+    au FileType vim let b:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", "`":"`", '<':'>'}
 augroup END
 
 """"""""""""""""""""""""""""nerdcommenter settings"""""""""""""""""""
@@ -1365,21 +1370,8 @@ augroup END
 "}}
 
 "{{ linting and formating
-""""""""""""""""""""""""""neoformat settins""""""""""""""""""""
-
-" Enable alignment
-let g:neoformat_basic_format_align = 1
-
-" Enable tab to spaces conversion
-let g:neoformat_basic_format_retab = 1
-
-" Enable trimmming of trailing whitespace
-let g:neoformat_basic_format_trim = 1
-
 """""""""""""""""""""""""""""" neomake settings """""""""""""""""""""""
-
-" when writing or reading a buffer, and
-" on changes in normal mode (after 0.5s; no delay when writing).
+" when to activate neomake
 call neomake#configure#automake('nrw', 50)
 
 " change warning signs and color, see https://goo.gl/eHcjSq
@@ -1390,10 +1382,6 @@ let g:neomake_error_sign={'text': '✗'}
 " which linter to enable for Python source file linting
 " let g:neomake_python_enabled_makers = ['flake8', 'pylint']
 let g:neomake_python_enabled_makers = ['flake8']
-
-" do not highlight columns, it works bad for sublimemonokai
-" see https://goo.gl/wd68ex for more info
-let g:neomake_highlight_columns = 1
 
 " whether to open quickfix or location list automatically
 let g:neomake_open_list = 0
@@ -1750,10 +1738,6 @@ else
     colorscheme desert
 endif
 
-""""""""""""""""""""""""""" onedark.vim  settings"""""""""""""""""""""""""
-" let g:onedark_terminal_italics = 1
-" colorscheme onedark
-
 """"""""""""""""""""""""""" deus  settings"""""""""""""""""""""""""""""""""
 " colorscheme deus
 
@@ -1766,10 +1750,6 @@ endif
 " let g:solarized_term_italics=1
 " let g:solarized_visibility="high"
 " colorscheme solarized8_high
-
-""""""""""""""""""""""""""" sublimemonokai  settings"""""""""""""""""""""""""
-" let g:sublimemonokai_term_italic = 1
-" colorscheme sublimemonokai
 
 """"""""""""""""""""""""""" nord-vim  settings"""""""""""""""""""""""""
 
@@ -1787,13 +1767,8 @@ endif
 
 " let g:material_terminal_italics = 1
 " " theme_style can be 'default', 'dark' or 'palenight'
-" let g:material_theme_style = 'default'
+" let g:material_theme_style = 'dark'
 " colorscheme material
-
-"""""""""""""""""""""""""""vim-material settings""""""""""""""""""""""""""
-
-" let g:material_style='palenight'
-" colorscheme vim-material
 "}}
 
 "{{ custom highlight group settings
