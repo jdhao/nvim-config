@@ -20,7 +20,7 @@
 " not recommend downloading this file and replace your own init.vim. Good
 " configurations are built over time and take your time to polish.
 " Author: jdhao (jdhao@hotmail.com). Blog: https://jdhao.github.io
-" Update: 2019-05-05 22:47:43+0800
+" Update: 2019-05-06 21:53:28+0800
 "}}
 
 "{{ License: MIT License
@@ -192,26 +192,23 @@ endfunction
 set fillchars=fold:\ ,vert:\|
 
 " paste mode toggle, it seems that neovim's bracketed paste mode
-" does not work very well for nvim-qt, so we use old paste mode
+" does not work very well for nvim-qt, so we use good-old paste mode
 set pastetoggle=<F12>
 
-" set cursorline  " whether to show current line cursor is in
-
-" split window below when creating horizontal window and split right when
-" creating vertical window
+" split window below/right when creating horizontal/vertical windows
 set splitbelow
 set splitright
 
 " Time in milliseconds to wait for a mapped sequence to complete
 " see https://goo.gl/vHvyu8 for more info
-set timeoutlen=300
+set timeoutlen=800
+set updatetime=1000  " speed up updatetime so changes show quicker
 
 " clipboard settings, always use clipboard for all delete, yank, change, put
 " operation, see https://goo.gl/YAHBbJ
 set clipboard+=unnamedplus
 
-" disable creating swapfiles, see https://goo.gl/FA6m6h
-set noswapfile
+set noswapfile  " disable creating swapfiles, see https://goo.gl/FA6m6h
 
 " general tab settings
 set tabstop=4       " number of visual spaces per TAB
@@ -220,18 +217,17 @@ set shiftwidth=4    " number of spaces to use for autoindent
 set expandtab       " expand tab to spaces so that tabs are spaces
 
 set showmatch  " highlight matching bracket
+set matchpairs+=<:>,「:」 " matching pairs of characters
 
 " show line number and relative line number
 set number relativenumber
 
-" ignore case when searching but become case sensitive when uppercase
-" characters are present
+" ignore case in general, but become case-sensitive when uppercase present
 set ignorecase smartcase
 
 " encoding settings for vim
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-
 scriptencoding utf-8  " set the script encoding (`:h :scriptencoding`)
 
 set linebreak  " line will break at predefined characters
@@ -239,8 +235,8 @@ set linebreak  " line will break at predefined characters
 " list all items and start selecting matches
 set wildmode=list:longest,full
 
-" set a ruler at column 80, see https://goo.gl/vEkF5i
-set colorcolumn=80
+set cursorline  " whether to show current line cursor is in
+set colorcolumn=80 " set a ruler at column 80, see https://goo.gl/vEkF5i
 
 set scrolloff=5  " minimum lines to keep above and below cursor
 
@@ -293,11 +289,6 @@ set autowrite  " auto write the file based on some condition
 set title
 set titlestring=%{hostname()}\ \ %F\ \ \ %{strftime('%Y-%m-%d\ %H:%M',getftime(expand('%')))}
 
-set updatetime=1000  " speed up updatetime so changes show quicker
-
-" whether to use modeline, see also https://is.gd/FEzuc7.
-set modeline
-
 set undofile  " persistent undo even after you close and file and reopen it
 
 " do not show "match xx of xx" and other messages during auto-completion
@@ -305,8 +296,12 @@ set shortmess+=c
 
 set completeopt+=noinsert  " auto select the first completion entry
 set completeopt+=menuone  " show menu even if there is only one item
-" disable the preview window during autocompletion, see also https://goo.gl/18zNPD
+" disable the preview window, see also https://goo.gl/18zNPD
 set completeopt-=preview
+
+" settings for popup menu
+set pumheight=15  " maximum number of items to show in popup menu
+set pumblend=10  " pesudo-blend effect for popup menu
 
 " scan files given by `dictionary` option
 set complete+=k,kspell complete-=w complete-=b complete-=u complete-=t
@@ -328,17 +323,9 @@ set formatoptions+=mM
 " dictionary files for different systems
 let $MY_DICT = stdpath('config') . '/dict/words'
 set dictionary+=$MY_DICT
-
 set spelllang=en,cjk  " spell languages
 
 set lazyredraw
-
-" matching pairs of characters
-set matchpairs+=<:>,「:」
-
-" popup menu settings
-set pumheight=15  " maximum number of items to show in popup menu
-set pumblend=15  " pesudo-blend effect for popup menu
 
 " tilde ~ is an operator (thus must be followed by motion like `c` or `d`)
 set tildeop
@@ -346,43 +333,39 @@ set tildeop
 
 "{ Custom key mappings
 " save key strokes (now we do not need to press shift to enter command mode)
+" vim-sneak has also mapped ;, so using the below mapping will break the map
+" used by vim-sneak
 nnoremap ; :
-vnoremap ; :
 
 " quick way to open command window
 nnoremap q; q:
 
-" custom ESC. I do not like `kk` because it will delay the vim default `k`
-" motion by `timeoutlen` milliseconds (see `:h timeoutlen` for more info)
-inoremap <silent> <leader>k <ESC>
+" quicker <Esc> in insert mode, you must pick a rarely used character
+" combination
+inoremap <silent> jk <Esc>
 
 " use sane regex expression (see `:h magic` for more info)
 nnoremap / /\v
-vnoremap / /\v
 
-" paste text above or below current cursor, see
-" https://stackoverflow.com/a/1346777/6064933
-nnoremap <leader>p o<ESC>p
-nnoremap <leader>P O<ESC>p
+" paste non-linewise text above or below current cursor,
+" see https://stackoverflow.com/a/1346777/6064933
+nnoremap <leader>p m`o<ESC>p``
+nnoremap <leader>P m`O<ESC>p``
 
 " shortcut for faster save and quit
-nmap <silent> <leader>w :w<CR>
+nmap <silent> <leader>w :update<CR>
 " saves the file if modified and quit
 nnoremap <silent> <leader>q :x<CR>
 " quit all opened buffers
 nnoremap <silent> <leader>Q :qa<CR>
 
-" go to previous and next item in location list
+" navigation in the location and quickfix list
 nnoremap [l :lprevious<CR>zv
 nnoremap ]l :lnext<CR>zv
-" go to first and last item in location list (less used)
 nnoremap [L :lfirst<CR>zv
 nnoremap ]L :llast<CR>zv
-
-" go to previous and next item in quickfix list
 nnoremap [q :cprevious<CR>zv
 nnoremap ]q :cnext<CR>zv
-" go to first and last item in quickfix list
 nnoremap [Q :cfirst<CR>zv
 nnoremap ]Q :clast<CR>zv
 
@@ -460,12 +443,8 @@ inoremap <expr> <cr> ((pumvisible())?("\<C-Y>"):("\<cr>"))
 " use <esc> to close auto-completion menu
 inoremap <expr> <esc> ((pumvisible())?("\<C-e>"):("\<esc>"))
 
-" switching buffers quickly, extracted from vim-unimpaired
-nnoremap <silent> [b :bprevious<cr>  " go to previous buffer
-nnoremap <silent> ]b :bnext<cr>  " go to next buffer
-
 " reload init.vim quickly and give a message
-nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
+nnoremap <silent> <leader>sv :update $MYVIMRC<cr>:source $MYVIMRC<cr>
     \ :echom "Nvim config successfully reloaded!"<cr>
 
 " edit init.vim in a vertical split
@@ -613,13 +592,11 @@ endif
 " Windows 10 build 17063, source: http://tinyurl.com/y23972tt)
 " The following script to install vim-plug are adapted from
 " vim-plug tips: https://bit.ly/2IhJDNb
-
 if !executable('curl')
     echoerr 'You have to install curl to install vim-plug or install vim-plug
             \ yourself following the guide on vim-plug git repository'
     execute 'q!'
 else
-
     if has('unix')
         if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
             echo 'Installing Vim-plug on your system'
@@ -648,15 +625,13 @@ else
 endif
 "}
 
-call plug#begin(s:PLUGIN_HOME)
 "{{ autocompletion related plugins
+call plug#begin(s:PLUGIN_HOME)
 " settings for deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-" snippet engine
+" snippet engine and snippet template
 Plug 'SirVer/ultisnips'
-
-" snippet template for ultisnips
 Plug 'honza/vim-snippets'
 
 " for insert mode completion
@@ -668,11 +643,7 @@ Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 " vim source for deoplete
 Plug 'Shougo/neco-vim', { 'for': 'vim' }
 
-" dictionary source for English words completion (not available on Windows)
-" Find this plugin on http://tinyurl.com/gttcxwh
-if has('unix')
-    " Plug 'ujihisa/neco-look'
-endif
+" for English word auto-completion
 Plug 'deathlyfrantic/deoplete-spell'
 "}}
 
@@ -681,7 +652,7 @@ Plug 'deathlyfrantic/deoplete-spell'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Python syntax highlighting
-Plug 'vim-python/python-syntax', { 'for': 'python' }
+" Plug 'vim-python/python-syntax', { 'for': 'python' }
 
 " python syntax highlighting and more
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
@@ -694,12 +665,6 @@ Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 "}}
 
 "{{ search related plugins
-" extend vim's default search behaviour
-Plug 'inkarkat/vim-SearchHighlighting'
-
-" required by vim-SearchHighlighting
-Plug 'inkarkat/vim-ingo-library'
-
 " super fast movement with vim-sneak
 Plug 'justinmk/vim-sneak'
 
@@ -708,6 +673,9 @@ Plug 'haya14busa/is.vim'
 
 " show match number for incsearch
 Plug 'osyo-manga/vim-anzu'
+
+" stay after pressing * and search selected text
+Plug 'haya14busa/vim-asterisk'
 
 " another grep tool (similar to Sublime Text Ctrl+Shift+F)
 " TODO: worth trying and exploring
@@ -745,14 +713,9 @@ Plug 'ajmwagar/vim-deus'
 " Plug 'rakr/vim-one'
 " Plug 'kaicataldo/material.vim'
 
-" wonderful status line
+" colorful status line and theme
 Plug 'vim-airline/vim-airline'
-
-" vim-airline theme
 Plug 'vim-airline/vim-airline-themes'
-
-" lightline status bar (a simpler alternative to vim-airline)
-" Plug 'itchyny/lightline.vim'
 
 " show indent lines for better comprehension of the code structure
 " currently, blank lines inside the indent block do not show indent guides,
@@ -768,7 +731,7 @@ Plug 'mhinz/vim-startify'
 Plug 'itchyny/vim-highlighturl'
 
 " For Windows and Mac, we can open URL in browser. For Linux, it may not be
-" possible since we maybe in a server which disable X11
+" possible since we maybe in a server which disables GUI
 if has('win32') || has('macunix')
     " open URL in browser
     Plug 'tyru/open-browser.vim'
@@ -781,7 +744,6 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 
 " only install these plugins if ctags are installed on the system
 if executable('ctags')
-
     " plugin to manage tags (must install ctags on system)
     Plug 'ludovicchabant/vim-gutentags'
 
@@ -796,10 +758,6 @@ Plug 'jiangmiao/auto-pairs'
 
 " comment plugin
 Plug 'scrooloose/nerdcommenter'
-
-" multiline editting plugin. It becomes slow if you try to edit many
-" occurences of a variable
-" Plug 'terryma/vim-multiple-cursors'
 
 " another multiple cursor plugin
 " Plug 'mg979/vim-visual-multi'
@@ -838,6 +796,12 @@ Plug 'kshenoy/vim-signature'
 
 " handy unix command inside Vim
 Plug 'tpope/vim-eunuch'
+
+" show the content of register in preview window
+" Plug 'junegunn/vim-peekaboo'
+if has('macunix')
+    Plug 'rlue/vim-barbaric'
+endif
 "}}
 
 "{{ linting, formating
@@ -1033,7 +997,6 @@ call deoplete#custom#option('auto_complete', v:true)
 " inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 """""""""""""""""""""""""UltiSnips settings"""""""""""""""""""
-
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger='<tab>'
@@ -1049,7 +1012,6 @@ let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
 
 """""""""""""""""""""""""supertab settings""""""""""""""""""""""""""
-
 " auto-close method preview window
 "let g:SuperTabClosePreviewOnPopupClose = 1
 
@@ -1062,7 +1024,6 @@ let g:SuperTabMappingForward = '<tab>'
 let g:SuperTabMappingBackward = '<s-tab>'
 
 """"""""""""""""""deoplete-jedi settings"""""""""""""""""""""""""""
-
 " whether to show doc string
 let g:deoplete#sources#jedi#show_docstring = 0
 
@@ -1075,7 +1036,6 @@ let g:deoplete#sources#jedi#server_timeout = 50
 
 "{{ python-related
 """"""""""""""""""""""""jedi-vim settings"""""""""""""""""""
-
 " disable autocompletion, because I use deoplete for auto-completion
 let g:jedi#completions_enabled = 0
 
@@ -1086,7 +1046,6 @@ let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures = '2'
 
 """""""""""""""""""""""""python-syntax highlight settings"""""""""""""""""""
-
 " highlight all
 let g:python_highlight_all = 1
 
@@ -1094,7 +1053,6 @@ let g:python_highlight_all = 1
 let g:python_highlight_space_errors = 0
 
 """""""""""""""""""""""""" semshi settings """""""""""""""""""""""""""""""
-
 " do not highlight variable under cursor
 let g:semshi#mark_selected_nodes=0
 
@@ -1104,15 +1062,19 @@ let g:semshi#error_sign=v:false
 
 "{{ search related
 """""""""""""""""""""""""""""vim-sneak settings"""""""""""""""""""""""
-
 let g:sneak#label = 1
 nmap f <Plug>Sneak_s
+xmap f <Plug>Sneak_s
+omap f <Plug>Sneak_s
 nmap F <Plug>Sneak_S
-nmap t <Plug>Sneak_t
-nmap T <Plug>Sneak_T
+xmap F <Plug>Sneak_S
+omap F <Plug>Sneak_S
+
+" immediately after entering sneak mode, you can press f and F to go to next
+" or previous match
+let g:sneak#s_next = 1
 
 """"""""""""""""""""""""""""is.vim settings"""""""""""""""""""""""
-
 " to make is.vim work together well with vim-anzu and put current match in
 " the center of the window
 " `zz`: put cursor line in center of the window
@@ -1121,20 +1083,21 @@ nmap n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)zzzv
 nmap N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)zzzv
 
 """""""""""""""""""""""""""""vim-anzu settings"""""""""""""""""""""""
+" do not show search index in statusline since it is shown on command line
+let g:airline#extensions#anzu#enabled = 0
 
-" nmap n zzzv<Plug>(anzu-n-with-echo)
-" nmap N zzzv<Plug>(anzu-N-with-echo)
-nmap * <Plug>(anzu-star-with-echo)
-nmap # <Plug>(anzu-sharp-with-echo)
+" maximum number of words to search
+let g:anzu_search_limit = 500000
 
-" clear matching info on status line with double <Esc>
-nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+"""""""""""""""""""""""""""""vim-asterisk settings"""""""""""""""""""""
+nmap *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)<Plug>(anzu-star-with-echo)
+nmap g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
+nmap #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)<Plug>(anzu-sharp-with-echo)
+nmap g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 
 """""""""""""""""""""""""fzf settings""""""""""""""""""""""""""
-
 " only use fzf on Mac and Linux, since it doesn't work well for Windows
 if has('unix')
-
     " hide status line when open fzf window
     augroup fzf_hide_statusline
         autocmd!
@@ -1150,7 +1113,6 @@ if has('unix')
     " nnoremap <silent> <leader>F :FZF ~<cr>
 
     """""""""""""""""""""""""fzf.vim settings""""""""""""""""""
-
     " Customize fzf colors to match your color scheme
     let g:fzf_colors =
     \ { 'fg':      ['fg', 'Normal'],
@@ -1211,7 +1173,6 @@ endif
 
 "{{ URL related
 """"""""""""""""""""""""""""open-browser.vim settings"""""""""""""""""""
-
 if has('win32') || has('macunix')
     " disable netrw's gx mapping.
     let g:netrw_nogx = 1
@@ -1222,13 +1183,11 @@ if has('win32') || has('macunix')
 endif
 
 """""""""""""""""""""""""vim-highlighturl settings"""""""""""""""""""""""""
-
 " whether to underline the URL
 let g:highlighturl_underline=1
 
 "{{ navigation and tags
 """"""""""""""""""""""" nerdtree settings """"""""""""""""""""""""""
-
 " toggle nerdtree window and keep cursor in file window,
 " adapted from http://tinyurl.com/y2kt8cy9
 nnoremap <silent> <Space>s :NERDTreeToggle<CR>:wincmd p<CR>
@@ -1262,14 +1221,12 @@ let NERDTreeStatusline="%{exists('b:NERDTree')?fnamemodify(b:NERDTree.root.path.
 let NERDTreeMinimalUI=0
 
 """"""""""""""""""""""""""" tagbar settings """"""""""""""""""""""""""""""""""
-
 " shortcut to toggle tagbar window
 nnoremap <silent> <Space>t :TagbarToggle<CR>
 "}}
 
 "{{ file editting
 """""""""""""""""""""""""""""auto-pairs settings"""""""""""""""""""""""""
-
 augroup filetype_custom_autopair
 autocmd!
     " only use the following character pairs for tex file
@@ -1283,7 +1240,6 @@ autocmd!
 augroup END
 
 """"""""""""""""""""""""""""nerdcommenter settings"""""""""""""""""""
-
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
@@ -1299,7 +1255,6 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDToggleCheckAllLines = 1
 
 """"""""""""""""""""""""""""vim-titlecase settings"""""""""""""""""""""""
-
 " do not use the default mapping provided
 let g:titlecase_map_keys = 0
 
@@ -1308,20 +1263,17 @@ vmap <leader>gt <Plug>Titlecase
 nmap <leader>gT <Plug>TitlecaseLine
 
 """"""""""""""""""""""""vim-auto-save settings"""""""""""""""""""""""
-
-" enable AutoSave on nvim startup
+" enable autosave on nvim startup
 let g:auto_save = 1
 
-" the event to trigger autosave
-let g:auto_save_events = ['InsertLeave', 'TextChanged']
+" a list of events to trigger autosave
+let g:auto_save_events = ['InsertLeave']
 
 " show autosave status on command line
 let g:auto_save_silent = 0
 
 """"""""""""""""""""""""""""vim-yoink settings"""""""""""""""""""""""""
-
-if has('win32')
-    " TODO: test yoink on Mac to see if it works
+if has('win32') || has('macunix')
     " it seems that ctrl-n and ctrl-p does not work on neovim
     nmap <c-n> <plug>(YoinkPostPasteSwapBack)
     nmap <c-p> <plug>(YoinkPostPasteSwapForward)
@@ -1345,7 +1297,6 @@ if has('win32')
 endif
 
 """""""""""""""""""""vim-better-whitespace settings""""""""""""""""""""""""""
-
 " whether to highlight trailing whitespace with the default red color (I find
 " it distracting so I turn it off)
 let g:better_whitespace_enabled=0
@@ -1360,7 +1311,6 @@ let g:strip_whitelines_at_eof=1
 let g:better_whitespace_operator=''
 
 """"""""""""""""""""""""""""""vim-signature settings""""""""""""""""""""""""""
-
 " change mark highlight to be more visible
 augroup signature_highlight
 autocmd!
@@ -1381,7 +1331,7 @@ let g:neomake_error_sign={'text': '✗'}
 
 " which linter to enable for Python source file linting
 " let g:neomake_python_enabled_makers = ['flake8', 'pylint']
-let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_python_enabled_makers = ['flake8', 'pylint']
 
 " whether to open quickfix or location list automatically
 let g:neomake_open_list = 0
@@ -1405,7 +1355,6 @@ let g:neomake_open_list = 0
 
 
 "{{ git-related
-
 """""""""""""""""""""""""vim-signify settings""""""""""""""""""""""""""""""
 " the VCS to use
 let g:signify_vcs_list = [ 'git' ]
@@ -1416,7 +1365,6 @@ let g:signify_sign_change = '~'
 "}}
 "{{ Markdown writing
 """""""""""""""""""""""""goyo.vim settings""""""""""""""""""""""""""""""
-
 " make goyo and limelight work together automatically
 augroup goyo_work_with_limelight
     autocmd!
@@ -1425,7 +1373,6 @@ augroup goyo_work_with_limelight
 augroup END
 
 """""""""""""""""""""""""vim-pandoc-syntax settings"""""""""""""""""""""""""
-
 " do not conceal urls (seems does not work)
 let g:pandoc#syntax#conceal#urls = 0
 
@@ -1436,7 +1383,6 @@ augroup pandoc_syntax
 augroup END
 
 """""""""""""""""""""""""plasticboy/vim-markdown settings"""""""""""""""""""
-
 " disable header folding
 let g:vim_markdown_folding_disabled = 1
 
@@ -1456,7 +1402,6 @@ let g:vim_markdown_json_frontmatter = 1  " for JSON format
 let g:vim_markdown_toc_autofit = 1
 
 """""""""""""""""""""""""markdown-preview settings"""""""""""""""""""
-
 " only setting this for suitable platforms
 if has('win32') || has('macunix')
     " do not close the preview tab when switching to other buffers
@@ -1468,7 +1413,6 @@ if has('win32') || has('macunix')
 endif
 
 """"""""""""""""""""""""vim-markdownfootnotes settings""""""""""""""""""""""""
-
 " replace the default mappings provided by the plugin
 imap ^^ <Plug>AddVimFootnote
 nmap ^^ <Plug>AddVimFootnote
@@ -1479,7 +1423,6 @@ nmap @@ <Plug>ReturnFromFootnote
 
 "{{ LaTeX editting
 """"""""""""""""""""""""""""vimtex settings"""""""""""""""""""""""""""""
-
 if ( has('macunix') || has('win32')) && executable('latex')
     " enhanced matching with matchup plugin
     let g:matchup_override_vimtex = 1
@@ -1568,7 +1511,6 @@ endif
 
 "{{ status line, look
 """""""""""""""""""""""""indentLine settings""""""""""""""""""""""""""
-
 " whether to enable indentLine
 let g:indentLine_enabled = 1
 
@@ -1590,12 +1532,11 @@ augroup indentline_disable_ft
 augroup END
 
 """""""""""""""""""""""""""vim-airline setting""""""""""""""""""""""""""""""
-
 " set a airline theme only if it exists, else we resort to default color
 let s:candidate_airlinetheme = ['alduin', 'ayu_mirage', 'base16_flat',
     \ 'monochrome', 'base16_grayscale', 'lucius', 'base16_tomorrow',
     \ 'base16_adwaita', 'biogoo', 'distinguished', 'gruvbox', 'jellybeans',
-    \ 'luna', 'raven', 'seagull', 'solarized_flood', 'term', 'vice', 'zenburn']
+    \ 'luna', 'raven', 'seagull', 'term', 'vice', 'zenburn']
 let s:idx = RandInt(0, len(s:candidate_airlinetheme)-1)
 let s:theme = s:candidate_airlinetheme[s:idx]
 
@@ -1667,7 +1608,6 @@ let g:airline_symbols.maxlinenr = ''
 
 "{{ misc plugin setting
 """"""""""""""""""" vim-highlightedyank settings """"""""""""""
-
 " reverse the highlight color for yanked text for better visuals
 highlight HighlightedyankRegion cterm=reverse gui=reverse
 
@@ -1675,7 +1615,6 @@ highlight HighlightedyankRegion cterm=reverse gui=reverse
 let g:highlightedyank_highlight_duration = 1000
 
 """"""""""""""""""""""""""""vim-matchup settings"""""""""""""""""""""""""""""
-
 " whether to enable matching inside comment or string
 let g:matchup_delim_noskips = 0
 
@@ -1692,13 +1631,11 @@ augroup matchup_matchword_highlight
 augroup END
 
 """"""""""""""""""""""""""quickrun settings"""""""""""""""""""""""""""""
-
 let g:quickrun_no_default_key_mappings = 1
 nnoremap<silent> <F9> :QuickRun<CR>
 let g:quickrun_config = {'outputter/buffer/close_on_empty': 1}
 
 """"""""""""""""""""""""comfortable-motion settings """"""""""""""""""""""
-
 let g:comfortable_motion_scroll_down_key = 'j'
 let g:comfortable_motion_scroll_up_key = 'k'
 
@@ -1722,7 +1659,6 @@ set background=dark
 
 "{{ colorscheme settings
 """"""""""""""""""""""""""""gruvbox settings"""""""""""""""""""""""""""
-
 " we should check if theme exists before using it, otherwise you will get
 " error message when starting Nvim
 if HasColorscheme('gruvbox')
@@ -1738,50 +1674,36 @@ else
     colorscheme desert
 endif
 
-""""""""""""""""""""""""""" deus  settings"""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""" deus settings"""""""""""""""""""""""""""""""""
 " colorscheme deus
 
-"""""""""""""""""""""""" challenger_deep  settings""""""""""""""""""""""""
-" colorscheme challenger_deep
-
-""""""""""""""""""""""""""" solarized8  settings"""""""""""""""""""""""""
-
+""""""""""""""""""""""""""" solarized8 settings"""""""""""""""""""""""""
 " solarized colorscheme without bullshit
 " let g:solarized_term_italics=1
 " let g:solarized_visibility="high"
 " colorscheme solarized8_high
 
-""""""""""""""""""""""""""" nord-vim  settings"""""""""""""""""""""""""
-
+""""""""""""""""""""""""""" nord-vim settings"""""""""""""""""""""""""
 " let g:nord_italic = 1
 " let g:nord_underline = 1
 " let g:nord_italic_comments = 1
 " colorscheme nord
 
-""""""""""""""""""""""""""" vim-one  settings"""""""""""""""""""""""""""""
-
+""""""""""""""""""""""""""" vim-one settings"""""""""""""""""""""""""""""
 " let g:one_allow_italics = 1
 " colorscheme one
 
 """""""""""""""""""""""""""material.vim settings""""""""""""""""""""""""""
-
 " let g:material_terminal_italics = 1
 " " theme_style can be 'default', 'dark' or 'palenight'
 " let g:material_theme_style = 'dark'
 " colorscheme material
-"}}
 
-"{{ custom highlight group settings
-" change the color of popup menu for autocompletion
-" extracted from spf13-vim, see https://goo.gl/frRXHP
-" highlight Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-" highlight PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan
-"             \ ctermbg=lightgray cterm=NONE
-" highlight PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray
-"             \ ctermbg=darkcyan cterm=NONE
-
-"custom highlight for ColorColumn
-" highlight ColorColumn ctermbg=235 guibg=#2c2d27
+"""""""""""""""""""""""""""material.vim settings""""""""""""""""""""""""""
+" let g:badwolf_darkgutter = 0
+" " Make the tab line lighter than the background.
+" let g:badwolf_tabline = 2
+" colorscheme badwolf
 "}}
 "}
 
