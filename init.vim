@@ -20,7 +20,7 @@
 " not recommend downloading this file and replace your own init.vim. Good
 " configurations are built over time and take your time to polish.
 " Author: jdhao (jdhao@hotmail.com). Blog: https://jdhao.github.io
-" Update: 2019-05-06 21:53:28+0800
+" Update: 2019-05-11 19:46:55+0800
 "}}
 
 "{{ License: MIT License
@@ -49,15 +49,20 @@
 
 "{ Variable
 "{{ builtin variables
-" path to Python 3 interpreter (must be an absolute path), make startup faster.
-" see https://neovim.io/doc/user/provider.html. You should change this
-" variable in accordance with your system.
-if has('win32') " for Windows
-    let g:python3_host_prog='D:/Anaconda/python'
-elseif has('macunix') " for Mac
-    let g:python3_host_prog=expand('~/anaconda3/bin/python')
-else " for Linux
-    let g:python3_host_prog=expand('~/tools/anaconda3/bin/python')
+" path to Python 3 interpreter (must be an absolute path), make startup
+" faster.  see https://neovim.io/doc/user/provider.html. Change this variable
+" in accordance with your system.
+if executable('python')
+    if has('win32') " for Windows
+        " the output of `system()` function contains a newline character which
+        " should be removed
+        let g:python3_host_prog=substitute(system('where python'), '.exe\n\+$', '', 'g')
+    elseif has('unix') " for Linux and Mac
+        let g:python3_host_prog=substitute(system('which python'), '\n\+$', '', 'g')
+    endif
+else
+    echoerr 'Python executable is not found, either you have not installed Python
+        \ or you have not set the Python executable path correctly'
 endif
 
 " set custom mapping <leader> (use `:h mapleader` for more info)
@@ -78,7 +83,7 @@ let g:loaded_zipPlugin = 1
 let loaded_gzip = 1
 let g:loaded_tarPlugin = 1
 
-" do not use matchit.vim and matchparen.vim
+" do not use builtin matchit.vim and matchparen.vim
 let loaded_matchit = 1
 let g:loaded_matchparen = 1
 "}}
@@ -86,11 +91,12 @@ let g:loaded_matchparen = 1
 
 "{ Custom functions
 " remove trailing white space, see https://goo.gl/sUjgFi
-" function! s:StripTrailingWhitespaces() abort
-"    let l:save = winsaveview()
-"    keeppatterns %s/\s\+$//e
-"    call winrestview(l:save)
-" endfunction
+function! s:StripTrailingWhitespaces() abort
+   let l:save = winsaveview()
+    " vint: next-line -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
+   keeppatterns %s/\s\+$//e
+   call winrestview(l:save)
+endfunction
 
 " create command alias safely, see https://bit.ly/2ImFOpL
 " the following two functions are taken from answer below on SO
@@ -116,37 +122,23 @@ nnoremap <silent> <leader>st :call <SID>SynGroup()<CR>
 
 " the following two functions are from
 " https://stackoverflow.com/a/5703164/6064933 (with adaptation)
-
 " check if a colorscheme exists in runtimepath
 function! HasColorscheme(name) abort
-    let pat = 'colors/'.a:name.'.vim'
-    return !empty(globpath(&runtimepath, pat))
+    let l:pat = 'colors/'.a:name.'.vim'
+    return !empty(globpath(&runtimepath, l:pat))
 endfunction
 
 " check if an Airline theme exists in runtimepath
 function! HasAirlinetheme(name) abort
-    let pat = 'autoload/airline/themes/'.a:name.'.vim'
-    return !empty(globpath(&runtimepath, pat))
+    let l:pat = 'autoload/airline/themes/'.a:name.'.vim'
+    return !empty(globpath(&runtimepath, l:pat))
 endfunction
 
-" generate a random integer from range [Low, High] using Python
+" generate random integer in the range [Low, High] in pure vimscrpt,
+" adapted from http://tinyurl.com/y2o6rj3o
 function! RandInt(Low, High) abort
-" if you use Python 3, the python block should start with `python3` instead of
-" `python`, see https://github.com/neovim/neovim/issues/9927
-python3 << EOF
-import vim
-import random
-
-# using vim.eval to import variable outside Python script to python
-idx = random.randint(int(vim.eval('a:Low')), int(vim.eval('a:High')))
-
-# using vim.command to export variable inside Python script to vim script so
-# we can return its value in vim script
-vim.command("let index = {}".format(idx))
-EOF
-
-" vint: next-line -ProhibitUsingUndeclaredVariable
-return index
+    let l:milisec = str2nr(matchstr(reltimestr(reltime()), '\v\.\zs\d+'))
+    return l:milisec % (a:High - a:Low + 1) + a:Low
 endfunction
 
 " custom fold expr, adapted from https://vi.stackexchange.com/a/9094/15292
@@ -196,13 +188,12 @@ set fillchars=fold:\ ,vert:\|
 set pastetoggle=<F12>
 
 " split window below/right when creating horizontal/vertical windows
-set splitbelow
-set splitright
+set splitbelow splitright
 
 " Time in milliseconds to wait for a mapped sequence to complete
 " see https://goo.gl/vHvyu8 for more info
 set timeoutlen=800
-set updatetime=1000  " speed up updatetime so changes show quicker
+set updatetime=1000
 
 " clipboard settings, always use clipboard for all delete, yank, change, put
 " operation, see https://goo.gl/YAHBbJ
@@ -216,7 +207,7 @@ set softtabstop=4   " number of spaces in tab when editing
 set shiftwidth=4    " number of spaces to use for autoindent
 set expandtab       " expand tab to spaces so that tabs are spaces
 
-set showmatch  " highlight matching bracket
+set showmatch             " highlight matching bracket
 set matchpairs+=<:>,「:」 " matching pairs of characters
 
 " show line number and relative line number
@@ -230,30 +221,34 @@ set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 scriptencoding utf-8  " set the script encoding (`:h :scriptencoding`)
 
-set linebreak  " line will break at predefined characters
+" line will break at predefined characters
+set linebreak
+" character to show before the lines that have been soft-wrapped
+set showbreak=↪
 
 " list all items and start selecting matches
 set wildmode=list:longest,full
 
-set cursorline  " whether to show current line cursor is in
-set colorcolumn=80 " set a ruler at column 80, see https://goo.gl/vEkF5i
+set cursorline      " whether to show the line cursor is in
+set colorcolumn=80  " set a ruler at column 80, see https://goo.gl/vEkF5i
+set signcolumn=yes  " always show sign column
 
 set scrolloff=5  " minimum lines to keep above and below cursor
 
 " use mouse to select window and resizing window, etc
 if has('mouse')
-    set mouse=a  " enable mouse in several mode (see `:h 'mouse'`)
+    set mouse=a  " enable mouse in several mode
     set mousemodel=popup  " set the behaviour of mouse
 endif
 
-" do not show mode on command line because vim-airline can show it already
+" do not show mode on command line since vim-airline can show it
 set noshowmode
 
 set fileformats=unix,dos  " fileformats to use for new file
 
 set concealcursor=c  " the mode in which cursorline text can be concealed
 
-" the way to show the result of subsitute in real time for preview
+" the way to show the result of substitution in real time for preview
 set inccommand=nosplit
 
 " ignore files or folders when globbing
@@ -267,7 +262,7 @@ set wildignore+=*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex.gz,*.pdf
 " Ask for confirmation when handling unsaved or read-only files
 set confirm
 
-" use visual bells to indicate error, do not use errorbells
+" use visual bells to indicate errors, do not use errorbells
 set visualbell noerrorbells
 
 set foldlevel=0  " the level we start to fold
@@ -276,9 +271,6 @@ set history=500  " the number of command and search history to keep
 
 " use list mode and customized listchars
 set list listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:+  ",trail:·,eol:¬
-
-" string to show before the lines that have been soft-wrapped
-set showbreak=↪
 
 set autowrite  " auto write the file based on some condition
 
@@ -295,9 +287,8 @@ set undofile  " persistent undo even after you close and file and reopen it
 set shortmess+=c
 
 set completeopt+=noinsert  " auto select the first completion entry
-set completeopt+=menuone  " show menu even if there is only one item
-" disable the preview window, see also https://goo.gl/18zNPD
-set completeopt-=preview
+set completeopt+=menuone   " show menu even if there is only one item
+set completeopt-=preview   " disable the preview window, see also https://goo.gl/18zNPD
 
 " settings for popup menu
 set pumheight=15  " maximum number of items to show in popup menu
@@ -314,8 +305,6 @@ set shiftround
 
 set virtualedit=block  " virtual edit is useful for visual block edit
 
-set signcolumn=yes  " always show sign column
-
 " correctly break multi-byte characters such as CJK,
 " see http://tinyurl.com/y4sq6vf3
 set formatoptions+=mM
@@ -325,10 +314,11 @@ let $MY_DICT = stdpath('config') . '/dict/words'
 set dictionary+=$MY_DICT
 set spelllang=en,cjk  " spell languages
 
-set lazyredraw
-
 " tilde ~ is an operator (thus must be followed by motion like `c` or `d`)
 set tildeop
+
+" set pyx version to use python3 by default
+set pyxversion=3
 "}
 
 "{ Custom key mappings
@@ -344,16 +334,13 @@ nnoremap q; q:
 " combination
 inoremap <silent> jk <Esc>
 
-" use sane regex expression (see `:h magic` for more info)
-nnoremap / /\v
-
 " paste non-linewise text above or below current cursor,
 " see https://stackoverflow.com/a/1346777/6064933
 nnoremap <leader>p m`o<ESC>p``
 nnoremap <leader>P m`O<ESC>p``
 
 " shortcut for faster save and quit
-nmap <silent> <leader>w :update<CR>
+nnoremap <silent> <leader>w :update<CR>
 " saves the file if modified and quit
 nnoremap <silent> <leader>q :x<CR>
 " quit all opened buffers
@@ -372,6 +359,10 @@ nnoremap ]Q :clast<CR>zv
 " close location list or quickfix list if they are present,
 " see https://goo.gl/uXncnS
 nnoremap<silent> \x :windo lclose <bar> cclose<CR>
+
+" close a buffer and switching to another buffer, do not close the
+" window, see https://goo.gl/Wd8yZJ
+nnoremap <silent> \d :bprevious <bar> bdelete #<CR>
 
 " toggle search highlight, see https://goo.gl/3H85hh
 nnoremap <silent><expr> <Leader>hl (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
@@ -408,19 +399,28 @@ nnoremap <silent> <Space><Space> a<Space><ESC>h
 nnoremap Y y$
 
 " move cursor based on physical lines not the actual lines.
-noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
-noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+nnoremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap $ g$
 nnoremap ^ g^
 nnoremap 0 g0
 
+" do not include white space character when using $ in visual mode,
+" see https://goo.gl/PkuZox
+vnoremap $ g_
+
+" jump to matching pairs easily in normal mode
+nmap <Tab> %
+
+" go to start or end of line easier
+nnoremap H ^
+nnoremap L $
+
 " resize windows using <Alt> and h,j,k,l, inspiration from
 " https://goo.gl/vVQebo (bottom page).
 " If you enable mouse support, shorcut below may not be necessary
-" resize window in vertical directory
 nnoremap <silent> <M-h> <C-w><
 nnoremap <silent> <M-l> <C-w>>
-" resize window in horizontal directory
 nnoremap <silent> <M-j> <C-W>-
 nnoremap <silent> <M-k> <C-W>+
 
@@ -443,43 +443,25 @@ inoremap <expr> <cr> ((pumvisible())?("\<C-Y>"):("\<cr>"))
 " use <esc> to close auto-completion menu
 inoremap <expr> <esc> ((pumvisible())?("\<C-e>"):("\<esc>"))
 
-" reload init.vim quickly and give a message
-nnoremap <silent> <leader>sv :update $MYVIMRC<cr>:source $MYVIMRC<cr>
-    \ :echom "Nvim config successfully reloaded!"<cr>
-
-" edit init.vim in a vertical split
+" edit and reload init.vim quickly
 nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
+nnoremap <silent> <leader>sv :silent update $MYVIMRC <bar> source $MYVIMRC <bar>
+    \ echomsg "Nvim config successfully reloaded!"<cr>
 
-" delete a buffer and switching to another buffer, do not close the
-" window, see https://goo.gl/Wd8yZJ
-nnoremap <silent> \d :bprevious<CR>:bdelete #<CR>
-
-" nnoremap <silent> <leader><Space> :call <SID>StripTrailingWhitespaces()<CR>
-" autocmd FileType * autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
-
-" do not include white space character when using $ in visual mode,
-" see https://goo.gl/PkuZox
-vnoremap $ g_
-
-" jump to matching pairs easily in normal mode
-nmap <Tab> %
-
-" go to start or end of line easier
-nnoremap H ^
-nnoremap L $
+nnoremap <silent> <leader><Space> :call <SID>StripTrailingWhitespaces()<CR>
 
 " reselect the text that has just been pasted
 nnoremap <leader>v `[V`]
 
-" find and replace (like Sublime Text 3)
-nnoremap <C-H> :%s/\v
+" use sane regex expression (see `:h magic` for more info)
+nnoremap / /\v
 
-" change current working locally to where the opened file resides
+" find and replace (like Sublime Text 3)
+nnoremap <C-H> :%s/
+
+" change current working directory locally and print cwd after that
 " see https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
 nnoremap <silent> <leader>cd :lcd %:p:h<CR>:pwd<CR>
-
-" reduce indent level in insert mode with shift+tab
-inoremap <S-Tab> <ESC><<i
 
 " use Esc to quit builtin terminal
 tnoremap <ESC>   <C-\><C-n>
@@ -488,6 +470,9 @@ tnoremap <ESC>   <C-\><C-n>
 " when we are doing spell checking)
 nnoremap <silent> <F11> :set spell! <bar> :AutoSaveToggle<cr>
 inoremap <silent> <F11> <C-O>:set spell! <bar> :AutoSaveToggle<cr>
+
+" decrease indent level in insert mode with shift+tab
+inoremap <S-Tab> <ESC><<i
 "}
 
 "{ Auto commands
@@ -550,7 +535,6 @@ augroup END
 
 augroup vim_script_setting
     autocmd!
-
     " set the folding related options for vim script. Setting folding option in
     " modeline is annoying in that the modeline get executed each time the window
     " focus is lost (see http://tinyurl.com/yyqyyhnc)
@@ -580,53 +564,37 @@ augroup END
 
 "{ Plugin install part
 "{{ Vim-plug Install and plugin initialization
-" set up directory to install all the plugins depending on the platform
-if has('win32')
-    let s:PLUGIN_HOME=expand('~/AppData/Local/nvim/plugged')
-else
-    let s:PLUGIN_HOME=expand('~/.local/share/nvim/plugged')
-endif
-
 " auto-install vim-plug on different systems.
 " For Windows, only Windows 10 with curl command installed are tested (after
 " Windows 10 build 17063, source: http://tinyurl.com/y23972tt)
-" The following script to install vim-plug are adapted from
-" vim-plug tips: https://bit.ly/2IhJDNb
+" The following script to install vim-plug are adapted from vim-plug tips: https://bit.ly/2IhJDNb
 if !executable('curl')
-    echoerr 'You have to install curl to install vim-plug or install vim-plug
+    echomsg 'You have to install curl to install vim-plug or install vim-plug
             \ yourself following the guide on vim-plug git repository'
-    execute 'q!'
 else
-    if has('unix')
-        if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-            echo 'Installing Vim-plug on your system'
+    let g:VIM_PLUG_PATH = stdpath('config') . '/autoload/plug.vim'
+    if empty(glob(g:VIM_PLUG_PATH))
+        echomsg 'Installing Vim-plug on your system'
+        silent execute '!curl -fLo ' . g:VIM_PLUG_PATH . ' --create-dirs
+            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-            silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-            augroup plug_init
-                autocmd!
-                autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-            augroup END
-        endif
-    elseif has('win32')
-        if empty(glob('~\AppData\Local\nvim\autoload\plug.vim'))
-            echo 'Installing Vim-plug on your system'
-
-            silent !curl -fLo C:\Users\Administrator\AppData\Local\nvim\autoload\plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-            augroup plug_init
-                autocmd!
-                autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-            augroup END
-        endif
+        augroup plug_init
+            autocmd!
+            autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC
+        augroup END
     endif
 endif
-"}
+"}}
 
 "{{ autocompletion related plugins
-call plug#begin(s:PLUGIN_HOME)
+" set up directory to install all the plugins depending on the platform
+if has('win32')
+    let g:PLUGIN_HOME=expand('~/AppData/Local/nvim/plugged')
+else
+    let g:PLUGIN_HOME=expand('~/.local/share/nvim/plugged')
+endif
+
+call plug#begin(g:PLUGIN_HOME)
 " settings for deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
@@ -651,17 +619,14 @@ Plug 'deathlyfrantic/deoplete-spell'
 " Python completion, goto definition etc.
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
-" Python syntax highlighting
-" Plug 'vim-python/python-syntax', { 'for': 'python' }
-
 " python syntax highlighting and more
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
 
-" python code folding
-Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
-
 " python indent (follows the PEP8 style)
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
+
+" python code folding
+Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
 "}}
 
 "{{ search related plugins
@@ -702,6 +667,9 @@ endif
 "}}
 
 "{{ color, theme, look
+" fancy and cute start screen
+Plug 'mhinz/vim-startify'
+
 " A list of colorscheme plugin you may want to try. Find what suits you.
 Plug 'morhetz/gruvbox'
 Plug 'sjl/badwolf'
@@ -721,9 +689,6 @@ Plug 'vim-airline/vim-airline-themes'
 " currently, blank lines inside the indent block do not show indent guides,
 " see https://github.com/Yggdroot/indentLine/issues/25
 Plug 'Yggdroot/indentLine'
-
-" fancy vim start screen
-Plug 'mhinz/vim-startify'
 "}}
 
 "{{ plugin to deal with URL
@@ -744,22 +709,22 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 
 " only install these plugins if ctags are installed on the system
 if executable('ctags')
-    " plugin to manage tags (must install ctags on system)
+    " plugin to manage your tags
     Plug 'ludovicchabant/vim-gutentags'
 
-    " show file tags in vim windows (must install ctags on system)
+    " show file tags in vim window
     Plug 'majutsushi/tagbar', { 'on': ['TagbarToggle', 'TagbarOpen'] }
 endif
 "}}
 
 "{{ file editting plugin
-" automatic character pair insertion and deletion
+" automatic insertion and deletion of a pair of characters
 Plug 'jiangmiao/auto-pairs'
 
 " comment plugin
 Plug 'scrooloose/nerdcommenter'
 
-" another multiple cursor plugin
+" multiple cursor plugin like Sublime Text?
 " Plug 'mg979/vim-visual-multi'
 
 " title character case
@@ -769,44 +734,39 @@ Plug 'christoomey/vim-titlecase'
 Plug '907th/vim-auto-save'
 
 " graphcial undo history, see https://github.com/mbbill/undotree
-Plug 'mbbill/undotree'
+" Plug 'mbbill/undotree'
 
 " another plugin to show undo history is: http://tinyurl.com/jlsgjy5
 " Plug 'simnalamburt/vim-mundo'
 
 if has('win32') || has('macunix')
     " manage your yank history
-    " TODO: it seems that this plugin does not work if you connect to remote
-    " Linux server and use it with neovim on the server.
     Plug 'svermeulen/vim-yoink'
-
-    " another yank history yank
-    " Plug 'bfredl/nvim-miniyank'
 endif
-
-" strip trailing whitespace
-Plug 'ntpeters/vim-better-whitespace'
 
 " show marks in sign column for quicker navigation
 Plug 'kshenoy/vim-signature'
 
 " another good plugin to show signature
-" https://github.com/jeetsukumaran/vim-markology
 " Plug 'jeetsukumaran/vim-markology'
 
-" handy unix command inside Vim
+" handy unix command inside Vim (Rename, Move etc.)
 Plug 'tpope/vim-eunuch'
+
+" repeat vim motions
+Plug 'tpope/vim-repeat'
 
 " show the content of register in preview window
 " Plug 'junegunn/vim-peekaboo'
 if has('macunix')
+    " IME toggle for Mac
     Plug 'rlue/vim-barbaric'
 endif
 "}}
 
 "{{ linting, formating
 " auto format tools
-" Plug 'sbdchd/neoformat'
+Plug 'sbdchd/neoformat'
 " Plug 'Chiel92/vim-autoformat'
 
 " syntax check and make
@@ -818,8 +778,9 @@ Plug 'neomake/neomake'
 
 "{{ git related plugins
 " show git change (change, delete, add) signs in vim sign column
-" Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
+" another similar plugin
+" Plug 'airblade/vim-gitgutter'
 
 " git command inside vim
 Plug 'tpope/vim-fugitive'
@@ -832,7 +793,7 @@ Plug 'junegunn/gv.vim', { 'on': 'GV' }
 " distraction free writing
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
-" only light on your cursor line
+" only light on your cursor line to help you focus
 Plug 'junegunn/limelight.vim', {'for': 'markdown'}
 
 " markdown syntax highlighting
@@ -868,7 +829,7 @@ Plug 'tpope/vim-surround'
 " add indent object for vim (useful for languages like Python)
 Plug 'michaeljsmith/vim-indent-object'
 
-" create custom text object
+" create custom text object (needed by vim-text-object-entire)
 Plug 'kana/vim-textobj-user'
 
 " text object for entire buffer, add `ae` and `ie`
@@ -876,8 +837,7 @@ Plug 'kana/vim-textobj-entire'
 "}}
 
 "{{ LaTeX editting and previewing plugin
-" Only use these plugin on Windows and Mac and when a LaTeX distribution has
-" been deteced
+" Only use these plugin on Windows and Mac and when LaTeX is installed
 if ( has('macunix') || has('win32') ) && executable('latex')
     " vimtex use autoload feature of Vim, so it is not necessary to use `for`
     " keyword of vim-plug to try to lazy-load it,
@@ -885,7 +845,7 @@ if ( has('macunix') || has('win32') ) && executable('latex')
     Plug 'lervag/vimtex'
 
     " Plug 'matze/vim-tex-fold', {'for': 'tex'}
-    Plug 'Konfekt/FastFold'
+    " Plug 'Konfekt/FastFold'
 endif
 "}}
 
@@ -893,7 +853,6 @@ endif
 " Since tmux is only available on Linux and Mac, we only enable these plugins
 " for Linux and Mac
 if has('unix') && executable('tmux')
-
     " let vim detect tmux focus event correctly, see
     " http://tinyurl.com/y4xd2w3r and http://tinyurl.com/y4878wwm
     Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -910,9 +869,6 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 " highlight yanked region
 Plug 'machakann/vim-highlightedyank'
 
-" repeat vim motions
-Plug 'tpope/vim-repeat'
-
 " quickly run a code script
 Plug 'thinca/vim-quickrun'
 
@@ -923,6 +879,7 @@ Plug 'andymass/vim-matchup'
 Plug 'yuttie/comfortable-motion.vim'
 
 Plug 'tpope/vim-scriptease'
+Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
 call plug#end()
 "}}
 "}
@@ -942,7 +899,6 @@ call Cabbrev('pc', 'PlugClean')
 
 "{{ auto-completion related
 """""""""""""""""""""""""""" deoplete settings""""""""""""""""""""""""""
-
 " wheter to enable deoplete automatically after start nvim
 let g:deoplete#enable_at_startup = 0
 
@@ -960,13 +916,10 @@ call deoplete#custom#source('_', 'max_menu_width', 80)
 call deoplete#custom#source('_', 'min_pattern_length', 1)
 
 " whether to disable completion for certain syntax
-
 " call deoplete#custom#source('_', {
 "     \ 'filetype': ['vim'],
 "     \ 'disabled_syntaxes': ['String']
 "     \ })
-
-" disable auto-completion for python in certain syntax groups
 call deoplete#custom#source('_', {
     \ 'filetype': ['python'],
     \ 'disabled_syntaxes': ['Comment']
@@ -981,10 +934,10 @@ call deoplete#custom#option('ignore_sources', {
 call deoplete#custom#option('max_list', 30)
 
 "The number of processes used for the deoplete parallel feature.
-call deoplete#custom#option('num_processes', 32)
+call deoplete#custom#option('num_processes', 16)
 
 " Delay the completion after input in milliseconds.
-call deoplete#custom#option('auto_complete_delay', 10)
+call deoplete#custom#option('auto_complete_delay', 100)
 
 " enable or disable deoplete auto-completion
 call deoplete#custom#option('auto_complete', v:true)
@@ -994,7 +947,7 @@ call deoplete#custom#option('auto_complete', v:true)
 " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " deoplete tab-complete, see https://goo.gl/LvwZZY
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 """""""""""""""""""""""""UltiSnips settings"""""""""""""""""""
 " Trigger configuration. Do not use <tab> if you use
@@ -1022,38 +975,28 @@ let g:SuperTabDefaultCompletionType = '<c-n>'
 " see https://is.gd/AoSv4m
 let g:SuperTabMappingForward = '<tab>'
 let g:SuperTabMappingBackward = '<s-tab>'
+"}}
 
+"{{ python-related
 """"""""""""""""""deoplete-jedi settings"""""""""""""""""""""""""""
 " whether to show doc string
 let g:deoplete#sources#jedi#show_docstring = 0
 
-" do not use typeinfo (for faster completion)
-let g:deoplete#sources#jedi#enable_typeinfo = 0
-
 " for large package, set autocomplete wait time longer
 let g:deoplete#sources#jedi#server_timeout = 50
-"}}
 
-"{{ python-related
+" ignore jedi errors during completion
+let g:deoplete#sources#jedi#ignore_errors = 1
+
 """"""""""""""""""""""""jedi-vim settings"""""""""""""""""""
 " disable autocompletion, because I use deoplete for auto-completion
 let g:jedi#completions_enabled = 0
 
-" open the go-to function in split, not another buffer
-" let g:jedi#use_splits_not_buffers = 'right'
-
 " show function call signature
-let g:jedi#show_call_signatures = '2'
-
-"""""""""""""""""""""""""python-syntax highlight settings"""""""""""""""""""
-" highlight all
-let g:python_highlight_all = 1
-
-" don't highlight space error, really annoying!!!!!
-let g:python_highlight_space_errors = 0
+let g:jedi#show_call_signatures = '1'
 
 """""""""""""""""""""""""" semshi settings """""""""""""""""""""""""""""""
-" do not highlight variable under cursor
+" do not highlight variable under cursor, it is distracting
 let g:semshi#mark_selected_nodes=0
 
 " do not show error sign since neomake is specicialized for that
@@ -1065,10 +1008,10 @@ let g:semshi#error_sign=v:false
 let g:sneak#label = 1
 nmap f <Plug>Sneak_s
 xmap f <Plug>Sneak_s
-omap f <Plug>Sneak_s
+onoremap <silent> f :call sneak#wrap(v:operator, 2, 0, 1, 1)<CR>
 nmap F <Plug>Sneak_S
 xmap F <Plug>Sneak_S
-omap F <Plug>Sneak_S
+onoremap <silent> F :call sneak#wrap(v:operator, 2, 1, 1, 1)<CR>
 
 " immediately after entering sneak mode, you can press f and F to go to next
 " or previous match
@@ -1090,9 +1033,9 @@ let g:airline#extensions#anzu#enabled = 0
 let g:anzu_search_limit = 500000
 
 """""""""""""""""""""""""""""vim-asterisk settings"""""""""""""""""""""
-nmap *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)<Plug>(anzu-star-with-echo)
+nmap *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
+nmap #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
 nmap g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
-nmap #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)<Plug>(anzu-sharp-with-echo)
 nmap g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 
 """""""""""""""""""""""""fzf settings""""""""""""""""""""""""""
@@ -1182,10 +1125,6 @@ if has('win32') || has('macunix')
     vmap ob <Plug>(openbrowser-smart-search)
 endif
 
-"""""""""""""""""""""""""vim-highlighturl settings"""""""""""""""""""""""""
-" whether to underline the URL
-let g:highlighturl_underline=1
-
 "{{ navigation and tags
 """"""""""""""""""""""" nerdtree settings """"""""""""""""""""""""""
 " toggle nerdtree window and keep cursor in file window,
@@ -1235,7 +1174,7 @@ autocmd!
     " add `<>` pair to filetype vim
     au FileType vim let b:AutoPairs = AutoPairsDefine({'<' : '>'})
 
-    " do not use " for vim script since " is also used for comment
+    " do not use `"` for vim script since `"` is also used for comment
     au FileType vim let b:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", "`":"`", '<':'>'}
 augroup END
 
@@ -1267,16 +1206,17 @@ nmap <leader>gT <Plug>TitlecaseLine
 let g:auto_save = 1
 
 " a list of events to trigger autosave
-let g:auto_save_events = ['InsertLeave']
+let g:auto_save_events = ['InsertLeave', 'TextChanged']
 
 " show autosave status on command line
 let g:auto_save_silent = 0
 
 """"""""""""""""""""""""""""vim-yoink settings"""""""""""""""""""""""""
 if has('win32') || has('macunix')
-    " it seems that ctrl-n and ctrl-p does not work on neovim
-    nmap <c-n> <plug>(YoinkPostPasteSwapBack)
-    nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+    " ctrl-n and ctrl-p will not work if you add the TextChanged event to
+    " vim-auto-save events
+    " nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+    " nmap <c-p> <plug>(YoinkPostPasteSwapForward)
 
     nmap p <plug>(YoinkPaste_p)
     nmap P <plug>(YoinkPaste_P)
@@ -1295,20 +1235,6 @@ if has('win32') || has('macunix')
     " record yanks in system clipboard
     let g:yoinkSyncSystemClipboardOnFocus = 1
 endif
-
-"""""""""""""""""""""vim-better-whitespace settings""""""""""""""""""""""""""
-" whether to highlight trailing whitespace with the default red color (I find
-" it distracting so I turn it off)
-let g:better_whitespace_enabled=0
-
-" set a mapping for StripWhitespace command
-nnoremap <silent> <leader><Space> :StripWhitespace<CR>
-
-" strip white line at the end of the file
-let g:strip_whitelines_at_eof=1
-
-" disable whitespace operator
-let g:better_whitespace_operator=''
 
 """"""""""""""""""""""""""""""vim-signature settings""""""""""""""""""""""""""
 " change mark highlight to be more visible
@@ -1335,24 +1261,7 @@ let g:neomake_python_enabled_makers = ['flake8', 'pylint']
 
 " whether to open quickfix or location list automatically
 let g:neomake_open_list = 0
-
-"let g:neomake_python_pylint_maker = {
-"  \ 'args': [
-"  \ '-d', 'C0103, C0111',
-"  \ '-f', 'text',
-"  \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg} [{msg_id}]"',
-"  \ '-r', 'n'
-"  \ ],
-"  \ 'errorformat':
-"  \ '%A%f:%l:%c:%t: %m,' .
-"  \ '%A%f:%l: %m,' .
-"  \ '%A%f:(%l): %m,' .
-"  \ '%-Z%p^%.%#,' .
-"  \ '%-G%.%#',
-"  \ }
 "}}
-
-
 
 "{{ git-related
 """""""""""""""""""""""""vim-signify settings""""""""""""""""""""""""""""""
@@ -1361,8 +1270,8 @@ let g:signify_vcs_list = [ 'git' ]
 
 " change the sign for certain operations
 let g:signify_sign_change = '~'
-
 "}}
+
 "{{ Markdown writing
 """""""""""""""""""""""""goyo.vim settings""""""""""""""""""""""""""""""
 " make goyo and limelight work together automatically
@@ -1374,7 +1283,7 @@ augroup END
 
 """""""""""""""""""""""""vim-pandoc-syntax settings"""""""""""""""""""""""""
 " do not conceal urls (seems does not work)
-let g:pandoc#syntax#conceal#urls = 0
+let g:pandoc#syntax#conceal#urls = 1
 
 " use pandoc-syntax for markdown files, it will disable conceal feature for
 " links, use it at your own risk
@@ -1667,7 +1576,6 @@ if HasColorscheme('gruvbox')
     let g:gruvbox_italic=1
     let g:gruvbox_contrast_dark='hard'
     let g:gruvbox_italicize_strings=1
-
     colorscheme gruvbox
 else
     " fall back to a pre-installed theme
@@ -1699,7 +1607,7 @@ endif
 " let g:material_theme_style = 'dark'
 " colorscheme material
 
-"""""""""""""""""""""""""""material.vim settings""""""""""""""""""""""""""
+"""""""""""""""""""""""""""badwolf settings""""""""""""""""""""""""""
 " let g:badwolf_darkgutter = 0
 " " Make the tab line lighter than the background.
 " let g:badwolf_tabline = 2
