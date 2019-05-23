@@ -20,7 +20,7 @@
 " not recommend downloading this file and replace your own init.vim. Good
 " configurations are built over time and take your time to polish.
 " Author: jdhao (jdhao@hotmail.com). Blog: https://jdhao.github.io
-" Update: 2019-05-11 19:46:55+0800
+" Update: 2019-05-16 20:09:18+0800
 "}}
 
 "{{ License: MIT License
@@ -310,15 +310,14 @@ set virtualedit=block  " virtual edit is useful for visual block edit
 set formatoptions+=mM
 
 " dictionary files for different systems
-let $MY_DICT = stdpath('config') . '/dict/words'
-set dictionary+=$MY_DICT
+let g:MY_DICT = stdpath('config') . '/dict/words'
+let &dictionary = &dictionary . ',' . g:MY_DICT
 set spelllang=en,cjk  " spell languages
 
-" tilde ~ is an operator (thus must be followed by motion like `c` or `d`)
+" tilde ~ is an operator (thus must be followed by motions like `e` or `w`)
 set tildeop
 
-" set pyx version to use python3 by default
-set pyxversion=3
+set pyxversion=3  " set pyx version to use python3 by default
 "}
 
 "{ Custom key mappings
@@ -560,6 +559,14 @@ augroup vim_script_setting
     " see `:h K` and https://bre.is/wC3Ih-26u
     autocmd FileType vim setlocal keywordprg=:help
 augroup END
+
+" display a message when the current file is not utf-8 encoded
+" note that we need to use `unsilent` command here because of this issue:
+" https://github.com/vim/vim/issues/4379
+augroup non_utf8_file_warn
+    autocmd!
+    autocmd BufRead * if &fileencoding != 'utf-8' |unsilent echomsg 'file not in utf-8 format!' | endif
+augroup END
 "}
 
 "{ Plugin install part
@@ -651,7 +658,7 @@ Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 
 " file search, tag search and more
 if has('win32')
-    Plug 'Yggdroot/LeaderF', { 'do': '.\install.bat' }
+    Plug 'Yggdroot/LeaderF'
 else
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 endif
@@ -879,7 +886,6 @@ Plug 'andymass/vim-matchup'
 Plug 'yuttie/comfortable-motion.vim'
 
 Plug 'tpope/vim-scriptease'
-Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
 call plug#end()
 "}}
 "}
@@ -992,8 +998,8 @@ let g:deoplete#sources#jedi#ignore_errors = 1
 " disable autocompletion, because I use deoplete for auto-completion
 let g:jedi#completions_enabled = 0
 
-" show function call signature
-let g:jedi#show_call_signatures = '1'
+" whether to show function call signature
+let g:jedi#show_call_signatures = '0'
 
 """""""""""""""""""""""""" semshi settings """""""""""""""""""""""""""""""
 " do not highlight variable under cursor, it is distracting
@@ -1001,6 +1007,10 @@ let g:semshi#mark_selected_nodes=0
 
 " do not show error sign since neomake is specicialized for that
 let g:semshi#error_sign=v:false
+
+"""""""""""""""""""""""""" simpylFold settings """""""""""""""""""""""""""""""
+" do not fold docstring
+let g:SimpylFold_fold_docstring = 0
 "}}
 
 "{{ search related
@@ -1282,8 +1292,8 @@ augroup goyo_work_with_limelight
 augroup END
 
 """""""""""""""""""""""""vim-pandoc-syntax settings"""""""""""""""""""""""""
-" do not conceal urls (seems does not work)
-let g:pandoc#syntax#conceal#urls = 1
+" whether to conceal urls (seems does not work)
+let g:pandoc#syntax#conceal#urls = 0
 
 " use pandoc-syntax for markdown files, it will disable conceal feature for
 " links, use it at your own risk
