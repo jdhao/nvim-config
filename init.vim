@@ -20,7 +20,7 @@
 " not recommend downloading this file and replace your own init.vim. Good
 " configurations are built over time and take your time to polish.
 " Author: jdhao (jdhao@hotmail.com). Blog: https://jdhao.github.io
-" Update: 2019-05-16 20:09:18+0800
+" Update: 2019-06-10 16:03:18+0800
 "}}
 
 "{{ License: MIT License
@@ -90,29 +90,32 @@ let g:loaded_matchparen = 1
 "}
 
 "{ Custom functions
-" remove trailing white space, see https://goo.gl/sUjgFi
 function! s:StripTrailingWhitespaces() abort
-   let l:save = winsaveview()
+    " remove trailing white space, see https://goo.gl/sUjgFi
+
+    let l:save = winsaveview()
     " vint: next-line -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
-   keeppatterns %s/\s\+$//e
-   call winrestview(l:save)
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
 endfunction
 
-" create command alias safely, see https://bit.ly/2ImFOpL
-" the following two functions are taken from answer below on SO
-" https://stackoverflow.com/a/10708687/6064933
 function! Cabbrev(key, value) abort
-  execute printf('cabbrev <expr> %s (getcmdtype() == ":" && getcmdpos() <= %d) ? %s : %s',
+    " create command alias safely, see https://bit.ly/2ImFOpL
+    " the following two functions are taken from answer below on SO
+    " https://stackoverflow.com/a/10708687/6064933
+
+    execute printf('cabbrev <expr> %s (getcmdtype() == ":" && getcmdpos() <= %d) ? %s : %s',
     \ a:key, 1+len(a:key), Single_quote(a:value), Single_quote(a:key))
 endfunction
 
 function! Single_quote(str) abort
-  return "'" . substitute(copy(a:str), "'", "''", 'g') . "'"
+    return "'" . substitute(copy(a:str), "'", "''", 'g') . "'"
 endfunction
 
-" check the syntax group in the current cursor position,
-" see http://tinyurl.com/yyzgswxz and http://tinyurl.com/y3lxozey
 function! s:SynGroup() abort
+    " check the syntax group in the current cursor position,
+    " see http://tinyurl.com/yyzgswxz and http://tinyurl.com/y3lxozey
+
     if !exists('*synstack')
         return
     endif
@@ -120,29 +123,33 @@ function! s:SynGroup() abort
 endfunction
 nnoremap <silent> <leader>st :call <SID>SynGroup()<CR>
 
-" the following two functions are from
-" https://stackoverflow.com/a/5703164/6064933 (with adaptation)
-" check if a colorscheme exists in runtimepath
 function! HasColorscheme(name) abort
+    " the following two functions are from
+    " https://stackoverflow.com/a/5703164/6064933 (with adaptation)
+    " check if a colorscheme exists in runtimepath
+
     let l:pat = 'colors/'.a:name.'.vim'
     return !empty(globpath(&runtimepath, l:pat))
 endfunction
 
-" check if an Airline theme exists in runtimepath
 function! HasAirlinetheme(name) abort
+    " check if an Airline theme exists in runtimepath
+
     let l:pat = 'autoload/airline/themes/'.a:name.'.vim'
     return !empty(globpath(&runtimepath, l:pat))
 endfunction
 
-" generate random integer in the range [Low, High] in pure vimscrpt,
-" adapted from http://tinyurl.com/y2o6rj3o
 function! RandInt(Low, High) abort
+    " generate random integer in the range [Low, High] in pure vimscrpt,
+    " adapted from http://tinyurl.com/y2o6rj3o
+
     let l:milisec = str2nr(matchstr(reltimestr(reltime()), '\v\.\zs\d+'))
     return l:milisec % (a:High - a:Low + 1) + a:Low
 endfunction
 
-" custom fold expr, adapted from https://vi.stackexchange.com/a/9094/15292
 function! VimFolds(lnum)
+    " custom fold expr, adapted from https://vi.stackexchange.com/a/9094/15292
+
     let l:cur_line = getline(a:lnum)
     let l:next_line = getline(a:lnum+1)
 
@@ -157,9 +164,10 @@ function! VimFolds(lnum)
     endif
 endfunction
 
-" custom fold text, adapted from https://vi.stackexchange.com/a/3818/15292
-" and https://vi.stackexchange.com/a/6608/15292
 function! MyFoldText()
+    " custom fold text, adapted from https://vi.stackexchange.com/a/3818/15292
+    " and https://vi.stackexchange.com/a/6608/15292
+
     let line = getline(v:foldstart)
 
     let nucolwidth = &foldcolumn + &number * &numberwidth
@@ -812,7 +820,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 " If we are on Win or Mac, preview the markdown in system default browser.
 if has('win32') || has('macunix')
     " markdown previewing
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 'markdown' }
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 endif
 
 " faster footnote generation
