@@ -3,24 +3,26 @@
 # Introduction
 
 This is my Neovim configuration for all the platforms I use. `init.vim` is for
-terminal Neovim and `ginit.vim` is for neovim-qt on Windows.
+terminal Neovim and `ginit.vim` is for GUI client for Neovim (currently I am
+using [neovim-qt](https://github.com/equalsraf/neovim-qt)) on Windows.
 
-# Install
+# How to Install Neovim
 
 ## Linux
 
-Just follow the official guide and download the `appimage` from the [release
+Just follow the official guide and download the appimage from the [release
 page](https://github.com/neovim/neovim/releases/nightly).
 
-For some Linux system, you may not be able to run the appimage. You can
+For some Linux systems, you may not be able to run the appimage. You can
 directly download the tar ball from
 [here](https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz)
 and extract it.
 
 ## Windows
 
-First, install [chocolatey](https://chocolatey.org/install). Then you can
-install neovim easily with
+The easiest way to install Neovim on Windows is via
+[chocolatey](https://chocolatey.org/install). First, install chocolatey. Then
+you can install neovim easily with
 
 ```
 # install latest version of neovim
@@ -29,12 +31,13 @@ install neovim easily with
 choco install neovim
 ```
 
-Or you can download the latest release from GitHub and extract it.
+To keep up-to-date with the latest features of Neovim, you may download the
+latest release from GitHub and extract it.
 
 ## Mac
 
-It is recommended to install neovim via [Homebrew](https://brew.sh/). Simply
-run the following command:
+It is recommended to install neovim via [Homebrew](https://brew.sh/) on maxOS.
+Simply run the following command:
 
 ```
 # if you want to install latest version of neovim
@@ -43,42 +46,42 @@ run the following command:
 brew install neovim
 ```
 
-After Neovim installation, you may need to add the directory where the neovim
+After Neovim is installed, you may need to add the directory where the neovim
 executable (`nvim` on Linux and Mac, `nvim.exe` on Windows) resides to your
-`PATH`.
+system `PATH`.
 
-Make sure that you can call `nvim` from the command line.
+Make sure that you can call `nvim` from the command line after all these setup.
 
 # Other tools to install
 
 ## Python
 
-Neovim supports both Python2 and Python 3. But python 3 is preferable. Neovim
+Neovim supports both Python2 and Python3. But Python3 is preferable. Neovim
 will automatically detect the Python version you use.
 
 ## pynvim
 
 Neovim relies on [pynvim](https://github.com/neovim/pynvim) to communiate with
-plugins which uses its Python binding.
+plugins which utilizes its Python binding.
 
 ## Git
 
-Git is used by plugin managers to download plugins from Github or other Git
-repositories.
+Git is used by plugin managers vim-plug to download plugins from Github or
+other Git repositories.
 
 Since Git is usually pre-installed on Linux and Mac, you do not need to worry
-if you are using these two platforms. For Windows, install [Git for
+if you are on these two platforms. For Windows, install [Git for
 Windows](https://git-scm.com/download/win) and make sure you can call `git`
 from command line.
 
 ## ctags
 
-In order to tags related plugins such as
+In order to use tags related plugins such as
 [tagbar](/github.com/majutsushi/tagbar) and
-[gutentags](https://github.com/ludovicchabant/vim-gutentags), you need to a
-ctags distribution. Universal ctags is prefered.
+[gutentags](https://github.com/ludovicchabant/vim-gutentags), you need to
+install a ctags distribution. Universal ctags is preferred.
 
-To insall ctags on Mac, [use
+To install ctags on Mac, [use
 Homebrew](https://github.com/universal-ctags/homebrew-universal-ctags). To
 install it Windows, [use
 chocolatey](https://chocolatey.org/packages/universal-ctags):
@@ -93,17 +96,18 @@ Set its PATH properly and make sure you can call `ctags` from command line.
 
 ## Ripgrep
 
-Ripgrep is fast grep tool available for both Linux, Windows and Mac. It is used
-several greping plugins for Vim.
+Ripgrep is fast greping tool available for both Linux, Windows and Mac. It is
+used by several searching plugins for Vim.
 
-For Windows and Mac, you can install via chocolatey and homebrew. For Linux,
+For Windows and Mac, you can install it via chocolatey and homebrew. For Linux,
 you can download from the [release
 page](https://github.com/BurntSushi/ripgrep/releases) and install it.
 
 
-## linters
+## Linters
 
-Based on your programming languages, you may need to install various linters.
+A linter is a tool to check your code for possible issues or errors. Based on
+your programming languages, you may need to install various linters.
 
 + Python: [pylint](https://github.com/PyCQA/pylint) and
 [flake8](https://github.com/PyCQA/flake8).
@@ -111,23 +115,16 @@ Based on your programming languages, you may need to install various linters.
 the pre-release versions because of [this issue](https://github.com/Kuniwak/vint/issues/290)).
 
 For other linters, please consult the linting plugin documentation. For Neomake
-(which is the lint plugin I use), a list of makers (i.e., linters) for
-different languages is listed
+(which is the linting plugin I currently use), a list of makers (i.e., linters)
+for different languages is listed
 [here](https://github.com/neomake/neomake/wiki/Makers).
 
-# settings
+# Settings
 
 ## Where to put the configuration file
 
 On Windows, put it under `$HOME/AppData/Local/nvim`[^1]. On Linux and Mac, put
 it under `~/.config/nvim`.
-
-## Make deoplete work
-
-To make deoplete work, you have to set the correct value for
-`g:python3_host_prog`. You should set it to the full path to your Python3
-executable. Find this setting in this `init.vim` and change it in accordance
-with your system.
 
 ## Further reading
 
