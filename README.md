@@ -6,11 +6,27 @@ This is my Neovim configuration for all the platforms I use. `init.vim` is for
 terminal Neovim and `ginit.vim` is for GUI client for Neovim (currently I am
 using [neovim-qt](https://github.com/equalsraf/neovim-qt)) on Windows.
 
+My configurations are heavily documented to make it as clear as possible. While
+you can download the whole configuraiton and replace yours, it is not
+recommened to do so. Good configurations are personal. Everyone should have
+his/her own unique configurations. You are encouraged to copy from this
+configuration the part you feel useful and add it to your own configuration.
+
+## Features ##
+
++ Auto-completion for Python via [Deoplete](https://github.com/Shougo/deoplete.nvim).
++ Source code linting via [Neomake](https://github.com/neomake/neomake).
++ Beautiful status line via [vim-airline](https://github.com/vim-airline/vim-airline).
++ Powerful sidebar via [Nerdtree](https://github.com/scrooloose/nerdtree).
++ Tags navigation via [tagbar](https://github.com/majutsushi/tagbar).
++ Fast buffer jump via [vim-sneak](https://github.com/justinmk/vim-sneak).
++ Open a file in current project quickly via [fzf](https://github.com/junegunn/fzf.vim).
+
 # How to Install Neovim
 
 ## Linux
 
-Just follow the official guide and download the appimage from the [release
+Follow the official guide and download the appimage from the [release
 page](https://github.com/neovim/neovim/releases/nightly).
 
 For some Linux systems, you may not be able to run the appimage. You can
@@ -52,21 +68,34 @@ system `PATH`.
 
 Make sure that you can call `nvim` from the command line after all these setup.
 
-# Other tools to install
+# Pre-requisite
+
+There are a few requirements if you want to use Neovim for efficient editing.
 
 ## Python
 
-Neovim supports both Python2 and Python3. But Python3 is preferable. Neovim
-will automatically detect the Python version you use.
+To use auto-completion and other features, you need to install Python3. The
+easiest way to install Python3 is via
+[Anaconda](https://www.anaconda.com/distribution/#download-section).
 
 ## pynvim
 
 Neovim relies on [pynvim](https://github.com/neovim/pynvim) to communiate with
-plugins which utilizes its Python binding.
+plugins which utilizes its Python binding. Pynvim is required by plugin such as
+Deoplete.
+
+## Jedi
+
+For Python source auto-completion to work, you need to install
+[Jedi](https://github.com/davidhalter/jedi):
+
+```
+pip install jedi
+```
 
 ## Git
 
-Git is used by plugin managers vim-plug to download plugins from Github or
+Git is used by plugin manager vim-plug to download plugins from Github or
 other Git repositories.
 
 Since Git is usually pre-installed on Linux and Mac, you do not need to worry
@@ -103,7 +132,6 @@ For Windows and Mac, you can install it via chocolatey and homebrew. For Linux,
 you can download from the [release
 page](https://github.com/BurntSushi/ripgrep/releases) and install it.
 
-
 ## Linters
 
 A linter is a tool to check your code for possible issues or errors. Based on
@@ -119,6 +147,26 @@ For other linters, please consult the linting plugin documentation. For Neomake
 for different languages is listed
 [here](https://github.com/neomake/neomake/wiki/Makers).
 
+## Terminal emulators
+
+Which [terminal emulator](https://en.wikipedia.org/wiki/Terminal_emulator) 
+you are using can also affect the look of Neovim. Since Neovim
+support true colors, terminals which support true colors are recommended.
+For a list of terminals which support true colors, see
+[here](https://github.com/termstandard/colors).
+
+For Mac, you can use [iterm2](https://www.iterm2.com/). If you connect to Linux
+server on Windows, I recommend [wsltty](https://github.com/mintty/wsltty) and
+[cygwin](https://www.cygwin.com/), both of them use [mintty](https://github.com/mintty/mintty)
+as the terminal emulator.
+
+## Font
+
+Since Vim-airline uses several symbols not available in normal font, you need
+to install [fonts here](https://github.com/powerline/fonts) to make vim-airline
+look pretty. I am using [Hack](https://github.com/powerline/fonts/tree/master/Hack)
+and it looks great.
+
 # Settings
 
 ## Where to put the configuration file
@@ -126,7 +174,21 @@ for different languages is listed
 On Windows, put it under `$HOME/AppData/Local/nvim`[^1]. On Linux and Mac, put
 it under `~/.config/nvim`.
 
-## Further reading
+After that, when you first open nvim, all the plugins in this configuration
+will be installed automatically for you. Since I use quite a lot of plugins
+(more than 60), it may take a while for the installation process, depending on
+your network connection.
+
+# Trouble shooting
+
+If you come across a issue, first you can use `:checkhealth` command provided
+by `nvim` to trouble-shoot yourself. Please read carefully the messages
+provided by health check. 
+
+If you still have an issue, you may
+[open a new issue](https://github.com/jdhao/nvim-config/issues).
+
+# Further readings
 
 + [Config nvim on Linux for Python development](https://jdhao.github.io/2018/12/24/centos_nvim_install_use_guide_en/)
 
