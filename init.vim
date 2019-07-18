@@ -20,7 +20,7 @@
 " not recommend downloading this file and replace your own init.vim. Good
 " configurations are built over time and take your time to polish.
 " Author: jdhao (jdhao@hotmail.com). Blog: https://jdhao.github.io
-" Update: 2019-06-10 16:03:18+0800
+" Update: 2019-07-13 20:56:51+0800
 "}}
 
 "{{ License: MIT License
@@ -53,9 +53,9 @@
 " faster.  see https://neovim.io/doc/user/provider.html. Change this variable
 " in accordance with your system.
 if executable('python')
+    " The output of `system()` function contains a newline character which
+    " should be removed.
     if has('win32') " for Windows
-        " the output of `system()` function contains a newline character which
-        " should be removed
         let g:python3_host_prog=substitute(system('where python'), '.exe\n\+$', '', 'g')
     elseif has('unix') " for Linux and Mac
         let g:python3_host_prog=substitute(system('which python'), '\n\+$', '', 'g')
@@ -147,6 +147,7 @@ function! RandInt(Low, High) abort
     return l:milisec % (a:High - a:Low + 1) + a:Low
 endfunction
 
+set foldcolumn=0
 function! VimFolds(lnum)
     " custom fold expr, adapted from https://vi.stackexchange.com/a/9094/15292
 
@@ -181,9 +182,7 @@ function! MyFoldText()
     let line = strpart(line, 0, windowwidth - 2 - len(foldedlinecount))
     " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - 80
     let fillcharcount = &textwidth - len(line) - len(foldedlinecount) - 8
-    let l_fillcount = fillcharcount/2
-    let r_fillcount = fillcharcount - l_fillcount
-    return line . '...'. repeat('-', l_fillcount) . ' (' . foldedlinecount . ' L) ' . repeat('-', r_fillcount)
+    return line . '...'. repeat('-', fillcharcount) . ' (' . foldedlinecount . ' L)'
 endfunction
 "}
 
@@ -201,7 +200,9 @@ set splitbelow splitright
 " Time in milliseconds to wait for a mapped sequence to complete
 " see https://goo.gl/vHvyu8 for more info
 set timeoutlen=800
-set updatetime=1000
+
+" for CursorHold events
+set updatetime=2000
 
 " clipboard settings, always use clipboard for all delete, yank, change, put
 " operation, see https://goo.gl/YAHBbJ
@@ -235,7 +236,7 @@ set linebreak
 set showbreak=↪
 
 " list all items and start selecting matches
-set wildmode=list:longest,full
+set wildmode=list:full
 
 set cursorline      " whether to show the line cursor is in
 set colorcolumn=80  " set a ruler at column 80, see https://goo.gl/vEkF5i
@@ -324,8 +325,6 @@ set spelllang=en,cjk  " spell languages
 
 " tilde ~ is an operator (thus must be followed by motions like `e` or `w`)
 set tildeop
-
-set pyxversion=3  " set pyx version to use python3 by default
 "}
 
 "{ Custom key mappings
@@ -408,9 +407,9 @@ nnoremap Y y$
 " move cursor based on physical lines not the actual lines.
 nnoremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 nnoremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
-nnoremap $ g$
-nnoremap ^ g^
-nnoremap 0 g0
+nnoremap <silent> $ g$
+nnoremap <silent> ^ g^
+nnoremap <silent> 0 g0
 
 " do not include white space character when using $ in visual mode,
 " see https://goo.gl/PkuZox
@@ -480,6 +479,12 @@ inoremap <silent> <F11> <C-O>:set spell! <bar> :AutoSaveToggle<cr>
 
 " decrease indent level in insert mode with shift+tab
 inoremap <S-Tab> <ESC><<i
+
+" change text without putting the text into register
+" see http://tinyurl.com/y2ap4h69
+nnoremap c "_c
+nnoremap C "_C
+nnoremap cc "_cc
 "}
 
 "{ Auto commands
@@ -573,16 +578,33 @@ augroup END
 " https://github.com/vim/vim/issues/4379
 augroup non_utf8_file_warn
     autocmd!
-    autocmd BufRead * if &fileencoding != 'utf-8' |unsilent echomsg 'file not in utf-8 format!' | endif
+    autocmd BufRead * if &fileencoding != 'utf-8'
+                \ | unsilent echomsg 'file not in utf-8 format!' | endif
+augroup END
+
+" automatically reload the file if it is changed outside of Nvim
+" see https://unix.stackexchange.com/a/383044/221410.
+" It seems that checktime command does not work in command line windows. we
+" need to check if we are in command line window before executing this
+" command. See also http://tinyurl.com/y6av4sy9
+augroup auto_read
+    autocmd!
+    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+                \ if mode() == 'n' && getcmdwintype() == '' | checktime | endif
+    autocmd FileChangedShellPost * echohl WarningMsg
+                \ | echo "File changed on disk. Buffer reloaded." | echohl None
 augroup END
 "}
 
+
 "{ Plugin install part
 "{{ Vim-plug Install and plugin initialization
+
 " auto-install vim-plug on different systems.
 " For Windows, only Windows 10 with curl command installed are tested (after
 " Windows 10 build 17063, source: http://tinyurl.com/y23972tt)
-" The following script to install vim-plug are adapted from vim-plug tips: https://bit.ly/2IhJDNb
+" The following script to install vim-plug are adapted from vim-plug
+" wiki tips: https://github.com/junegunn/vim-plug/wiki/tips#tips
 if !executable('curl')
     echomsg 'You have to install curl to install vim-plug or install vim-plug
             \ yourself following the guide on vim-plug git repository'
@@ -686,10 +708,11 @@ endif
 Plug 'mhinz/vim-startify'
 
 " A list of colorscheme plugin you may want to try. Find what suits you.
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-gruvbox8'
 Plug 'sjl/badwolf'
 Plug 'ajmwagar/vim-deus'
-" Plug 'lifepillar/vim-solarized8'
+Plug 'lifepillar/vim-solarized8'
 " Plug 'sickill/vim-monokai'
 " Plug 'whatyouhide/vim-gotham'
 " Plug 'arcticicestudio/nord-vim'
@@ -699,11 +722,6 @@ Plug 'ajmwagar/vim-deus'
 " colorful status line and theme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" show indent lines for better comprehension of the code structure
-" currently, blank lines inside the indent block do not show indent guides,
-" see https://github.com/Yggdroot/indentLine/issues/25
-Plug 'Yggdroot/indentLine'
 "}}
 
 "{{ plugin to deal with URL
@@ -1274,8 +1292,7 @@ let g:neomake_warning_sign={'text': '!', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_error_sign={'text': '✗'}
 
 " which linter to enable for Python source file linting
-" let g:neomake_python_enabled_makers = ['flake8', 'pylint']
-let g:neomake_python_enabled_makers = ['flake8', 'pylint']
+let g:neomake_python_enabled_makers = ['pylint']
 
 " whether to open quickfix or location list automatically
 let g:neomake_open_list = 0
@@ -1437,32 +1454,11 @@ endif
 "}}
 
 "{{ status line, look
-"""""""""""""""""""""""""indentLine settings""""""""""""""""""""""""""
-" whether to enable indentLine
-let g:indentLine_enabled = 1
-
-" the character used for indicating indentation
-" let g:indentLine_char = '┊'
-let g:indentLine_char = '│'
-
-" whether to use conceal color by indentLine
-let g:indentLine_setColors = 0
-
-" show raw code when cursor is current line (mainly for markdown file)
-" see https://github.com/plasticboy/vim-markdown/issues/395
-let g:indentLine_concealcursor = ''
-
-" disable indentline for certain filetypes
-augroup indentline_disable_ft
-    autocmd!
-    autocmd FileType help,startify :IndentLinesDisable
-augroup END
-
 """""""""""""""""""""""""""vim-airline setting""""""""""""""""""""""""""""""
 " set a airline theme only if it exists, else we resort to default color
 let s:candidate_airlinetheme = ['alduin', 'ayu_mirage', 'base16_flat',
     \ 'monochrome', 'base16_grayscale', 'lucius', 'base16_tomorrow',
-    \ 'base16_adwaita', 'biogoo', 'distinguished', 'gruvbox', 'jellybeans',
+    \ 'base16_adwaita', 'biogoo', 'distinguished', 'jellybeans',
     \ 'luna', 'raven', 'seagull', 'term', 'vice', 'zenburn']
 let s:idx = RandInt(0, len(s:candidate_airlinetheme)-1)
 let s:theme = s:candidate_airlinetheme[s:idx]
@@ -1497,6 +1493,9 @@ let g:airline#extensions#hunks#non_zero_only = 1
 
 " enable gutentags integration
 let g:airline#extensions#gutentags#enabled = 1
+
+" speed up airline
+let g:airline_highlighting_cache = 1
 
 " custom status line symbols
 if !exists('g:airline_symbols')
@@ -1588,13 +1587,14 @@ set background=dark
 """"""""""""""""""""""""""""gruvbox settings"""""""""""""""""""""""""""
 " we should check if theme exists before using it, otherwise you will get
 " error message when starting Nvim
-if HasColorscheme('gruvbox')
+if HasColorscheme('gruvbox8')
     " italic options should be put before colorscheme setting,
     " see https://goo.gl/8nXhcp
-    let g:gruvbox_italic=1
-    let g:gruvbox_contrast_dark='hard'
+    let g:gruvbox_italics=1
     let g:gruvbox_italicize_strings=1
-    colorscheme gruvbox
+    let g:gruvbox_filetype_hi_groups = 0
+    let g:gruvbox_plugin_hi_groups = 0
+    colorscheme gruvbox8_hard
 else
     " fall back to a pre-installed theme
     colorscheme desert
