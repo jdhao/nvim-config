@@ -6,12 +6,19 @@ snippet head "Markdown header" b
 ---
 title: "$1"
 date: `!v strftime("%Y-%m-%d %H:%M:%S%z")`
-tags: [$3]
-categories: [$4]
+tags: [$2]
+categories: [$3]
 ---
 $0
 endsnippet
 
 snippet more "HTML more tag"
 <!--more-->
+endsnippet
+
+snippet img "aligned image using HTML tag"
+<p align="center">
+<img src="${1:URL}">
+</p>
+$0
 endsnippet
