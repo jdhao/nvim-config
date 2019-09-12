@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "        _   _       _                  _____             __ _               "
 "       | \ | |     (_)                / ____|           / _(_)              "
 "       |  \| |_   ___ _ __ ___       | |     ___  _ __ | |_ _  __ _         "
@@ -21,8 +21,8 @@
 " carefully and only take the settings and options which suits you.  I would
 " not recommend downloading this file and replace your own init.vim. Good
 " configurations are built over time and take your time to polish.
-" Author: jdhao (jdhao@hotmail.com). Blog: https://jdhao.github.io
-" Update: 2019-08-14 16:05:14+0800
+" Author: jdhao (jdhao@hotmail.com).
+" Update: 2019-09-12 19:54:07+0800
 "}}
 
 "{{ License: MIT License
@@ -56,11 +56,10 @@
 " in accordance with your system.
 if executable('python')
     " The output of `system()` function contains a newline character which
-    " should be removed. See
-    " https://vi.stackexchange.com/questions/2867/how-do-you-chomp-a-string-in-vim
-    if has('win32') " for Windows
+    " should be removed, see https://vi.stackexchange.com/a/2868/15292
+    if has('win32')
         let g:python3_host_prog=substitute(system('where python'), '.exe\n\+$', '', 'g')
-    elseif has('unix') " for Linux and Mac
+    elseif has('unix')
         let g:python3_host_prog=substitute(system('which python'), '\n\+$', '', 'g')
     endif
 else
@@ -80,7 +79,7 @@ let g:loaded_netrwPlugin = 1
 let g:loaded_2html_plugin = 1
 
 " Do not load zipPlugin.vim, gzip.vim and tarPlugin.vim (all these plugins are
-" related to compressed files)
+" related to checking files inside compressed files)
 let g:loaded_zipPlugin = 1
 let loaded_gzip = 1
 let g:loaded_tarPlugin = 1
@@ -89,96 +88,6 @@ let g:loaded_tarPlugin = 1
 let loaded_matchit = 1
 let g:loaded_matchparen = 1
 "}}
-"}
-
-"{ Custom functions
-" Remove trailing white space, see https://vi.stackexchange.com/a/456/15292
-function! s:StripTrailingWhitespaces() abort
-    let l:save = winsaveview()
-    " vint: next-line -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
-    keeppatterns %s/\v\s+$//e
-    call winrestview(l:save)
-endfunction
-
-" Remove trailing whitespace
-nnoremap <silent> <leader><Space> :call <SID>StripTrailingWhitespaces()<CR>
-
-" Create command alias safely, see https://bit.ly/2ImFOpL.
-" The following two functions are taken from answer below on SO:
-" https://stackoverflow.com/a/10708687/6064933
-function! Cabbrev(key, value) abort
-    execute printf('cabbrev <expr> %s (getcmdtype() == ":" && getcmdpos() <= %d) ? %s : %s',
-    \ a:key, 1+len(a:key), Single_quote(a:value), Single_quote(a:key))
-endfunction
-
-function! Single_quote(str) abort
-    return "'" . substitute(copy(a:str), "'", "''", 'g') . "'"
-endfunction
-
-" Check the syntax group in the current cursor position,
-" see http://tinyurl.com/yyzgswxz and http://tinyurl.com/y3lxozey
-function! s:SynGroup() abort
-    if !exists('*synstack')
-        return
-    endif
-    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunction
-nnoremap <silent> <leader>st :call <SID>SynGroup()<CR>
-
-" Check if a colorscheme exists in runtimepath.
-" The following two functions are inspired by https://stackoverflow.com/a/5703164/6064933.
-function! HasColorscheme(name) abort
-    let l:pat = 'colors/' . a:name . '.vim'
-    return !empty(globpath(&runtimepath, l:pat))
-endfunction
-
-" Check if an Airline theme exists in runtimepath.
-function! HasAirlinetheme(name) abort
-    let l:pat = 'autoload/airline/themes/' . a:name . '.vim'
-    return !empty(globpath(&runtimepath, l:pat))
-endfunction
-
-" Generate random integers in the range [Low, High] in pure vimscrpt,
-" adapted from https://stackoverflow.com/a/12739441/6064933
-function! RandInt(Low, High) abort
-    let l:milisec = str2nr(matchstr(reltimestr(reltime()), '\v\.\zs\d+'), 10)
-    return l:milisec % (a:High - a:Low + 1) + a:Low
-endfunction
-
-" Custom fold expr, adapted from https://vi.stackexchange.com/a/9094/15292
-function! VimFolds(lnum)
-    " get content of current line and the line below
-    let l:cur_line = getline(a:lnum)
-    let l:next_line = getline(a:lnum+1)
-
-    if l:cur_line =~# '^"{'
-        return '<' . (matchend(l:cur_line, '"{*') - 1)
-    else
-        if l:cur_line ==# '' && (matchend(l:next_line, '"{*') - 1) == 1
-            return 0
-        else
-            return '='
-        endif
-    endif
-endfunction
-
-" Custom fold text, adapted from https://vi.stackexchange.com/a/3818/15292
-" and https://vi.stackexchange.com/a/6608/15292
-function! MyFoldText()
-    let line = getline(v:foldstart)
-
-    let nucolwidth = &foldcolumn + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 3
-    let folded_line_num = v:foldend - v:foldstart
-
-    " expand tabs into spaces
-    let chunks = split(line, "\t", 1)
-    let line = join(map(chunks[:-2], 'v:val . repeat(" ", &tabstop - strwidth(v:val) % &tabstop)'), '') . chunks[-1]
-
-    let line = strpart(line, 0, windowwidth - 2 - len(folded_line_num))
-    let fillcharcount = &textwidth - len(line) - len(folded_line_num) - 8
-    return line . '...'. repeat('-', fillcharcount) . ' (' . folded_line_num . ' L)'
-endfunction
 "}
 
 "{ Builtin options and settings
@@ -214,7 +123,6 @@ set expandtab       " expand tab to spaces so that tabs are spaces
 
 " Set matching pairs of characters and highlight matching brackets
 set matchpairs+=<:>,「:」
-set showmatch
 
 " Show line number and relative line number
 set number relativenumber
@@ -235,7 +143,7 @@ set showbreak=↪
 " List all items and start selecting matches in cmd completion
 set wildmode=list:full
 
-" Show current line cursor is in
+" Show current line where the cursor is
 set cursorline
 " Set a ruler at column 80, see https://goo.gl/vEkF5i
 set colorcolumn=80
@@ -243,12 +151,10 @@ set colorcolumn=80
 " Minimum lines to keep above and below cursor when scrolling
 set scrolloff=3
 
-" Use mouse to select window and resizing window, etc
+" Use mouse to select and resize windows, etc.
 if has('mouse')
-    " Enable mouse in several mode
-    set mouse=nv
-    " Set the behaviour of mouse
-    set mousemodel=popup
+    set mouse=nv  " Enable mouse in several mode
+    set mousemodel=popup  " Set the behaviour of mouse
 endif
 
 " Do not show mode on command line since vim-airline can show it
@@ -263,7 +169,7 @@ set concealcursor=nc
 " The way to show the result of substitution in real time for preview
 set inccommand=nosplit
 
-" ignore files or folders when globbing
+" Ignore certain files and folders when globbing
 set wildignore+=*.o,*.obj,*.bin,*.dll,*.exe
 set wildignore+=*/.git/*,*/.svn/*,*/__pycache__/*,*/build/**
 set wildignore+=*.jpg,*.png,*.jpeg,*.gif,*.bmp,*.tiff
@@ -286,7 +192,7 @@ set history=500
 " Use list mode and customized listchars
 set list listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:+
 
-" Auto write the file based on some condition
+" Auto-write the file based on some condition
 set autowrite
 
 " Show hostname, full path of file and last-mod time on the window title.
@@ -320,12 +226,12 @@ let &dictionary = &dictionary . ',' . g:MY_DICT
 
 set spelllang=en,cjk  " Spell languages
 
-" Align indent to next multiple value of shiftwidth, for its meaning,
+" Align indent to next multiple value of shiftwidth. For its meaning,
 " see http://tinyurl.com/y5n87a6m
 set shiftround
 
 " Virtual edit is useful for visual block edit
-set virtualedit=all
+set virtualedit=block
 
 " Correctly break multi-byte characters such as CJK,
 " see http://tinyurl.com/y4sq6vf3
@@ -333,6 +239,12 @@ set formatoptions+=mM
 
 " Tilde (~) is an operator, thus must be followed by motions like `e` or `w`.
 set tildeop
+
+" Do not add two space after a period when joining lines or formatting texts,
+" see https://tinyurl.com/y3yy9kov
+set nojoinspaces
+
+set ambiwidth=double
 "}
 
 "{ Custom key mappings
@@ -498,19 +410,15 @@ inoremap <S-Tab> <ESC><<i
 nnoremap c "_c
 nnoremap C "_C
 nnoremap cc "_cc
+
+" Remove trailing whitespace characters
+nnoremap <silent> <leader><Space> :call utils#StripTrailingWhitespaces()<CR>
+
+" check the syntax group of current cursor position
+nnoremap <silent> <leader>st :call utils#SynGroup()<CR>
 "}
 
 "{ Auto commands
-" Automatically save current file and execute it when pressing the <F9> key
-" it is useful for small script
-augroup filetype_auto_build_exec
-    autocmd!
-    autocmd FileType python nnoremap <buffer> <F9> :execute 'w !python'
-                \ shellescape(@%, 1)<CR>
-    autocmd FileType cpp nnoremap <F9> :w <CR> :!g++ -Wall -std=c++11 %
-                \ -o %<&&./%<<CR>
-augroup END
-
 " Do not use smart case in command line mode,
 " extracted from https://goo.gl/vCTYdK
 augroup dynamic_smartcase
@@ -524,7 +432,6 @@ augroup text_file_width
     autocmd!
     " Sometimes, automatic filetype detection is not right, so we need to
     " detect the filetype based on the file extensions
-    autocmd FileType text,tex setlocal textwidth=79
     autocmd BufNewFile,BufRead *.md,*.MD,*.markdown setlocal textwidth=79
 augroup END
 
@@ -551,32 +458,6 @@ augroup resume_edit_position
         \ | endif
 augroup END
 
-augroup vim_script_setting
-    autocmd!
-    " Set the folding related options for vim script. Setting folding option
-    " in modeline is annoying in that the modeline get executed each time the
-    " window focus is lost (see http://tinyurl.com/yyqyyhnc)
-    autocmd FileType vim set foldmethod=expr foldlevel=0 foldlevelstart=-1
-    autocmd FileType vim set foldexpr=VimFolds(v:lnum) foldtext=MyFoldText()
-
-    " Simply set formatoptions without autocmd does not work for vim filetype
-    " because the options are overruled by vim's default ftplugin for vim
-    " script unfortunately. The following way to use autocmd seems quick and
-    " dirty and may not even work (I do this because I don't want to
-    " split my vim config). For more discussions, see
-    " http://tinyurl.com/yyznar7r and http://tinyurl.com/zehso5h
-
-    " Some format options when editting text files.
-    " Disable inserting comment leader after hitting o or O
-    autocmd FileType vim setlocal formatoptions-=o
-    " Disable inserting comment leader after hitting <Enter> in insert mode
-    autocmd FileType vim setlocal formatoptions-=r
-
-    " Use :help command for keyword when pressing `K` in vim file,
-    " see `:h K` and https://bre.is/wC3Ih-26u
-    autocmd FileType vim setlocal keywordprg=:help
-augroup END
-
 " Display a message when the current file is not in utf-8 format.
 " Note that we need to use `unsilent` command here because of this issue:
 " https://github.com/vim/vim/issues/4379
@@ -595,13 +476,12 @@ augroup auto_read
     autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
                 \ if mode() == 'n' && getcmdwintype() == '' | checktime | endif
     autocmd FileChangedShellPost * echohl WarningMsg
-                \ | echo "File changed on disk. Buffer reloaded." | echohl None
+                \ | echo "File changed on disk. Buffer reloaded!" | echohl None
 augroup END
 "}
 
-
 "{ Plugin installation part
-"{{ Vim-plug Install and plugin initialization
+"{{ Vim-plug Install and related settings
 
 " Auto-install vim-plug on different systems if it does not exist.
 " For Windows, only Windows 10 with curl installed are supported (after
@@ -624,16 +504,17 @@ else
         augroup END
     endif
 endif
-"}}
 
-"{{ Autocompletion related plugins
-" Set up directory to install all the plugins depending on the platform
+" Set up directory to install the plugins based on the platform
 if has('win32')
     let g:PLUGIN_HOME=expand('~/AppData/Local/nvim/plugged')
 else
     let g:PLUGIN_HOME=expand('~/.local/share/nvim/plugged')
 endif
 
+"}}
+
+"{{ Autocompletion related plugins
 call plug#begin(g:PLUGIN_HOME)
 " Auto-completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -643,9 +524,6 @@ Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 
 " Vim source for deoplete
 Plug 'Shougo/neco-vim', { 'for': 'vim' }
-
-" English word auto-completion
-Plug 'deathlyfrantic/deoplete-spell'
 
 " Insert mode completion
 Plug 'ervandew/supertab'
@@ -678,21 +556,12 @@ Plug 'osyo-manga/vim-anzu'
 " Stay after pressing * and search selected text
 Plug 'haya14busa/vim-asterisk'
 
-" Another grep tool (similar to Sublime Text Ctrl+Shift+F)
-" TODO: worth trying and exploring
-Plug 'dyng/ctrlsf.vim'
-
-" A greping tool
-Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
-
 " File search, tag search and more
 if has('win32')
     Plug 'Yggdroot/LeaderF'
 else
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 endif
-" Another similar plugin is command-t
-" Plug 'wincent/command-t'
 
 " Only use fzf for Linux and Mac since fzf does not work well for Windows
 if has('unix')
@@ -700,6 +569,15 @@ if has('unix')
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
 endif
+
+" Another similar plugin is command-t
+" Plug 'wincent/command-t'
+
+" Another grep tool (similar to Sublime Text Ctrl+Shift+F)
+" Plug 'dyng/ctrlsf.vim'
+
+" A greping tool
+" Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 "}}
 
 "{{ UI: Color, theme etc.
@@ -707,8 +585,8 @@ endif
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'sjl/badwolf'
 Plug 'ajmwagar/vim-deus'
-Plug 'sainnhe/vim-color-desert-night'
-Plug 'YorickPeterse/happy_hacking.vim'
+" Plug 'sainnhe/vim-color-desert-night'
+" Plug 'YorickPeterse/happy_hacking.vim'
 " Plug 'lifepillar/vim-solarized8'
 " Plug 'sickill/vim-monokai'
 " Plug 'whatyouhide/vim-gotham'
@@ -766,7 +644,7 @@ Plug 'christoomey/vim-titlecase'
 Plug '907th/vim-auto-save'
 
 " graphcial undo history, see https://github.com/mbbill/undotree
-" Plug 'mbbill/undotree'
+Plug 'mbbill/undotree'
 
 " another plugin to show undo history is: http://tinyurl.com/jlsgjy5
 " Plug 'simnalamburt/vim-mundo'
@@ -798,15 +676,15 @@ endif
 "}}
 
 "{{ Linting, formating
-" Auto format tools
-" Plug 'sbdchd/neoformat'
-" Plug 'Chiel92/vim-autoformat'
-
 " Syntax check and make
 Plug 'neomake/neomake'
 
 " Another linting plugin
 " Plug 'w0rp/ale'
+
+" Auto format tools
+" Plug 'sbdchd/neoformat'
+" Plug 'Chiel92/vim-autoformat'
 "}}
 
 "{{ Git related plugins
@@ -860,12 +738,6 @@ Plug 'tpope/vim-surround'
 
 " Add indent object for vim (useful for languages like Python)
 Plug 'michaeljsmith/vim-indent-object'
-
-" Create custom text object (needed by vim-text-object-entire)
-Plug 'kana/vim-textobj-user'
-
-" Text object for entire buffer, add `ae` and `ie`
-Plug 'kana/vim-textobj-entire'
 "}}
 
 "{{ LaTeX editting and previewing plugin
@@ -921,11 +793,11 @@ call plug#end()
 " To use these shortcut: first activate command line with `:`, then input the
 " short alias, e.g., `pi`, then press <space>, the alias will be expanded
 " to the full command automatically
-call Cabbrev('pi', 'PlugInstall')
-call Cabbrev('pud', 'PlugUpdate')
-call Cabbrev('pug', 'PlugUpgrade')
-call Cabbrev('ps', 'PlugStatus')
-call Cabbrev('pc', 'PlugClean')
+call utils#Cabbrev('pi', 'PlugInstall')
+call utils#Cabbrev('pud', 'PlugUpdate')
+call utils#Cabbrev('pug', 'PlugUpgrade')
+call utils#Cabbrev('ps', 'PlugStatus')
+call utils#Cabbrev('pc', 'PlugClean')
 "}}
 
 "{{ Auto-completion related
@@ -1183,19 +1055,6 @@ nnoremap <silent> <Space>t :TagbarToggle<CR>
 "}}
 
 "{{ File editting
-"""""""""""""""""""""""""""""auto-pairs settings"""""""""""""""""""""""""
-augroup filetype_custom_autopair
-autocmd!
-    " Only use the following character pairs for tex file
-    au FileType tex let b:AutoPairs = {'(':')', '[':']', '{':'}'}
-
-    " Add `<>` pair to filetype vim
-    au FileType vim let b:AutoPairs = AutoPairsDefine({'<' : '>'})
-
-    " Do not use `"` for vim script since `"` is also used for comment
-    au FileType vim let b:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", "`":"`", '<':'>'}
-augroup END
-
 """"""""""""""""""""""""""""nerdcommenter settings"""""""""""""""""""
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -1224,8 +1083,8 @@ nmap <leader>gT <Plug>TitlecaseLine
 let g:auto_save = 1
 
 " A list of events to trigger autosave
-" let g:auto_save_events = ['InsertLeave', 'TextChanged']
-let g:auto_save_events = ['InsertLeave']
+let g:auto_save_events = ['InsertLeave', 'TextChanged']
+" let g:auto_save_events = ['InsertLeave']
 
 " Show autosave status on command line
 let g:auto_save_silent = 0
@@ -1234,8 +1093,8 @@ let g:auto_save_silent = 0
 if has('win32') || has('macunix')
     " ctrl-n and ctrl-p will not work if you add the TextChanged event to
     " vim-auto-save events
-    nmap <c-n> <plug>(YoinkPostPasteSwapBack)
-    nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+    " nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+    " nmap <c-p> <plug>(YoinkPostPasteSwapForward)
 
     nmap p <plug>(YoinkPaste_p)
     nmap P <plug>(YoinkPaste_P)
@@ -1364,33 +1223,15 @@ if ( has('macunix') || has('win32')) && executable('latex')
               \})
 
     let g:vimtex_compiler_latexmk = {
-         \ 'backend' : 'nvim',
-         \ 'background' : 1,
          \ 'build_dir' : 'build',
-         \ 'callback' : 1,
-         \ 'continuous' : 1,
-         \ 'executable' : 'latexmk',
-         \ 'options' : [
-         \   '-verbose',
-         \   '-file-line-error',
-         \   '-synctex=1',
-         \   '-interaction=nonstopmode',
-         \ ],
          \}
-
-    " Compile on initialization, cleanup on quit
-    augroup vimtex_event_1
-       au!
-       au User VimtexEventInitPost call vimtex#compiler#compile()
-       au User VimtexEventQuit     call vimtex#compiler#clean(0)
-    augroup END
 
     " TOC settings
     let g:vimtex_toc_config = {
           \ 'name' : 'TOC',
           \ 'layers' : ['content', 'todo', 'include'],
           \ 'resize' : 1,
-          \ 'split_width' : 50,
+          \ 'split_width' : 30,
           \ 'todo_sorted' : 0,
           \ 'show_help' : 1,
           \ 'show_numbers' : 1,
@@ -1439,15 +1280,15 @@ endif
 
 "{{ UI: Status line, look
 """""""""""""""""""""""""""vim-airline setting""""""""""""""""""""""""""""""
-" Randomly pick and set an airline theme if it exists
+" Set airline theme to a random one if it exists
 let s:candidate_airlinetheme = ['ayu_mirage', 'base16_flat',
     \ 'base16_grayscale', 'lucius', 'base16_tomorrow', 'ayu_dark',
     \ 'base16_adwaita', 'biogoo', 'distinguished', 'jellybeans',
     \ 'luna', 'raven', 'seagull', 'term', 'vice', 'zenburn', 'tomorrow']
-let s:idx = RandInt(0, len(s:candidate_airlinetheme)-1)
+let s:idx = utils#RandInt(0, len(s:candidate_airlinetheme)-1)
 let s:theme = s:candidate_airlinetheme[s:idx]
 
-if HasAirlinetheme(s:theme)
+if utils#HasAirlinetheme(s:theme)
     let g:airline_theme=s:theme
 endif
 
@@ -1470,13 +1311,10 @@ let g:airline#extensions#tagbar#enabled = 0
 let g:airline_skip_empty_sections = 1
 
 " Make airline more beautiful, see https://goo.gl/XLY19H for more info
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 
 " Show only hunks which are non-zero (git-related)
 let g:airline#extensions#hunks#non_zero_only = 1
-
-" Enable gutentags integration
-let g:airline#extensions#gutentags#enabled = 1
 
 " Speed up airline
 let g:airline_highlighting_cache = 1
@@ -1537,7 +1375,7 @@ set background=dark
 """"""""""""""""""""""""""""gruvbox settings"""""""""""""""""""""""""""
 " We should check if theme exists before using it, otherwise you will get
 " error message when starting Nvim
-if HasColorscheme('gruvbox8')
+if utils#HasColorscheme('gruvbox8')
     " Italic options should be put before colorscheme setting,
     " see https://goo.gl/8nXhcp
     let g:gruvbox_italics=1
@@ -1545,6 +1383,8 @@ if HasColorscheme('gruvbox8')
     let g:gruvbox_filetype_hi_groups = 0
     let g:gruvbox_plugin_hi_groups = 0
     colorscheme gruvbox8_hard
+else
+    colorscheme desert
 endif
 
 """"""""""""""""""""""""""" deus settings"""""""""""""""""""""""""""""""""
