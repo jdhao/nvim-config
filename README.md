@@ -7,8 +7,8 @@ terminal Neovim and `ginit.vim` is for GUI client for Neovim (currently I am
 using [neovim-qt](https://github.com/equalsraf/neovim-qt)) on Windows.
 
 My configurations are heavily documented to make it as clear as possible. While
-you can download the whole configuraiton and replace yours, it is not
-recommened to do so. Good configurations are personal. Everyone should have
+you can download the whole configuration and replace yours, it is not
+recommended to do so. Good configurations are personal. Everyone should have
 his/her own unique configurations. You are encouraged to copy from this
 configuration the part you feel useful and add it to your own configuration.
 
@@ -80,7 +80,7 @@ easiest way to install Python3 is via
 
 ## pynvim
 
-Neovim relies on [pynvim](https://github.com/neovim/pynvim) to communiate with
+Neovim relies on [pynvim](https://github.com/neovim/pynvim) to communicate with
 plugins which utilizes its Python binding. Pynvim is required by plugin such as
 Deoplete.
 
@@ -95,7 +95,7 @@ pip install jedi
 
 ## Git
 
-Git is used by plugin manager vim-plug to download plugins from Github or
+Git is used by plugin manager vim-plug to download plugins from GitHub or
 other Git repositories.
 
 Since Git is usually pre-installed on Linux and Mac, you do not need to worry
@@ -138,9 +138,9 @@ A linter is a tool to check your code for possible issues or errors. Based on
 your programming languages, you may need to install various linters.
 
 + Python: [pylint](https://github.com/PyCQA/pylint) and
-[flake8](https://github.com/PyCQA/flake8).
+  [flake8](https://github.com/PyCQA/flake8).
 + Vim script: [vint](https://github.com/Kuniwak/vint) (You may need to install
-the pre-release versions because of [this issue](https://github.com/Kuniwak/vint/issues/290)).
+  the pre-release versions because of [this issue](https://github.com/Kuniwak/vint/issues/290)).
 
 For other linters, please consult the linting plugin documentation. For Neomake
 (which is the linting plugin I currently use), a list of makers (i.e., linters)
@@ -149,7 +149,7 @@ for different languages is listed
 
 ## Terminal emulators
 
-Which [terminal emulator](https://en.wikipedia.org/wiki/Terminal_emulator) 
+Which [terminal emulator](https://en.wikipedia.org/wiki/Terminal_emulator)
 you are using can also affect the look of Neovim. Since Neovim
 support true colors, terminals which support true colors are recommended.
 For a list of terminals which support true colors, see
@@ -157,33 +157,38 @@ For a list of terminals which support true colors, see
 
 For Mac, you can use [iterm2](https://www.iterm2.com/). If you connect to Linux
 server on Windows, I recommend [wsltty](https://github.com/mintty/wsltty) and
-[cygwin](https://www.cygwin.com/), both of them use [mintty](https://github.com/mintty/mintty)
-as the terminal emulator.
+[cygwin](https://www.cygwin.com/), both of them use
+[mintty](https://github.com/mintty/mintty) as the terminal emulator.
 
 ## Font
 
 Since Vim-airline uses several symbols not available in normal font, you need
 to install [fonts here](https://github.com/powerline/fonts) to make vim-airline
-look pretty. I am using [Hack](https://github.com/powerline/fonts/tree/master/Hack)
-and it looks great.
+look pretty. I am using
+[Hack](https://github.com/powerline/fonts/tree/master/Hack) and it looks great.
 
 # Settings
 
-## Where to put the configuration file
+# How to install this configuration
 
 On Windows, put it under `$HOME/AppData/Local/nvim`[^1]. On Linux and Mac, put
-it under `~/.config/nvim`.
+it under `~/.config/nvim`. First, you need to remove all the files under this
+folder, then use the following command to install this configuration:
+
+```
+git clone https://github.com/jdhao/nvim-config.git .
+```
 
 After that, when you first open nvim, all the plugins in this configuration
 will be installed automatically for you. Since I use quite a lot of plugins
-(more than 60), it may take a while for the installation process, depending on
-your network connection.
+(around 60 plugins), it may take a while for the installation process,
+depending on your network connection.
 
 # Trouble shooting
 
 If you come across a issue, first you can use `:checkhealth` command provided
 by `nvim` to trouble-shoot yourself. Please read carefully the messages
-provided by health check. 
+provided by health check.
 
 If you still have an issue, you may
 [open a new issue](https://github.com/jdhao/nvim-config/issues).
@@ -191,9 +196,7 @@ If you still have an issue, you may
 # Further readings
 
 + [Config nvim on Linux for Python development](https://jdhao.github.io/2018/12/24/centos_nvim_install_use_guide_en/)
-
 + [Nvim config on Windows 10](https://jdhao.github.io/2018/11/15/neovim_configuration_windows/)
-
 + [Nvim-qt config on Windows 10](https://jdhao.github.io/2019/01/17/nvim_qt_settings_on_windows/)
 
 [^1]: Use `echo %userprofile%` to see where your `$HOME` is.
