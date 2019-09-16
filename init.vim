@@ -9,20 +9,21 @@
 "                                                              |___/         "
 "                                                                            "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" The ascii art above is generated using service provided on this webpage:
-" http://tinyurl.com/y6szckgd
+" The above ASCII art is generated using service provided in this webpage:
+" http://tinyurl.com/y6szckgd.
 
 "{ Header and Licence
 "{{ header info
-" Description: This is my Nvim configuration which supports Mac, Linux and
+" Description: This is my Neovim configuration which supports Mac, Linux and
 " Windows, with various plugins configured. This configuration evolves as I
-" learn more about Nvim and becomes more proficient in using Nvim. Since this
-" configuration file is very long (more than 1000 lines!), you should read it
-" carefully and only take the settings and options which suits you.  I would
-" not recommend downloading this file and replace your own init.vim. Good
-" configurations are built over time and take your time to polish.
-" Author: jdhao (jdhao@hotmail.com).
-" Update: 2019-09-12 19:54:07+0800
+" learn more about Nvim and becomes more proficient in using Nvim. Since it is
+" very long (more than 1000 lines!), you should read it carefully and
+" take only the settings and options which suits you. I would not recommend
+" downloading this file and replace your own init.vim. Good configurations are
+" built over time and take your time to polish.
+" Author: Jie-dong Hao
+" Email: jdhao@hotmail.com
+" Update: 2019-09-16 11:49:42+0800
 "}}
 
 "{{ License: MIT License
@@ -221,7 +222,7 @@ set pumblend=5  " Pesudo blend effect for popup menu
 set complete+=k,kspell complete-=w complete-=b complete-=u complete-=t
 
 " Dictionary files for different systems
-let g:MY_DICT = stdpath('config') . '/dict/words'
+let g:MY_DICT = expand(stdpath('config') . '/dict/words')
 let &dictionary = &dictionary . ',' . g:MY_DICT
 
 set spelllang=en,cjk  " Spell languages
@@ -480,7 +481,7 @@ augroup auto_read
 augroup END
 "}
 
-"{ Plugin installation part
+"{ Plugin installation
 "{{ Vim-plug Install and related settings
 
 " Auto-install vim-plug on different systems if it does not exist.
@@ -506,12 +507,7 @@ else
 endif
 
 " Set up directory to install the plugins based on the platform
-if has('win32')
-    let g:PLUGIN_HOME=expand('~/AppData/Local/nvim/plugged')
-else
-    let g:PLUGIN_HOME=expand('~/.local/share/nvim/plugged')
-endif
-
+let g:PLUGIN_HOME=expand(stdpath('data') . '/plugged')
 "}}
 
 "{{ Autocompletion related plugins
