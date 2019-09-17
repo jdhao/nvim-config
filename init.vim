@@ -23,7 +23,7 @@
 " built over time and take your time to polish.
 " Author: Jie-dong Hao
 " Email: jdhao@hotmail.com
-" Update: 2019-09-16 11:49:42+0800
+" Update: 2019-09-17 17:35:03+0800
 "}}
 
 "{{ License: MIT License
@@ -1300,16 +1300,23 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#buffer_nr_format = '%s. '
 
 " Whether to show function or other tags on status line
-let g:airline#extensions#tagbar#enabled = 0
+let g:airline#extensions#tagbar#enabled = 1
 
 " Skip empty sections if there are nothing to show,
 " extracted from https://vi.stackexchange.com/a/9637/15292
 let g:airline_skip_empty_sections = 1
 
-" Make airline more beautiful, see https://goo.gl/XLY19H for more info
-" let g:airline_powerline_fonts = 1
+" Whether to use powerline symbols, see https://goo.gl/XLY19H.
+let g:airline_powerline_fonts = 0
 
-" Show only hunks which are non-zero (git-related)
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.spell = 'Ꞩ'
+
+" Only show git hunks which are non-zero
 let g:airline#extensions#hunks#non_zero_only = 1
 
 " Speed up airline
