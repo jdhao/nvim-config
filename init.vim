@@ -23,7 +23,6 @@
 " built over time and take your time to polish.
 " Author: Jie-dong Hao
 " Email: jdhao@hotmail.com
-" Update: 2019-09-17 17:35:03+0800
 "}}
 
 "{{ License: MIT License
@@ -592,6 +591,7 @@ Plug 'ajmwagar/vim-deus'
 " colorful status line and theme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'mhinz/vim-startify'
 "}}
 
 "{{ Plugin to deal with URL
