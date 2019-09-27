@@ -50,12 +50,13 @@
 "}
 
 "{ Main configurations
-source variables.vim
-source options.vim
-source autocommands.vim
-source mappings.vim
-source plugins.vim
-source ui.vim
+let g:nvim_config_root = stdpath('config')
+execute 'source' g:nvim_config_root . "/variables.vim"
+execute 'source' g:nvim_config_root . "/options.vim"
+execute 'source' g:nvim_config_root . "/autocommands.vim"
+execute 'source' g:nvim_config_root . "/mappings.vim"
+execute 'source' g:nvim_config_root . "/plugins.vim"
+execute 'source' g:nvim_config_root . "/ui.vim"
 "}
 
 "{ A list of resources which inspire me
