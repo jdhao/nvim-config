@@ -51,12 +51,17 @@
 
 "{ Main configurations
 let g:nvim_config_root = stdpath('config')
-execute 'source' g:nvim_config_root . "/variables.vim"
-execute 'source' g:nvim_config_root . "/options.vim"
-execute 'source' g:nvim_config_root . "/autocommands.vim"
-execute 'source' g:nvim_config_root . "/mappings.vim"
-execute 'source' g:nvim_config_root . "/plugins.vim"
-execute 'source' g:nvim_config_root . "/ui.vim"
+let g:config_file_list = ['variables.vim',
+    \ 'options.vim',
+    \ 'autocommands.vim',
+    \ 'mappings.vim',
+    \ 'plugins.vim',
+    \ 'ui.vim'
+    \ ]
+
+for f in g:config_file_list
+    execute 'source ' . g:nvim_config_root . '/' . f
+endfor
 "}
 
 "{ A list of resources which inspire me
