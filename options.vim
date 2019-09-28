@@ -151,6 +151,4 @@ set tildeop
 " Do not add two space after a period when joining lines or formatting texts,
 " see https://tinyurl.com/y3yy9kov
 set nojoinspaces
-
-set ambiwidth=double
 "}
