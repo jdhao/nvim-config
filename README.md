@@ -13,6 +13,9 @@ recommended to do so. Good configurations are personal. Everyone should have
 his or her unique configuration. You are encouraged to copy from this
 configuration the part you feel useful and add it to your own configuration.
 
+See [this wiki page](https://github.com/jdhao/nvim-config/wiki/Nvim-setup-in-Linux) on
+how to install Nvim dependencies as well as nvim on Linux environment.
+
 ## Features ##
 
 + Auto-completion for Python via [Deoplete](https://github.com/Shougo/deoplete.nvim).
