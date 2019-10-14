@@ -1,0 +1,1 @@
+pyinstaller --onefile --console markdown2ctags.py

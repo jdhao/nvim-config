@@ -566,6 +566,27 @@ let NERDTreeMinimalUI=0
 """"""""""""""""""""""""""" tagbar settings """"""""""""""""""""""""""""""""""
 " Shortcut to toggle tagbar window
 nnoremap <silent> <Space>t :TagbarToggle<CR>
+
+" Add support for markdown files in tagbar.
+if has('win32')
+    let g:md_ctags_bin=fnamemodify(stdpath('config')."\\tools\\markdown2ctags.exe", ":p")
+else
+    let g:md_ctags_bin=fnamemodify(stdpath('config')."/tools/markdown2ctags.py", ":p")
+endif
+let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown.pandoc',
+    \ 'ctagsbin' : g:md_ctags_bin,
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+    \ }
 "}}
 
 "{{ File editting
@@ -798,7 +819,7 @@ endif
 let s:candidate_airlinetheme = ['ayu_mirage', 'base16_flat',
     \ 'base16_grayscale', 'lucius', 'base16_tomorrow', 'ayu_dark',
     \ 'base16_adwaita', 'biogoo', 'distinguished', 'jellybeans',
-    \ 'luna', 'raven', 'seagull', 'term', 'vice', 'zenburn', 'tomorrow']
+    \ 'luna', 'raven', 'term', 'vice', 'zenburn', 'tomorrow']
 let s:idx = utils#RandInt(0, len(s:candidate_airlinetheme)-1)
 let s:theme = s:candidate_airlinetheme[s:idx]
 
