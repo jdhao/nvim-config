@@ -4,7 +4,13 @@
 " support true colors! For a comprehensive list of terminals supporting true
 " colors, see https://github.com/termstandard/colors and
 " https://bit.ly/2InF97t)
-set termguicolors
+if exists("&termguicolors")
+    if $TERM == "xterm-256color"
+        set termguicolors
+    else
+        set notermguicolors
+    endif
+endif
 
 " Use dark background
 set background=dark
