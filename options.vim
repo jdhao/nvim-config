@@ -88,7 +88,7 @@ set wildignore+=*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex.gz,*.pdf
 " Ask for confirmation when handling unsaved or read-only files
 set confirm
 
-" Use visual bells to indicate errors, do not use errorbells
+" Do not use visual and errorbells
 set visualbell noerrorbells
 
 " The level we start to fold
