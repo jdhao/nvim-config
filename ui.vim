@@ -2,10 +2,9 @@
 "{{ General settings about colors
 " Enable true colors support (Do not use this option if your terminal does not
 " support true colors! For a comprehensive list of terminals supporting true
-" colors, see https://github.com/termstandard/colors and
-" https://bit.ly/2InF97t)
+" colors, see https://github.com/termstandard/colors and https://bit.ly/2InF97t.
 if exists("&termguicolors")
-    if $TERM == "xterm-256color"
+    if $TERM == "xterm-256color" || exists('g:GuiLoaded')
         set termguicolors
     else
         set notermguicolors
