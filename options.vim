@@ -108,7 +108,10 @@ set autowrite
 " http://tinyurl.com/l9nuj4a. The function to get lastmod time is drawn from
 " http://tinyurl.com/yxd23vo8
 set title
-set titlestring=%{hostname()}\ \ %{expand('%:p')}\ \ %{strftime('%Y-%m-%d\ %H:%M',getftime(expand('%')))}
+set titlestring=
+set titlestring+=%(%{hostname()}\ \ %)
+set titlestring+=%(%{expand('%:p')}\ \ %)
+set titlestring+=%{strftime('%Y-%m-%d\ %H:%M',getftime(expand('%')))}
 
 " Persistent undo even after you close a file and re-open it
 set undofile
@@ -151,4 +154,7 @@ set tildeop
 " Do not add two space after a period when joining lines or formatting texts,
 " see https://tinyurl.com/y3yy9kov
 set nojoinspaces
+
+" Text after this column number is not highlighted
+set synmaxcol=200
 "}
