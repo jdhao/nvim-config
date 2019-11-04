@@ -1,19 +1,19 @@
 "{ Global Variable
 "{{ Builtin variables
 " Path to Python 3 interpreter (must be an absolute path), make startup
-" faster. See https://neovim.io/doc/user/provider.html. Change this variable
-" in accordance with your system.
+" faster. See https://neovim.io/doc/user/provider.html.
 if executable('python')
-    " The output of `system()` function contains a newline character which
-    " should be removed, see https://vi.stackexchange.com/a/2868/15292
-    if has('win32')
-        let g:python3_host_prog=substitute(system('where python'), '.exe\n\+$', '', 'g')
+   if has('win32')
+        let g:python3_host_prog=substitute(exepath('python'), '.exe$', '', 'g')
     elseif has('unix')
-        let g:python3_host_prog=substitute(system('which python'), '\n\+$', '', 'g')
+        let g:python3_host_prog=exepath('python')
     endif
 else
     echoerr 'Python executable not found! You must install Python and set its PATH!'
 endif
+
+" Disable Python2 support
+let g:loaded_python_provider=0
 
 " Custom mapping <leader> (see `:h mapleader` for more info)
 let mapleader = ','
@@ -37,4 +37,4 @@ let g:loaded_tarPlugin = 1
 let loaded_matchit = 1
 let g:loaded_matchparen = 1
 "}}
-"}
+"}}
