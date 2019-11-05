@@ -125,7 +125,6 @@ set completeopt-=preview  " Disable the preview window
 
 " Settings for popup menu
 set pumheight=15  " Maximum number of items to show in popup menu
-set pumblend=5  " Pesudo blend effect for popup menu
 
 " Scan files given by `dictionary` option
 set complete+=k,kspell complete-=w complete-=b complete-=u complete-=t
