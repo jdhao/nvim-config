@@ -50,7 +50,17 @@
 "}
 
 "{ Main configurations
-let g:nvim_config_root = stdpath('config')
+" If you are using Neovim on Linux system and want to set it up system wide
+" for users, set g:nvim_system_wide to 1. If you only want to use it for
+" personal need, set this variable to 0.
+if has('unix')
+    let g:nvim_system_wide = 1
+else
+    let g:nvim_system_wide = 0
+endif
+
+let g:nvim_config_root = expand('<sfile>:p:h')
+
 let g:config_file_list = ['variables.vim',
     \ 'options.vim',
     \ 'autocommands.vim',
