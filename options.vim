@@ -130,7 +130,7 @@ set pumheight=15  " Maximum number of items to show in popup menu
 set complete+=k,kspell complete-=w complete-=b complete-=u complete-=t
 
 " Dictionary files for different systems
-let g:MY_DICT = expand(stdpath('config') . '/dict/words')
+let g:MY_DICT = expand(g:nvim_config_root . '/dict/words')
 let &dictionary = &dictionary . ',' . g:MY_DICT
 
 set spelllang=en,cjk  " Spell languages
