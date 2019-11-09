@@ -10,7 +10,7 @@ if !executable('curl')
     echomsg 'You have to install curl to install vim-plug. Or install '
             \ . 'vim-plug yourself following the guide on vim-plug git repo'
 else
-    let g:VIM_PLUG_PATH = expand(stdpath('config') . '/autoload/plug.vim')
+    let g:VIM_PLUG_PATH = expand(g:nvim_config_root . '/autoload/plug.vim')
     if empty(glob(g:VIM_PLUG_PATH))
         echomsg 'Installing Vim-plug on your system'
         silent execute '!curl -fLo ' . g:VIM_PLUG_PATH . ' --create-dirs '
@@ -23,8 +23,13 @@ else
     endif
 endif
 
-" Set up directory to install the plugins based on the platform
-let g:PLUGIN_HOME=expand(stdpath('data') . '/plugged')
+" Set up directory to install the plugins based on whether you are installing
+" neovim system wide or for personal use.
+if g:nvim_system_wide
+    let g:PLUGIN_HOME="/usr/local/share/nvim/site"
+else
+    let g:PLUGIN_HOME=expand(stdpath('data') . '/plugged')
+endif
 "}}
 
 "{{ Autocompletion related plugins
@@ -569,10 +574,11 @@ nnoremap <silent> <Space>t :TagbarToggle<CR>
 
 " Add support for markdown files in tagbar.
 if has('win32')
-    let g:md_ctags_bin=fnamemodify(stdpath('config')."\\tools\\markdown2ctags.exe", ":p")
+    let g:md_ctags_bin=fnamemodify(g:nvim_config_root."\\tools\\markdown2ctags.exe", ":p")
 else
-    let g:md_ctags_bin=fnamemodify(stdpath('config')."/tools/markdown2ctags.py", ":p")
+    let g:md_ctags_bin=fnamemodify(g:nvim_config_root."/tools/markdown2ctags.py", ":p")
 endif
+
 let g:tagbar_type_markdown = {
     \ 'ctagstype': 'markdown.pandoc',
     \ 'ctagsbin' : g:md_ctags_bin,
