@@ -54,7 +54,7 @@
 " for users, set g:nvim_system_wide to 1. If you only want to use it for
 " personal need, set this variable to 0.
 if has('unix')
-    let g:nvim_system_wide = 1
+    let g:nvim_system_wide = 0
 else
     let g:nvim_system_wide = 0
 endif
