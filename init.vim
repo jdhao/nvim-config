@@ -53,10 +53,13 @@
 " If you are using Neovim on Linux system and want to set it up system wide
 " for users, set g:nvim_system_wide to 1. If you only want to use it for
 " personal need, set this variable to 0.
-if has('unix')
-    let g:nvim_system_wide = 0
-else
-    let g:nvim_system_wide = 0
+let g:nvim_system_wide=0
+
+" Do not set this varialbe if the system is not *nix
+if g:nvim_system_wide
+    if !has('unix')
+        let g:nvim_system_wide = 0
+    endif
 endif
 
 let g:nvim_config_root = expand('<sfile>:p:h')
