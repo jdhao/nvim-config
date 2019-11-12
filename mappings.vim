@@ -134,8 +134,8 @@ nnoremap <silent> <leader>sv :silent update $MYVIMRC <bar> source $MYVIMRC <bar>
 " Reselect the text that has just been pasted
 nnoremap <leader>v `[V`]
 
-" Use sane regex expression (see `:h magic` for more info)
-nnoremap / /\v
+" Search in selected region
+vnoremap / :<C-U>call feedkeys('/\%>'.(line("'<")-1).'l\%<'.(line("'>")+1)."l")<CR>
 
 " Find and replace (like Sublime Text 3)
 nnoremap <C-H> :%s/
