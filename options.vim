@@ -82,7 +82,7 @@ set wildignore+=*.o,*.obj,*.bin,*.dll,*.exe
 set wildignore+=*/.git/*,*/.svn/*,*/__pycache__/*,*/build/**
 set wildignore+=*.pyc
 set wildignore+=*.DS_Store
-set wildignore+=*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex.gz,*.pdf
+set wildignore+=*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex.gz
 
 " Ask for confirmation when handling unsaved or read-only files
 set confirm
