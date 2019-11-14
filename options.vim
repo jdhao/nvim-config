@@ -61,7 +61,7 @@ set scrolloff=3
 
 " Use mouse to select and resize windows, etc.
 if has('mouse')
-    set mouse=nv  " Enable mouse in several mode
+    set mouse=niv  " Enable mouse in several mode
     set mousemodel=popup  " Set the behaviour of mouse
 endif
 
