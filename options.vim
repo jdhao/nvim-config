@@ -30,6 +30,8 @@ if !isdirectory(g:backupdir)
 endif
 let &backupdir=g:backupdir
 
+set backupcopy=yes  " copy the original file to backupdir and overwrite it
+
 " General tab settings
 set tabstop=4       " number of visual spaces per TAB
 set softtabstop=4   " number of spaces in tab when editing
