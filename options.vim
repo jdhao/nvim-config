@@ -23,6 +23,13 @@ set clipboard+=unnamedplus
 " Disable creating swapfiles, see https://goo.gl/FA6m6h
 set noswapfile
 
+" Set up backup directory
+let g:backupdir=expand(stdpath('data') . '/backup')
+if !isdirectory(g:backupdir)
+   call mkdir(g:backupdir, "p")
+endif
+let &backupdir=g:backupdir
+
 " General tab settings
 set tabstop=4       " number of visual spaces per TAB
 set softtabstop=4   " number of spaces in tab when editing
@@ -61,7 +68,7 @@ set scrolloff=3
 
 " Use mouse to select and resize windows, etc.
 if has('mouse')
-    set mouse=niv  " Enable mouse in several mode
+    set mouse=nv  " Enable mouse in several mode
     set mousemodel=popup  " Set the behaviour of mouse
 endif
 
