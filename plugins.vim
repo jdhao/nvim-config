@@ -901,6 +901,13 @@ let g:quickrun_config = {'outputter/buffer/close_on_empty': 1}
 let g:comfortable_motion_scroll_down_key = 'j'
 let g:comfortable_motion_scroll_up_key = 'k'
 
+let g:comfortable_motion_no_default_key_mappings = 1
+" scroll based on window height
+nnoremap <silent> <C-d> :call comfortable_motion#flick(winheight(0) * 2)<CR>
+nnoremap <silent> <C-u> :call comfortable_motion#flick(winheight(0) * -2)<CR>
+nnoremap <silent> <C-f> :call comfortable_motion#flick(winheight(0) * 4)<CR>
+nnoremap <silent> <C-b> :call comfortable_motion#flick(winheight(0) * -4)<CR>
+
 " Mouse settings
 noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
