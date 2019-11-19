@@ -163,5 +163,5 @@ set tildeop
 set nojoinspaces
 
 " Text after this column number is not highlighted
-set synmaxcol=200
+set synmaxcol=500
 "}
