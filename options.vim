@@ -69,10 +69,8 @@ set colorcolumn=80
 set scrolloff=3
 
 " Use mouse to select and resize windows, etc.
-if has('mouse')
-    set mouse=nv  " Enable mouse in several mode
-    set mousemodel=popup  " Set the behaviour of mouse
-endif
+set mouse=nv  " Enable mouse in several mode
+set mousemodel=popup  " Set the behaviour of mouse
 
 " Do not show mode on command line since vim-airline can show it
 set noshowmode
