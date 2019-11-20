@@ -81,13 +81,6 @@ else
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 endif
 
-" Only use fzf for Linux and Mac since fzf does not work well for Windows
-if has('unix')
-    " fuzzy file search and more
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
-endif
-
 " Another similar plugin is command-t
 " Plug 'wincent/command-t'
 
@@ -457,75 +450,10 @@ nmap #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
 nmap g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
 nmap g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 
-"""""""""""""""""""""""""fzf settings""""""""""""""""""""""""""
-" Only use fzf on Mac and Linux, since it doesn't work well for Windows
-if has('unix')
-    " Hide status line when open fzf window
-    augroup fzf_hide_statusline
-        autocmd!
-        autocmd! FileType fzf
-        autocmd  FileType fzf set laststatus=0 noshowmode noruler
-                    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-    augroup END
+"""""""""""""""""""""""""""""LeaderF settings"""""""""""""""""""""
+" Search files in popup window
+nnoremap <leader>f :Leaderf file --popup<CR>
 
-    " Search file recursively under current folder
-    nnoremap <silent> <leader>f :FZF<cr>
-
-    """""""""""""""""""""""""fzf.vim settings""""""""""""""""""
-    " Customize fzf colors to match your color scheme
-    let g:fzf_colors =
-    \ { 'fg':      ['fg', 'Normal'],
-      \ 'bg':      ['bg', 'Normal'],
-      \ 'hl':      ['fg', 'Comment'],
-      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-      \ 'hl+':     ['fg', 'Statement'],
-      \ 'info':    ['fg', 'PreProc'],
-      \ 'border':  ['fg', 'Ignore'],
-      \ 'prompt':  ['fg', 'Conditional'],
-      \ 'pointer': ['fg', 'Exception'],
-      \ 'marker':  ['fg', 'Keyword'],
-      \ 'spinner': ['fg', 'Label'],
-      \ 'header':  ['fg', 'Comment'] }
-
-    " [Tags] Command to generate tags file
-    let g:fzf_tags_command = 'ctags -R'
-
-    let $FZF_DEFAULT_OPTS = '--layout=reverse'
-    " Floating windows only works for latest nvim version.
-    " Use floating window to open the fzf search window
-    let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
-
-    function! OpenFloatingWin()
-
-        let height = &lines - 3
-        let width = float2nr(&columns - (&columns * 2 / 10))
-        let col = float2nr((&columns - width) / 2)
-
-        " Set up the attribute of floating window
-        let opts = {
-                \ 'relative': 'editor',
-                \ 'row': height * 0.3,
-                \ 'col': col + 20,
-                \ 'width': width * 2 / 3,
-                \ 'height': height / 2
-                \ }
-
-        let buf = nvim_create_buf(v:false, v:true)
-        let win = nvim_open_win(buf, v:true, opts)
-
-        " Floating window highlight setting
-        call setwinvar(win, '&winhl', 'Normal:Pmenu')
-
-        setlocal
-                \ buftype=nofile
-                \ nobuflisted
-                \ bufhidden=hide
-                \ nonumber
-                \ norelativenumber
-                \ signcolumn=no
-    endfunction
-endif
 "}}
 
 "{{ URL related
