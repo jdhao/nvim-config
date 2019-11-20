@@ -452,7 +452,7 @@ nmap g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 
 """""""""""""""""""""""""""""LeaderF settings"""""""""""""""""""""
 " Search files in popup window
-nnoremap <leader>f :Leaderf file --popup<CR>
+nnoremap <silent> <leader>f :Leaderf file --popup<CR>
 
 "}}
 
