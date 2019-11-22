@@ -20,9 +20,11 @@ let mapleader = ','
 "}}
 
 "{{ Disable loading certain plugins
-" Do not load netrw by default since I do not use it, see
+" Whether to load netrw by default, see
 " https://github.com/bling/dotvim/issues/4
-let g:loaded_netrwPlugin = 1
+" let g:loaded_netrw       = 0
+" let g:loaded_netrwPlugin = 0
+let g:netrw_liststyle = 3
 
 " Do not load tohtml.vim
 let g:loaded_2html_plugin = 1
