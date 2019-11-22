@@ -24,7 +24,7 @@ how to install Nvim dependencies as well as nvim on Linux environment.
 + Powerful sidebar via [Nerdtree](https://github.com/scrooloose/nerdtree).
 + Tags navigation via [tagbar](https://github.com/majutsushi/tagbar).
 + Fast buffer jump via [vim-sneak](https://github.com/justinmk/vim-sneak).
-+ Open a file in current project quickly via [fzf](https://github.com/junegunn/fzf.vim).
++ Open a file in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
 + ......
 
 # Pre-requisite
@@ -33,9 +33,10 @@ There are a few requirements if you want to use Neovim for efficient editing.
 
 ## Python
 
-To use auto-completion and other features, you need to install Python 3. The
+To use auto-completion and other features, you must install Python 3. The
 easiest way to install Python 3 is via
-[Anaconda](https://www.anaconda.com/distribution/#download-section).
+[Anaconda](https://www.anaconda.com/distribution/#download-section). Make sure
+that the output of `python --version` shows that Python 3.x is installed.
 
 ## Pynvim
 
@@ -179,10 +180,10 @@ Make sure that you can call `nvim` from the command line after all these setup.
 
 # How to install this configuration
 
-On Windows, the config is under the directory `$HOME/AppData/Local/nvim`[^1].
-On Linux and Mac, the directory is `~/.config/nvim`. First, you need to remove
-all the files under the config directory, then use the following command to
-install this configuration:
+On Windows, the config directory is `$HOME/AppData/Local/nvim`[^1]. On Linux
+and Mac, the directory is `~/.config/nvim`. First, you need to remove all the
+files under the config directory (including dot files), then use the following
+command to install this configuration:
 
 ```
 git clone https://github.com/jdhao/nvim-config.git .
@@ -190,8 +191,8 @@ git clone https://github.com/jdhao/nvim-config.git .
 
 After that, when you first open nvim, all the plugins included in this
 configuration will be installed automatically for you. Since I use quite a lot
-of plugins (around 60 plugins), it may take some time for the installation
-process, depending on your network connection.
+of plugins (around 60 plugins), it may take some time to install all of them,
+depending on your network connection speed.
 
 # Trouble shooting
 
