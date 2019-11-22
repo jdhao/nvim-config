@@ -1,19 +1,19 @@
 "{ Global Variable
 "{{ Builtin variables
-" Path to Python 3 interpreter (must be an absolute path), make startup
-" faster. See https://neovim.io/doc/user/provider.html.
-if executable('python')
-   if has('win32')
-        let g:python3_host_prog=substitute(exepath('python'), '.exe$', '', 'g')
-    elseif has('unix')
-        let g:python3_host_prog=exepath('python')
-    endif
-else
-    echoerr 'Python executable not found! You must install Python and set its PATH!'
-endif
-
 " Disable Python2 support
 let g:loaded_python_provider=0
+
+" Path to Python 3 interpreter (must be an absolute path), make startup
+" faster. See https://neovim.io/doc/user/provider.html.
+if executable('python3')
+   if has('win32')
+        let g:python3_host_prog=substitute(exepath('python3'), '.exe$', '', 'g')
+    elseif has('unix')
+        let g:python3_host_prog=exepath('python3')
+    endif
+else
+    echoerr 'Python3 executable not found! You must install Python3 and set its PATH correctly!'
+endif
 
 " Custom mapping <leader> (see `:h mapleader` for more info)
 let mapleader = ','
