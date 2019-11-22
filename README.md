@@ -1,4 +1,6 @@
-![](images/demo_look.jpg)
+<p align="center">
+<img src="images/demo_look.jpg">
+</p>
 
 # Introduction
 
