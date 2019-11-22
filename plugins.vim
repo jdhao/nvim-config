@@ -631,7 +631,7 @@ augroup END
 
 """""""""""""""""""""""""vim-pandoc-syntax settings"""""""""""""""""""""""""
 " Whether to conceal urls (seems does not work)
-let g:pandoc#syntax#conceal#urls = 0
+let g:pandoc#syntax#conceal#urls = 1
 
 " Use pandoc-syntax for markdown files, it will disable conceal feature for
 " links, use it at your own risk
@@ -644,7 +644,7 @@ augroup END
 let g:vim_markdown_folding_disabled = 1
 
 " Whether to use conceal feature in markdown
-let g:vim_markdown_conceal = 1
+let g:vim_markdown_conceal = 0
 
 " Disable math tex conceal and syntax highlight
 let g:tex_conceal = ''
