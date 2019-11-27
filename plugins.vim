@@ -285,9 +285,6 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 " Highlight yanked region
 Plug 'machakann/vim-highlightedyank'
 
-" Quickly run a code script
-Plug 'thinca/vim-quickrun'
-
 " Modern matchit implementation
 Plug 'andymass/vim-matchup'
 
@@ -466,6 +463,7 @@ if has('win32') || has('macunix')
     nmap ob <Plug>(openbrowser-smart-search)
     vmap ob <Plug>(openbrowser-smart-search)
 endif
+"}}
 
 "{{ Navigation and tags
 """"""""""""""""""""""" nerdtree settings """"""""""""""""""""""""""
@@ -824,11 +822,6 @@ augroup matchup_matchword_highlight
     autocmd!
     autocmd ColorScheme * hi MatchWord cterm=underline gui=underline
 augroup END
-
-""""""""""""""""""""""""""quickrun settings"""""""""""""""""""""""""""""
-let g:quickrun_no_default_key_mappings = 1
-nnoremap<silent> <F9> :QuickRun<CR>
-let g:quickrun_config = {'outputter/buffer/close_on_empty': 1}
 
 """"""""""""""""""""""""comfortable-motion settings """"""""""""""""""""""
 let g:comfortable_motion_scroll_down_key = 'j'
