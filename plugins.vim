@@ -229,7 +229,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'vim-pandoc/vim-markdownfootnotes', { 'for': 'markdown' }
 
 " Vim tabular plugin for manipulate tabular, required by markdown plugins
-Plug 'godlygeek/tabular'
+Plug 'godlygeek/tabular', {'on': 'Tabularize'}
 
 " Markdown JSON header highlight plugin
 Plug 'elzr/vim-json', { 'for': ['json', 'markdown'] }
@@ -680,9 +680,6 @@ nmap @@ <Plug>ReturnFromFootnote
 "{{ LaTeX editting
 """"""""""""""""""""""""""""vimtex settings"""""""""""""""""""""""""""""
 if ( has('macunix') || has('win32')) && executable('latex')
-    " Enhanced matching with matchup plugin
-    let g:matchup_override_vimtex = 1
-
     " Set up LaTeX flavor
     let g:tex_flavor = 'latex'
 
@@ -805,6 +802,14 @@ highlight HighlightedyankRegion cterm=reverse gui=reverse
 let g:highlightedyank_highlight_duration = 1000
 
 """"""""""""""""""""""""""""vim-matchup settings"""""""""""""""""""""""""""""
+" Improve performance
+let g:matchup_matchparen_deferred = 1
+let g:matchup_matchparen_timeout = 100
+let g:matchup_matchparen_insert_timeout = 30
+
+" Enhanced matching with matchup plugin
+let g:matchup_override_vimtex = 1
+
 " Whether to enable matching inside comment or string
 let g:matchup_delim_noskips = 0
 
