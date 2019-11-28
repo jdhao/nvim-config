@@ -144,7 +144,7 @@ Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
 
 " Comment plugin
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 
 " Multiple cursor plugin like Sublime Text?
 " Plug 'mg979/vim-visual-multi'
@@ -522,21 +522,6 @@ let g:tagbar_type_markdown = {
 "}}
 
 "{{ File editting
-""""""""""""""""""""""""""""nerdcommenter settings"""""""""""""""""""
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-
-" Use one space after # comment character in python,
-" see http://tinyurl.com/y4hm29o3
-let g:NERDAltDelims_python = 1
-
-" Align line-wise comment delimiters flush left instead
-" of following code indentation
-let g:NERDDefaultAlign = 'left'
-
-" Enable NERDCommenterToggle to check all selected lines is commented or not
-let g:NERDToggleCheckAllLines = 1
-
 """"""""""""""""""""""""""""vim-titlecase settings"""""""""""""""""""""""
 " Do not use the default mapping provided
 let g:titlecase_map_keys = 0
