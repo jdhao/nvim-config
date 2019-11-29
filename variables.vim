@@ -35,8 +35,8 @@ let g:loaded_zipPlugin = 1
 let loaded_gzip = 1
 let g:loaded_tarPlugin = 1
 
-" Do not use builtin matchit.vim and matchparen.vim
-let loaded_matchit = 1
+" Do not use builtin matchit.vim and matchparen.vim since we use vim-matchup
+let g:loaded_matchit = 1
 let g:loaded_matchparen = 1
 "}}
 "}}
