@@ -127,7 +127,7 @@ inoremap <expr> <cr> ((pumvisible())?("\<C-Y>"):("\<cr>"))
 inoremap <expr> <esc> ((pumvisible())?("\<C-e>"):("\<esc>"))
 
 " Edit and reload init.vim quickly
-nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
+nnoremap <silent> <leader>ev :tabnew $MYVIMRC <bar> tcd %:h<cr>
 nnoremap <silent> <leader>sv :silent update $MYVIMRC <bar> source $MYVIMRC <bar>
     \ echomsg "Nvim config successfully reloaded!"<cr>
 
