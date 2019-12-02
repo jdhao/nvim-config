@@ -52,7 +52,7 @@ Plug 'ervandew/supertab'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Python syntax highlighting and more
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
 " Python indent (follows the PEP8 style)
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
