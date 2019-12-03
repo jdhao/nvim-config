@@ -65,8 +65,9 @@ Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
 " Super fast movement with vim-sneak
 Plug 'justinmk/vim-sneak'
 
-" Improve vim incsearch
+" Improve vim incsearch, clear search highlight automatically
 Plug 'haya14busa/is.vim'
+Plug 'PeterRincker/vim-searchlight'
 
 " Show match number for incsearch
 Plug 'osyo-manga/vim-anzu'
