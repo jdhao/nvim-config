@@ -293,6 +293,11 @@ Plug 'andymass/vim-matchup'
 Plug 'yuttie/comfortable-motion.vim'
 
 Plug 'tpope/vim-scriptease'
+
+" Asynchronous command execution
+Plug 'skywind3000/asyncrun.vim'
+" Another asynchronous plugin
+" Plug 'tpope/vim-dispatch'
 call plug#end()
 "}}
 "}
@@ -823,5 +828,9 @@ nnoremap <silent> <C-b> :call comfortable_motion#flick(winheight(0) * -4)<CR>
 " Mouse settings
 noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
+
+"""""""""""""""""""""""""" asyncrun.vim settings """"""""""""""""""""""""""
+" Automatically open quickfix window of 6 line tall after asyncrun starts
+let g:asyncrun_open = 6
 "}}
 "}
