@@ -72,8 +72,8 @@ let g:config_file_list = ['variables.vim',
     \ 'ui.vim'
     \ ]
 
-for f in g:config_file_list
-    execute 'source ' . g:nvim_config_root . '/' . f
+for s:fname in g:config_file_list
+    execute 'source ' . g:nvim_config_root . '/' . s:fname
 endfor
 "}
 
