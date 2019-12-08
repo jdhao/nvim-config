@@ -87,4 +87,5 @@ endfor
 " - https://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
 " - https://sanctum.geek.nz/arabesque/vim-anti-patterns/
 " - https://github.com/gkapfham/dotfiles/blob/master/.vimrc
+" - https://google.github.io/styleguide/vimscriptguide.xml
 "}
