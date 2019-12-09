@@ -141,6 +141,7 @@ let g:MY_DICT = expand(g:nvim_config_root . '/dict/words')
 let &dictionary = &dictionary . ',' . g:MY_DICT
 
 set spelllang=en,cjk  " Spell languages
+set spellsuggest+=10  " The number of suggestions shown in the screen for z=
 
 " Align indent to next multiple value of shiftwidth. For its meaning,
 " see http://tinyurl.com/y5n87a6m
