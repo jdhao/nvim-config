@@ -832,5 +832,9 @@ noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
 """""""""""""""""""""""""" asyncrun.vim settings """"""""""""""""""""""""""
 " Automatically open quickfix window of 6 line tall after asyncrun starts
 let g:asyncrun_open = 6
+if has('win32')
+    " Command output encoding for Windows
+    let g:asyncrun_encs = 'gbk'
+endif
 "}}
 "}
