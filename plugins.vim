@@ -76,7 +76,7 @@ Plug 'osyo-manga/vim-anzu'
 Plug 'haya14busa/vim-asterisk'
 
 " File search, tag search and more
-if has('win32')
+if g:is_win
     Plug 'Yggdroot/LeaderF'
 else
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
@@ -117,7 +117,7 @@ Plug 'itchyny/vim-highlighturl'
 
 " For Windows and Mac, we can open an URL in the browser. For Linux, it may
 " not be possible since we maybe in a server which disables GUI.
-if has('win32') || has('macunix')
+if g:is_win || g:is_mac
     " open URL in browser
     Plug 'tyru/open-browser.vim'
 endif
@@ -163,7 +163,7 @@ Plug 'mbbill/undotree'
 " Plug 'simnalamburt/vim-mundo'
 
 " Manage your yank history
-if has('win32') || has('macunix')
+if g:is_win || g:is_mac
     Plug 'svermeulen/vim-yoink'
 endif
 
@@ -183,7 +183,7 @@ Plug 'tpope/vim-repeat'
 " Plug 'junegunn/vim-peekaboo'
 
 " IME toggle for Mac
-if has('macunix')
+if g:is_mac
     Plug 'rlue/vim-barbaric'
 endif
 "}}
@@ -236,7 +236,7 @@ Plug 'godlygeek/tabular', {'on': 'Tabularize'}
 Plug 'elzr/vim-json', { 'for': ['json', 'markdown'] }
 
 " Markdown previewing (only for Mac and Windows)
-if has('win32') || has('macunix')
+if g:is_win || g:is_mac
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 endif
 "}}
@@ -255,7 +255,7 @@ Plug 'michaeljsmith/vim-indent-object'
 
 "{{ LaTeX editting and previewing plugin
 " Only use these plugin on Windows and Mac and when LaTeX is installed
-if ( has('macunix') || has('win32') ) && executable('latex')
+if ( g:is_win || g:is_mac ) && executable('latex')
     " vimtex use autoload feature of Vim, so it is not necessary to use `for`
     " keyword of vim-plug to try to lazy-load it,
     " see http://tinyurl.com/y3ymc4qd
@@ -269,7 +269,7 @@ endif
 "{{ Tmux related plugins
 " Since tmux is only available on Linux and Mac, we only enable these plugins
 " for Linux and Mac
-if has('unix') && executable('tmux')
+if (g:is_linux || g:is_mac) && executable('tmux')
     " Let vim detect tmux focus event correctly, see
     " http://tinyurl.com/y4xd2w3r and http://tinyurl.com/y4878wwm
     Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -461,7 +461,7 @@ nnoremap <silent> <leader>f :Leaderf file --popup<CR>
 
 "{{ URL related
 """"""""""""""""""""""""""""open-browser.vim settings"""""""""""""""""""
-if has('win32') || has('macunix')
+if g:is_win || g:is_mac
     " Disable netrw's gx mapping.
     let g:netrw_nogx = 1
 
@@ -505,7 +505,7 @@ let NERDTreeMinimalUI=0
 nnoremap <silent> <Space>t :TagbarToggle<CR>
 
 " Add support for markdown files in tagbar.
-if has('win32')
+if g:is_win
     let g:md_ctags_bin=fnamemodify(g:nvim_config_root."\\tools\\markdown2ctags.exe", ":p")
 else
     let g:md_ctags_bin=fnamemodify(g:nvim_config_root."/tools/markdown2ctags.py", ":p")
@@ -548,7 +548,7 @@ let g:auto_save_events = ['InsertLeave', 'TextChanged']
 let g:auto_save_silent = 0
 
 """"""""""""""""""""""""""""vim-yoink settings"""""""""""""""""""""""""
-if has('win32') || has('macunix')
+if g:is_win || g:is_mac
     " ctrl-n and ctrl-p will not work if you add the TextChanged event to
     " vim-auto-save events
     " nmap <c-n> <plug>(YoinkPostPasteSwapBack)
@@ -649,7 +649,7 @@ let g:vim_markdown_toc_autofit = 1
 
 """""""""""""""""""""""""markdown-preview settings"""""""""""""""""""
 " Only setting this for suitable platforms
-if has('win32') || has('macunix')
+if g:is_win || g:is_mac
     " Do not close the preview tab when switching to other buffers
     let g:mkdp_auto_close = 0
 
@@ -668,7 +668,7 @@ nmap @@ <Plug>ReturnFromFootnote
 
 "{{ LaTeX editting
 """"""""""""""""""""""""""""vimtex settings"""""""""""""""""""""""""""""
-if ( has('macunix') || has('win32')) && executable('latex')
+if ( g:is_win || g:is_mac ) && executable('latex')
     " Set up LaTeX flavor
     let g:tex_flavor = 'latex'
 
@@ -694,14 +694,14 @@ if ( has('macunix') || has('win32')) && executable('latex')
           \}
 
     " Viewer settings for different platforms
-    if has('win32')
+    if g:is_win
         let g:vimtex_view_general_viewer = 'SumatraPDF'
         let g:vimtex_view_general_options_latexmk = '-reuse-instance'
         let g:vimtex_view_general_options
             \ = '-reuse-instance -forward-search @tex @line @pdf'
     endif
 
-    if has('macunix')
+    if g:is_mac
         " let g:vimtex_view_method = "skim"
         let g:vimtex_view_general_viewer
                 \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'

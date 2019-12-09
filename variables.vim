@@ -6,9 +6,9 @@ let g:loaded_python_provider=0
 " Path to Python 3 interpreter (must be an absolute path), make startup
 " faster. See https://neovim.io/doc/user/provider.html.
 if executable('python')
-   if has('win32')
+   if g:is_win
         let g:python3_host_prog=substitute(exepath('python'), '.exe$', '', 'g')
-    elseif has('unix')
+    elseif g:is_linux || g:is_mac
         let g:python3_host_prog=exepath('python')
     endif
 else
@@ -39,4 +39,4 @@ let g:loaded_tarPlugin = 1
 let g:loaded_matchit = 1
 let g:loaded_matchparen = 1
 "}}
-"}}
+"}
