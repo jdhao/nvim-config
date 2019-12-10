@@ -802,6 +802,9 @@ let g:matchup_override_vimtex = 1
 " Whether to enable matching inside comment or string
 let g:matchup_delim_noskips = 0
 
+" Show offscreen match pair in popup window
+let g:matchup_matchparen_offscreen = {'method': 'popup'}
+
 " Change highlight color of matching bracket for better visual effects
 augroup matchup_matchparen_highlight
   autocmd!
