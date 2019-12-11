@@ -6,11 +6,8 @@
 " Windows 10 build 17063, source: http://tinyurl.com/y23972tt).
 " The following script to install vim-plug is adapted from vim-plug
 " wiki: https://github.com/junegunn/vim-plug/wiki/tips#tips
-if !executable('curl')
-    echomsg 'You have to install curl to install vim-plug. Or install '
-            \ . 'vim-plug yourself following the guide on vim-plug git repo'
-else
-    let g:VIM_PLUG_PATH = expand(g:nvim_config_root . '/autoload/plug.vim')
+let g:VIM_PLUG_PATH = expand(g:nvim_config_root . '/autoload/plug.vim')
+if executable('curl')
     if empty(glob(g:VIM_PLUG_PATH))
         echomsg 'Installing Vim-plug on your system'
         silent execute '!curl -fLo ' . g:VIM_PLUG_PATH . ' --create-dirs '
@@ -21,6 +18,10 @@ else
             autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC
         augroup END
     endif
+else
+    echoerr 'You have to install curl to install vim-plug, or install '
+            \ . 'vim-plug by yourself.'
+    finish
 endif
 
 " Set up directory to install the plugins based on whether you are installing
