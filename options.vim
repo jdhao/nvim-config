@@ -163,4 +163,6 @@ set nojoinspaces
 
 " Text after this column number is not highlighted
 set synmaxcol=500
+
+set nostartofline
 "}
