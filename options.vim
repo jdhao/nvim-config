@@ -1,6 +1,6 @@
 "{ Builtin options and settings
-" Changing fillchars for folding, so there is no garbage charactes
-set fillchars=fold:\ ,vert:\|
+" change filechar for folding, vertical split, and message sepator
+set fillchars=fold:\ ,vert:\│,msgsep:‾
 
 " Paste mode toggle, it seems that Neovim's bracketed paste mode
 " does not work very well for nvim-qt, so we use good-old paste mode
