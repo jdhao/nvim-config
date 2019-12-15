@@ -78,9 +78,6 @@ set noshowmode
 " Fileformats to use for new files
 set fileformats=unix,dos
 
-" The mode in which cursorline text can be concealed
-set concealcursor=nc
-
 " The way to show the result of substitution in real time for preview
 set inccommand=nosplit
 
