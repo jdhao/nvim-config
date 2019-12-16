@@ -194,7 +194,7 @@ endif
 Plug 'neomake/neomake'
 
 " Another linting plugin
-" Plug 'w0rp/ale'
+" Plug 'dense-analysis/ale'
 
 " Auto format tools
 " Plug 'sbdchd/neoformat'
