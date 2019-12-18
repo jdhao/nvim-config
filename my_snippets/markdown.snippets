@@ -1,3 +1,16 @@
+global !p
+def gen_header(snip):
+	placeholders_string = snip.buffer[snip.line].strip()
+	level = int(placeholders_string[0])
+
+	# erase current line
+	snip.buffer[snip.line] = ""
+	line_content = "#"*level + " ${1:Section Name} " + "#"*level
+	line_content += '\n$0'
+
+	snip.expand_anon(line_content)
+endglobal
+
 snippet kbd "HTML kbd tag"
 <kbd>${1:KEY}</kbd>$0
 endsnippet
@@ -25,4 +38,9 @@ endsnippet
 
 snippet link "Markdown links"
 [$1]($2)$0
+endsnippet
+
+post_jump "gen_header(snip)"
+snippet "h([1-6])" "Markdown header" br
+`!p snip.rv = match.group(1)`
 endsnippet
