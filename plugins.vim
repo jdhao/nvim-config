@@ -740,7 +740,7 @@ endif
 let s:candidate_airlinetheme = ['ayu_mirage', 'base16_flat',
     \ 'base16_grayscale', 'lucius', 'hybridline', 'ayu_dark',
     \ 'base16_adwaita', 'biogoo', 'distinguished', 'jellybeans',
-    \ 'luna', 'raven', 'term', 'vice', 'zenburn', 'tomorrow']
+    \ 'luna', 'raven', 'term', 'vice', 'zenburn']
 let s:idx = utils#RandInt(0, len(s:candidate_airlinetheme)-1)
 let s:theme = s:candidate_airlinetheme[s:idx]
 
