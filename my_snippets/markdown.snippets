@@ -18,7 +18,9 @@ endsnippet
 snippet "meta(data)?" "Markdown metadata front matter" br
 ---
 title: "$1"
-date: `!v strftime("%Y-%m-%d %H:%M:%S%z")`
+date: `!p from datetime import datetime
+if not snip.c:
+	snip.rv=datetime.now().strftime("%Y-%m-%d %H:%M:%S%z")`
 tags: [$2]
 categories: [$3]
 ---
