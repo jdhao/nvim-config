@@ -240,6 +240,10 @@ Plug 'elzr/vim-json', { 'for': ['json', 'markdown'] }
 if g:is_win || g:is_mac
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 endif
+
+" emoji
+" Plug 'https://gitlab.com/gi1242/vim-emoji-ab'
+Plug 'fszymanski/deoplete-emoji', {'for': 'markdown'}
 "}}
 
 "{{ Text object plugins
@@ -665,6 +669,9 @@ imap ^^ <Plug>AddVimFootnote
 nmap ^^ <Plug>AddVimFootnote
 imap @@ <Plug>ReturnFromFootnote
 nmap @@ <Plug>ReturnFromFootnote
+
+""""""""""""""""""""""""deoplete-emoji settings""""""""""""""""""""""""""""
+call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
 "}}
 
 "{{ LaTeX editting
