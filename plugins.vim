@@ -57,9 +57,6 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
 " Python indent (follows the PEP8 style)
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
-
-" Python code folding
-Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
 "}}
 
 "{{ Search related plugins
@@ -415,10 +412,6 @@ let g:semshi#mark_selected_nodes=0
 
 " Do not show error sign since neomake is specicialized for that
 let g:semshi#error_sign=v:false
-
-"""""""""""""""""""""""""" simpylFold settings """""""""""""""""""""""""""""""
-" Do not fold docstring
-let g:SimpylFold_fold_docstring = 0
 "}}
 
 "{{ Search related
