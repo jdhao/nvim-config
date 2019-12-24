@@ -459,6 +459,8 @@ nmap g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
 nmap g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 
 """""""""""""""""""""""""""""LeaderF settings"""""""""""""""""""""
+" Do not use cache file
+let g:Lf_UseCache = 0
 " Search files in popup window
 nnoremap <silent> <leader>f :Leaderf file --popup<CR>
 
