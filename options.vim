@@ -11,7 +11,7 @@ set splitbelow splitright
 
 " Time in milliseconds to wait for a mapped sequence to complete,
 " see https://goo.gl/vHvyu8 for more info
-set timeoutlen=1500
+set timeoutlen=1000
 
 " For CursorHold events
 set updatetime=2000
