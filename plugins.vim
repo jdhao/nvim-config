@@ -197,7 +197,7 @@ Plug 'neomake/neomake'
 " Plug 'dense-analysis/ale'
 
 " Auto format tools
-" Plug 'sbdchd/neoformat'
+Plug 'sbdchd/neoformat', { 'on': 'Neoformat' }
 " Plug 'Chiel92/vim-autoformat'
 "}}
 
@@ -605,6 +605,9 @@ let g:neomake_open_list = 0
 
 " Which linter to use for TeX source files
 let g:neomake_tex_enabled_makers = []
+
+"""""""""""""""""""""""""""""" neoformat settings """""""""""""""""""""""
+let g:neoformat_enabled_python = ['black', 'yapf']
 "}}
 
 "{{ Git-related
