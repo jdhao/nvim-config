@@ -454,6 +454,14 @@ nmap g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 """""""""""""""""""""""""""""LeaderF settings"""""""""""""""""""""
 " Do not use cache file
 let g:Lf_UseCache = 0
+
+" Ignore certain files and directories when searching files
+let g:Lf_WildIgnore = {
+    \ 'dir': ['.git', '__pycache__', '.DS_Store'],
+    \ 'file': ['*.exe', '*.dll', '*.so', '*.o', '*.pyc', '*.jpg', '*.png',
+    \ '*.db', '*.tgz', '*.tar.gz', '*.zip', '*.bin']
+    \}
+
 " Search files in popup window
 nnoremap <silent> <leader>f :Leaderf file --popup<CR>
 
