@@ -7,10 +7,22 @@ PYTHON_INSTALLED=false
 
 # If Python has been installed, then we need to know whether Python is provided
 # by the system, or you have already installed Python under your HOME.
-SYSTEM_PYTHON=true
+SYSTEM_PYTHON=false
+
+# If SYSTEM_PYTHON is false, we need to decide whether to install
+# Anaconda (INSTALL_ANACONDA=true) or Miniconda (INSTALL_ANACONDA=false)
+INSTALL_ANACONDA=false
 
 # Whether to add the path of the installed executables to system PATH
-ADD_TO_SYSTEM_PATH=false
+ADD_TO_SYSTEM_PATH=true
+
+if [[ ! -d "$HOME/packages/" ]]; then
+    mkdir -p "$HOME/packages/"
+fi
+
+if [[ ! -d "$HOME/tools/" ]]; then
+    mkdir -p "$HOME/tools/"
+fi
 
 #######################################################################
 #                    Anaconda or miniconda install                    #
@@ -21,12 +33,10 @@ if [[ ! "$PYTHON_INSTALLED" = true ]]; then
 
     SYSTEM_PYTHON=false
 
-    # Whether to install Anaconda (INSTALL_ANACONDA=true) or Miniconda (INSTALL_ANACONDA=false)
-    INSTALL_ANACONDA=false
     if [[ "$INSTALL_ANACONDA" = true ]]; then
         CONDA_DIR=$HOME/tools/anaconda
         CONDA_NAME=Anaconda.sh
-        CONDA_LINK="https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh"
+	CONDA_LINK="https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh"
     else
         CONDA_DIR=$HOME/tools/miniconda
         CONDA_NAME=Miniconda.sh
@@ -49,20 +59,23 @@ if [[ ! "$PYTHON_INSTALLED" = true ]]; then
     if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
         echo "export PATH=$CONDA_DIR/bin:$PATH" >> "$HOME/.bash_profile"
     fi
+    source "$HOME/.bash_profile"
 fi
 
+
 # Install some Python packages
-echo "Install pynvim, pylint flake8, jedi"
+echo "Installing Python packages"
+PY_PACKAGES="pynvim jedi pylint flake8 black"
 
 if [[ "$SYSTEM_PYTHON" = true ]]; then
     echo "Using system Python"
 
     # If we use system Python, we need to install these Python packages under user HOME,
     # since we do not have permission to install them under system directories.
-    pip install --user pynvim pylint jedi flake8 black
+    pip install --user $PY_PACKAGES
 else
     echo "Using custom Python"
-    pip install pynvim pylint jedi flake8 black
+    pip install $PY_PACKAGES
 fi
 
 
@@ -83,10 +96,10 @@ fi
 if [[ ! -d "$RIPGREP_DIR" ]]; then
     echo "Creating ripgrep directory under tools directory"
     mkdir -p "$RIPGREP_DIR"
+    echo "Extracting to $HOME/tools/ripgrep directory"
+    tar zxvf "$RIPGREP_SRC_NAME" -C "$RIPGREP_DIR" --strip-components 1
 fi
 
-echo "Extracting to $HOME/tools/ripgrep directory"
-tar zxvf "$RIPGREP_SRC_NAME" -C "$RIPGREP_DIR" --strip-components 1
 
 if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
     echo "export PATH=$RIPGREP_DIR:$PATH" >> "$HOME/.bash_profile"
@@ -103,10 +116,10 @@ CTAGS_LINK="https://github.com/universal-ctags/ctags.git"
 
 if [[ ! -d $CTAGS_SRC_DIR ]]; then
     mkdir -p "$CTAGS_SRC_DIR"
+    cd "$CTAGS_SRC_DIR"
+    git clone $CTAGS_LINK .
 fi
 
-cd "$CTAGS_SRC_DIR"
-git clone $CTAGS_LINK .
 ./autogen.sh && ./configure --prefix="$CTAGS_DIR"
 make -j && make install
 
@@ -129,13 +142,12 @@ if [[ ! -d "$NVIM_DIR" ]]; then
     mkdir -p "$NVIM_DIR"
 fi
 
-echo "Downloading Neovim"
 if [[ ! -f $NVIM_SRC_NAME ]]; then
+    echo "Downloading Neovim"
     wget "$NVIM_LINK" -O "$NVIM_SRC_NAME"
+    echo "Extracting neovim"
+    tar zxvf "$NVIM_SRC_NAME" --strip-components 1 -C "$NVIM_DIR"
 fi
-
-echo "Extracting neovim"
-tar zxvf "$NVIM_SRC_NAME" --strip-components 1 -C "$NVIM_DIR"
 
 echo "Setting up config and installing plugins"
 git clone https://github.com/jdhao/nvim-config.git "$NVIM_CONFIG_DIR" \
@@ -151,4 +163,4 @@ fi
 #######################################################################
 # Let PATH changes take effect
 # shellcheck source=/dev/null
-source "$HOME/.bash_profile"
+source "$HOME/.bash_profile" 
