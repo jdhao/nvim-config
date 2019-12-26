@@ -459,12 +459,13 @@ let g:Lf_UseCache = 0
 let g:Lf_WildIgnore = {
     \ 'dir': ['.git', '__pycache__', '.DS_Store'],
     \ 'file': ['*.exe', '*.dll', '*.so', '*.o', '*.pyc', '*.jpg', '*.png',
-    \ '*.db', '*.tgz', '*.tar.gz', '*.zip', '*.bin']
+    \ '*.gif', '*.db', '*.tgz', '*.tar.gz', '*.zip', '*.bin', '*.pptx',
+    \ '*.xlsx', '*.docx', '*.pdf', '*.tmp', '*.wmv', '*.mkv', '*.mp4',
+    \ '*.rmvb']
     \}
 
 " Search files in popup window
 nnoremap <silent> <leader>f :Leaderf file --popup<CR>
-
 "}}
 
 "{{ URL related
