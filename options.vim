@@ -123,7 +123,7 @@ set undofile
 set shortmess+=c
 
 " Completion behaviour
-set completeopt+=noinsert  " Auto select the first completion entry
+" set completeopt+=noinsert  " Auto select the first completion entry
 set completeopt+=menuone  " Show menu even if there is only one item
 set completeopt-=preview  " Disable the preview window
 
