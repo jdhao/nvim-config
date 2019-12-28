@@ -31,12 +31,12 @@ if exists('g:fvim_loaded')
     FVimCursorSmoothBlink v:true
 
     " Background composition, can be 'none', 'blur' or 'acrylic'
-    FVimBackgroundComposition 'blur'
+    FVimBackgroundComposition 'none'
     FVimBackgroundOpacity 0.85
     FVimBackgroundAltOpacity 0.85
 
     " Title bar tweaks (themed with colorscheme)
-    FVimCustomTitleBar v:true
+    FVimCustomTitleBar v:false
 
     " Debug UI overlay
     FVimDrawFPS v:false
