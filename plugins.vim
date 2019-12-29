@@ -300,6 +300,7 @@ Plug 'tpope/vim-scriptease'
 Plug 'skywind3000/asyncrun.vim'
 " Another asynchronous plugin
 " Plug 'tpope/vim-dispatch'
+Plug 'cespare/vim-toml'
 call plug#end()
 "}}
 "}
