@@ -20,7 +20,7 @@ endif
 if exists('g:fvim_loaded')
     set termguicolors
     colorscheme gruvbox8_hard
-    set guifont=Hack:h12
+    set guifont=Hack:h13
 
     inoremap <silent> <S-Insert>  <C-R>+
     cnoremap <silent> <S-Insert> <C-R>+
