@@ -301,6 +301,9 @@ Plug 'skywind3000/asyncrun.vim'
 " Another asynchronous plugin
 " Plug 'tpope/vim-dispatch'
 Plug 'cespare/vim-toml'
+
+" Edit text area in browser using nvim
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 "}}
 "}
@@ -855,5 +858,11 @@ if has('win32')
     " Command output encoding for Windows
     let g:asyncrun_encs = 'gbk'
 endif
+
+""""""""""""""""""""""""""""""firenvim settings""""""""""""""""""""""""""""""
+augroup firenvim
+    autocmd!
+    autocmd BufEnter github.com_*.txt set filetype=markdown
+augroup END
 "}}
 "}
