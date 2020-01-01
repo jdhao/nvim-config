@@ -104,8 +104,10 @@ Plug 'lifepillar/vim-gruvbox8'
 " Plug 'kaicataldo/material.vim'
 
 " colorful status line and theme
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+if !exists('g:started_by_firenvim')
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+endif
 Plug 'mhinz/vim-startify'
 "}}
 
@@ -303,7 +305,9 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'cespare/vim-toml'
 
 " Edit text area in browser using nvim
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+if g:is_mac || g:is_win
+    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+endif
 call plug#end()
 "}}
 "}
@@ -860,9 +864,14 @@ if has('win32')
 endif
 
 """"""""""""""""""""""""""""""firenvim settings""""""""""""""""""""""""""""""
-augroup firenvim
-    autocmd!
-    autocmd BufEnter github.com_*.txt set filetype=markdown
-augroup END
+if exists('g:started_by_firenvim') && g:started_by_firenvim
+    " general options
+    set laststatus=0 nonumber noruler noshowcmd
+
+    augroup firenvim
+        autocmd!
+        autocmd BufEnter *.txt setlocal filetype=markdown.pandoc
+    augroup END
+endif
 "}}
 "}
