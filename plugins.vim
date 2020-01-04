@@ -109,7 +109,6 @@ if !exists('g:started_by_firenvim')
     Plug 'vim-airline/vim-airline-themes'
     Plug 'mhinz/vim-startify'
 endif
-Plug 'uguu-org/vim-matrix-screensaver', {'on': 'Matrix'}
 "}}
 
 "{{ Plugin to deal with URL
