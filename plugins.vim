@@ -103,12 +103,12 @@ Plug 'lifepillar/vim-gruvbox8'
 " Plug 'rakr/vim-one'
 " Plug 'kaicataldo/material.vim'
 
-" colorful status line and theme
 if !exists('g:started_by_firenvim')
+    " colorful status line and theme
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'mhinz/vim-startify'
 endif
-Plug 'mhinz/vim-startify'
 "}}
 
 "{{ Plugin to deal with URL
@@ -867,6 +867,21 @@ endif
 if exists('g:started_by_firenvim') && g:started_by_firenvim
     " general options
     set laststatus=0 nonumber noruler noshowcmd
+
+    " general config for firenvim
+    let g:firenvim_config = { 
+        \ 'globalSettings': {
+            \ 'alt': 'all',
+        \  },
+        \ 'localSettings': {
+            \ '.*': {
+                \ 'cmdline': 'neovim',
+                \ 'priority': 0,
+                \ 'selector': 'textarea',
+                \ 'takeover': 'once',
+            \ },
+        \ }
+    \ }
 
     augroup firenvim
         autocmd!
