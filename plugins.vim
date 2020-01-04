@@ -109,6 +109,7 @@ if !exists('g:started_by_firenvim')
     Plug 'vim-airline/vim-airline-themes'
     Plug 'mhinz/vim-startify'
 endif
+Plug 'uguu-org/vim-matrix-screensaver', {'on': 'Matrix'}
 "}}
 
 "{{ Plugin to deal with URL
@@ -869,7 +870,7 @@ if exists('g:started_by_firenvim') && g:started_by_firenvim
     set laststatus=0 nonumber noruler noshowcmd
 
     " general config for firenvim
-    let g:firenvim_config = { 
+    let g:firenvim_config = {
         \ 'globalSettings': {
             \ 'alt': 'all',
         \  },
