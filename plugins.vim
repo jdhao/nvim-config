@@ -93,6 +93,7 @@ endif
 "{{ UI: Color, theme etc.
 " A list of colorscheme plugin you may want to try. Find what suits you.
 Plug 'lifepillar/vim-gruvbox8'
+Plug 'bluz71/vim-moonfly-colors'
 " Plug 'sjl/badwolf'
 " Plug 'ajmwagar/vim-deus'
 " Plug 'sainnhe/vim-color-desert-night'
