@@ -191,10 +191,10 @@ endif
 
 "{{ Linting, formating
 " Syntax check and make
-Plug 'neomake/neomake'
+" Plug 'neomake/neomake'
 
 " Another linting plugin
-" Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 
 " Auto format tools
 Plug 'sbdchd/neoformat', { 'on': 'Neoformat' }
@@ -419,7 +419,7 @@ let g:jedi#show_call_signatures = '0'
 " Do not highlight for all occurances of variable under cursor
 let g:semshi#mark_selected_nodes=0
 
-" Do not show error sign since neomake is specicialized for that
+" Do not show error sign since linting plugin is specicialized for that
 let g:semshi#error_sign=v:false
 "}}
 
@@ -600,22 +600,19 @@ augroup END
 "}}
 
 "{{ Linting and formating
-"""""""""""""""""""""""""""""" neomake settings """""""""""""""""""""""
-" When to activate neomake
-call neomake#configure#automake('nrw', 50)
+"""""""""""""""""""""""""""""" ale settings """""""""""""""""""""""
+" linters for different filetypes
+let g:ale_linters = {
+    \ 'python': ['pylint', 'flake8'],
+    \ 'vim': ['vint']
+\}
 
-" Change warning signs and color, see https://goo.gl/eHcjSq.
-let g:neomake_warning_sign={'text': '!', 'texthl': 'NeomakeWarningSign'}
-let g:neomake_error_sign={'text': '✗'}
+" Only run linters in the g:ale_linters dictionary
+let g:ale_linters_explicit = 1
 
-" Linters enabled for Python source file linting
-let g:neomake_python_enabled_makers = ['pylint']
-
-" Whether to open quickfix or location list automatically
-let g:neomake_open_list = 0
-
-" Which linter to use for TeX source files
-let g:neomake_tex_enabled_makers = []
+" Linter signs
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '!'
 
 """""""""""""""""""""""""""""" neoformat settings """""""""""""""""""""""
 let g:neoformat_enabled_python = ['black', 'yapf']
