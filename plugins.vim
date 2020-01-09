@@ -603,7 +603,7 @@ augroup END
 """""""""""""""""""""""""""""" ale settings """""""""""""""""""""""
 " linters for different filetypes
 let g:ale_linters = {
-    \ 'python': ['pylint', 'flake8'],
+    \ 'python': ['pylint'],
     \ 'vim': ['vint']
 \}
 
