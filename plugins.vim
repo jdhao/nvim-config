@@ -468,7 +468,7 @@ let g:Lf_UseCache = 0
 let g:Lf_WildIgnore = {
     \ 'dir': ['.git', '__pycache__', '.DS_Store'],
     \ 'file': ['*.exe', '*.dll', '*.so', '*.o', '*.pyc', '*.jpg', '*.png',
-    \ '*.gif', '*.db', '*.tgz', '*.tar.gz', '*.zip', '*.bin', '*.pptx',
+    \ '*.gif', '*.db', '*.tgz', '*.tar.gz', '*.gz', '*.zip', '*.bin', '*.pptx',
     \ '*.xlsx', '*.docx', '*.pdf', '*.tmp', '*.wmv', '*.mkv', '*.mp4',
     \ '*.rmvb']
     \}
@@ -603,7 +603,7 @@ augroup END
 """""""""""""""""""""""""""""" ale settings """""""""""""""""""""""
 " linters for different filetypes
 let g:ale_linters = {
-    \ 'python': ['pylint'],
+    \ 'python': ['pylint', 'flake8'],
     \ 'vim': ['vint']
 \}
 
