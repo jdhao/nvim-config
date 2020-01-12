@@ -7,14 +7,6 @@ augroup dynamic_smartcase
     autocmd CmdLineLeave : set smartcase
 augroup END
 
-" Set textwidth for text file types
-augroup text_file_width
-    autocmd!
-    " Sometimes, automatic filetype detection is not right, so we need to
-    " detect the filetype based on the file extensions
-    autocmd BufNewFile,BufRead *.md,*.MD,*.markdown setlocal textwidth=79
-augroup END
-
 augroup term_settings
     autocmd!
     " Do not use number and relative number for terminal inside nvim
