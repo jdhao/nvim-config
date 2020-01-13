@@ -309,6 +309,11 @@ Plug 'cespare/vim-toml'
 if g:is_mac || g:is_win
     Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
+
+" Debugger plugin
+if is_mac || is_linux
+    Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
+endif
 call plug#end()
 "}}
 "}
