@@ -876,7 +876,7 @@ if exists('g:started_by_firenvim') && g:started_by_firenvim
                 \ 'cmdline': 'neovim',
                 \ 'priority': 0,
                 \ 'selector': 'textarea',
-                \ 'takeover': 'once',
+                \ 'takeover': 'never',
             \ },
         \ }
     \ }
