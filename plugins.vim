@@ -208,7 +208,7 @@ Plug 'mhinz/vim-signify'
 " Plug 'airblade/vim-gitgutter'
 
 " Git command inside vim
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive', {'on': ['Gstatus']}
 
 " Git commit browser
 Plug 'junegunn/gv.vim', { 'on': 'GV' }
