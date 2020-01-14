@@ -311,7 +311,7 @@ if g:is_mac || g:is_win
 endif
 
 " Debugger plugin
-if is_mac || is_linux
+if g:is_mac || g:is_linux
     Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 endif
 call plug#end()
