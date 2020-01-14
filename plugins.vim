@@ -891,5 +891,8 @@ if exists('g:started_by_firenvim') && g:started_by_firenvim
         autocmd BufEnter *.txt setlocal filetype=markdown.pandoc
     augroup END
 endif
+
+""""""""""""""""""""""""""""""nvim-gdb settings""""""""""""""""""""""""""""""
+nnoremap <leader>dp :GdbStartPDB python -m pdb %<CR>
 "}}
 "}
