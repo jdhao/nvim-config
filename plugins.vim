@@ -855,8 +855,8 @@ nnoremap <silent> <C-f> :call comfortable_motion#flick(winheight(0) * 4)<CR>
 nnoremap <silent> <C-b> :call comfortable_motion#flick(winheight(0) * -4)<CR>
 
 " Mouse settings
-noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
-noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
+noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(20)<CR>
+noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-20)<CR>
 
 """""""""""""""""""""""""" asyncrun.vim settings """"""""""""""""""""""""""
 " Automatically open quickfix window of 6 line tall after asyncrun starts
