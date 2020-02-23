@@ -1,5 +1,5 @@
 <p align="center">
-<img src="images/demo_look.jpg">
+<img src="images/demo_look.jpg" widht="600">
 </p>
 
 # Introduction
@@ -18,7 +18,7 @@ useful and add it to your own Nvim config.
 See [doc here](docs/README.md) on how to install Nvim's dependencies, Nvim
 itself and the configuration on different platforms (Linux, MacOS and Windows).
 
-## Features ##
+# Features #
 
 + Auto-completion for Python via [Deoplete](https://github.com/Shougo/deoplete.nvim).
 + Source code linting via [Neomake](https://github.com/neomake/neomake).
@@ -32,6 +32,23 @@ itself and the configuration on different platforms (Linux, MacOS and Windows).
 + Powerful sidebar via [Nerdtree](https://github.com/scrooloose/nerdtree).
 + Tags navigation via [tagbar](https://github.com/majutsushi/tagbar).
 + ......
+
+# Shortcuts
+
+In the following shortcuts, `<leader>` represents `,` character.
+
+| Shortcut     | Description                                                   |
+|--------------|---------------------------------------------------------------|
+| `<leader>s`  | Toggle the sidebar (show project tree view)                   |
+| `<leader>f`  | Open file fuzzy search in floating window and starting search |
+| `<leader>s`  | Remove trailing whitespaces                                   |
+| `<leader>t`  | Toggle tag window (show project tags in the right window)     |
+| `<leader>v`  | Reselect last pasted text                                     |
+| `<leader>ev` | Edit Neovim config in a new tabpage                           |
+| `<leader>sv` | Reload Neovim config                                          |
+| `<leader>q`  | Quit current window                                           |
+| `<leader>Q`  | Quit all window and close Neovim                              |
+| `<leader>w`  | Save current buffer content                                   |
 
 # Trouble shooting
 
