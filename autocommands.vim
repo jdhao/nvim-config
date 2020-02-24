@@ -1,6 +1,5 @@
 "{ Auto commands
-" Do not use smart case in command line mode,
-" extracted from https://goo.gl/vCTYdK
+" Do not use smart case in command line mode, extracted from https://goo.gl/vCTYdK.
 augroup dynamic_smartcase
     autocmd!
     autocmd CmdLineEnter : set nosmartcase
