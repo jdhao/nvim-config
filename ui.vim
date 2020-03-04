@@ -1,4 +1,4 @@
-"{ Colorscheme and highlight settings
+"{ UI-related settings
 "{{ General settings about colors
 " Enable true colors support. Do not use this option if your terminal does not
 " support true colors! For a comprehensive list of terminals supporting true
@@ -50,5 +50,15 @@ endif
 " " Make the tab line lighter than the background.
 " let g:badwolf_tabline = 2
 " colorscheme badwolf
+"}}
+
+"{{ Cursor colors and shapes
+" highlight groups for cursor color
+highlight Cursor cterm=bold gui=bold guibg=cyan guifg=black
+highlight Cursor2 guifg=red guibg=red
+
+" Set up cursor color and shape in various mode, ref:
+" https://github.com/neovim/neovim/wiki/FAQ#how-to-change-cursor-color-in-the-terminal
+set guicursor=n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor20
 "}}
 "}
