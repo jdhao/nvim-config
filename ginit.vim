@@ -27,7 +27,7 @@ if exists('g:fvim_loaded')
     nnoremap <silent> <C-6> <C-^>
 
     " Cursor tweaks
-    FVimCursorSmoothMove v:false
+    FVimCursorSmoothMove v:true
     FVimCursorSmoothBlink v:true
 
     " Background composition, can be 'none', 'blur' or 'acrylic'
@@ -48,6 +48,7 @@ if exists('g:fvim_loaded')
     FVimFontAutohint v:true
     FVimFontHintLevel 'full'
     FVimFontSubpixel v:true
+    FVimFontLigature v:true
     FVimFontLcdRender v:false
     " can be 'default', '14.0', '-1.0' etc.
     FVimFontLineHeight '+2.0'
