@@ -284,6 +284,10 @@ if (g:is_linux || g:is_mac) && executable('tmux')
 endif
 "}}
 
+"{{ HTML related
+Plug 'mattn/emmet-vim'
+"}}
+
 "{{ Misc plugins
 " Automatically toggle line number based on several conditions
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
