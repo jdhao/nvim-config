@@ -37,18 +37,18 @@ itself and the configuration on different platforms (Linux, MacOS and Windows).
 
 In the following shortcuts, `<leader>` represents `,` character.
 
-| Shortcut     | Description                                                   |
-|--------------|---------------------------------------------------------------|
-| `<leader>s`  | Toggle the sidebar (show project tree view)                   |
-| `<leader>f`  | Open file fuzzy search in floating window and starting search |
-| `<leader>s`  | Remove trailing whitespaces                                   |
-| `<leader>t`  | Toggle tag window (show project tags in the right window)     |
-| `<leader>v`  | Reselect last pasted text                                     |
-| `<leader>ev` | Edit Neovim config in a new tabpage                           |
-| `<leader>sv` | Reload Neovim config                                          |
-| `<leader>q`  | Quit current window                                           |
-| `<leader>Q`  | Quit all window and close Neovim                              |
-| `<leader>w`  | Save current buffer content                                   |
+| Shortcut          | Description                                                   |
+|-------------------|---------------------------------------------------------------|
+| `<leader>f`       | Open file fuzzy search in floating window and starting search |  
+| `<leader><Space>` | Remove trailing whitespaces                                   |  
+| `<leader>v`       | Reselect last pasted text                                     |  
+| `<leader>ev`      | Edit Neovim config in a new tabpage                           |  
+| `<leader>sv`      | Reload Neovim config                                          |  
+| `<leader>q`       | Quit current window                                           |  
+| `<leader>Q`       | Quit all window and close Neovim                              |  
+| `<leader>w`       | Save current buffer content                                   |  
+| `<Space>s`        | Toggle the sidebar (show project tree view)                   |  
+| `<space>t`        | Toggle tag window (show project tags in the right window)     |  
 
 # Trouble shooting
 
