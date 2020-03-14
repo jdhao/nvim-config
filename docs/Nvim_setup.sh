@@ -3,7 +3,7 @@ set -exu
 set -o pipefail
 
 # Whether to python has been installed
-PYTHON_INSTALLED=false
+PYTHON_INSTALLED=true
 
 # If Python has been installed, then we need to know whether Python is provided
 # by the system, or you have already installed Python under your HOME.
@@ -36,7 +36,7 @@ if [[ ! "$PYTHON_INSTALLED" = true ]]; then
     if [[ "$INSTALL_ANACONDA" = true ]]; then
         CONDA_DIR=$HOME/tools/anaconda
         CONDA_NAME=Anaconda.sh
-	CONDA_LINK="https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh"
+    CONDA_LINK="https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh"
     else
         CONDA_DIR=$HOME/tools/miniconda
         CONDA_NAME=Miniconda.sh
@@ -57,7 +57,7 @@ if [[ ! "$PYTHON_INSTALLED" = true ]]; then
 
     # Setting up environment variables
     if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
-        echo "export PATH=$CONDA_DIR/bin:$PATH" >> "$HOME/.bash_profile"
+        echo "export PATH=\"$CONDA_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
     fi
     source "$HOME/.bash_profile"
 fi
@@ -65,17 +65,17 @@ fi
 
 # Install some Python packages
 echo "Installing Python packages"
-PY_PACKAGES="pynvim jedi pylint flake8 black"
+PY_PACKAGES="pynvim jedi pylint flake8 black yapf"
 
 if [[ "$SYSTEM_PYTHON" = true ]]; then
     echo "Using system Python"
 
     # If we use system Python, we need to install these Python packages under user HOME,
     # since we do not have permission to install them under system directories.
-    pip install --user $PY_PACKAGES
+    pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --user $PY_PACKAGES
 else
     echo "Using custom Python"
-    pip install $PY_PACKAGES
+    pip install -i https://pypi.tuna.tsinghua.edu.cn/simple $PY_PACKAGES
 fi
 
 
@@ -102,7 +102,7 @@ fi
 
 
 if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
-    echo "export PATH=$RIPGREP_DIR:$PATH" >> "$HOME/.bash_profile"
+    echo "export PATH=\"$RIPGREP_DIR:\$PATH\"" >> "$HOME/.bash_profile"
 fi
 
 #######################################################################
@@ -124,7 +124,7 @@ fi
 make -j && make install
 
 if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
-    echo "export PATH=$CTAGS_DIR/bin:$PATH" >> "$HOME/.bash_profile"
+    echo "export PATH=\"$CTAGS_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
 fi
 
 #######################################################################
@@ -154,7 +154,7 @@ git clone https://github.com/jdhao/nvim-config.git "$NVIM_CONFIG_DIR" \
     && "$NVIM_DIR/bin/nvim" +PlugInstall +qall
 
 if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
-    echo "export PATH=$NVIM_DIR/bin:$PATH" >> "$HOME/.bash_profile"
+    echo "export PATH=\"$NVIM_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
 fi
 
 
@@ -163,4 +163,4 @@ fi
 #######################################################################
 # Let PATH changes take effect
 # shellcheck source=/dev/null
-source "$HOME/.bash_profile" 
+source "$HOME/.bash_profile"
