@@ -7,7 +7,7 @@ PYTHON_INSTALLED=true
 
 # If Python has been installed, then we need to know whether Python is provided
 # by the system, or you have already installed Python under your HOME.
-SYSTEM_PYTHON=false
+SYSTEM_PYTHON=true
 
 # If SYSTEM_PYTHON is false, we need to decide whether to install
 # Anaconda (INSTALL_ANACONDA=true) or Miniconda (INSTALL_ANACONDA=false)
@@ -36,7 +36,7 @@ if [[ ! "$PYTHON_INSTALLED" = true ]]; then
     if [[ "$INSTALL_ANACONDA" = true ]]; then
         CONDA_DIR=$HOME/tools/anaconda
         CONDA_NAME=Anaconda.sh
-    CONDA_LINK="https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh"
+        CONDA_LINK="https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh"
     else
         CONDA_DIR=$HOME/tools/miniconda
         CONDA_NAME=Miniconda.sh
@@ -65,17 +65,17 @@ fi
 
 # Install some Python packages
 echo "Installing Python packages"
-PY_PACKAGES="pynvim jedi pylint flake8 black yapf"
+PY_PACKAGES="pynvim jedi pylint flake8 yapf"
 
 if [[ "$SYSTEM_PYTHON" = true ]]; then
     echo "Using system Python"
 
     # If we use system Python, we need to install these Python packages under user HOME,
     # since we do not have permission to install them under system directories.
-    pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --user $PY_PACKAGES
+    pip install --user $PY_PACKAGES
 else
     echo "Using custom Python"
-    pip install -i https://pypi.tuna.tsinghua.edu.cn/simple $PY_PACKAGES
+    pip install $PY_PACKAGES
 fi
 
 
@@ -83,26 +83,28 @@ fi
 #                            Ripgrep part                             #
 #######################################################################
 
-echo "Install ripgrep"
-RIPGREP_DIR=$HOME/tools/ripgrep
-RIPGREP_SRC_NAME=$HOME/packages/ripgrep.tar.gz
-RIPGREP_LINK="https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep-11.0.2-x86_64-unknown-linux-musl.tar.gz"
+if [[ ! "$(command -v rg)" ]]; then
+    echo "Install ripgrep"
+    RIPGREP_DIR=$HOME/tools/ripgrep
+    RIPGREP_SRC_NAME=$HOME/packages/ripgrep.tar.gz
+    RIPGREP_LINK="https://github.com/BurntSushi/ripgrep/releases/download/12.0.0/ripgrep-12.0.0-x86_64-unknown-linux-musl.tar.gz"
 
-if [[ ! -f $RIPGREP_SRC_NAME ]]; then
-    echo "Downloading ripgrep and renaming"
-    wget $RIPGREP_LINK -O "$RIPGREP_SRC_NAME"
-fi
+    if [[ ! -f $RIPGREP_SRC_NAME ]]; then
+        echo "Downloading ripgrep and renaming"
+        wget $RIPGREP_LINK -O "$RIPGREP_SRC_NAME"
+    fi
 
-if [[ ! -d "$RIPGREP_DIR" ]]; then
-    echo "Creating ripgrep directory under tools directory"
-    mkdir -p "$RIPGREP_DIR"
-    echo "Extracting to $HOME/tools/ripgrep directory"
-    tar zxvf "$RIPGREP_SRC_NAME" -C "$RIPGREP_DIR" --strip-components 1
-fi
+    if [[ ! -d "$RIPGREP_DIR" ]]; then
+        echo "Creating ripgrep directory under tools directory"
+        mkdir -p "$RIPGREP_DIR"
+        echo "Extracting to $HOME/tools/ripgrep directory"
+        tar zxvf "$RIPGREP_SRC_NAME" -C "$RIPGREP_DIR" --strip-components 1
+    fi
 
 
-if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
-    echo "export PATH=\"$RIPGREP_DIR:\$PATH\"" >> "$HOME/.bash_profile"
+    if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
+        echo "export PATH=\"$RIPGREP_DIR:\$PATH\"" >> "$HOME/.bash_profile"
+    fi
 fi
 
 #######################################################################
@@ -114,17 +116,21 @@ CTAGS_SRC_DIR=$HOME/packages/ctags
 CTAGS_DIR=$HOME/tools/ctags
 CTAGS_LINK="https://github.com/universal-ctags/ctags.git"
 
-if [[ ! -d $CTAGS_SRC_DIR ]]; then
-    mkdir -p "$CTAGS_SRC_DIR"
-    cd "$CTAGS_SRC_DIR"
-    git clone $CTAGS_LINK .
-fi
+if [[ ! -f "$CTAGS_DIR/bin/ctags" ]]; then
+    if [[ ! -d $CTAGS_SRC_DIR ]]; then
+        mkdir -p "$CTAGS_SRC_DIR"
+    else
+        # Prevent an incomplete download.
+        rm -rf "$CTAGS_SRC_DIR/*"
+    fi
 
-./autogen.sh && ./configure --prefix="$CTAGS_DIR"
-make -j && make install
+    cd "$CTAGS_SRC_DIR" && git clone $CTAGS_LINK .
+    ./autogen.sh && ./configure --prefix="$CTAGS_DIR"
+    make -j && make install
 
-if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
-    echo "export PATH=\"$CTAGS_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+    if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
+        echo "export PATH=\"$CTAGS_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+    fi
 fi
 
 #######################################################################
@@ -138,20 +144,26 @@ NVIM_SRC_NAME=$HOME/packages/nvim-linux64.tar.gz
 NVIM_CONFIG_DIR=$HOME/.config/nvim
 NVIM_LINK="https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
 
-if [[ ! -d "$NVIM_DIR" ]]; then
-    mkdir -p "$NVIM_DIR"
-fi
+if [[ ! -f "$NVIM_DIR/bin/nvim" ]]; then
+    if [[ ! -d "$NVIM_DIR" ]]; then
+        mkdir -p "$NVIM_DIR"
+    fi
 
-if [[ ! -f $NVIM_SRC_NAME ]]; then
-    echo "Downloading Neovim"
-    wget "$NVIM_LINK" -O "$NVIM_SRC_NAME"
-    echo "Extracting neovim"
-    tar zxvf "$NVIM_SRC_NAME" --strip-components 1 -C "$NVIM_DIR"
+    if [[ ! -f $NVIM_SRC_NAME ]]; then
+        echo "Downloading Neovim"
+        wget "$NVIM_LINK" -O "$NVIM_SRC_NAME"
+        echo "Extracting neovim"
+        tar zxvf "$NVIM_SRC_NAME" --strip-components 1 -C "$NVIM_DIR"
+    fi
 fi
 
 echo "Setting up config and installing plugins"
+if [[ -d "$NVIM_CONFIG_DIR" ]]; then
+    mv "$NVIM_CONFIG_DIR" $NVIM_CONFIG_DIR.backup
+fi
+
 git clone https://github.com/jdhao/nvim-config.git "$NVIM_CONFIG_DIR" \
-    && "$NVIM_DIR/bin/nvim" +PlugInstall +qall
+	&& "$NVIM_DIR/bin/nvim" +PlugInstall +qall
 
 if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
     echo "export PATH=\"$NVIM_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
