@@ -156,11 +156,3 @@ git clone https://github.com/jdhao/nvim-config.git "$NVIM_CONFIG_DIR" \
 if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
     echo "export PATH=\"$NVIM_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
 fi
-
-
-#######################################################################
-#                           Post processing                           #
-#######################################################################
-# Let PATH changes take effect
-# shellcheck source=/dev/null
-source "$HOME/.bash_profile"
