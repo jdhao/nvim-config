@@ -167,4 +167,9 @@ nnoremap <silent> <leader><Space> :call utils#StripTrailingWhitespaces()<CR>
 
 " check the syntax group of current cursor position
 nnoremap <silent> <leader>st :call utils#SynGroup()<CR>
+
+" Clear highlighting
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
 "}
