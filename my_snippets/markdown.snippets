@@ -33,7 +33,7 @@ endsnippet
 
 snippet img "Aligned image using HTML tag"
 <p align="center">
-<img src="${1:URL}" width="400">
+<img src="${1:URL}" width="${2:800}">
 </p>
 $0
 endsnippet
@@ -49,7 +49,7 @@ endsnippet
 
 snippet detail "Clickable details" b
 <details>
-<summary>$1</summary>
+<summary><font size="2" color="red">${1:Click to show the code.}</font></summary>
 
 $2
 </details>
