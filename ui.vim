@@ -1,8 +1,9 @@
 "{ UI-related settings
 "{{ General settings about colors
-" Enable true colors support. Do not use this option if your terminal does not
+" Enable true colors support. Do not set this option if your terminal does not
 " support true colors! For a comprehensive list of terminals supporting true
-" colors, see https://github.com/termstandard/colors and https://bit.ly/2InF97t.
+" colors, see https://github.com/termstandard/colors and
+" https://gist.github.com/XVilka/8346728.
 if $TERM == "xterm-256color" || exists('g:started_by_firenvim')
     set termguicolors
 endif
@@ -16,7 +17,7 @@ set background=dark
 " error message when starting Nvim
 if utils#HasColorscheme('gruvbox8')
     " Italic options should be put before colorscheme setting,
-    " see https://goo.gl/8nXhcp
+    " see https://github.com/morhetz/gruvbox/wiki/Terminal-specific#1-italics-is-disabled
     let g:gruvbox_italics=1
     let g:gruvbox_italicize_strings=1
     let g:gruvbox_filetype_hi_groups = 0

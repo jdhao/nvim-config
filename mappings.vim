@@ -40,17 +40,17 @@ nnoremap [Q :cfirst<CR>zv
 nnoremap ]Q :clast<CR>zv
 
 " Close location list or quickfix list if they are present,
-" see https://goo.gl/uXncnS
+" see https://superuser.com/q/355325/736190
 nnoremap<silent> \x :windo lclose <bar> cclose<CR>
 
 " Close a buffer and switching to another buffer, do not close the
-" window, see https://goo.gl/Wd8yZJ
+" window, see https://stackoverflow.com/q/4465095/6064933
 nnoremap <silent> \d :bprevious <bar> bdelete #<CR>
 
-" Toggle search highlight, see https://goo.gl/3H85hh
+" Toggle search highlight, see https://stackoverflow.com/a/26504944/6064933
 nnoremap <silent><expr> <Leader>hl (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
 
-" Disable arrow key in vim, see https://goo.gl/s1yfh4.
+" Disable arrow key in vim, see https://superuser.com/q/599150/736190
 nnoremap <Up> <nop>
 nnoremap <Down> <nop>
 nnoremap <Left> <nop>
@@ -87,7 +87,7 @@ nnoremap <silent> ^ g^
 nnoremap <silent> 0 g0
 
 " Do not include white space characters when using $ in visual mode,
-" see https://goo.gl/PkuZox
+" see https://vi.stackexchange.com/q/12607/15292
 xnoremap $ g_
 
 " Jump to matching pairs easily in normal mode
@@ -100,8 +100,9 @@ nnoremap L g_
 xnoremap L g_
 
 " Resize windows using <Alt> and h,j,k,l, inspiration from
-" https://goo.gl/vVQebo (bottom page).
-" If you enable mouse support, shorcuts below may not be necessary.
+" https://vim.fandom.com/wiki/Fast_window_resizing_with_plus/minus_keys
+" (bottom page). If you enable mouse support, shorcuts below may not be
+" necessary.
 nnoremap <silent> <M-h> <C-w><
 nnoremap <silent> <M-l> <C-w>>
 nnoremap <silent> <M-j> <C-W>-
@@ -115,13 +116,14 @@ nnoremap <silent> <M-down> <C-w>j
 nnoremap <silent> <M-up> <C-w>k
 
 " Continuous visual shifting (does not exit Visual mode), `gv` means
-" to reselect previous visual area, see https://goo.gl/m1UeiT
+" to reselect previous visual area, see https://superuser.com/q/310417/736190
 xnoremap < <gv
 xnoremap > >gv
 
-" When completion menu is shown, use <cr> to select an item
-" and do not add an annoying newline. Otherwise, <enter> is what it is.
-" For more info , see https://goo.gl/KTHtrr and https://goo.gl/MH7w3b
+" When completion menu is shown, use <cr> to select an item and do not add an
+" annoying newline. Otherwise, <enter> is what it is. For more info , see
+" https://superuser.com/a/941082/736190 and
+" https://unix.stackexchange.com/q/162528/221410
 inoremap <expr> <cr> ((pumvisible())?("\<C-Y>"):("\<cr>"))
 " Use <esc> to close auto-completion menu
 inoremap <expr> <esc> ((pumvisible())?("\<C-e>"):("\<esc>"))
@@ -156,8 +158,8 @@ inoremap <silent> <F11> <C-O>:set spell! <bar> :AutoSaveToggle<cr>
 " Decrease indent level in insert mode with shift+tab
 inoremap <S-Tab> <ESC><<i
 
-" Change text without putting the text into register,
-" see http://tinyurl.com/y2ap4h69
+" Change text without putting it into the vim register,
+" see https://stackoverflow.com/q/54255/6064933
 nnoremap c "_c
 nnoremap C "_C
 nnoremap cc "_cc

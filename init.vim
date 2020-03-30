@@ -10,7 +10,7 @@
 "                                                                            "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " The above ASCII art is generated using service provided in this webpage:
-" http://tinyurl.com/y6szckgd.
+" https://www.kammerl.de/ascii/AsciiSignature.php.
 
 "{ Header and Licence
 "{{ header info

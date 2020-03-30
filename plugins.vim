@@ -1,9 +1,10 @@
 "{ Plugin installation
 "{{ Vim-plug Install and related settings
 
-" Auto-install vim-plug on different systems if it does not exist.
-" For Windows, only Windows 10 with curl installed are supported (after
-" Windows 10 build 17063, source: http://tinyurl.com/y23972tt).
+" Auto-install vim-plug on different systems if it does not exist. For
+" Windows, only Windows 10 with curl installed are supported (after Windows 10
+" build 17063, source:
+" https://devblogs.microsoft.com/commandline/tar-and-curl-come-to-windows/).
 " The following script to install vim-plug is adapted from vim-plug
 " wiki: https://github.com/junegunn/vim-plug/wiki/tips#tips
 let g:VIM_PLUG_PATH = expand(g:nvim_config_root . '/autoload/plug.vim')
@@ -160,7 +161,7 @@ Plug '907th/vim-auto-save'
 " graphcial undo history, see https://github.com/mbbill/undotree
 Plug 'mbbill/undotree'
 
-" another plugin to show undo history is: http://tinyurl.com/jlsgjy5
+" another plugin to show undo history
 " Plug 'simnalamburt/vim-mundo'
 
 " Manage your yank history
@@ -263,7 +264,7 @@ Plug 'michaeljsmith/vim-indent-object'
 if ( g:is_win || g:is_mac ) && executable('latex')
     " vimtex use autoload feature of Vim, so it is not necessary to use `for`
     " keyword of vim-plug to try to lazy-load it,
-    " see http://tinyurl.com/y3ymc4qd
+    " see https://github.com/junegunn/vim-plug/issues/785
     Plug 'lervag/vimtex'
 
     " Plug 'matze/vim-tex-fold', {'for': 'tex'}
@@ -276,7 +277,8 @@ endif
 " for Linux and Mac
 if (g:is_linux || g:is_mac) && executable('tmux')
     " Let vim detect tmux focus event correctly, see
-    " http://tinyurl.com/y4xd2w3r and http://tinyurl.com/y4878wwm
+    " https://github.com/neovim/neovim/issues/9486 and
+    " https://vi.stackexchange.com/q/18515/15292
     Plug 'tmux-plugins/vim-tmux-focus-events'
 
     " .tmux.conf syntax highlighting and setting check
@@ -343,8 +345,7 @@ let g:deoplete#enable_at_startup = 1
 " Maximum candidate window width
 call deoplete#custom#source('_', 'max_menu_width', 80)
 
-" Minimum character length needed to activate auto-completion,
-" see https://goo.gl/QP9am2
+" Minimum character length needed to activate auto-completion.
 call deoplete#custom#source('_', 'min_pattern_length', 1)
 
 " Whether to disable completion for certain syntax
@@ -375,10 +376,10 @@ call deoplete#custom#option('auto_complete_delay', 100)
 call deoplete#custom#option('auto_complete', v:true)
 
 " Automatically close function preview windows after completion
-" see https://goo.gl/Bn5n39
+" see https://github.com/Shougo/deoplete.nvim/issues/115.
 " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" Tab-complete, see https://goo.gl/LvwZZY
+" Tab-complete, see https://vi.stackexchange.com/q/19675/15292.
 " inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 """""""""""""""""""""""""UltiSnips settings"""""""""""""""""""
@@ -397,11 +398,12 @@ let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
 " Auto-close method preview window
 let g:SuperTabClosePreviewOnPopupClose = 1
 
-" Use the default top to bottom way for scroll, see https://goo.gl/APdo9V
+" Use the default top to bottom way for scroll, see
+" https://github.com/ervandew/supertab#frequently-asked-questions
 let g:SuperTabDefaultCompletionType = '<c-n>'
 
 " Shortcut to navigate forward and backward in completion menu,
-" see https://is.gd/AoSv4m
+" see https://github.com/ervandew/supertab/blob/master/doc/supertab.txt#L280
 let g:SuperTabMappingForward = '<tab>'
 let g:SuperTabMappingBackward = '<s-tab>'
 "}}
@@ -501,11 +503,11 @@ endif
 "{{ Navigation and tags
 """"""""""""""""""""""" nerdtree settings """"""""""""""""""""""""""
 " Toggle nerdtree window and keep cursor in file window,
-" adapted from http://tinyurl.com/y2kt8cy9
+" adapted from https://stackoverflow.com/q/24808932/6064933
 nnoremap <silent> <Space>s :NERDTreeToggle<CR>:wincmd p<CR>
 
 " Reveal currently editted file in nerdtree widnow,
-" see https://goo.gl/kbxDVK
+" see https://stackoverflow.com/q/7692233/6064933
 nnoremap <silent> <Space>f :NERDTreeFind<CR>
 
 " Ignore certain files and folders
@@ -514,7 +516,7 @@ let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
 " Automatically show nerdtree window on entering nvim,
 " see https://github.com/scrooloose/nerdtree. But now the cursor
 " is in nerdtree window, so we need to change it to the file window,
-" extracted from https://goo.gl/vumpvo
+" extracted from https://stackoverflow.com/q/24808932/6064933
 " autocmd VimEnter * NERDTree | wincmd l
 
 " Delete a file buffer when you have deleted it in nerdtree
@@ -795,7 +797,7 @@ let g:airline#extensions#tagbar#enabled = 1
 " extracted from https://vi.stackexchange.com/a/9637/15292
 let g:airline_skip_empty_sections = 1
 
-" Whether to use powerline symbols, see https://goo.gl/XLY19H.
+" Whether to use powerline symbols, see https://vi.stackexchange.com/q/3359/15292
 let g:airline_powerline_fonts = 0
 
 if !exists('g:airline_symbols')

@@ -6,7 +6,7 @@ function utils#StripTrailingWhitespaces() abort
     call winrestview(l:save)
 endfunction
 
-" Create command alias safely, see https://bit.ly/2ImFOpL.
+" Create command alias safely, see https://stackoverflow.com/q/3878692/6064933
 " The following two functions are taken from answer below on SO:
 " https://stackoverflow.com/a/10708687/6064933
 function! utils#Cabbrev(key, value) abort
@@ -18,8 +18,9 @@ function! s:Single_quote(str) abort
     return "'" . substitute(copy(a:str), "'", "''", 'g') . "'"
 endfunction
 
-" Check the syntax group in the current cursor position,
-" see http://tinyurl.com/yyzgswxz and http://tinyurl.com/y3lxozey
+" Check the syntax group in the current cursor position, see
+" https://stackoverflow.com/q/9464844/6064933 and
+" https://jordanelver.co.uk/blog/2015/05/27/working-with-vim-colorschemes/
 function! utils#SynGroup() abort
     if !exists('*synstack')
         return

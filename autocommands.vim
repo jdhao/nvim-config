@@ -1,5 +1,5 @@
 "{ Auto commands
-" Do not use smart case in command line mode, extracted from https://goo.gl/vCTYdK.
+" Do not use smart case in command line mode, extracted from https://vi.stackexchange.com/a/16511/15292.
 augroup dynamic_smartcase
     autocmd!
     autocmd CmdLineEnter : set nosmartcase
@@ -41,7 +41,8 @@ augroup END
 " Automatically reload the file if it is changed outside of Nvim, see
 " https://unix.stackexchange.com/a/383044/221410. It seems that `checktime`
 " command does not work in command line. We need to check if we are in command
-" line before executing this command. See also http://tinyurl.com/y6av4sy9.
+" line before executing this command. See also
+" https://vi.stackexchange.com/a/20397/15292.
 augroup auto_read
     autocmd!
     autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *

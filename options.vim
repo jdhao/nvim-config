@@ -10,17 +10,17 @@ set pastetoggle=<F12>
 set splitbelow splitright
 
 " Time in milliseconds to wait for a mapped sequence to complete,
-" see https://goo.gl/vHvyu8 for more info
+" see https://unix.stackexchange.com/q/36882/221410 for more info
 set timeoutlen=1000
 
 " For CursorHold events
 set updatetime=2000
 
 " Clipboard settings, always use clipboard for all delete, yank, change, put
-" operation, see https://goo.gl/YAHBbJ
+" operation, see https://stackoverflow.com/q/30691466/6064933
 set clipboard+=unnamedplus
 
-" Disable creating swapfiles, see https://goo.gl/FA6m6h
+" Disable creating swapfiles, see https://stackoverflow.com/q/821902/6064933
 set noswapfile
 
 " Set up backup directory
@@ -62,7 +62,7 @@ set wildmode=list:full
 
 " Show current line where the cursor is
 set cursorline
-" Set a ruler at column 80, see https://goo.gl/vEkF5i
+" Set a ruler at column 80, see https://stackoverflow.com/q/2447109/6064933
 set colorcolumn=80
 
 " Minimum lines to keep above and below cursor when scrolling
@@ -106,10 +106,10 @@ set list listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:+
 " Auto-write the file based on some condition
 set autowrite
 
-" Show hostname, full path of file and last-mod time on the window title.
-" The meaning of the format str for strftime can be found in
-" http://tinyurl.com/l9nuj4a. The function to get lastmod time is drawn from
-" http://tinyurl.com/yxd23vo8
+" Show hostname, full path of file and last-mod time on the window title. The
+" meaning of the format str for strftime can be found in
+" http://man7.org/linux/man-pages/man3/strftime.3.html. The function to get
+" lastmod time is drawn from https://stackoverflow.com/q/8426736/6064933
 set title
 set titlestring=
 set titlestring+=%(%{hostname()}\ \ %)
@@ -141,21 +141,21 @@ set spelllang=en,cjk  " Spell languages
 set spellsuggest+=10  " The number of suggestions shown in the screen for z=
 
 " Align indent to next multiple value of shiftwidth. For its meaning,
-" see http://tinyurl.com/y5n87a6m
+" see http://vim.1045645.n5.nabble.com/shiftround-option-td5712100.html
 set shiftround
 
 " Virtual edit is useful for visual block edit
 set virtualedit=block
 
 " Correctly break multi-byte characters such as CJK,
-" see http://tinyurl.com/y4sq6vf3
+" see https://stackoverflow.com/q/32669814/6064933
 set formatoptions+=mM
 
 " Tilde (~) is an operator, thus must be followed by motions like `e` or `w`.
 set tildeop
 
-" Do not add two space after a period when joining lines or formatting texts,
-" see https://tinyurl.com/y3yy9kov
+" Do not add two spaces after a period when joining lines or formatting texts,
+" see https://stackoverflow.com/q/4760428/6064933
 set nojoinspaces
 
 " Text after this column number is not highlighted
