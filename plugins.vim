@@ -58,6 +58,9 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
 " Python indent (follows the PEP8 style)
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
+
+" Python-related text object
+Plug 'jeetsukumaran/vim-pythonsense'
 "}}
 
 "{{ Search related plugins
