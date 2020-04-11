@@ -180,3 +180,5 @@ dependencies, Neovim itself and Nvim configs in this repo.
 Note that the variable `PYTHON_INSTALLED`, `SYSTEM_PYTHON` and
 `ADD_TO_SYSTEM_PATH` in the script should be set properly based on your
 environment.
+
+[^1]: Use `echo %userprofile%` to see where your `$HOME` is.
