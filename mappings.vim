@@ -174,4 +174,7 @@ nnoremap <silent> <leader>st :call utils#SynGroup()<CR>
 if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
+
+" Copy entire buffer.
+nnoremap <silent> <leader>y :%y<CR>
 "}
