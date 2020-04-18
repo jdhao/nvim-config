@@ -39,6 +39,8 @@ call plug#begin(g:PLUGIN_HOME)
 " Auto-completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+Plug 'deoplete-plugins/deoplete-clang'
+
 " Python source for deoplete
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 
@@ -618,7 +620,9 @@ augroup END
 " linters for different filetypes
 let g:ale_linters = {
     \ 'python': ['pylint'],
-    \ 'vim': ['vint']
+    \ 'vim': ['vint'],
+    \ 'cpp': ['clang'],
+    \ 'c': ['clang']
 \}
 
 " Only run linters in the g:ale_linters dictionary
@@ -630,6 +634,13 @@ let g:ale_sign_warning = '!'
 
 """""""""""""""""""""""""""""" neoformat settings """""""""""""""""""""""
 let g:neoformat_enabled_python = ['black', 'yapf']
+let g:neoformat_cpp_clangformat = {
+    \ 'exe': 'clang-format',
+    \ 'args': ['--style="{IndentWidth: 4}"'] 
+\}
+
+let g:neoformat_enabled_cpp = ['clangformat']
+let g:neoformat_enabled_c = ['clangformat']
 "}}
 
 "{{ Git-related
