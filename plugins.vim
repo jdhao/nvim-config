@@ -39,7 +39,9 @@ call plug#begin(g:PLUGIN_HOME)
 " Auto-completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'deoplete-plugins/deoplete-clang'
+if executable('clang') && (is_mac || is_linux)
+    Plug 'deoplete-plugins/deoplete-clang'
+endif
 
 " Python source for deoplete
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
@@ -635,6 +637,10 @@ let g:ale_sign_warning = '!'
 """""""""""""""""""""""""""""" neoformat settings """""""""""""""""""""""
 let g:neoformat_enabled_python = ['black', 'yapf']
 let g:neoformat_cpp_clangformat = {
+    \ 'exe': 'clang-format',
+    \ 'args': ['--style="{IndentWidth: 4}"'] 
+\}
+let g:neoformat_c_clangformat = {
     \ 'exe': 'clang-format',
     \ 'args': ['--style="{IndentWidth: 4}"'] 
 \}
