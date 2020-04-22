@@ -24,7 +24,7 @@ itself and the configuration on different platforms (Linux, MacOS and Windows).
 + Source code linting via [Neomake](https://github.com/neomake/neomake).
 + Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).
 + Markdown writing and syntax highlighting via [vim-markdown](https://github.com/plasticboy/vim-markdown) and [vim-pandoc-syntax](https://github.com/vim-pandoc/vim-pandoc-syntax).
-+ LaTeX editing via [vimtex](https://github.com/lervag/vimtex).
++ LaTeX editing via [vimtex](https://github.com/lervag/vimtex)[^1].
 + Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
 + Fast buffer jump via [vim-sneak](https://github.com/justinmk/vim-sneak).
 + Open a file in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
@@ -35,20 +35,22 @@ itself and the configuration on different platforms (Linux, MacOS and Windows).
 
 # Shortcuts
 
-In the following shortcuts, `<leader>` represents `,` character.
+In the following shortcuts, `<leader>` represents the `,` character.
 
-| Shortcut          | Description                                                   |
-|-------------------|---------------------------------------------------------------|
-| `<leader>f`       | Open file fuzzy search in floating window and starting search |  
-| `<leader><Space>` | Remove trailing whitespaces                                   |  
-| `<leader>v`       | Reselect last pasted text                                     |  
-| `<leader>ev`      | Edit Neovim config in a new tabpage                           |  
-| `<leader>sv`      | Reload Neovim config                                          |  
-| `<leader>q`       | Quit current window                                           |  
-| `<leader>Q`       | Quit all window and close Neovim                              |  
-| `<leader>w`       | Save current buffer content                                   |  
-| `<Space>s`        | Toggle the sidebar (show project tree view)                   |  
-| `<space>t`        | Toggle tag window (show project tags in the right window)     |  
+| Shortcut          | Description                                                     |
+|-------------------|-----------------------------------------------------------------|
+| `<leader>f`       | Open fuzzy file search in a floating window and starting search |
+| `<leader><Space>` | Remove trailing whitespaces                                     |
+| `<leader>v`       | Reselect last pasted text                                       |
+| `<leader>ev`      | Edit Neovim config in a new tabpage                             |
+| `<leader>sv`      | Reload Neovim config                                            |
+| `<leader>q`       | Quit current window                                             |
+| `<leader>Q`       | Quit all window and close Neovim                                |
+| `<leader>w`       | Save current buffer content                                     |
+| `<Space>s`        | Toggle the sidebar (show project tree view)                     |
+| `<space>t`        | Toggle tag window (show project tags in the right window)       |
+| `<F11>`           | Toggle spell checking                                           |
+| `<F12>`           | Toggle paste mode                                               |
 
 # Trouble shooting
 
@@ -63,3 +65,6 @@ If you still have an issue, you may [open a new issue](https://github.com/jdhao/
 + [Config nvim on Linux for Python development](https://jdhao.github.io/2018/12/24/centos_nvim_install_use_guide_en/)
 + [Nvim config on Windows 10](https://jdhao.github.io/2018/11/15/neovim_configuration_windows/)
 + [Nvim-qt config on Windows 10](https://jdhao.github.io/2019/01/17/nvim_qt_settings_on_windows/)
+
+[^1]: Not enabled by default for Linux, see [this issue](https://github.com/jdhao/nvim-config/issues/4#issuecomment-617736636) on
+How to enable vimtex on Linux.
