@@ -176,12 +176,6 @@ if g:is_win || g:is_mac
     Plug 'svermeulen/vim-yoink'
 endif
 
-" Show marks in sign column for quicker navigation
-Plug 'kshenoy/vim-signature'
-
-" Another good plugin to show signature
-" Plug 'jeetsukumaran/vim-markology'
-
 " Handy unix command inside Vim (Rename, Move etc.)
 Plug 'tpope/vim-eunuch'
 
@@ -607,15 +601,6 @@ if g:is_win || g:is_mac
     " Record yanks in system clipboard
     let g:yoinkSyncSystemClipboardOnFocus = 1
 endif
-
-""""""""""""""""""""""""""""""vim-signature settings""""""""""""""""""""""""""
-" Change mark highlight to be more visible
-augroup signature_highlight
-autocmd!
-autocmd ColorScheme * highlight SignatureMarkText cterm=bold ctermbg=10
-    \ gui=bold guifg=#aeee04
-augroup END
-"}}
 
 "{{ Linting and formating
 """""""""""""""""""""""""""""" ale settings """""""""""""""""""""""
