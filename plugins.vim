@@ -39,7 +39,7 @@ call plug#begin(g:PLUGIN_HOME)
 " Auto-completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-if executable('clang') && (is_mac || is_linux)
+if executable('clang') && (g:is_mac || g:is_linux)
     Plug 'deoplete-plugins/deoplete-clang'
 endif
 
