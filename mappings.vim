@@ -177,4 +177,7 @@ endif
 
 " Copy entire buffer.
 nnoremap <silent> <leader>y :%y<CR>
+
+" Toggle cursor column
+nnoremap <silent> <leader>cl :call utils#ToggleCursorCol()<CR>
 "}
