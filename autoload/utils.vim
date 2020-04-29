@@ -74,4 +74,15 @@ function! utils#MyFoldText()
     let fillcharcount = &textwidth - len(line_text) - len(folded_line_num) - 10
     return '+'. repeat('-', 4) . line_text . repeat('.', fillcharcount) . ' (' . folded_line_num . ' L)'
 endfunction
+
+" Toggle cursor column
+function! utils#ToggleCursorCol()
+    if &cursorcolumn
+        set nocursorcolumn
+        echo "cursorcolumn: OFF"
+    else
+        set cursorcolumn
+        echo "cursorcolumn: ON"
+    endif
+endfunction
 "}
