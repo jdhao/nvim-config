@@ -112,8 +112,10 @@ set autowrite
 " lastmod time is drawn from https://stackoverflow.com/q/8426736/6064933
 set title
 set titlestring=
-set titlestring+=%(%{hostname()}\ \ %)
-set titlestring+=%(%{expand('%:p')}\ \ %)
+if g:is_linux
+    set titlestring+=%(%{hostname()}\ \ %)
+endif
+set titlestring+=%(%{expand('%:p:~')}\ \ %)
 set titlestring+=%{strftime('%Y-%m-%d\ %H:%M',getftime(expand('%')))}
 
 " Persistent undo even after you close a file and re-open it
