@@ -85,4 +85,3 @@ function! utils#ToggleCursorCol()
         echo "cursorcolumn: ON"
     endif
 endfunction
-"}
