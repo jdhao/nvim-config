@@ -133,11 +133,7 @@ set completeopt-=preview  " Disable the preview window
 set pumheight=15  " Maximum number of items to show in popup menu
 
 " Scan files given by `dictionary` option
-set complete+=k,kspell complete-=w complete-=b complete-=u complete-=t
-
-" Dictionary files for different systems
-let g:MY_DICT = expand(g:nvim_config_root . '/dict/words')
-let &dictionary = &dictionary . ',' . g:MY_DICT
+set complete+=kspell complete-=w complete-=b complete-=u complete-=t
 
 set spelllang=en,cjk  " Spell languages
 set spellsuggest+=10  " The number of suggestions shown in the screen for z=
