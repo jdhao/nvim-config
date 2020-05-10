@@ -50,16 +50,6 @@ nnoremap <silent> \d :bprevious <bar> bdelete #<CR>
 " Toggle search highlight, see https://stackoverflow.com/a/26504944/6064933
 nnoremap <silent><expr> <Leader>hl (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n"
 
-" Disable arrow key in vim, see https://superuser.com/q/599150/736190
-nnoremap <Up> <nop>
-nnoremap <Down> <nop>
-nnoremap <Left> <nop>
-nnoremap <Right> <nop>
-inoremap <Up> <nop>
-inoremap <Down> <nop>
-inoremap <Left> <nop>
-inoremap <Right> <nop>
-
 " Insert a blank line below or above current line (do not move the cursor),
 " see https://stackoverflow.com/a/16136133/6064933
 nnoremap <expr> oo 'm`' . v:count1 . 'o<Esc>``'
