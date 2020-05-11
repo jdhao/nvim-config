@@ -37,20 +37,29 @@ itself and the configuration on different platforms (Linux, MacOS and Windows).
 
 In the following shortcuts, `<leader>` represents the `,` character.
 
-| Shortcut          | Description                                                     |
-|-------------------|-----------------------------------------------------------------|
-| `<leader>f`       | Open fuzzy file search in a floating window and starting search |
-| `<leader><Space>` | Remove trailing whitespaces                                     |
-| `<leader>v`       | Reselect last pasted text                                       |
-| `<leader>ev`      | Edit Neovim config in a new tabpage                             |
-| `<leader>sv`      | Reload Neovim config                                            |
-| `<leader>q`       | Quit current window                                             |
-| `<leader>Q`       | Quit all window and close Neovim                                |
-| `<leader>w`       | Save current buffer content                                     |
-| `<Space>s`        | Toggle the sidebar (show project tree view)                     |
-| `<space>t`        | Toggle tag window (show project tags in the right window)       |
-| `<F11>`           | Toggle spell checking                                           |
-| `<F12>`           | Toggle paste mode                                               |
+| Shortcut          | Mode   | Description                                               |
+|-------------------|--------|-----------------------------------------------------------|
+| `<leader>f`       | Normal | Fuzzy file search in a floating window                    |
+| `<leader><Space>` | Normal | Remove trailing whitespaces                               |
+| `<leader>v`       | Normal | Reselect last pasted text                                 |
+| `<leader>ev`      | Normal | Edit Neovim config in a new tabpage                       |
+| `<leader>sv`      | Normal | Reload Neovim config                                      |
+| `<leader>q`       | Normal | Quit current window                                       |
+| `<leader>Q`       | Normal | Quit all window and close Neovim                          |
+| `<leader>w`       | Normal | Save current buffer content                               |
+| `<leader>cd`      | Normal | Change current directory to where current file is         |
+| `<leader>y`       | Normal | Copy the content of entire buffer to default register     |
+| `<leader>cl`      | Normal | Toggle cursor column                                      |
+| `<Space>s`        | Normal | Toggle the sidebar (show project tree view)               |
+| `<space>t`        | Normal | Toggle tag window (show project tags in the right window) |
+| `<F11>`           | Normal | Toggle spell checking                                     |
+| `<F12>`           | Normal | Toggle paste mode                                         |
+| `\x`              | Normal | Close location or quickfix window                         |
+| `\d`              | Normal | Close current buffer and go to previous buffer            |
+| `ctrl-u`          | Insert | Turn word under cursor to upper case                      |
+| `ctrl-t`          | Insert | Turn word under cursor to title case                      |
+| `jk`              | Insert | Return to Normal mode (faster `<ESC>`)                    |
+
 
 # Trouble shooting
 
