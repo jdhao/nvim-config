@@ -48,9 +48,6 @@ Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 
 " Vim source for deoplete
 Plug 'Shougo/neco-vim', { 'for': 'vim' }
-
-" Insert mode completion
-Plug 'ervandew/supertab'
 "}}
 
 "{{ Python-related plugins
@@ -373,16 +370,16 @@ call deoplete#custom#option('auto_complete_delay', 100)
 " Enable deoplete auto-completion
 call deoplete#custom#option('auto_complete', v:true)
 
-" Automatically close function preview windows after completion
-" see https://github.com/Shougo/deoplete.nvim/issues/115.
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
 " Tab-complete, see https://vi.stackexchange.com/q/19675/15292.
-" inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 """""""""""""""""""""""""UltiSnips settings"""""""""""""""""""
 " Trigger configuration. Do not use <tab> if you use YouCompleteMe
-let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsExpandTrigger='<c-j>'
+
+" Do not look for SnipMate snippets
+let g:UltiSnipsEnableSnipMate = 0
 
 " Shortcut to jump forward and backward in tabstop positions
 let g:UltiSnipsJumpForwardTrigger='<c-j>'
@@ -391,19 +388,6 @@ let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 " Configuration for custom snippets directory, see
 " https://jdhao.github.io/2019/04/17/neovim_snippet_s1/ for details.
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
-
-"""""""""""""""""""""""""supertab settings""""""""""""""""""""""""""
-" Auto-close method preview window
-let g:SuperTabClosePreviewOnPopupClose = 1
-
-" Use the default top to bottom way for scroll, see
-" https://github.com/ervandew/supertab#frequently-asked-questions
-let g:SuperTabDefaultCompletionType = '<c-n>'
-
-" Shortcut to navigate forward and backward in completion menu,
-" see https://github.com/ervandew/supertab/blob/master/doc/supertab.txt#L280
-let g:SuperTabMappingForward = '<tab>'
-let g:SuperTabMappingBackward = '<s-tab>'
 "}}
 
 "{{ Python-related
