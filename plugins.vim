@@ -292,9 +292,6 @@ Plug 'mattn/emmet-vim'
 "}}
 
 "{{ Misc plugins
-" Automatically toggle line number based on several conditions
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
-
 " Highlight yanked region
 Plug 'machakann/vim-highlightedyank'
 
