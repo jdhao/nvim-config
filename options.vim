@@ -41,7 +41,7 @@ set shiftwidth=4    " number of spaces to use for autoindent
 set expandtab       " expand tab to spaces so that tabs are spaces
 
 " Set matching pairs of characters and highlight matching brackets
-set matchpairs+=<:>,「:」
+set matchpairs+=<:>,「:」,『:』,【:】,“:”,‘:’,《:》
 
 " Show line number and relative line number
 set number relativenumber
@@ -132,9 +132,9 @@ set completeopt+=menuone  " Show menu even if there is only one item
 set completeopt-=preview  " Disable the preview window
 
 " Settings for popup menu
-set pumheight=15  " Maximum number of items to show in popup menu
+set pumheight=10  " Maximum number of items to show in popup menu
 
-" Scan files given by `dictionary` option
+" Insert mode key word completion setting
 set complete+=kspell complete-=w complete-=b complete-=u complete-=t
 
 set spelllang=en,cjk  " Spell languages
@@ -159,7 +159,7 @@ set tildeop
 set nojoinspaces
 
 " Text after this column number is not highlighted
-set synmaxcol=500
+set synmaxcol=200
 
 set nostartofline
 
