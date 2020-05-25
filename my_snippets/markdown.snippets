@@ -11,8 +11,16 @@ def gen_header(snip):
 	snip.expand_anon(line_content)
 endglobal
 
-snippet kbd "HTML kbd tag"
+snippet "(k1|kbd)" "HTML kbd tag" rw
 <kbd>${1:KEY}</kbd>$0
+endsnippet
+
+snippet k2 "Two key strokes shortcut"
+<kbd>${1:KEY}</kbd> + <kbd>${2:KEY}</kbd>
+endsnippet
+
+snippet k3 "Three key strokes shortcut"
+<kbd>${1:KEY}</kbd> + <kbd>${2:KEY}</kbd> + <kbd>${3:KEY}</kbd> 
 endsnippet
 
 snippet "meta(data)?" "Markdown front matter in YAML format" br
