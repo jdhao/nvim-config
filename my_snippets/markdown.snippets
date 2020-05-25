@@ -6,7 +6,7 @@ def gen_header(snip):
 	# erase current line
 	snip.buffer[snip.line] = ""
 	line_content = "#"*level + " ${1:Section Name} " + "#"*level
-	line_content += '\n\n$0'
+	line_content += '\n$0'
 
 	snip.expand_anon(line_content)
 endglobal
