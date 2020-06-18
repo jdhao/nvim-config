@@ -131,7 +131,7 @@ endif
 
 "{{ Navigation and tags plugin
 " File explorer for vim
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 
 " Only install these plugins if ctags are installed on the system
 if executable('ctags')
