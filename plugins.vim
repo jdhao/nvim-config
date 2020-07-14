@@ -755,7 +755,7 @@ endif
 """""""""""""""""""""""""""vim-airline setting""""""""""""""""""""""""""""""
 " Set airline theme to a random one if it exists
 let s:candidate_airlinetheme = ['ayu_mirage', 'base16_flat',
-    \ 'lucius', 'hybridline', 'ayu_dark', 'base16_bright',
+    \ 'lucius', 'ayu_dark', 'base16_bright',
     \ 'base16_adwaita', 'jellybeans', 'base16_isotope', 'jet',
     \ 'luna', 'raven', 'term', 'base16_summerfruit']
 let s:idx = utils#RandInt(0, len(s:candidate_airlinetheme)-1)
