@@ -21,15 +21,15 @@ itself and the configuration on different platforms (Linux, MacOS and Windows).
 # Features #
 
 + Auto-completion for Python via [Deoplete](https://github.com/Shougo/deoplete.nvim).
-+ Source code linting via [Neomake](https://github.com/neomake/neomake).
++ Source code linting via [Ale](https://github.com/dense-analysis/ale).
 + Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).
 + Markdown writing and syntax highlighting via [vim-markdown](https://github.com/plasticboy/vim-markdown) and [vim-pandoc-syntax](https://github.com/vim-pandoc/vim-pandoc-syntax).
 + LaTeX editing via [vimtex](https://github.com/lervag/vimtex)[^1].
 + Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
 + Fast buffer jump via [vim-sneak](https://github.com/justinmk/vim-sneak).
-+ Open a file in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
++ Fuzzy searching in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
 + Beautiful status line via [vim-airline](https://github.com/vim-airline/vim-airline).
-+ Powerful sidebar via [Nerdtree](https://github.com/scrooloose/nerdtree).
++ Powerful file explorer via [Nerdtree](https://github.com/scrooloose/nerdtree).
 + Tags navigation via [tagbar](https://github.com/majutsushi/tagbar).
 + ......
 
