@@ -183,11 +183,6 @@ Plug 'tpope/vim-repeat'
 
 " Show the content of register in preview window
 " Plug 'junegunn/vim-peekaboo'
-
-" IME toggle for Mac
-if g:is_mac
-    Plug 'rlue/vim-barbaric'
-endif
 "}}
 
 "{{ Linting, formating
