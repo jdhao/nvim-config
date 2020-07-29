@@ -55,7 +55,9 @@ Plug 'Shougo/neco-vim', { 'for': 'vim' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Python syntax highlighting and more
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+if g:is_mac || g:is_win
+    Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+endif
 
 " Python indent (follows the PEP8 style)
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
@@ -465,6 +467,11 @@ let g:Lf_WildIgnore = {
     \ '*.xlsx', '*.docx', '*.pdf', '*.tmp', '*.wmv', '*.mkv', '*.mp4',
     \ '*.rmvb']
     \}
+
+" Do not show fancy icons for Linux server.
+if g:is_linux
+    let g:Lf_ShowDevIcons = 0
+endif
 
 " Search files in popup window
 nnoremap <silent> <leader>f :Leaderf file --popup<CR>
