@@ -8,21 +8,23 @@
 " The following script to install vim-plug is adapted from vim-plug
 " wiki: https://github.com/junegunn/vim-plug/wiki/tips#tips
 let g:VIM_PLUG_PATH = expand(g:nvim_config_root . '/autoload/plug.vim')
-if executable('curl')
+if g:is_win || g:is_mac
     if empty(glob(g:VIM_PLUG_PATH))
-        echomsg 'Installing Vim-plug on your system'
-        silent execute '!curl -fLo ' . g:VIM_PLUG_PATH . ' --create-dirs '
-            \ . 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        if executable('curl')
+            echomsg 'Installing Vim-plug on your system'
+            silent execute '!curl -fLo ' . g:VIM_PLUG_PATH . ' --create-dirs '
+                \ . 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-        augroup plug_init
-            autocmd!
-            autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC
-        augroup END
+            augroup plug_init
+                autocmd!
+                autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC
+            augroup END
+        else
+            echoerr 'Curl must be available to install vim-plug, or you may install '
+                    \ . 'vim-plug by yourself.'
+            finish
+        endif
     endif
-else
-    echoerr 'You have to install curl to install vim-plug, or install '
-            \ . 'vim-plug by yourself.'
-    finish
 endif
 
 " Set up directory to install the plugins based on whether you are installing
