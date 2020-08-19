@@ -470,6 +470,10 @@ if g:is_linux
     let g:Lf_ShowDevIcons = 0
 endif
 
+" Do not use version control tool to list files under a directory since
+" submodules are not searched by default.
+let g:Lf_UseVersionControlTool = 0
+
 " Search files in popup window
 nnoremap <silent> <leader>f :Leaderf file --popup<CR>
 "}}
