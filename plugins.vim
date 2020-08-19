@@ -470,6 +470,11 @@ if g:is_linux
     let g:Lf_ShowDevIcons = 0
 endif
 
+" Only fuzzy-search files names
+let g:Lf_DefaultMode = 'NameOnly'
+
+let g:Lf_PopupColorscheme = 'gruvbox_default'
+
 " Do not use version control tool to list files under a directory since
 " submodules are not searched by default.
 let g:Lf_UseVersionControlTool = 0
