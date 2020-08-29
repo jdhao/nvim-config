@@ -182,3 +182,5 @@ uwsgi
 gcc
 conda
 uWSGI
+warmup
+maskrcnn
