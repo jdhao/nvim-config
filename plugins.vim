@@ -27,13 +27,8 @@ if g:is_win || g:is_mac
     endif
 endif
 
-" Set up directory to install the plugins based on whether you are installing
-" neovim system wide or for personal use.
-if g:nvim_system_wide
-    let g:PLUGIN_HOME="/usr/local/share/nvim/site"
-else
-    let g:PLUGIN_HOME=expand(stdpath('data') . '/plugged')
-endif
+" The directory to install plugins.
+let g:PLUGIN_HOME=expand(stdpath('data') . '/plugged')
 "}}
 
 "{{ Autocompletion related plugins
