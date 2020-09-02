@@ -1,6 +1,6 @@
 " Fix key mapping issues for GUI
 inoremap <silent> <S-Insert>  <C-R>+
-cnoremap <silent> <S-Insert> <C-R>+
+cnoremap <S-Insert> <C-R>+
 nnoremap <silent> <C-6> <C-^>
 
 " To check if neovim-qt is running, use `exists('g:GuiLoaded')`,
