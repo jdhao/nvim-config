@@ -283,9 +283,6 @@ Plug 'mattn/emmet-vim'
 "}}
 
 "{{ Misc plugins
-" Highlight yanked region
-Plug 'machakann/vim-highlightedyank'
-
 " Modern matchit implementation
 Plug 'andymass/vim-matchup'
 
@@ -813,13 +810,6 @@ let g:airline_highlighting_cache = 1
 "}}
 
 "{{ Misc plugin setting
-""""""""""""""""""" vim-highlightedyank settings """"""""""""""
-" Reverse the highlight color for yanked text for better visuals
-highlight HighlightedyankRegion cterm=reverse gui=reverse
-
-" Let highlight endures longer
-let g:highlightedyank_highlight_duration = 1000
-
 """"""""""""""""""""""""""""vim-matchup settings"""""""""""""""""""""""""""""
 " Improve performance
 let g:matchup_matchparen_deferred = 1
