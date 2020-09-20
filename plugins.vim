@@ -237,6 +237,10 @@ endif
 " emoji
 " Plug 'https://gitlab.com/gi1242/vim-emoji-ab'
 Plug 'fszymanski/deoplete-emoji', {'for': 'markdown'}
+
+if g:is_mac:
+    Plug 'rhysd/vim-grammarous'
+endif
 "}}
 
 "{{ Text object plugins
@@ -688,6 +692,24 @@ imap ^^ <Plug>AddVimFootnote
 nmap ^^ <Plug>AddVimFootnote
 imap @@ <Plug>ReturnFromFootnote
 nmap @@ <Plug>ReturnFromFootnote
+
+""""""""""""""""""""""""vim-grammarous settings""""""""""""""""""""""""""""""
+if g:is_mac:
+    let g:grammarous#languagetool_cmd = 'languagetool'
+    nmap <leader>x <Plug>(grammarous-close-info-window)
+    nmap <c-n> <Plug>(grammarous-move-to-next-error)
+    nmap <c-p> <Plug>(grammarous-move-to-previous-error)
+    let g:grammarous#disabled_rules = {
+        \ '*' : ['WHITESPACE_RULE', 'EN_QUOTES', 'ARROWS', 'SENTENCE_WHITESPACE',
+        \        'WORD_CONTAINS_UNDERSCORE', 'COMMA_PARENTHESIS_WHITESPACE',
+        \        'EN_UNPAIRED_BRACKETS', 'UPPERCASE_SENTENCE_START',
+        \        'ENGLISH_WORD_REPEAT_BEGINNING_RULE', 'DASH_RULE', 'PLUS_MINUS',
+        \        'PUNCTUATION_PARAGRAPH_END', 'MULTIPLICATION_SIGN', 'PRP_CHECKOUT',
+        \        'CAN_CHECKOUT', 'SOME_OF_THE', 'DOUBLE_PUNCTUATION', 'HELL',
+        \        'CURRENCY', 'POSSESSIVE_APOSTROPHE', 'ENGLISH_WORD_REPEAT_RULE',
+        \        'NON_STANDARD_WORD'],
+        \ }
+endif
 
 """"""""""""""""""""""""deoplete-emoji settings""""""""""""""""""""""""""""
 call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
