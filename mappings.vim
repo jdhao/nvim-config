@@ -9,13 +9,13 @@ xnoremap ; :
 nnoremap q; q:
 
 " Quicker <Esc> in insert mode
-inoremap <silent> jk <Esc>
+inoremap jk <Esc>
 
 " Turn the word under cursor to upper case
-inoremap <silent> <c-u> <Esc>viwUea
+inoremap <c-u> <Esc>viwUea
 
 " Turn the current word into title case
-inoremap <silent> <c-t> <Esc>b~lea
+inoremap <c-t> <Esc>b~lea
 
 " Paste non-linewise text above or below current cursor,
 " see https://stackoverflow.com/a/1346777/6064933
@@ -30,14 +30,14 @@ nnoremap <silent> <leader>q :x<CR>
 nnoremap <silent> <leader>Q :qa<CR>
 
 " Navigation in the location and quickfix list
-nnoremap [l :lprevious<CR>zv
-nnoremap ]l :lnext<CR>zv
-nnoremap [L :lfirst<CR>zv
-nnoremap ]L :llast<CR>zv
-nnoremap [q :cprevious<CR>zv
-nnoremap ]q :cnext<CR>zv
-nnoremap [Q :cfirst<CR>zv
-nnoremap ]Q :clast<CR>zv
+nnoremap <silent> [l :lprevious<CR>zv
+nnoremap <silent> ]l :lnext<CR>zv
+nnoremap <silent> [L :lfirst<CR>zv
+nnoremap <silent> ]L :llast<CR>zv
+nnoremap <silent> [q :cprevious<CR>zv
+nnoremap <silent> ]q :cnext<CR>zv
+nnoremap <silent> [Q :cfirst<CR>zv
+nnoremap <silent> ]Q :clast<CR>zv
 
 " Close location list or quickfix list if they are present,
 " see https://superuser.com/q/355325/736190
@@ -64,17 +64,17 @@ nnoremap <expr> OO 'm`' . v:count1 . 'O<Esc>``'
 " nnoremap oo @="m`o\e``"<cr>
 
 " Insert a space after current character
-nnoremap <silent> <Space><Space> a<Space><ESC>h
+nnoremap <Space><Space> a<Space><ESC>h
 
 " Yank from current cursor position to the end of the line (make it
 " consistent with the behavior of D, C)
 nnoremap Y y$
 
 " Move the cursor based on physical lines, not the actual lines.
-nnoremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
-nnoremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
-nnoremap <silent> ^ g^
-nnoremap <silent> 0 g0
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap ^ g^
+nnoremap 0 g0
 
 " Do not include white space characters when using $ in visual mode,
 " see https://vi.stackexchange.com/q/12607/15292
@@ -93,17 +93,17 @@ xnoremap L g_
 " https://vim.fandom.com/wiki/Fast_window_resizing_with_plus/minus_keys
 " (bottom page). If you enable mouse support, shorcuts below may not be
 " necessary.
-nnoremap <silent> <M-h> <C-w><
-nnoremap <silent> <M-l> <C-w>>
-nnoremap <silent> <M-j> <C-W>-
-nnoremap <silent> <M-k> <C-W>+
+nnoremap <M-h> <C-w><
+nnoremap <M-l> <C-w>>
+nnoremap <M-j> <C-W>-
+nnoremap <M-k> <C-W>+
 
 " Fast window switching, inspiration from
 " https://stackoverflow.com/a/4373470/6064933
-nnoremap <silent> <M-left> <C-w>h
-nnoremap <silent> <M-right> <C-w>l
-nnoremap <silent> <M-down> <C-w>j
-nnoremap <silent> <M-up> <C-w>k
+nnoremap <M-left> <C-w>h
+nnoremap <M-right> <C-w>l
+nnoremap <M-down> <C-w>j
+nnoremap <M-up> <C-w>k
 
 " Continuous visual shifting (does not exit Visual mode), `gv` means
 " to reselect previous visual area, see https://superuser.com/q/310417/736190
