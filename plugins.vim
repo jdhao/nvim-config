@@ -238,7 +238,7 @@ endif
 " Plug 'https://gitlab.com/gi1242/vim-emoji-ab'
 Plug 'fszymanski/deoplete-emoji', {'for': 'markdown'}
 
-if g:is_mac:
+if g:is_mac
     Plug 'rhysd/vim-grammarous'
 endif
 "}}
@@ -694,7 +694,7 @@ imap @@ <Plug>ReturnFromFootnote
 nmap @@ <Plug>ReturnFromFootnote
 
 """"""""""""""""""""""""vim-grammarous settings""""""""""""""""""""""""""""""
-if g:is_mac:
+if g:is_mac
     let g:grammarous#languagetool_cmd = 'languagetool'
     nmap <leader>x <Plug>(grammarous-close-info-window)
     nmap <c-n> <Plug>(grammarous-move-to-next-error)
