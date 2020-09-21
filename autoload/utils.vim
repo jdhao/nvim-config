@@ -49,7 +49,7 @@ function! utils#RandInt(Low, High) abort
 endfunction
 
 " Custom fold expr, adapted from https://vi.stackexchange.com/a/9094/15292
-function! utils#VimFolds(lnum)
+function! utils#VimFolds(lnum) abort
     " get content of current line and the line below
     let l:cur_line = getline(a:lnum)
     let l:next_line = getline(a:lnum+1)
@@ -67,7 +67,7 @@ endfunction
 
 " Custom fold text, adapted from https://vi.stackexchange.com/a/3818/15292
 " and https://vi.stackexchange.com/a/6608/15292
-function! utils#MyFoldText()
+function! utils#MyFoldText() abort
     let line = getline(v:foldstart)
     let folded_line_num = v:foldend - v:foldstart
     let line_text = substitute(line, '^"{\+', '', 'g')
@@ -76,7 +76,7 @@ function! utils#MyFoldText()
 endfunction
 
 " Toggle cursor column
-function! utils#ToggleCursorCol()
+function! utils#ToggleCursorCol() abort
     if &cursorcolumn
         set nocursorcolumn
         echo "cursorcolumn: OFF"
