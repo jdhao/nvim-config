@@ -66,7 +66,7 @@ fi
 
 # Install some Python packages used by Neovim plugins.
 echo "Installing Python packages"
-PY_PACKAGES="pynvim jedi pylint flake8 yapf black"
+PY_PACKAGES="pynvim jedi pylint flake8 yapf black vim-vint"
 
 if [[ "$SYSTEM_PYTHON" = true ]]; then
     echo "Using system Python to install $(PY_PACKAGES)"
