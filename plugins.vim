@@ -479,8 +479,14 @@ let g:Lf_PopupPosition = [0, &columns/4]
 " submodules are not searched by default.
 let g:Lf_UseVersionControlTool = 0
 
+" Disable default mapping
+let g:Lf_ShortcutF = ''
+let g:Lf_ShortcutB = ''
+
 " Search files in popup window
 nnoremap <silent> <leader>f :Leaderf file --popup<CR>
+" Search vim help files
+nnoremap <silent> <leader>h :Leaderf help --popup<CR>
 "}}
 
 "{{ URL related
