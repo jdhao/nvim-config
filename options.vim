@@ -28,7 +28,7 @@ set noswapfile
 " Set up backup directory
 let g:backupdir=expand(stdpath('data') . '/backup')
 if !isdirectory(g:backupdir)
-   call mkdir(g:backupdir, "p")
+   call mkdir(g:backupdir, 'p')
 endif
 let &backupdir=g:backupdir
 

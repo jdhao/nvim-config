@@ -79,9 +79,9 @@ endfunction
 function! utils#ToggleCursorCol() abort
     if &cursorcolumn
         set nocursorcolumn
-        echo "cursorcolumn: OFF"
+        echo 'cursorcolumn: OFF'
     else
         set cursorcolumn
-        echo "cursorcolumn: ON"
+        echo 'cursorcolumn: ON'
     endif
 endfunction

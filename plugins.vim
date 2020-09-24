@@ -1,3 +1,4 @@
+scriptencoding utf-8
 "{ Plugin installation
 "{{ Vim-plug Install and related settings
 
@@ -536,9 +537,9 @@ nnoremap <silent> <Space>t :TagbarToggle<CR>
 
 " Add support for markdown files in tagbar.
 if g:is_win
-    let g:md_ctags_bin=fnamemodify(g:nvim_config_root."\\tools\\markdown2ctags.exe", ":p")
+    let g:md_ctags_bin=fnamemodify(g:nvim_config_root."\\tools\\markdown2ctags.exe", ':p')
 else
-    let g:md_ctags_bin=fnamemodify(g:nvim_config_root."/tools/markdown2ctags.py", ":p")
+    let g:md_ctags_bin=fnamemodify(g:nvim_config_root.'/tools/markdown2ctags.py', ':p')
 endif
 
 let g:tagbar_type_markdown = {
