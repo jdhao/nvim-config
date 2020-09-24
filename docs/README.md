@@ -69,7 +69,7 @@ page](https://github.com/BurntSushi/ripgrep/releases) and install it.
 
 ## Linters
 
-A linter is a tool to check the source code for possible style and syntatic
+A linter is a tool to check the source code for possible style and syntax
 issues. Based on the programming languages we use, we may need to install
 various linters.
 
@@ -126,7 +126,7 @@ The easiest way to install Neovim on Windows is via
 we can install neovim easily with
 
 ```
-# install latest version of neovim
+# install the latest version of neovim
 # choco install neovim --pre
 
 choco install neovim
@@ -139,13 +139,13 @@ from GitHub and manually extract it.
 
 ## Mac
 
-It is recommended to install neovim via [Homebrew](https://brew.sh/) on MacOS.
+It is recommended to install neovim via [Homebrew](https://brew.sh/) on macOS.
 Simply run the following command:
 
 ```
 brew install neovim
-# If you want to install latest version of neovim, use the following command
-# instead.
+# If you want to install the latest version of neovim, use the following
+# command instead.
 # brew install --HEAD neovim
 ```
 
@@ -153,7 +153,7 @@ After installing Neovim, we need to add the directory where the Neovim
 executable (`nvim` on Linux and Mac, `nvim.exe` on Windows) resides to the
 system `PATH`.
 
-Make sure that you can call `nvim` from the command line after all these setup.
+Make sure that you can call `nvim` from the command line after all these setups.
 
 # Setting up Nvim
 

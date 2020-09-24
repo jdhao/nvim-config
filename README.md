@@ -5,18 +5,18 @@
 # Introduction
 
 This is my Neovim configuration for all the platforms I use (Linux, Windows and
-MacOS). `init.vim` is the config file for terminal Neovim, and `ginit.vim` is
+macOS). `init.vim` is the config file for terminal Neovim, and `ginit.vim` is
 the additional config file for GUI client of Neovim (I am using
 [neovim-qt](https://github.com/equalsraf/neovim-qt) for now on Windows).
 
 My configurations are heavily documented to make it as clear as possible. While
-you can download the whole repository and use it, it is not recommended to do
-so. Good configurations are personal. Everyone should have his or her unique
-config file. You are encouraged to copy from this this repo the part you feel
-useful and add it to your own Nvim config.
+you can download the whole repository and use it, it is not recommended though.
+Good configurations are personal. Everyone should have his or her unique config
+file. You are encouraged to copy from this this repo the part you feel useful
+and add it to your own Nvim config.
 
 See [doc here](docs/README.md) on how to install Nvim's dependencies, Nvim
-itself and the configuration on different platforms (Linux, MacOS and Windows).
+itself and the configuration on different platforms (Linux, macOS and Windows).
 
 # Features #
 
