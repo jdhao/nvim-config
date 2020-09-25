@@ -64,8 +64,6 @@ set wildmode=list:full
 
 " Show current line where the cursor is
 set cursorline
-" Set a ruler at column 80, see https://stackoverflow.com/q/2447109/6064933
-set colorcolumn=80
 
 " Minimum lines to keep above and below cursor when scrolling
 set scrolloff=3
