@@ -9,16 +9,21 @@ set formatoptions-=r
 " focus is lost (see
 " https://github.com/tmux-plugins/vim-tmux-focus-events/issues/14)
 set foldmethod=expr foldlevel=0 foldlevelstart=-1
-    \ foldexpr=utils#VimFolds(v:lnum) foldtext=utils#MyFoldText()
+      \ foldexpr=utils#VimFolds(v:lnum) foldtext=utils#MyFoldText()
 
 " Use :help command for keyword when pressing `K` in vim file,
 " see `:h K` and https://stackoverflow.com/q/15867323/6064933
 set keywordprg=:help
 
+set tabstop=2       " number of visual spaces per TAB
+set softtabstop=2   " number of spaces in tab when editing
+set shiftwidth=2    " number of spaces to use for autoindent
+set expandtab       " expand tab to spaces so that tabs are spaces
+
 " Only define following variable if Auto-pairs plugin is used
 if &runtimepath =~? 'auto-pairs'
-    let b:AutoPairs = AutoPairsDefine({'<' : '>'})
+  let b:AutoPairs = AutoPairsDefine({'<' : '>'})
 
-    " Do not use `"` for vim script since `"` is also used for comment
-    let b:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", '`':'`', '<':'>'}
+  " Do not use `"` for vim script since `"` is also used for comment
+  let b:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", '`':'`', '<':'>'}
 endif

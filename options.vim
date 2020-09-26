@@ -21,7 +21,7 @@ set updatetime=2000
 " Clipboard settings, always use clipboard for all delete, yank, change, put
 " operation, see https://stackoverflow.com/q/30691466/6064933
 if !empty(provider#clipboard#Executable())
-    set clipboard+=unnamedplus
+  set clipboard+=unnamedplus
 endif
 
 " Disable creating swapfiles, see https://stackoverflow.com/q/821902/6064933
@@ -114,7 +114,7 @@ set autowrite
 set title
 set titlestring=
 if g:is_linux
-    set titlestring+=%(%{hostname()}\ \ %)
+  set titlestring+=%(%{hostname()}\ \ %)
 endif
 set titlestring+=%(%{expand('%:p:~')}\ \ %)
 set titlestring+=%{strftime('%Y-%m-%d\ %H:%M',getftime(expand('%')))}
@@ -164,15 +164,15 @@ set nostartofline
 
 " External program to use for grep command
 if executable('rg')
-    set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-    set grepformat=%f:%l:%c:%m
+  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+  set grepformat=%f:%l:%c:%m
 endif
 
 " Highlight groups for cursor color
 augroup cursor_color
-    autocmd!
-    autocmd ColorScheme * highlight Cursor cterm=bold gui=bold guibg=cyan guifg=black
-    autocmd ColorScheme * highlight Cursor2 guifg=red guibg=red
+  autocmd!
+  autocmd ColorScheme * highlight Cursor cterm=bold gui=bold guibg=cyan guifg=black
+  autocmd ColorScheme * highlight Cursor2 guifg=red guibg=red
 augroup END
 
 " Set up cursor color and shape in various mode, ref:

@@ -10,22 +10,20 @@ scriptencoding utf-8
 " wiki: https://github.com/junegunn/vim-plug/wiki/tips#tips
 let g:VIM_PLUG_PATH = expand(g:nvim_config_root . '/autoload/plug.vim')
 if g:is_win || g:is_mac
-    if empty(glob(g:VIM_PLUG_PATH))
-        if executable('curl')
-            echomsg 'Installing Vim-plug on your system'
-            silent execute '!curl -fLo ' . g:VIM_PLUG_PATH . ' --create-dirs '
-                \ . 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-            augroup plug_init
-                autocmd!
-                autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC
-            augroup END
-        else
-            echoerr 'Curl must be available to install vim-plug, or you may install '
-                    \ . 'vim-plug by yourself.'
-            finish
-        endif
+  if empty(glob(g:VIM_PLUG_PATH))
+    if executable('curl')
+      echomsg 'Installing Vim-plug on your system'
+      silent execute '!curl -fLo ' . g:VIM_PLUG_PATH . ' --create-dirs '
+            \ . 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+      augroup plug_init
+          autocmd!
+          autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC
+      augroup END
+    else
+      echoerr 'Curl not available on your system, you may install vim-plug by yourself.'
+      finish
     endif
+  endif
 endif
 
 " The directory to install plugins.
@@ -38,7 +36,7 @@ call plug#begin(g:PLUGIN_HOME)
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 if executable('clang') && (g:is_mac || g:is_linux)
-    Plug 'deoplete-plugins/deoplete-clang'
+  Plug 'deoplete-plugins/deoplete-clang'
 endif
 
 " Python source for deoplete
@@ -54,7 +52,7 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Python syntax highlighting and more
 if g:is_mac || g:is_win
-    Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+  Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 endif
 
 " Python indent (follows the PEP8 style)
@@ -80,9 +78,9 @@ Plug 'haya14busa/vim-asterisk'
 
 " File search, tag search and more
 if g:is_win
-    Plug 'Yggdroot/LeaderF'
+  Plug 'Yggdroot/LeaderF'
 else
-    Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+  Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 endif
 
 " Another similar plugin is command-t
@@ -110,10 +108,10 @@ Plug 'srcery-colors/srcery-vim'
 " Plug 'kaicataldo/material.vim'
 
 if !exists('g:started_by_firenvim')
-    " colorful status line and theme
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'mhinz/vim-startify'
+  " colorful status line and theme
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'mhinz/vim-startify'
 endif
 "}}
 
@@ -124,8 +122,8 @@ Plug 'itchyny/vim-highlighturl'
 " For Windows and Mac, we can open an URL in the browser. For Linux, it may
 " not be possible since we maybe in a server which disables GUI.
 if g:is_win || g:is_mac
-    " open URL in browser
-    Plug 'tyru/open-browser.vim'
+  " open URL in browser
+  Plug 'tyru/open-browser.vim'
 endif
 "}}
 
@@ -135,10 +133,10 @@ Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 
 " Only install these plugins if ctags are installed on the system
 if executable('ctags')
-    " plugin to manage your tags
-    Plug 'ludovicchabant/vim-gutentags'
-    " show file tags in vim window
-    Plug 'majutsushi/tagbar', { 'on': ['TagbarToggle', 'TagbarOpen'] }
+  " plugin to manage your tags
+  Plug 'ludovicchabant/vim-gutentags'
+  " show file tags in vim window
+  Plug 'majutsushi/tagbar', { 'on': ['TagbarToggle', 'TagbarOpen'] }
 endif
 "}}
 
@@ -170,7 +168,7 @@ Plug 'mbbill/undotree'
 
 " Manage your yank history
 if g:is_win || g:is_mac
-    Plug 'svermeulen/vim-yoink'
+  Plug 'svermeulen/vim-yoink'
 endif
 
 " Handy unix command inside Vim (Rename, Move etc.)
@@ -232,7 +230,7 @@ Plug 'elzr/vim-json', { 'for': ['json', 'markdown'] }
 
 " Markdown previewing (only for Mac and Windows)
 if g:is_win || g:is_mac
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 endif
 
 " emoji
@@ -240,7 +238,7 @@ endif
 Plug 'fszymanski/deoplete-emoji', {'for': 'markdown'}
 
 if g:is_mac
-    Plug 'rhysd/vim-grammarous'
+  Plug 'rhysd/vim-grammarous'
 endif
 "}}
 
@@ -259,13 +257,13 @@ Plug 'michaeljsmith/vim-indent-object'
 "{{ LaTeX editting and previewing plugin
 " Only use these plugin on Windows and Mac and when LaTeX is installed
 if ( g:is_win || g:is_mac ) && executable('latex')
-    " vimtex use autoload feature of Vim, so it is not necessary to use `for`
-    " keyword of vim-plug to try to lazy-load it,
-    " see https://github.com/junegunn/vim-plug/issues/785
-    Plug 'lervag/vimtex'
+  " vimtex use autoload feature of Vim, so it is not necessary to use `for`
+  " keyword of vim-plug to try to lazy-load it,
+  " see https://github.com/junegunn/vim-plug/issues/785
+  Plug 'lervag/vimtex'
 
-    " Plug 'matze/vim-tex-fold', {'for': 'tex'}
-    " Plug 'Konfekt/FastFold'
+  " Plug 'matze/vim-tex-fold', {'for': 'tex'}
+  " Plug 'Konfekt/FastFold'
 endif
 "}}
 
@@ -273,13 +271,13 @@ endif
 " Since tmux is only available on Linux and Mac, we only enable these plugins
 " for Linux and Mac
 if (g:is_linux || g:is_mac) && executable('tmux')
-    " Let vim detect tmux focus event correctly, see
-    " https://github.com/neovim/neovim/issues/9486 and
-    " https://vi.stackexchange.com/q/18515/15292
-    Plug 'tmux-plugins/vim-tmux-focus-events'
+  " Let vim detect tmux focus event correctly, see
+  " https://github.com/neovim/neovim/issues/9486 and
+  " https://vi.stackexchange.com/q/18515/15292
+  Plug 'tmux-plugins/vim-tmux-focus-events'
 
-    " .tmux.conf syntax highlighting and setting check
-    Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
+  " .tmux.conf syntax highlighting and setting check
+  Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 endif
 "}}
 
@@ -304,12 +302,12 @@ Plug 'cespare/vim-toml'
 
 " Edit text area in browser using nvim
 if g:is_mac || g:is_win
-    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
 
 " Debugger plugin
 if g:is_mac || g:is_linux
-    Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
+  Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 endif
 call plug#end()
 "}}
@@ -345,9 +343,9 @@ call deoplete#custom#source('_', 'min_pattern_length', 1)
 "     \ 'disabled_syntaxes': ['String']
 "     \ })
 call deoplete#custom#source('_', {
-    \ 'filetype': ['python'],
-    \ 'disabled_syntaxes': ['Comment']
-    \ })
+  \ 'filetype': ['python'],
+  \ 'disabled_syntaxes': ['Comment']
+  \ })
 
 " Ignore certain sources, because they only cause nosie most of the time
 call deoplete#custom#option('ignore_sources', {
@@ -455,16 +453,16 @@ let g:Lf_UseCache = 0
 
 " Ignore certain files and directories when searching files
 let g:Lf_WildIgnore = {
-    \ 'dir': ['.git', '__pycache__', '.DS_Store'],
-    \ 'file': ['*.exe', '*.dll', '*.so', '*.o', '*.pyc', '*.jpg', '*.png',
-    \ '*.gif', '*.db', '*.tgz', '*.tar.gz', '*.gz', '*.zip', '*.bin', '*.pptx',
-    \ '*.xlsx', '*.docx', '*.pdf', '*.tmp', '*.wmv', '*.mkv', '*.mp4',
-    \ '*.rmvb']
-    \}
+  \ 'dir': ['.git', '__pycache__', '.DS_Store'],
+  \ 'file': ['*.exe', '*.dll', '*.so', '*.o', '*.pyc', '*.jpg', '*.png',
+  \ '*.gif', '*.db', '*.tgz', '*.tar.gz', '*.gz', '*.zip', '*.bin', '*.pptx',
+  \ '*.xlsx', '*.docx', '*.pdf', '*.tmp', '*.wmv', '*.mkv', '*.mp4',
+  \ '*.rmvb']
+  \}
 
 " Do not show fancy icons for Linux server.
 if g:is_linux
-    let g:Lf_ShowDevIcons = 0
+  let g:Lf_ShowDevIcons = 0
 endif
 
 " Only fuzzy-search files names
@@ -493,12 +491,12 @@ nnoremap <silent> <leader>h :Leaderf help --popup<CR>
 "{{ URL related
 """"""""""""""""""""""""""""open-browser.vim settings"""""""""""""""""""
 if g:is_win || g:is_mac
-    " Disable netrw's gx mapping.
-    let g:netrw_nogx = 1
+  " Disable netrw's gx mapping.
+  let g:netrw_nogx = 1
 
-    " Use another mapping for the open URL method
-    nmap ob <Plug>(openbrowser-smart-search)
-    vmap ob <Plug>(openbrowser-smart-search)
+  " Use another mapping for the open URL method
+  nmap ob <Plug>(openbrowser-smart-search)
+  vmap ob <Plug>(openbrowser-smart-search)
 endif
 "}}
 
@@ -537,25 +535,25 @@ nnoremap <silent> <Space>t :TagbarToggle<CR>
 
 " Add support for markdown files in tagbar.
 if g:is_win
-    let g:md_ctags_bin=fnamemodify(g:nvim_config_root."\\tools\\markdown2ctags.exe", ':p')
+  let g:md_ctags_bin=fnamemodify(g:nvim_config_root."\\tools\\markdown2ctags.exe", ':p')
 else
-    let g:md_ctags_bin=fnamemodify(g:nvim_config_root.'/tools/markdown2ctags.py', ':p')
+  let g:md_ctags_bin=fnamemodify(g:nvim_config_root.'/tools/markdown2ctags.py', ':p')
 endif
 
 let g:tagbar_type_markdown = {
-    \ 'ctagstype': 'markdown.pandoc',
-    \ 'ctagsbin' : g:md_ctags_bin,
-    \ 'ctagsargs' : '-f - --sort=yes',
-    \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro' : '|',
-    \ 'kind2scope' : {
-        \ 's' : 'section',
-    \ },
-    \ 'sort': 0,
-    \ }
+  \ 'ctagstype': 'markdown.pandoc',
+  \ 'ctagsbin' : g:md_ctags_bin,
+  \ 'ctagsargs' : '-f - --sort=yes',
+  \ 'kinds' : [
+  \ 's:sections',
+  \ 'i:images'
+  \ ],
+  \ 'sro' : '|',
+  \ 'kind2scope' : {
+  \ 's' : 'section',
+  \ },
+  \ 'sort': 0,
+  \ }
 "}}
 
 "{{ File editting
@@ -580,37 +578,37 @@ let g:auto_save_silent = 0
 
 """"""""""""""""""""""""""""vim-yoink settings"""""""""""""""""""""""""
 if g:is_win || g:is_mac
-    " ctrl-n and ctrl-p will not work if you add the TextChanged event to
-    " vim-auto-save events
-    " nmap <c-n> <plug>(YoinkPostPasteSwapBack)
-    " nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+  " ctrl-n and ctrl-p will not work if you add the TextChanged event to
+  " vim-auto-save events
+  " nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+  " nmap <c-p> <plug>(YoinkPostPasteSwapForward)
 
-    nmap p <plug>(YoinkPaste_p)
-    nmap P <plug>(YoinkPaste_P)
+  nmap p <plug>(YoinkPaste_p)
+  nmap P <plug>(YoinkPaste_P)
 
-    " Cycle the yank stack with the following mappings
-    nmap [y <plug>(YoinkRotateBack)
-    nmap ]y <plug>(YoinkRotateForward)
+  " Cycle the yank stack with the following mappings
+  nmap [y <plug>(YoinkRotateBack)
+  nmap ]y <plug>(YoinkRotateForward)
 
-    " Do not change the cursor position
-    nmap y <plug>(YoinkYankPreserveCursorPosition)
-    xmap y <plug>(YoinkYankPreserveCursorPosition)
+  " Do not change the cursor position
+  nmap y <plug>(YoinkYankPreserveCursorPosition)
+  xmap y <plug>(YoinkYankPreserveCursorPosition)
 
-    " Move cursor to end of paste after multiline paste
-    let g:yoinkMoveCursorToEndOfPaste = 0
+  " Move cursor to end of paste after multiline paste
+  let g:yoinkMoveCursorToEndOfPaste = 0
 
-    " Record yanks in system clipboard
-    let g:yoinkSyncSystemClipboardOnFocus = 1
+  " Record yanks in system clipboard
+  let g:yoinkSyncSystemClipboardOnFocus = 1
 endif
 
 "{{ Linting and formating
 """""""""""""""""""""""""""""" ale settings """""""""""""""""""""""
 " linters for different filetypes
 let g:ale_linters = {
-    \ 'python': ['pylint'],
-    \ 'vim': ['vint'],
-    \ 'cpp': ['clang'],
-    \ 'c': ['clang']
+  \ 'python': ['pylint'],
+  \ 'vim': ['vint'],
+  \ 'cpp': ['clang'],
+  \ 'c': ['clang']
 \}
 
 " Only run linters in the g:ale_linters dictionary
@@ -623,12 +621,12 @@ let g:ale_sign_warning = '!'
 """""""""""""""""""""""""""""" neoformat settings """""""""""""""""""""""
 let g:neoformat_enabled_python = ['black', 'yapf']
 let g:neoformat_cpp_clangformat = {
-    \ 'exe': 'clang-format',
-    \ 'args': ['--style="{IndentWidth: 4}"']
+  \ 'exe': 'clang-format',
+  \ 'args': ['--style="{IndentWidth: 4}"']
 \}
 let g:neoformat_c_clangformat = {
-    \ 'exe': 'clang-format',
-    \ 'args': ['--style="{IndentWidth: 4}"']
+  \ 'exe': 'clang-format',
+  \ 'args': ['--style="{IndentWidth: 4}"']
 \}
 
 let g:neoformat_enabled_cpp = ['clangformat']
@@ -648,9 +646,9 @@ let g:signify_sign_change = '~'
 """""""""""""""""""""""""goyo.vim settings""""""""""""""""""""""""""""""
 " Make goyo and limelight work together automatically
 augroup goyo_work_with_limelight
-    autocmd!
-    autocmd! User GoyoEnter Limelight
-    autocmd! User GoyoLeave Limelight!
+  autocmd!
+  autocmd! User GoyoEnter Limelight
+  autocmd! User GoyoLeave Limelight!
 augroup END
 
 """""""""""""""""""""""""vim-pandoc-syntax settings"""""""""""""""""""""""""
@@ -685,12 +683,12 @@ let g:vim_markdown_toc_autofit = 1
 """""""""""""""""""""""""markdown-preview settings"""""""""""""""""""
 " Only setting this for suitable platforms
 if g:is_win || g:is_mac
-    " Do not close the preview tab when switching to other buffers
-    let g:mkdp_auto_close = 0
+  " Do not close the preview tab when switching to other buffers
+  let g:mkdp_auto_close = 0
 
-    " Shortcuts to start and stop markdown previewing
-    nnoremap <silent> <M-m> :MarkdownPreview<CR>
-    nnoremap <silent> <M-S-m> :MarkdownPreviewStop<CR>
+  " Shortcuts to start and stop markdown previewing
+  nnoremap <silent> <M-m> :MarkdownPreview<CR>
+  nnoremap <silent> <M-S-m> :MarkdownPreviewStop<CR>
 endif
 
 """"""""""""""""""""""""vim-markdownfootnotes settings""""""""""""""""""""""""
@@ -702,20 +700,20 @@ nmap @@ <Plug>ReturnFromFootnote
 
 """"""""""""""""""""""""vim-grammarous settings""""""""""""""""""""""""""""""
 if g:is_mac
-    let g:grammarous#languagetool_cmd = 'languagetool'
-    nmap <leader>x <Plug>(grammarous-close-info-window)
-    nmap <c-n> <Plug>(grammarous-move-to-next-error)
-    nmap <c-p> <Plug>(grammarous-move-to-previous-error)
-    let g:grammarous#disabled_rules = {
-        \ '*' : ['WHITESPACE_RULE', 'EN_QUOTES', 'ARROWS', 'SENTENCE_WHITESPACE',
-        \        'WORD_CONTAINS_UNDERSCORE', 'COMMA_PARENTHESIS_WHITESPACE',
-        \        'EN_UNPAIRED_BRACKETS', 'UPPERCASE_SENTENCE_START',
-        \        'ENGLISH_WORD_REPEAT_BEGINNING_RULE', 'DASH_RULE', 'PLUS_MINUS',
-        \        'PUNCTUATION_PARAGRAPH_END', 'MULTIPLICATION_SIGN', 'PRP_CHECKOUT',
-        \        'CAN_CHECKOUT', 'SOME_OF_THE', 'DOUBLE_PUNCTUATION', 'HELL',
-        \        'CURRENCY', 'POSSESSIVE_APOSTROPHE', 'ENGLISH_WORD_REPEAT_RULE',
-        \        'NON_STANDARD_WORD', 'AU'],
-        \ }
+  let g:grammarous#languagetool_cmd = 'languagetool'
+  nmap <leader>x <Plug>(grammarous-close-info-window)
+  nmap <c-n> <Plug>(grammarous-move-to-next-error)
+  nmap <c-p> <Plug>(grammarous-move-to-previous-error)
+  let g:grammarous#disabled_rules = {
+      \ '*' : ['WHITESPACE_RULE', 'EN_QUOTES', 'ARROWS', 'SENTENCE_WHITESPACE',
+      \        'WORD_CONTAINS_UNDERSCORE', 'COMMA_PARENTHESIS_WHITESPACE',
+      \        'EN_UNPAIRED_BRACKETS', 'UPPERCASE_SENTENCE_START',
+      \        'ENGLISH_WORD_REPEAT_BEGINNING_RULE', 'DASH_RULE', 'PLUS_MINUS',
+      \        'PUNCTUATION_PARAGRAPH_END', 'MULTIPLICATION_SIGN', 'PRP_CHECKOUT',
+      \        'CAN_CHECKOUT', 'SOME_OF_THE', 'DOUBLE_PUNCTUATION', 'HELL',
+      \        'CURRENCY', 'POSSESSIVE_APOSTROPHE', 'ENGLISH_WORD_REPEAT_RULE',
+      \        'NON_STANDARD_WORD', 'AU'],
+      \ }
 endif
 
 """"""""""""""""""""""""deoplete-emoji settings""""""""""""""""""""""""""""
@@ -725,67 +723,66 @@ call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
 "{{ LaTeX editting
 """"""""""""""""""""""""""""vimtex settings"""""""""""""""""""""""""""""
 if ( g:is_win || g:is_mac ) && executable('latex')
-    " Set up LaTeX flavor
-    let g:tex_flavor = 'latex'
+  " Set up LaTeX flavor
+  let g:tex_flavor = 'latex'
 
-    " Deoplete configurations for autocompletion to work
-    call deoplete#custom#var('omni', 'input_patterns', {
-              \ 'tex': g:vimtex#re#deoplete
-              \})
+  " Deoplete configurations for autocompletion to work
+  call deoplete#custom#var('omni', 'input_patterns', {
+        \ 'tex': g:vimtex#re#deoplete
+        \})
 
-    let g:vimtex_compiler_latexmk = {
-         \ 'build_dir' : 'build',
-         \}
+  let g:vimtex_compiler_latexmk = {
+        \ 'build_dir' : 'build',
+        \}
 
-    " TOC settings
-    let g:vimtex_toc_config = {
-          \ 'name' : 'TOC',
-          \ 'layers' : ['content', 'todo', 'include'],
-          \ 'resize' : 1,
-          \ 'split_width' : 30,
-          \ 'todo_sorted' : 0,
-          \ 'show_help' : 1,
-          \ 'show_numbers' : 1,
-          \ 'mode' : 2,
-          \}
+  " TOC settings
+  let g:vimtex_toc_config = {
+        \ 'name' : 'TOC',
+        \ 'layers' : ['content', 'todo', 'include'],
+        \ 'resize' : 1,
+        \ 'split_width' : 30,
+        \ 'todo_sorted' : 0,
+        \ 'show_help' : 1,
+        \ 'show_numbers' : 1,
+        \ 'mode' : 2,
+        \}
 
-    " Viewer settings for different platforms
-    if g:is_win
-        let g:vimtex_view_general_viewer = 'SumatraPDF'
-        let g:vimtex_view_general_options_latexmk = '-reuse-instance'
-        let g:vimtex_view_general_options
-            \ = '-reuse-instance -forward-search @tex @line @pdf'
-    endif
+  " Viewer settings for different platforms
+  if g:is_win
+    let g:vimtex_view_general_viewer = 'SumatraPDF'
+    let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+    let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
+  endif
 
-    if g:is_mac
-        " let g:vimtex_view_method = "skim"
-        let g:vimtex_view_general_viewer
-                \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-        let g:vimtex_view_general_options = '-r @line @pdf @tex'
+  if g:is_mac
+    " let g:vimtex_view_method = "skim"
+    let g:vimtex_view_general_viewer
+          \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+    let g:vimtex_view_general_options = '-r @line @pdf @tex'
 
-        " This adds a callback hook that updates Skim after compilation
-        let g:vimtex_compiler_callback_hooks = ['UpdateSkim']
+    " This adds a callback hook that updates Skim after compilation
+    let g:vimtex_compiler_callback_hooks = ['UpdateSkim']
 
-        function! UpdateSkim(status)
-            if !a:status | return | endif
+    function! UpdateSkim(status)
+      if !a:status | return | endif
 
-            let l:out = b:vimtex.out()
-            let l:tex = expand('%:p')
-            let l:cmd = [g:vimtex_view_general_viewer, '-r']
+      let l:out = b:vimtex.out()
+      let l:tex = expand('%:p')
+      let l:cmd = [g:vimtex_view_general_viewer, '-r']
 
-            if !empty(system('pgrep Skim'))
-                call extend(l:cmd, ['-g'])
-            endif
+      if !empty(system('pgrep Skim'))
+        call extend(l:cmd, ['-g'])
+      endif
 
-            if has('nvim')
-                call jobstart(l:cmd + [line('.'), l:out, l:tex])
-            elseif has('job')
-                call job_start(l:cmd + [line('.'), l:out, l:tex])
-            else
-                call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
-            endif
-        endfunction
-    endif
+      if has('nvim')
+        call jobstart(l:cmd + [line('.'), l:out, l:tex])
+      elseif has('job')
+        call job_start(l:cmd + [line('.'), l:out, l:tex])
+      else
+        call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
+      endif
+    endfunction
+  endif
 endif
 "}}
 
@@ -793,14 +790,14 @@ endif
 """""""""""""""""""""""""""vim-airline setting""""""""""""""""""""""""""""""
 " Set airline theme to a random one if it exists
 let s:candidate_airlinetheme = ['ayu_mirage', 'base16_flat',
-    \ 'lucius', 'ayu_dark', 'base16_bright',
-    \ 'base16_adwaita', 'jellybeans', 'base16_isotope',
-    \ 'luna', 'raven', 'term', 'base16_summerfruit']
+      \ 'lucius', 'ayu_dark', 'base16_bright',
+      \ 'base16_adwaita', 'jellybeans', 'base16_isotope',
+      \ 'luna', 'raven', 'term', 'base16_summerfruit']
 let s:idx = utils#RandInt(0, len(s:candidate_airlinetheme)-1)
 let s:theme = s:candidate_airlinetheme[s:idx]
 
 if utils#HasAirlinetheme(s:theme)
-    let g:airline_theme=s:theme
+  let g:airline_theme=s:theme
 endif
 
 " Tabline settings
@@ -825,7 +822,7 @@ let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 0
 
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
@@ -862,8 +859,8 @@ augroup END
 
 " Show matching keyword as underlined text to reduce color clutter
 augroup matchup_matchword_highlight
-    autocmd!
-    autocmd ColorScheme * hi MatchWord cterm=underline gui=underline
+  autocmd!
+  autocmd ColorScheme * hi MatchWord cterm=underline gui=underline
 augroup END
 
 """"""""""""""""""""""""comfortable-motion settings """"""""""""""""""""""
@@ -885,34 +882,34 @@ noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-20)<CR>
 " Automatically open quickfix window of 6 line tall after asyncrun starts
 let g:asyncrun_open = 6
 if has('win32')
-    " Command output encoding for Windows
-    let g:asyncrun_encs = 'gbk'
+  " Command output encoding for Windows
+  let g:asyncrun_encs = 'gbk'
 endif
 
 """"""""""""""""""""""""""""""firenvim settings""""""""""""""""""""""""""""""
 if exists('g:started_by_firenvim') && g:started_by_firenvim
-    " general options
-    set laststatus=0 nonumber noruler noshowcmd
+  " general options
+  set laststatus=0 nonumber noruler noshowcmd
 
-    " general config for firenvim
-    let g:firenvim_config = {
-        \ 'globalSettings': {
-            \ 'alt': 'all',
-        \  },
-        \ 'localSettings': {
-            \ '.*': {
-                \ 'cmdline': 'neovim',
-                \ 'priority': 0,
-                \ 'selector': 'textarea',
-                \ 'takeover': 'never',
-            \ },
-        \ }
-    \ }
+  " general config for firenvim
+  let g:firenvim_config = {
+      \ 'globalSettings': {
+          \ 'alt': 'all',
+      \  },
+      \ 'localSettings': {
+          \ '.*': {
+              \ 'cmdline': 'neovim',
+              \ 'priority': 0,
+              \ 'selector': 'textarea',
+              \ 'takeover': 'never',
+          \ },
+      \ }
+  \ }
 
-    augroup firenvim
-        autocmd!
-        autocmd BufEnter *.txt setlocal filetype=markdown.pandoc
-    augroup END
+  augroup firenvim
+    autocmd!
+    autocmd BufEnter *.txt setlocal filetype=markdown.pandoc
+  augroup END
 endif
 
 """"""""""""""""""""""""""""""nvim-gdb settings""""""""""""""""""""""""""""""

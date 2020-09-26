@@ -7,12 +7,12 @@ let g:loaded_python_provider=0
 " faster. See https://neovim.io/doc/user/provider.html.
 if executable('python')
    if g:is_win
-        let g:python3_host_prog=substitute(exepath('python'), '.exe$', '', 'g')
-    elseif g:is_linux || g:is_mac
-        let g:python3_host_prog=exepath('python')
-    endif
+    let g:python3_host_prog=substitute(exepath('python'), '.exe$', '', 'g')
+  elseif g:is_linux || g:is_mac
+    let g:python3_host_prog=exepath('python')
+  endif
 else
-    echoerr 'Python 3 executable not found! You must install Python 3 and set its PATH correctly!'
+  echoerr 'Python 3 executable not found! You must install Python 3 and set its PATH correctly!'
 endif
 
 " Custom mapping <leader> (see `:h mapleader` for more info)

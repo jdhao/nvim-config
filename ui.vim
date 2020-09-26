@@ -5,7 +5,7 @@
 " colors, see https://github.com/termstandard/colors and
 " https://gist.github.com/XVilka/8346728.
 if $TERM ==# 'xterm-256color' || exists('g:started_by_firenvim')
-    set termguicolors
+  set termguicolors
 endif
 " Use dark background
 set background=dark
@@ -16,15 +16,15 @@ set background=dark
 " We should check if theme exists before using it, otherwise you will get
 " error message when starting Nvim
 if utils#HasColorscheme('gruvbox8')
-    " Italic options should be put before colorscheme setting,
-    " see https://github.com/morhetz/gruvbox/wiki/Terminal-specific#1-italics-is-disabled
-    let g:gruvbox_italics=1
-    let g:gruvbox_italicize_strings=1
-    let g:gruvbox_filetype_hi_groups = 0
-    let g:gruvbox_plugin_hi_groups = 0
-    colorscheme gruvbox8_hard
+  " Italic options should be put before colorscheme setting,
+  " see https://github.com/morhetz/gruvbox/wiki/Terminal-specific#1-italics-is-disabled
+  let g:gruvbox_italics=1
+  let g:gruvbox_italicize_strings=1
+  let g:gruvbox_filetype_hi_groups = 0
+  let g:gruvbox_plugin_hi_groups = 0
+  colorscheme gruvbox8_hard
 else
-    colorscheme desert
+  colorscheme desert
 endif
 
 """"""""""""""""""""""""""" deus settings"""""""""""""""""""""""""""""""""

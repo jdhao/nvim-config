@@ -118,7 +118,7 @@ inoremap <expr> <esc> ((pumvisible())?("\<C-e>"):("\<esc>"))
 " Edit and reload init.vim quickly
 nnoremap <silent> <leader>ev :tabnew $MYVIMRC <bar> tcd %:h<cr>
 nnoremap <silent> <leader>sv :silent update $MYVIMRC <bar> source $MYVIMRC <bar>
-    \ echomsg "Nvim config successfully reloaded!"<cr>
+      \ echomsg "Nvim config successfully reloaded!"<cr>
 
 " Reselect the text that has just been pasted
 nnoremap <leader>v `[V`]
