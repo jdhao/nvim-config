@@ -32,7 +32,7 @@ pip install jedi
 Git is used by the plugin manager vim-plug to download plugins from GitHub or
 other Git repositories.
 
-Since Git is usually pre-installed on Linux and Mac, we do not need to worry
+Since Git is usually pre-installed on Linux and macOS, we do not need to worry
 if we are on these two platforms. For Windows, install [Git for
 Windows](https://git-scm.com/download/win) and make sure you can call `git`
 from the command line.
@@ -42,9 +42,9 @@ from the command line.
 In order to use tags related plugins such as
 [tagbar](/github.com/majutsushi/tagbar) and
 [gutentags](https://github.com/ludovicchabant/vim-gutentags), we need to
-install a ctags distribution. Universal ctags is preferred.
+install a ctags distribution. Universal-ctags is preferred.
 
-To install ctags on Mac, use [Homebrew](https://github.com/universal-ctags/homebrew-universal-ctags).
+To install ctags on macOS, use [Homebrew](https://github.com/universal-ctags/homebrew-universal-ctags).
 To install it Windows, [use chocolatey](https://chocolatey.org/packages/universal-ctags):
 
 ```
@@ -60,10 +60,10 @@ Set its PATH properly and make sure you can call `ctags` from command line.
 ## Ripgrep
 
 [Ripgrep](https://github.com/BurntSushi/ripgrep), aka, `rg`, is a fast grep
-tool available for both Linux, Windows and Mac. It is used by several searching
-plugins.
+tool available for both Linux, Windows and macOS. It is used by several
+searching plugins.
 
-For Windows and Mac, we can install it via chocolatey and homebrew
+For Windows and macOS, we can install it via chocolatey and homebrew
 respectively. For Linux, we can download the executable file from its [release
 page](https://github.com/BurntSushi/ripgrep/releases) and install it.
 
@@ -74,8 +74,7 @@ issues. Based on the programming languages we use, we may need to install
 various linters.
 
 + Python: [pylint](https://github.com/PyCQA/pylint) and [flake8](https://github.com/PyCQA/flake8).
-+ Vim script: [vint](https://github.com/Kuniwak/vint) (You may need to install
-  the pre-release versions because of [this issue](https://github.com/Kuniwak/vint/issues/290)).
++ Vim script: [vint](https://github.com/Kuniwak/vint).
 
 For other linters, please consult the plugin documentation. For
 ALE(https://github.com/dense-analysis/ale) (which is the linting plugin I
@@ -90,7 +89,7 @@ Since Neovim supports true colors, terminals that support true colors are
 preferred. For a list of terminals that support true colors, see
 [here](https://github.com/termstandard/colors).
 
-For Mac, we can use [iterm2](https://www.iterm2.com/),
+For macOS, we can use [iterm2](https://www.iterm2.com/),
 [kitty](https://sw.kovidgoyal.net/kitty/) or
 [Alacritty](https://github.com/jwilm/alacritty). If you connect to Linux server
 on Windows, I recommend [wsltty](https://github.com/mintty/wsltty) and
@@ -100,7 +99,7 @@ on Windows, I recommend [wsltty](https://github.com/mintty/wsltty) and
 ## Font
 
 Since [Vim-airline](https://github.com/vim-airline/vim-airline) uses several
-symbols not available in normal font, we need to install [fonts
+Unicode symbols not available in normal font, we need to install [fonts
 here](https://github.com/powerline/fonts) to make vim-airline look pretty. I am
 using [Hack](https://github.com/powerline/fonts/tree/master/Hack), and it looks
 great. Another great resource for programming font is the
@@ -115,15 +114,15 @@ There are various ways to install Neovim based on your system.
 Follow the official guide and download the appimage from the [release
 page](https://github.com/neovim/neovim/releases/nightly).
 
-For some Linux systems, we may not be able to run the appimage. We can
-directly download the binary release from
-[here](https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz) and extract it to run Neovim.
+For some Linux systems, we may not be able to run the appimage. We can directly
+download the binary release from
+[here](https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz).
 
 ## Windows
 
 The easiest way to install Neovim on Windows is via
 [chocolatey](https://chocolatey.org/install). First, install chocolatey. Then
-we can install neovim easily with
+we can install neovim easily following command:
 
 ```
 # install the latest version of neovim
@@ -137,7 +136,7 @@ cutting-edge features of Neovim, you may download [the nightly
 release](https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip)
 from GitHub and manually extract it.
 
-## Mac
+## macOS
 
 It is recommended to install neovim via [Homebrew](https://brew.sh/) on macOS.
 Simply run the following command:
@@ -150,7 +149,7 @@ brew install neovim
 ```
 
 After installing Neovim, we need to add the directory where the Neovim
-executable (`nvim` on Linux and Mac, `nvim.exe` on Windows) resides to the
+executable (`nvim` on Linux and macOS, `nvim.exe` on Windows) resides to the
 system `PATH`.
 
 Make sure that you can call `nvim` from the command line after all these setups.
@@ -160,7 +159,7 @@ Make sure that you can call `nvim` from the command line after all these setups.
 ## How to install this configuration
 
 On Windows, the config directory is `$HOME/AppData/Local/nvim`[^1]. On Linux
-and Mac, the directory is `~/.config/nvim`. First, we need to remove all the
+and macOS, the directory is `~/.config/nvim`. First, we need to remove all the
 files under the config directory (including dot files), then use the following
 command to install this configuration:
 
@@ -169,7 +168,7 @@ git clone https://github.com/jdhao/nvim-config.git .
 ```
 
 After that, when we first open nvim, all the plugins included in this
-configuration will be installed automatically for you (for Windows and Mac).
+configuration will be installed automatically for you (for Windows and macOS).
 Since I use quite a lot of plugins (around 60 plugins), it may take some time
 to install all of them, depending on your network condition.
 
