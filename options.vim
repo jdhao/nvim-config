@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 "{ Builtin options and settings
 " change filechar for folding, vertical split, and message sepator
 set fillchars=fold:\ ,vert:\│,msgsep:‾
@@ -52,7 +54,6 @@ set ignorecase smartcase
 " File and script encoding settings for vim
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-scriptencoding utf-8
 
 " Break line at predefined characters
 set linebreak
