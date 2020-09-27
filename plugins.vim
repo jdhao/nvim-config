@@ -8,13 +8,13 @@ scriptencoding utf-8
 " https://devblogs.microsoft.com/commandline/tar-and-curl-come-to-windows/).
 " The following script to install vim-plug is adapted from vim-plug
 " wiki: https://github.com/junegunn/vim-plug/wiki/tips#tips
-let g:VIM_PLUG_PATH = expand(stdpath('data') . '/autoload/plug.vim')
+let g:vim_plug_fpath = expand(stdpath('data') . '/autoload/plug.vim')
 if g:is_win || g:is_mac
-  if empty(glob(g:VIM_PLUG_PATH))
+  if empty(glob(g:vim_plug_fpath))
     if executable('curl')
       echomsg 'Installing Vim-plug on your system'
       let s:vim_plug_furl = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-      silent execute printf('!curl -fLo %s --create-dirs %s', g:VIM_PLUG_PATH, s:vim_plug_furl)
+      silent execute printf('!curl -fLo %s --create-dirs %s', g:vim_plug_fpath, s:vim_plug_furl)
       augroup plug_init
           autocmd!
           autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC
