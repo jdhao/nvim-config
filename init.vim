@@ -65,7 +65,7 @@ let g:config_file_list = ['variables.vim',
   \ ]
 
 for s:fname in g:config_file_list
-  execute 'source ' . g:nvim_config_root . '/' . s:fname
+  execute printf('source %s/%s', g:nvim_config_root, s:fname)
 endfor
 "}
 

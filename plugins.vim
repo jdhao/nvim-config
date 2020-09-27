@@ -13,8 +13,8 @@ if g:is_win || g:is_mac
   if empty(glob(g:VIM_PLUG_PATH))
     if executable('curl')
       echomsg 'Installing Vim-plug on your system'
-      silent execute '!curl -fLo ' . g:VIM_PLUG_PATH . ' --create-dirs '
-            \ . 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+      let l:vim_plug_furl = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+      silent execute printf('!curl -fLo %s --create-dirs %s', l:vim_plug_furl, g:VIM_PLUG_PATH)
       augroup plug_init
           autocmd!
           autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC

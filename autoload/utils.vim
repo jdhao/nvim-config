@@ -31,13 +31,13 @@ endfunction
 " Check if a colorscheme exists in runtimepath.
 " The following two functions are inspired by https://stackoverflow.com/a/5703164/6064933.
 function! utils#HasColorscheme(name) abort
-  let l:pat = 'colors/' . a:name . '.vim'
+  let l:pat = printf('colors/%s.vim', a:name)
   return !empty(globpath(&runtimepath, l:pat))
 endfunction
 
 " Check if an Airline theme exists in runtimepath.
 function! utils#HasAirlinetheme(name) abort
-  let l:pat = 'autoload/airline/themes/' . a:name . '.vim'
+  let l:pat = printf('autoload/airline/themes/%s.vim', a:name)
   return !empty(globpath(&runtimepath, l:pat))
 endfunction
 
@@ -72,7 +72,7 @@ function! utils#MyFoldText() abort
   let folded_line_num = v:foldend - v:foldstart
   let line_text = substitute(line, '^"{\+', '', 'g')
   let fillcharcount = &textwidth - len(line_text) - len(folded_line_num) - 10
-  return '+'. repeat('-', 4) . line_text . repeat('.', fillcharcount) . ' (' . folded_line_num . ' L)'
+  return printf('+%s%s%s (%s L)', repeat('-', 4), line_text, repeat('.', fillcharcount), folded_line_num)
 endfunction
 
 " Toggle cursor column
