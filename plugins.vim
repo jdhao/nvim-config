@@ -9,7 +9,7 @@ scriptencoding utf-8
 " The following script to install vim-plug is adapted from vim-plug
 " wiki: https://github.com/junegunn/vim-plug/wiki/tips#tips
 let g:vim_plug_fpath = expand(stdpath('data') . '/autoload/plug.vim')
-if (g:is_win || g:is_mac) && empty(glob(g:vim_plug_fpath))
+if (g:is_win || g:is_mac) && !filereadable(g:vim_plug_fpath)
   if !executable('curl')
     echoerr 'Curl not available on your system, you may install vim-plug by yourself.'
     finish
