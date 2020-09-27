@@ -62,6 +62,7 @@ set showbreak=↪
 
 " List all matches and complete till longest common string
 set wildmode=list:longest
+set wildignorecase  " ignore file and dir name cases in cmd-completion
 
 " Show current line where the cursor is
 set cursorline
