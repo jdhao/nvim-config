@@ -1,5 +1,4 @@
 tags
-autoload/plug.vim
 en.utf-8.add.spl
 *.exe
 .netrwhist
