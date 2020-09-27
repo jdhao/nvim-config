@@ -21,7 +21,7 @@ set shiftwidth=2    " number of spaces to use for autoindent
 set expandtab       " expand tab to spaces so that tabs are spaces
 
 " Only define following variable if Auto-pairs plugin is used
-if &runtimepath =~? 'auto-pairs'
+if match(&runtimepath, 'auto-pairs') != -1
   let b:AutoPairs = AutoPairsDefine({'<' : '>'})
 
   " Do not use `"` for vim script since `"` is also used for comment

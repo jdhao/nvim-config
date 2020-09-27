@@ -1,5 +1,5 @@
 " Only use the following character pairs for tex file
-if &runtimepath =~? 'auto-pairs'
+if match(&runtimepath, 'auto-pairs') != -1
   let b:AutoPairs = AutoPairsDefine({'<' : '>'})
   let b:AutoPairs = {'(':')', '[':']', '{':'}', '<':'>'}
 endif
