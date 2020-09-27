@@ -86,15 +86,6 @@ xnoremap H ^
 nnoremap L g_
 xnoremap L g_
 
-" Resize windows using <Alt> and h,j,k,l, inspiration from
-" https://vim.fandom.com/wiki/Fast_window_resizing_with_plus/minus_keys
-" (bottom page). If you enable mouse support, shorcuts below may not be
-" necessary.
-nnoremap <M-h> <C-w><
-nnoremap <M-l> <C-w>>
-nnoremap <M-j> <C-W>-
-nnoremap <M-k> <C-W>+
-
 " Fast window switching, inspiration from
 " https://stackoverflow.com/a/4373470/6064933
 nnoremap <M-left> <C-w>h
