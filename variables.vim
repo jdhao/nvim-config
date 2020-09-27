@@ -3,6 +3,8 @@
 " Disable Python2 support
 let g:loaded_python_provider=0
 
+let g:did_install_default_menus = 1  " do not load menu
+
 " Path to Python 3 interpreter (must be an absolute path), make startup
 " faster. See https://neovim.io/doc/user/provider.html.
 if executable('python')
