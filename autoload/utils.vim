@@ -1,5 +1,5 @@
 " Remove trailing white space, see https://vi.stackexchange.com/a/456/15292
-function utils#StripTrailingWhitespaces() abort
+function! utils#StripTrailingWhitespaces() abort
   let l:save = winsaveview()
   " vint: next-line -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
   keeppatterns %s/\v\s+$//e
