@@ -60,8 +60,8 @@ set linebreak
 " Character to show before the lines that have been soft-wrapped
 set showbreak=↪
 
-" List all items and start selecting matches in cmd completion
-set wildmode=list:full
+" List all matches and complete till longest common string
+set wildmode=list:longest
 
 " Show current line where the cursor is
 set cursorline
