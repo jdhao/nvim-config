@@ -2,7 +2,7 @@
 set -exu
 set -o pipefail
 
-# Whether to python has been installed
+# Whether python3 has been installed on the system
 PYTHON_INSTALLED=true
 
 # If Python has been installed, then we need to know whether Python is provided
