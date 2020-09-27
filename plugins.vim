@@ -775,8 +775,7 @@ endif
 "{{ UI: Status line, look
 """""""""""""""""""""""""""vim-airline setting""""""""""""""""""""""""""""""
 " Set airline theme to a random one if it exists
-let s:candidate_airlinetheme = ['ayu_mirage', 'base16_flat',
-      \ 'lucius', 'ayu_dark', 'base16_bright',
+let s:candidate_airlinetheme = ['ayu_mirage', 'lucius', 'ayu_dark', 'base16_bright',
       \ 'base16_adwaita', 'jellybeans', 'base16_isotope',
       \ 'luna', 'raven', 'term', 'base16_summerfruit']
 let s:idx = utils#RandInt(0, len(s:candidate_airlinetheme)-1)
