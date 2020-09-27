@@ -9,20 +9,18 @@ scriptencoding utf-8
 " The following script to install vim-plug is adapted from vim-plug
 " wiki: https://github.com/junegunn/vim-plug/wiki/tips#tips
 let g:vim_plug_fpath = expand(stdpath('data') . '/autoload/plug.vim')
-if g:is_win || g:is_mac
-  if empty(glob(g:vim_plug_fpath))
-    if !executable('curl')
-      echoerr 'Curl not available on your system, you may install vim-plug by yourself.'
-      finish
-    endif
-    echomsg 'Installing Vim-plug on your system'
-    let s:vim_plug_furl = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    silent execute printf('!curl -fLo %s --create-dirs %s', g:vim_plug_fpath, s:vim_plug_furl)
-    augroup plug_init
-        autocmd!
-        autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC
-    augroup END
+if (g:is_win || g:is_mac) && empty(glob(g:vim_plug_fpath))
+  if !executable('curl')
+    echoerr 'Curl not available on your system, you may install vim-plug by yourself.'
+    finish
   endif
+  echomsg 'Installing Vim-plug on your system'
+  let s:vim_plug_furl = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  silent execute printf('!curl -fLo %s --create-dirs %s', g:vim_plug_fpath, s:vim_plug_furl)
+  augroup plug_init
+      autocmd!
+      autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC
+  augroup END
 endif
 
 " The directory to install plugins.
