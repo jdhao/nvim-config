@@ -167,4 +167,12 @@ nnoremap <silent> <leader>y :%y<CR>
 
 " Toggle cursor column
 nnoremap <silent> <leader>cl :call utils#ToggleCursorCol()<CR>
+
+" Move current line up and down
+nnoremap <silent> <A-k> <Cmd>call utils#SwitchLine(line('.'), 'up')<CR>
+nnoremap <silent> <A-j> <Cmd>call utils#SwitchLine(line('.'), 'down')<CR>
+
+" Move current visual-line selection up and down
+xnoremap <silent> <A-k> :<C-U>call utils#MoveSelection('up')<CR>
+xnoremap <silent> <A-j> :<C-U>call utils#MoveSelection('down')<CR>
 "}
