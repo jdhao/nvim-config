@@ -207,11 +207,6 @@ Plug 'junegunn/gv.vim', { 'on': 'GV' }
 
 "{{ Plugins for markdown writing
 " Distraction free writing
-Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
-
-" Only light on your cursor line to help you focus
-Plug 'junegunn/limelight.vim', {'for': 'markdown'}
-
 " Markdown syntax highlighting
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'markdown' }
 
@@ -642,14 +637,6 @@ let g:signify_sign_change = '~'
 "}}
 
 "{{ Markdown writing
-"""""""""""""""""""""""""goyo.vim settings""""""""""""""""""""""""""""""
-" Make goyo and limelight work together automatically
-augroup goyo_work_with_limelight
-  autocmd!
-  autocmd! User GoyoEnter Limelight
-  autocmd! User GoyoLeave Limelight!
-augroup END
-
 """""""""""""""""""""""""vim-pandoc-syntax settings"""""""""""""""""""""""""
 " Whether to conceal urls (seems does not work)
 let g:pandoc#syntax#conceal#urls = 1
