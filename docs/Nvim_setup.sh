@@ -141,6 +141,7 @@ fi
 NVIM_DIR=$HOME/tools/nvim
 NVIM_SRC_NAME=$HOME/packages/nvim-linux64.tar.gz
 NVIM_CONFIG_DIR=$HOME/.config/nvim
+NVIM_DATA_DIR=$HOME/.local/share/nvim
 NVIM_LINK="https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
 if [[ ! -f "$NVIM_DIR/bin/nvim" ]]; then
     echo "Installing Neovim"
@@ -172,7 +173,7 @@ fi
 git clone https://github.com/jdhao/nvim-config.git "$NVIM_CONFIG_DIR"
 
 echo "Installing vim-plug"
-curl -fLo "$NVIM_CONFIG_DIR/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo "$NVIM_DATA_DIR/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "$NVIM_DIR/bin/nvim" +PlugInstall +qall
 
 echo "Finished installing Neovim and its dependencies!"
