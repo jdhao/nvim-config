@@ -62,6 +62,6 @@ augroup END
 
 augroup highlight_yank
   autocmd!
-  au TextYankPost * silent! lua vim.highlight.on_yank{higroup="YankColor", timeout=700}
+  au TextYankPost * silent! lua vim.highlight.on_yank{higroup="YankColor", timeout=300}
 augroup END
 "}
