@@ -29,7 +29,6 @@ itself and the configuration on different platforms (Linux, macOS and Windows).
 + Fast buffer jump via [vim-sneak](https://github.com/justinmk/vim-sneak).
 + Fuzzy searching in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
 + Beautiful status line via [vim-airline](https://github.com/vim-airline/vim-airline).
-+ Powerful file explorer via [Nerdtree](https://github.com/scrooloose/nerdtree).
 + Tags navigation via [tagbar](https://github.com/majutsushi/tagbar).
 + ......
 
