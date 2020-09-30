@@ -50,12 +50,6 @@
 "}
 
 "{ Main configurations
-let g:is_win = has('win32') || has('win64')
-let g:is_linux = has('unix') && !has('macunix')
-let g:is_mac = has('macunix')
-
-let g:nvim_config_root = expand('<sfile>:p:h')
-
 let g:config_file_list = ['variables.vim',
   \ 'options.vim',
   \ 'autocommands.vim',
@@ -64,6 +58,7 @@ let g:config_file_list = ['variables.vim',
   \ 'ui.vim'
   \ ]
 
+let g:nvim_config_root = expand('<sfile>:p:h')
 for s:fname in g:config_file_list
   execute printf('source %s/%s', g:nvim_config_root, s:fname)
 endfor
