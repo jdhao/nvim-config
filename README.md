@@ -49,7 +49,6 @@ In the following shortcuts, `<leader>` represents the `,` character.
 | `<leader>cd`      | Normal | Change current directory to where current file is         |
 | `<leader>y`       | Normal | Copy the content of entire buffer to default register     |
 | `<leader>cl`      | Normal | Toggle cursor column                                      |
-| `<Space>s`        | Normal | Toggle the sidebar (show project tree view)               |
 | `<space>t`        | Normal | Toggle tag window (show project tags in the right window) |
 | `<F11>`           | Normal | Toggle spell checking                                     |
 | `<F12>`           | Normal | Toggle paste mode                                         |
