@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
 "{ Builtin options and settings
-" change filechar for folding, vertical split, and message sepator
+" change filechar for folding, vertical split, and message separator
 set fillchars=fold:\ ,vert:\│,msgsep:‾
 
 " Paste mode toggle, it seems that Neovim's bracketed paste mode
@@ -15,8 +15,7 @@ set splitbelow splitright
 " see https://unix.stackexchange.com/q/36882/221410 for more info
 set timeoutlen=1000
 
-" For CursorHold events
-set updatetime=1000
+set updatetime=1000  " For CursorHold events
 
 " Clipboard settings, always use clipboard for all delete, yank, change, put
 " operation, see https://stackoverflow.com/q/30691466/6064933
@@ -45,8 +44,7 @@ set expandtab       " expand tab to spaces so that tabs are spaces
 " Set matching pairs of characters and highlight matching brackets
 set matchpairs+=<:>,「:」,『:』,【:】,“:”,‘:’,《:》
 
-" Show line number and relative line number
-set number relativenumber
+set number relativenumber  " Show line number and relative line number
 
 " Ignore case in general, but become case-sensitive when uppercase is present
 set ignorecase smartcase
@@ -64,8 +62,7 @@ set showbreak=↪
 set wildmode=list:longest
 set wildignorecase  " ignore file and dir name cases in cmd-completion
 
-" Show current line where the cursor is
-set cursorline
+set cursorline  " Show current line where the cursor is
 
 " Minimum lines to keep above and below cursor when scrolling
 set scrolloff=3
@@ -77,11 +74,9 @@ set mousemodel=popup  " Set the behaviour of mouse
 " Do not show mode on command line since vim-airline can show it
 set noshowmode
 
-" Fileformats to use for new files
-set fileformats=unix,dos
+set fileformats=unix,dos  " Fileformats to use for new files
 
-" The way to show the result of substitution in real time for preview
-set inccommand=nosplit
+set inccommand=nosplit  " Show the result of substitution in real time for preview
 
 " Ignore certain files and folders when globbing
 set wildignore+=*.o,*.obj,*.bin,*.dll,*.exe
@@ -93,14 +88,8 @@ set wildignore+=*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex.gz
 " Ask for confirmation when handling unsaved or read-only files
 set confirm
 
-" Do not use visual and errorbells
-set visualbell noerrorbells
-
-" The level we start to fold
-set foldlevel=0
-
-" The number of command and search history to keep
-set history=500
+set visualbell noerrorbells  " Do not use visual and errorbells
+set history=500  " The number of command and search history to keep
 
 " Use list mode and customized listchars
 set list listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:+
@@ -131,7 +120,6 @@ set shortmess+=c
 set completeopt+=menuone  " Show menu even if there is only one item
 set completeopt-=preview  " Disable the preview window
 
-" Settings for popup menu
 set pumheight=10  " Maximum number of items to show in popup menu
 
 " Insert mode key word completion setting
@@ -144,8 +132,7 @@ set spellsuggest+=10  " The number of suggestions shown in the screen for z=
 " see http://vim.1045645.n5.nabble.com/shiftround-option-td5712100.html
 set shiftround
 
-" Virtual edit is useful for visual block edit
-set virtualedit=block
+set virtualedit=block  " Virtual edit is useful for visual block edit
 
 " Correctly break multi-byte characters such as CJK,
 " see https://stackoverflow.com/q/32669814/6064933
@@ -158,9 +145,7 @@ set tildeop
 " see https://stackoverflow.com/q/4760428/6064933
 set nojoinspaces
 
-" Text after this column number is not highlighted
-set synmaxcol=200
-
+set synmaxcol=200  " Text after this column number is not highlighted
 set nostartofline
 
 " External program to use for grep command
