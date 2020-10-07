@@ -229,6 +229,8 @@ Plug 'fszymanski/deoplete-emoji', {'for': 'markdown'}
 if g:is_mac
   Plug 'rhysd/vim-grammarous'
 endif
+
+Plug 'chrisbra/unicode.vim'
 "}}
 
 "{{ Text object plugins
@@ -668,6 +670,9 @@ if g:is_mac
       \        'NON_STANDARD_WORD', 'AU'],
       \ }
 endif
+
+""""""""""""""""""""""""unicode.vim settings""""""""""""""""""""""""""""""
+nmap ga <Plug>(UnicodeGA)
 
 """"""""""""""""""""""""deoplete-emoji settings""""""""""""""""""""""""""""
 call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
