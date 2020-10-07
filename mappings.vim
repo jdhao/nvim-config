@@ -106,6 +106,10 @@ inoremap <expr> <cr> ((pumvisible())?("\<C-Y>"):("\<cr>"))
 " Use <esc> to close auto-completion menu
 inoremap <expr> <esc> ((pumvisible())?("\<C-e>"):("\<esc>"))
 
+" Tab-complete, see https://vi.stackexchange.com/q/19675/15292.
+inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+
 " Edit and reload init.vim quickly
 nnoremap <silent> <leader>ev :tabnew $MYVIMRC <bar> tcd %:h<cr>
 nnoremap <silent> <leader>sv :silent update $MYVIMRC <bar> source $MYVIMRC <bar>

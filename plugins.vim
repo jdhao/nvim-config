@@ -355,10 +355,6 @@ call deoplete#custom#option('auto_complete_delay', 100)
 " Enable deoplete auto-completion
 call deoplete#custom#option('auto_complete', v:true)
 
-" Tab-complete, see https://vi.stackexchange.com/q/19675/15292.
-inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-
 """""""""""""""""""""""""UltiSnips settings"""""""""""""""""""
 " Trigger configuration. Do not use <tab> if you use YouCompleteMe
 let g:UltiSnipsExpandTrigger='<c-j>'
