@@ -63,8 +63,6 @@ Plug 'jeetsukumaran/vim-pythonsense'
 " Super fast movement with vim-sneak
 Plug 'justinmk/vim-sneak'
 
-" Improve vim incsearch, clear search highlight automatically
-Plug 'haya14busa/is.vim'
 Plug 'PeterRincker/vim-searchlight'
 
 " Show match number for incsearch
@@ -413,15 +411,10 @@ onoremap <silent> F :call sneak#wrap(v:operator, 2, 1, 1, 1)<CR>
 " or previous match
 let g:sneak#s_next = 1
 
-""""""""""""""""""""""""""""is.vim settings"""""""""""""""""""""""
-" To make is.vim work together well with vim-anzu and put current match in
-" the center of the window.
-" `zz`: put cursor line in center of the window.
-" `zv`: open a fold to reveal the text when cursor step into it.
-nmap n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)zzzv
-nmap N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)zzzv
-
 """""""""""""""""""""""""""""vim-anzu settings"""""""""""""""""""""""
+nmap n <Plug>(anzu-n-with-echo)zzzv
+nmap N <Plug>(anzu-N-with-echo)zzzv
+
 " Do not show search index in statusline since it is shown on command line
 let g:airline#extensions#anzu#enabled = 0
 
@@ -429,10 +422,8 @@ let g:airline#extensions#anzu#enabled = 0
 let g:anzu_search_limit = 500000
 
 """""""""""""""""""""""""""""vim-asterisk settings"""""""""""""""""""""
-nmap *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
-nmap #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
-nmap g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
-nmap g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
+nmap *  <Plug>(asterisk-z*)
+nmap #  <Plug>(asterisk-z#)
 
 """""""""""""""""""""""""""""LeaderF settings"""""""""""""""""""""
 " Do not use cache file
