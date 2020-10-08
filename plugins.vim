@@ -424,6 +424,8 @@ let g:anzu_search_limit = 500000
 """""""""""""""""""""""""""""vim-asterisk settings"""""""""""""""""""""
 nmap *  <Plug>(asterisk-z*)
 nmap #  <Plug>(asterisk-z#)
+xmap *  <Plug>(asterisk-z*)
+xmap #  <Plug>(asterisk-z#)
 
 """""""""""""""""""""""""""""LeaderF settings"""""""""""""""""""""
 " Do not use cache file
