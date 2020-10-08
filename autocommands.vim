@@ -64,4 +64,16 @@ augroup highlight_yank
   autocmd!
   au TextYankPost * silent! lua vim.highlight.on_yank{higroup="YankColor", timeout=300}
 augroup END
+
+" Clear cmd line message
+function! s:empty_message(timer)
+  if mode() !=# 'c'
+    echo ''
+  endif
+endfunction
+
+augroup cmd_msg_cls
+    autocmd!
+    autocmd CmdlineLeave :  call timer_start(5000, funcref('s:empty_message'))
+augroup END
 "}
