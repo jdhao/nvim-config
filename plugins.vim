@@ -63,6 +63,9 @@ Plug 'jeetsukumaran/vim-pythonsense'
 " Super fast movement with vim-sneak
 Plug 'justinmk/vim-sneak'
 
+" Clear highlight search automatically for you
+Plug 'romainl/vim-cool'
+
 Plug 'PeterRincker/vim-searchlight'
 
 " Show match number for incsearch
