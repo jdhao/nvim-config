@@ -523,9 +523,8 @@ let g:auto_save = 1
 
 " A list of events to trigger autosave
 let g:auto_save_events = ['InsertLeave', 'TextChanged']
-" let g:auto_save_events = ['InsertLeave']
 
-" Show autosave status on command line
+" Whether to show autosave status on command line
 let g:auto_save_silent = 0
 
 """"""""""""""""""""""""""""vim-yoink settings"""""""""""""""""""""""""
