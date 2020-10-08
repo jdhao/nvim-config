@@ -66,6 +66,7 @@ Plug 'justinmk/vim-sneak'
 " Clear highlight search automatically for you
 Plug 'romainl/vim-cool'
 
+" Show current search term in different color
 Plug 'PeterRincker/vim-searchlight'
 
 " Show match number for incsearch
