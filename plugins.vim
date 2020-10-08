@@ -425,6 +425,9 @@ let g:airline#extensions#anzu#enabled = 0
 " Maximum number of words to search
 let g:anzu_search_limit = 500000
 
+" Message to show for search pattern
+let g:anzu_status_format = '/%p [%i/%l]'
+
 """""""""""""""""""""""""""""vim-asterisk settings"""""""""""""""""""""
 nmap *  <Plug>(asterisk-z*)
 nmap #  <Plug>(asterisk-z#)
