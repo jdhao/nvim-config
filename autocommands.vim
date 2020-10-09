@@ -67,7 +67,7 @@ augroup END
 
 " Clear cmd line message
 function! s:empty_message(timer)
-  if mode() !=# 'c'
+  if mode() ==# 'n'
     echo ''
   endif
 endfunction
