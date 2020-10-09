@@ -74,6 +74,6 @@ endfunction
 
 augroup cmd_msg_cls
     autocmd!
-    autocmd CmdlineLeave :  call timer_start(20000, funcref('s:empty_message'))
+    autocmd CursorHold * call timer_start(25000, funcref('s:empty_message'))
 augroup END
 "}
