@@ -34,6 +34,9 @@ let mapleader = ','
 " let g:loaded_netrw       = 0
 " let g:loaded_netrwPlugin = 0
 let g:netrw_liststyle = 3
+if g:is_win
+  let g:netrw_http_cmd = 'curl --ssl-no-revoke -Lo'
+endif
 
 " Do not load tohtml.vim
 let g:loaded_2html_plugin = 1
