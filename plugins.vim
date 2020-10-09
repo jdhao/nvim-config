@@ -232,7 +232,7 @@ if g:is_mac
   Plug 'rhysd/vim-grammarous'
 endif
 
-Plug 'chrisbra/unicode.vim', {'for': 'markdown'}
+Plug 'chrisbra/unicode.vim'
 "}}
 
 "{{ Text object plugins
