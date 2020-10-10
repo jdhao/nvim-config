@@ -133,6 +133,7 @@ if executable('ctags')
   Plug 'ludovicchabant/vim-gutentags'
   " show file tags in vim window
   Plug 'majutsushi/tagbar', { 'on': ['TagbarToggle', 'TagbarOpen'] }
+  Plug 'liuchengxu/vista.vim'
 endif
 "}}
 
@@ -203,10 +204,6 @@ Plug 'junegunn/gv.vim', { 'on': 'GV' }
 "}}
 
 "{{ Plugins for markdown writing
-" Distraction free writing
-" Markdown syntax highlighting
-Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'markdown' }
-
 " Another markdown plugin
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
@@ -487,7 +484,7 @@ endif
 "{{ Navigation and tags
 """"""""""""""""""""""""""" tagbar settings """"""""""""""""""""""""""""""""""
 " Shortcut to toggle tagbar window
-nnoremap <silent> <Space>t :TagbarToggle<CR>
+" nnoremap <silent> <Space>t :TagbarToggle<CR>
 
 " Add support for markdown files in tagbar.
 if g:is_win
@@ -497,7 +494,7 @@ else
 endif
 
 let g:tagbar_type_markdown = {
-  \ 'ctagstype': 'markdown.pandoc',
+  \ 'ctagstype': 'markdown',
   \ 'ctagsbin' : g:md_ctags_bin,
   \ 'ctagsargs' : '-f - --sort=yes',
   \ 'kinds' : [
@@ -510,6 +507,21 @@ let g:tagbar_type_markdown = {
   \ },
   \ 'sort': 0,
   \ }
+
+""""""""""""""""""""""""""" vista settings """"""""""""""""""""""""""""""""""
+" Double click to go to a tag
+nnoremap <silent> <2-LeftMouse> :<C-U>call vista#cursor#FoldOrJump()<CR>
+
+let g:vista#renderer#icons = {
+\   'member': '',
+\  }
+
+" Do not echo message on command line
+let g:vista_echo_cursor = 0
+" Stay in current window when vista window is opened
+let g:vista_stay_on_open = 0
+
+nnoremap <silent> <Space>t :Vista!!<CR>
 "}}
 
 "{{ File editting
@@ -598,16 +610,6 @@ let g:signify_sign_change = '~'
 "}}
 
 "{{ Markdown writing
-"""""""""""""""""""""""""vim-pandoc-syntax settings"""""""""""""""""""""""""
-" Whether to conceal urls (seems does not work)
-let g:pandoc#syntax#conceal#urls = 1
-
-" Use pandoc-syntax for markdown files, it will disable conceal feature for
-" links, use it at your own risk
-augroup pandoc_syntax
-  au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
-augroup END
-
 """""""""""""""""""""""""plasticboy/vim-markdown settings"""""""""""""""""""
 " Disable header folding
 let g:vim_markdown_folding_disabled = 1
@@ -761,6 +763,7 @@ let g:airline#extensions#tabline#buffer_nr_format = '%s. '
 
 " Whether to show function or other tags on status line
 let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#vista#enabled = 1
 
 " Do not show search index in statusline since it is shown on command line
 let g:airline#extensions#anzu#enabled = 0
@@ -859,7 +862,7 @@ if exists('g:started_by_firenvim') && g:started_by_firenvim
 
   augroup firenvim
     autocmd!
-    autocmd BufEnter *.txt setlocal filetype=markdown.pandoc
+    autocmd BufEnter *.txt setlocal filetype=markdown
   augroup END
 endif
 
