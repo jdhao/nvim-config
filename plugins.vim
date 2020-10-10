@@ -419,9 +419,6 @@ let g:sneak#s_next = 1
 nmap n <Plug>(anzu-n-with-echo)zzzv
 nmap N <Plug>(anzu-N-with-echo)zzzv
 
-" Do not show search index in statusline since it is shown on command line
-let g:airline#extensions#anzu#enabled = 0
-
 " Maximum number of words to search
 let g:anzu_search_limit = 500000
 
@@ -764,6 +761,9 @@ let g:airline#extensions#tabline#buffer_nr_format = '%s. '
 
 " Whether to show function or other tags on status line
 let g:airline#extensions#tagbar#enabled = 1
+
+" Do not show search index in statusline since it is shown on command line
+let g:airline#extensions#anzu#enabled = 0
 
 " Skip empty sections if there are nothing to show,
 " extracted from https://vi.stackexchange.com/a/9637/15292
