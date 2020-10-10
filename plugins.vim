@@ -615,7 +615,7 @@ let g:signify_sign_change = '~'
 let g:vim_markdown_folding_disabled = 1
 
 " Whether to use conceal feature in markdown
-let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal = 1
 
 " Disable math tex conceal and syntax highlight
 let g:tex_conceal = ''
