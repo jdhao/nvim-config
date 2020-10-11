@@ -238,7 +238,7 @@ Plug 'chrisbra/unicode.vim'
 Plug 'wellle/targets.vim'
 
 " Plugin to manipulate characer pairs quickly
-Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround'
 Plug 'machakann/vim-sandwich'
 
 " Add indent object for vim (useful for languages like Python)
@@ -682,6 +682,14 @@ nmap ga <Plug>(UnicodeGA)
 
 """"""""""""""""""""""""deoplete-emoji settings""""""""""""""""""""""""""""
 call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
+"}}
+
+"{{ text objects
+""""""""""""""""""""""""""""vim-sandwich settings"""""""""""""""""""""""""""""
+" Disable default s operation
+nmap s <Nop>
+xmap s <Nop>
+
 "}}
 
 "{{ LaTeX editting
