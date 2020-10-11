@@ -686,10 +686,6 @@ call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
 
 "{{ text objects
 """"""""""""""""""""""""""""vim-sandwich settings"""""""""""""""""""""""""""""
-" Disable default s operation
-nmap s <Nop>
-xmap s <Nop>
-
 " mappings for add surround
 nmap ys <Plug>(operator-sandwich-add)
 xmap ys <Plug>(operator-sandwich-add)
