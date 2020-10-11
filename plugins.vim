@@ -239,6 +239,7 @@ Plug 'wellle/targets.vim'
 
 " Plugin to manipulate characer pairs quickly
 Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
 
 " Add indent object for vim (useful for languages like Python)
 Plug 'michaeljsmith/vim-indent-object'
