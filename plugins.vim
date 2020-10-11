@@ -522,6 +522,17 @@ let g:vista_echo_cursor = 0
 let g:vista_stay_on_open = 0
 
 nnoremap <silent> <Space>t :Vista!!<CR>
+
+function! s:close_vista_win() abort
+  if winnr('$') == 1 && getbufvar(bufnr(), '&filetype') ==# 'vista'
+    quit
+  endif
+endfunction
+
+augroup vista_close_win
+  autocmd!
+  autocmd BufEnter * call s:close_vista_win()
+augroup END
 "}}
 
 "{{ File editting
