@@ -149,6 +149,7 @@ inoremap <S-Tab> <ESC><<i
 nnoremap c "_c
 nnoremap C "_C
 nnoremap cc "_cc
+xnoremap c "_c
 
 " Remove trailing whitespace characters
 nnoremap <silent> <leader><Space> :call utils#StripTrailingWhitespaces()<CR>
