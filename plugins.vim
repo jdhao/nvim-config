@@ -469,6 +469,8 @@ let g:Lf_ShortcutB = ''
 nnoremap <silent> <leader>f :Leaderf file --popup<CR>
 " Search vim help files
 nnoremap <silent> <leader>h :Leaderf help --popup<CR>
+" Search tags in current buffer
+nnoremap <silent> <leader>t :Leaderf bufTag --popup<CR>
 "}}
 
 "{{ URL related
