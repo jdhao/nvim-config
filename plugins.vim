@@ -169,6 +169,8 @@ if g:is_win || g:is_mac
   Plug 'svermeulen/vim-yoink'
 endif
 
+Plug 'bfredl/nvim-miniyank'
+
 " Handy unix command inside Vim (Rename, Move etc.)
 Plug 'tpope/vim-eunuch'
 
@@ -560,13 +562,13 @@ let g:auto_save_silent = 0
 
 """"""""""""""""""""""""""""vim-yoink settings"""""""""""""""""""""""""
 if g:is_win || g:is_mac
-  " ctrl-n and ctrl-p will not work if you add the TextChanged event to
-  " vim-auto-save events
+  " ctrl-n and ctrl-p will not work if you add the TextChanged event to vim-auto-save events.
   " nmap <c-n> <plug>(YoinkPostPasteSwapBack)
   " nmap <c-p> <plug>(YoinkPostPasteSwapForward)
 
-  nmap p <plug>(YoinkPaste_p)
-  nmap P <plug>(YoinkPaste_P)
+  " The following p/P mappings are also needed for ctrl-n and ctrl-p to work
+  " nmap p <plug>(YoinkPaste_p)
+  " nmap P <plug>(YoinkPaste_P)
 
   " Cycle the yank stack with the following mappings
   nmap [y <plug>(YoinkRotateBack)
@@ -582,6 +584,11 @@ if g:is_win || g:is_mac
   " Record yanks in system clipboard
   let g:yoinkSyncSystemClipboardOnFocus = 1
 endif
+
+""""""""""""""""""""""""""""nvim-minipyank settings"""""""""""""""""""""""""
+nmap p <Plug>(miniyank-autoput)
+nmap P <Plug>(miniyank-autoPut)
+"}}
 
 "{{ Linting and formating
 """""""""""""""""""""""""""""" ale settings """""""""""""""""""""""
