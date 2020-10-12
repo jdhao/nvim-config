@@ -57,6 +57,7 @@ Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 
 " Python-related text object
 Plug 'jeetsukumaran/vim-pythonsense'
+Plug 'machakann/vim-swap'
 "}}
 
 "{{ Search related plugins
