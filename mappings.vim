@@ -174,4 +174,7 @@ nnoremap <silent> <A-j> <Cmd>call utils#SwitchLine(line('.'), 'down')<CR>
 " Move current visual-line selection up and down
 xnoremap <silent> <A-k> :<C-U>call utils#MoveSelection('up')<CR>
 xnoremap <silent> <A-j> :<C-U>call utils#MoveSelection('down')<CR>
+
+" Replace visual selection with text in register, but not contaminate the register.
+xnoremap p "_c<ESC>p
 "}
