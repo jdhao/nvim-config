@@ -176,6 +176,7 @@ nnoremap <silent> <A-j> <Cmd>call utils#SwitchLine(line('.'), 'down')<CR>
 xnoremap <silent> <A-k> :<C-U>call utils#MoveSelection('up')<CR>
 xnoremap <silent> <A-j> :<C-U>call utils#MoveSelection('down')<CR>
 
-" Replace visual selection with text in register, but not contaminate the register.
+" Replace visual selection with text in register, but not contaminate the
+" register, see also https://stackoverflow.com/q/10723700/6064933.
 xnoremap p "_c<ESC>p
 "}
