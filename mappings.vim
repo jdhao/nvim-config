@@ -119,8 +119,8 @@ nnoremap <silent> <leader>ev :tabnew $MYVIMRC <bar> tcd %:h<cr>
 nnoremap <silent> <leader>sv :silent update $MYVIMRC <bar> source $MYVIMRC <bar>
       \ echomsg "Nvim config successfully reloaded!"<cr>
 
-" Reselect the text that has just been pasted
-nnoremap <leader>v `[V`]
+" Reselect the text that has just been pasted, see also https://stackoverflow.com/a/4317090/6064933.
+nnoremap <expr> <leader>v printf('`[%s`]', getregtype()[0])
 
 " Search in selected region
 vnoremap / :<C-U>call feedkeys('/\%>'.(line("'<")-1).'l\%<'.(line("'>")+1)."l")<CR>
