@@ -710,11 +710,11 @@ if ( g:is_win || g:is_mac ) && executable('latex')
   " Deoplete configurations for autocompletion to work
   call deoplete#custom#var('omni', 'input_patterns', {
         \ 'tex': g:vimtex#re#deoplete
-        \})
+        \ })
 
   let g:vimtex_compiler_latexmk = {
         \ 'build_dir' : 'build',
-        \}
+        \ }
 
   " TOC settings
   let g:vimtex_toc_config = {
@@ -726,7 +726,7 @@ if ( g:is_win || g:is_mac ) && executable('latex')
         \ 'show_help' : 1,
         \ 'show_numbers' : 1,
         \ 'mode' : 2,
-        \}
+        \ }
 
   " Viewer settings for different platforms
   if g:is_win
@@ -735,33 +735,27 @@ if ( g:is_win || g:is_mac ) && executable('latex')
     let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
   endif
 
+  " The following code is adapted from https://gist.github.com/skulumani/7ea00478c63193a832a6d3f2e661a536.
   if g:is_mac
     " let g:vimtex_view_method = "skim"
-    let g:vimtex_view_general_viewer
-          \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+    let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
     let g:vimtex_view_general_options = '-r @line @pdf @tex'
 
     " This adds a callback hook that updates Skim after compilation
     let g:vimtex_compiler_callback_hooks = ['UpdateSkim']
 
-    function! UpdateSkim(status)
+    function! UpdateSkim(status) abort
       if !a:status | return | endif
 
       let l:out = b:vimtex.out()
-      let l:tex = expand('%:p')
+      let l:src_file_path = expand('%:p')
       let l:cmd = [g:vimtex_view_general_viewer, '-r']
 
       if !empty(system('pgrep Skim'))
         call extend(l:cmd, ['-g'])
       endif
 
-      if has('nvim')
-        call jobstart(l:cmd + [line('.'), l:out, l:tex])
-      elseif has('job')
-        call job_start(l:cmd + [line('.'), l:out, l:tex])
-      else
-        call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
-      endif
+      call jobstart(l:cmd + [line('.'), l:out, l:src_file_path])
     endfunction
   endif
 endif
