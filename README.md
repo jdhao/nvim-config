@@ -20,25 +20,36 @@ itself and the configuration on different platforms (Linux, macOS and Windows).
 
 # Features #
 
-+ Auto-completion for Python via [Deoplete](https://github.com/Shougo/deoplete.nvim).
++ Auto-completion via [Deoplete](https://github.com/Shougo/deoplete.nvim).
 + Source code linting via [Ale](https://github.com/dense-analysis/ale).
 + Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).
-+ Markdown writing and syntax highlighting via [vim-markdown](https://github.com/plasticboy/vim-markdown) and [vim-pandoc-syntax](https://github.com/vim-pandoc/vim-pandoc-syntax).
-+ LaTeX editing via [vimtex](https://github.com/lervag/vimtex)[^1].
++ Faster code commentting via [vim-commentar](https://github.com/tpope/vim-commentary).
++ Asynchronous code execution via [asynrun.vim](https://github.com/skywind3000/asyncrun.vim)
++ Fuzzy searching in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
++ Color theme via [vim-gruvbox8](https://github.com/lifepillar/vim-gruvbox8).
++ Tags navigation via [tagbar](https://github.com/majutsushi/tagbar) or [vista](https://github.com/liuchengxu/vista.vim).
++ Ultra fast snippet insertion via [Ultisnips](https://github.com/SirVer/ultisnips).
++ Faster matching pair insertion and jump via [auto-pairs](https://github.com/jiangmiao/auto-pairs).
++ Smarter and faster matching pair management (add, replace or delete) via [vim-sandwich](https://github.com/machakann/vim-sandwich).
++ Beautiful status line via [vim-airline](https://github.com/vim-airline/vim-airline).
 + Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
 + Fast buffer jump via [vim-sneak](https://github.com/justinmk/vim-sneak).
-+ Fuzzy searching in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
-+ Beautiful status line via [vim-airline](https://github.com/vim-airline/vim-airline).
-+ Tags navigation via [tagbar](https://github.com/majutsushi/tagbar).
++ Markdown writing and syntax highlighting via [vim-markdown](https://github.com/plasticboy/vim-markdown),
+  MarkdownPrievwing via [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
++ LaTeX editing via [vimtex](https://github.com/lervag/vimtex)[^1].
++ Comfortable scroll via [comfortable-motion.vim](https://github.com/yuttie/comfortable-motion.vim).
 + ......
 
 # Shortcuts
 
-In the following shortcuts, `<leader>` represents the `,` character.
+Some of the shortcuts I use frequently. In the following shortcuts, `<leader>`
+represents the `,` character.
 
 | Shortcut          | Mode   | Description                                               |
 |-------------------|--------|-----------------------------------------------------------|
 | `<leader>f`       | Normal | Fuzzy file search in a floating window                    |
+| `<leader>h`       | Normal | Fuzzy help search in a floating window                    |
+| `<leader>b`       | Normal | Fuzzy buffer tag search in a floating window              |
 | `<leader><Space>` | Normal | Remove trailing whitespaces                               |
 | `<leader>v`       | Normal | Reselect last pasted text                                 |
 | `<leader>ev`      | Normal | Edit Neovim config in a new tabpage                       |
