@@ -283,8 +283,8 @@ Plug 'mattn/emmet-vim'
 " Modern matchit implementation
 Plug 'andymass/vim-matchup'
 
-" Simulating smooth scroll motions with physcis
-Plug 'yuttie/comfortable-motion.vim'
+" Smoothie motions
+Plug 'psliwka/vim-smoothie'
 
 Plug 'tpope/vim-scriptease'
 
@@ -859,21 +859,6 @@ augroup matchup_matchword_highlight
   autocmd!
   autocmd ColorScheme * hi MatchWord cterm=underline gui=underline
 augroup END
-
-""""""""""""""""""""""""comfortable-motion settings """"""""""""""""""""""
-let g:comfortable_motion_scroll_down_key = 'j'
-let g:comfortable_motion_scroll_up_key = 'k'
-
-let g:comfortable_motion_no_default_key_mappings = 1
-" scroll based on window height
-nnoremap <silent> <C-d> :call comfortable_motion#flick(winheight(0) * 2)<CR>
-nnoremap <silent> <C-u> :call comfortable_motion#flick(winheight(0) * -2)<CR>
-nnoremap <silent> <C-f> :call comfortable_motion#flick(winheight(0) * 4)<CR>
-nnoremap <silent> <C-b> :call comfortable_motion#flick(winheight(0) * -4)<CR>
-
-" Mouse settings
-noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(20)<CR>
-noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-20)<CR>
 
 """""""""""""""""""""""""" asyncrun.vim settings """"""""""""""""""""""""""
 " Automatically open quickfix window of 6 line tall after asyncrun starts
