@@ -696,23 +696,9 @@ call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
 
 "{{ text objects
 """"""""""""""""""""""""""""vim-sandwich settings"""""""""""""""""""""""""""""
-" Do not use the default mappings
-let g:sandwich_no_default_key_mappings = 1
-
-" mappings for add surround
-nmap ys <Plug>(operator-sandwich-add)
-xmap ys <Plug>(operator-sandwich-add)
-omap ys <Plug>(operator-sandwich-g@)
-
-" mappings for delete surround
-nmap  dsb <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
-nmap  ds  <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
-xmap  ds  <Plug>(operator-sandwich-delete)
-
-" mappings for change surround
-nmap  csb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
-nmap  cs  <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
-xmap  cs  <Plug>(operator-sandwich-replace)
+" Map s to nop since s in used by vim-sandwich. Use cl instead of s.
+nmap s <Nop>
+omap s <Nop>
 "}}
 
 "{{ LaTeX editting
