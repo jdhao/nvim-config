@@ -179,4 +179,33 @@ xnoremap <silent> <A-j> :<C-U>call utils#MoveSelection('down')<CR>
 " Replace visual selection with text in register, but not contaminate the
 " register, see also https://stackoverflow.com/q/10723700/6064933.
 xnoremap p "_c<ESC>p
+
+nnoremap <silent> gb :<C-U>call <SID>GoToBuffer(v:count, 'forward')<CR>
+nnoremap <silent> gB :<C-U>call <SID>GoToBuffer(v:count, 'backward')<CR>
+
+function! s:GoToBuffer(count, direction) abort
+  if a:count == 0
+    if a:direction ==# 'forward'
+      bnext
+    elseif a:direction ==# 'backward'
+      bprevious
+    else
+      echoerr 'Bad argument ' a:direction
+    endif
+    return
+  endif
+  " Check the validity of buffer number.
+  if index(s:GetBufNums(), a:count) == -1
+    echohl WarningMsg | echomsg 'Invalid bufnr: ' a:count | echohl None
+    return
+  endif
+
+  silent execute('buffer' . a:count)
+endfunction
+
+function! s:GetBufNums() abort
+  let l:buf_infos = getbufinfo({'buflisted':1})
+  let l:buf_nums = map(l:buf_infos, "v:val['bufnr']")
+  return l:buf_nums
+endfunction
 "}
