@@ -207,8 +207,6 @@ function! s:GoToBuffer(count, direction) abort
 endfunction
 
 function! s:GetBufNums() abort
-  let l:buf_infos = getbufinfo({'buflisted':1})
-  let l:buf_nums = map(l:buf_infos, "v:val['bufnr']")
-  return l:buf_nums
+  return map(copy(getbufinfo({'buflisted':1})), 'v:val.bufnr')
 endfunction
 "}
