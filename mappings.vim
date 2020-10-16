@@ -200,7 +200,10 @@ function! s:GoToBuffer(count, direction) abort
     return
   endif
 
-  silent execute('buffer' . a:count)
+  " Do not use {count} for gB (it is less useful)
+  if a:direction ==# 'forward'
+    silent execute('buffer' . a:count)
+  endif
 endfunction
 
 function! s:GetBufNums() abort
