@@ -4,7 +4,7 @@
 " support true colors! For a comprehensive list of terminals supporting true
 " colors, see https://github.com/termstandard/colors and
 " https://gist.github.com/XVilka/8346728.
-if $TERM ==# 'xterm-256color' || exists('g:started_by_firenvim')
+if match($TERM, '^xterm.*') != -1 || exists('g:started_by_firenvim')
   set termguicolors
 endif
 " Use dark background
