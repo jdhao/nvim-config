@@ -137,7 +137,6 @@ function! s:my_theme_dict.neodark() dict abort
   endif
 endfunction
 
-" execute printf('call s:my_theme_dict.%s()', s:theme)
-execute printf('call s:my_theme_dict.%s()', 'material')
+execute printf('call s:my_theme_dict.%s()', s:theme)
 "}}
 "}
