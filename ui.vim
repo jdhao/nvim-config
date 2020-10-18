@@ -34,16 +34,12 @@ function! s:my_theme_dict.gruvbox8() dict abort
     let g:gruvbox_filetype_hi_groups = 0
     let g:gruvbox_plugin_hi_groups = 0
     colorscheme gruvbox8_hard
-  else
-    colorscheme desert
   endif
 endfunction
 
 function! s:my_theme_dict.srcery() dict abort
   if utils#HasColorscheme('srcery')
     colorscheme srcery
-  else
-    colorscheme desert
   endif
 endfunction
 
@@ -53,24 +49,18 @@ function! s:my_theme_dict.badwolf() dict abort
     " Make the tab line lighter than the background.
     let g:badwolf_tabline = 2
     colorscheme badwolf
-  else
-    colorscheme desert
   endif
 endfunction
 
 function! s:my_theme_dict.deus() dict abort
   if utils#HasColorscheme('deus')
     colorscheme deus
-  else
-    colorscheme desert
   endif
 endfunction
 
 function! s:my_theme_dict.happy_hacking() dict abort
   if utils#HasColorscheme('happy_hacking')
     colorscheme happy_hacking
-  else
-    colorscheme desert
   endif
 endfunction
 
@@ -79,24 +69,18 @@ function! s:my_theme_dict.solarized8() dict abort
     let g:solarized_term_italics=1
     let g:solarized_visibility='high'
     colorscheme solarized8_flat
-  else
-    colorscheme desert
   endif
 endfunction
 
 function! s:my_theme_dict.monokai() dict abort
   if utils#HasColorscheme('monokai')
     colorscheme monokai
-  else
-    colorscheme desert
   endif
 endfunction
 
 function! s:my_theme_dict.gotham() dict abort
   if utils#HasColorscheme('gotham')
     colorscheme gotham
-  else
-    colorscheme desert
   endif
 endfunction
 
@@ -104,8 +88,6 @@ function! s:my_theme_dict.vim_one() dict abort
   if utils#HasColorscheme('one')
     let g:one_allow_italics = 1
     colorscheme one
-  else
-    colorscheme desert
   endif
 endfunction
 
@@ -115,8 +97,6 @@ function! s:my_theme_dict.material() dict abort
     " theme_style can be 'default', 'dark' or 'palenight'
     let g:material_theme_style = 'default'
     colorscheme material
-  else
-    colorscheme desert
   endif
 endfunction
 
@@ -124,16 +104,12 @@ function! s:my_theme_dict.onedark() dict abort
   if utils#HasColorscheme('onedark')
     let g:onedark_terminal_italics = 1
     colorscheme onedark
-  else
-    colorscheme desert
   endif
 endfunction
 
 function! s:my_theme_dict.neodark() dict abort
   if utils#HasColorscheme('neodark')
     colorscheme neodark
-  else
-    colorscheme desert
   endif
 endfunction
 
