@@ -13,7 +13,7 @@ set background=dark
 
 "{{ Colorscheme settings
 let s:candidate_theme = ['gruvbox8', 'srcery', 'badwolf', 'deus', 'happy_hacking', 'solarized8',
-      \ 'monokai', 'gotham', 'vim_one', 'material']
+      \ 'monokai', 'gotham', 'vim_one', 'material', 'onedark']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 
@@ -106,6 +106,23 @@ endfunction
 function! s:my_theme_dict.material() dict abort
   if utils#HasColorscheme('material')
     colorscheme material
+  else
+    colorscheme desert
+  endif
+endfunction
+
+function! s:my_theme_dict.onedark() dict abort
+  if utils#HasColorscheme('onedark')
+    let g:onedark_terminal_italics = 1
+    colorscheme onedark
+  else
+    colorscheme desert
+  endif
+endfunction
+
+function! s:my_theme_dict.neodark() dict abort
+  if utils#HasColorscheme('neodark')
+    colorscheme neodark
   else
     colorscheme desert
   endif
