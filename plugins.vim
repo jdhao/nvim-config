@@ -99,12 +99,13 @@ Plug 'lifepillar/vim-gruvbox8'
 Plug 'srcery-colors/srcery-vim'
 Plug 'sjl/badwolf'
 Plug 'ajmwagar/vim-deus'
-Plug 'git@gitlab.com:yorickpeterse/happy_hacking.vim.git'
+Plug 'https://gitlab.com/yorickpeterse/happy_hacking.vim.git'
 Plug 'lifepillar/vim-solarized8'
 Plug 'sickill/vim-monokai'
 Plug 'whatyouhide/vim-gotham'
 Plug 'rakr/vim-one'
 Plug 'kaicataldo/material.vim'
+Plug 'joshdick/onedark.vim'
 
 if !exists('g:started_by_firenvim')
   " colorful status line and theme
