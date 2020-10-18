@@ -113,6 +113,13 @@ function! s:my_theme_dict.neodark() dict abort
   colorscheme neodark
 endfunction
 
-execute printf('call s:my_theme_dict.%s()', s:theme)
+let s:colorscheme_func = printf('s:my_theme_dict.%s()', s:theme)
+if has_key(s:my_theme_dict, s:theme)
+  execute 'call ' . s:colorscheme_func
+else
+  echohl WarningMsg
+  echomsg 'Invalid colorscheme function: ' s:colorscheme_func ', using default instead.'
+  echohl None
+endif
 "}}
 "}
