@@ -49,6 +49,9 @@ endfunction
 
 function! s:my_theme_dict.badwolf() dict abort
   if utils#HasColorscheme('badwolf')
+    let g:badwolf_darkgutter = 0
+    " Make the tab line lighter than the background.
+    let g:badwolf_tabline = 2
     colorscheme badwolf
   else
     colorscheme desert
@@ -73,7 +76,9 @@ endfunction
 
 function! s:my_theme_dict.solarized8() dict abort
   if utils#HasColorscheme('solarized8')
-    colorscheme solarized8
+    let g:solarized_term_italics=1
+    let g:solarized_visibility='high'
+    colorscheme solarized8_flat
   else
     colorscheme desert
   endif
@@ -97,6 +102,7 @@ endfunction
 
 function! s:my_theme_dict.vim_one() dict abort
   if utils#HasColorscheme('one')
+    let g:one_allow_italics = 1
     colorscheme one
   else
     colorscheme desert
@@ -105,6 +111,9 @@ endfunction
 
 function! s:my_theme_dict.material() dict abort
   if utils#HasColorscheme('material')
+    let g:material_terminal_italics = 1
+    " theme_style can be 'default', 'dark' or 'palenight'
+    let g:material_theme_style = 'default'
     colorscheme material
   else
     colorscheme desert
@@ -128,31 +137,7 @@ function! s:my_theme_dict.neodark() dict abort
   endif
 endfunction
 
-execute printf('call s:my_theme_dict.%s()', s:theme)
-
-""""""""""""""""""""""""""" deus settings"""""""""""""""""""""""""""""""""
-" colorscheme deus
-
-""""""""""""""""""""""""""" solarized8 settings"""""""""""""""""""""""""
-" Solarized colorscheme without bullshit
-" let g:solarized_term_italics=1
-" let g:solarized_visibility="high"
-" colorscheme solarized8_high
-
-""""""""""""""""""""""""""" vim-one settings"""""""""""""""""""""""""""""
-" let g:one_allow_italics = 1
-" colorscheme one
-
-"""""""""""""""""""""""""""material.vim settings""""""""""""""""""""""""""
-" let g:material_terminal_italics = 1
-" " theme_style can be 'default', 'dark' or 'palenight'
-" let g:material_theme_style = 'dark'
-" colorscheme material
-
-""""""""""""""""""""""""""" badwolf settings """""""""""""""""""""""""""""
-" let g:badwolf_darkgutter = 0
-" " Make the tab line lighter than the background.
-" let g:badwolf_tabline = 2
-" colorscheme badwolf
+" execute printf('call s:my_theme_dict.%s()', s:theme)
+execute printf('call s:my_theme_dict.%s()', 'material')
 "}}
 "}
