@@ -12,20 +12,106 @@ set background=dark
 "}}
 
 "{{ Colorscheme settings
-""""""""""""""""""""""""""""gruvbox settings"""""""""""""""""""""""""""
-" We should check if theme exists before using it, otherwise you will get
-" error message when starting Nvim
-if utils#HasColorscheme('gruvbox8')
-  " Italic options should be put before colorscheme setting,
-  " see https://github.com/morhetz/gruvbox/wiki/Terminal-specific#1-italics-is-disabled
-  let g:gruvbox_italics=1
-  let g:gruvbox_italicize_strings=1
-  let g:gruvbox_filetype_hi_groups = 0
-  let g:gruvbox_plugin_hi_groups = 0
-  colorscheme gruvbox8_hard
-else
-  colorscheme desert
-endif
+let s:candidate_theme = ['gruvbox8', 'srcery', 'badwolf', 'deus', 'happy_hacking', 'solarized8',
+      \ 'monokai', 'gotham', 'vim_one', 'material']
+let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
+let s:theme = s:candidate_theme[s:idx]
+
+let s:my_theme_dict = {}
+
+function! s:my_theme_dict.srcery() dict abort
+  colorscheme srcery
+endfunction
+
+function! s:my_theme_dict.gruvbox8() dict abort
+  " We should check if theme exists before using it, otherwise you will get
+  " error message when starting Nvim
+  if utils#HasColorscheme('gruvbox8')
+    " Italic options should be put before colorscheme setting,
+    " see https://github.com/morhetz/gruvbox/wiki/Terminal-specific#1-italics-is-disabled
+    let g:gruvbox_italics=1
+    let g:gruvbox_italicize_strings=1
+    let g:gruvbox_filetype_hi_groups = 0
+    let g:gruvbox_plugin_hi_groups = 0
+    colorscheme gruvbox8_hard
+  else
+    colorscheme desert
+  endif
+endfunction
+
+function! s:my_theme_dict.srcery() dict abort
+  if utils#HasColorscheme('srcery')
+    colorscheme srcery
+  else
+    colorscheme desert
+  endif
+endfunction
+
+function! s:my_theme_dict.badwolf() dict abort
+  if utils#HasColorscheme('badwolf')
+    colorscheme badwolf
+  else
+    colorscheme desert
+  endif
+endfunction
+
+function! s:my_theme_dict.deus() dict abort
+  if utils#HasColorscheme('deus')
+    colorscheme deus
+  else
+    colorscheme desert
+  endif
+endfunction
+
+function! s:my_theme_dict.happy_hacking() dict abort
+  if utils#HasColorscheme('happy_hacking')
+    colorscheme happy_hacking
+  else
+    colorscheme desert
+  endif
+endfunction
+
+function! s:my_theme_dict.solarized8() dict abort
+  if utils#HasColorscheme('solarized8')
+    colorscheme solarized8
+  else
+    colorscheme desert
+  endif
+endfunction
+
+function! s:my_theme_dict.monokai() dict abort
+  if utils#HasColorscheme('monokai')
+    colorscheme monokai
+  else
+    colorscheme desert
+  endif
+endfunction
+
+function! s:my_theme_dict.gotham() dict abort
+  if utils#HasColorscheme('gotham')
+    colorscheme gotham
+  else
+    colorscheme desert
+  endif
+endfunction
+
+function! s:my_theme_dict.vim_one() dict abort
+  if utils#HasColorscheme('one')
+    colorscheme one
+  else
+    colorscheme desert
+  endif
+endfunction
+
+function! s:my_theme_dict.material() dict abort
+  if utils#HasColorscheme('material')
+    colorscheme material
+  else
+    colorscheme desert
+  endif
+endfunction
+
+execute printf('call s:my_theme_dict.%s()', s:theme)
 
 """"""""""""""""""""""""""" deus settings"""""""""""""""""""""""""""""""""
 " colorscheme deus

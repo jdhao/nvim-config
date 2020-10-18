@@ -97,15 +97,14 @@ endif
 " A list of colorscheme plugin you may want to try. Find what suits you.
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'srcery-colors/srcery-vim'
-" Plug 'sjl/badwolf'
-" Plug 'ajmwagar/vim-deus'
-" Plug 'sainnhe/vim-color-desert-night'
-" Plug 'YorickPeterse/happy_hacking.vim'
-" Plug 'lifepillar/vim-solarized8'
-" Plug 'sickill/vim-monokai'
-" Plug 'whatyouhide/vim-gotham'
-" Plug 'rakr/vim-one'
-" Plug 'kaicataldo/material.vim'
+Plug 'sjl/badwolf'
+Plug 'ajmwagar/vim-deus'
+Plug 'YorickPeterse/happy_hacking.vim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'sickill/vim-monokai'
+Plug 'whatyouhide/vim-gotham'
+Plug 'rakr/vim-one'
+Plug 'kaicataldo/material.vim'
 
 if !exists('g:started_by_firenvim')
   " colorful status line and theme
