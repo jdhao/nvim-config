@@ -1,5 +1,5 @@
 <p align="center">
-<img src="images/demo_look.jpg" width="600">
+<img src="https://blog-resource-1257868508.file.myqcloud.com/20201019233233.jpg" width="600">
 </p>
 
 # Introduction
