@@ -69,7 +69,7 @@ function! s:my_theme_dict.solarized8() dict abort
 
   let g:solarized_term_italics=1
   let g:solarized_visibility='high'
-  colorscheme solarized8_flat
+  colorscheme solarized8_high
 endfunction
 
 function! s:my_theme_dict.monokai() dict abort
