@@ -469,11 +469,11 @@ let g:Lf_ShortcutF = ''
 let g:Lf_ShortcutB = ''
 
 " Search files in popup window
-nnoremap <silent> <leader>f :Leaderf file --popup<CR>
+nnoremap <silent> <leader>f :<C-U>Leaderf file --popup<CR>
 " Search vim help files
-nnoremap <silent> <leader>h :Leaderf help --popup<CR>
+nnoremap <silent> <leader>h :<C-U>Leaderf help --popup<CR>
 " Search tags in current buffer
-nnoremap <silent> <leader>t :Leaderf bufTag --popup<CR>
+nnoremap <silent> <leader>t :<C-U>Leaderf bufTag --popup<CR>
 "}}
 
 "{{ URL related
@@ -491,7 +491,7 @@ endif
 "{{ Navigation and tags
 """"""""""""""""""""""""""" tagbar settings """"""""""""""""""""""""""""""""""
 " Shortcut to toggle tagbar window
-" nnoremap <silent> <Space>t :TagbarToggle<CR>
+" nnoremap <silent> <Space>t :<C-U>TagbarToggle<CR>
 
 " Add support for markdown files in tagbar.
 if g:is_win
@@ -528,7 +528,7 @@ let g:vista_echo_cursor = 0
 " Stay in current window when vista window is opened
 let g:vista_stay_on_open = 0
 
-nnoremap <silent> <Space>t :Vista!!<CR>
+nnoremap <silent> <Space>t :<C-U>Vista!!<CR>
 
 function! s:close_vista_win() abort
   if winnr('$') == 1 && getbufvar(bufnr(), '&filetype') ==# 'vista'
@@ -659,8 +659,8 @@ if g:is_win || g:is_mac
   let g:mkdp_auto_close = 0
 
   " Shortcuts to start and stop markdown previewing
-  nnoremap <silent> <M-m> :MarkdownPreview<CR>
-  nnoremap <silent> <M-S-m> :MarkdownPreviewStop<CR>
+  nnoremap <silent> <M-m> :<C-U>MarkdownPreview<CR>
+  nnoremap <silent> <M-S-m> :<C-U>MarkdownPreviewStop<CR>
 endif
 
 """"""""""""""""""""""""vim-markdownfootnotes settings""""""""""""""""""""""""
@@ -876,6 +876,6 @@ if exists('g:started_by_firenvim') && g:started_by_firenvim
 endif
 
 """"""""""""""""""""""""""""""nvim-gdb settings""""""""""""""""""""""""""""""
-nnoremap <leader>dp :GdbStartPDB python -m pdb %<CR>
+nnoremap <leader>dp :<C-U>GdbStartPDB python -m pdb %<CR>
 "}}
 "}

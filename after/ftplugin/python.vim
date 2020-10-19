@@ -1,5 +1,5 @@
 if exists(':AsyncRun')
-  nnoremap <silent> <F9> :AsyncRun python -u "%"<CR>
+  nnoremap <silent> <F9> :<C-U>AsyncRun python -u "%"<CR>
 endif
 
 " Do not wrap Python source code.

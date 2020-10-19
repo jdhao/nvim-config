@@ -23,29 +23,29 @@ nnoremap <leader>p m`o<ESC>p``
 nnoremap <leader>P m`O<ESC>p``
 
 " Shortcut for faster save and quit
-nnoremap <silent> <leader>w :update<CR>
+nnoremap <silent> <leader>w :<C-U>update<CR>
 " Saves the file if modified and quit
-nnoremap <silent> <leader>q :x<CR>
+nnoremap <silent> <leader>q :<C-U>x<CR>
 " Quit all opened buffers
-nnoremap <silent> <leader>Q :qa<CR>
+nnoremap <silent> <leader>Q :<C-U>qa<CR>
 
 " Navigation in the location and quickfix list
-nnoremap <silent> [l :lprevious<CR>zv
-nnoremap <silent> ]l :lnext<CR>zv
-nnoremap <silent> [L :lfirst<CR>zv
-nnoremap <silent> ]L :llast<CR>zv
-nnoremap <silent> [q :cprevious<CR>zv
-nnoremap <silent> ]q :cnext<CR>zv
-nnoremap <silent> [Q :cfirst<CR>zv
-nnoremap <silent> ]Q :clast<CR>zv
+nnoremap <silent> [l :<C-U>lprevious<CR>zv
+nnoremap <silent> ]l :<C-U>lnext<CR>zv
+nnoremap <silent> [L :<C-U>lfirst<CR>zv
+nnoremap <silent> ]L :<C-U>llast<CR>zv
+nnoremap <silent> [q :<C-U>cprevious<CR>zv
+nnoremap <silent> ]q :<C-U>cnext<CR>zv
+nnoremap <silent> [Q :<C-U>cfirst<CR>zv
+nnoremap <silent> ]Q :<C-U>clast<CR>zv
 
 " Close location list or quickfix list if they are present,
 " see https://superuser.com/q/355325/736190
-nnoremap<silent> \x :windo lclose <bar> cclose<CR>
+nnoremap<silent> \x :<C-U>windo lclose <bar> cclose<CR>
 
 " Close a buffer and switching to another buffer, do not close the
 " window, see https://stackoverflow.com/q/4465095/6064933
-nnoremap <silent> \d :bprevious <bar> bdelete #<CR>
+nnoremap <silent> \d :<C-U>bprevious <bar> bdelete #<CR>
 
 " Insert a blank line below or above current line (do not move the cursor),
 " see https://stackoverflow.com/a/16136133/6064933
@@ -115,8 +115,8 @@ inoremap <expr> <C-d> pumvisible() ? "\<PageDown>" : "\<C-d>"
 inoremap <expr> <C-u> pumvisible() ? "\<PageUp>" : "\<C-u>"
 
 " Edit and reload init.vim quickly
-nnoremap <silent> <leader>ev :tabnew $MYVIMRC <bar> tcd %:h<cr>
-nnoremap <silent> <leader>sv :silent update $MYVIMRC <bar> source $MYVIMRC <bar>
+nnoremap <silent> <leader>ev :<C-U>tabnew $MYVIMRC <bar> tcd %:h<cr>
+nnoremap <silent> <leader>sv :<C-U>silent update $MYVIMRC <bar> source $MYVIMRC <bar>
       \ echomsg "Nvim config successfully reloaded!"<cr>
 
 " Reselect the text that has just been pasted, see also https://stackoverflow.com/a/4317090/6064933.
@@ -131,15 +131,15 @@ xnoremap <C-H> :s/
 
 " Change current working directory locally and print cwd after that,
 " see https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
-nnoremap <silent> <leader>cd :lcd %:p:h<CR>:pwd<CR>
+nnoremap <silent> <leader>cd :<C-U>lcd %:p:h<CR>:pwd<CR>
 
 " Use Esc to quit builtin terminal
 tnoremap <ESC>   <C-\><C-n>
 
 " Toggle spell checking (autosave does not play well with z=, so we disable it
 " when we are doing spell checking)
-nnoremap <silent> <F11> :set spell! <bar> :AutoSaveToggle<cr>
-inoremap <silent> <F11> <C-O>:set spell! <bar> :AutoSaveToggle<cr>
+nnoremap <silent> <F11> :<C-U>set spell! <bar> :AutoSaveToggle<cr>
+inoremap <silent> <F11> <C-O>:<C-U>set spell! <bar> :AutoSaveToggle<cr>
 
 " Decrease indent level in insert mode with shift+tab
 inoremap <S-Tab> <ESC><<i
@@ -152,21 +152,21 @@ nnoremap cc "_cc
 xnoremap c "_c
 
 " Remove trailing whitespace characters
-nnoremap <silent> <leader><Space> :call utils#StripTrailingWhitespaces()<CR>
+nnoremap <silent> <leader><Space> :<C-U>call utils#StripTrailingWhitespaces()<CR>
 
 " check the syntax group of current cursor position
-nnoremap <silent> <leader>st :call utils#SynGroup()<CR>
+nnoremap <silent> <leader>st :<C-U>call utils#SynGroup()<CR>
 
 " Clear highlighting
 if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+  nnoremap <silent> <C-L> :<C-U>nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
 " Copy entire buffer.
-nnoremap <silent> <leader>y :%y<CR>
+nnoremap <silent> <leader>y :<C-U>%y<CR>
 
 " Toggle cursor column
-nnoremap <silent> <leader>cl :call utils#ToggleCursorCol()<CR>
+nnoremap <silent> <leader>cl :<C-U>call utils#ToggleCursorCol()<CR>
 
 " Move current line up and down
 nnoremap <silent> <A-k> <Cmd>call utils#SwitchLine(line('.'), 'up')<CR>
