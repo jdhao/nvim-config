@@ -13,7 +13,7 @@ set background=dark
 
 "{{ Colorscheme settings
 let s:candidate_theme = ['gruvbox8', 'srcery', 'badwolf', 'deus', 'happy_hacking', 'solarized8',
-      \ 'monokai_tasty', 'gotham', 'vim_one', 'material', 'onedark']
+      \ 'monokai_tasty', 'vim_one', 'material', 'onedark']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 
@@ -76,12 +76,6 @@ function! s:my_theme_dict.monokai_tasty() dict abort
   if !utils#HasColorscheme('vim-monokai-tasty') | return | endif
   let g:vim_monokai_tasty_italic = 1
   colorscheme vim-monokai-tasty
-endfunction
-
-function! s:my_theme_dict.gotham() dict abort
-  if !utils#HasColorscheme('gotham') | return | endif
-
-  colorscheme gotham
 endfunction
 
 function! s:my_theme_dict.vim_one() dict abort
