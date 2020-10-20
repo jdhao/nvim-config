@@ -468,6 +468,9 @@ let g:Lf_UseVersionControlTool = 0
 let g:Lf_ShortcutF = ''
 let g:Lf_ShortcutB = ''
 
+" set up working directory for git repository
+let g:Lf_WorkingDirectoryMode = 'a'
+
 " Search files in popup window
 nnoremap <silent> <leader>f :<C-U>Leaderf file --popup<CR>
 " Search vim help files
