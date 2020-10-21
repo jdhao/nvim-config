@@ -97,11 +97,12 @@ endif
 " A list of colorscheme plugin you may want to try. Find what suits you.
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'srcery-colors/srcery-vim'
-Plug 'sjl/badwolf'
 Plug 'ajmwagar/vim-deus'
 Plug 'https://gitlab.com/yorickpeterse/happy_hacking.vim.git'
 Plug 'lifepillar/vim-solarized8'
-Plug 'patstockwell/vim-monokai-tasty'
+" Do not try other monokai-tasty and monokai-pro anymore, they
+" all have bad DiffDelete highlight issues.
+Plug 'sickill/vim-monokai'
 Plug 'rakr/vim-one'
 Plug 'kaicataldo/material.vim'
 Plug 'joshdick/onedark.vim'
