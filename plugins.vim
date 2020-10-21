@@ -133,7 +133,6 @@ if executable('ctags')
   " plugin to manage your tags
   Plug 'ludovicchabant/vim-gutentags'
   " show file tags in vim window
-  Plug 'majutsushi/tagbar', { 'on': ['TagbarToggle', 'TagbarOpen'] }
   Plug 'liuchengxu/vista.vim'
 endif
 "}}
@@ -491,32 +490,6 @@ endif
 "}}
 
 "{{ Navigation and tags
-""""""""""""""""""""""""""" tagbar settings """"""""""""""""""""""""""""""""""
-" Shortcut to toggle tagbar window
-" nnoremap <silent> <Space>t :<C-U>TagbarToggle<CR>
-
-" Add support for markdown files in tagbar.
-if g:is_win
-  let g:md_ctags_bin=fnamemodify(g:nvim_config_root."\\tools\\markdown2ctags.exe", ':p')
-else
-  let g:md_ctags_bin=fnamemodify(g:nvim_config_root.'/tools/markdown2ctags.py', ':p')
-endif
-
-let g:tagbar_type_markdown = {
-  \ 'ctagstype': 'markdown',
-  \ 'ctagsbin' : g:md_ctags_bin,
-  \ 'ctagsargs' : '-f - --sort=yes',
-  \ 'kinds' : [
-  \ 's:sections',
-  \ 'i:images'
-  \ ],
-  \ 'sro' : '|',
-  \ 'kind2scope' : {
-  \ 's' : 'section',
-  \ },
-  \ 'sort': 0,
-  \ }
-
 """"""""""""""""""""""""""" vista settings """"""""""""""""""""""""""""""""""
 " Double click to go to a tag
 nnoremap <silent> <2-LeftMouse> :<C-U>call vista#cursor#FoldOrJump()<CR>

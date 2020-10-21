@@ -27,7 +27,7 @@ itself and the configuration on different platforms (Linux, macOS and Windows).
 + Asynchronous code execution via [asynrun.vim](https://github.com/skywind3000/asyncrun.vim)
 + Fuzzy searching in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
 + Color theme via [vim-gruvbox8](https://github.com/lifepillar/vim-gruvbox8).
-+ Tags navigation via [tagbar](https://github.com/majutsushi/tagbar) or [vista](https://github.com/liuchengxu/vista.vim).
++ Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
 + Ultra fast snippet insertion via [Ultisnips](https://github.com/SirVer/ultisnips).
 + Faster matching pair insertion and jump via [auto-pairs](https://github.com/jiangmiao/auto-pairs).
 + Smarter and faster matching pair management (add, replace or delete) via [vim-sandwich](https://github.com/machakann/vim-sandwich).
