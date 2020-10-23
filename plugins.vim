@@ -158,11 +158,8 @@ Plug 'christoomey/vim-titlecase'
 " Autosave files on certain events
 Plug '907th/vim-auto-save'
 
-" graphcial undo history, see https://github.com/mbbill/undotree
-Plug 'mbbill/undotree'
-
-" another plugin to show undo history
-" Plug 'simnalamburt/vim-mundo'
+" Show undo history visually
+Plug 'simnalamburt/vim-mundo'
 
 " Manage your yank history
 if g:is_win || g:is_mac
@@ -537,6 +534,12 @@ let g:auto_save_events = ['InsertLeave', 'TextChanged']
 
 " Whether to show autosave status on command line
 let g:auto_save_silent = 0
+
+""""""""""""""""""""""""vim-mundo settings"""""""""""""""""""""""
+let g:mundo_verbose_graph = 0
+let g:mundo_width = 80
+
+nnoremap <silent> <Space>u :MundoToggle<CR>
 
 """"""""""""""""""""""""""""vim-yoink settings"""""""""""""""""""""""""
 if g:is_win || g:is_mac
