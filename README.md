@@ -26,7 +26,7 @@ itself and the configuration on different platforms (Linux, macOS and Windows).
 + Faster code commentting via [vim-commentar](https://github.com/tpope/vim-commentary).
 + Asynchronous code execution via [asynrun.vim](https://github.com/skywind3000/asyncrun.vim)
 + Fuzzy searching in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
-+ Color theme via [vim-gruvbox8](https://github.com/lifepillar/vim-gruvbox8).
++ Color theme via [vim-gruvbox8](https://github.com/lifepillar/vim-gruvbox8) and other beautiful themes.
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
 + Ultra fast snippet insertion via [Ultisnips](https://github.com/SirVer/ultisnips).
 + Faster matching pair insertion and jump via [auto-pairs](https://github.com/jiangmiao/auto-pairs).
@@ -37,7 +37,7 @@ itself and the configuration on different platforms (Linux, macOS and Windows).
 + Markdown writing and syntax highlighting via [vim-markdown](https://github.com/plasticboy/vim-markdown),
   MarkdownPrievwing via [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
 + LaTeX editing via [vimtex](https://github.com/lervag/vimtex)[^1].
-+ Comfortable scroll via [comfortable-motion.vim](https://github.com/yuttie/comfortable-motion.vim).
++ Smooth scroll experience via [vim-smoothie](https://github.com/psliwka/vim-smoothie).
 + ......
 
 # Shortcuts
