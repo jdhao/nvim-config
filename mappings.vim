@@ -209,4 +209,9 @@ endfunction
 function! s:GetBufNums() abort
   return map(copy(getbufinfo({'buflisted':1})), 'v:val.bufnr')
 endfunction
+
+nnoremap <Left> <C-W>h
+nnoremap <Right> <C-W>l
+nnoremap <Up> <C-W>k
+nnoremap <Down> <C-W>j
 "}
