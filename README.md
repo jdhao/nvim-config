@@ -83,6 +83,10 @@ If you still have an issue, you may [open a new issue](https://github.com/jdhao/
 
 # Further readings
 
+Some of the resources that I find helpful in mastering Vim is
+[here](docs/vim_resources.md). You may also be interested in my post in
+configuring Vim on different platforms:
+
 + [Config nvim on Linux for Python development](https://jdhao.github.io/2018/12/24/centos_nvim_install_use_guide_en/)
 + [Nvim config on Windows 10](https://jdhao.github.io/2018/11/15/neovim_configuration_windows/)
 + [Nvim-qt config on Windows 10](https://jdhao.github.io/2019/01/17/nvim_qt_settings_on_windows/)
