@@ -91,8 +91,14 @@ function! s:my_theme_dict.neodark() dict abort
   colorscheme neodark
 endfunction
 
+function! s:my_theme_dict.toast() dict abort
+  if !utils#HasColorscheme('toast') | return | endif
+
+  colorscheme toast
+endfunction
+
 let s:candidate_theme = ['gruvbox8', 'srcery', 'deus', 'happy_hacking', 'solarized8',
-      \ 'monokai', 'vim_one', 'material', 'onedark']
+      \ 'monokai', 'vim_one', 'material', 'onedark', 'toast']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 

@@ -107,6 +107,7 @@ Plug 'rakr/vim-one'
 Plug 'kaicataldo/material.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'jsit/toast.vim'
 
 if !exists('g:started_by_firenvim')
   " colorful status line and theme
