@@ -13,9 +13,6 @@ set background=dark
 
 "{{ Colorscheme settings
 let s:my_theme_dict = {}
-function! s:my_theme_dict.srcery() dict abort
-  colorscheme srcery
-endfunction
 
 function! s:my_theme_dict.gruvbox8() dict abort
   " We should check if theme exists before using it, otherwise you will get
@@ -98,7 +95,7 @@ function! s:my_theme_dict.toast() dict abort
 endfunction
 
 let s:candidate_theme = ['gruvbox8', 'srcery', 'deus', 'happy_hacking', 'solarized8',
-      \ 'monokai', 'vim_one', 'material', 'onedark', 'toast']
+      \ 'monokai', 'vim_one', 'material', 'onedark',  'neodark', 'toast']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 
