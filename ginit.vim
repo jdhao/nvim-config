@@ -22,9 +22,9 @@ if exists('g:fvim_loaded')
   FVimCursorSmoothBlink v:true
 
   " Background composition, can be 'none', 'blur' or 'acrylic'
-  FVimBackgroundComposition 'blur'
-  FVimBackgroundOpacity 0.9
-  FVimBackgroundAltOpacity 0.9
+  FVimBackgroundComposition 'none'
+  FVimBackgroundOpacity 1.0
+  FVimBackgroundAltOpacity 1.0
 
   " Title bar tweaks (themed with colorscheme)
   FVimCustomTitleBar v:true
@@ -41,7 +41,7 @@ if exists('g:fvim_loaded')
   FVimFontSubpixel v:true
   FVimFontLigature v:true
   " can be 'default', '14.0', '-1.0' etc.
-  FVimFontLineHeight 'default'
+  FVimFontLineHeight '+1'
 
   " Try to snap the fonts to the pixels, reduces blur
   " in some situations (e.g. 100% DPI).
