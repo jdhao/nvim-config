@@ -110,10 +110,6 @@ inoremap <expr> <esc> ((pumvisible())?("\<C-e>"):("\<esc>"))
 inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
-" Use <c-d> and <c-u> to scroll the completion menu.
-inoremap <expr> <C-d> pumvisible() ? "\<PageDown>" : "\<C-d>"
-inoremap <expr> <C-u> pumvisible() ? "\<PageUp>" : "\<C-u>"
-
 " Edit and reload init.vim quickly
 nnoremap <silent> <leader>ev :<C-U>tabnew $MYVIMRC <bar> tcd %:h<cr>
 nnoremap <silent> <leader>sv :<C-U>silent update $MYVIMRC <bar> source $MYVIMRC <bar>
