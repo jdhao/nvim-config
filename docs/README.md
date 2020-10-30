@@ -156,6 +156,38 @@ Make sure that you can call `nvim` from the command line after all these setups.
 
 # Setting up Nvim
 
+## Install plugin manager vim-plug
+
+I use [vim-plug](https://github.com/junegunn/vim-plug) to manage all my
+plugins. We need to install vim-plug on our system first.
+
+For Windows, if curl is installed, use the following command:
+
+```
+curl -fLo ~\AppData\Local\nvim-data\site\autoload\plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+Or execute the following command on PowerShell:
+
+```
+md ~\AppData\Local\nvim-data\site\autoload
+$uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+(New-Object Net.WebClient).DownloadFile(
+  $uri,
+  $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(
+    "~\AppData\Local\nvim-data\site\autoload\plug.vim"
+  )
+)
+```
+
+Or just create the directory `~\AppData\Local\nvim-data\site\autoload\`, and put the vim-plug script there.
+
+For macOS and Linux, use the following command:
+
+```bash
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
 ## How to install this configuration
 
 On Windows, the config directory is `$HOME/AppData/Local/nvim`[^1]. On Linux
@@ -167,12 +199,11 @@ command to install this configuration:
 git clone https://github.com/jdhao/nvim-config.git .
 ```
 
-After that, when we first open nvim, all the plugins included in this
-configuration will be installed automatically for you (for Windows and macOS).
-Since I use quite a lot of plugins (around 60 plugins), it may take some time
-to install all of them, depending on your network condition.
+After that, when we first open nvim, use `:PlugInstall` to install all the
+plugins. Since I use quite a lot of plugins (more than 60), it may take some
+time to install all of them, depending on your network condition.
 
-# Automatic Installation #
+# Automatic Installation for Linux #
 
 To set up a workable Neovim environment in Linux, I use the script
 [`Nvim_setup.sh`](Nvim_setup.sh) to automatically install necessary

@@ -1,30 +1,15 @@
 scriptencoding utf-8
 "{ Plugin installation
-"{{ Vim-plug Install and related settings
+"{{ Vim-plug related settings.
+" The root directory to install all plugins.
+let g:PLUGIN_HOME=expand(stdpath('data') . '/plugged')
 
-" Auto-install vim-plug on different systems if it does not exist. For
-" Windows, only Windows 10 with curl installed are supported (after Windows 10
-" build 17063, source:
-" https://devblogs.microsoft.com/commandline/tar-and-curl-come-to-windows/).
-" The following script to install vim-plug is adapted from vim-plug
-" wiki: https://github.com/junegunn/vim-plug/wiki/tips#tips
-let g:vim_plug_fpath = expand(stdpath('data') . '/site/autoload/plug.vim')
-if (g:is_win || g:is_mac) && !filereadable(g:vim_plug_fpath)
-  if !executable('curl')
-    echoerr 'Curl not available on your system, you may install vim-plug by yourself.'
-    finish
-  endif
-  echomsg 'Installing Vim-plug on your system'
-  let g:vim_plug_furl = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  silent execute printf('!curl -fLo %s --create-dirs %s', g:vim_plug_fpath, g:vim_plug_furl)
-  augroup plug_init
-      autocmd!
-      autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC
+if empty(readdir(g:PLUGIN_HOME))
+ augroup plug_init
+    autocmd!
+    autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC
   augroup END
 endif
-
-" The directory to install plugins.
-let g:PLUGIN_HOME=expand(stdpath('data') . '/plugged')
 "}}
 
 "{{ Autocompletion related plugins
