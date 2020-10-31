@@ -1,8 +1,8 @@
 scriptencoding utf-8
 
 "{ Builtin options and settings
-" change filechar for folding, vertical split, and message separator
-set fillchars=fold:\ ,vert:\│,msgsep:‾
+" change fillchars for folding, vertical split, end of buffer, and message separator
+set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 
 " Paste mode toggle, it seems that Neovim's bracketed paste mode
 " does not work very well for nvim-qt, so we use good-old paste mode
