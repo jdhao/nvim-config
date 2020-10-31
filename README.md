@@ -45,33 +45,33 @@ itself and the configuration on different platforms (Linux, macOS and Windows).
 Some of the shortcuts I use frequently. In the following shortcuts, `<leader>`
 represents the `,` character.
 
-| Shortcut          | Mode          | platform        | Description                                               |
-|-------------------|---------------|-----------------|-----------------------------------------------------------|
-| `<leader>f`       | Normal        | Linux/macOS/Win | Fuzzy file search in a floating window                    |
-| `<leader>h`       | Normal        | Linux/macOS/Win | Fuzzy help search in a floating window                    |
-| `<leader>b`       | Normal        | Linux/macOS/Win | Fuzzy buffer tag search in a floating window              |
-| `<leader><Space>` | Normal        | Linux/macOS/Win | Remove trailing whitespaces                               |
-| `<leader>v`       | Normal        | Linux/macOS/Win | Reselect last pasted text                                 |
-| `<leader>ev`      | Normal        | Linux/macOS/Win | Edit Neovim config in a new tabpage                       |
-| `<leader>sv`      | Normal        | Linux/macOS/Win | Reload Neovim config                                      |
-| `<leader>q`       | Normal        | Linux/macOS/Win | Quit current window                                       |
-| `<leader>Q`       | Normal        | Linux/macOS/Win | Quit all window and close Neovim                          |
-| `<leader>w`       | Normal        | Linux/macOS/Win | Save current buffer content                               |
-| `<leader>cd`      | Normal        | Linux/macOS/Win | Change current directory to where current file is         |
-| `<leader>y`       | Normal        | Linux/macOS/Win | Copy the content of entire buffer to default register     |
-| `<leader>cl`      | Normal        | Linux/macOS/Win | Toggle cursor column                                      |
-| `<space>t`        | Normal        | Linux/macOS/Win | Toggle tag window (show project tags in the right window) |
-| `<F11>`           | Normal        | Linux/macOS/Win | Toggle spell checking                                     |
-| `<F12>`           | Normal        | Linux/macOS/Win | Toggle paste mode                                         |
-| `\x`              | Normal        | Linux/macOS/Win | Close location or quickfix window                         |
-| `\d`              | Normal        | Linux/macOS/Win | Close current buffer and go to previous buffer            |
-| `{count}gb`       | Normal        | Linux/macOS/Win | Go to {count} buffer or next buffer in the buffer list.   |
-| `Alt-M`           | Normal        | macOS/Win       | Render Markdown to HTML and open it in system browser     |
-| `ob`              | Normal/Visual | macOS/Win       | Open link under cursor or search visual selection         |
-| `ctrl-u`          | Insert        | Linux/macOS/Win | Turn word under cursor to upper case                      |
-| `ctrl-t`          | Insert        | Linux/macOS/Win | Turn word under cursor to title case                      |
-| `jk`              | Insert        | Linux/macOS/Win | Return to Normal mode (faster `<ESC>`)                    |
-
+| Shortcut          | Mode          | platform        | Description                                                      |
+|-------------------|---------------|-----------------|------------------------------------------------------------------|
+| `<leader>f`       | Normal        | Linux/macOS/Win | Fuzzy file search in a floating window                           |
+| `<leader>h`       | Normal        | Linux/macOS/Win | Fuzzy help search in a floating window                           |
+| `<leader>b`       | Normal        | Linux/macOS/Win | Fuzzy buffer tag search in a floating window                     |
+| `<leader><Space>` | Normal        | Linux/macOS/Win | Remove trailing whitespaces                                      |
+| `<leader>v`       | Normal        | Linux/macOS/Win | Reselect last pasted text                                        |
+| `<leader>ev`      | Normal        | Linux/macOS/Win | Edit Neovim config in a new tabpage                              |
+| `<leader>sv`      | Normal        | Linux/macOS/Win | Reload Neovim config                                             |
+| `<leader>q`       | Normal        | Linux/macOS/Win | Quit current window                                              |
+| `<leader>Q`       | Normal        | Linux/macOS/Win | Quit all window and close Neovim                                 |
+| `<leader>w`       | Normal        | Linux/macOS/Win | Save current buffer content                                      |
+| `<leader>cd`      | Normal        | Linux/macOS/Win | Change current directory to where current file is                |
+| `<leader>y`       | Normal        | Linux/macOS/Win | Copy the content of entire buffer to default register            |
+| `<leader>cl`      | Normal        | Linux/macOS/Win | Toggle cursor column                                             |
+| `<leader>cd`      | Normal        | Linux/macOS/Win | Change current working directory to to the dir of current buffer |
+| `<space>t`        | Normal        | Linux/macOS/Win | Toggle tag window (show project tags in the right window)        |
+| `<F11>`           | Normal        | Linux/macOS/Win | Toggle spell checking                                            |
+| `<F12>`           | Normal        | Linux/macOS/Win | Toggle paste mode                                                |
+| `\x`              | Normal        | Linux/macOS/Win | Close location or quickfix window                                |
+| `\d`              | Normal        | Linux/macOS/Win | Close current buffer and go to previous buffer                   |
+| `{count}gb`       | Normal        | Linux/macOS/Win | Go to {count} buffer or next buffer in the buffer list.          |
+| `Alt-M`           | Normal        | macOS/Win       | Render Markdown to HTML and open it in system browser            |
+| `ob`              | Normal/Visual | macOS/Win       | Open link under cursor or search visual selection                |
+| `ctrl-u`          | Insert        | Linux/macOS/Win | Turn word under cursor to upper case                             |
+| `ctrl-t`          | Insert        | Linux/macOS/Win | Turn word under cursor to title case                             |
+| `jk`              | Insert        | Linux/macOS/Win | Return to Normal mode (faster `<ESC>`)                           |
 
 # Trouble shooting
 
