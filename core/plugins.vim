@@ -757,6 +757,7 @@ let g:airline#extensions#tabline#buffer_nr_format = '%s. '
 " Whether to show function or other tags on status line
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#vista#enabled = 1
+let g:airline#extensions#gutentags#enabled = 1
 
 " Do not show search index in statusline since it is shown on command line
 let g:airline#extensions#anzu#enabled = 0
