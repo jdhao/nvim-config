@@ -783,6 +783,12 @@ let g:airline#extensions#hunks#non_zero_only = 1
 
 " Speed up airline
 let g:airline_highlighting_cache = 1
+
+""""""""""""""""""""""""""""vim-startify settings""""""""""""""""""""""""""""
+" Do not change working directory when opening files.
+let g:startify_change_to_dir = 0
+let g:startify_fortune_use_unicode = 1
+
 "}}
 
 "{{ Misc plugin setting
