@@ -476,16 +476,7 @@ endif
 
 "{{ Navigation and tags
 """"""""""""""""""""""""""" gutentags settings """"""""""""""""""""""""""""""
-function! ShouldEnableGutentags(path) abort
-  let l:disable_flist = ['md', 'pandoc', 'html', 'json', 'css', 'js', 'toml']
-  let l:file_ext = fnamemodify(a:path, ':e')
-  if index(l:disable_flist, l:file_ext) == -1
-    return 1
-  endif
-
-  return 0
-endfunction
-let g:gutentags_init_user_func = 'ShouldEnableGutentags'
+let g:gutentags_ctags_exclude = ['*.md', '*.html', '*.json', '*.toml', '*.css', '*.js',]
 
 """"""""""""""""""""""""""" vista settings """"""""""""""""""""""""""""""""""
 " Double click to go to a tag
