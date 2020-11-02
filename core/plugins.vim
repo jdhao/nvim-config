@@ -478,7 +478,7 @@ endif
 """"""""""""""""""""""""""" gutentags settings """"""""""""""""""""""""""""""
 let g:gutentags_ctags_exclude = ['*.md', '*.html', '*.json', '*.toml', '*.css', '*.js',]
 " The path to store tags files, instead of in the project root.
-let g:gutentags_cache_dir = stdpath('cache')
+let g:gutentags_cache_dir = stdpath('cache') . '/ctags'
 
 """"""""""""""""""""""""""" vista settings """"""""""""""""""""""""""""""""""
 " Double click to go to a tag
