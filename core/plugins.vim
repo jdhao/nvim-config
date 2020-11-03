@@ -782,7 +782,6 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#buffer_nr_format = '%s. '
 
 " Whether to show function or other tags on status line
-let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#vista#enabled = 1
 let g:airline#extensions#gutentags#enabled = 1
 
