@@ -21,7 +21,11 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'lighttiger2505/deoplete-vim-lsp'
 
 " Vim source for deoplete
-Plug 'Shougo/neco-vim', { 'for': 'vim' }
+
+if !executable('vim-language-server')
+  " only use neco-vim when vim-language-server is not available
+  Plug 'Shougo/neco-vim', { 'for': 'vim' }
+endif
 "}}
 
 "{{ Python-related plugins
@@ -364,6 +368,23 @@ if executable('pyls')
         \ 'cmd': {server_info->['pyls']},
         \ 'allowlist': ['python'],
         \ })
+endif
+
+if executable('vim-language-server')
+  augroup LspVim
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'vim-language-server',
+        \ 'cmd': {server_info->['vim-language-server', '--stdio']},
+        \ 'whitelist': ['vim'],
+        \ 'initialization_options': {
+        \   'vimruntime': $VIMRUNTIME,
+        \   'runtimepath': &rtp,
+        \ },
+        \ 'suggest': {
+        \ 'fromRuntimepath': v:true
+        \ }})
+  augroup END
 endif
 
 function! s:on_lsp_buffer_enabled() abort
