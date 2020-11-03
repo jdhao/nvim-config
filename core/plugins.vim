@@ -16,22 +16,15 @@ endif
 call plug#begin(g:PLUGIN_HOME)
 " Auto-completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-if executable('clang') && (g:is_mac || g:is_linux)
-  Plug 'deoplete-plugins/deoplete-clang'
-endif
-
-" Python source for deoplete
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+" Language Server Protocol client
+Plug 'prabirshrestha/vim-lsp'
+Plug 'lighttiger2505/deoplete-vim-lsp'
 
 " Vim source for deoplete
 Plug 'Shougo/neco-vim', { 'for': 'vim' }
 "}}
 
 "{{ Python-related plugins
-" Python completion, goto definition etc.
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-
 " Python syntax highlighting and more
 if g:is_mac || g:is_win
   Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
@@ -342,6 +335,55 @@ call deoplete#custom#option('auto_complete_delay', 100)
 " Enable deoplete auto-completion
 call deoplete#custom#option('auto_complete', v:true)
 
+"""""""""""""""""""""""""""" vim-lsp settings""""""""""""""""""""""""""
+" whether to enable diagnostics for vim-lsp (we may want to use ALE for other
+" plugins for that.
+let g:lsp_diagnostics_enabled = 1
+
+" show diagnostic signs
+let g:lsp_signs_enabled = 1
+let g:lsp_signs_error = {'text': '✗'}
+let g:lsp_signs_warning = {'text': '!'}
+let g:lsp_highlights_enabled = 0
+
+" Do not use virtual text, they are far too obstrusive.
+let g:lsp_virtual_text_enabled = 0
+" echo a diagnostic message at cursor position
+let g:lsp_diagnostics_echo_cursor = 0
+" show diagnostic in floating window
+let g:lsp_diagnostics_float_cursor = 1
+" whether to enable highlight a symbol and its references
+let g:lsp_highlight_references_enabled = 1
+let g:lsp_preview_max_width = 80
+
+" set up pyls for vim-lsp
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
 """""""""""""""""""""""""UltiSnips settings"""""""""""""""""""
 " Trigger configuration. Do not use <tab> if you use YouCompleteMe
 let g:UltiSnipsExpandTrigger='<c-j>'
@@ -359,23 +401,6 @@ let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
 "}}
 
 "{{ Python-related
-""""""""""""""""""deoplete-jedi settings"""""""""""""""""""""""""""
-" Whether to show doc string
-let g:deoplete#sources#jedi#show_docstring = 0
-
-" For large package, set autocomplete wait time longer
-let g:deoplete#sources#jedi#server_timeout = 50
-
-" Ignore jedi errors during completion
-let g:deoplete#sources#jedi#ignore_errors = 1
-
-""""""""""""""""""""""""jedi-vim settings"""""""""""""""""""
-" Disable autocompletion, because I use deoplete for auto-completion
-let g:jedi#completions_enabled = 0
-
-" Whether to show function call signature
-let g:jedi#show_call_signatures = '0'
-
 """""""""""""""""""""""""" semshi settings """""""""""""""""""""""""""""""
 " Do not highlight for all occurances of variable under cursor
 let g:semshi#mark_selected_nodes=0
@@ -763,6 +788,9 @@ let g:airline#extensions#gutentags#enabled = 1
 
 " Do not show search index in statusline since it is shown on command line
 let g:airline#extensions#anzu#enabled = 0
+
+" Enable vim-airline extension for vim-lsp
+let g:airline#extensions#lsp#enabled = 1
 
 " Skip empty sections if there are nothing to show,
 " extracted from https://vi.stackexchange.com/a/9637/15292
