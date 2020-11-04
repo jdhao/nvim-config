@@ -359,6 +359,7 @@ let g:lsp_diagnostics_float_cursor = 1
 " whether to enable highlight a symbol and its references
 let g:lsp_highlight_references_enabled = 1
 let g:lsp_preview_max_width = 80
+let g:lsp_diagnostics_float_delay = 100
 
 " set up pyls for vim-lsp
 if executable('pyls')
