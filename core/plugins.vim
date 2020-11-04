@@ -364,10 +364,18 @@ let g:lsp_preview_max_width = 80
 if executable('pyls')
     " pip install python-language-server
     au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'allowlist': ['python'],
-        \ })
+          \ 'name': 'pyls',
+          \ 'cmd': {server_info->['pyls']},
+          \ 'allowlist': ['python'],
+          \ 'workspace_config': {
+          \    'pyls':
+          \        {'configurationSources': ['flake8'],
+          \         'plugins': {'flake8': {'enabled': v:true},
+          \                     'pyflakes': {'enabled': v:false},
+          \                     'pycodestyle': {'enabled': v:false},
+          \                    }
+          \         }
+          \ }})
 endif
 
 if executable('vim-language-server')
@@ -612,7 +620,6 @@ nmap P <Plug>(miniyank-autoPut)
 """""""""""""""""""""""""""""" ale settings """""""""""""""""""""""
 " linters for different filetypes
 let g:ale_linters = {
-  \ 'python': ['pylint'],
   \ 'vim': ['vint'],
   \ 'cpp': ['clang'],
   \ 'c': ['clang']
