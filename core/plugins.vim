@@ -363,8 +363,10 @@ let g:lsp_diagnostics_float_delay = 100
 
 " set up pyls for vim-lsp
 if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
+  " pip install python-language-server
+  augroup pyls_setup
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
           \ 'name': 'pyls',
           \ 'cmd': {server_info->['pyls']},
           \ 'allowlist': ['python'],
@@ -375,8 +377,9 @@ if executable('pyls')
           \                     'pyflakes': {'enabled': v:false},
           \                     'pycodestyle': {'enabled': v:false},
           \                    }
-          \         }
+          \        }
           \ }})
+  augroup END
 endif
 
 if executable('vim-language-server')
