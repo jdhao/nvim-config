@@ -18,13 +18,12 @@ Neovim relies on [pynvim](https://github.com/neovim/pynvim) to communicate with
 plugins that utilize its Python binding. Pynvim is required by plugins such as
 [Deoplete](https://github.com/Shougo/deoplete.nvim) and [Semshi](https://github.com/numirias/semshi).
 
-## Jedi
+## pyls
 
-For Python code auto-completion to work, we need to install
-[Jedi](https://github.com/davidhalter/jedi):
+Pyls is a Language Server for Python for completion, linting, go to definition, etc.
 
 ```
-pip install jedi
+pip install "python-language-server[all]"
 ```
 
 ## Git
