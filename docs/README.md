@@ -20,7 +20,8 @@ plugins that utilize its Python binding. Pynvim is required by plugins such as
 
 ## pyls
 
-Pyls is a Language Server for Python for completion, linting, go to definition, etc.
+[Pyls](https://github.com/palantir/python-language-server) is a Language Server
+for Python for completion, linting, go to definition, etc.
 
 ```
 pip install "python-language-server[all]"
