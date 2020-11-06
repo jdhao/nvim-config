@@ -352,10 +352,10 @@ let g:lsp_highlights_enabled = 0
 
 " Do not use virtual text, they are far too obstrusive.
 let g:lsp_virtual_text_enabled = 0
-" echo a diagnostic message at cursor position
-let g:lsp_diagnostics_echo_cursor = 0
-" show diagnostic in floating window
-let g:lsp_diagnostics_float_cursor = 1
+" whether to echo a diagnostic message on statusline at cursor position
+let g:lsp_diagnostics_echo_cursor = 1
+" Whether to show diagnostic in floating window
+let g:lsp_diagnostics_float_cursor = 0
 " whether to enable highlight a symbol and its references
 let g:lsp_highlight_references_enabled = 1
 let g:lsp_preview_max_width = 80
