@@ -42,6 +42,7 @@ Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'machakann/vim-swap'
 
 " IDE for Lisp
+" Plug 'kovisoft/slimv'
 Plug 'vlime/vlime', {'rtp': 'vim/', 'for': 'lisp'}
 "}}
 
