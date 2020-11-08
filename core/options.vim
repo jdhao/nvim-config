@@ -104,20 +104,7 @@ set autowrite
 " lastmod time is drawn from https://stackoverflow.com/q/8426736/6064933
 set title
 set titlestring=
-set titlestring=%{Get_titlestr()}
-
-function! Get_titlestr() abort
-  let l:title_str = ''
-  if g:is_linux
-      let l:title_str = hostname() . '  '
-  endif
-  let l:title_str = l:title_str . expand('%:p:~') . '  '
-  if &buflisted
-    let l:title_str = l:title_str . strftime('%Y-%m-%d %H:%M',getftime(expand('%')))
-  endif
-
-  return l:title_str
-endfunction
+set titlestring=%{utils#Get_titlestr()}
 
 " Persistent undo even after you close a file and re-open it
 set undofile
