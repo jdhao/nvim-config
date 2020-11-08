@@ -2,9 +2,9 @@ scriptencoding utf-8
 "{ Plugin installation
 "{{ Vim-plug related settings.
 " The root directory to install all plugins.
-let g:PLUGIN_HOME=expand(stdpath('data') . '/plugged')
+let g:plugin_home=expand(stdpath('data') . '/plugged')
 
-if empty(readdir(g:PLUGIN_HOME))
+if empty(readdir(g:plugin_home))
  augroup plug_init
     autocmd!
     autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC
@@ -13,7 +13,7 @@ endif
 "}}
 
 "{{ Autocompletion related plugins
-call plug#begin(g:PLUGIN_HOME)
+call plug#begin(g:plugin_home)
 " Auto-completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Language Server Protocol client
@@ -445,7 +445,7 @@ let g:semshi#mark_selected_nodes=0
 let g:semshi#error_sign=v:false
 
 """""""""""""""""""""""""" vlime settings """"""""""""""""""""""""""""""""
-command! -nargs=0 StartVlime call jobstart(printf("sbcl --load %s/vlime/lisp/start-vlime.lisp", g:PLUGIN_HOME))
+command! -nargs=0 StartVlime call jobstart(printf("sbcl --load %s/vlime/lisp/start-vlime.lisp", g:plugin_home))
 
 "}}
 
