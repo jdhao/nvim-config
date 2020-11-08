@@ -28,7 +28,7 @@ if !executable('vim-language-server')
 endif
 "}}
 
-"{{ Python-related plugins
+"{{ language-specific plugins
 " Python syntax highlighting and more
 if g:is_mac || g:is_win
   Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
@@ -40,6 +40,9 @@ Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 " Python-related text object
 Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'machakann/vim-swap'
+
+" IDE for Lisp
+Plug 'vlime/vlime', {'rtp': 'vim/', 'for': 'lisp'}
 "}}
 
 "{{ Search related plugins
@@ -433,13 +436,17 @@ let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
 "}}
 
-"{{ Python-related
+"{{ Language specific plugin
 """""""""""""""""""""""""" semshi settings """""""""""""""""""""""""""""""
 " Do not highlight for all occurances of variable under cursor
 let g:semshi#mark_selected_nodes=0
 
 " Do not show error sign since linting plugin is specicialized for that
 let g:semshi#error_sign=v:false
+
+"""""""""""""""""""""""""" vlime settings """"""""""""""""""""""""""""""""
+command! -nargs=0 StartVlime call jobstart(printf("sbcl --load %s/vlime/lisp/start-vlime.lisp", g:PLUGIN_HOME))
+
 "}}
 
 "{{ Search related
