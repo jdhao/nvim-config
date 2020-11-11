@@ -210,4 +210,35 @@ nnoremap <Left> <C-W>h
 nnoremap <Right> <C-W>l
 nnoremap <Up> <C-W>k
 nnoremap <Down> <C-W>j
+
+vnoremap <silent> iu :<C-U>call <SID>URLTextObj()<CR>
+onoremap <silent> iu :<C-U>call <SID>URLTextObj()<CR>
+
+function! s:URLTextObj() abort
+  " Note that we use https://github.com/itchyny/vim-highlighturl to get the URL pattern.
+  let url_pattern = highlighturl#default_pattern()
+  " Note that the index starts at 0, end_idx is index of the character left of
+  " the pattern.
+  let [url, start_idx, end_idx] = matchstrpos(getline('.'), url_pattern)
+  if start_idx == -1
+    return
+  endif
+
+  let cursor_col = getcurpos()[2]
+  let cur_row = line('.')
+  " Adjust the idx to actual column number.
+  let start_col = start_idx + 1
+  let end_col = end_idx
+
+  " Only active it when cursor is on the URL, otherwise, do nothing.
+  if cursor_col < start_col || cursor_col > end_idx
+    return
+  endif
+
+  let bufnum = bufnr()
+  " now set the '< and '> mark
+  call setpos("'<", [bufnum, cur_row, start_col, 0])
+  call setpos("'>", [bufnum, cur_row, end_col, 0])
+  normal! gv
+endfunction
 "}
