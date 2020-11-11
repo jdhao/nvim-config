@@ -215,8 +215,17 @@ vnoremap <silent> iu :<C-U>call <SID>URLTextObj()<CR>
 onoremap <silent> iu :<C-U>call <SID>URLTextObj()<CR>
 
 function! s:URLTextObj() abort
-  " Note that we use https://github.com/itchyny/vim-highlighturl to get the URL pattern.
-  let url_pattern = highlighturl#default_pattern()
+  if match(&runtimepath, 'vim-highlighturl') != -1
+    " Note that we use https://github.com/itchyny/vim-highlighturl to get the URL pattern.
+    let url_pattern = highlighturl#default_pattern()
+  else
+    let url_pattern = expand('<cfile>')
+    " Since expand('<cfile>') also works for normal words, we need to check if
+    " this is really URL using heuristics, e.g., URL length.
+    if len(url_pattern) <= 10
+      return
+    endif
+  endif
   " Note that the index starts at 0, end_idx is index of the character left of
   " the pattern.
   let [url, start_idx, end_idx] = matchstrpos(getline('.'), url_pattern)
