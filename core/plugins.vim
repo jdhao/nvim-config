@@ -699,13 +699,6 @@ if g:is_win || g:is_mac
   nnoremap <silent> <M-S-m> :<C-U>MarkdownPreviewStop<CR>
 endif
 
-""""""""""""""""""""""""vim-markdownfootnotes settings""""""""""""""""""""""""
-" Replace the default mappings provided by the plugin
-imap ^^ <Plug>AddVimFootnote
-nmap ^^ <Plug>AddVimFootnote
-imap @@ <Plug>ReturnFromFootnote
-nmap @@ <Plug>ReturnFromFootnote
-
 """"""""""""""""""""""""vim-grammarous settings""""""""""""""""""""""""""""""
 if g:is_mac
   let g:grammarous#languagetool_cmd = 'languagetool'
