@@ -536,7 +536,7 @@ if g:is_win || g:is_mac
 
   " Use another mapping for the open URL method
   nmap ob <Plug>(openbrowser-smart-search)
-  vmap ob <Plug>(openbrowser-smart-search)
+  xmap ob <Plug>(openbrowser-smart-search)
 endif
 "}}
 
@@ -579,7 +579,7 @@ augroup END
 let g:titlecase_map_keys = 0
 
 nmap <leader>gt <Plug>Titlecase
-vmap <leader>gt <Plug>Titlecase
+xmap <leader>gt <Plug>Titlecase
 nmap <leader>gT <Plug>TitlecaseLine
 
 """"""""""""""""""""""""vim-auto-save settings"""""""""""""""""""""""

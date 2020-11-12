@@ -119,7 +119,7 @@ nnoremap <silent> <leader>sv :<C-U>silent update $MYVIMRC <bar> source $MYVIMRC 
 nnoremap <expr> <leader>v printf('`[%s`]', getregtype()[0])
 
 " Search in selected region
-vnoremap / :<C-U>call feedkeys('/\%>'.(line("'<")-1).'l\%<'.(line("'>")+1)."l")<CR>
+xnoremap / :<C-U>call feedkeys('/\%>'.(line("'<")-1).'l\%<'.(line("'>")+1)."l")<CR>
 
 " Find and replace (like Sublime Text 3)
 nnoremap <C-H> :%s/
@@ -211,7 +211,7 @@ nnoremap <Right> <C-W>l
 nnoremap <Up> <C-W>k
 nnoremap <Down> <C-W>j
 
-vnoremap <silent> iu :<C-U>call <SID>URLTextObj()<CR>
+xnoremap <silent> iu :<C-U>call <SID>URLTextObj()<CR>
 onoremap <silent> iu :<C-U>call <SID>URLTextObj()<CR>
 
 function! s:URLTextObj() abort
