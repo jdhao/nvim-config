@@ -226,28 +226,46 @@ function! s:URLTextObj() abort
       return
     endif
   endif
-  " Note that the index starts at 0, end_idx is index of the character left of
-  " the pattern.
-  let [url, start_idx, end_idx] = matchstrpos(getline('.'), url_pattern)
-  if start_idx == -1
+
+  " We need to find all possible URL on this line and their start, end idx.
+  " Then find where current cursor is, and decide if cursor is on one of the
+  " URLs.
+  let line_text = getline('.')
+  let url_infos = []
+
+  let [_url, _idx_start, _idx_end] = matchstrpos(line_text, url_pattern)
+  while _url !=# ''
+    let url_infos += [[_url, _idx_start+1, _idx_end]]
+    let [_url, _idx_start, _idx_end] = matchstrpos(line_text, url_pattern, _idx_end)
+  endwhile
+
+  " echo url_infos
+  " If no URL is found, do nothing.
+  if len(url_infos) == 0
     return
   endif
 
-  let cursor_col = getcurpos()[2]
-  let cur_row = line('.')
-  " Adjust the idx to actual column number.
-  let start_col = start_idx + 1
-  let end_col = end_idx
+  let [start_col, end_col] = [-1, -1]
+  " If URL is found, find if cursor is on it.
+  let [buf_num, cur_row, cur_col] = getcurpos()[0:2]
+  for url_info in url_infos
+    " echo url_info
+    let [_url, _idx_start, _idx_end] = url_info
+    if cur_col >= _idx_start && cur_col <= _idx_end
+      let start_col = _idx_start
+      let end_col = _idx_end
+      break
+    endif
+  endfor
 
-  " Only active it when cursor is on the URL, otherwise, do nothing.
-  if cursor_col < start_col || cursor_col > end_idx
+  " Cursor is not on a URL, do nothing.
+  if start_col == -1
     return
   endif
 
-  let bufnum = bufnr()
-  " now set the '< and '> mark
-  call setpos("'<", [bufnum, cur_row, start_col, 0])
-  call setpos("'>", [bufnum, cur_row, end_col, 0])
+  " Now set the '< and '> mark
+  call setpos("'<", [buf_num, cur_row, start_col, 0])
+  call setpos("'>", [buf_num, cur_row, end_col, 0])
   normal! gv
 endfunction
 "}
