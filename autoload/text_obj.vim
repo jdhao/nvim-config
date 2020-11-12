@@ -52,3 +52,27 @@ function! text_obj#URL() abort
   call setpos("'>", [buf_num, cur_row, end_col, 0])
   normal! gv
 endfunction
+
+function! text_obj#MdCodeBlock(type) abort
+  " the parameter type specify whether it is inner text objects or arround
+  " text objects.
+
+  " Move the cursor to the end of line in case that cursor is on the openning
+  " of a code block. Actually, there are still issues if the cursor is on the
+  " closing of a code block. In this case, the start row of code blocks would
+  " be wrong. Unless we can match code blocks, it not easy to fix this.
+  normal! $
+  let start_row = searchpos('\s*```', 'bnW')[0]
+  let end_row = searchpos('\s*```', 'nW')[0]
+
+  let buf_num = bufnr()
+  if a:type ==# 'i'
+    let start_row += 1
+    let end_row -= 1
+  endif
+  " echo a:type start_row end_row
+
+  call setpos("'<", [buf_num, start_row, 1, 0])
+  call setpos("'>", [buf_num, end_row, 1, 0])
+  execute 'normal! `<V`>'
+endfunction
