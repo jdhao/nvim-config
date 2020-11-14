@@ -176,35 +176,8 @@ xnoremap <silent> <A-j> :<C-U>call utils#MoveSelection('down')<CR>
 " register, see also https://stackoverflow.com/q/10723700/6064933.
 xnoremap p "_c<ESC>p
 
-nnoremap <silent> gb :<C-U>call <SID>GoToBuffer(v:count, 'forward')<CR>
-nnoremap <silent> gB :<C-U>call <SID>GoToBuffer(v:count, 'backward')<CR>
-
-function! s:GoToBuffer(count, direction) abort
-  if a:count == 0
-    if a:direction ==# 'forward'
-      bnext
-    elseif a:direction ==# 'backward'
-      bprevious
-    else
-      echoerr 'Bad argument ' a:direction
-    endif
-    return
-  endif
-  " Check the validity of buffer number.
-  if index(s:GetBufNums(), a:count) == -1
-    echohl WarningMsg | echomsg 'Invalid bufnr: ' a:count | echohl None
-    return
-  endif
-
-  " Do not use {count} for gB (it is less useful)
-  if a:direction ==# 'forward'
-    silent execute('buffer' . a:count)
-  endif
-endfunction
-
-function! s:GetBufNums() abort
-  return map(copy(getbufinfo({'buflisted':1})), 'v:val.bufnr')
-endfunction
+nnoremap <silent> gb :<C-U>call buf_utils#GoToBuffer(v:count, 'forward')<CR>
+nnoremap <silent> gB :<C-U>call buf_utils#GoToBuffer(v:count, 'backward')<CR>
 
 nnoremap <Left> <C-W>h
 nnoremap <Right> <C-W>l
