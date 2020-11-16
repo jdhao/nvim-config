@@ -370,7 +370,7 @@ let g:lsp_diagnostics_float_delay = 100
 
 " set up pyls for vim-lsp
 if executable('pyls')
-  " pip install python-language-server
+ " pip install python-language-server
   augroup pyls_setup
     autocmd!
     autocmd User lsp_setup call lsp#register_server({
@@ -383,6 +383,7 @@ if executable('pyls')
           \         'plugins': {'flake8': {'enabled': v:true},
           \                     'pyflakes': {'enabled': v:false},
           \                     'pycodestyle': {'enabled': v:false},
+          \                     'jedi_completion': {'fuzzy': v:true},
           \                    }
           \        }
           \ }})
