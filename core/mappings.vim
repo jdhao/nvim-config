@@ -184,6 +184,11 @@ nnoremap <Right> <C-W>l
 nnoremap <Up> <C-W>k
 nnoremap <Down> <C-W>j
 
+" Text objects for URL
 xnoremap <silent> iu :<C-U>call text_obj#URL()<CR>
 onoremap <silent> iu :<C-U>call text_obj#URL()<CR>
+
+" Text objects for entire buffer
+xnoremap <silent> iB 0ggoG
+onoremap <silent> iB :normal viB<CR>
 "}
