@@ -23,7 +23,7 @@ itself and the configuration on different platforms (Linux, macOS and Windows).
 + Auto-completion via [Deoplete](https://github.com/Shougo/deoplete.nvim).
 + Source code linting via [Ale](https://github.com/dense-analysis/ale).
 + Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).
-+ Faster code commentting via [vim-commentar](https://github.com/tpope/vim-commentary).
++ Faster code commenting via [vim-commentary](https://github.com/tpope/vim-commentary).
 + Asynchronous code execution via [asynrun.vim](https://github.com/skywind3000/asyncrun.vim)
 + Fuzzy searching in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
 + Color theme via [vim-gruvbox8](https://github.com/lifepillar/vim-gruvbox8) and other beautiful themes.
@@ -35,7 +35,7 @@ itself and the configuration on different platforms (Linux, macOS and Windows).
 + Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
 + Fast buffer jump via [vim-sneak](https://github.com/justinmk/vim-sneak).
 + Markdown writing and syntax highlighting via [vim-markdown](https://github.com/plasticboy/vim-markdown),
-  MarkdownPrievwing via [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
+  Markdown Previewing via [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
 + LaTeX editing via [vimtex](https://github.com/lervag/vimtex)[^1].
 + Smooth scroll experience via [vim-smoothie](https://github.com/psliwka/vim-smoothie).
 + ......
@@ -50,7 +50,7 @@ represents the `,` character.
 | `<leader>f`       | Normal        | Linux/macOS/Win | Fuzzy file search in a floating window                           |
 | `<leader>h`       | Normal        | Linux/macOS/Win | Fuzzy help search in a floating window                           |
 | `<leader>b`       | Normal        | Linux/macOS/Win | Fuzzy buffer tag search in a floating window                     |
-| `<leader><Space>` | Normal        | Linux/macOS/Win | Remove trailing whitespaces                                      |
+| `<leader><Space>` | Normal        | Linux/macOS/Win | Remove trailing white spaces                                      |
 | `<leader>v`       | Normal        | Linux/macOS/Win | Reselect last pasted text                                        |
 | `<leader>ev`      | Normal        | Linux/macOS/Win | Edit Neovim config in a new tabpage                              |
 | `<leader>sv`      | Normal        | Linux/macOS/Win | Reload Neovim config                                             |
@@ -91,4 +91,4 @@ configuring Vim on different platforms:
 + [Nvim config on Windows 10](https://jdhao.github.io/2018/11/15/neovim_configuration_windows/)
 + [Nvim-qt config on Windows 10](https://jdhao.github.io/2019/01/17/nvim_qt_settings_on_windows/)
 
-[^1]: Not enabled by default for Linux, see [this issue](https://github.com/jdhao/nvim-config/issues/4#issuecomment-617736636) on how to enable vimtex on Linux.
+[^1]: Not enabled by default for Linux, see [this issue](https://github.com/jdhao/nvim-config/issues/4) on how to enable vimtex on Linux.
