@@ -9,7 +9,7 @@ xnoremap ; :
 nnoremap q; q:
 
 " Quicker <Esc> in insert mode
-inoremap jk <Esc>
+inoremap <expr> k utils#EscapeInsertOrNot()
 
 " Turn the word under cursor to upper case
 inoremap <c-u> <Esc>viwUea
