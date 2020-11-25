@@ -21,7 +21,6 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'lighttiger2505/deoplete-vim-lsp'
 
 " Vim source for deoplete
-
 if !executable('vim-language-server')
   " only use neco-vim when vim-language-server is not available
   Plug 'Shougo/neco-vim', { 'for': 'vim' }
@@ -46,7 +45,9 @@ Plug 'machakann/vim-swap'
 Plug 'vlime/vlime', {'rtp': 'vim/', 'for': 'lisp'}
 
 " C++ semantic highlighting
-Plug 'jackguo380/vim-lsp-cxx-highlight'
+if executable('ccls')
+  Plug 'jackguo380/vim-lsp-cxx-highlight'
+endif
 "}}
 
 "{{ Search related plugins
