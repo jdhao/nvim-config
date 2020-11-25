@@ -265,7 +265,7 @@ endif
 "}}
 
 "{{ HTML related
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', { 'for': ['markdown', 'javascript', 'css'] }
 "}}
 
 "{{ Misc plugins
