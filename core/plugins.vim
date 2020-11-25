@@ -5,7 +5,7 @@ scriptencoding utf-8
 let g:plugin_home=expand(stdpath('data') . '/plugged')
 
 if empty(readdir(g:plugin_home))
- augroup plug_init
+  augroup plug_init
     autocmd!
     autocmd VimEnter * PlugInstall --sync | quit |source $MYVIMRC
   augroup END
