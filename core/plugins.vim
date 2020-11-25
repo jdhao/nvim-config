@@ -253,7 +253,7 @@ endif
 "{{ Tmux related plugins
 " Since tmux is only available on Linux and Mac, we only enable these plugins
 " for Linux and Mac
-if (g:is_linux || g:is_mac) && executable('tmux')
+if executable('tmux')
   " Let vim detect tmux focus event correctly, see
   " https://github.com/neovim/neovim/issues/9486 and
   " https://vi.stackexchange.com/q/18515/15292
