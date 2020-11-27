@@ -1,3 +1,5 @@
+set commentstring=//\ %s
+
 nnoremap <silent> <buffer> <F9> :call <SID>compile_run_cpp()<CR>
 
 function! s:compile_run_cpp() abort
