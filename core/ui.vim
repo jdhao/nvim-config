@@ -40,30 +40,12 @@ function! s:my_theme_dict.deus() dict abort
   colorscheme deus
 endfunction
 
-function! s:my_theme_dict.happy_hacking() dict abort
-  if !utils#HasColorscheme('happy_hacking') | return | endif
-
-  colorscheme happy_hacking
-endfunction
-
 function! s:my_theme_dict.solarized8() dict abort
   if !utils#HasColorscheme('solarized8') | return | endif
 
   let g:solarized_term_italics=1
   let g:solarized_visibility='high'
   colorscheme solarized8_high
-endfunction
-
-function! s:my_theme_dict.monokai() dict abort
-  if !utils#HasColorscheme('monokai') | return | endif
-  colorscheme monokai
-endfunction
-
-function! s:my_theme_dict.vim_one() dict abort
-  if !utils#HasColorscheme('one') | return | endif
-
-  let g:one_allow_italics = 1
-  colorscheme one
 endfunction
 
 function! s:my_theme_dict.material() dict abort
@@ -94,8 +76,8 @@ function! s:my_theme_dict.toast() dict abort
   colorscheme toast
 endfunction
 
-let s:candidate_theme = ['gruvbox8', 'srcery', 'deus', 'happy_hacking', 'solarized8',
-      \ 'monokai', 'vim_one', 'material', 'onedark',  'neodark', 'toast']
+let s:candidate_theme = ['gruvbox8', 'srcery', 'deus', 'solarized8',
+      \ 'material', 'onedark',  'neodark', 'toast']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 
