@@ -93,6 +93,7 @@ Plug 'kaicataldo/material.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'jsit/toast.vim'
+Plug 'ErichDonGubler/vim-sublime-monokai'
 
 if !exists('g:started_by_firenvim')
   " colorful status line and theme
