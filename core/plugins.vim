@@ -88,12 +88,10 @@ endif
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'srcery-colors/srcery-vim'
 Plug 'ajmwagar/vim-deus'
-Plug 'YorickPeterse/happy_hacking.vim'
 Plug 'lifepillar/vim-solarized8'
 " Do not try other monokai-tasty and monokai-pro anymore, they
 " all have bad DiffDelete highlight issues.
-Plug 'sickill/vim-monokai'
-Plug 'rakr/vim-one'
+" Plug 'sickill/vim-monokai'
 Plug 'kaicataldo/material.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'KeitaNakamura/neodark.vim'
