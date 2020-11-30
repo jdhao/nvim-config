@@ -7,8 +7,6 @@
 if match($TERM, '^xterm.*') != -1 || exists('g:started_by_firenvim')
   set termguicolors
 endif
-" Use dark background
-set background=dark
 "}}
 
 "{{ Colorscheme settings
