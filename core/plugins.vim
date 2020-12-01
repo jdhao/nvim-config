@@ -288,6 +288,10 @@ endif
 if g:is_mac || g:is_linux
   Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 endif
+
+" Session management plugin
+Plug 'tpope/vim-obsession'
+Plug 'dhruvasagar/vim-prosession'
 call plug#end()
 "}}
 "}
@@ -939,5 +943,9 @@ endif
 
 """"""""""""""""""""""""""""""nvim-gdb settings""""""""""""""""""""""""""""""
 nnoremap <leader>dp :<C-U>GdbStartPDB python -m pdb %<CR>
+
+
+""""""""""""""""""""""""""""""prosession settings""""""""""""""""""""""""""""""
+let g:prosession_dir = stdpath('data') . '/prosession'
 "}}
 "}
