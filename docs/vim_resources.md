@@ -11,3 +11,4 @@ can not remember the source of many settings.
 - https://github.com/romainl/idiomatic-vimrc
 - https://github.com/mhinz/vim-galore
 - https://learnvimscriptthehardway.stevelosh.com/
+- https://vimways.org/2018/from-vimrc-to-vim/
