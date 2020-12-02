@@ -291,7 +291,6 @@ endif
 
 " Session management plugin
 Plug 'tpope/vim-obsession'
-Plug 'dhruvasagar/vim-prosession'
 call plug#end()
 "}}
 "}
