@@ -84,8 +84,14 @@ function! s:my_theme_dict.sublimemonokai() dict abort
   colorscheme sublimemonokai
 endfunction
 
-let s:candidate_theme = ['gruvbox8', 'srcery', 'deus', 'solarized8',
-      \ 'material', 'onedark',  'neodark', 'toast', 'sublimemonokai']
+function! s:my_theme_dict.humanoid() dict abort
+  if !utils#HasColorscheme('humanoid') | return | endif
+
+  colorscheme humanoid
+endfunction
+
+let s:candidate_theme = ['gruvbox8', 'srcery', 'deus', 'solarized8', 'material',
+      \ 'onedark',  'neodark', 'toast', 'sublimemonokai', 'humanoid']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 
