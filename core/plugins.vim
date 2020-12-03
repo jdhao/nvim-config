@@ -943,9 +943,5 @@ endif
 
 """"""""""""""""""""""""""""""nvim-gdb settings""""""""""""""""""""""""""""""
 nnoremap <leader>dp :<C-U>GdbStartPDB python -m pdb %<CR>
-
-
-""""""""""""""""""""""""""""""prosession settings""""""""""""""""""""""""""""""
-let g:prosession_dir = stdpath('data') . '/prosession'
 "}}
 "}
