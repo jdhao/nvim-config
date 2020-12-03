@@ -100,7 +100,7 @@ if has_key(s:my_theme_dict, s:theme)
   execute 'call ' . s:colorscheme_func
 else
   echohl WarningMsg
-  echomsg 'Invalid colorscheme function: ' s:colorscheme_func ', using default instead.'
+  echomsg 'Invalid colorscheme function: ' s:colorscheme_func
   echohl None
 endif
 "}}
