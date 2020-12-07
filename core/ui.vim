@@ -46,15 +46,6 @@ function! s:my_theme_dict.solarized8() dict abort
   colorscheme solarized8_high
 endfunction
 
-function! s:my_theme_dict.material() dict abort
-  if !utils#HasColorscheme('material') | return | endif
-
-  let g:material_terminal_italics = 1
-  " theme_style can be 'default', 'dark' or 'palenight'
-  let g:material_theme_style = 'default'
-  colorscheme material
-endfunction
-
 function! s:my_theme_dict.onedark() dict abort
   if !utils#HasColorscheme('onedark') | return | endif
 
@@ -90,7 +81,7 @@ function! s:my_theme_dict.humanoid() dict abort
   colorscheme humanoid
 endfunction
 
-let s:candidate_theme = ['gruvbox8', 'srcery', 'deus', 'solarized8', 'material',
+let s:candidate_theme = ['gruvbox8', 'srcery', 'deus', 'solarized8',
       \ 'onedark',  'neodark', 'toast', 'sublimemonokai', 'humanoid']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
