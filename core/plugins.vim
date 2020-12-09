@@ -291,6 +291,9 @@ endif
 
 " Session management plugin
 Plug 'tpope/vim-obsession'
+
+" Calculate statistics for visual selection
+Plug 'wgurecky/vimSum'
 call plug#end()
 "}}
 "}
