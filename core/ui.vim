@@ -65,16 +65,6 @@ function! s:my_theme_dict.toast() dict abort
   colorscheme toast
 endfunction
 
-augroup sublmonokai
-  autocmd!
-  autocmd ColorScheme sublimemonokai hi clear SignColumn
-augroup END
-function! s:my_theme_dict.sublimemonokai() dict abort
-  if !utils#HasColorscheme('sublimemonokai') | return | endif
-
-  colorscheme sublimemonokai
-endfunction
-
 function! s:my_theme_dict.humanoid() dict abort
   if !utils#HasColorscheme('humanoid') | return | endif
 
@@ -82,7 +72,7 @@ function! s:my_theme_dict.humanoid() dict abort
 endfunction
 
 let s:candidate_theme = ['gruvbox8', 'srcery', 'deus', 'solarized8',
-      \ 'onedark',  'neodark', 'toast', 'sublimemonokai', 'humanoid']
+      \ 'onedark',  'neodark', 'toast', 'humanoid']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 

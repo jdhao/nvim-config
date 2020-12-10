@@ -92,7 +92,6 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'joshdick/onedark.vim'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'jsit/toast.vim'
-Plug 'ErichDonGubler/vim-sublime-monokai'
 Plug 'humanoid-colors/vim-humanoid-colorscheme'
 
 if !exists('g:started_by_firenvim')
