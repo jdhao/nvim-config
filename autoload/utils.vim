@@ -145,33 +145,3 @@ function! utils#Get_titlestr() abort
 
   return l:title_str
 endfunction
-
-function! utils#EscapeInsertOrNot() abort
-  " If k is preceded by j, then remove j and go to normal mode.
-  let line_text = getline('.')
-  let cur_ch_idx = utils#CursorCharIdx()
-  let pre_char = utils#CharAtIdx(line_text, cur_ch_idx-1)
-  if pre_char ==# 'j'
-    return "\<BS>\<ESC>"
-  else
-    return 'k'
-  endif
-endfunction
-
-function! utils#CharAtIdx(str, idx) abort
-  " Get char at idx from str. Note that this is based on character index
-  " instead of the byte index.
-  return strcharpart(a:str, a:idx, 1)
-endfunction
-
-function! utils#CursorCharIdx() abort
-  " See https://vi.stackexchange.com/a/28144/15292
-  " A more concise way to get character index under cursor.
-  let cursor_byte_idx = col('.')
-  if cursor_byte_idx == 1
-    return 0
-  endif
-
-  let pre_cursor_text = getline('.')[:col('.')-2]
-  return strchars(pre_cursor_text)
-endfunction
