@@ -71,8 +71,24 @@ function! s:my_theme_dict.humanoid() dict abort
   colorscheme humanoid
 endfunction
 
+function! s:my_theme_dict.edge() dict abort
+  if !utils#HasColorscheme('edge') | return | endif
+
+  let g:edge_enable_italic = 1
+  let g:edge_better_performance = 1
+  colorscheme edge
+endfunction
+
+function! s:my_theme_dict.sonokai() dict abort
+  if !utils#HasColorscheme('sonokai') | return | endif
+
+  let g:sonokai_enable_italic = 1
+  let g:sonokai_better_performance = 1
+  colorscheme sonokai
+endfunction
+
 let s:candidate_theme = ['gruvbox8', 'srcery', 'deus', 'solarized8',
-      \ 'onedark',  'neodark', 'toast', 'humanoid']
+      \ 'onedark',  'neodark', 'toast', 'humanoid', 'edge', 'sonokai']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 

@@ -93,6 +93,8 @@ Plug 'joshdick/onedark.vim'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'jsit/toast.vim'
 Plug 'humanoid-colors/vim-humanoid-colorscheme'
+Plug 'sainnhe/edge'
+Plug 'sainnhe/sonokai'
 
 if !exists('g:started_by_firenvim')
   " colorful status line and theme
