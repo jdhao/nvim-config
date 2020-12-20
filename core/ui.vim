@@ -65,12 +65,6 @@ function! s:my_theme_dict.toast() dict abort
   colorscheme toast
 endfunction
 
-function! s:my_theme_dict.humanoid() dict abort
-  if !utils#HasColorscheme('humanoid') | return | endif
-
-  colorscheme humanoid
-endfunction
-
 function! s:my_theme_dict.edge() dict abort
   if !utils#HasColorscheme('edge') | return | endif
 
@@ -88,7 +82,7 @@ function! s:my_theme_dict.sonokai() dict abort
 endfunction
 
 let s:candidate_theme = ['gruvbox8', 'srcery', 'deus', 'solarized8',
-      \ 'onedark',  'neodark', 'toast', 'humanoid', 'edge', 'sonokai']
+      \ 'onedark',  'neodark', 'toast', 'edge', 'sonokai']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 

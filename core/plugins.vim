@@ -92,7 +92,6 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'joshdick/onedark.vim'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'jsit/toast.vim'
-Plug 'humanoid-colors/vim-humanoid-colorscheme'
 Plug 'sainnhe/edge'
 Plug 'sainnhe/sonokai'
 
