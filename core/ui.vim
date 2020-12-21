@@ -26,12 +26,6 @@ function! s:my_theme_dict.gruvbox8() dict abort
   colorscheme gruvbox8_hard
 endfunction
 
-function! s:my_theme_dict.srcery() dict abort
-  if !utils#HasColorscheme('srcery') | return | endif
-
-  colorscheme srcery
-endfunction
-
 function! s:my_theme_dict.deus() dict abort
   if !utils#HasColorscheme('deus') | return | endif
 
@@ -81,8 +75,8 @@ function! s:my_theme_dict.sonokai() dict abort
   colorscheme sonokai
 endfunction
 
-let s:candidate_theme = ['gruvbox8', 'srcery', 'deus', 'solarized8',
-      \ 'onedark',  'neodark', 'toast', 'edge', 'sonokai']
+let s:candidate_theme = ['gruvbox8', 'deus', 'solarized8', 'onedark',
+      \ 'neodark', 'toast', 'edge', 'sonokai']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 
