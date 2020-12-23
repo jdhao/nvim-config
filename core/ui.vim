@@ -53,12 +53,6 @@ function! s:my_theme_dict.neodark() dict abort
   colorscheme neodark
 endfunction
 
-function! s:my_theme_dict.toast() dict abort
-  if !utils#HasColorscheme('toast') | return | endif
-
-  colorscheme toast
-endfunction
-
 function! s:my_theme_dict.edge() dict abort
   if !utils#HasColorscheme('edge') | return | endif
 
@@ -75,8 +69,8 @@ function! s:my_theme_dict.sonokai() dict abort
   colorscheme sonokai
 endfunction
 
-let s:candidate_theme = ['gruvbox8', 'deus', 'solarized8', 'onedark',
-      \ 'neodark', 'toast', 'edge', 'sonokai']
+let s:candidate_theme = ['gruvbox8', 'deus', 'solarized8', 'onedark', 'neodark',
+      \ 'edge', 'sonokai']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 
