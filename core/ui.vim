@@ -69,8 +69,16 @@ function! s:my_theme_dict.sonokai() dict abort
   colorscheme sonokai
 endfunction
 
+function! s:my_theme_dict.tokyonight() dict abort
+  if !utils#HasColorscheme('tokyonight') | return | endif
+
+  let g:tokyonight_style = 'night' " available: night, storm
+  let g:tokyonight_enable_italic = 1
+  colorscheme tokyonight
+endfunction
+
 let s:candidate_theme = ['gruvbox8', 'deus', 'solarized8', 'onedark', 'neodark',
-      \ 'edge', 'sonokai']
+      \ 'edge', 'sonokai', 'tokyonight']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 
