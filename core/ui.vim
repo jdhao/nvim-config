@@ -21,8 +21,8 @@ function! s:my_theme_dict.gruvbox8() dict abort
   " see https://github.com/morhetz/gruvbox/wiki/Terminal-specific#1-italics-is-disabled
   let g:gruvbox_italics=1
   let g:gruvbox_italicize_strings=1
-  let g:gruvbox_filetype_hi_groups = 0
-  let g:gruvbox_plugin_hi_groups = 0
+  let g:gruvbox_filetype_hi_groups = 1
+  let g:gruvbox_plugin_hi_groups = 1
   colorscheme gruvbox8_hard
 endfunction
 
