@@ -835,6 +835,7 @@ endif
 
 " Tabline settings
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " Show buffer number for easier switching between buffer,
