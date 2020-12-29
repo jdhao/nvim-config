@@ -20,8 +20,8 @@ plugins that utilize its Python binding. Pynvim is required by plugins such as
 
 ## pyls
 
-[Pyls](https://github.com/palantir/python-language-server) is a Language Server
-for Python for completion, linting, go to definition, etc.
+[Pyls](https://github.com/palantir/python-language-server) is a Python Language
+Server for completion, linting, go to definition, etc.
 
 ```
 pip install "python-language-server[all]"
@@ -44,22 +44,26 @@ In order to use tags related plugins such as
 [gutentags](https://github.com/ludovicchabant/vim-gutentags), we need to
 install a ctags distribution. Universal-ctags is preferred.
 
-To install ctags on macOS, use [Homebrew](https://github.com/universal-ctags/homebrew-universal-ctags).
+To install ctags on macOS, use [Homebrew](https://github.com/universal-ctags/homebrew-universal-ctags):
+
+```bash
+brew install ctags
+```
+
 To install it Windows, [use chocolatey](https://chocolatey.org/packages/universal-ctags):
 
 ```
 choco install universal-ctags
 ```
 
-To install it on Linux, we need to build it from source. See
-[here](https://askubuntu.com/questions/796408/installing-and-using-universal-ctags-instead-of-exuberant-ctags/836521#836521)
+To install it on Linux, we need to build it from source. See [here](https://askubuntu.com/a/836521/768311)
 for the details.
 
 Set its PATH properly and make sure you can call `ctags` from command line.
 
 ## Ripgrep
 
-[Ripgrep](https://github.com/BurntSushi/ripgrep), aka, `rg`, is a fast grep
+[Ripgrep](https://github.com/BurntSushi/ripgrep), aka, `rg`, is a fast greping
 tool available for both Linux, Windows and macOS. It is used by several
 searching plugins.
 
@@ -77,7 +81,7 @@ various linters.
 + Vim script: [vint](https://github.com/Kuniwak/vint).
 
 For other linters, please consult the plugin documentation. For
-ALE(https://github.com/dense-analysis/ale) (which is the linting plugin I
+[ALE](https://github.com/dense-analysis/ale) (which is the linting plugin I
 currently use), a list of linters for different languages is
 listed [here](https://github.com/dense-analysis/ale/blob/master/supported-tools.md).
 
@@ -89,12 +93,9 @@ Since Neovim supports true colors, terminals that support true colors are
 preferred. For a list of terminals that support true colors, see
 [here](https://github.com/termstandard/colors).
 
-For macOS, we can use [iterm2](https://www.iterm2.com/),
-[kitty](https://sw.kovidgoyal.net/kitty/) or
-[Alacritty](https://github.com/jwilm/alacritty). If you connect to Linux server
-on Windows, I recommend [wsltty](https://github.com/mintty/wsltty) and
-[Cygwin](https://www.cygwin.com/), both of them use
-[mintty](https://github.com/mintty/mintty) as the terminal emulator.
+For macOS, we can use [iterm2](https://www.iterm2.com/), [kitty](https://sw.kovidgoyal.net/kitty/) or [Alacritty](https://github.com/jwilm/alacritty).
+If you connect to Linux server on Windows, I recommend [wsltty](https://github.com/mintty/wsltty) and
+[Cygwin](https://www.cygwin.com/), both of them use [mintty](https://github.com/mintty/mintty) as the terminal emulator.
 
 ## Font
 
@@ -115,14 +116,12 @@ Follow the official guide and download the appimage from the [release
 page](https://github.com/neovim/neovim/releases/nightly).
 
 For some Linux systems, we may not be able to run the appimage. We can directly
-download the binary release from
-[here](https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz).
+download the binary release from [here](https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz).
 
 ## Windows
 
-The easiest way to install Neovim on Windows is via
-[chocolatey](https://chocolatey.org/install). First, install chocolatey. Then
-we can install neovim easily following command:
+The easiest way to install Neovim on Windows is via chocolatey. First, install
+chocolatey. Then we can install neovim easily following command:
 
 ```
 # install the latest version of neovim
@@ -133,8 +132,7 @@ choco install neovim
 
 The Neovim that chocolatey installs may not be up to date. To use the
 cutting-edge features of Neovim, you may download [the nightly
-release](https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip)
-from GitHub and manually extract it.
+release](https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip) from GitHub and manually extract it.
 
 ## macOS
 
@@ -152,7 +150,8 @@ After installing Neovim, we need to add the directory where the Neovim
 executable (`nvim` on Linux and macOS, `nvim.exe` on Windows) resides to the
 system `PATH`.
 
-Make sure that you can call `nvim` from the command line after all these setups.
+Make sure that you can call `nvim` from the command line after all these
+setups.
 
 # Setting up Nvim
 
@@ -205,7 +204,7 @@ time to install all of them, depending on your network condition.
 
 # Automatic Installation for Linux #
 
-To set up a workable Neovim environment in Linux, I use the script
+To set up a workable Neovim environment in Linux, I use the bash script
 [`Nvim_setup.sh`](Nvim_setup.sh) to automatically install necessary
 dependencies, Neovim itself and Nvim configs in this repo.
 
