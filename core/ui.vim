@@ -77,14 +77,22 @@ function! s:my_theme_dict.tokyonight() dict abort
   colorscheme tokyonight
 endfunction
 
+function! s:my_theme_dict.gruvbox_material() dict abort
+  if !utils#HasColorscheme('gruvbox-material') | return | endif
+  let g:gruvbox_material_enable_italic = 1
+  let g:gruvbox_material_better_performance = 1
+  colorscheme gruvbox-material
+endfunction
+
 let s:candidate_theme = ['gruvbox8', 'deus', 'solarized8', 'onedark', 'neodark',
-      \ 'edge', 'sonokai', 'tokyonight']
+      \ 'edge', 'sonokai', 'tokyonight', 'gruvbox_material']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 
 let s:colorscheme_func = printf('s:my_theme_dict.%s()', s:theme)
 if has_key(s:my_theme_dict, s:theme)
-  execute 'call ' . s:colorscheme_func
+  " execute 'call ' . s:colorscheme_func
+  call s:my_theme_dict.gruvbox_material()
 else
   echohl WarningMsg
   echomsg 'Invalid colorscheme function: ' s:colorscheme_func

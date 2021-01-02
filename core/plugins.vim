@@ -93,6 +93,7 @@ Plug 'KeitaNakamura/neodark.vim'
 Plug 'sainnhe/edge'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'sainnhe/sonokai'
+Plug 'sainnhe/gruvbox-material'
 
 if !exists('g:started_by_firenvim')
   " colorful status line and theme
