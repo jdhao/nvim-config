@@ -91,8 +91,7 @@ let s:theme = s:candidate_theme[s:idx]
 
 let s:colorscheme_func = printf('s:my_theme_dict.%s()', s:theme)
 if has_key(s:my_theme_dict, s:theme)
-  " execute 'call ' . s:colorscheme_func
-  call s:my_theme_dict.gruvbox_material()
+  execute 'call ' . s:colorscheme_func
 else
   echohl WarningMsg
   echomsg 'Invalid colorscheme function: ' s:colorscheme_func
