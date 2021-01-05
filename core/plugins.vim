@@ -294,6 +294,9 @@ Plug 'tpope/vim-obsession'
 
 " Calculate statistics for visual selection
 Plug 'wgurecky/vimSum'
+if g:is_linux
+  Plug 'ojroques/vim-oscyank'
+endif
 call plug#end()
 "}}
 "}
