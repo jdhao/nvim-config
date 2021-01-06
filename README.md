@@ -49,7 +49,7 @@ represents the `,` character.
 |-------------------|---------------|-----------------|------------------------------------------------------------------|
 | `<leader>f`       | Normal        | Linux/macOS/Win | Fuzzy file search in a floating window                           |
 | `<leader>h`       | Normal        | Linux/macOS/Win | Fuzzy help search in a floating window                           |
-| `<leader>b`       | Normal        | Linux/macOS/Win | Fuzzy buffer tag search in a floating window                     |
+| `<leader>t`       | Normal        | Linux/macOS/Win | Fuzzy buffer tag search in a floating window                     |
 | `<leader><Space>` | Normal        | Linux/macOS/Win | Remove trailing white spaces                                      |
 | `<leader>v`       | Normal        | Linux/macOS/Win | Reselect last pasted text                                        |
 | `<leader>ev`      | Normal        | Linux/macOS/Win | Edit Neovim config in a new tabpage                              |
