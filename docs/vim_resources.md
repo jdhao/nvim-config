@@ -12,3 +12,4 @@ can not remember the source of many settings.
 - https://github.com/mhinz/vim-galore
 - https://learnvimscriptthehardway.stevelosh.com/
 - https://vimways.org/2018/from-vimrc-to-vim/
+- [vim script for Python developers](https://github.com/yegappan/VimScriptForPythonDevelopers)
