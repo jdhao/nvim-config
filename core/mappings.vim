@@ -186,6 +186,6 @@ xnoremap <silent> iu :<C-U>call text_obj#URL()<CR>
 onoremap <silent> iu :<C-U>call text_obj#URL()<CR>
 
 " Text objects for entire buffer
-xnoremap <silent> iB 0ggoG
-onoremap <silent> iB :normal viB<CR>
+xnoremap <silent> iB :<C-U>call text_obj#Buffer()<CR>
+onoremap <silent> iB :<C-U>call text_obj#Buffer()<CR>
 "}
