@@ -1,6 +1,7 @@
 Below are a list of resources that inspire me. This list is non-exhaustive as I
 can not remember the source of many settings.
 
+- [From .vimrc to .vim](https://vimways.org/2018/from-vimrc-to-vim/)
 - http://stevelosh.com/blog/2010/09/coming-home-to-vim/
 - https://github.com/tamlok/tvim/blob/master/.vimrc
 - https://nvie.com/posts/how-i-boosted-my-vim/
