@@ -70,7 +70,7 @@ Plug 'haya14busa/vim-asterisk'
 if g:is_win
   Plug 'Yggdroot/LeaderF'
 else
-  Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+  Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 endif
 
 " Another similar plugin is command-t
