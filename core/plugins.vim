@@ -514,6 +514,8 @@ xmap #  <Plug>(asterisk-z#)
 """""""""""""""""""""""""""""LeaderF settings"""""""""""""""""""""
 " Do not use cache file
 let g:Lf_UseCache = 0
+" Refresh each time we call leaderf
+let g:Lf_UseMemoryCache = 0
 
 " Ignore certain files and directories when searching files
 let g:Lf_WildIgnore = {
