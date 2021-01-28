@@ -746,7 +746,7 @@ if g:is_mac
       \        'PUNCTUATION_PARAGRAPH_END', 'MULTIPLICATION_SIGN', 'PRP_CHECKOUT',
       \        'CAN_CHECKOUT', 'SOME_OF_THE', 'DOUBLE_PUNCTUATION', 'HELL',
       \        'CURRENCY', 'POSSESSIVE_APOSTROPHE', 'ENGLISH_WORD_REPEAT_RULE',
-      \        'NON_STANDARD_WORD', 'AU'],
+      \        'NON_STANDARD_WORD', 'AU', 'DATE_NEW_YEAR'],
       \ }
 endif
 
