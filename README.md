@@ -16,15 +16,15 @@ file. You are encouraged to copy from this this repo the part you feel useful
 and add it to your own Nvim config.
 
 See [doc here](docs/README.md) on how to install Nvim's dependencies, Nvim
-itself and the configuration on different platforms (Linux, macOS and Windows).
+itself, and how to configure on different platforms (Linux, macOS and Windows).
 
 # Features #
 
-+ Auto-completion via [Deoplete](https://github.com/Shougo/deoplete.nvim).
++ Code auto-completion via [Deoplete](https://github.com/Shougo/deoplete.nvim) and [vim-lsp](https://github.com/prabirshrestha/vim-lsp).
 + Source code linting via [Ale](https://github.com/dense-analysis/ale).
 + Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).
 + Faster code commenting via [vim-commentary](https://github.com/tpope/vim-commentary).
-+ Asynchronous code execution via [asynrun.vim](https://github.com/skywind3000/asyncrun.vim)
++ Asynchronous code execution via [asynrun.vim](https://github.com/skywind3000/asyncrun.vim).
 + Fuzzy searching in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
 + Color theme via [vim-gruvbox8](https://github.com/lifepillar/vim-gruvbox8) and other beautiful themes.
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
