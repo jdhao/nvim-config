@@ -534,8 +534,6 @@ endif
 " Only fuzzy-search files names
 let g:Lf_DefaultMode = 'NameOnly'
 
-let g:Lf_PopupColorscheme = 'gruvbox_default'
-
 " Popup window settings
 let g:Lf_PopupWidth = 0.5
 let g:Lf_PopupPosition = [0, &columns/4]
