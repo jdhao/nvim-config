@@ -921,6 +921,9 @@ endif
 
 """"""""""""""""""""""""""""""firenvim settings""""""""""""""""""""""""""""""
 if exists('g:started_by_firenvim') && g:started_by_firenvim
+  if g:is_mac
+    set guifont=Iosevka\ Nerd\ Font:h18
+  endif
   " general options
   set laststatus=0 nonumber noruler noshowcmd
 
