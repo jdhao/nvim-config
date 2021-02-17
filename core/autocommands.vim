@@ -76,4 +76,11 @@ augroup cmd_msg_cls
     autocmd!
     autocmd CursorHold * call timer_start(25000, funcref('s:empty_message'))
 augroup END
+
+" Highlight groups for cursor color
+augroup cursor_color
+  autocmd!
+  autocmd ColorScheme * highlight Cursor cterm=bold gui=bold guibg=#00c918 guifg=black
+  autocmd ColorScheme * highlight Cursor2 guifg=red guibg=red
+augroup END
 "}
