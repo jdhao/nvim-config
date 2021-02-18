@@ -24,7 +24,7 @@ itself, and how to configure on different platforms (Linux, macOS and Windows).
 + Source code linting via [Ale](https://github.com/dense-analysis/ale).
 + Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).
 + Faster code commenting via [vim-commentary](https://github.com/tpope/vim-commentary).
-+ Asynchronous code execution via [asynrun.vim](https://github.com/skywind3000/asyncrun.vim).
++ Asynchronous code execution via [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim).
 + Fuzzy searching in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
 + Color theme via [vim-gruvbox8](https://github.com/lifepillar/vim-gruvbox8) and other beautiful themes.
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
