@@ -733,9 +733,6 @@ endif
 """"""""""""""""""""""""vim-grammarous settings""""""""""""""""""""""""""""""
 if g:is_mac
   let g:grammarous#languagetool_cmd = 'languagetool'
-  nmap <leader>x <Plug>(grammarous-close-info-window)
-  nmap <c-n> <Plug>(grammarous-move-to-next-error)
-  nmap <c-p> <Plug>(grammarous-move-to-previous-error)
   let g:grammarous#disabled_rules = {
       \ '*' : ['WHITESPACE_RULE', 'EN_QUOTES', 'ARROWS', 'SENTENCE_WHITESPACE',
       \        'WORD_CONTAINS_UNDERSCORE', 'COMMA_PARENTHESIS_WHITESPACE',
@@ -746,6 +743,13 @@ if g:is_mac
       \        'CURRENCY', 'POSSESSIVE_APOSTROPHE', 'ENGLISH_WORD_REPEAT_RULE',
       \        'NON_STANDARD_WORD', 'AU', 'DATE_NEW_YEAR'],
       \ }
+
+  augroup grammarous_map
+    autocmd!
+    autocmd FileType markdown nmap <buffer> <leader>x <Plug>(grammarous-close-info-window)
+    autocmd FileType markdown nmap <buffer> <c-n> <Plug>(grammarous-move-to-next-error)
+    autocmd FileType markdown nmap <buffer> <c-p> <Plug>(grammarous-move-to-previous-error)
+  augroup END
 endif
 
 """"""""""""""""""""""""unicode.vim settings""""""""""""""""""""""""""""""
