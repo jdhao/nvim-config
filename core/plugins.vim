@@ -697,6 +697,12 @@ let g:signify_vcs_list = [ 'git' ]
 
 " Change the sign for certain operations
 let g:signify_sign_change = '~'
+
+"""""""""""""""""""""""""vim-fugitive settings""""""""""""""""""""""""""""""
+nnoremap <silent> <leader>gc :Git commit<CR>
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gpl :Git pull<CR>
+nnoremap <silent> <leader>gpu :term git push
 "}}
 
 "{{ Markdown writing
