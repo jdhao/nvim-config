@@ -802,7 +802,6 @@ if ( g:is_win || g:is_mac ) && executable('latex')
     let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
   endif
 
-  " The following code is adapted from https://gist.github.com/skulumani/7ea00478c63193a832a6d3f2e661a536.
   if g:is_mac
     " let g:vimtex_view_method = "skim"
     let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
@@ -811,8 +810,14 @@ if ( g:is_win || g:is_mac ) && executable('latex')
     augroup vimtex_mac
       autocmd!
       autocmd User VimtexEventCompileSuccess call UpdateSkim()
+      autocmd FileType tex call SetServerName()
     augroup END
 
+    function! SetServerName()
+      call system('echo ' . v:servername . ' > /tmp/curvimserver')
+    endfunction
+
+    " The following code is adapted from https://gist.github.com/skulumani/7ea00478c63193a832a6d3f2e661a536.
     function! UpdateSkim() abort
       let l:out = b:vimtex.out()
       let l:src_file_path = expand('%:p')
