@@ -769,8 +769,10 @@ omap s <Nop>
 "{{ LaTeX editting
 """"""""""""""""""""""""""""vimtex settings"""""""""""""""""""""""""""""
 if ( g:is_win || g:is_mac ) && executable('latex')
-  " Set up LaTeX flavor
-  let g:tex_flavor = 'latex'
+  augroup vimtex_map
+    autocmd!
+    autocmd FileType tex nmap <buffer> <F9> <plug>(vimtex-compile)
+  augroup END
 
   " Deoplete configurations for autocompletion to work
   call deoplete#custom#var('omni', 'input_patterns', {
@@ -806,12 +808,12 @@ if ( g:is_win || g:is_mac ) && executable('latex')
     let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
     let g:vimtex_view_general_options = '-r @line @pdf @tex'
 
-    " This adds a callback hook that updates Skim after compilation
-    let g:vimtex_compiler_callback_hooks = ['UpdateSkim']
+    augroup vimtex_mac
+      autocmd!
+      autocmd User VimtexEventCompileSuccess call UpdateSkim()
+    augroup END
 
-    function! UpdateSkim(status) abort
-      if !a:status | return | endif
-
+    function! UpdateSkim() abort
       let l:out = b:vimtex.out()
       let l:src_file_path = expand('%:p')
       let l:cmd = [g:vimtex_view_general_viewer, '-r']
