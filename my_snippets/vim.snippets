@@ -4,3 +4,11 @@ function! ${1:MyFunc}(${2}) abort
 endfunction
 $0
 endsnippet
+
+snippet aug "vim augroup" b
+augroup ${1:GROUP_NAME}
+  autocmd!
+  autocmd ${2:EVENT} ${3:PATTERN} $4
+augroup END
+$0
+endsnippet
