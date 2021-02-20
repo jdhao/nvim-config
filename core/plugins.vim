@@ -775,9 +775,20 @@ omap s <Nop>
 "{{ LaTeX editting
 """"""""""""""""""""""""""""vimtex settings"""""""""""""""""""""""""""""
 if ( g:is_win || g:is_mac ) && executable('latex')
-  augroup vimtex_map
+  function! SetServerName()
+    if has('win32')
+      let nvim_server_file = $TEMP . '/curnvimserver.txt'
+    else
+      let nvim_server_file = '/tmp/curnvimserver.txt'
+    endif
+    let cmd = printf('echo %s > %s', v:servername, nvim_server_file)
+    call system(cmd)
+  endfunction
+
+  augroup vimtex_common
     autocmd!
     autocmd FileType tex nmap <buffer> <F9> <plug>(vimtex-compile)
+    autocmd FileType tex call SetServerName()
   augroup END
 
   " Deoplete configurations for autocompletion to work
@@ -816,12 +827,7 @@ if ( g:is_win || g:is_mac ) && executable('latex')
     augroup vimtex_mac
       autocmd!
       autocmd User VimtexEventCompileSuccess call UpdateSkim()
-      autocmd FileType tex call SetServerName()
     augroup END
-
-    function! SetServerName()
-      call system('echo ' . v:servername . ' > /tmp/curvimserver')
-    endfunction
 
     " The following code is adapted from https://gist.github.com/skulumani/7ea00478c63193a832a6d3f2e661a536.
     function! UpdateSkim() abort
