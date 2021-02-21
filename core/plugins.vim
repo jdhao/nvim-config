@@ -767,7 +767,7 @@ omap s <Nop>
 "{{ LaTeX editting
 """"""""""""""""""""""""""""vimtex settings"""""""""""""""""""""""""""""
 if ( g:is_win || g:is_mac ) && executable('latex')
-  function! SetServerName()
+  function! SetServerName() abort
     if has('win32')
       let nvim_server_file = $TEMP . '/curnvimserver.txt'
     else
