@@ -83,4 +83,18 @@ augroup cursor_color
   autocmd ColorScheme * highlight Cursor cterm=bold gui=bold guibg=#00c918 guifg=black
   autocmd ColorScheme * highlight Cursor2 guifg=red guibg=red
 augroup END
+
+augroup auto_close_win
+  autocmd!
+  autocmd BufEnter * call s:quit_current_win()
+augroup END
+
+" Quit Neovim if we have only one window, and its filetype match our pattern.
+function! s:quit_current_win() abort
+  let quit_filetypes = ['qf', 'vista']
+  let buftype = getbufvar(bufnr(), '&filetype')
+  if winnr('$') == 1 && index(quit_filetypes, buftype) != -1
+    quit
+  endif
+endfunction
 "}

@@ -588,22 +588,14 @@ let g:vista_echo_cursor = 0
 " Stay in current window when vista window is opened
 let g:vista_stay_on_open = 0
 
-augroup matchup_conf
+augroup vista_conf
   autocmd!
   " Double mouse click to go to a tag
   autocmd FileType vista* nnoremap <buffer> <silent>
         \ <2-LeftMouse> :<C-U>call vista#cursor#FoldOrJump()<CR>
-  " Quit Neovim if vista window is the only window
-  autocmd BufEnter * call s:close_vista_win()
 augroup END
 
 nnoremap <silent> <Space>t :<C-U>Vista!!<CR>
-
-function! s:close_vista_win() abort
-  if winnr('$') == 1 && getbufvar(bufnr(), '&filetype') ==# 'vista'
-    quit
-  endif
-endfunction
 "}}
 
 "{{ File editting
