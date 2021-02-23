@@ -694,7 +694,8 @@ let g:signify_sign_change = '~'
 nnoremap <silent> <leader>gc :Git commit<CR>
 nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>gpl :Git pull<CR>
-nnoremap <silent> <leader>gpu :term git push
+" Note that to use bar literally, we need backslash it, see also `:h :bar`.
+nnoremap <silent> <leader>gpu :15split \| term git push
 "}}
 
 "{{ Markdown writing
