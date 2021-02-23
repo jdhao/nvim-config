@@ -43,7 +43,7 @@ itself, and how to configure on different platforms (Linux, macOS and Windows).
 # Shortcuts
 
 Some of the shortcuts I use frequently. In the following shortcuts, `<leader>`
-represents the `,` character.
+represents ASCII character `,`.
 
 | Shortcut          | Mode          | platform        | Description                                                      |
 |-------------------|---------------|-----------------|------------------------------------------------------------------|
