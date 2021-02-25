@@ -164,6 +164,10 @@ Plug 'tpope/vim-repeat'
 " Show the content of register in preview window
 " Plug 'junegunn/vim-peekaboo'
 Plug 'jdhao/better-escape.vim'
+
+if g:is_mac
+  Plug 'lyokha/vim-xkbswitch'
+endif
 "}}
 
 "{{ Linting, formating
@@ -651,6 +655,9 @@ endif
 """"""""""""""""""""""""""""nvim-minipyank settings"""""""""""""""""""""""""
 nmap p <Plug>(miniyank-autoput)
 nmap P <Plug>(miniyank-autoPut)
+
+""""""""""""""""""""""""""""vim-xkbswitch settings"""""""""""""""""""""""""
+let g:XkbSwitchEnabled = 1
 "}}
 
 "{{ Linting and formating
