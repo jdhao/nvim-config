@@ -898,6 +898,12 @@ let g:airline#extensions#hunks#non_zero_only = 1
 " Speed up airline
 let g:airline_highlighting_cache = 1
 
+" The key in the following shortcode are the layout when we use a specific
+" input method mode. On my macOS, 0 means that we are trying to input Chinese,
+" and 1 means we are using English mode.
+" See also https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/xkblayout.vim#L11
+let g:airline#extensions#xkblayout#short_codes = {'0': 'CN', '1': 'US'}
+
 """"""""""""""""""""""""""""vim-startify settings""""""""""""""""""""""""""""
 " Do not change working directory when opening files.
 let g:startify_change_to_dir = 0
