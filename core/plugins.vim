@@ -41,8 +41,10 @@ Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'machakann/vim-swap'
 
 " IDE for Lisp
-" Plug 'kovisoft/slimv'
-Plug 'vlime/vlime', {'rtp': 'vim/', 'for': 'lisp'}
+if executable('sbcl')
+  " Plug 'kovisoft/slimv'
+  Plug 'vlime/vlime', {'rtp': 'vim/', 'for': 'lisp'}
+endif
 
 " C++ semantic highlighting
 if executable('ccls')
