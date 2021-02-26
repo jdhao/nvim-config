@@ -166,6 +166,8 @@ Plug 'jdhao/better-escape.vim'
 
 if g:is_mac
   Plug 'lyokha/vim-xkbswitch'
+elseif g:is_win
+  Plug 'Neur1n/neuims'
 endif
 "}}
 
