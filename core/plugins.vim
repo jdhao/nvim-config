@@ -4,6 +4,11 @@ scriptencoding utf-8
 " The root directory to install all plugins.
 let g:plug_home=expand(stdpath('data') . '/plugged')
 
+" Use fastgit for clone on Linux systems.
+if g:is_linux
+  let g:plug_url_format = 'https://hub.fastgit.org/%s.git'
+endif
+
 if empty(readdir(g:plug_home))
   augroup plug_init
     autocmd!
