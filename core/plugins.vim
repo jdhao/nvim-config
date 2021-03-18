@@ -374,6 +374,7 @@ let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_signs_enabled = 1
 let g:lsp_diagnostics_signs_error = {'text': '✗'}
 let g:lsp_diagnostics_signs_warning = {'text': '!'}
+let g:lsp_diagnostics_signs_information = {'text': '!'}
 let g:lsp_diagnostics_highlights_enabled = 0
 
 " Do not use virtual text, they are far too obstrusive.
@@ -398,8 +399,9 @@ if executable('pyls')
           \ 'allowlist': ['python'],
           \ 'workspace_config': {
           \    'pyls':
-          \        {'configurationSources': ['flake8'],
-          \         'plugins': {'flake8': {'enabled': v:true},
+          \        {
+          \         'plugins': {'flake8': {'enabled': v:false},
+          \                     'pylint': {'enabled': v:true, 'executable': 'pylint'},
           \                     'pyflakes': {'enabled': v:false},
           \                     'pycodestyle': {'enabled': v:false},
           \                     'jedi_completion': {'fuzzy': v:true},
