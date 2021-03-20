@@ -65,18 +65,6 @@ augroup highlight_yank
   au TextYankPost * silent! lua vim.highlight.on_yank{higroup="YankColor", timeout=300}
 augroup END
 
-" Clear cmd line message
-function! s:empty_message(timer)
-  if mode() ==# 'n'
-    echo ''
-  endif
-endfunction
-
-augroup cmd_msg_cls
-    autocmd!
-    autocmd CursorHold * call timer_start(25000, funcref('s:empty_message'))
-augroup END
-
 " Highlight groups for cursor color
 augroup cursor_color
   autocmd!
