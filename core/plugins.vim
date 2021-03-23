@@ -675,6 +675,7 @@ let g:XkbSwitchEnabled = 1
 " linters for different filetypes
 let g:ale_linters = {
   \ 'vim': ['vint'],
+  \ 'cpp': ['cppcheck'],
   \ }
 
 " Only run linters in the g:ale_linters dictionary
