@@ -68,7 +68,7 @@ fi
 
 # Install some Python packages used by Neovim plugins.
 echo "Installing Python packages"
-declare -a py_packages=("pynvim" 'python-language-server[all]' "black" "vim-vint")
+declare -a py_packages=("pynvim" 'python-language-server[all]' "black" "vim-vint" "pyls-isort" "pyls-mypy")
 
 if [[ "$SYSTEM_PYTHON" = true ]]; then
     echo "Using system Python to install $(PY_PACKAGES)"

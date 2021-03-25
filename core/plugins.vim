@@ -405,6 +405,8 @@ if executable('pyls')
           \                     'pyflakes': {'enabled': v:false},
           \                     'pycodestyle': {'enabled': v:false},
           \                     'jedi_completion': {'fuzzy': v:true},
+          \                     'pyls_isort': {'enabled': v:true},
+          \                     'pyls_mypy': {'enabled': v:true}
           \                    }
           \        }
           \ }})

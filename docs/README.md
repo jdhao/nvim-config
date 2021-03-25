@@ -24,7 +24,7 @@ plugins that utilize its Python binding. Pynvim is required by plugins such as
 Server for completion, linting, go to definition, etc.
 
 ```
-pip install "python-language-server[all]"
+pip install "python-language-server[all]" pyls-isort pyls-mypy
 ```
 
 ## Git
