@@ -19,17 +19,8 @@ endif
 
 "{{ Autocompletion related plugins
 call plug#begin()
-" Auto-completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Language Server Protocol client
-Plug 'prabirshrestha/vim-lsp'
-Plug 'lighttiger2505/deoplete-vim-lsp'
-
-" Vim source for deoplete
-if !executable('vim-language-server')
-  " only use neco-vim when vim-language-server is not available
-  Plug 'Shougo/neco-vim', { 'for': 'vim' }
-endif
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
 "}}
 
 "{{ language-specific plugins
@@ -218,10 +209,6 @@ if g:is_win || g:is_mac
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 endif
 
-" emoji
-" Plug 'https://gitlab.com/gi1242/vim-emoji-ab'
-Plug 'fszymanski/deoplete-emoji', {'for': 'markdown'}
-
 if g:is_mac
   Plug 'rhysd/vim-grammarous'
 endif
@@ -324,146 +311,138 @@ call utils#Cabbrev('pc', 'PlugClean')
 "}}
 
 "{{ Auto-completion related
-"""""""""""""""""""""""""""" deoplete settings""""""""""""""""""""""""""
-" Wheter to enable deoplete automatically after start nvim
-let g:deoplete#enable_at_startup = 1
+lua << EOF
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-" Maximum candidate window width
-call deoplete#custom#option('max_menu_width', 80)
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-" Minimum character length needed to activate auto-completion.
-call deoplete#custom#option('min_pattern_length', 1)
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
-" use fuzzy matcher
-call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+  -- Show diagnostic automatically when cursor is on hold.
+  vim.api.nvim_command('autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()')
 
-" Whether to disable completion for certain syntax
-" call deoplete#custom#source('_', {
-"     \ 'filetype': ['vim'],
-"     \ 'disabled_syntaxes': ['String']
-"     \ })
-call deoplete#custom#source('_', {
-  \ 'filetype': ['python'],
-  \ 'disabled_syntaxes': ['Comment']
-  \ })
+  -- Set some keybinds conditional on server capabilities
+  if client.resolved_capabilities.document_formatting then
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  elseif client.resolved_capabilities.document_range_formatting then
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  end
 
-" Ignore certain sources, because they only cause nosie most of the time
-call deoplete#custom#option('ignore_sources', {
-   \ '_': ['around', 'buffer']
-   \ })
+  -- Set autocommands conditional on server_capabilities
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]], false)
+  end
+end
 
-" Candidate list item number limit
-call deoplete#custom#option('max_list', 15)
+local lspconfig = require("lspconfig")
+lspconfig.pyls.setup {
+    on_attach = on_attach,
+    settings = {
+        pyls = {
+            plugins = {
+                flake8 = {enabled = false},
+                pylint = {enabled = true, executable = "pylint"},
+                pyflakes = {enabled = false},
+                pycodestyle = {enabled = false},
+                jedi_completion = {fuzzy = true},
+                pyls_isort = {enabled = true},
+                pyls_mypy = {enabled = true}
+            }
+        }
+    }
+}
 
-" The number of processes used for the deoplete parallel feature.
-call deoplete#custom#option('num_processes', 8)
+-- set up ccls, see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#ccls
+lspconfig.ccls.setup {
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("compile_commands.json", ".ccls", ".git"),
+  init_options = {
+    highlight = { lsRanges = true }
+  }
+}
 
-" The delay for completion after input, measured in milliseconds.
-call deoplete#custom#option('auto_complete_delay', 100)
+-- set up vim-language-server
+lspconfig.vimls.setup{}
 
-" lower case can also match upper case (upper case are hard to type!)
-call deoplete#custom#option({'camel_case': v:true,})
+-- Change diagnostic signs.
+vim.fn.sign_define('LspDiagnosticsSignError', { text = "✗", texthl = "LspDiagnosticsDefaultError" })
+vim.fn.sign_define('LspDiagnosticsSignWarning', { text = "!", texthl = "LspDiagnosticsDefaultWarning" })
+vim.fn.sign_define('LspDiagnosticsSignInformation', { text = "", texthl = "LspDiagnosticsDefaultInformation" })
+vim.fn.sign_define('LspDiagnosticsSignHint', { text = "", texthl = "LspDiagnosticsDefaultHint" })
+EOF
 
-"""""""""""""""""""""""""""" vim-lsp settings""""""""""""""""""""""""""
-" whether to enable diagnostics for vim-lsp (we may want to use ALE for other
-" plugins for that.
-let g:lsp_diagnostics_enabled = 1
+" nvim-compe settings
+lua << EOF
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
 
-" show diagnostic signs
-let g:lsp_diagnostics_signs_enabled = 1
-let g:lsp_diagnostics_signs_error = {'text': '✗'}
-let g:lsp_diagnostics_signs_warning = {'text': '!'}
-let g:lsp_diagnostics_signs_information = {'text': '!'}
-let g:lsp_diagnostics_highlights_enabled = 0
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = false;
+    ultisnips = true;
+  };
+}
 
-" Do not use virtual text, they are far too obstrusive.
-let g:lsp_diagnostics_virtual_text_enabled = 0
-" whether to echo a diagnostic message on statusline at cursor position
-let g:lsp_diagnostics_echo_cursor = 1
-" Whether to show diagnostic in floating window
-let g:lsp_diagnostics_float_cursor = 0
-let g:lsp_diagnostics_float_delay = 100
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = false,
+    virtual_text = false,
+    signs = true,
+    update_in_insert = false,
+  }
+)
 
-let g:lsp_preview_max_width = 80
-let g:lsp_work_done_progress_enabled = 1
+vim.o.completeopt = "menuone,noselect"
+EOF
 
-" set up pyls for vim-lsp
-if executable('pyls')
- " pip install python-language-server
-  augroup pyls_setup
-    autocmd!
-    autocmd User lsp_setup call lsp#register_server({
-          \ 'name': 'pyls',
-          \ 'cmd': {server_info->['pyls']},
-          \ 'allowlist': ['python'],
-          \ 'workspace_config': {
-          \    'pyls':
-          \        {
-          \         'plugins': {'flake8': {'enabled': v:false},
-          \                     'pylint': {'enabled': v:true, 'executable': 'pylint'},
-          \                     'pyflakes': {'enabled': v:false},
-          \                     'pycodestyle': {'enabled': v:false},
-          \                     'jedi_completion': {'fuzzy': v:true},
-          \                     'pyls_isort': {'enabled': v:true},
-          \                     'pyls_mypy': {'enabled': v:true}
-          \                    }
-          \        }
-          \ }})
-  augroup END
-endif
-
-if executable('ccls')
-  augroup ccls_setup
-    autocmd!
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'ccls',
-        \ 'cmd': {server_info->['ccls']},
-        \ 'root_uri': {server_info->lsp#utils#path_to_uri(
-        \   lsp#utils#find_nearest_parent_file_directory(
-        \     lsp#utils#get_buffer_path(), ['.ccls', 'compile_commands.json', '.git/']))},
-        \ 'initialization_options': {
-        \   'highlight': { 'lsRanges' : v:true },
-        \   'cache': {'directory': stdpath('cache') . '/ccls' },
-        \ },
-        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-        \ })
-  augroup END
-endif
-
-if executable('vim-language-server')
-  augroup LspVim
-    autocmd!
-    autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'vim-language-server',
-        \ 'cmd': {server_info->['vim-language-server', '--stdio']},
-        \ 'whitelist': ['vim'],
-        \ 'initialization_options': {
-        \   'vimruntime': $VIMRUNTIME,
-        \   'runtimepath': &rtp,
-        \ },
-        \ 'suggest': {
-        \ 'fromRuntimepath': v:true
-        \ }})
-  augroup END
-endif
-
-function! s:on_lsp_buffer_enabled() abort
-  if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-  nmap <buffer> gd <plug>(lsp-definition)
-  nmap <buffer> gr <plug>(lsp-references)
-  nmap <buffer> gi <plug>(lsp-implementation)
-  nmap <buffer> gt <plug>(lsp-type-definition)
-  nmap <buffer> <leader>rn <plug>(lsp-rename)
-  nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
-  nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
-  nmap <buffer> K <plug>(lsp-hover)
-endfunction
-
-augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
+" nvim-comple mappings
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 """""""""""""""""""""""""UltiSnips settings"""""""""""""""""""
 " Trigger configuration. Do not use <tab> if you use YouCompleteMe
@@ -773,9 +752,6 @@ endif
 
 """"""""""""""""""""""""unicode.vim settings""""""""""""""""""""""""""""""
 nmap ga <Plug>(UnicodeGA)
-
-""""""""""""""""""""""""deoplete-emoji settings""""""""""""""""""""""""""""
-call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
 "}}
 
 "{{ text objects
@@ -803,11 +779,6 @@ if ( g:is_win || g:is_mac ) && executable('latex')
     autocmd FileType tex nmap <buffer> <F9> <plug>(vimtex-compile)
     autocmd FileType tex call SetServerName()
   augroup END
-
-  " Deoplete configurations for autocompletion to work
-  call deoplete#custom#var('omni', 'input_patterns', {
-        \ 'tex': g:vimtex#re#deoplete
-        \ })
 
   let g:vimtex_compiler_latexmk = {
         \ 'build_dir' : 'build',
@@ -889,8 +860,8 @@ let g:airline#extensions#gutentags#enabled = 1
 " Do not show search index in statusline since it is shown on command line
 let g:airline#extensions#anzu#enabled = 0
 
-" Enable vim-airline extension for vim-lsp
-let g:airline#extensions#lsp#enabled = 1
+" Enable vim-airline extension for nvim-lsp
+let g:airline#extensions#nvimlsp#enabled = 1
 
 " Skip empty sections if there are nothing to show,
 " extracted from https://vi.stackexchange.com/a/9637/15292
