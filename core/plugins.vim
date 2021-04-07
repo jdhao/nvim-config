@@ -397,6 +397,23 @@ vim.fn.sign_define('LspDiagnosticsSignError', { text = "✗", texthl = "LspDiagn
 vim.fn.sign_define('LspDiagnosticsSignWarning', { text = "!", texthl = "LspDiagnosticsDefaultWarning" })
 vim.fn.sign_define('LspDiagnosticsSignInformation', { text = "", texthl = "LspDiagnosticsDefaultInformation" })
 vim.fn.sign_define('LspDiagnosticsSignHint', { text = "", texthl = "LspDiagnosticsDefaultHint" })
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = false,
+    virtual_text = false,
+    signs = true,
+    update_in_insert = false,
+  }
+)
+
+-- The following settings works with the bleeding edge neovim.
+-- See https://github.com/neovim/neovim/pull/13998.
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+--   vim.lsp.handlers.hover, {
+--     border = 'single'
+--     }
+-- )
 EOF
 
 " nvim-compe settings
@@ -425,15 +442,6 @@ require'compe'.setup {
     ultisnips = true;
   };
 }
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = false,
-    virtual_text = false,
-    signs = true,
-    update_in_insert = false,
-  }
-)
 
 vim.o.completeopt = "menuone,noselect"
 EOF
