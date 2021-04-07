@@ -256,10 +256,6 @@ if executable('tmux')
 endif
 "}}
 
-"{{ HTML related
-Plug 'mattn/emmet-vim', { 'for': ['markdown', 'javascript', 'css'] }
-"}}
-
 "{{ Misc plugins
 " Modern matchit implementation
 Plug 'andymass/vim-matchup'
