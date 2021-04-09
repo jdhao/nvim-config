@@ -8,7 +8,16 @@ let g:is_mac = has('macunix')
 
 "{{ Builtin variables
 " Disable Python2 support
-let g:loaded_python_provider=0
+let g:loaded_python_provider = 0
+
+" Disable perl provider
+let g:loaded_perl_provider = 0
+
+" Disable ruby provider
+let g:loaded_ruby_provider = 0
+
+" Disable node provider
+let g:loaded_node_provider = 0
 
 let g:did_install_default_menus = 1  " do not load menu
 
