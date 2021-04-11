@@ -100,11 +100,20 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 -- The following settings works with the bleeding edge neovim.
 -- See https://github.com/neovim/neovim/pull/13998.
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
---   vim.lsp.handlers.hover, {
---     border = 'single'
---     }
--- )
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = {
+       {"┌", "Normal"},
+       {"─", "Normal"},
+       {"┐", "Normal"},
+       {"│", "Normal"},
+       {"┘", "Normal"},
+       {"─", "Normal"},
+       {"└", "Normal"},
+       {"│", "Normal"}
+     }
+    }
+)
 
 -- nvim-compe settings
 require'compe'.setup {
