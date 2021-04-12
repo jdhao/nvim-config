@@ -98,6 +98,8 @@ if !exists('g:started_by_firenvim')
   Plug 'vim-airline/vim-airline-themes'
   Plug 'mhinz/vim-startify'
 endif
+
+Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 "}}
 
 "{{ Plugin to deal with URL
@@ -289,6 +291,9 @@ Plug 'wgurecky/vimSum'
 if g:is_linux
   Plug 'ojroques/vim-oscyank'
 endif
+
+" REPL for nvim
+Plug 'hkupty/iron.nvim'
 call plug#end()
 "}}
 "}
@@ -759,6 +764,12 @@ let g:airline#extensions#xkblayout#short_codes = {'0': 'CN', '1': 'US'}
 let g:startify_change_to_dir = 0
 let g:startify_fortune_use_unicode = 1
 
+""""""""""""""""""""""""""""indent-blankline settings""""""""""""""""""""""""""""
+let g:indent_blankline_char = '│'
+" let g:indent_blankline_char = '┆'
+" let g:indent_blankline_char = '┊'
+
+let g:indent_blankline_filetype_exclude = ['help', 'startify', 'git']
 "}}
 
 "{{ Misc plugin setting
@@ -828,5 +839,16 @@ endif
 
 """"""""""""""""""""""""""""""nvim-gdb settings""""""""""""""""""""""""""""""
 nnoremap <leader>dp :<C-U>GdbStartPDB python -m pdb %<CR>
+
+""""""""""""""""""""""""""""""iron.nvim settings""""""""""""""""""""""""""""""
+lua << EOF
+local iron = require('iron')
+iron.core.set_config{
+  preferred = {
+    python = 'ipython'
+  },
+  repl_open_cmd = 'vertical 120 split'
+}
+EOF
 "}}
 "}
