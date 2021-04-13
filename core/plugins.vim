@@ -561,7 +561,8 @@ let g:signify_sign_change = '~'
 
 """""""""""""""""""""""""vim-fugitive settings""""""""""""""""""""""""""""""
 nnoremap <silent> <leader>gc :Git commit<CR>
-nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gs :Git<CR>
+nnoremap <silent> <leader>gw :Gwrite<CR>
 nnoremap <silent> <leader>gpl :Git pull<CR>
 " Note that to use bar literally, we need backslash it, see also `:h :bar`.
 nnoremap <silent> <leader>gpu :15split \| term git push
