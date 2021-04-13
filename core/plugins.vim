@@ -312,7 +312,7 @@ call utils#Cabbrev('pc', 'PlugClean')
 "}}
 
 "{{ Auto-completion related
-lua require('lsp')
+lua require('entrance')
 
 """""""""""""""""""""""""UltiSnips settings"""""""""""""""""""
 " Trigger configuration. Do not use <tab> if you use YouCompleteMe
