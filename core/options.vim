@@ -61,8 +61,6 @@ set showbreak=↪
 " List all matches and complete till longest common string
 set wildmode=list:longest
 
-set cursorline  " Show current line where the cursor is
-
 " Minimum lines to keep above and below cursor when scrolling
 set scrolloff=3
 
