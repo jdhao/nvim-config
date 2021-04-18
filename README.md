@@ -20,7 +20,7 @@ itself, and how to configure on different platforms (Linux, macOS and Windows).
 
 # Features #
 
-+ Code auto-completion via [Deoplete](https://github.com/Shougo/deoplete.nvim) and [vim-lsp](https://github.com/prabirshrestha/vim-lsp).
++ Code auto-completion via [nvim-compe](https://github.com/hrsh7th/nvim-compe) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) using nvim [builtin lsp](https://neovim.io/doc/user/lsp.html) feature.
 + Source code linting via [Ale](https://github.com/dense-analysis/ale).
 + Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).
 + Faster code commenting via [vim-commentary](https://github.com/tpope/vim-commentary).
@@ -30,6 +30,7 @@ itself, and how to configure on different platforms (Linux, macOS and Windows).
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
 + Ultra fast snippet insertion via [Ultisnips](https://github.com/SirVer/ultisnips).
 + Faster matching pair insertion and jump via [auto-pairs](https://github.com/jiangmiao/auto-pairs).
++ Undo management via [vim-mundo](https://github.com/simnalamburt/vim-mundo)
 + Smarter and faster matching pair management (add, replace or delete) via [vim-sandwich](https://github.com/machakann/vim-sandwich).
 + Beautiful status line via [vim-airline](https://github.com/vim-airline/vim-airline).
 + Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
@@ -83,9 +84,8 @@ If you still have an issue, you may [open a new issue](https://github.com/jdhao/
 
 # Further readings
 
-Some of the resources that I find helpful in mastering Vim is
-[here](docs/vim_resources.md). You may also be interested in my post in
-configuring Vim on different platforms:
+Some of the resources that I find helpful in mastering Vim is documented [here](docs/vim_resources.md).
+You may also be interested in my post in configuring Vim on different platforms:
 
 + [Config nvim on Linux for Python development](https://jdhao.github.io/2018/12/24/centos_nvim_install_use_guide_en/)
 + [Nvim config on Windows 10](https://jdhao.github.io/2018/11/15/neovim_configuration_windows/)
