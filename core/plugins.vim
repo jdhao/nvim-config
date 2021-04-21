@@ -770,7 +770,7 @@ let g:indent_blankline_char = '│'
 " let g:indent_blankline_char = '┆'
 " let g:indent_blankline_char = '┊'
 
-let g:indent_blankline_filetype_exclude = ['help', 'startify', 'git']
+let g:indent_blankline_filetype_exclude = ['help', 'startify', 'git', 'markdown']
 "}}
 
 "{{ Misc plugin setting
