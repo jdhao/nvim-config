@@ -760,6 +760,9 @@ let g:airline_highlighting_cache = 1
 " See also https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/xkblayout.vim#L11
 let g:airline#extensions#xkblayout#short_codes = {'0': 'CN', '1': 'US'}
 
+" Disable scrollbar
+let g:airline#extensions#scrollbar#enabled = 0
+
 """"""""""""""""""""""""""""vim-startify settings""""""""""""""""""""""""""""
 " Do not change working directory when opening files.
 let g:startify_change_to_dir = 0
