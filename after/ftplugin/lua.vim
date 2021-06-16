@@ -1,5 +1,6 @@
-" Disable inserting comment leader after hitting o or O
+" Disable inserting comment leader after hitting o or O or <Enter>
 set formatoptions-=o
+set formatoptions-=r
 
 set tabstop=2       " number of visual spaces per TAB
 set softtabstop=2   " number of spaces in tab when editing

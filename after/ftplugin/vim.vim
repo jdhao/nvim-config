@@ -1,7 +1,5 @@
-" Disable inserting comment leader after hitting o or O
+" Disable inserting comment leader after hitting o or O or <Enter>
 set formatoptions-=o
-
-" Disable inserting comment leader after hitting <Enter> in insert mode
 set formatoptions-=r
 
 " Set the folding related options for vim script. Setting folding option in
