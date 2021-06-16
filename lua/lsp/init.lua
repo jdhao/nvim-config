@@ -134,7 +134,7 @@ require'compe'.setup {
   source = {
     path = true;
     buffer = true;
-    spell = true;
+    spell = false;
     emoji = true;
     nvim_lsp = true;
     nvim_lua = true;
@@ -143,6 +143,8 @@ require'compe'.setup {
     vsnip = false;
   };
 }
+
+vim.api.nvim_command("autocmd FileType markdown lua require'compe'.setup({source = {spell=true}}, 0)")
 
 vim.o.completeopt = "menuone,noselect"
 
