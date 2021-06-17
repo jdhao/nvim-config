@@ -108,7 +108,9 @@ great. Another great resource for programming font is the
 
 # Install Neovim
 
-There are various ways to install Neovim based on your system.
+There are various ways to install Neovim based on your system. Note that some
+of plugins I use require Nvim master. It is recommended to use the nightly
+version of nvim.
 
 ## Linux
 
