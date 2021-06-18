@@ -132,9 +132,10 @@ require'compe'.setup {
   documentation = true;
 
   source = {
+    omni = {filetypes = {'tex'}};
     path = true;
     buffer = true;
-    spell = false;
+    spell = {filetypes = {'markdown', 'tex'}};
     emoji = true;
     nvim_lsp = true;
     nvim_lua = true;
@@ -143,8 +144,6 @@ require'compe'.setup {
     vsnip = false;
   };
 }
-
-vim.api.nvim_command("autocmd FileType markdown lua require'compe'.setup({source = {spell=true}}, 0)")
 
 vim.o.completeopt = "menuone,noselect"
 
