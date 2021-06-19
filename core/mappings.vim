@@ -99,9 +99,9 @@ xnoremap > >gv
 " annoying newline. Otherwise, <enter> is what it is. For more info , see
 " https://superuser.com/a/941082/736190 and
 " https://unix.stackexchange.com/q/162528/221410
-inoremap <expr> <cr> ((pumvisible())?("\<C-Y>"):("\<cr>"))
+" inoremap <expr> <cr> ((pumvisible())?("\<C-Y>"):("\<cr>"))
 " Use <esc> to close auto-completion menu
-inoremap <expr> <esc> ((pumvisible())?("\<C-e>"):("\<esc>"))
+" inoremap <expr> <esc> ((pumvisible())?("\<C-e>"):("\<esc>"))
 
 " Tab-complete, see https://vi.stackexchange.com/q/19675/15292.
 inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
