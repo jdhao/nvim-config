@@ -19,3 +19,42 @@ snippet icd "#include directive" b
 #include <$1>
 $0
 endsnippet
+
+snippet plist "print vector" w
+void printList(vector<int>& arr, const string& desc){
+  cout << desc << ": ";
+
+  int N = arr.size();
+  for (int i = 0; i < N; i++){
+    if (i != N -1){
+      cout << arr[i] << " ";
+    }
+    else{
+      cout << arr[i] << endl;
+    }
+  }
+}
+endsnippet
+
+snippet pmat "print list of list" w
+void printMat(const vector<vector<int>>& mat, const string& desc){
+  cout << desc << ": " << endl;
+
+  int N = mat.size();
+  for (int i = 0; i < N; i++){
+    int num = mat[i].size();
+    for (int j = 0; j < num; j++){
+      if (j != num -1){
+        cout << mat[i][j] << " ";
+      }
+      else{
+        cout << mat[i][j] << endl;
+      }
+    }
+  }
+}
+endsnippet
+
+snippet cout "print a variable" w
+cout << "${1:var}: " << $1 << endl;
+endsnippet
