@@ -24,14 +24,8 @@ snippet plist "print vector" w
 void printList(vector<int>& arr, const string& desc){
   cout << desc << ": ";
 
-  int N = arr.size();
-  for (int i = 0; i < N; i++){
-    if (i != N -1){
-      cout << arr[i] << " ";
-    }
-    else{
-      cout << arr[i] << endl;
-    }
+  for (auto it = arr.begin(); it != arr.end(); it++){
+    cout << *it << ((it != arr.end()-1) ? ' ' : '\n');
   }
 }
 endsnippet
@@ -40,21 +34,15 @@ snippet pmat "print list of list" w
 void printMat(const vector<vector<int>>& mat, const string& desc){
   cout << desc << ": " << endl;
 
-  int N = mat.size();
-  for (int i = 0; i < N; i++){
-    int num = mat[i].size();
-    for (int j = 0; j < num; j++){
-      if (j != num -1){
-        cout << mat[i][j] << " ";
-      }
-      else{
-        cout << mat[i][j] << endl;
-      }
+  for (auto it1 = mat.begin(); it1 != mat.end(); it1++){
+    auto cur_vec = *it1;
+    for (auto it2 = cur_vec.begin(); it2 != cur_vec.end(); it2++){
+      cout << *it2 << ((it2 != cur_vec.end()-1) ? ' ' : '\n');
     }
   }
 }
 endsnippet
 
 snippet cout "print a variable" w
-cout << "${1:var}: " << $1 << endl;
+cout << "$1: " << $2 << endl;
 endsnippet
