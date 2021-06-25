@@ -134,7 +134,7 @@ require'compe'.setup {
   source = {
     omni = {filetypes = {'tex'}};
     path = true;
-    buffer = true;
+    buffer = false;
     spell = {filetypes = {'markdown', 'tex'}};
     emoji = true;
     nvim_lsp = true;
