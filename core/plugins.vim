@@ -512,6 +512,9 @@ endif
 nmap p <Plug>(miniyank-autoput)
 nmap P <Plug>(miniyank-autoPut)
 
+""""""""""""""""""""""""""""better-escape.vim settings"""""""""""""""""""""""""
+let g:better_escape_interval = 200
+
 """"""""""""""""""""""""""""vim-xkbswitch settings"""""""""""""""""""""""""
 let g:XkbSwitchEnabled = 1
 "}}
