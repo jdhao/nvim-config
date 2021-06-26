@@ -70,16 +70,10 @@ lspconfig.pyls.setup {
     }
 }
 
--- set up ccls, see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#ccls
-if vim.fn.executable('ccls') then
-  lspconfig.ccls.setup {
-    on_attach = on_attach,
-    root_dir = lspconfig.util.root_pattern("compile_commands.json", ".ccls", ".git"),
-    init_options = {
-      highlight = { lsRanges = true }
-    }
-  }
-end
+lspconfig.clangd.setup{
+  on_attach = on_attach,
+  filetypes = { "c", "cpp", "cc" }
+}
 
 -- set up vim-language-server
 lspconfig.vimls.setup{ on_attach = on_attach }

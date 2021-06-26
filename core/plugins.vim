@@ -41,11 +41,6 @@ if executable('sbcl')
   " Plug 'kovisoft/slimv'
   Plug 'vlime/vlime', {'rtp': 'vim/', 'for': 'lisp'}
 endif
-
-" C++ semantic highlighting
-if executable('ccls')
-  Plug 'jackguo380/vim-lsp-cxx-highlight'
-endif
 "}}
 
 "{{ Search related plugins
