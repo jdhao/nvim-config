@@ -49,14 +49,6 @@ nnoremap <silent> \d :<C-U>bprevious <bar> bdelete #<CR>
 nnoremap <expr> oo printf('m`%so<ESC>``', v:count1)
 nnoremap <expr> OO printf('m`%sO<ESC>``', v:count1)
 
-" nnoremap oo @='m`o<c-v><Esc>``'<cr>
-" nnoremap OO @='m`O<c-v><Esc>``'<cr>
-
-" the following two mappings work, but if you change double quote to single, it
-" will not work
-" nnoremap oo @="m`o\<lt>Esc>``"<cr>
-" nnoremap oo @="m`o\e``"<cr>
-
 " Insert a space after current character
 nnoremap <Space><Space> a<Space><ESC>h
 
