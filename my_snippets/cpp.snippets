@@ -47,3 +47,20 @@ endsnippet
 snippet cout "print a variable" w
 cout << "$1: " << $2 << endl;
 endsnippet
+
+snippet random "Generate a random list" b
+// Generate a random sequence of length len, in range(low, high) (inclusive).
+// need to #include<random>
+vector<int> genRandom(int low, int high, int len){
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_int_distribution<int> distribution(low, high);
+
+  vector<int> arr(len, 0);
+  for (int i = 0; i != len; ++i){
+      arr[i] = distribution(gen);
+  }
+
+  return arr;
+}
+endsnippet
