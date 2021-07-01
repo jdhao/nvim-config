@@ -10,10 +10,6 @@ set termguicolors
 let s:my_theme_dict = {}
 
 function! s:my_theme_dict.gruvbox8() dict abort
-  " We should check if theme exists before using it, otherwise you will get
-  " error message when starting Nvim
-  if !utils#HasColorscheme('gruvbox8') | return | endif
-
   " Italic options should be put before colorscheme setting,
   " see https://github.com/morhetz/gruvbox/wiki/Terminal-specific#1-italics-is-disabled
   let g:gruvbox_italics=1
@@ -24,50 +20,37 @@ function! s:my_theme_dict.gruvbox8() dict abort
 endfunction
 
 function! s:my_theme_dict.deus() dict abort
-  if !utils#HasColorscheme('deus') | return | endif
-
   colorscheme deus
 endfunction
 
 function! s:my_theme_dict.solarized8() dict abort
-  if !utils#HasColorscheme('solarized8') | return | endif
-
   let g:solarized_term_italics=1
   let g:solarized_visibility='high'
   colorscheme solarized8_high
 endfunction
 
 function! s:my_theme_dict.onedark() dict abort
-  if !utils#HasColorscheme('onedark') | return | endif
-
   let g:onedark_terminal_italics = 1
   colorscheme onedark
 endfunction
 
 function! s:my_theme_dict.neodark() dict abort
-  if !utils#HasColorscheme('neodark') | return | endif
-
   colorscheme neodark
 endfunction
 
 function! s:my_theme_dict.edge() dict abort
-  if !utils#HasColorscheme('edge') | return | endif
-
   let g:edge_enable_italic = 1
   let g:edge_better_performance = 1
   colorscheme edge
 endfunction
 
 function! s:my_theme_dict.sonokai() dict abort
-  if !utils#HasColorscheme('sonokai') | return | endif
-
   let g:sonokai_enable_italic = 1
   let g:sonokai_better_performance = 1
   colorscheme sonokai
 endfunction
 
 function! s:my_theme_dict.gruvbox_material() dict abort
-  if !utils#HasColorscheme('gruvbox-material') | return | endif
   let g:gruvbox_material_enable_italic = 1
   let g:gruvbox_material_better_performance = 1
   colorscheme gruvbox-material
