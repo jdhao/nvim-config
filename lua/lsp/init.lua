@@ -52,6 +52,9 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_echo({{msg, 'MoreMsg'}, }, false, {})
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local lspconfig = require("lspconfig")
 lspconfig.pyls.setup {
     on_attach = on_attach,
@@ -72,6 +75,7 @@ lspconfig.pyls.setup {
 
 lspconfig.clangd.setup{
   on_attach = on_attach,
+  capabilities = capabilities,
   filetypes = { "c", "cpp", "cc" }
 }
 
