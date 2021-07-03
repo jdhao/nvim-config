@@ -70,17 +70,28 @@ lspconfig.pyls.setup {
                 pyls_mypy = {enabled = true}
             }
         }
+    },
+    flags = {
+      debounce_text_changes = 500,
     }
 }
 
 lspconfig.clangd.setup{
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "c", "cpp", "cc" }
+  filetypes = { "c", "cpp", "cc" },
+  flags = {
+    debounce_text_changes = 500,
+  }
 }
 
 -- set up vim-language-server
-lspconfig.vimls.setup{ on_attach = on_attach }
+lspconfig.vimls.setup{
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 500,
+  }
+}
 
 -- Change diagnostic signs.
 vim.fn.sign_define('LspDiagnosticsSignError', { text = "✗", texthl = "LspDiagnosticsDefaultError" })
