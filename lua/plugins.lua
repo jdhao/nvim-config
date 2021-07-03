@@ -86,7 +86,7 @@ require('packer').startup(
       use 'mhinz/vim-startify'
     end
 
-    use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
+    use {'lukas-reineke/indent-blankline.nvim'}
 
     -- Highlight URLs inside vim
     use 'itchyny/vim-highlighturl'
