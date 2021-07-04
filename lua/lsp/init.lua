@@ -56,24 +56,25 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require("lspconfig")
-lspconfig.pyls.setup {
-    on_attach = on_attach,
-    settings = {
-        pyls = {
-            plugins = {
-                flake8 = {enabled = false},
-                pylint = {enabled = true, executable = "pylint"},
-                pyflakes = {enabled = false},
-                pycodestyle = {enabled = false},
-                jedi_completion = {fuzzy = true},
-                pyls_isort = {enabled = true},
-                pyls_mypy = {enabled = true}
-            }
-        }
-    },
-    flags = {
-      debounce_text_changes = 500,
+
+lspconfig.pyls.setup{
+  on_attach = on_attach,
+  settings = {
+    pyls = {
+      plugins = {
+        flake8 = {enabled = false},
+        pylint = {enabled = true, executable = "pylint"},
+        pyflakes = {enabled = false},
+        pycodestyle = {enabled = false},
+        jedi_completion = {fuzzy = true},
+        pyls_isort = {enabled = true},
+        pyls_mypy = {enabled = true}
+      }
     }
+  },
+  flags = {
+    debounce_text_changes = 500,
+  }
 }
 
 lspconfig.clangd.setup{
@@ -156,7 +157,7 @@ require'compe'.setup {
 
 vim.o.completeopt = "menuone,noselect"
 
--- nvim-comple mappings
+-- nvim-compe mappings
 vim.api.nvim_set_keymap('i', '<C-Space>', 'compe#complete()', {expr = true})
 vim.api.nvim_set_keymap('i', '<CR>', "compe#confirm('<CR>')", {expr = true})
 vim.api.nvim_set_keymap('i', '<ESC>', "compe#close('<ESC>')", {expr = true})

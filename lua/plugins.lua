@@ -22,7 +22,7 @@ require('packer').startup(
 
     -- Python syntax highlighting and more
     if (vim.g.is_mac == 1) or (vim.g.is_win == 1) then
-      use {'numirias/semshi', run = ':UpdateRemotePlugins', ft = {'python', }}
+      use {'numirias/semshi', run = ':UpdateRemotePlugins', ft = 'python'}
     end
 
     -- Python indent (follows the PEP8 style)
