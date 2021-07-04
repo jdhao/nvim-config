@@ -78,6 +78,7 @@ require('packer').startup(
     use 'sainnhe/edge'
     use 'sainnhe/sonokai'
     use 'sainnhe/gruvbox-material'
+    use 'shaunsingh/nord.nvim'
 
     if fn.exists('g:started_by_firenvim') == 0 then
       -- colorful status line and theme

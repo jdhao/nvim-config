@@ -56,8 +56,12 @@ function! s:my_theme_dict.gruvbox_material() dict abort
   colorscheme gruvbox-material
 endfunction
 
+function! s:my_theme_dict.nord() dict abort
+  colorscheme nord
+endfunction
+
 let s:candidate_theme = ['gruvbox8', 'deus', 'solarized8', 'onedark', 'neodark',
-      \ 'edge', 'sonokai', 'gruvbox_material']
+      \ 'edge', 'sonokai', 'gruvbox_material', 'nord']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 
