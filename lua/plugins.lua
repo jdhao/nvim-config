@@ -266,8 +266,5 @@ require('packer').startup(
   end,
   config = {
     max_jobs = 16,
-    display = {
-        open_fn = function() return require('packer.util').float({ border = 'single' }) end
-    }
   }
 })
