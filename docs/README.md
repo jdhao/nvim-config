@@ -7,16 +7,18 @@ and development work.
 
 A lot of Neovim plugins are mainly written in Python. To use auto-completion
 and other features, we must install Python 3. The easiest way to install is via
-[Anaconda](https://www.anaconda.com/distribution/#download-section) or
-[Miniconda](https://docs.conda.io/en/latest/miniconda.html). Make sure that the
-output of `python --version` on the command line shows that Python 3.x is
-installed.
+[Anaconda](https://www.anaconda.com/distribution/#download-section) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html). Make sure that the
+output of `python --version` shows that Python 3.x is installed.
 
 ## Pynvim
 
 Neovim relies on [pynvim](https://github.com/neovim/pynvim) to communicate with
 plugins that utilize its Python binding. Pynvim is required by plugins such as
 [Deoplete](https://github.com/Shougo/deoplete.nvim) and [Semshi](https://github.com/numirias/semshi).
+
+```
+pip install -U pynvim
+```
 
 ## pyls
 
@@ -29,8 +31,8 @@ pip install "python-language-server[all]" pyls-isort pyls-mypy
 
 ## Git
 
-Git is used by the plugin manager vim-plug to download plugins from GitHub or
-other Git repositories.
+Git is used by the plugin manager packer.nvim to download plugins from GitHub
+or other Git repositories.
 
 Since Git is usually pre-installed on Linux and macOS, we do not need to worry
 if we are on these two platforms. For Windows, install [Git for
@@ -114,16 +116,12 @@ version of nvim.
 
 ## Linux
 
-Follow the official guide and download the appimage from the [release
-page](https://github.com/neovim/neovim/releases/nightly).
-
-For some Linux systems, we may not be able to run the appimage. We can directly
-download the binary release from [here](https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz).
+We can directly download the binary release from [here](https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz).
 
 ## Windows
 
 The easiest way to install Neovim on Windows is via chocolatey. First, install
-chocolatey. Then we can install neovim easily following command:
+chocolatey. Then we can install neovim easily using the following command:
 
 ```
 # install the latest version of neovim
@@ -157,50 +155,35 @@ setups.
 
 # Setting up Nvim
 
-## Install plugin manager vim-plug
+## Install plugin manager packer.nvim
 
-I use [vim-plug](https://github.com/junegunn/vim-plug) to manage all my
-plugins. We need to install vim-plug on our system first.
+I use [packer.nvim](https://github.com/wbthomason/packer.nvim) to manage my
+plugins. We need to install packer.nvim on our system first.
 
-For Windows, if curl is installed, use the following command:
-
-```
-curl -fLo ~\AppData\Local\nvim-data\site\autoload\plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
-
-Or execute the following command on PowerShell:
+For Windows, if curl is installed, use the following command (on Powershell):
 
 ```
-md ~\AppData\Local\nvim-data\site\autoload
-$uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-(New-Object Net.WebClient).DownloadFile(
-  $uri,
-  $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(
-    "~\AppData\Local\nvim-data\site\autoload\plug.vim"
-  )
-)
+git clone --depth=1 https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
 ```
-
-Or just create the directory `~\AppData\Local\nvim-data\site\autoload\`, and put the vim-plug script there.
 
 For macOS and Linux, use the following command:
 
 ```bash
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+git clone --depth=1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
 ## How to install this configuration
 
 On Windows, the config directory is `$HOME/AppData/Local/nvim`[^1]. On Linux
 and macOS, the directory is `~/.config/nvim`. First, we need to remove all the
-files under the config directory (including dot files), then use the following
-command to install this configuration:
+files under the config directory (including dot files), then go to this
+directory, and run the following command to install this configuration:
 
 ```
-git clone https://github.com/jdhao/nvim-config.git .
+git clone --depth=1 https://github.com/jdhao/nvim-config.git .
 ```
 
-After that, when we first open nvim, use `:PlugInstall` to install all the
+After that, when we first open nvim, use `:PackerInstall` to install all the
 plugins. Since I use quite a lot of plugins (more than 60), it may take some
 time to install all of them, depending on your network condition.
 

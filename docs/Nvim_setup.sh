@@ -130,7 +130,7 @@ if [[ ! -f "$CTAGS_DIR/bin/ctags" ]]; then
         rm -rf "$CTAGS_SRC_DIR"
     fi
 
-    git clone "$CTAGS_LINK" "$CTAGS_SRC_DIR" && cd "$CTAGS_SRC_DIR"
+    git clone --depth=1 "$CTAGS_LINK" "$CTAGS_SRC_DIR" && cd "$CTAGS_SRC_DIR"
     ./autogen.sh && ./configure --prefix="$CTAGS_DIR"
     make -j && make install
 
@@ -176,12 +176,13 @@ if [[ -d "$NVIM_CONFIG_DIR" ]]; then
     mv "$NVIM_CONFIG_DIR" "$NVIM_CONFIG_DIR.backup"
 fi
 
-git clone https://github.com/jdhao/nvim-config.git "$NVIM_CONFIG_DIR"
+git clone --depth=1 https://github.com/jdhao/nvim-config.git "$NVIM_CONFIG_DIR"
 
-echo "Installing vim-plug"
-curl -fLo "$NVIM_SITE_DIR/autoload/plug.vim" --create-dirs https://cdn.jsdelivr.net/gh/junegunn/vim-plug/plug.vim
+echo "Installing packer.nvim"
+git clone --depth=1 https://github.com/wbthomason/packer.nvim \
+    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 echo "Installing plugins"
-"$NVIM_DIR/bin/nvim" +PlugInstall +qall
+"$NVIM_DIR/bin/nvim" +PackerInstall +qall
 
 echo "Finished installing Neovim and its dependencies!"
