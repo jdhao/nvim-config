@@ -561,5 +561,8 @@ iron.core.set_config{
   repl_open_cmd = 'vertical 120 split'
 }
 EOF
+
+""""""""""""""""""""""""""""""register.nvim settings""""""""""""""""""""""""""""""
+let g:registers_show_empty_registers = 0
 "}}
 "}

@@ -263,6 +263,9 @@ require('packer').startup(
 
     -- REPL for nvim
     use 'hkupty/iron.nvim'
+
+    -- Show register content
+    use "tversteeg/registers.nvim"
   end,
   config = {
     max_jobs = 16,
