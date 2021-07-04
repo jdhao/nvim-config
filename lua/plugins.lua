@@ -17,8 +17,6 @@ require('packer').startup(
     -- nvim-lsp configuration
     use 'neovim/nvim-lspconfig'
 
-    use 'ray-x/lsp_signature.nvim'
-
     -- auto-completion engine
     use 'hrsh7th/nvim-compe'
 
