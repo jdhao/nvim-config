@@ -48,6 +48,8 @@ local on_attach = function(client, bufnr)
     ]], false)
   end
 
+  require "lsp_signature".on_attach()
+
   local msg = string.format('Language server %s started!' , client.name)
   vim.api.nvim_echo({{msg, 'MoreMsg'}, }, false, {})
 end
