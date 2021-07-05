@@ -112,7 +112,7 @@ require('packer').startup(
     use {'honza/vim-snippets', event = {'InsertEnter'}}
 
     -- Automatic insertion and deletion of a pair of characters
-    use {'jiangmiao/auto-pairs', event = {'BufReadPost'}}
+    use {'jiangmiao/auto-pairs', event = {'VimEnter'}}
 
     -- Comment plugin
     use 'tpope/vim-commentary'
