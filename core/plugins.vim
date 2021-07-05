@@ -564,5 +564,6 @@ EOF
 
 """"""""""""""""""""""""""""""register.nvim settings""""""""""""""""""""""""""""""
 let g:registers_show_empty_registers = 0
+let g:registers_window_border = 'single'
 "}}
 "}
