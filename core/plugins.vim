@@ -1,6 +1,8 @@
 scriptencoding utf-8
 
 " Plugin installation
+let g:plugin_home = printf('%s/site/pack/packer/', stdpath('data'))
+
 lua require 'plugins'
 
 "{ Plugin settings
@@ -524,8 +526,6 @@ if exists('g:started_by_firenvim') && g:started_by_firenvim
   if g:is_mac
     set guifont=Iosevka\ Nerd\ Font:h18
   endif
-  " general options
-  set laststatus=0 nonumber noruler noshowcmd
 
   " general config for firenvim
   let g:firenvim_config = {
@@ -544,7 +544,7 @@ if exists('g:started_by_firenvim') && g:started_by_firenvim
 
   augroup firenvim
     autocmd!
-    autocmd BufEnter *.txt setlocal filetype=markdown
+    autocmd BufEnter *.txt setlocal filetype=markdown laststatus=0 nonumber noshowcmd noruler showtabline=1
   augroup END
 endif
 
