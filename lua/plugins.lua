@@ -80,12 +80,10 @@ require('packer').startup(
     use 'sainnhe/gruvbox-material'
     use 'shaunsingh/nord.nvim'
 
-    if fn.exists('g:started_by_firenvim') == 0 then
-      -- colorful status line and theme
-      use 'vim-airline/vim-airline'
-      use 'vim-airline/vim-airline-themes'
-      use 'mhinz/vim-startify'
-    end
+    -- colorful status line and theme
+    use {'vim-airline/vim-airline', event = 'VimEnter'}
+    use {'vim-airline/vim-airline-themes', event = 'VimEnter'}
+    use {'mhinz/vim-startify', event = 'VimEnter'}
 
     use {'lukas-reineke/indent-blankline.nvim'}
 
@@ -112,7 +110,7 @@ require('packer').startup(
     use {'honza/vim-snippets', event = {'InsertEnter'}}
 
     -- Automatic insertion and deletion of a pair of characters
-    use {'jiangmiao/auto-pairs', event = {'VimEnter'}}
+    use 'jiangmiao/auto-pairs'
 
     -- Comment plugin
     use 'tpope/vim-commentary'
