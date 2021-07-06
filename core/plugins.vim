@@ -219,10 +219,6 @@ if g:is_win || g:is_mac
   let g:yoinkSyncSystemClipboardOnFocus = 1
 endif
 
-""""""""""""""""""""""""""""nvim-minipyank settings"""""""""""""""""""""""""
-nmap p <Plug>(miniyank-autoput)
-nmap P <Plug>(miniyank-autoPut)
-
 """"""""""""""""""""""""""""better-escape.vim settings"""""""""""""""""""""""""
 let g:better_escape_interval = 200
 

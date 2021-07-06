@@ -132,8 +132,6 @@ require('packer').startup(
       use 'svermeulen/vim-yoink'
     end
 
-    use 'bfredl/nvim-miniyank'
-
     -- Handy unix command inside Vim (Rename, Move etc.)
     use 'tpope/vim-eunuch'
 
