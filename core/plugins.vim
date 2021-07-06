@@ -417,9 +417,7 @@ let s:candidate_airlinetheme = ['ayu_mirage', 'lucius', 'ayu_dark', 'base16_brig
 let s:idx = utils#RandInt(0, len(s:candidate_airlinetheme)-1)
 let s:theme = s:candidate_airlinetheme[s:idx]
 
-if utils#HasAirlinetheme(s:theme)
-  let g:airline_theme=s:theme
-endif
+let g:airline_theme=s:theme
 
 " Tabline settings
 let g:airline#extensions#tabline#enabled = 1
