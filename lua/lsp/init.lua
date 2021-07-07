@@ -158,8 +158,9 @@ require'compe'.setup {
 vim.o.completeopt = "menuone,noselect"
 
 -- nvim-compe mappings
-vim.api.nvim_set_keymap('i', '<C-Space>', 'compe#complete()', {expr = true})
-vim.api.nvim_set_keymap('i', '<CR>', "compe#confirm('<CR>')", {expr = true})
-vim.api.nvim_set_keymap('i', '<ESC>', "compe#close('<ESC>')", {expr = true})
-vim.api.nvim_set_keymap('i', '<C-f>', "compe#scroll({'delta': +4})", {expr = true})
-vim.api.nvim_set_keymap('i', '<C-d>', "compe#scroll({'delta': -4})", {expr = true})
+local compe_map_opts = {expr = true, noremap = true, silent = true}
+vim.api.nvim_set_keymap('i', '<C-Space>', 'compe#complete()', compe_map_opts)
+vim.api.nvim_set_keymap('i', '<CR>', "compe#confirm('<CR>')", compe_map_opts)
+vim.api.nvim_set_keymap('i', '<ESC>', "compe#close('<ESC>')", compe_map_opts)
+vim.api.nvim_set_keymap('i', '<C-f>', "compe#scroll({'delta': +4})", compe_map_opts)
+vim.api.nvim_set_keymap('i', '<C-d>', "compe#scroll({'delta': -4})", compe_map_opts)
