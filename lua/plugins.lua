@@ -1,13 +1,25 @@
-vim.cmd [[packadd packer.nvim]]
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local packer_install_dir = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
-if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth=1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    execute 'packadd packer.nvim'
+local plug_url_format = ''
+if vim.g.is_linux > 0 then
+  plug_url_format = 'https://hub.fastgit.org/%s'
+else
+  plug_url_format = 'https://github.com/%s'
 end
+
+local packer_repo = string.format(plug_url_format, 'wbthomason/packer.nvim')
+local install_cmd = string.format('10split |term git clone --depth=1 %s %s', packer_repo, packer_install_dir)
+
+if fn.empty(fn.glob(packer_install_dir)) > 0 then
+  vim.api.nvim_echo({{'Installing packer.nvim', 'Type'}}, true, {})
+  execute(install_cmd)
+  execute 'packadd packer.nvim'
+end
+
+vim.cmd [[packadd packer.nvim]]
 
 require('packer').startup(
 {
@@ -81,10 +93,11 @@ require('packer').startup(
     use 'shaunsingh/nord.nvim'
 
     -- colorful status line and theme
-    use {'vim-airline/vim-airline', event = 'VimEnter'}
+    use {'vim-airline/vim-airline', event = 'VimEnter', after = 'vim-airline-themes'}
     use {'vim-airline/vim-airline-themes', event = 'VimEnter'}
-    use {'mhinz/vim-startify', event = 'VimEnter'}
 
+    -- fancy start screen
+    use {'mhinz/vim-startify', event = 'VimEnter'}
     use {'lukas-reineke/indent-blankline.nvim'}
 
     -- Highlight URLs inside vim
@@ -265,5 +278,15 @@ require('packer').startup(
   end,
   config = {
     max_jobs = 16,
+    git = {
+      default_url_format = plug_url_format
+    }
   }
 })
+
+vim.api.nvim_exec([[
+  augroup packer_auto_compile
+    autocmd!
+    autocmd BufWritePost plugins.lua unsilent echomsg 'Packer.nvim settings recompiled!' | PackerCompile
+  augroup END
+]], false)
