@@ -94,7 +94,7 @@ require('packer').startup(
 
     -- colorful status line and theme
     use {'vim-airline/vim-airline-themes', event = 'VimEnter'}
-    use {'vim-airline/vim-airline', event = 'VimEnter', after = 'vim-airline-themes'}
+    use {'vim-airline/vim-airline', after = 'vim-airline-themes'}
 
     -- fancy start screen
     use {'mhinz/vim-startify', event = 'VimEnter'}
