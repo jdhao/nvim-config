@@ -27,10 +27,10 @@ require('packer').startup(
     use 'wbthomason/packer.nvim'
 
     -- nvim-lsp configuration
-    use 'neovim/nvim-lspconfig'
+    use {'neovim/nvim-lspconfig', event = 'VimEnter', config = [[require('config.lsp')]]}
 
     -- auto-completion engine
-    use 'hrsh7th/nvim-compe'
+    use { 'hrsh7th/nvim-compe', event = 'InsertEnter *', config = [[require('config.compe')]] }
 
     -- Python syntax highlighting and more
     if (vim.g.is_mac == 1) or (vim.g.is_win == 1) then
@@ -271,7 +271,7 @@ require('packer').startup(
     end
 
     -- REPL for nvim
-    use 'hkupty/iron.nvim'
+    use {'hkupty/iron.nvim', config = [[require('config.iron')]]}
 
     -- Show register content
     use "tversteeg/registers.nvim"

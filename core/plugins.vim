@@ -545,17 +545,6 @@ endif
 """"""""""""""""""""""""""""""nvim-gdb settings""""""""""""""""""""""""""""""
 nnoremap <leader>dp :<C-U>GdbStartPDB python -m pdb %<CR>
 
-""""""""""""""""""""""""""""""iron.nvim settings""""""""""""""""""""""""""""""
-lua << EOF
-local iron = require('iron')
-iron.core.set_config{
-  preferred = {
-    python = 'ipython'
-  },
-  repl_open_cmd = 'vertical 120 split'
-}
-EOF
-
 """"""""""""""""""""""""""""""register.nvim settings""""""""""""""""""""""""""""""
 let g:registers_show_empty_registers = 0
 let g:registers_window_border = 'single'
