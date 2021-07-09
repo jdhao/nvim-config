@@ -33,6 +33,7 @@ if !isdirectory(g:backupdir)
 endif
 let &backupdir=g:backupdir
 
+set backup  " create backup for files
 set backupcopy=yes  " copy the original file to backupdir and overwrite it
 
 " General tab settings
