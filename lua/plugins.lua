@@ -32,6 +32,10 @@ require('packer').startup(
     -- auto-completion engine
     use { 'hrsh7th/nvim-compe', event = 'InsertEnter *', config = [[require('config.compe')]] }
 
+    if (vim.g.is_mac > 0) or (vim.g.is_linux > 0) then
+      use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = [[require('config.treesitter')]]}
+    end
+
     -- Python syntax highlighting and more
     if (vim.g.is_mac == 1) or (vim.g.is_win == 1) then
       use {'numirias/semshi', ft = 'python', config = 'vim.cmd [[UpdateRemotePlugins]]'}
