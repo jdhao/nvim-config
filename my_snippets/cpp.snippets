@@ -22,23 +22,25 @@ $0
 endsnippet
 
 snippet plist "print vector" w
-void printList(vector<int>& arr, const string& desc){
-  cout << desc << ": ";
+template <class T>
+void printList(const T& arr, const string& desc){
+  std::cout << desc << ": ";
 
   for (auto it = arr.begin(); it != arr.end(); it++){
-    cout << *it << ((it != arr.end()-1) ? ' ' : '\n');
+    std::cout << *it << ((std::next(it) != arr.end()) ? ", " : "\n");
   }
 }
 endsnippet
 
 snippet pmat "print list of list" w
-void printMat(const vector<vector<int>>& mat, const string& desc){
+template <class T>
+void printMat(const vector<vector<T>>& mat, const string& desc){
   cout << desc << ": " << endl;
 
   for (auto it1 = mat.begin(); it1 != mat.end(); it1++){
     auto cur_vec = *it1;
     for (auto it2 = cur_vec.begin(); it2 != cur_vec.end(); it2++){
-      cout << *it2 << ((it2 != cur_vec.end()-1) ? ' ' : '\n');
+      cout << *it2 << ((std::next(it2) != cur_vec.end()) ? ", " : "\n");
     }
   }
 }
