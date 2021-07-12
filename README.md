@@ -20,7 +20,8 @@ itself, and how to set up on different platforms (Linux, macOS and Windows).
 
 # Features #
 
-+ Code auto-completion via [nvim-compe](https://github.com/hrsh7th/nvim-compe) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) using nvim [builtin lsp](https://neovim.io/doc/user/lsp.html) feature.
++ Plugin management via [Packer.nvim](https://github.com/wbthomason/packer.nvim).
++ Code auto-completion via [nvim-compe](https://github.com/hrsh7th/nvim-compe) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
 + Faster code commenting via [vim-commentary](https://github.com/tpope/vim-commentary).
 + Asynchronous code execution via [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim).
 + Fuzzy searching in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
@@ -29,6 +30,8 @@ itself, and how to set up on different platforms (Linux, macOS and Windows).
 + Ultra fast snippet insertion via [Ultisnips](https://github.com/SirVer/ultisnips).
 + Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
 + Beautiful status line via [vim-airline](https://github.com/vim-airline/vim-airline).
++ Code highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
++ Code editing using true nvim inside browser via [firenvim](https://github.com/glacambre/firenvim).
 + Color theme via [vim-gruvbox8](https://github.com/lifepillar/vim-gruvbox8) and other beautiful themes.
 + Markdown writing and syntax highlighting via [vim-markdown](https://github.com/plasticboy/vim-markdown),
   Markdown Previewing via [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
