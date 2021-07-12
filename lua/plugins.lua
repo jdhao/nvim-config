@@ -291,6 +291,6 @@ require('packer').startup(
 vim.api.nvim_exec([[
   augroup packer_auto_compile
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile | unsilent echomsg 'Packer.nvim settings recompiled!'
+    autocmd BufWritePost */nvim/lua/plugins.lua source <afile> | PackerCompile | unsilent echomsg 'Packer.nvim settings recompiled!'
   augroup END
 ]], false)
