@@ -37,7 +37,7 @@ require('packer').startup(
     end
 
     -- Python syntax highlighting and more
-    if (vim.g.is_mac == 1) or (vim.g.is_win == 1) then
+    if vim.g.is_win == 1 then
       use {'numirias/semshi', ft = 'python', config = 'vim.cmd [[UpdateRemotePlugins]]'}
     end
 
