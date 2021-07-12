@@ -85,7 +85,7 @@ require('packer').startup(
     use 'lifepillar/vim-gruvbox8'
     use 'ajmwagar/vim-deus'
     use 'lifepillar/vim-solarized8'
-    use 'joshdick/onedark.vim'
+    use {'joshdick/onedark.vim', branch = 'main'}
     use 'KeitaNakamura/neodark.vim'
     use 'sainnhe/edge'
     use 'sainnhe/sonokai'
