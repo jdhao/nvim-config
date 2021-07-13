@@ -470,13 +470,6 @@ let g:airline#extensions#scrollbar#enabled = 0
 " Do not change working directory when opening files.
 let g:startify_change_to_dir = 0
 let g:startify_fortune_use_unicode = 1
-
-""""""""""""""""""""""""""""indent-blankline settings""""""""""""""""""""""""""""
-let g:indent_blankline_char = '│'
-" let g:indent_blankline_char = '┆'
-" let g:indent_blankline_char = '┊'
-
-let g:indent_blankline_filetype_exclude = ['help', 'startify', 'git', 'markdown']
 "}}
 
 "{{ Misc plugin setting
