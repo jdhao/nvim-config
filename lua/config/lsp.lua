@@ -57,25 +57,28 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require("lspconfig")
 
-lspconfig.pyls.setup{
+lspconfig.pylsp.setup{
   on_attach = on_attach,
   settings = {
-    pyls = {
+    pylsp = {
       plugins = {
-        flake8 = {enabled = false},
         pylint = {enabled = true, executable = "pylint"},
         pyflakes = {enabled = false},
         pycodestyle = {enabled = false},
         jedi_completion = {fuzzy = true},
         pyls_isort = {enabled = true},
-        pyls_mypy = {enabled = true}
+        pylsp_mypy = {enabled = true}
       }
     }
   },
   flags = {
-    debounce_text_changes = 500,
+    debounce_text_changes = 200,
   }
 }
+
+-- lspconfig.pyright.setup{
+--   on_attach = on_attach,
+-- }
 
 lspconfig.clangd.setup{
   on_attach = on_attach,

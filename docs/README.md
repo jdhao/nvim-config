@@ -20,13 +20,13 @@ plugins that utilize its Python binding. Pynvim is required by plugins such as
 pip install -U pynvim
 ```
 
-## pyls
+## python-lsp-server
 
-[Pyls](https://github.com/palantir/python-language-server) is a Python Language
-Server for completion, linting, go to definition, etc.
+[python-lsp-server](https://github.com/python-lsp/python-lsp-server) is the community-fork of pyls, and it is a Python Language Server for completion,
+linting, go to definition, etc.
 
 ```
-pip install "python-language-server[all]" pyls-isort pyls-mypy
+pip install 'python-lsp-server[all]' pylsp-mypy pyls-isort
 ```
 
 ## Git
