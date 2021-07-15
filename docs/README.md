@@ -29,6 +29,44 @@ linting, go to definition, etc.
 pip install 'python-lsp-server[all]' pylsp-mypy pyls-isort
 ```
 
+## Node
+
+We need to install node.js from [here](https://nodejs.org/en/download/):
+
+```bash
+# Ref: https://johnpapa.net/node-and-npm-without-sudo/
+wget https://nodejs.org/dist/v14.15.4/node-v14.15.4-linux-x64.tar.xz
+
+mkdir -p $HOME/tools
+# extract node to a custom directory, the directory should exist.
+tar xvf node-v14.15.4-linux-x64.tar.xz --directory=$HOME/tools
+```
+
+Then add the following config to `.bash_profile` or `.zshrc`
+
+```bash
+export PATH="$HOME/tools/node-v14.15.4-linux-x64/bin:$PATH"
+```
+
+Source the file:
+
+```bash
+source ~/.bash_profile
+# source ~/.zshrc
+```
+
+## vim-language-server
+
+[vim-language-server](https://github.com/iamcco/vim-language-server) provides
+completion for vim script. We can install vim-language-server globally and set
+its path:
+
+```bash
+npm install -g vim-language-server
+
+export PATH="$HOME/.npm-packages/bin:$PATH"
+```
+
 ## Git
 
 Git is used by the plugin manager packer.nvim to download plugins from GitHub
