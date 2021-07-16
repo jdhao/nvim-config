@@ -30,7 +30,6 @@ function! s:my_theme_dict.solarized8() dict abort
 endfunction
 
 function! s:my_theme_dict.onedark() dict abort
-  let g:onedark_terminal_italics = 1
   colorscheme onedark
 endfunction
 
