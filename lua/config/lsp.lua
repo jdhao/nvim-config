@@ -112,20 +112,48 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
+-- Refs: https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#show-source-in-diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+  function(_, _, params, client_id, _)
+    local uri = params.uri
+    local bufnr = vim.uri_to_bufnr(uri)
+
+    if not bufnr then
+      return
+    end
+
+    if not vim.api.nvim_buf_is_loaded(bufnr) then
+      return
+    end
+
+    local diagnostics = params.diagnostics
+    for i, v in ipairs(diagnostics) do
+      diagnostics[i].message = string.format("%s: %s", v.source, v.message)
+    end
+    vim.lsp.diagnostic.save(diagnostics, bufnr, client_id)
+
+    local config = {
+      underline = false,
+      virtual_text = false,
+      signs = true,
+      update_in_insert = false,
+    }
+    vim.lsp.diagnostic.display(diagnostics, bufnr, client_id, config)
+  end
+
 -- The following settings works with the bleeding edge neovim.
 -- See https://github.com/neovim/neovim/pull/13998.
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   vim.lsp.handlers.hover, {
     border = {
-       {"┌", "Normal"},
-       {"─", "Normal"},
-       {"┐", "Normal"},
-       {"│", "Normal"},
-       {"┘", "Normal"},
-       {"─", "Normal"},
-       {"└", "Normal"},
-       {"│", "Normal"}
+       {"┌", "FloatBorder"},
+       {"─", "FloatBorder"},
+       {"┐", "FloatBorder"},
+       {"│", "FloatBorder"},
+       {"┘", "FloatBorder"},
+       {"─", "FloatBorder"},
+       {"└", "FloatBorder"},
+       {"│", "FloatBorder"}
      }
     }
 )
-

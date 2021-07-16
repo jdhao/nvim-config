@@ -72,6 +72,11 @@ augroup cursor_color
   autocmd ColorScheme * highlight Cursor2 guifg=red guibg=red
 augroup END
 
+augroup float_border_color
+  autocmd!
+  autocmd ColorScheme * highlight FloatBorder guifg=LightGreen guibg=NONE
+augroup END
+
 augroup auto_close_win
   autocmd!
   autocmd BufEnter * call s:quit_current_win()
