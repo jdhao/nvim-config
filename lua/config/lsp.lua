@@ -34,7 +34,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("x", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR><ESC>", opts)
   end
 
-  -- Set autocommands conditional on server_capabilities
+  -- The blow command will highlight the current variable and its usages in the buffer.
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
       hi link LspReferenceRead Visual
@@ -146,13 +146,13 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   vim.lsp.handlers.hover, {
     border = {
-       {"┌", "FloatBorder"},
+       {"╭", "FloatBorder"},
        {"─", "FloatBorder"},
-       {"┐", "FloatBorder"},
+       {"╮", "FloatBorder"},
        {"│", "FloatBorder"},
-       {"┘", "FloatBorder"},
+       {"╯", "FloatBorder"},
        {"─", "FloatBorder"},
-       {"└", "FloatBorder"},
+       {"╰", "FloatBorder"},
        {"│", "FloatBorder"}
      }
     }
