@@ -96,7 +96,7 @@ NODE_LINK="https://nodejs.org/dist/v14.15.4/node-v14.15.4-linux-x64.tar.xz"
 
 mkdir -p $HOME/tools
 # extract node to a custom directory, the directory should exist.
-tar xvf node-v14.15.4-linux-x64.tar.xz --directory=$HOME/tools
+# tar xvf node-v14.15.4-linux-x64.tar.xz --directory=$HOME/tools
 
 if [[ -z "$(command -v node)" ]]; then
     echo "Install Nodejs"
@@ -109,11 +109,11 @@ if [[ -z "$(command -v node)" ]]; then
         echo "Creating nodejs directory under tools directory"
         mkdir -p "$NODE_DIR"
         echo "Extracting to $HOME/tools/nodejs directory"
-        tar zxvf "$NODE_SRC_NAME" -C "$NODE_DIR" --strip-components 1
+        tar xvf "$NODE_SRC_NAME" -C "$NODE_DIR" --strip-components 1
     fi
 
     if [[ "$ADD_TO_SYSTEM_PATH" = true ]] && [[ "$USE_BASH_SHELL" = true ]]; then
-        echo "export PATH=\"$NVIM_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+        echo "export PATH=\"$NODE_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
     fi
 else
     echo "Nodejs is already installed. Skip installing it."
