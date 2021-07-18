@@ -93,11 +93,6 @@ NODE_DIR=$HOME/tools/nodejs
 NODE_SRC_NAME=$HOME/packages/nodejs.tar.gz
 # when download speed is slow, we can also use its mirror site: https://mirrors.ustc.edu.cn/node/v15.0.0/
 NODE_LINK="https://nodejs.org/dist/v14.15.4/node-v14.15.4-linux-x64.tar.xz"
-
-mkdir -p $HOME/tools
-# extract node to a custom directory, the directory should exist.
-# tar xvf node-v14.15.4-linux-x64.tar.xz --directory=$HOME/tools
-
 if [[ -z "$(command -v node)" ]]; then
     echo "Install Nodejs"
     if [[ ! -f $NODE_SRC_NAME ]]; then
