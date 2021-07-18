@@ -13,7 +13,7 @@ end
 local packer_repo = string.format(plug_url_format, 'wbthomason/packer.nvim')
 local install_cmd = string.format('10split |term git clone --depth=1 %s %s', packer_repo, packer_install_dir)
 
-if fn.empty(fn.glob(packer_install_dir)) > 0 then
+if fn.glob(packer_install_dir) == '' then
   vim.api.nvim_echo({{'Installing packer.nvim', 'Type'}}, true, {})
   execute(install_cmd)
   execute 'packadd packer.nvim'
@@ -27,7 +27,7 @@ require('packer').startup(
     use 'wbthomason/packer.nvim'
 
     -- nvim-lsp configuration
-    use {'neovim/nvim-lspconfig', event = 'VimEnter', config = [[require('config.lsp')]]}
+    use {'neovim/nvim-lspconfig', config = [[require('config.lsp')]]}
 
     -- auto-completion engine
     use { 'hrsh7th/nvim-compe', event = 'InsertEnter *', config = [[require('config.compe')]] }
@@ -97,11 +97,11 @@ require('packer').startup(
     use 'shaunsingh/nord.nvim'
 
     -- colorful status line and theme
-    use {'vim-airline/vim-airline-themes', event = 'VimEnter'}
-    use {'vim-airline/vim-airline', after = 'vim-airline-themes'}
+    use 'vim-airline/vim-airline-themes'
+    use 'vim-airline/vim-airline'
 
     -- fancy start screen
-    use {'mhinz/vim-startify', event = 'VimEnter'}
+    use {'mhinz/vim-startify'}
     use {'lukas-reineke/indent-blankline.nvim', config = [[require('config.indent-blankline')]]}
 
     -- Highlight URLs inside vim
@@ -241,7 +241,7 @@ require('packer').startup(
     end
 
     -- Modern matchit implementation
-    use {'andymass/vim-matchup', event = {'VimEnter',}}
+    use 'andymass/vim-matchup'
 
     -- Smoothie motions
     use 'psliwka/vim-smoothie'
