@@ -149,6 +149,11 @@ if executable('rg')
   set grepformat=%f:%l:%c:%m
 endif
 
+" Enable true color support. Do not set this option if your terminal does not
+" support true colors! For a comprehensive list of terminals supporting true
+" colors, see https://github.com/termstandard/colors and https://gist.github.com/XVilka/8346728.
+set termguicolors
+
 " Set up cursor color and shape in various mode, ref:
 " https://github.com/neovim/neovim/wiki/FAQ#how-to-change-cursor-color-in-the-terminal
 set guicursor=n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor20
