@@ -145,15 +145,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 -- See https://github.com/neovim/neovim/pull/13998.
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   vim.lsp.handlers.hover, {
-    border = {
-       {"╭", "FloatBorder"},
-       {"─", "FloatBorder"},
-       {"╮", "FloatBorder"},
-       {"│", "FloatBorder"},
-       {"╯", "FloatBorder"},
-       {"─", "FloatBorder"},
-       {"╰", "FloatBorder"},
-       {"│", "FloatBorder"}
-     }
-    }
+    border = 'rounded'
+  }
 )
