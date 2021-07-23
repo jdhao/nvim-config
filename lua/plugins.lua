@@ -135,9 +135,6 @@ require('packer').startup(
     -- Multiple cursor plugin like Sublime Text?
     -- use 'mg979/vim-visual-multi'
 
-    -- Title character case
-    use 'christoomey/vim-titlecase'
-
     -- Autosave files on certain events
     use '907th/vim-auto-save'
 
@@ -182,6 +179,7 @@ require('packer').startup(
 
     -- Git command inside vim
     use 'tpope/vim-fugitive'
+    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
     -- Another markdown plugin
     use {'plasticboy/vim-markdown', ft = {'markdown', }}
@@ -294,3 +292,5 @@ vim.api.nvim_exec([[
     autocmd BufWritePost */nvim/lua/plugins.lua source <afile> | PackerCompile
   augroup END
 ]], false)
+
+require('neogit').setup()

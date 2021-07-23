@@ -170,14 +170,6 @@ nnoremap <silent> <Space>t :<C-U>Vista!!<CR>
 "}}
 
 "{{ File editting
-""""""""""""""""""""""""""""vim-titlecase settings"""""""""""""""""""""""
-" Do not use the default mapping provided
-let g:titlecase_map_keys = 0
-
-nmap <leader>gt <Plug>Titlecase
-xmap <leader>gt <Plug>Titlecase
-nmap <leader>gT <Plug>TitlecaseLine
-
 """"""""""""""""""""""""vim-auto-save settings"""""""""""""""""""""""
 " Enable autosave on nvim startup
 let g:auto_save = 1
