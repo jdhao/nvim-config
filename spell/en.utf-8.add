@@ -274,7 +274,6 @@ vim/!
 Vim/!
 Vim
 vim
-vim
 RPC
 #umatraPDF
 SumatraPDF/!
@@ -294,3 +293,8 @@ numpy
 LibreOffice
 rebase
 rebasing
+glibc
+Clangd
+clangd
+cheatsheet
+redis
