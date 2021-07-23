@@ -1,8 +1,6 @@
 scriptencoding utf-8
 
 " Plugin installation
-let g:plugin_home = printf('%s/site/pack/packer/', stdpath('data'))
-
 lua require 'plugins'
 
 "{ Plugin settings
