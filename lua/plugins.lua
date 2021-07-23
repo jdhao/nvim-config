@@ -229,11 +229,6 @@ require('packer').startup(
     -- Since tmux is only available on Linux and Mac, we only enable these plugins
     -- for Linux and Mac
     if fn.executable('tmux') > 0 then
-      -- Let vim detect tmux focus event correctly, see
-      -- https://github.com/neovim/neovim/issues/9486 and
-      -- https://vi.stackexchange.com/q/18515/15292
-      use 'tmux-plugins/vim-tmux-focus-events'
-
       -- .tmux.conf syntax highlighting and setting check
       use {'tmux-plugins/vim-tmux', ft = {'tmux', }}
     end
