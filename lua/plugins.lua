@@ -181,6 +181,9 @@ require('packer').startup(
     -- Git command inside vim
     use 'tpope/vim-fugitive'
 
+    -- Better git commit experience
+    use 'rhysd/committia.vim'
+
     -- Another markdown plugin
     use {'plasticboy/vim-markdown', ft = {'markdown', }}
 
