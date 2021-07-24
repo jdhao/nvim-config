@@ -22,14 +22,15 @@ itself, and how to set up on different platforms (Linux, macOS and Windows).
 
 + Plugin management via [Packer.nvim](https://github.com/wbthomason/packer.nvim).
 + Code auto-completion via [nvim-compe](https://github.com/hrsh7th/nvim-compe) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
-+ Faster code commenting via [vim-commentary](https://github.com/tpope/vim-commentary).
-+ Asynchronous code execution via [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim).
 + Fuzzy searching in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
++ Faster code commenting via [vim-commentary](https://github.com/tpope/vim-commentary).
 + Smarter and faster matching pair management (add, replace or delete) via [vim-sandwich](https://github.com/machakann/vim-sandwich).
 + Fast buffer jump via [vim-sneak](https://github.com/justinmk/vim-sneak).
 + Ultra fast snippet insertion via [Ultisnips](https://github.com/SirVer/ultisnips).
 + Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
++ Faster matching pair insertion and jump via [auto-pairs](https://github.com/jiangmiao/auto-pairs).
 + Beautiful status line via [vim-airline](https://github.com/vim-airline/vim-airline).
++ Asynchronous code execution via [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim).
 + Code highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 + Code editing using true nvim inside browser via [firenvim](https://github.com/glacambre/firenvim).
 + Color theme via [vim-gruvbox8](https://github.com/lifepillar/vim-gruvbox8) and other beautiful themes.
@@ -38,7 +39,6 @@ itself, and how to set up on different platforms (Linux, macOS and Windows).
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
 + Source code linting via [Ale](https://github.com/dense-analysis/ale).
 + Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).
-+ Faster matching pair insertion and jump via [auto-pairs](https://github.com/jiangmiao/auto-pairs).
 + Undo management via [vim-mundo](https://github.com/simnalamburt/vim-mundo)
 + LaTeX editing via [vimtex](https://github.com/lervag/vimtex)[^1].
 + Smooth scroll experience via [vim-smoothie](https://github.com/psliwka/vim-smoothie).
