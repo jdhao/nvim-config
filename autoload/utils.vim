@@ -145,3 +145,25 @@ function! utils#Get_titlestr() abort
 
   return l:title_str
 endfunction
+
+" Log a message using certain highlight group
+function! utils#Log(msg, ...) abort
+  let l:hi = ''
+  if len(a:000) == 1
+    if a:1 ==? 'info'
+      let l:hi = 'Normal'
+    elseif a:1 ==? 'warning'
+      let l:hi = 'WarningMsg'
+    elseif a:1 ==? 'error'
+      let l:hi = 'ErrorMsg'
+    else
+      echoerr 'Unsupported log level:' a:1
+    endif
+  else
+    let l:hi = 'Normal'
+  endif
+
+  execute 'echohl' l:hi
+  unsilent echomsg a:msg
+  echohl None
+endfunction

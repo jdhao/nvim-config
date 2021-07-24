@@ -11,7 +11,7 @@ function! buf_utils#GoToBuffer(count, direction) abort
   endif
   " Check the validity of buffer number.
   if index(s:GetBufNums(), a:count) == -1
-    echohl WarningMsg | echomsg 'Invalid bufnr: ' a:count | echohl None
+    call utils#Log('Invalid bufnr: ' . a:count, 'error')
     return
   endif
 
