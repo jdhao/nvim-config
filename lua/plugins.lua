@@ -1,4 +1,3 @@
-local execute = vim.api.nvim_command
 local fn = vim.fn
 
 local packer_install_dir = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -16,8 +15,8 @@ local install_cmd = string.format('10split |term git clone --depth=1 %s %s', pac
 -- Auto-install packer in case it hasn't been installed.
 if fn.glob(packer_install_dir) == '' then
   vim.api.nvim_echo({{'Installing packer.nvim', 'Type'}}, true, {})
-  execute(install_cmd)
-  execute 'packadd packer.nvim'
+  vim.cmd(install_cmd)
+  vim.cmd('packadd packer.nvim')
 end
 
 vim.cmd [[packadd packer.nvim]]
@@ -284,9 +283,9 @@ require('packer').startup(
   }
 })
 
-vim.api.nvim_exec([[
+vim.cmd([[
   augroup packer_auto_compile
     autocmd!
     autocmd BufWritePost */nvim/lua/plugins.lua source <afile> | PackerCompile
   augroup END
-]], false)
+]])
