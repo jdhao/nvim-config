@@ -42,10 +42,9 @@ augroup END
 " https://vi.stackexchange.com/a/20397/15292.
 augroup auto_read
   autocmd!
-  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-        \ if mode() == 'n' && getcmdwintype() == '' | checktime | endif
   autocmd FileChangedShellPost * echohl WarningMsg
         \ | echo "File changed on disk. Buffer reloaded!" | echohl None
+  autocmd FocusGained,CursorHold * if getcmdwintype() == '' | checktime | endif
 augroup END
 
 augroup numbertoggle
