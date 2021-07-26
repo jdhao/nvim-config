@@ -180,6 +180,9 @@ require('packer').startup(
     -- Git command inside vim
     use 'tpope/vim-fugitive'
 
+    -- Better git log display
+    use {'rbong/vim-flog', require = 'tpope/vim-fugitive' }
+
     -- Better git commit experience
     use 'rhysd/committia.vim'
 
