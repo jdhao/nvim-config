@@ -178,7 +178,7 @@ require('packer').startup(
     -- use 'airblade/vim-gitgutter'
 
     -- Git command inside vim
-    use 'tpope/vim-fugitive'
+    use {'tpope/vim-fugitive', cmd = {'Git',}}
 
     -- Better git log display
     use {'rbong/vim-flog', require = 'tpope/vim-fugitive' }
