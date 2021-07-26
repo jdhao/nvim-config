@@ -181,7 +181,7 @@ require('packer').startup(
     use {'tpope/vim-fugitive', cmd = {'Git',}}
 
     -- Better git log display
-    use {'rbong/vim-flog', require = 'tpope/vim-fugitive' }
+    use {'rbong/vim-flog', require = 'tpope/vim-fugitive', cmd = {'Flog'}}
 
     -- Better git commit experience
     use 'rhysd/committia.vim'
