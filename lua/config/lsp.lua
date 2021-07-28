@@ -36,7 +36,7 @@ local on_attach = function(client, bufnr)
 
   -- The blow command will highlight the current variable and its usages in the buffer.
   if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
+    vim.cmd([[
       hi link LspReferenceRead Visual
       hi link LspReferenceText Visual
       hi link LspReferenceWrite Visual
@@ -45,7 +45,7 @@ local on_attach = function(client, bufnr)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]], false)
+    ]])
   end
 
   local msg = string.format('Language server %s started!' , client.name)
