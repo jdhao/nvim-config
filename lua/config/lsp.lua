@@ -1,3 +1,13 @@
+local M = {}
+
+function M.show_line_diagnostics()
+  local opts = {
+    focusable = false,
+    close_events = {'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost'}
+  }
+  vim.lsp.diagnostic.show_line_diagnostics(opts)
+end
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -23,8 +33,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
-  -- Show diagnostic automatically when cursor is on hold.
-  vim.api.nvim_command('autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})')
+  vim.cmd [[
+    autocmd CursorHold <buffer> lua require('config.lsp').show_line_diagnostics()
+  ]]
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
@@ -148,3 +159,5 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
     border = 'rounded'
   }
 )
+
+return M
