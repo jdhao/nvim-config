@@ -52,8 +52,15 @@ function! s:my_theme_dict.nord() dict abort
   colorscheme nord
 endfunction
 
+function! s:my_theme_dict.doom_one() dict abort
+  let g:doom_one_terminal_color = v:true
+  let g:doom_one_italic_comments = v:true
+  let g:doom_one_cursor_coloring = v:true
+  colorscheme doom-one
+endfunction
+
 let s:candidate_theme = ['gruvbox8', 'deus', 'solarized8', 'onedark', 'neodark',
-      \ 'edge', 'sonokai', 'gruvbox_material', 'nord']
+      \ 'edge', 'sonokai', 'gruvbox_material', 'nord', 'doom_one']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]
 
