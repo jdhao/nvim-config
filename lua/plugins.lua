@@ -285,6 +285,9 @@ require('packer').startup(
 
     -- Show register content
     use "tversteeg/registers.nvim"
+
+    -- The missing auto-completion for cmdline!
+    use 'gelguy/wilder.nvim'
   end,
   config = {
     max_jobs = 16,
