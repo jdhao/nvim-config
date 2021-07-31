@@ -16,6 +16,7 @@ onoremap <buffer><silent> ic :<C-U>call text_obj#MdCodeBlock('i')<CR>
 onoremap <buffer><silent> ac :<C-U>call text_obj#MdCodeBlock('a')<CR>
 
 " Use + to turn several lines to an unordered list.
+" Ref: https://vi.stackexchange.com/q/5495/15292 and https://stackoverflow.com/q/42438795/6064933.
 nnoremap <buffer><silent> + :set operatorfunc=AddListSymbol<CR>g@
 xnoremap <buffer><silent> + :<C-U> call AddListSymbol(visualmode(), 1)<CR>
 
@@ -32,11 +33,11 @@ function! AddListSymbol(type, ...) abort
   for line in range(line_start, line_end)
     let text = getline(line)
 
-    let end = matchend(text, '^\s*')
-    if end == 0
+    let l:end = matchend(text, '^\s*')
+    if l:end == 0
       let new_text = '+ ' . text
     else
-      let new_text = text[0:end-1] . ' + ' . text[end:]
+      let new_text = text[0 : l:end-1] . ' + ' . text[l:end :]
     endif
 
     call setline(line, new_text)
