@@ -165,9 +165,6 @@ require('packer').startup(
     -- Syntax check and make
     -- use 'neomake/neomake'
 
-    -- Another linting plugin
-    use 'dense-analysis/ale'
-
     -- Auto format tools
     use {'sbdchd/neoformat', cmd = {'Neoformat', }}
     -- use 'Chiel92/vim-autoformat'

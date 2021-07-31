@@ -217,20 +217,6 @@ let g:XkbSwitchEnabled = 1
 "}}
 
 "{{ Linting and formating
-"""""""""""""""""""""""""""""" ale settings """""""""""""""""""""""
-" linters for different filetypes
-let g:ale_linters = {
-  \ 'vim': ['vint'],
-  \ 'cpp': ['cppcheck'],
-  \ }
-
-" Only run linters in the g:ale_linters dictionary
-let g:ale_linters_explicit = 1
-
-" Linter signs
-let g:ale_sign_error = 'x'
-let g:ale_sign_warning = '!'
-
 """""""""""""""""""""""""""""" neoformat settings """""""""""""""""""""""
 let g:neoformat_enabled_python = ['black', 'yapf']
 let g:neoformat_cpp_clangformat = {
