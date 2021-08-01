@@ -115,7 +115,7 @@ else
 fi
 
 # Install vim-language-server
-$NODE_DIR/bin/npm install -g vim-language-server
+"$NODE_DIR/bin/npm" install -g vim-language-server
 
 #######################################################################
 #                            Ripgrep part                             #
@@ -177,7 +177,6 @@ fi
 NVIM_DIR=$HOME/tools/nvim
 NVIM_SRC_NAME=$HOME/packages/nvim-linux64.tar.gz
 NVIM_CONFIG_DIR=$HOME/.config/nvim
-NVIM_SITE_DIR=$HOME/.local/share/nvim/site
 NVIM_LINK="https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
 if [[ ! -f "$NVIM_DIR/bin/nvim" ]]; then
     echo "Installing Neovim"
