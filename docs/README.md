@@ -228,7 +228,7 @@ time to install all of them, depending on your network condition.
 # Automatic Installation for Linux #
 
 To set up a workable Neovim environment in Linux, I use the bash script
-[`Nvim_setup.sh`](Nvim_setup.sh) to automatically install necessary
+[`nvim_setup_linux.sh`](nvim_setup_linux.sh) to automatically install necessary
 dependencies, Neovim itself and Nvim configs in this repo.
 
 Note that the variable `PYTHON_INSTALLED`, `SYSTEM_PYTHON` and
