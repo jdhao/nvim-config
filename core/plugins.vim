@@ -533,6 +533,7 @@ call wilder#set_option('pipeline', [
       \     wilder#cmdline_pipeline({
       \       'language': 'python',
       \       'fuzzy': 1,
+      \       'sorter': wilder#python_difflib_sorter()
       \     }),
       \     wilder#python_search_pipeline({
       \       'pattern': wilder#python_fuzzy_pattern(),
@@ -542,10 +543,10 @@ call wilder#set_option('pipeline', [
       \   ),
       \ ])
 
-call wilder#set_option('renderer', wilder#wildmenu_renderer({
-      \ 'highlighter': wilder#basic_highlighter(),
-      \ 'separator': '  ',
-      \ 'right': [' ', wilder#wildmenu_index()],
-      \ }))
+call wilder#set_option('renderer', wilder#wildmenu_renderer(
+      \ wilder#wildmenu_airline_theme({
+      \   'highlighter': wilder#basic_highlighter(),
+      \   'separator': '  ',
+      \ })))
 "}}
 "}
