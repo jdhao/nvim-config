@@ -180,4 +180,12 @@ onoremap <silent> iu :<C-U>call text_obj#URL()<CR>
 " Text objects for entire buffer
 xnoremap <silent> iB :<C-U>call text_obj#Buffer()<CR>
 onoremap <silent> iB :<C-U>call text_obj#Buffer()<CR>
+
+" Do not move my cursor when joining lines.
+nnoremap J mzJ`z
+
+" Break inserted text into smaller undo units.
+for ch in [',', '.', '!', '?', ';', ':']
+  execute printf('inoremap %s %s<C-g>u', ch, ch)
+endfor
 "}
