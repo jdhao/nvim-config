@@ -26,10 +26,6 @@ function! s:my_theme_dict.onedark() dict abort
   colorscheme onedark
 endfunction
 
-function! s:my_theme_dict.neodark() dict abort
-  colorscheme neodark
-endfunction
-
 function! s:my_theme_dict.edge() dict abort
   let g:edge_enable_italic = 1
   let g:edge_better_performance = 1
@@ -59,7 +55,7 @@ function! s:my_theme_dict.doom_one() dict abort
   colorscheme doom-one
 endfunction
 
-let s:candidate_theme = ['gruvbox8', 'deus', 'solarized8', 'onedark', 'neodark',
+let s:candidate_theme = ['gruvbox8', 'deus', 'solarized8', 'onedark',
       \ 'edge', 'sonokai', 'gruvbox_material', 'nord', 'doom_one']
 let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
 let s:theme = s:candidate_theme[s:idx]

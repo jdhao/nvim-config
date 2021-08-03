@@ -90,7 +90,6 @@ require('packer').startup(
     use 'ajmwagar/vim-deus'
     use 'lifepillar/vim-solarized8'
     use 'navarasu/onedark.nvim'
-    use 'KeitaNakamura/neodark.vim'
     use 'sainnhe/edge'
     use 'sainnhe/sonokai'
     use 'sainnhe/gruvbox-material'
