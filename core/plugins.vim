@@ -157,13 +157,6 @@ let g:vista_echo_cursor = 0
 " Stay in current window when vista window is opened
 let g:vista_stay_on_open = 0
 
-augroup vista_conf
-  autocmd!
-  " Double mouse click to go to a tag
-  autocmd FileType vista* nnoremap <buffer> <silent>
-        \ <2-LeftMouse> :<C-U>call vista#cursor#FoldOrJump()<CR>
-augroup END
-
 nnoremap <silent> <Space>t :<C-U>Vista!!<CR>
 "}}
 
