@@ -76,7 +76,7 @@ represents ASCII character `,`.
 | `<F12>`           | Normal        | Linux/macOS/Win | Toggle paste mode                                                                                    |
 | `\x`              | Normal        | Linux/macOS/Win | Close location or quickfix window                                                                    |
 | `\d`              | Normal        | Linux/macOS/Win | Close current buffer and go to previous buffer                                                       |
-| `{count}gb`       | Normal        | Linux/macOS/Win | Go to {count} buffer or next buffer in the buffer list.                                              |
+| `{count}gb`       | Normal        | Linux/macOS/Win | Go to buffer {count}  or next buffer in the buffer list.                                             |
 | `Alt-M`           | Normal        | macOS/Win       | Render Markdown to HTML and open it in system browser                                                |
 | `ob`              | Normal/Visual | macOS/Win       | Open link under cursor or search visual selection                                                    |
 | `ctrl-u`          | Insert        | Linux/macOS/Win | Turn word under cursor to upper case                                                                 |
