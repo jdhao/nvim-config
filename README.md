@@ -39,6 +39,8 @@ backward compatibility is guaranteed.**
 + Color theme via [vim-gruvbox8](https://github.com/lifepillar/vim-gruvbox8) and other beautiful themes.
 + Markdown writing and syntax highlighting via [vim-markdown](https://github.com/plasticboy/vim-markdown),
   Markdown Previewing via [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
++ Command line auto-completion via [wilder.nvim](https://github.com/gelguy/wilder.nvim).
++ Annimated GUI style notifiation via [nvim-notify](https://github.com/rcarriga/nvim-notify).
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
 + Source code linting via [Ale](https://github.com/dense-analysis/ale).
 + Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).
