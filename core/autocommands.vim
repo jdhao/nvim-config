@@ -32,7 +32,8 @@ augroup END
 " https://github.com/vim/vim/issues/4379
 augroup non_utf8_file_warn
   autocmd!
-  autocmd BufRead * if &fileencoding != 'utf-8' | unsilent echomsg 'File not in UTF-8 format!' | endif
+  " we can not `lua vim.notify()`: it will error out E5107 parsing lua.
+  autocmd BufRead * if &fileencoding != 'utf-8' | call v:lua.vim.notify('File not in UTF-8 format!', 'warn', {'title': 'nvim-config'}) | endif
 augroup END
 
 " Automatically reload the file if it is changed outside of Nvim, see
@@ -42,7 +43,7 @@ augroup END
 " https://vi.stackexchange.com/a/20397/15292.
 augroup auto_read
   autocmd!
-  autocmd FileChangedShellPost * call utils#Log("File changed on disk. Buffer reloaded!", 'warning')
+  autocmd FileChangedShellPost * call v:lua.vim.notify("File changed on disk. Buffer reloaded!", 'warn', {'title': 'nvim-config'})
   autocmd FocusGained,CursorHold * if getcmdwintype() == '' | checktime | endif
 augroup END
 

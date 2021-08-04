@@ -102,7 +102,7 @@ inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 " Edit and reload init.vim quickly
 nnoremap <silent> <leader>ev :<C-U>tabnew $MYVIMRC <bar> tcd %:h<cr>
 nnoremap <silent> <leader>sv :<C-U>silent update $MYVIMRC <bar> source $MYVIMRC <bar>
-      \ echomsg "Nvim config successfully reloaded!"<cr>
+      \ call v:lua.vim.notify("Nvim config successfully reloaded!", 'info', {'title': 'nvim-config'})<cr>
 
 " Reselect the text that has just been pasted, see also https://stackoverflow.com/a/4317090/6064933.
 nnoremap <expr> <leader>v printf('`[%s`]', getregtype()[0])

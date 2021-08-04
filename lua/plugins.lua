@@ -95,6 +95,7 @@ require('packer').startup(
     use 'sainnhe/gruvbox-material'
     use 'shaunsingh/nord.nvim'
     use 'NTBBloodbath/doom-one.nvim'
+
     -- colorful status line and theme
     use 'vim-airline/vim-airline-themes'
     use 'vim-airline/vim-airline'
@@ -105,6 +106,9 @@ require('packer').startup(
 
     -- Highlight URLs inside vim
     use 'itchyny/vim-highlighturl'
+
+    -- notification plugin
+    use {'rcarriga/nvim-notify', config = 'vim.notify = require("notify")'}
 
     -- For Windows and Mac, we can open an URL in the browser. For Linux, it may
     -- not be possible since we maybe in a server which disables GUI.
