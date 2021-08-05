@@ -7,8 +7,8 @@ and development work.
 
 A lot of Neovim plugins are mainly written in Python. To use auto-completion
 and other features, we must install Python 3. The easiest way to install is via
-[Anaconda](https://www.anaconda.com/distribution/#download-section) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html). Make sure that the
-output of `python --version` shows that Python 3.x is installed.
+[Anaconda](https://www.anaconda.com/distribution/#download-section) or[Miniconda](https://docs.conda.io/en/latest/miniconda.html). Make sure that you
+can run `python --version`, and that the output should be Python 3.x.
 
 ## Pynvim
 
@@ -130,12 +130,13 @@ listed [here](https://github.com/dense-analysis/ale/blob/master/supported-tools.
 Which [terminal emulator](https://en.wikipedia.org/wiki/Terminal_emulator) we
 choose to use greatly affects the appearance and functionalities of Neovim.
 Since Neovim supports true colors, terminals that support true colors are
-preferred. For a list of terminals that support true colors, see
-[here](https://github.com/termstandard/colors).
+preferred. For a list of terminals that support true colors, see [here](https://github.com/termstandard/colors).
 
 For macOS, we can use [iterm2](https://www.iterm2.com/), [kitty](https://sw.kovidgoyal.net/kitty/) or [Alacritty](https://github.com/jwilm/alacritty).
 If you connect to Linux server on Windows, I recommend [wsltty](https://github.com/mintty/wsltty) and
 [Cygwin](https://www.cygwin.com/), both of them use [mintty](https://github.com/mintty/mintty) as the terminal emulator.
+
+For Windows 10, you can use the new [Windows Terminal](https://github.com/microsoft/terminal).
 
 ## Font
 
@@ -234,5 +235,9 @@ dependencies, Neovim itself and Nvim configs in this repo.
 Note that the variable `PYTHON_INSTALLED`, `SYSTEM_PYTHON` and
 `ADD_TO_SYSTEM_PATH` in the script should be set properly based on your
 environment.
+
+# Automatic installation for Windows
+
+Run script [nvim_setup_windows.ps1](nvim_setup_windows.ps1) under PowerShell.
 
 [^1]: Use `echo %userprofile%` to see where your `$HOME` is.
