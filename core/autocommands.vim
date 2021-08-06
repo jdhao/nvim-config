@@ -89,4 +89,9 @@ function! s:quit_current_win() abort
     quit
   endif
 endfunction
+
+augroup git_repo_check
+  autocmd!
+  autocmd VimEnter,DirChanged * call utils#Inside_git_repo() 
+augroup END
 "}

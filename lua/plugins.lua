@@ -178,15 +178,7 @@ require('packer').startup(
     -- use 'airblade/vim-gitgutter'
 
     -- Git command inside vim
-    use {'tpope/vim-fugitive', cond =
-    function()
-      local res = vim.fn.system('git rev-parse --is-inside-work-tree')
-      if string.find(res, 'true') then
-        return true
-      else
-        return false
-      end
-    end}
+    use {'tpope/vim-fugitive', event = 'User InGitRepo'}
 
     -- Better git log display
     use {'rbong/vim-flog', require = 'tpope/vim-fugitive', cmd = {'Flog'}}
