@@ -5,7 +5,7 @@
 # Introduction
 
 This repo hosts my Nvim configuration for all the platforms I am using (Linux,
-Windows and macOS). `init.vim` is the config entrypoint for terminal Neovim,
+Windows and macOS). `init.vim` is the config entry point for terminal Neovim,
 and `ginit.vim` is the additional config file for GUI client of Neovim (I am
 using [neovim-qt](https://github.com/equalsraf/neovim-qt) for now on Windows).
 
@@ -40,7 +40,7 @@ backward compatibility is guaranteed.**
 + Markdown writing and syntax highlighting via [vim-markdown](https://github.com/plasticboy/vim-markdown),
   Markdown Previewing via [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
 + Command line auto-completion via [wilder.nvim](https://github.com/gelguy/wilder.nvim).
-+ Annimated GUI style notifiation via [nvim-notify](https://github.com/rcarriga/nvim-notify).
++ Animated GUI style notification via [nvim-notify](https://github.com/rcarriga/nvim-notify).
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
 + Source code linting via [Ale](https://github.com/dense-analysis/ale).
 + Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).

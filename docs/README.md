@@ -103,7 +103,7 @@ Set its PATH properly and make sure you can call `ctags` from command line.
 
 ## Ripgrep
 
-[Ripgrep](https://github.com/BurntSushi/ripgrep), aka, `rg`, is a fast greping
+[Ripgrep](https://github.com/BurntSushi/ripgrep), aka, `rg`, is a fast grepping
 tool available for both Linux, Windows and macOS. It is used by several
 searching plugins.
 
@@ -199,7 +199,7 @@ setups.
 I use [packer.nvim](https://github.com/wbthomason/packer.nvim) to manage my
 plugins. We need to install packer.nvim on our system first.
 
-For Windows, if curl is installed, use the following command (on Powershell):
+For Windows, if curl is installed, use the following command (on PowerShell):
 
 ```
 git clone --depth=1 https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"

@@ -76,7 +76,7 @@ set fileformats=unix,dos  " Fileformats to use for new files
 
 set inccommand=nosplit  " Show the result of substitution in real time for preview
 
-" Ignore certain files and folders when globbing
+" Ignore certain files and folders when globing
 set wildignore+=*.o,*.obj,*.bin,*.dll,*.exe
 set wildignore+=*/.git/*,*/.svn/*,*/__pycache__/*,*/build/**
 set wildignore+=*.jpg,*.png,*.jpeg,*.bmp,*.gif,*.tiff,*.svg,*.ico

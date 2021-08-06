@@ -36,10 +36,10 @@ let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
 
 "{{ Language specific plugin
 """""""""""""""""""""""""" semshi settings """""""""""""""""""""""""""""""
-" Do not highlight for all occurances of variable under cursor
+" Do not highlight for all occurrences of variable under cursor
 let g:semshi#mark_selected_nodes=0
 
-" Do not show error sign since linting plugin is specicialized for that
+" Do not show error sign since linting plugin is specialized for that
 let g:semshi#error_sign=v:false
 
 """""""""""""""""""""""""" vlime settings """"""""""""""""""""""""""""""""
@@ -160,7 +160,7 @@ let g:vista_stay_on_open = 0
 nnoremap <silent> <Space>t :<C-U>Vista!!<CR>
 "}}
 
-"{{ File editting
+"{{ File editing
 """"""""""""""""""""""""vim-auto-save settings"""""""""""""""""""""""
 " Enable autosave on nvim startup
 let g:auto_save = 1
@@ -209,7 +209,7 @@ let g:better_escape_interval = 200
 let g:XkbSwitchEnabled = 1
 "}}
 
-"{{ Linting and formating
+"{{ Linting and formatting
 """""""""""""""""""""""""""""" neoformat settings """""""""""""""""""""""
 let g:neoformat_enabled_python = ['black', 'yapf']
 let g:neoformat_cpp_clangformat = {
@@ -306,7 +306,7 @@ nmap s <Nop>
 omap s <Nop>
 "}}
 
-"{{ LaTeX editting
+"{{ LaTeX editing
 """"""""""""""""""""""""""""vimtex settings"""""""""""""""""""""""""""""
 if ( g:is_win || g:is_mac ) && executable('latex')
   function! SetServerName() abort
@@ -427,7 +427,7 @@ let g:airline#extensions#hunks#non_zero_only = 1
 " Speed up airline
 let g:airline_highlighting_cache = 1
 
-" The key in the following shortcode are the layout when we use a specific
+" The keys in the following shortcode are the layout when we use a specific
 " input method mode. On my macOS, 0 means that we are trying to input Chinese,
 " and 1 means we are using English mode.
 " See also https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/xkblayout.vim#L11

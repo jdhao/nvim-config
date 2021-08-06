@@ -82,7 +82,7 @@ require('packer').startup(
     -- Another grep tool (similar to Sublime Text Ctrl+Shift+F)
     -- use 'dyng/ctrlsf.vim'
 
-    -- A greping tool
+    -- A grepping tool
     -- use {'mhinz/vim-grepper', cmd = {'Grepper', '<plug>(GrepperOperator)'}}
 
     -- A list of colorscheme plugin you may want to try. Find what suits you.
@@ -213,7 +213,7 @@ require('packer').startup(
     -- carefully to use its full power
     use 'wellle/targets.vim'
 
-    -- Plugin to manipulate characer pairs quickly
+    -- Plugin to manipulate character pairs quickly
     -- use 'tpope/vim-surround'
     use 'machakann/vim-sandwich'
 

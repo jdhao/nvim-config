@@ -11,7 +11,7 @@ function! text_obj#URL() abort
     endif
   endif
 
-  " We need to find all possible URL on this line and their start, end idx.
+  " We need to find all possible URL on this line and their start, end index.
   " Then find where current cursor is, and decide if cursor is on one of the
   " URLs.
   let line_text = getline('.')
@@ -54,10 +54,10 @@ function! text_obj#URL() abort
 endfunction
 
 function! text_obj#MdCodeBlock(type) abort
-  " the parameter type specify whether it is inner text objects or arround
+  " the parameter type specify whether it is inner text objects or around
   " text objects.
 
-  " Move the cursor to the end of line in case that cursor is on the openning
+  " Move the cursor to the end of line in case that cursor is on the opening
   " of a code block. Actually, there are still issues if the cursor is on the
   " closing of a code block. In this case, the start row of code blocks would
   " be wrong. Unless we can match code blocks, it not easy to fix this.

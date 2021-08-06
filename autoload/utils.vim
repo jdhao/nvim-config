@@ -41,7 +41,7 @@ function! utils#HasAirlinetheme(name) abort
   return !empty(globpath(&runtimepath, l:pat))
 endfunction
 
-" Generate random integers in the range [Low, High] in pure vimscrpt,
+" Generate random integers in the range [Low, High] in pure vim script,
 " adapted from https://stackoverflow.com/a/12739441/6064933
 function! utils#RandInt(Low, High) abort
   " Use lua to generate random int. It is faster. Ref: https://stackoverflow.com/a/20157671/6064933
@@ -152,7 +152,7 @@ function! utils#Inside_git_repo() abort
   if match(res, 'true') == -1
     return v:false
   else
-    " Manually trigger a speical user autocmd InGitRepo (to use it for
+    " Manually trigger a specical user autocmd InGitRepo (to use it for
     " lazyloading of fugitive by packer.nvim).
     " See also https://github.com/wbthomason/packer.nvim/discussions/534.
     doautocmd User InGitRepo
