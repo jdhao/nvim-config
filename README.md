@@ -1,7 +1,3 @@
-<p align="center">
-<img src="images/demo_look.jpg" width="600">
-</p>
-
 # Introduction
 
 This repo hosts my Nvim configuration for all the platforms I am using (Linux,
@@ -48,6 +44,40 @@ backward compatibility is guaranteed.**
 + LaTeX editing via [vimtex](https://github.com/lervag/vimtex)[^1].
 + Smooth scroll experience via [vim-smoothie](https://github.com/psliwka/vim-smoothie).
 + ......
+
+# Demo
+
+## Fuzzy finding using LeaderF
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/16662357/128589722-322bb97f-f460-4fc2-ba50-a707225d8adc.gif" width="800">
+</p>
+
+## Autocompletion
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/16662357/128590006-0fc1451f-fac1-49b2-bb95-8aba21bfa44e.gif" width="800">
+</p>
+
+## Tags
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/16662357/128589584-4036a1a2-2e0a-4bbe-8aaf-ff8b91644648.jpg" width="800">
+</p>
+
+## Cursor jump via vim-sneak
+
+Go to a string starting with `se`
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/16662357/128590570-71dd82b1-b99d-4e82-9a29-aadd9d6ec300.gif" width="800">
+</p>
+
+## GUI-style notification
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/16662357/128589873-aadb8264-1098-4834-9876-fa66a309be05.gif" width="800">
+</p>
 
 # Shortcuts
 
