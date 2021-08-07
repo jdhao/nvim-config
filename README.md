@@ -1,3 +1,7 @@
+<p align="center">
+<img src="https://user-images.githubusercontent.com/16662357/128589722-322bb97f-f460-4fc2-ba50-a707225d8adc.gif" width="800">
+</p>
+
 # Introduction
 
 This repo hosts my Nvim configuration for all the platforms I am using (Linux,
@@ -46,12 +50,6 @@ backward compatibility is guaranteed.**
 + ......
 
 # Demo
-
-## Fuzzy finding using LeaderF
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/16662357/128589722-322bb97f-f460-4fc2-ba50-a707225d8adc.gif" width="800">
-</p>
 
 ## Autocompletion
 
