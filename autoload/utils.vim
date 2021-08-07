@@ -45,8 +45,8 @@ endfunction
 " adapted from https://stackoverflow.com/a/12739441/6064933
 function! utils#RandInt(Low, High) abort
   " Use lua to generate random int. It is faster. Ref: https://stackoverflow.com/a/20157671/6064933
-  call luaeval('math.randomseed(os.time())')
-  return luaeval(printf('math.random(%s, %s)', a:Low, a:High))
+  call v:lua.math.randomseed(localtime())
+  return v:lua.math.random(a:Low, a:High)
 endfunction
 
 " Custom fold expr, adapted from https://vi.stackexchange.com/a/9094/15292
