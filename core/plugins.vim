@@ -458,18 +458,6 @@ let g:matchup_delim_noskips = 0
 " Show offscreen match pair in popup window
 let g:matchup_matchparen_offscreen = {'method': 'popup'}
 
-" Change highlight color of matching bracket for better visual effects
-augroup matchup_matchparen_highlight
-  autocmd!
-  autocmd ColorScheme * highlight MatchParen cterm=underline gui=underline
-augroup END
-
-" Show matching keyword as underlined text to reduce color clutter
-augroup matchup_matchword_highlight
-  autocmd!
-  autocmd ColorScheme * hi MatchWord cterm=underline gui=underline
-augroup END
-
 """""""""""""""""""""""""" asyncrun.vim settings """"""""""""""""""""""""""
 " Automatically open quickfix window of 6 line tall after asyncrun starts
 let g:asyncrun_open = 6
