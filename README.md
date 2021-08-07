@@ -57,6 +57,12 @@ backward compatibility is guaranteed.**
 <img src="https://user-images.githubusercontent.com/16662357/128590006-0fc1451f-fac1-49b2-bb95-8aba21bfa44e.gif" width="800">
 </p>
 
+## Git add, commit and push via fugitive.vim
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/16662357/128590833-aaa05d53-19ef-441d-a5a9-ba1bbd3936c1.gif" width="800">
+</p>
+
 ## Tags
 
 <p align="center">
@@ -76,6 +82,8 @@ Go to a string starting with `se`
 <p align="center">
 <img src="https://user-images.githubusercontent.com/16662357/128589873-aadb8264-1098-4834-9876-fa66a309be05.gif" width="800">
 </p>
+
+For more UI demos, see [here](https://github.com/jdhao/nvim-config/issues/15).
 
 # Shortcuts
 
