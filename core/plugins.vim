@@ -421,6 +421,9 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.spell = 'Ꞩ'
 
+" Custom branch name
+let g:airline#extensions#branch#custom_head = 'utils#GetGitBranch'
+
 " Only show git hunks which are non-zero
 let g:airline#extensions#hunks#non_zero_only = 1
 

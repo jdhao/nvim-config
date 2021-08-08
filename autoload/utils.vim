@@ -159,3 +159,12 @@ function! utils#Inside_git_repo() abort
     return v:true
   endif
 endfunction
+
+function! utils#GetGitBranch()
+  let l:res = systemlist('git rev-parse --abbrev-ref HEAD')[0]
+  if match(l:res, 'fatal') != -1
+    return ''
+  else
+    return l:res
+  endif
+endfunction
