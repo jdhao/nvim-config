@@ -61,7 +61,7 @@ require('packer').startup(
     use {'romainl/vim-cool', event = 'CmdlineEnter'}
 
     -- Show current search term in different color
-    use {'PeterRincker/vim-searchlight', event = 'CmdlineEnter'}
+    use 'PeterRincker/vim-searchlight'
 
     -- Show match number for incsearch
     use {'osyo-manga/vim-anzu', event = 'CmdlineEnter'}
