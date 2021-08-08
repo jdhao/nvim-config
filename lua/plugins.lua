@@ -126,7 +126,7 @@ require('packer').startup(
     end
 
     -- Snippet engine and snippet template
-    use {'SirVer/ultisnips', event = {'InsertEnter'}}
+    use 'SirVer/ultisnips'
     use {'honza/vim-snippets', event = {'InsertEnter'}}
 
     -- Automatic insertion and deletion of a pair of characters
