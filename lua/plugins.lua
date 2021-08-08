@@ -58,13 +58,13 @@ require('packer').startup(
     use 'justinmk/vim-sneak'
 
     -- Clear highlight search automatically for you
-    use 'romainl/vim-cool'
+    use {'romainl/vim-cool', event = 'CmdlineEnter'}
 
     -- Show current search term in different color
-    use 'PeterRincker/vim-searchlight'
+    use {'PeterRincker/vim-searchlight', event = 'CmdlineEnter'}
 
     -- Show match number for incsearch
-    use 'osyo-manga/vim-anzu'
+    use {'osyo-manga/vim-anzu', event = 'CmdlineEnter'}
 
     -- Stay after pressing * and search selected text
     use 'haya14busa/vim-asterisk'
