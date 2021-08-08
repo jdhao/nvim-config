@@ -84,7 +84,7 @@ augroup auto_close_win
   autocmd BufEnter * call s:quit_current_win()
 augroup END
 
-" Quit Neovim if we have only one window, and its filetype match our pattern.
+" Quit Nvim if we have only one window, and its filetype match our pattern.
 function! s:quit_current_win() abort
   let quit_filetypes = ['qf', 'vista']
   let buftype = getbufvar(bufnr(), '&filetype')

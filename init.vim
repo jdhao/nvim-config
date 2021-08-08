@@ -14,7 +14,7 @@
 
 "{ Header and Licence
 "{{ header info
-" Description: This is my personal Neovim configuration supporting Mac, Linux
+" Description: This is my personal Nvim configuration supporting Mac, Linux
 " and Windows, with various plugins configured. This configuration evolves as
 " I learn more about Nvim and becomes more proficient in using Nvim. Since it
 " is very long (more than 1000 lines!), you should read it carefully and take

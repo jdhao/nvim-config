@@ -5,8 +5,8 @@
 # Introduction
 
 This repo hosts my Nvim configuration for all the platforms I am using (Linux,
-Windows and macOS). `init.vim` is the config entry point for terminal Neovim,
-and `ginit.vim` is the additional config file for GUI client of Neovim (I am
+Windows and macOS). `init.vim` is the config entry point for terminal Nvim,
+and `ginit.vim` is the additional config file for GUI client of Nvim (I am
 using [neovim-qt](https://github.com/equalsraf/neovim-qt) for now on Windows).
 
 My configurations are heavily documented to make it as clear as possible. While
@@ -97,10 +97,10 @@ represents ASCII character `,`.
 | `<leader>t`       | Normal        | Linux/macOS/Win | Fuzzy buffer tag search in a floating window                                                         |
 | `<leader><Space>` | Normal        | Linux/macOS/Win | Remove trailing white spaces                                                                         |
 | `<leader>v`       | Normal        | Linux/macOS/Win | Reselect last pasted text                                                                            |
-| `<leader>ev`      | Normal        | Linux/macOS/Win | Edit Neovim config in a new tabpage                                                                  |
-| `<leader>sv`      | Normal        | Linux/macOS/Win | Reload Neovim config                                                                                 |
+| `<leader>ev`      | Normal        | Linux/macOS/Win | Edit Nvim config in a new tabpage                                                                  |
+| `<leader>sv`      | Normal        | Linux/macOS/Win | Reload Nvim config                                                                                 |
 | `<leader>q`       | Normal        | Linux/macOS/Win | Quit current window                                                                                  |
-| `<leader>Q`       | Normal        | Linux/macOS/Win | Quit all window and close Neovim                                                                     |
+| `<leader>Q`       | Normal        | Linux/macOS/Win | Quit all window and close Nvim                                                                     |
 | `<leader>w`       | Normal        | Linux/macOS/Win | Save current buffer content                                                                          |
 | `<leader>cd`      | Normal        | Linux/macOS/Win | Change current directory to where current file is                                                    |
 | `<leader>y`       | Normal        | Linux/macOS/Win | Copy the content of entire buffer to default register                                                |

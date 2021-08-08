@@ -1,18 +1,18 @@
 # Pre-requisite
 
-There are a few dependencies if we want to use Neovim for efficient editing
+There are a few dependencies if we want to use Nvim for efficient editing
 and development work.
 
 ## Python
 
-A lot of Neovim plugins are mainly written in Python. To use auto-completion
+A lot of Nvim plugins are mainly written in Python. To use auto-completion
 and other features, we must install Python 3. The easiest way to install is via
 [Anaconda](https://www.anaconda.com/distribution/#download-section) or[Miniconda](https://docs.conda.io/en/latest/miniconda.html). Make sure that you
 can run `python --version`, and that the output should be Python 3.x.
 
 ## Pynvim
 
-Neovim relies on [pynvim](https://github.com/neovim/pynvim) to communicate with
+Nvim relies on [pynvim](https://github.com/neovim/pynvim) to communicate with
 plugins that utilize its Python binding. Pynvim is required by plugins such as
 [Deoplete](https://github.com/Shougo/deoplete.nvim) and [Semshi](https://github.com/numirias/semshi).
 
@@ -128,8 +128,8 @@ listed [here](https://github.com/dense-analysis/ale/blob/master/supported-tools.
 ## Terminal emulators
 
 Which [terminal emulator](https://en.wikipedia.org/wiki/Terminal_emulator) we
-choose to use greatly affects the appearance and functionalities of Neovim.
-Since Neovim supports true colors, terminals that support true colors are
+choose to use greatly affects the appearance and functionalities of Nvim.
+Since Nvim supports true colors, terminals that support true colors are
 preferred. For a list of terminals that support true colors, see [here](https://github.com/termstandard/colors).
 
 For macOS, we can use [iterm2](https://www.iterm2.com/), [kitty](https://sw.kovidgoyal.net/kitty/) or [Alacritty](https://github.com/jwilm/alacritty).
@@ -147,9 +147,9 @@ using [Hack](https://github.com/powerline/fonts/tree/master/Hack), and it looks
 great. Another great resource for programming font is the
 [nerd-font](https://github.com/ryanoasis/nerd-fonts) project.
 
-# Install Neovim
+# Install Nvim
 
-There are various ways to install Neovim based on your system. Note that some
+There are various ways to install Nvim based on your system. Note that some
 of plugins I use require Nvim master. It is recommended to use the nightly
 version of nvim.
 
@@ -159,7 +159,7 @@ We can directly download the binary release from [here](https://github.com/neovi
 
 ## Windows
 
-The easiest way to install Neovim on Windows is via chocolatey. First, install
+The easiest way to install Nvim on Windows is via chocolatey. First, install
 chocolatey. Then we can install neovim easily using the following command:
 
 ```
@@ -169,8 +169,8 @@ chocolatey. Then we can install neovim easily using the following command:
 choco install neovim
 ```
 
-The Neovim that chocolatey installs may not be up to date. To use the
-cutting-edge features of Neovim, you may download [the nightly
+The Nvim that chocolatey installs may not be up to date. To use the
+cutting-edge features of Nvim, you may download [the nightly
 release](https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip) from GitHub and manually extract it.
 
 ## macOS
@@ -185,7 +185,7 @@ brew install neovim
 # brew install --HEAD neovim
 ```
 
-After installing Neovim, we need to add the directory where the Neovim
+After installing Nvim, we need to add the directory where the Nvim
 executable (`nvim` on Linux and macOS, `nvim.exe` on Windows) resides to the
 system `PATH`.
 
@@ -228,9 +228,9 @@ time to install all of them, depending on your network condition.
 
 # Automatic Installation for Linux #
 
-To set up a workable Neovim environment in Linux, I use the bash script
+To set up a workable Nvim environment in Linux, I use the bash script
 [`nvim_setup_linux.sh`](nvim_setup_linux.sh) to automatically install necessary
-dependencies, Neovim itself and Nvim configs in this repo.
+dependencies, Nvim itself and Nvim configs in this repo.
 
 Note that the variable `PYTHON_INSTALLED`, `SYSTEM_PYTHON` and
 `ADD_TO_SYSTEM_PATH` in the script should be set properly based on your

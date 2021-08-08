@@ -66,7 +66,7 @@ else
     echo "Python is already installed. Skip installing it."
 fi
 
-# Install some Python packages used by Neovim plugins.
+# Install some Python packages used by Nvim plugins.
 echo "Installing Python packages"
 declare -a py_packages=("pynvim" 'python-lsp-server[all]' "black" "vim-vint" "pyls-isort" "pylsp-mypy")
 
@@ -179,7 +179,7 @@ NVIM_SRC_NAME=$HOME/packages/nvim-linux64.tar.gz
 NVIM_CONFIG_DIR=$HOME/.config/nvim
 NVIM_LINK="https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
 if [[ ! -f "$NVIM_DIR/bin/nvim" ]]; then
-    echo "Installing Neovim"
+    echo "Installing Nvim"
     echo "Creating nvim directory under tools directory"
 
     if [[ ! -d "$NVIM_DIR" ]]; then
@@ -187,7 +187,7 @@ if [[ ! -f "$NVIM_DIR/bin/nvim" ]]; then
     fi
 
     if [[ ! -f $NVIM_SRC_NAME ]]; then
-        echo "Downloading Neovim"
+        echo "Downloading Nvim"
         wget "$NVIM_LINK" -O "$NVIM_SRC_NAME"
     fi
     echo "Extracting neovim"
@@ -197,7 +197,7 @@ if [[ ! -f "$NVIM_DIR/bin/nvim" ]]; then
         echo "export PATH=\"$NVIM_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
     fi
 else
-    echo "Neovim is already installed. Skip installing it."
+    echo "Nvim is already installed. Skip installing it."
 fi
 
 echo "Setting up config and installing plugins"
@@ -214,4 +214,4 @@ git clone --depth=1 https://github.com/wbthomason/packer.nvim \
 echo "Installing plugins"
 "$NVIM_DIR/bin/nvim" +PackerInstall +qall
 
-echo "Finished installing Neovim and its dependencies!"
+echo "Finished installing Nvim and its dependencies!"
