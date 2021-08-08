@@ -14,3 +14,5 @@ can not remember the source of many settings.
 - https://learnvimscriptthehardway.stevelosh.com/
 - https://vimways.org/2018/from-vimrc-to-vim/
 - [vim script for Python developers](https://github.com/yegappan/VimScriptForPythonDevelopers)
+- [Awesome neovim](https://github.com/rockerBOO/awesome-neovim): extensive list of neovim resources (plugins, mostly).
+- [What is your favorite plugins for Nvim 0.5](https://www.reddit.com/r/neovim/comments/o20w3z/what_are_your_favorite_neovim_plugins_exclusive/)
