@@ -42,7 +42,7 @@ MXNet
 MacOS
 Matplotlib
 Neomake
-Neovim
+Nvim
 Numpy
 OpenCV
 PIL
@@ -298,3 +298,12 @@ Clangd
 clangd
 cheatsheet
 redis
+Disqus
+submodules
+stackoverflow
+hostname
+strftime
+shiftwidth
+whitespace
+treesitter
+linter
