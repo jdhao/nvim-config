@@ -183,7 +183,7 @@ require('packer').startup(
     -- Better git log display
     use {'rbong/vim-flog', require = 'tpope/vim-fugitive', cmd = {'Flog'}}
 
-    use 'kevinhwang91/nvim-bqf'
+    use {'kevinhwang91/nvim-bqf', config = [[require('config.bqf')]]}
 
     -- Better git commit experience
     use 'rhysd/committia.vim'
