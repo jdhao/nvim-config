@@ -382,7 +382,6 @@ let s:candidate_airlinetheme = ['ayu_mirage', 'lucius', 'ayu_dark', 'base16_brig
       \ 'sonokai']
 let s:idx = utils#RandInt(0, len(s:candidate_airlinetheme)-1)
 let s:theme = s:candidate_airlinetheme[s:idx]
-
 let g:airline_theme=s:theme
 
 " Tabline settings
@@ -417,9 +416,7 @@ let g:airline_powerline_fonts = 0
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.spell = 'Ꞩ'
 
 " Custom branch name
 let g:airline#extensions#branch#custom_head = 'utils#GetGitBranch'
