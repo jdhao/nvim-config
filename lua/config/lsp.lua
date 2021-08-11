@@ -8,7 +8,7 @@ function M.show_line_diagnostics()
   vim.lsp.diagnostic.show_line_diagnostics(opts)
 end
 
-local on_attach = function(client, bufnr)
+local custom_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -69,7 +69,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 local lspconfig = require("lspconfig")
 
 lspconfig.pylsp.setup{
-  on_attach = on_attach,
+  on_attach = custom_attach,
   settings = {
     pylsp = {
       plugins = {
@@ -88,11 +88,11 @@ lspconfig.pylsp.setup{
 }
 
 -- lspconfig.pyright.setup{
---   on_attach = on_attach,
+--   on_attach = custom_attach,
 -- }
 
 lspconfig.clangd.setup{
-  on_attach = on_attach,
+  on_attach = custom_attach,
   capabilities = capabilities,
   filetypes = { "c", "cpp", "cc" },
   flags = {
@@ -102,7 +102,7 @@ lspconfig.clangd.setup{
 
 -- set up vim-language-server
 lspconfig.vimls.setup{
-  on_attach = on_attach,
+  on_attach = custom_attach,
   flags = {
     debounce_text_changes = 500,
   }
@@ -117,7 +117,7 @@ if vim.g.is_mac > 0 or vim.g.is_linux > 0 and sumneko_binary_path ~= '' then
   table.insert(runtime_path, "lua/?/init.lua")
 
   require'lspconfig'.sumneko_lua.setup {
-    on_attach = on_attach,
+    on_attach = custom_attach,
     cmd = {sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua"};
     settings = {
       Lua = {
