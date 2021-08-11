@@ -31,7 +31,7 @@ backward compatibility is guaranteed.**
 + Fast buffer jump via [vim-sneak](https://github.com/justinmk/vim-sneak).
 + Ultra fast snippet insertion via [Ultisnips](https://github.com/SirVer/ultisnips).
 + Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
-+ Faster matching pair insertion and jump via [auto-pairs](https://github.com/jiangmiao/auto-pairs).
++ Faster matching pair insertion and jump via [delimitMate](https://github.com/Raimondi/delimitMate).
 + Beautiful status line via [vim-airline](https://github.com/vim-airline/vim-airline).
 + Asynchronous code execution via [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim).
 + Code highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
