@@ -100,6 +100,8 @@ require('packer').startup(
     use 'vim-airline/vim-airline-themes'
     use 'vim-airline/vim-airline'
 
+    use {'romgrk/barbar.nvim', config = [[require('config.barbar')]]}
+
     -- fancy start screen
     use {'mhinz/vim-startify'}
     use {'lukas-reineke/indent-blankline.nvim', config = [[require('config.indent-blankline')]]}

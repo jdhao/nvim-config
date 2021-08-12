@@ -384,18 +384,6 @@ let s:idx = utils#RandInt(0, len(s:candidate_airlinetheme)-1)
 let s:theme = s:candidate_airlinetheme[s:idx]
 let g:airline_theme=s:theme
 
-" Tabline settings
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-
-" Show buffer number for easier switching between buffer,
-" see https://github.com/vim-airline/vim-airline/issues/1149
-let g:airline#extensions#tabline#buffer_nr_show = 1
-
-" Buffer number display format
-let g:airline#extensions#tabline#buffer_nr_format = '%s. '
-
 " Whether to show function or other tags on status line
 let g:airline#extensions#vista#enabled = 1
 let g:airline#extensions#gutentags#enabled = 1
@@ -432,9 +420,6 @@ let g:airline_highlighting_cache = 1
 " and 1 means we are using English mode.
 " See also https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/xkblayout.vim#L11
 let g:airline#extensions#xkblayout#short_codes = {'0': 'CN', '1': 'US'}
-
-" Disable scrollbar
-let g:airline#extensions#scrollbar#enabled = 0
 
 """"""""""""""""""""""""""""vim-startify settings""""""""""""""""""""""""""""
 " Do not change working directory when opening files.
