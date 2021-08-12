@@ -172,7 +172,6 @@ endfunction
 " Redirect command output to a register for later processing.
 " Ref: https://stackoverflow.com/q/2573021/6064933 and https://unix.stackexchange.com/q/8101/221410 .
 function! utils#CaptureCommandOutput(command) abort
-  echomsg "command is" a:command
   redir @m
   execute a:command
   redir END
