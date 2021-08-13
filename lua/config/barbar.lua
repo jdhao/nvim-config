@@ -33,7 +33,7 @@ vim.g.bufferline = {
   icon_custom_colors = false,
 
   -- Configure icons on the bufferline.
-  icon_separator_active = '▎',
+  icon_separator_active = '',
   icon_separator_inactive = '▎',
   icon_close_tab = '',
   icon_close_tab_modified = '●',
@@ -65,4 +65,6 @@ vim.g.bufferline = {
   no_name_title = 'No name',
 }
 
-vim.cmd([[hi link BufferInactiveIndex BufferCurrentIcon]])
+vim.cmd 'hi BufferCurrent guibg=#85d3f2 guifg=#2c2e34'
+vim.cmd 'hi BufferCurrentIndex guibg=#85d3f2 guifg=#2c2e34'
+vim.cmd 'hi link BufferInactiveIndex BufferInactive'
