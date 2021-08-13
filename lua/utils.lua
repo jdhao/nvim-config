@@ -3,3 +3,15 @@
 function inspect(item)
   print(vim.inspect(item))
 end
+
+local M = {}
+
+function M.executable(name)
+  if vim.fn.executable(name) > 0 then
+    return true
+  end
+
+  return false
+end
+
+return M

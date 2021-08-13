@@ -1,9 +1,10 @@
+local utils = require('utils')
 local fn = vim.fn
 
 local packer_install_dir = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
 local plug_url_format = ''
-if vim.g.is_linux > 0 then
+if vim.g.is_linux then
   plug_url_format = 'https://hub.fastgit.org/%s'
 else
   plug_url_format = 'https://github.com/%s'
@@ -32,12 +33,12 @@ require('packer').startup(
     -- auto-completion engine
     use { 'hrsh7th/nvim-compe', event = 'InsertEnter *', config = [[require('config.compe')]] }
 
-    if (vim.g.is_mac > 0) or (vim.g.is_linux > 0) then
+    if vim.g.is_mac or vim.g.is_linux then
       use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = [[require('config.treesitter')]]}
     end
 
     -- Python syntax highlighting and more
-    if vim.g.is_win == 1 then
+    if vim.g.is_win then
       use {'numirias/semshi', ft = 'python', config = 'vim.cmd [[UpdateRemotePlugins]]'}
     end
 
@@ -48,8 +49,9 @@ require('packer').startup(
     use {'jeetsukumaran/vim-pythonsense', ft = {'python'}}
 
     use 'machakann/vim-swap'
+
     -- IDE for Lisp
-    if fn.executable('sbcl') > 0 then
+    if utils.executable('sbcl') then
       -- use 'kovisoft/slimv'
       use {'vlime/vlime', rtp = 'vim/', ft={'lisp', }}
     end
@@ -70,7 +72,7 @@ require('packer').startup(
     use 'haya14busa/vim-asterisk'
 
     -- File search, tag search and more
-    if vim.g.is_win == 1 then
+    if vim.g.is_win then
       use 'Yggdroot/LeaderF'
     else
       use {'Yggdroot/LeaderF', run = ':LeaderfInstallCExtension'}
@@ -114,13 +116,13 @@ require('packer').startup(
 
     -- For Windows and Mac, we can open an URL in the browser. For Linux, it may
     -- not be possible since we maybe in a server which disables GUI.
-    if (vim.g.is_win == 1) or (vim.g.is_mac == 1) then
+    if vim.g.is_win or vim.g.is_mac then
       -- open URL in browser
       use 'tyru/open-browser.vim'
     end
 
     -- Only install these plugins if ctags are installed on the system
-    if fn.executable('ctags') > 0 then
+    if utils.executable('ctags') then
       -- plugin to manage your tags
       use 'ludovicchabant/vim-gutentags'
       -- show file tags in vim window
@@ -147,7 +149,7 @@ require('packer').startup(
     use 'simnalamburt/vim-mundo'
 
     -- Manage your yank history
-    if (vim.g.is_win == 1) or (vim.g.is_mac == 1) then
+    if vim.g.is_win or vim.g.is_mac then
       use 'svermeulen/vim-yoink'
     end
 
@@ -161,9 +163,9 @@ require('packer').startup(
     -- Plug 'junegunn/vim-peekaboo'
     use {'jdhao/better-escape.vim', event = {'InsertEnter', }}
 
-    if vim.g.is_mac == 1 then
+    if vim.g.is_mac then
       use {'lyokha/vim-xkbswitch', event = {'InsertEnter', }}
-    elseif vim.g.is_win == 1 then
+    elseif vim.g.is_win then
       use {'Neur1n/neuims', event = {'InsertEnter', }}
     end
 
@@ -203,11 +205,11 @@ require('packer').startup(
     use {'elzr/vim-json', ft = {'json', 'markdown'}}
 
     -- Markdown previewing (only for Mac and Windows)
-    if (vim.g.is_win == 1) or (vim.g.is_mac == 1) then
+    if vim.g.is_win or vim.g.is_mac then
       use {'iamcco/markdown-preview.nvim', run = function() fn['mkdp#util#install']() end, ft = {'markdown'}}
     end
 
-    if vim.g.is_mac == 1 then
+    if vim.g.is_mac then
       use {'rhysd/vim-grammarous', ft = {'markdown', }}
     end
 
@@ -225,7 +227,7 @@ require('packer').startup(
     use 'michaeljsmith/vim-indent-object'
 
     -- Only use these plugin on Windows and Mac and when LaTeX is installed
-    if ( vim.g.is_win == 1 or vim.g.is_mac ==1 ) and fn.executable('latex') > 0 then
+    if  vim.g.is_win or vim.g.is_mac and utils.executable('latex') then
       -- vimtex use autoload feature of Vim, so it is not necessary to use `for`
       -- keyword of vim-plug to try to lazy-load it,
       -- see https://github.com/junegunn/vim-plug/issues/785
@@ -237,7 +239,7 @@ require('packer').startup(
 
     -- Since tmux is only available on Linux and Mac, we only enable these plugins
     -- for Linux and Mac
-    if fn.executable('tmux') > 0 then
+    if utils.executable('tmux') then
       -- .tmux.conf syntax highlighting and setting check
       use {'tmux-plugins/vim-tmux', ft = {'tmux', }}
     end
@@ -257,12 +259,12 @@ require('packer').startup(
     use {'cespare/vim-toml', ft = {'toml',}}
 
     -- Edit text area in browser using nvim
-    if (vim.g.is_win == 1) or (vim.g.is_mac == 1) then
+    if vim.g.is_win or vim.g.is_mac then
       use {'glacambre/firenvim', run = function() fn['firenvim#install'](0) end}
     end
 
     -- Debugger plugin
-    if (vim.g.is_win == 1) or (vim.g.is_linux == 1) then
+    if vim.g.is_win or vim.g.is_linux then
       use {'sakhnik/nvim-gdb', run = {'bash install.sh'}}
     end
 
@@ -272,7 +274,7 @@ require('packer').startup(
     -- Calculate statistics for visual selection
     use 'wgurecky/vimSum'
 
-    if vim.g.is_linux == 1 then
+    if vim.g.is_linux then
       use 'ojroques/vim-oscyank'
     end
 
