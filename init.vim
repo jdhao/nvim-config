@@ -50,7 +50,7 @@
 "}
 
 "{ Main configurations
-let g:config_file_list = ['variables.vim',
+let g:config_file_list = ['globals.vim',
   \ 'options.vim',
   \ 'autocommands.vim',
   \ 'mappings.vim',
