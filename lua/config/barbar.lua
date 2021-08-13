@@ -18,7 +18,7 @@ vim.g.bufferline = {
   clickable = true,
 
   -- Excludes buffers from the tabline
-  exclude_ft = {'javascript',},
+  exclude_ft = {'javascript', 'qf'},
   exclude_name = {'package.json'},
 
   -- Enable/disable icons
@@ -64,3 +64,5 @@ vim.g.bufferline = {
   -- where X is the buffer number. But only a static string is accepted here.
   no_name_title = 'No name',
 }
+
+vim.cmd([[hi link BufferInactiveIndex BufferCurrentIcon]])
