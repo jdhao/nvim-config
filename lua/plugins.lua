@@ -102,7 +102,7 @@ require('packer').startup(
     use 'vim-airline/vim-airline-themes'
     use 'vim-airline/vim-airline'
 
-    use {'romgrk/barbar.nvim', config = [[require('config.barbar')]]}
+    use {'akinsho/nvim-bufferline.lua', config = [[require('config.nvim-bufferline')]]}
 
     -- fancy start screen
     use {'mhinz/vim-startify'}
