@@ -25,14 +25,15 @@ backward compatibility is guaranteed.**
 
 + Plugin management via [Packer.nvim](https://github.com/wbthomason/packer.nvim).
 + Code auto-completion via [nvim-compe](https://github.com/hrsh7th/nvim-compe) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
++ Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
 + Fuzzy searching in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
 + Faster code commenting via [vim-commentary](https://github.com/tpope/vim-commentary).
++ Faster matching pair insertion and jump via [delimitMate](https://github.com/Raimondi/delimitMate).
 + Smarter and faster matching pair management (add, replace or delete) via [vim-sandwich](https://github.com/machakann/vim-sandwich).
 + Fast buffer jump via [vim-sneak](https://github.com/justinmk/vim-sneak).
 + Ultra fast snippet insertion via [Ultisnips](https://github.com/SirVer/ultisnips).
-+ Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
-+ Faster matching pair insertion and jump via [delimitMate](https://github.com/Raimondi/delimitMate).
 + Beautiful status line via [vim-airline](https://github.com/vim-airline/vim-airline).
++ Better quickfix list with [nvim-bqf](https://github.com/kevinhwang91/nvim-bqf).
 + Asynchronous code execution via [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim).
 + Code highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 + Code editing using true nvim inside browser via [firenvim](https://github.com/glacambre/firenvim).
@@ -41,12 +42,11 @@ backward compatibility is guaranteed.**
   Markdown Previewing via [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
 + Command line auto-completion via [wilder.nvim](https://github.com/gelguy/wilder.nvim).
 + Animated GUI style notification via [nvim-notify](https://github.com/rcarriga/nvim-notify).
++ Smooth scroll experience via [neoscroll](https://github.com/karb94/neoscroll.nvim).
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
-+ Source code linting via [Ale](https://github.com/dense-analysis/ale).
 + Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).
 + Undo management via [vim-mundo](https://github.com/simnalamburt/vim-mundo)
 + LaTeX editing via [vimtex](https://github.com/lervag/vimtex)[^1].
-+ Smooth scroll experience via [vim-smoothie](https://github.com/psliwka/vim-smoothie).
 + ......
 
 # Demo
