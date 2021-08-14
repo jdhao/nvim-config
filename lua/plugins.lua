@@ -248,7 +248,8 @@ require('packer').startup(
     use 'andymass/vim-matchup'
 
     -- Smoothie motions
-    use 'psliwka/vim-smoothie'
+    -- use 'psliwka/vim-smoothie'
+    use {'karb94/neoscroll.nvim', config = [[require('config.neoscroll')]]}
 
     use 'tpope/vim-scriptease'
 
