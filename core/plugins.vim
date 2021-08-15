@@ -405,6 +405,10 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.paste = 'ρ'
+if !g:is_linux
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.spell = 'Ꞩ'
+endif
 
 " Custom branch name
 let g:airline#extensions#branch#custom_head = 'utils#GetGitBranch'
