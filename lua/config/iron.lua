@@ -1,7 +1,7 @@
-local iron = require('iron')
-iron.core.set_config{
+local iron = require("iron")
+iron.core.set_config({
   preferred = {
-    python = 'ipython'
+    python = "ipython",
   },
-  repl_open_cmd = 'vertical 120 split'
-}
+  repl_open_cmd = "vertical 120 split",
+})
