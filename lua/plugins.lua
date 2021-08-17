@@ -96,6 +96,7 @@ require("packer").startup({
     use("sainnhe/gruvbox-material")
     use("shaunsingh/nord.nvim")
     use("NTBBloodbath/doom-one.nvim")
+    use("sainnhe/everforest")
 
     -- colorful status line and theme
     use("vim-airline/vim-airline-themes")
