@@ -228,9 +228,6 @@ require('packer').startup(
 
     -- Only use these plugin on Windows and Mac and when LaTeX is installed
     if  vim.g.is_win or vim.g.is_mac and utils.executable('latex') then
-      -- vimtex use autoload feature of Vim, so it is not necessary to use `for`
-      -- keyword of vim-plug to try to lazy-load it,
-      -- see https://github.com/junegunn/vim-plug/issues/785
       use {'lervag/vimtex', ft = {'tex', }}
 
       -- use {'matze/vim-tex-fold', ft = {'tex', }}
@@ -246,6 +243,8 @@ require('packer').startup(
 
     -- Modern matchit implementation
     use 'andymass/vim-matchup'
+
+    use {'ms-jpq/chadtree', branch = 'chad', run = ':CHADdeps'}
 
     -- Smoothie motions
     -- use 'psliwka/vim-smoothie'
