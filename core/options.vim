@@ -117,6 +117,7 @@ set completeopt+=menuone  " Show menu even if there is only one item
 set completeopt-=preview  " Disable the preview window
 
 set pumheight=10  " Maximum number of items to show in popup menu
+set pumblend=10  " pseudo transparency for completion menu
 
 " Insert mode key word completion setting
 set complete+=kspell complete-=w complete-=b complete-=u complete-=t
