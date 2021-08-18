@@ -63,21 +63,14 @@ onoremap <silent> F :call sneak#wrap(v:operator, 2, 1, 1, 1)<CR>
 " or previous match
 let g:sneak#s_next = 1
 
-"""""""""""""""""""""""""""""vim-anzu settings"""""""""""""""""""""""
-nmap n <Plug>(anzu-n-with-echo)zzzv
-nmap N <Plug>(anzu-N-with-echo)zzzv
+""""""""""""""""""""""""""""" settings for nvim-hlslens"""""""""""""""
+noremap <silent> n <Cmd>execute('normal! ' . v:count1 . 'nzzzv')<CR>
+            \<Cmd>lua require('hlslens').start()<CR>
+noremap <silent> N <Cmd>execute('normal! ' . v:count1 . 'Nzzzv')<CR>
+            \<Cmd>lua require('hlslens').start()<CR>
 
-" Maximum number of words to search
-let g:anzu_search_limit = 500000
-
-" Message to show for search pattern
-let g:anzu_status_format = '/%p [%i/%l]'
-
-"""""""""""""""""""""""""""""vim-asterisk settings"""""""""""""""""""""
-nmap *  <Plug>(asterisk-z*)
-nmap #  <Plug>(asterisk-z#)
-xmap *  <Plug>(asterisk-z*)
-xmap #  <Plug>(asterisk-z#)
+map *  <Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>
+map #  <Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>
 
 """""""""""""""""""""""""""""LeaderF settings"""""""""""""""""""""
 " Do not use cache file

@@ -111,6 +111,11 @@ set undofile
 " Do not show "match xx of xx" and other messages during auto-completion
 set shortmess+=c
 
+" Do not show search match count on bottom right (seriously, I would strain my
+" neck looking at it). Using plugins like vim-anzu or nvim-hlslens is a better
+" choice, IMHO.
+set shortmess+=S
+
 " Completion behaviour
 " set completeopt+=noinsert  " Auto select the first completion entry
 set completeopt+=menuone  " Show menu even if there is only one item

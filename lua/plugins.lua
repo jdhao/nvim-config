@@ -64,8 +64,8 @@ require("packer").startup({
     -- Show current search term in different color
     use("PeterRincker/vim-searchlight")
 
-    -- Show match number for incsearch
-    use("osyo-manga/vim-anzu")
+    -- Show match number for search
+    use("kevinhwang91/nvim-hlslens")
 
     -- Stay after pressing * and search selected text
     use("haya14busa/vim-asterisk")
