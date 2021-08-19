@@ -65,6 +65,7 @@ local custom_attach = function(client, bufnr)
 
   local msg = string.format("Language server %s started!", client.name)
   vim.api.nvim_echo({ { msg, "MoreMsg" } }, false, {})
+  -- vim.notify(msg, 'info', {title = 'Nvim-config', timeout = 2500})
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
