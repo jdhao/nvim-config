@@ -39,3 +39,6 @@ function s:create_term_buf(_type, size) abort
   endif
   execute 'resize ' . a:size
 endfunction
+
+" For delimitMate
+let b:delimitMate_matchpairs = "(:),[:],{:}"
