@@ -102,7 +102,7 @@ require("packer").startup({
     use("vim-airline/vim-airline-themes")
     use("vim-airline/vim-airline")
 
-    use({ "akinsho/nvim-bufferline.lua", config = [[require('config.nvim-bufferline')]] })
+    use({ "akinsho/bufferline.nvim", config = [[require('config.bufferline')]] })
 
     -- fancy start screen
     use({ "mhinz/vim-startify" })
