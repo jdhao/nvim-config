@@ -24,10 +24,10 @@ endsnippet
 snippet plist "print vector" w
 template <class T>
 void printList(const T& arr, const string& desc){
-  std::cout << desc << ": ";
+  std::cout << desc << ": [";
 
   for (auto it = arr.begin(); it != arr.end(); it++){
-    std::cout << *it << ((std::next(it) != arr.end()) ? ", " : "\n");
+    std::cout << *it << ((std::next(it) != arr.end()) ? ", " : "]\n");
   }
 }
 endsnippet
