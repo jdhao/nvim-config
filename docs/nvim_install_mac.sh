@@ -1,3 +1,4 @@
+# This script is used to update Nvim on macOS
 #!/bin/bash
 set -eux
 
