@@ -117,6 +117,8 @@ nnoremap <silent> <leader>f :<C-U>Leaderf file --popup<CR>
 nnoremap <silent> <leader>h :<C-U>Leaderf help --popup<CR>
 " Search tags in current buffer
 nnoremap <silent> <leader>t :<C-U>Leaderf bufTag --popup<CR>
+
+let g:Lf_PopupColorscheme = 'gruvbox_material'
 "}}
 
 "{{ URL related
