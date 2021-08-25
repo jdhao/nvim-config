@@ -190,7 +190,7 @@ require("packer").startup({
     use({ "kevinhwang91/nvim-bqf", config = [[require('config.bqf')]] })
 
     -- Better git commit experience
-    use("rhysd/committia.vim")
+    use({"rhysd/committia.vim", after = 'vim-fugitive'})
 
     -- Another markdown plugin
     use({ "plasticboy/vim-markdown", ft = { "markdown" } })
