@@ -248,8 +248,6 @@ require("packer").startup({
     -- Modern matchit implementation
     use("andymass/vim-matchup")
 
-    use({ "ms-jpq/chadtree", branch = "chad", run = ":CHADdeps" })
-
     -- Smoothie motions
     -- use 'psliwka/vim-smoothie'
     use({ "karb94/neoscroll.nvim", config = [[require('config.neoscroll')]] })
