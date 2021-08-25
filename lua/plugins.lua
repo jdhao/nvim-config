@@ -185,7 +185,7 @@ require("packer").startup({
     use({ "tpope/vim-fugitive", event = "User InGitRepo" })
 
     -- Better git log display
-    use({ "rbong/vim-flog", require = "tpope/vim-fugitive", cmd = { "Flog" } })
+    use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
 
     use({ "kevinhwang91/nvim-bqf", config = [[require('config.bqf')]] })
 
