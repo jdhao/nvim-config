@@ -20,8 +20,6 @@ if fn.glob(packer_install_dir) == "" then
   vim.cmd("packadd packer.nvim")
 end
 
-vim.cmd([[packadd packer.nvim]])
-
 require("packer").startup({
   function(use)
     use("wbthomason/packer.nvim")
