@@ -25,13 +25,13 @@ require("packer").startup({
     use("wbthomason/packer.nvim")
 
     -- nvim-lsp configuration
-    use({ "neovim/nvim-lspconfig", config = [[require('config.lsp')]] })
+    use({ "neovim/nvim-lspconfig", event = 'VimEnter', config = [[require('config.lsp')]] })
 
     -- auto-completion engine
     use({ "hrsh7th/nvim-compe", event = "InsertEnter *", config = [[require('config.compe')]] })
 
     if vim.g.is_mac or vim.g.is_linux then
-      use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = [[require('config.treesitter')]] })
+      use({ "nvim-treesitter/nvim-treesitter", event = 'BufEnter', run = ":TSUpdate", config = [[require('config.treesitter')]] })
     end
 
     -- Python syntax highlighting and more
@@ -45,7 +45,7 @@ require("packer").startup({
     -- Python-related text object
     use({ "jeetsukumaran/vim-pythonsense", ft = { "python" } })
 
-    use("machakann/vim-swap")
+    use({"machakann/vim-swap", event = "VimEnter"})
 
     -- IDE for Lisp
     if utils.executable("sbcl") then
@@ -54,25 +54,25 @@ require("packer").startup({
     end
 
     -- Super fast movement with vim-sneak
-    use("justinmk/vim-sneak")
+    use({"justinmk/vim-sneak", event = "VimEnter"})
 
     -- Clear highlight search automatically for you
-    use("romainl/vim-cool")
+    use({"romainl/vim-cool", event = "VimEnter"})
 
     -- Show current search term in different color
-    use("PeterRincker/vim-searchlight")
+    use({"PeterRincker/vim-searchlight", event = "VimEnter"})
 
     -- Show match number for search
-    use("kevinhwang91/nvim-hlslens")
+    use({"kevinhwang91/nvim-hlslens", event = 'VimEnter'})
 
     -- Stay after pressing * and search selected text
-    use("haya14busa/vim-asterisk")
+    use({"haya14busa/vim-asterisk", event = 'VimEnter'})
 
     -- File search, tag search and more
     if vim.g.is_win then
-      use("Yggdroot/LeaderF")
+      use({"Yggdroot/LeaderF", cmd = "Leaderf"})
     else
-      use({ "Yggdroot/LeaderF", run = ":LeaderfInstallCExtension" })
+      use({ "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension" })
     end
 
     -- Another similar plugin is command-t
@@ -100,62 +100,62 @@ require("packer").startup({
     use("vim-airline/vim-airline-themes")
     use("vim-airline/vim-airline")
 
-    use({ "akinsho/bufferline.nvim", config = [[require('config.bufferline')]] })
+    use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('config.bufferline')]] })
 
     -- fancy start screen
     use({ "mhinz/vim-startify" })
-    use({ "lukas-reineke/indent-blankline.nvim", config = [[require('config.indent-blankline')]] })
+    use({ "lukas-reineke/indent-blankline.nvim", event = "VimEnter", config = [[require('config.indent-blankline')]] })
 
     -- Highlight URLs inside vim
-    use("itchyny/vim-highlighturl")
+    use({"itchyny/vim-highlighturl", event = "VimEnter"})
 
     -- notification plugin
-    use({ "rcarriga/nvim-notify", config = 'vim.notify = require("notify")' })
+    use({ "rcarriga/nvim-notify", event = "VimEnter", config = 'vim.notify = require("notify")' })
 
     -- For Windows and Mac, we can open an URL in the browser. For Linux, it may
     -- not be possible since we maybe in a server which disables GUI.
     if vim.g.is_win or vim.g.is_mac then
       -- open URL in browser
-      use("tyru/open-browser.vim")
+      use({"tyru/open-browser.vim", event = "VimEnter"})
     end
 
     -- Only install these plugins if ctags are installed on the system
     if utils.executable("ctags") then
       -- plugin to manage your tags
-      use("ludovicchabant/vim-gutentags")
+      use({"ludovicchabant/vim-gutentags", event = "VimEnter"})
       -- show file tags in vim window
-      use("liuchengxu/vista.vim")
+      use({"liuchengxu/vista.vim", event = "VimEnter"})
     end
 
     -- Snippet engine and snippet template
-    use("SirVer/ultisnips")
-    use({ "honza/vim-snippets", event = { "InsertEnter" } })
+    use({"SirVer/ultisnips", event = 'InsertEnter'})
+    use({ "honza/vim-snippets", after = 'ultisnips'})
 
     -- Automatic insertion and deletion of a pair of characters
-    use("Raimondi/delimitMate")
+    use({"Raimondi/delimitMate", event = "InsertEnter"})
 
     -- Comment plugin
-    use("tpope/vim-commentary")
+    use({"tpope/vim-commentary", event = "VimEnter"})
 
     -- Multiple cursor plugin like Sublime Text?
     -- use 'mg979/vim-visual-multi'
 
     -- Autosave files on certain events
-    use("907th/vim-auto-save")
+    use({"907th/vim-auto-save", event = "VimEnter"})
 
     -- Show undo history visually
-    use("simnalamburt/vim-mundo")
+    use({"simnalamburt/vim-mundo", event = "VimEnter"})
 
     -- Manage your yank history
     if vim.g.is_win or vim.g.is_mac then
-      use("svermeulen/vim-yoink")
+      use({"svermeulen/vim-yoink", event = "VimEnter"})
     end
 
     -- Handy unix command inside Vim (Rename, Move etc.)
-    use("tpope/vim-eunuch")
+    use({"tpope/vim-eunuch", event = "VimEnter"})
 
     -- Repeat vim motions
-    use("tpope/vim-repeat")
+    use({"tpope/vim-repeat", event = "VimEnter"})
 
     -- Show the content of register in preview window
     -- Plug 'junegunn/vim-peekaboo'
@@ -175,7 +175,7 @@ require("packer").startup({
     -- use 'Chiel92/vim-autoformat'
 
     -- Show git change (change, delete, add) signs in vim sign column
-    use("mhinz/vim-signify")
+    use({"mhinz/vim-signify", event = 'User InGitRepo'})
     -- Another similar plugin
     -- use 'airblade/vim-gitgutter'
 
@@ -185,7 +185,7 @@ require("packer").startup({
     -- Better git log display
     use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
 
-    use({ "kevinhwang91/nvim-bqf", config = [[require('config.bqf')]] })
+    use({ "kevinhwang91/nvim-bqf", event = "VimEnter", config = [[require('config.bqf')]] })
 
     -- Better git commit experience
     use("rhysd/committia.vim")
@@ -217,18 +217,18 @@ require("packer").startup({
       use({ "rhysd/vim-grammarous", ft = { "markdown" } })
     end
 
-    use("chrisbra/unicode.vim")
+    use({"chrisbra/unicode.vim", event = "VimEnter"})
 
     -- Additional powerful text object for vim, this plugin should be studied
     -- carefully to use its full power
-    use("wellle/targets.vim")
+    use({"wellle/targets.vim", event = "VimEnter"})
 
     -- Plugin to manipulate character pairs quickly
     -- use 'tpope/vim-surround'
-    use("machakann/vim-sandwich")
+    use({"machakann/vim-sandwich", event = "VimEnter"})
 
     -- Add indent object for vim (useful for languages like Python)
-    use("michaeljsmith/vim-indent-object")
+    use({"michaeljsmith/vim-indent-object", event = "VimEnter"})
 
     -- Only use these plugin on Windows and Mac and when LaTeX is installed
     if vim.g.is_win or vim.g.is_mac and utils.executable("latex") then
@@ -246,13 +246,13 @@ require("packer").startup({
     end
 
     -- Modern matchit implementation
-    use("andymass/vim-matchup")
+    use({"andymass/vim-matchup", event = "VimEnter"})
 
     -- Smoothie motions
     -- use 'psliwka/vim-smoothie'
-    use({ "karb94/neoscroll.nvim", config = [[require('config.neoscroll')]] })
+    use({ "karb94/neoscroll.nvim", event = "VimEnter", config = [[require('config.neoscroll')]] })
 
-    use("tpope/vim-scriptease")
+    use({"tpope/vim-scriptease", event = "VimEnter"})
 
     -- Asynchronous command execution
     use({ "skywind3000/asyncrun.vim", opt = true, cmd = { "AsyncRun" } })
@@ -276,20 +276,20 @@ require("packer").startup({
     end
 
     -- Session management plugin
-    use("tpope/vim-obsession")
+    use({"tpope/vim-obsession", event = 'VimEnter'})
 
     -- Calculate statistics for visual selection
     use("wgurecky/vimSum")
 
     if vim.g.is_linux then
-      use("ojroques/vim-oscyank")
+      use({"ojroques/vim-oscyank", event = 'VimEnter'})
     end
 
     -- REPL for nvim
-    use({ "hkupty/iron.nvim", config = [[require('config.iron')]] })
+    use({ "hkupty/iron.nvim", event = 'BufEnter', config = [[require('config.iron')]] })
 
     -- Show register content
-    use("tversteeg/registers.nvim")
+    use({"tversteeg/registers.nvim", event = 'BufEnter'})
 
     -- The missing auto-completion for cmdline!
     use("gelguy/wilder.nvim")
