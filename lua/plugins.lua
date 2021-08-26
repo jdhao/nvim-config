@@ -85,16 +85,16 @@ require("packer").startup({
     -- use {'mhinz/vim-grepper', cmd = {'Grepper', '<plug>(GrepperOperator)'}}
 
     -- A list of colorscheme plugin you may want to try. Find what suits you.
-    use("lifepillar/vim-gruvbox8")
-    use("ajmwagar/vim-deus")
-    use("lifepillar/vim-solarized8")
-    use("navarasu/onedark.nvim")
-    use("sainnhe/edge")
-    use("sainnhe/sonokai")
-    use("sainnhe/gruvbox-material")
-    use("shaunsingh/nord.nvim")
-    use("NTBBloodbath/doom-one.nvim")
-    use("sainnhe/everforest")
+    use({"lifepillar/vim-gruvbox8", event = 'VimEnter'})
+    use({"ajmwagar/vim-deus", event = 'VimEnter'})
+    use({"lifepillar/vim-solarized8", event = 'VimEnter'})
+    use({"navarasu/onedark.nvim", event = 'VimEnter'})
+    use({"sainnhe/edge", event = 'VimEnter'})
+    use({"sainnhe/sonokai", event = 'VimEnter'})
+    use({"sainnhe/gruvbox-material", event = 'VimEnter'})
+    use({"shaunsingh/nord.nvim", event = 'VimEnter'})
+    use({"NTBBloodbath/doom-one.nvim", event = 'VimEnter'})
+    use({"sainnhe/everforest", event = 'VimEnter'})
 
     -- colorful status line and theme
     use("vim-airline/vim-airline-themes")
