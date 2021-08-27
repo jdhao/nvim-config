@@ -279,7 +279,7 @@ require("packer").startup({
     use({"tpope/vim-obsession", event = 'VimEnter'})
 
     -- Calculate statistics for visual selection
-    use("wgurecky/vimSum")
+    use({"wgurecky/vimSum", event = "BufEnter"})
 
     if vim.g.is_linux then
       use({"ojroques/vim-oscyank", event = 'VimEnter'})
