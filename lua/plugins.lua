@@ -30,7 +30,7 @@ require("packer").startup({
     -- auto-completion engine
     use({ "hrsh7th/nvim-compe", event = "InsertEnter *", config = [[require('config.compe')]] })
 
-    if vim.g.is_mac or vim.g.is_linux then
+    if vim.g.is_mac then
       use({ "nvim-treesitter/nvim-treesitter", event = 'BufEnter', run = ":TSUpdate", config = [[require('config.treesitter')]] })
     end
 
