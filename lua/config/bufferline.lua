@@ -1,8 +1,6 @@
 require("bufferline").setup({
   options = {
     numbers = "buffer_id",
-    number_style = "superscript",
-    mappings = false,
     close_command = "bdelete! %d",
     right_mouse_command = nil,
     left_mouse_command = "buffer %d",
