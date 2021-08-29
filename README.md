@@ -26,6 +26,7 @@ backward compatibility is guaranteed.**
 + Plugin management via [Packer.nvim](https://github.com/wbthomason/packer.nvim).
 + Code auto-completion via [nvim-compe](https://github.com/hrsh7th/nvim-compe) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
 + Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
++ Better escaping from insert mode via [better-escape.vim](https://github.com/jdhao/better-escape.vim).
 + Fuzzy searching in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
 + Faster code commenting via [vim-commentary](https://github.com/tpope/vim-commentary).
 + Faster matching pair insertion and jump via [delimitMate](https://github.com/Raimondi/delimitMate).
@@ -46,7 +47,7 @@ backward compatibility is guaranteed.**
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
 + Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).
 + Undo management via [vim-mundo](https://github.com/simnalamburt/vim-mundo)
-+ LaTeX editing via [vimtex](https://github.com/lervag/vimtex)[^1].
++ LaTeX editing via [vimtex](https://github.com/lervag/vimtex) <sup id="a1">[1](#f1)</sup>.
 + ......
 
 # Demo
@@ -117,7 +118,7 @@ represents ASCII character `,`.
 | `ob`              | Normal/Visual | macOS/Win       | Open link under cursor or search visual selection                                                    |
 | `ctrl-u`          | Insert        | Linux/macOS/Win | Turn word under cursor to upper case                                                                 |
 | `ctrl-t`          | Insert        | Linux/macOS/Win | Turn word under cursor to title case                                                                 |
-| `jk`              | Insert        | Linux/macOS/Win | Return to Normal mode [without lagging](https://github.com/jdhao/better-escape.vim) (faster `<ESC>`) |
+| `jk`              | Insert        | Linux/macOS/Win | Return to Normal mode without lagging|
 
 # Trouble shooting
 
@@ -136,4 +137,4 @@ You may also be interested in my post in configuring Vim on different platforms:
 + [Nvim config on Windows 10](https://jdhao.github.io/2018/11/15/neovim_configuration_windows/)
 + [Nvim-qt config on Windows 10](https://jdhao.github.io/2019/01/17/nvim_qt_settings_on_windows/)
 
-[^1]: Not enabled by default for Linux, see [this issue](https://github.com/jdhao/nvim-config/issues/4) on how to enable vimtex on Linux.
+<b id="f1">1:</b> Not enabled by default for Linux, see [this issue](https://github.com/jdhao/nvim-config/issues/4) on how to enable vimtex on Linux. [↩](#a1)
