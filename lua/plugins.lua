@@ -213,6 +213,8 @@ require("packer").startup({
       })
     end
 
+    use({'folke/zen-mode.nvim', event = 'VimEnter', config = [[require('config.zen-mode')]]})
+
     if vim.g.is_mac then
       use({ "rhysd/vim-grammarous", ft = { "markdown" } })
     end
