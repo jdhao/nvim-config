@@ -13,11 +13,3 @@ require("zen-mode").setup({
     },
   },
 })
-
--- start ZenMode automatically for Markdown
-vim.cmd([[
-  augroup auto_zen
-    autocmd!
-    autocmd FileType Markdown ZenMode
-  augroup END
-]])
