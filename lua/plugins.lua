@@ -1,7 +1,7 @@
 local utils = require("utils")
 local fn = vim.fn
 
-local packer_install_dir = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local packer_install_dir = fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
 
 local plug_url_format = ""
 if vim.g.is_linux then
@@ -17,12 +17,14 @@ local install_cmd = string.format("10split |term git clone --depth=1 %s %s", pac
 if fn.glob(packer_install_dir) == "" then
   vim.api.nvim_echo({ { "Installing packer.nvim", "Type" } }, true, {})
   vim.cmd(install_cmd)
-  vim.cmd("packadd packer.nvim")
 end
+
+-- Load packer.nvim
+vim.cmd("packadd packer.nvim")
 
 require("packer").startup({
   function(use)
-    use("wbthomason/packer.nvim")
+    use({"wbthomason/packer.nvim", opt = true})
 
     -- nvim-lsp configuration
     use({ "neovim/nvim-lspconfig", event = 'VimEnter', config = [[require('config.lsp')]] })
@@ -96,14 +98,19 @@ require("packer").startup({
     use({"NTBBloodbath/doom-one.nvim", event = 'VimEnter'})
     use({"sainnhe/everforest", event = 'VimEnter'})
 
+    -- Show git change (change, delete, add) signs in vim sign column
+    use({"mhinz/vim-signify", event = 'BufEnter'})
+    -- Another similar plugin
+    -- use 'airblade/vim-gitgutter'
+
     -- colorful status line and theme
-    use("vim-airline/vim-airline-themes")
-    use("vim-airline/vim-airline")
+    use({"vim-airline/vim-airline-themes", event = 'VimEnter', opt = true})
+    use({"vim-airline/vim-airline", after = 'vim-airline-themes', opt = true})
 
     use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('config.bufferline')]] })
 
     -- fancy start screen
-    use({ "mhinz/vim-startify" })
+    use({ "mhinz/vim-startify", opt = true, setup = [[vim.cmd('packadd vim-startify')]]})
     use({ "lukas-reineke/indent-blankline.nvim", event = "VimEnter", config = [[require('config.indent-blankline')]] })
 
     -- Highlight URLs inside vim
@@ -174,11 +181,6 @@ require("packer").startup({
     use({ "sbdchd/neoformat", cmd = { "Neoformat" } })
     -- use 'Chiel92/vim-autoformat'
 
-    -- Show git change (change, delete, add) signs in vim sign column
-    use({"mhinz/vim-signify", event = 'User InGitRepo'})
-    -- Another similar plugin
-    -- use 'airblade/vim-gitgutter'
-
     -- Git command inside vim
     use({ "tpope/vim-fugitive", event = "User InGitRepo" })
 
@@ -188,7 +190,7 @@ require("packer").startup({
     use({ "kevinhwang91/nvim-bqf", event = "VimEnter", config = [[require('config.bqf')]] })
 
     -- Better git commit experience
-    use("rhysd/committia.vim")
+    use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
 
     -- Another markdown plugin
     use({ "plasticboy/vim-markdown", ft = { "markdown" } })
@@ -274,7 +276,7 @@ require("packer").startup({
 
     -- Debugger plugin
     if vim.g.is_win or vim.g.is_linux then
-      use({ "sakhnik/nvim-gdb", run = { "bash install.sh" } })
+      use({ "sakhnik/nvim-gdb", run = { "bash install.sh" }, opt = true, setup = [[vim.cmd('packadd nvim-gdb')]] })
     end
 
     -- Session management plugin
