@@ -34,11 +34,11 @@ fi
 if [[ "$INSTALL_ANACONDA" = true ]]; then
     CONDA_DIR=$HOME/tools/anaconda
     CONDA_NAME=Anaconda.sh
-    CONDA_LINK="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2019.10-Linux-x86_64.sh"
+    CONDA_LINK="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2021.05-Linux-x86_64.sh"
 else
     CONDA_DIR=$HOME/tools/miniconda
     CONDA_NAME=Miniconda.sh
-    CONDA_LINK="https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh"
+    CONDA_LINK="https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh"
 fi
 
 if [[ ! "$PYTHON_INSTALLED" = true ]]; then
@@ -92,7 +92,7 @@ fi
 NODE_DIR=$HOME/tools/nodejs
 NODE_SRC_NAME=$HOME/packages/nodejs.tar.gz
 # when download speed is slow, we can also use its mirror site: https://mirrors.ustc.edu.cn/node/v15.0.0/
-NODE_LINK="https://nodejs.org/dist/v14.15.4/node-v14.15.4-linux-x64.tar.xz"
+NODE_LINK="https://mirrors.ustc.edu.cn/node/v15.0.0/node-v15.0.0-linux-x64.tar.xz"
 if [[ -z "$(command -v node)" ]]; then
     echo "Install Nodejs"
     if [[ ! -f $NODE_SRC_NAME ]]; then
@@ -122,7 +122,7 @@ fi
 #######################################################################
 RIPGREP_DIR=$HOME/tools/ripgrep
 RIPGREP_SRC_NAME=$HOME/packages/ripgrep.tar.gz
-RIPGREP_LINK="https://github.com/BurntSushi/ripgrep/releases/download/12.0.0/ripgrep-12.0.0-x86_64-unknown-linux-musl.tar.gz"
+RIPGREP_LINK="https://hub.fastgit.org/BurntSushi/ripgrep/releases/download/12.0.0/ripgrep-12.0.0-x86_64-unknown-linux-musl.tar.gz"
 if [[ -z "$(command -v rg)" ]] && [[ ! -f "$RIPGREP_DIR/rg" ]]; then
     echo "Install ripgrep"
     if [[ ! -f $RIPGREP_SRC_NAME ]]; then
@@ -149,7 +149,7 @@ fi
 #######################################################################
 CTAGS_SRC_DIR=$HOME/packages/ctags
 CTAGS_DIR=$HOME/tools/ctags
-CTAGS_LINK="https://github.com/universal-ctags/ctags.git"
+CTAGS_LINK="https://hub.fastgit.org/universal-ctags/ctags.git"
 if [[ ! -f "$CTAGS_DIR/bin/ctags" ]]; then
     echo "Install ctags"
 
@@ -177,7 +177,7 @@ fi
 NVIM_DIR=$HOME/tools/nvim
 NVIM_SRC_NAME=$HOME/packages/nvim-linux64.tar.gz
 NVIM_CONFIG_DIR=$HOME/.config/nvim
-NVIM_LINK="https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
+NVIM_LINK="https://hub.fastgit.org/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
 if [[ ! -f "$NVIM_DIR/bin/nvim" ]]; then
     echo "Installing Nvim"
     echo "Creating nvim directory under tools directory"
@@ -205,10 +205,10 @@ if [[ -d "$NVIM_CONFIG_DIR" ]]; then
     mv "$NVIM_CONFIG_DIR" "$NVIM_CONFIG_DIR.backup"
 fi
 
-git clone --depth=1 https://github.com/jdhao/nvim-config.git "$NVIM_CONFIG_DIR"
+git clone --depth=1 https://hub.fastgit.org/jdhao/nvim-config.git "$NVIM_CONFIG_DIR"
 
 echo "Installing packer.nvim"
-git clone --depth=1 https://github.com/wbthomason/packer.nvim \
+git clone --depth=1 https://hub.fastgit.org/wbthomason/packer.nvim \
     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 echo "Installing plugins"
