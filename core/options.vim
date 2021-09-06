@@ -26,6 +26,15 @@ endif
 " Disable creating swapfiles, see https://stackoverflow.com/q/821902/6064933
 set noswapfile
 
+" Ignore certain files and folders when globing
+set wildignore+=*.o,*.obj,*.dylib,*.bin,*.dll,*.exe
+set wildignore+=*/.git/*,*/.svn/*,*/__pycache__/*,*/build/**
+set wildignore+=*.jpg,*.png,*.jpeg,*.bmp,*.gif,*.tiff,*.svg,*.ico
+set wildignore+=*.pyc,*.pkl
+set wildignore+=*.DS_Store
+set wildignore+=*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex.gz,*.xdv
+set wildignorecase  " ignore file and dir name cases in cmd-completion
+
 " Set up backup directory
 let g:backupdir=expand(stdpath('data') . '/backup')
 if !isdirectory(g:backupdir)
@@ -33,6 +42,8 @@ if !isdirectory(g:backupdir)
 endif
 let &backupdir=g:backupdir
 
+" Skip backup for patterns in option wildignore
+let &backupskip=&wildignore
 set backup  " create backup for files
 set backupcopy=yes  " copy the original file to backupdir and overwrite it
 
@@ -75,15 +86,6 @@ set noshowmode
 set fileformats=unix,dos  " Fileformats to use for new files
 
 set inccommand=nosplit  " Show the result of substitution in real time for preview
-
-" Ignore certain files and folders when globing
-set wildignore+=*.o,*.obj,*.bin,*.dll,*.exe
-set wildignore+=*/.git/*,*/.svn/*,*/__pycache__/*,*/build/**
-set wildignore+=*.jpg,*.png,*.jpeg,*.bmp,*.gif,*.tiff,*.svg,*.ico
-set wildignore+=*.pyc
-set wildignore+=*.DS_Store
-set wildignore+=*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex.gz,*.xdv
-set wildignorecase  " ignore file and dir name cases in cmd-completion
 
 " Ask for confirmation when handling unsaved or read-only files
 set confirm
