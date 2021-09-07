@@ -262,7 +262,8 @@ require("packer").startup({
     use({ "skywind3000/asyncrun.vim", opt = true, cmd = { "AsyncRun" } })
     -- Another asynchronous plugin
     -- Plug 'tpope/vim-dispatch'
-    use({ "cespare/vim-toml", ft = { "toml" } })
+
+    use({ "cespare/vim-toml", ft = { "toml" }, branch = "main" })
 
     -- Edit text area in browser using nvim
     if vim.g.is_win or vim.g.is_mac then
