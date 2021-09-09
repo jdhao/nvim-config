@@ -479,11 +479,6 @@ endif
 """"""""""""""""""""""""""""""nvim-gdb settings""""""""""""""""""""""""""""""
 nnoremap <leader>dp :<C-U>GdbStartPDB python -m pdb %<CR>
 
-""""""""""""""""""""""""""""""register.nvim settings""""""""""""""""""""""""""""""
-let g:registers_show_empty_registers = 0
-let g:registers_window_border = 'single'
-let g:registers_window_max_width = 80
-
 """"""""""""""""""""""""""""""wilder.nvim settings""""""""""""""""""""""""""""""
 call wilder#enable_cmdline_enter()
 set wildcharm=<Tab>
