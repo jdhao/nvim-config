@@ -4,6 +4,7 @@ function M.show_line_diagnostics()
   local opts = {
     focusable = false,
     close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+    border = 'single'
   }
   vim.lsp.diagnostic.show_line_diagnostics(opts)
 end
