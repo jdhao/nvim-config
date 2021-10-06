@@ -65,10 +65,6 @@ endfunction
 
 function! s:my_theme_dict.doom_one() dict abort
   packadd! doom-one.nvim
-
-  let g:doom_one_terminal_color = v:true
-  let g:doom_one_italic_comments = v:true
-  let g:doom_one_cursor_coloring = v:true
   colorscheme doom-one
 endfunction
 
