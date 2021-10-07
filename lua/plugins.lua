@@ -298,6 +298,9 @@ require("packer").startup({
 
     -- The missing auto-completion for cmdline!
     use("gelguy/wilder.nvim")
+
+    -- showing keybindings
+    use {"folke/which-key.nvim", config = [[require('config.which-key')]]}
   end,
   config = {
     max_jobs = 16,
