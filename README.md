@@ -18,8 +18,8 @@ add it to your own Nvim config.
 See [doc here](docs/README.md) on how to install Nvim's dependencies, Nvim
 itself, and how to set up on different platforms (Linux, macOS and Windows).
 
-**This config is always tested against the latest nvim master release. No
-backward compatibility is guaranteed.**
+**This config is tested against Nvim 0.5.0 release. No backward compatibility
+is guaranteed.**
 
 # Features #
 
