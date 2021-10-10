@@ -13,7 +13,7 @@ set splitbelow splitright
 
 " Time in milliseconds to wait for a mapped sequence to complete,
 " see https://unix.stackexchange.com/q/36882/221410 for more info
-set timeoutlen=500
+set timeoutlen=1000
 
 set updatetime=1000  " For CursorHold events
 
