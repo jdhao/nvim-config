@@ -76,14 +76,22 @@ function! s:my_theme_dict.everforest() dict abort
   colorscheme everforest
 endfunction
 
-let s:candidate_theme = ['gruvbox8', 'deus', 'solarized8', 'onedark',
-      \ 'edge', 'sonokai', 'gruvbox_material', 'nord', 'doom_one', 'everforest']
-let s:idx = utils#RandInt(0, len(s:candidate_theme)-1)
-let s:theme = s:candidate_theme[s:idx]
+function! s:my_theme_dict.nightfox() dict abort
+  packadd! nightfox
 
+  colorscheme nordfox
+endfunction
+
+let s:candidate_theme = ['gruvbox8', 'deus', 'solarized8', 'onedark',
+      \ 'edge', 'sonokai', 'gruvbox_material', 'nord', 'doom_one', 'everforest',
+      \ 'nightfox']
+
+let s:theme = utils#RandElement(s:candidate_theme)
 let s:colorscheme_func = printf('s:my_theme_dict.%s()', s:theme)
+
 if has_key(s:my_theme_dict, s:theme)
   execute 'call ' . s:colorscheme_func
+  echomsg "Currently loaded theme:" s:theme
 else
   let s:msg = "Invalid colorscheme function: " . s:colorscheme_func
   call v:lua.vim.notify(s:msg, 'error', {'title': 'nvim-config', 'timeout': 2500})

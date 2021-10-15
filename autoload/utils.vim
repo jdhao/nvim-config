@@ -49,6 +49,13 @@ function! utils#RandInt(Low, High) abort
   return v:lua.math.random(a:Low, a:High)
 endfunction
 
+" Selection a random element from a sequence/list
+function! utils#RandElement(seq) abort
+  let l:idx = utils#RandInt(0, len(a:seq)-1)
+
+  return a:seq[l:idx]
+endfunction
+
 " Custom fold expr, adapted from https://vi.stackexchange.com/a/9094/15292
 function! utils#VimFolds(lnum) abort
   " get content of current line and the line below
