@@ -97,6 +97,7 @@ require("packer").startup({
     use({"shaunsingh/nord.nvim", event = 'VimEnter'})
     use({"NTBBloodbath/doom-one.nvim", event = 'VimEnter'})
     use({"sainnhe/everforest", event = 'VimEnter'})
+    use({"EdenEast/nightfox.nvim", event = 'VimEnter'})
 
     -- Show git change (change, delete, add) signs in vim sign column
     use({"mhinz/vim-signify", event = 'BufEnter'})
