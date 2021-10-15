@@ -77,7 +77,7 @@ function! s:my_theme_dict.everforest() dict abort
 endfunction
 
 function! s:my_theme_dict.nightfox() dict abort
-  packadd! nightfox
+  packadd! nightfox.nvim
 
   colorscheme nordfox
 endfunction
