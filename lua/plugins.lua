@@ -149,7 +149,7 @@ require("packer").startup({
     -- use 'mg979/vim-visual-multi'
 
     -- Autosave files on certain events
-    use({"907th/vim-auto-save", event = "VimEnter"})
+    use({"Pocco81/AutoSave.nvim", event = "VimEnter", config = [[require('config.autosave')]]})
 
     -- Show undo history visually
     use({"simnalamburt/vim-mundo", event = "VimEnter"})
