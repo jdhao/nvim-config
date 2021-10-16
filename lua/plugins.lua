@@ -294,9 +294,6 @@ require("packer").startup({
     -- REPL for nvim
     use({ "hkupty/iron.nvim", event = 'BufEnter', config = [[require('config.iron')]] })
 
-    -- Show register content
-    use({"tversteeg/registers.nvim", event = 'BufEnter', config = [[require('config.registers-nvim')]]})
-
     -- The missing auto-completion for cmdline!
     use("gelguy/wilder.nvim")
 
