@@ -27,7 +27,7 @@ is guaranteed.**
 + Code auto-completion via [nvim-compe](https://github.com/hrsh7th/nvim-compe) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
 + Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
 + Better escaping from insert mode via [better-escape.vim](https://github.com/jdhao/better-escape.vim).
-+ Fuzzy searching in current project quickly via [LeaderF](https://github.com/Yggdroot/LeaderF).
++ Ultra-fast project-wide fuzzy searching via [LeaderF](https://github.com/Yggdroot/LeaderF).
 + Faster code commenting via [vim-commentary](https://github.com/tpope/vim-commentary).
 + Faster matching pair insertion and jump via [delimitMate](https://github.com/Raimondi/delimitMate).
 + Smarter and faster matching pair management (add, replace or delete) via [vim-sandwich](https://github.com/machakann/vim-sandwich).
@@ -35,13 +35,12 @@ is guaranteed.**
 + Ultra fast snippet insertion via [Ultisnips](https://github.com/SirVer/ultisnips).
 + Beautiful status line via [vim-airline](https://github.com/vim-airline/vim-airline).
 + Better quickfix list with [nvim-bqf](https://github.com/kevinhwang91/nvim-bqf).
++ Command line auto-completion via [wilder.nvim](https://github.com/gelguy/wilder.nvim).
 + Asynchronous code execution via [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim).
 + Code highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 + Code editing using true nvim inside browser via [firenvim](https://github.com/glacambre/firenvim).
 + Color theme via [vim-gruvbox8](https://github.com/lifepillar/vim-gruvbox8) and other beautiful themes.
-+ Markdown writing and syntax highlighting via [vim-markdown](https://github.com/plasticboy/vim-markdown),
-  Markdown Previewing via [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
-+ Command line auto-completion via [wilder.nvim](https://github.com/gelguy/wilder.nvim).
++ Markdown writing and previewing via [vim-markdown](https://github.com/plasticboy/vim-markdown) and [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
 + Animated GUI style notification via [nvim-notify](https://github.com/rcarriga/nvim-notify).
 + Smooth scroll experience via [neoscroll](https://github.com/karb94/neoscroll.nvim).
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
@@ -93,9 +92,10 @@ represents ASCII character `,`.
 
 | Shortcut          | Mode          | platform        | Description                                                      |
 |-------------------|---------------|-----------------|------------------------------------------------------------------|
-| `<leader>f`       | Normal        | Linux/macOS/Win | Fuzzy file search in a floating window                           |
-| `<leader>h`       | Normal        | Linux/macOS/Win | Fuzzy help search in a floating window                           |
-| `<leader>t`       | Normal        | Linux/macOS/Win | Fuzzy buffer tag search in a floating window                     |
+| `<leader>ff`      | Normal        | Linux/macOS/Win | Fuzzy file searching in a floating window                        |
+| `<leader>fh`      | Normal        | Linux/macOS/Win | Fuzzy help file grepping in a floating window                    |
+| `<leader>ft`      | Normal        | Linux/macOS/Win | Fuzzy buffer tag searching in a floating window                  |
+| `<leader>fb`      | Normal        | Linux/macOS/Win | Fuzzy buffer switching in a floating window                      |
 | `<leader><Space>` | Normal        | Linux/macOS/Win | Remove trailing white spaces                                     |
 | `<leader>v`       | Normal        | Linux/macOS/Win | Reselect last pasted text                                        |
 | `<leader>ev`      | Normal        | Linux/macOS/Win | Edit Nvim config in a new tabpage                                |
@@ -117,7 +117,8 @@ represents ASCII character `,`.
 | `\x`              | Normal        | Linux/macOS/Win | Close location or quickfix window                                |
 | `\d`              | Normal        | Linux/macOS/Win | Close current buffer and go to previous buffer                   |
 | `{count}gb`       | Normal        | Linux/macOS/Win | Go to buffer {count}  or next buffer in the buffer list.         |
-| `Alt-M`           | Normal        | macOS/Win       | Render Markdown to HTML and open it in system browser            |
+| `Alt-m`           | Normal        | macOS/Win       | Markdown previewing in system browser                            |
+| `Alt-Shift-m`     | Normal        | macOS/Win       | Stopping Markdown previewing in system browser                   |
 | `ob`              | Normal/Visual | macOS/Win       | Open link under cursor or search visual selection                |
 | `ctrl-u`          | Insert        | Linux/macOS/Win | Turn word under cursor to upper case                             |
 | `ctrl-t`          | Insert        | Linux/macOS/Win | Turn word under cursor to title case                             |
