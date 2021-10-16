@@ -125,8 +125,8 @@ tnoremap <ESC>   <C-\><C-n>
 
 " Toggle spell checking (autosave does not play well with z=, so we disable it
 " when we are doing spell checking)
-nnoremap <silent> <F11> :<C-U>set spell! <bar> :AutoSaveToggle<cr>
-inoremap <silent> <F11> <C-O>:<C-U>set spell! <bar> :AutoSaveToggle<cr>
+nnoremap <silent> <F11> :<C-U>set spell!<cr>
+inoremap <silent> <F11> <C-O>:<C-U>set spell!<cr>
 
 " Decrease indent level in insert mode with shift+tab
 inoremap <S-Tab> <ESC><<i
