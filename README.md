@@ -35,6 +35,7 @@ is guaranteed.**
 + Ultra fast snippet insertion via [Ultisnips](https://github.com/SirVer/ultisnips).
 + Beautiful status line via [vim-airline](https://github.com/vim-airline/vim-airline).
 + Better quickfix list with [nvim-bqf](https://github.com/kevinhwang91/nvim-bqf).
++ Show search index and count with [nvim-hlslens](https://github.com/kevinhwang91/nvim-hlslens).
 + Command line auto-completion via [wilder.nvim](https://github.com/gelguy/wilder.nvim).
 + Asynchronous code execution via [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim).
 + Code highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
