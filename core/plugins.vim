@@ -112,11 +112,19 @@ let g:Lf_ShortcutB = ''
 let g:Lf_WorkingDirectoryMode = 'a'
 
 " Search files in popup window
-nnoremap <silent> <leader>f :<C-U>Leaderf file --popup<CR>
+nnoremap <silent> <leader>ff :<C-U>Leaderf file --popup<CR>
+
+" Grep project files in popup window
+nnoremap <silent> <leader>fg :<C-U>Leaderf rg --popup<CR>
+
 " Search vim help files
-nnoremap <silent> <leader>h :<C-U>Leaderf help --popup<CR>
+nnoremap <silent> <leader>fh :<C-U>Leaderf help --popup<CR>
+
 " Search tags in current buffer
-nnoremap <silent> <leader>t :<C-U>Leaderf bufTag --popup<CR>
+nnoremap <silent> <leader>ft :<C-U>Leaderf bufTag --popup<CR>
+
+" Switch buffers
+nnoremap <silent> <leader>fb :<C-U>Leaderf buffer --popup<CR>
 
 let g:Lf_PopupColorscheme = 'gruvbox_material'
 "}}
