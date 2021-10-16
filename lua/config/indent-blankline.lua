@@ -1,2 +1,7 @@
-vim.g.indent_blankline_char = "│"
-vim.g.indent_blankline_filetype_exclude = { "help", "startify", "git", "markdown" }
+require("indent_blankline").setup {
+  char = "|",
+  show_end_of_line = false,
+  disable_with_nolist = true,
+  buftype_exclude = {"terminal"},
+  filetype_exclude = { "help", "startify", "git", "markdown" },
+}
