@@ -130,6 +130,7 @@ set pumblend=10  " pseudo transparency for completion menu
 set complete+=kspell complete-=w complete-=b complete-=u complete-=t
 
 set spelllang=en,cjk  " Spell languages
+set spellsuggest+=9  " show 9 spell suggestions at most
 
 " Align indent to next multiple value of shiftwidth. For its meaning,
 " see http://vim.1045645.n5.nabble.com/shiftround-option-td5712100.html
