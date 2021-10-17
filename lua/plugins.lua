@@ -57,6 +57,7 @@ require("packer").startup({
 
     -- Super fast movement with vim-sneak
     use({"justinmk/vim-sneak", event = "VimEnter"})
+    use { 'phaazon/hop.nvim', as = 'hop', config = [[require('hop').setup()]] }
 
     -- Clear highlight search automatically for you
     use({"romainl/vim-cool", event = "VimEnter"})
