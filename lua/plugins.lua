@@ -77,6 +77,13 @@ require("packer").startup({
       use({ "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension" })
     end
 
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    -- search emoji and other symbols
+    use 'nvim-telescope/telescope-symbols.nvim'
+
     -- Another similar plugin is command-t
     -- use 'wincent/command-t'
 
