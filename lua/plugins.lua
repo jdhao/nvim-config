@@ -27,10 +27,16 @@ require("packer").startup({
     use({"wbthomason/packer.nvim", opt = true})
 
     -- nvim-lsp configuration
-    use({ "neovim/nvim-lspconfig", event = 'VimEnter', config = [[require('config.lsp')]] })
+    use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] })
 
     -- auto-completion engine
-    use({ "hrsh7th/nvim-compe", event = "InsertEnter *", config = [[require('config.compe')]] })
+    use {"hrsh7th/nvim-cmp", event = "InsertEnter", config = [[require('config.nvim-cmp')]]}
+
+    -- nvim-cmp completion sources
+    use {"hrsh7th/cmp-nvim-lsp", event = "VimEnter"}
+    use {"hrsh7th/cmp-path", after = "nvim-cmp"}
+    use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
+    use {"hrsh7th/cmp-emoji", after = 'nvim-cmp'}
 
     if vim.g.is_mac then
       use({ "nvim-treesitter/nvim-treesitter", event = 'BufEnter', run = ":TSUpdate", config = [[require('config.treesitter')]] })
@@ -57,7 +63,7 @@ require("packer").startup({
 
     -- Super fast movement with vim-sneak
     use({"justinmk/vim-sneak", event = "VimEnter"})
-    use { 'phaazon/hop.nvim', as = 'hop', config = [[require('hop').setup()]] }
+    use { 'phaazon/hop.nvim', event = "VimEnter", config = [[require('hop').setup()]] }
 
     -- Clear highlight search automatically for you
     use({"romainl/vim-cool", event = "VimEnter"})
@@ -306,7 +312,7 @@ require("packer").startup({
     use("gelguy/wilder.nvim")
 
     -- showing keybindings
-    use {"folke/which-key.nvim", config = [[require('config.which-key')]]}
+    use {"folke/which-key.nvim", event = "VimEnter", config = [[require('config.which-key')]]}
   end,
   config = {
     max_jobs = 16,

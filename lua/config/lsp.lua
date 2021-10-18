@@ -66,7 +66,7 @@ local custom_attach = function(client, bufnr)
   -- vim.notify(msg, 'info', {title = 'Nvim-config', timeout = 2500})
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require("lspconfig")
@@ -88,10 +88,12 @@ lspconfig.pylsp.setup({
   flags = {
     debounce_text_changes = 200,
   },
+  capabilities = capabilities,
 })
 
 -- lspconfig.pyright.setup{
 --   on_attach = custom_attach,
+--   capabilities = capabilities
 -- }
 
 lspconfig.clangd.setup({
@@ -109,6 +111,7 @@ lspconfig.vimls.setup({
   flags = {
     debounce_text_changes = 500,
   },
+  capabilities = capabilities,
 })
 
 local sumneko_binary_path = vim.fn.exepath("lua-language-server")
@@ -144,6 +147,7 @@ if vim.g.is_mac or vim.g.is_linux and sumneko_binary_path ~= "" then
         },
       },
     },
+    capabilities = capabilities,
   })
 end
 
