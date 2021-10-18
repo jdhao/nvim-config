@@ -26,14 +26,15 @@ require("packer").startup({
   function(use)
     use({"wbthomason/packer.nvim", opt = true})
 
-    -- nvim-lsp configuration
-    use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] })
-
     -- auto-completion engine
-    use {"hrsh7th/nvim-cmp", event = "InsertEnter", config = [[require('config.nvim-cmp')]]}
+    use {"hrsh7th/nvim-cmp", event = "BufEnter", config = [[require('config.nvim-cmp')]]}
 
     -- nvim-cmp completion sources
-    use {"hrsh7th/cmp-nvim-lsp", event = "VimEnter"}
+    use {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp"}
+
+    -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
+    use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] })
+
     use {"hrsh7th/cmp-path", after = "nvim-cmp"}
     use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
     use {"hrsh7th/cmp-emoji", after = 'nvim-cmp'}
