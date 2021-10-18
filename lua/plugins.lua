@@ -132,7 +132,7 @@ require("packer").startup({
     use({"itchyny/vim-highlighturl", event = "VimEnter"})
 
     -- notification plugin
-    use({ "rcarriga/nvim-notify", event = "VimEnter", config = 'vim.notify = require("notify")' })
+    use({ "rcarriga/nvim-notify", event = "BufEnter", config = [[require('config.nvim-notify')]] })
 
     -- For Windows and Mac, we can open an URL in the browser. For Linux, it may
     -- not be possible since we maybe in a server which disables GUI.

@@ -15,7 +15,7 @@ function! buf_utils#GoToBuffer(count, direction) abort
     " we are essentially mixing Lua and vim script. We need to make sure that
     " args inside vim.notify() are valid vim values. The conversion from vim
     " value to lua value will be done by Nvim. See also https://github.com/neovim/neovim/pull/11338.
-    call v:lua.vim.notify('Invalid bufnr: ' . a:count, 'error', {'title': 'nvim-config', 'timeout': 2500})
+    call v:lua.vim.notify('Invalid bufnr: ' . a:count, 'error', {'title': 'nvim-config'})
     return
   endif
 

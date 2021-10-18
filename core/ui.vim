@@ -91,10 +91,11 @@ let s:colorscheme_func = printf('s:my_theme_dict.%s()', s:theme)
 
 if has_key(s:my_theme_dict, s:theme)
   execute 'call ' . s:colorscheme_func
-  echomsg "Currently loaded theme:" s:theme
+  let s:msg1 = "Currently loaded theme: " . s:theme
+  call v:lua.vim.notify(s:msg1, 'info', {'title': 'nvim-config'})
 else
   let s:msg = "Invalid colorscheme function: " . s:colorscheme_func
-  call v:lua.vim.notify(s:msg, 'error', {'title': 'nvim-config', 'timeout': 2500})
+  call v:lua.vim.notify(s:msg, 'error', {'title': 'nvim-config'})
 endif
 "}}
 "}
