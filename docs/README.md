@@ -1,20 +1,20 @@
 # Pre-requisite
 
-There are a few dependencies if we want to use Nvim for efficient editing
-and development work.
+There are a few dependencies if we want to use Nvim for efficient editing and
+development work.
 
 ## Python
 
-A lot of Nvim plugins are mainly written in Python. To use auto-completion
-and other features, we must install Python 3. The easiest way to install is via
-[Anaconda](https://www.anaconda.com/distribution/#download-section) or[Miniconda](https://docs.conda.io/en/latest/miniconda.html). Make sure that you
-can run `python --version`, and that the output should be Python 3.x.
+A lot of Nvim plugins are mainly written in Python. To use auto-completion and
+other features, we must install Python 3. The easiest way to install is via
+[Anaconda](https://www.anaconda.com/distribution/#download-section) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html). Make sure that
+you can run `python --version`, and that the output should be Python 3.x.
 
 ## Pynvim
 
 Nvim relies on [pynvim](https://github.com/neovim/pynvim) to communicate with
 plugins that utilize its Python binding. Pynvim is required by plugins such as
-[Deoplete](https://github.com/Shougo/deoplete.nvim) and [Semshi](https://github.com/numirias/semshi).
+[Semshi](https://github.com/numirias/semshi).
 
 ```
 pip install -U pynvim
@@ -22,7 +22,7 @@ pip install -U pynvim
 
 ## python-lsp-server
 
-[python-lsp-server](https://github.com/python-lsp/python-lsp-server) is the community-fork of pyls, and it is a Python Language Server for completion,
+[python-lsp-server](https://github.com/python-lsp/python-lsp-server) is the community-fork of [pyls](https://github.com/palantir/python-language-server), and it is a Python Language Server for completion,
 linting, go to definition, etc.
 
 ```
@@ -69,19 +69,16 @@ export PATH="$HOME/.npm-packages/bin:$PATH"
 
 ## Git
 
-Git is used by the plugin manager packer.nvim to download plugins from GitHub
-or other Git repositories.
+Git is used by the plugin manager packer.nvim to clone plugins from GitHub or
+other Git repositories.
 
 Since Git is usually pre-installed on Linux and macOS, we do not need to worry
-if we are on these two platforms. For Windows, install [Git for
-Windows](https://git-scm.com/download/win) and make sure you can call `git`
-from the command line.
+if we are on these two platforms. For Windows, install [Git for Windows](https://git-scm.com/download/win)
+and make sure you can call `git` from the command line.
 
 ## ctags
 
-In order to use tags related plugins such as
-[tagbar](/github.com/majutsushi/tagbar) and
-[gutentags](https://github.com/ludovicchabant/vim-gutentags), we need to
+In order to use tags related plugins such as [vista.vim](https://github.com/liuchengxu/vista.vim) and [gutentags](https://github.com/ludovicchabant/vim-gutentags), we need to
 install a ctags distribution. Universal-ctags is preferred.
 
 To install ctags on macOS, use [Homebrew](https://github.com/universal-ctags/homebrew-universal-ctags):
@@ -90,10 +87,13 @@ To install ctags on macOS, use [Homebrew](https://github.com/universal-ctags/hom
 brew install ctags
 ```
 
-To install it Windows, [use chocolatey](https://chocolatey.org/packages/universal-ctags):
+To install it Windows, use [chocolatey](https://chocolatey.org/) or [scoop](https://scoop.sh/)
 
 ```
 choco install universal-ctags
+
+# scoop bucket add extras
+# scoop install univeral-ctags
 ```
 
 To install it on Linux, we need to build it from source. See [here](https://askubuntu.com/a/836521/768311)
@@ -120,11 +120,6 @@ various linters.
 + Python: [pylint](https://github.com/PyCQA/pylint) and [flake8](https://github.com/PyCQA/flake8).
 + Vim script: [vint](https://github.com/Kuniwak/vint).
 
-For other linters, please consult the plugin documentation. For
-[ALE](https://github.com/dense-analysis/ale) (which is the linting plugin I
-currently use), a list of linters for different languages is
-listed [here](https://github.com/dense-analysis/ale/blob/master/supported-tools.md).
-
 ## Terminal emulators
 
 Which [terminal emulator](https://en.wikipedia.org/wiki/Terminal_emulator) we
@@ -132,62 +127,51 @@ choose to use greatly affects the appearance and functionalities of Nvim.
 Since Nvim supports true colors, terminals that support true colors are
 preferred. For a list of terminals that support true colors, see [here](https://github.com/termstandard/colors).
 
-For macOS, we can use [iterm2](https://www.iterm2.com/), [kitty](https://sw.kovidgoyal.net/kitty/) or [Alacritty](https://github.com/jwilm/alacritty).
+For macOS, we can use [kitty](https://sw.kovidgoyal.net/kitty/), [iterm2](https://www.iterm2.com/), or [Alacritty](https://github.com/jwilm/alacritty).
 If you connect to Linux server on Windows, I recommend [wsltty](https://github.com/mintty/wsltty) and
 [Cygwin](https://www.cygwin.com/), both of them use [mintty](https://github.com/mintty/mintty) as the terminal emulator.
 
-For Windows 10, you can use the new [Windows Terminal](https://github.com/microsoft/terminal).
+For the latest version of Windows 10, you can also try the new [Windows
+Terminal](https://github.com/microsoft/terminal).
 
 ## Font
 
 Since [Vim-airline](https://github.com/vim-airline/vim-airline) uses several
 Unicode symbols not available in normal font, we need to install [fonts
-here](https://github.com/powerline/fonts) to make vim-airline look pretty. I am
-using [Hack](https://github.com/powerline/fonts/tree/master/Hack), and it looks
-great. Another great resource for programming font is the
-[nerd-font](https://github.com/ryanoasis/nerd-fonts) project.
+here](https://github.com/powerline/fonts) to make vim-airline look pretty. I am using [Hack](https://github.com/powerline/fonts/tree/master/Hack), and it looks
+great. Another great resource for programming font is the [nerd-font](https://github.com/ryanoasis/nerd-fonts) project.
 
 # Install Nvim
 
-There are various ways to install Nvim based on your system. Note that some
-of plugins I use require Nvim master. It is recommended to use the nightly
-version of nvim.
+There are various ways to install Nvim depending on your system. Current
+configuration is tested against nvim 0.5.
 
 ## Linux
 
-We can directly download the binary release from [here](https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz).
+We can directly download the binary release from [here](https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-linux64.tar.gz).
 
 ## Windows
 
-The easiest way to install Nvim on Windows is via chocolatey. First, install
-chocolatey. Then we can install neovim easily using the following command:
+The easiest way to install Nvim on Windows is via chocolatey:
 
 ```
-# install the latest version of neovim
-# choco install neovim --pre
-
 choco install neovim
 ```
 
-The Nvim that chocolatey installs may not be up to date. To use the
-cutting-edge features of Nvim, you may download [the nightly
-release](https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip) from GitHub and manually extract it.
+You may download from [nvim release](https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-win64.zip) from GitHub and manually extract it.
 
 ## macOS
 
 It is recommended to install neovim via [Homebrew](https://brew.sh/) on macOS.
 Simply run the following command:
 
-```
+```bash
 brew install neovim
-# If you want to install the latest version of neovim, use the following
-# command instead.
-# brew install --HEAD neovim
 ```
 
-After installing Nvim, we need to add the directory where the Nvim
-executable (`nvim` on Linux and macOS, `nvim.exe` on Windows) resides to the
-system `PATH`.
+After installing Nvim, we need to add the directory where the Nvim executable
+(`nvim` on Linux and macOS, `nvim.exe` on Windows) resides to the system
+`PATH`.
 
 Make sure that you can call `nvim` from the command line after all these
 setups.
@@ -222,21 +206,22 @@ directory, and run the following command to install this configuration:
 git clone --depth=1 https://github.com/jdhao/nvim-config.git .
 ```
 
-After that, when we first open nvim, use `:PackerInstall` to install all the
-plugins. Since I use quite a lot of plugins (more than 60), it may take some
-time to install all of them, depending on your network condition.
+After that, when we first open nvim, run command `:PackerInstall` to install
+all the plugins. Since I use quite a lot of plugins (more than 60), it may take
+some time to install all of them, depending on your network condition.
 
-# Automatic Installation for Linux #
+# Automatic installation
 
-To set up a workable Nvim environment in Linux, I use the bash script
-[`nvim_setup_linux.sh`](nvim_setup_linux.sh) to automatically install necessary
+## Automatic Installation for Linux #
+
+To set up a workable Nvim environment on Linux, I use [this bash script](nvim_setup_linux.sh) to automatically install necessary
 dependencies, Nvim itself and Nvim configs in this repo.
 
 Note that the variable `PYTHON_INSTALLED`, `SYSTEM_PYTHON` and
 `ADD_TO_SYSTEM_PATH` in the script should be set properly based on your
 environment.
 
-# Automatic installation for Windows
+## Automatic installation for Windows
 
 Run script [nvim_setup_windows.ps1](nvim_setup_windows.ps1) under PowerShell.
 

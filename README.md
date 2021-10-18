@@ -28,14 +28,14 @@ is guaranteed.**
 # Features #
 
 + Plugin management via [Packer.nvim](https://github.com/wbthomason/packer.nvim).
-+ Code auto-completion via [nvim-compe](https://github.com/hrsh7th/nvim-compe) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
++ Code auto-completion via [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
 + Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
 + Better escaping from insert mode via [better-escape.vim](https://github.com/jdhao/better-escape.vim).
 + Ultra-fast project-wide fuzzy searching via [LeaderF](https://github.com/Yggdroot/LeaderF).
 + Faster code commenting via [vim-commentary](https://github.com/tpope/vim-commentary).
 + Faster matching pair insertion and jump via [delimitMate](https://github.com/Raimondi/delimitMate).
 + Smarter and faster matching pair management (add, replace or delete) via [vim-sandwich](https://github.com/machakann/vim-sandwich).
-+ Fast buffer jump via [vim-sneak](https://github.com/justinmk/vim-sneak).
++ Fast buffer jump via [hop.nvim](https://github.com/phaazon/hop.nvim).
 + Ultra fast snippet insertion via [Ultisnips](https://github.com/SirVer/ultisnips).
 + Beautiful status line via [vim-airline](https://github.com/vim-airline/vim-airline).
 + Better quickfix list with [nvim-bqf](https://github.com/kevinhwang91/nvim-bqf).
@@ -81,7 +81,7 @@ is guaranteed.**
 <img src="https://user-images.githubusercontent.com/16662357/128589584-4036a1a2-2e0a-4bbe-8aaf-ff8b91644648.jpg" width="800">
 </p>
 
-## Cursor jump via vim-sneak
+## Cursor jump via hop.nvim
 
 Go to a string starting with `se`
 
