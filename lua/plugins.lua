@@ -61,9 +61,8 @@ require("packer").startup({
       use({ "vlime/vlime", rtp = "vim/", ft = { "lisp" } })
     end
 
-    -- Super fast movement with vim-sneak
-    use({"justinmk/vim-sneak", event = "VimEnter"})
-    use { 'phaazon/hop.nvim', event = "VimEnter", config = [[require('hop').setup()]] }
+    -- Super fast buffer jump
+    use { 'phaazon/hop.nvim', event = "VimEnter", config = [[require('config.nvim_hop')]] }
 
     -- Clear highlight search automatically for you
     use({"romainl/vim-cool", event = "VimEnter"})

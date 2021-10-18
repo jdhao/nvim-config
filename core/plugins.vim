@@ -48,21 +48,6 @@ command! -nargs=0 StartVlime call jobstart(printf("sbcl --load %s/vlime/lisp/sta
 "}}
 
 "{{ Search related
-"""""""""""""""""""""""""""""vim-sneak settings"""""""""""""""""""""""
-" Use sneak label mode
-let g:sneak#label = 1
-
-nmap f <Plug>Sneak_s
-xmap f <Plug>Sneak_s
-onoremap <silent> f :call sneak#wrap(v:operator, 2, 0, 1, 1)<CR>
-nmap F <Plug>Sneak_S
-xmap F <Plug>Sneak_S
-onoremap <silent> F :call sneak#wrap(v:operator, 2, 1, 1, 1)<CR>
-
-" Immediately after entering sneak mode, you can press f and F to go to next
-" or previous match
-let g:sneak#s_next = 1
-
 """"""""""""""""""""""""""""" settings for nvim-hlslens"""""""""""""""
 noremap <silent> n <Cmd>execute('normal! ' . v:count1 . 'nzzzv')<CR>
             \<Cmd>lua require('hlslens').start()<CR>
