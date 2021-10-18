@@ -1,6 +1,10 @@
-<p align="center">
-<img src="https://user-images.githubusercontent.com/16662357/128589722-322bb97f-f460-4fc2-ba50-a707225d8adc.gif" width="800">
-</p>
+```
+███    ██ ██    ██ ██ ███    ███      ██████  ██████  ███    ██ ███████ ██  ██████
+████   ██ ██    ██ ██ ████  ████     ██      ██    ██ ████   ██ ██      ██ ██
+██ ██  ██ ██    ██ ██ ██ ████ ██     ██      ██    ██ ██ ██  ██ █████   ██ ██   ███
+██  ██ ██  ██  ██  ██ ██  ██  ██     ██      ██    ██ ██  ██ ██ ██      ██ ██    ██
+██   ████   ████   ██ ██      ██      ██████  ██████  ██   ████ ██      ██  ██████
+```
 
 # Introduction
 
@@ -52,6 +56,12 @@ is guaranteed.**
 + ......
 
 # Demo
+
+## Fuzzy file finding
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/16662357/128589722-322bb97f-f460-4fc2-ba50-a707225d8adc.gif" width="800">
+</p>
 
 ## Autocompletion
 

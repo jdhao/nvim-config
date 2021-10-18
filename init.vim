@@ -1,17 +1,3 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"        _   _       _                  _____             __ _               "
-"       | \ | |     (_)                / ____|           / _(_)              "
-"       |  \| |_   ___ _ __ ___       | |     ___  _ __ | |_ _  __ _         "
-"       | . ` \ \ / / | '_ ` _ \      | |    / _ \| '_ \|  _| |/ _` |        "
-"       | |\  |\ V /| | | | | | |     | |___| (_) | | | | | | | (_| |        "
-"       |_| \_| \_/ |_|_| |_| |_|      \_____\___/|_| |_|_| |_|\__, |        "
-"                                                               __/ |        "
-"                                                              |___/         "
-"                                                                            "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" The above ASCII art is generated using service provided in this webpage:
-" https://www.kammerl.de/ascii/AsciiSignature.php.
-
 "{ Header info
 " Description: This is my personal Nvim configuration supporting Mac, Linux
 " and Windows, with various plugins configured. This configuration evolves as
