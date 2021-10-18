@@ -128,9 +128,6 @@ tnoremap <ESC>   <C-\><C-n>
 nnoremap <silent> <F11> :<C-U>set spell!<cr>
 inoremap <silent> <F11> <C-O>:<C-U>set spell!<cr>
 
-" Decrease indent level in insert mode with shift+tab
-inoremap <S-Tab> <ESC><<i
-
 " Change text without putting it into the vim register,
 " see https://stackoverflow.com/q/54255/6064933
 nnoremap c "_c
