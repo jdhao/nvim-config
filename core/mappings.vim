@@ -24,7 +24,7 @@ nnoremap <silent> <leader>w :<C-U>update<CR>
 " Saves the file if modified and quit
 nnoremap <silent> <leader>q :<C-U>x<CR>
 " Quit all opened buffers
-nnoremap <silent> <leader>Q :<C-U>qa<CR>
+nnoremap <silent> <leader>Q :<C-U>qa!<CR>
 
 " Navigation in the location and quickfix list
 nnoremap <silent> [l :<C-U>lprevious<CR>zv
@@ -76,13 +76,6 @@ nnoremap H ^
 xnoremap H ^
 nnoremap L g_
 xnoremap L g_
-
-" Fast window switching, inspiration from
-" https://stackoverflow.com/a/4373470/6064933
-nnoremap <M-left> <C-w>h
-nnoremap <M-right> <C-w>l
-nnoremap <M-down> <C-w>j
-nnoremap <M-up> <C-w>k
 
 " Continuous visual shifting (does not exit Visual mode), `gv` means
 " to reselect previous visual area, see https://superuser.com/q/310417/736190
