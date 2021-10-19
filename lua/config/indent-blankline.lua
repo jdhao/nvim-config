@@ -5,3 +5,11 @@ require("indent_blankline").setup {
   buftype_exclude = {"terminal"},
   filetype_exclude = { "help", "startify", "git", "markdown" },
 }
+
+vim.cmd[[
+augroup indent_blankline
+  autocmd!
+  autocmd InsertEnter * IndentBlanklineDisable
+  autocmd InsertLeave * IndentBlanklineEnable
+augroup END
+]]
