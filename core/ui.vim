@@ -14,17 +14,11 @@ function! s:my_theme_dict.gruvbox8() dict abort
   colorscheme gruvbox8_hard
 endfunction
 
-function! s:my_theme_dict.deus() dict abort
-  packadd! vim-deus
+function! s:my_theme_dict.solarized() dict abort
+  packadd! nvim-solarized-lua
 
-  colorscheme deus
-endfunction
-
-function! s:my_theme_dict.solarized8() dict abort
-  packadd! vim-solarized8
-  let g:solarized_term_italics=1
-  let g:solarized_visibility='high'
-  colorscheme solarized8_high
+  " Load the colorsheme
+  colorscheme solarized-high
 endfunction
 
 function! s:my_theme_dict.onedark() dict abort
@@ -82,7 +76,7 @@ function! s:my_theme_dict.nightfox() dict abort
   colorscheme nordfox
 endfunction
 
-let s:candidate_theme = ['gruvbox8', 'deus', 'solarized8', 'onedark',
+let s:candidate_theme = ['gruvbox8', 'solarized', 'onedark',
       \ 'edge', 'sonokai', 'gruvbox_material', 'nord', 'doom_one', 'everforest',
       \ 'nightfox']
 
