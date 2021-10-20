@@ -102,16 +102,16 @@ require("packer").startup({
     -- use {'mhinz/vim-grepper', cmd = {'Grepper', '<plug>(GrepperOperator)'}}
 
     -- A list of colorscheme plugin you may want to try. Find what suits you.
-    use({"lifepillar/vim-gruvbox8", event = 'VimEnter'})
-    use({"ishan9299/nvim-solarized-lua", event = 'VimEnter'})
-    use({"navarasu/onedark.nvim", event = 'VimEnter'})
-    use({"sainnhe/edge", event = 'VimEnter'})
-    use({"sainnhe/sonokai", event = 'VimEnter'})
-    use({"sainnhe/gruvbox-material", event = 'VimEnter'})
-    use({"shaunsingh/nord.nvim", event = 'VimEnter'})
-    use({"NTBBloodbath/doom-one.nvim", event = 'VimEnter'})
-    use({"sainnhe/everforest", event = 'VimEnter'})
-    use({"EdenEast/nightfox.nvim", event = 'VimEnter'})
+    use({"lifepillar/vim-gruvbox8", opt = true})
+    use({"ishan9299/nvim-solarized-lua", opt = true})
+    use({"navarasu/onedark.nvim", opt = true})
+    use({"sainnhe/edge", opt = true})
+    use({"sainnhe/sonokai", opt = true})
+    use({"sainnhe/gruvbox-material", opt = true})
+    use({"shaunsingh/nord.nvim", opt = true})
+    use({"NTBBloodbath/doom-one.nvim", opt = true})
+    use({"sainnhe/everforest", opt = true})
+    use({"EdenEast/nightfox.nvim", opt = true})
 
     -- Show git change (change, delete, add) signs in vim sign column
     use({"mhinz/vim-signify", event = 'BufEnter'})
@@ -166,7 +166,7 @@ require("packer").startup({
     use({"Pocco81/AutoSave.nvim", event = "VimEnter", config = [[require('config.autosave')]]})
 
     -- Show undo history visually
-    use({"simnalamburt/vim-mundo", event = "VimEnter"})
+    use({"simnalamburt/vim-mundo", cmd = {"MundoToggle", "MundoShow"}})
 
     -- Manage your yank history
     if vim.g.is_win or vim.g.is_mac then
@@ -174,7 +174,7 @@ require("packer").startup({
     end
 
     -- Handy unix command inside Vim (Rename, Move etc.)
-    use({"tpope/vim-eunuch", event = "VimEnter"})
+    use({"tpope/vim-eunuch", cmd = {"Rename", "Delete"}})
 
     -- Repeat vim motions
     use({"tpope/vim-repeat", event = "VimEnter"})
@@ -202,7 +202,7 @@ require("packer").startup({
     -- Better git log display
     use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
 
-    use({ "kevinhwang91/nvim-bqf", event = "VimEnter", config = [[require('config.bqf')]] })
+    use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = [[require('config.bqf')]] })
 
     -- Better git commit experience
     use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
@@ -230,7 +230,7 @@ require("packer").startup({
       })
     end
 
-    use({'folke/zen-mode.nvim', event = 'VimEnter', config = [[require('config.zen-mode')]]})
+    use({'folke/zen-mode.nvim', cmd = 'ZenMode', config = [[require('config.zen-mode')]]})
 
     if vim.g.is_mac then
       use({ "rhysd/vim-grammarous", ft = { "markdown" } })
@@ -271,7 +271,7 @@ require("packer").startup({
     -- use 'psliwka/vim-smoothie'
     use({ "karb94/neoscroll.nvim", event = "VimEnter", config = [[require('config.neoscroll')]] })
 
-    use({"tpope/vim-scriptease", event = "VimEnter"})
+    use({"tpope/vim-scriptease", cmd = {"Scriptnames", "Message", "Verbose"}})
 
     -- Asynchronous command execution
     use({ "skywind3000/asyncrun.vim", opt = true, cmd = { "AsyncRun" } })
@@ -284,9 +284,9 @@ require("packer").startup({
     if vim.g.is_win or vim.g.is_mac then
       use({
         "glacambre/firenvim",
-        run = function()
-          fn["firenvim#install"](0)
-        end,
+        run = function() fn["firenvim#install"](0) end,
+        opt = true,
+        setup = [[vim.cmd('packadd firenvim')]],
       })
     end
 
@@ -296,20 +296,20 @@ require("packer").startup({
     end
 
     -- Session management plugin
-    use({"tpope/vim-obsession", event = 'VimEnter'})
+    use({"tpope/vim-obsession", cmd = 'Obsession'})
 
     -- Calculate statistics for visual selection
     use({"wgurecky/vimSum", event = "BufEnter"})
 
     if vim.g.is_linux then
-      use({"ojroques/vim-oscyank", event = 'VimEnter'})
+      use({"ojroques/vim-oscyank", cmd = {'OSCYank', 'OSCYankReg'}})
     end
 
     -- REPL for nvim
     use({ "hkupty/iron.nvim", event = 'BufEnter', config = [[require('config.iron')]] })
 
     -- The missing auto-completion for cmdline!
-    use("gelguy/wilder.nvim")
+    use({"gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]]})
 
     -- showing keybindings
     use {"folke/which-key.nvim", event = "VimEnter", config = [[require('config.which-key')]]}
