@@ -1,7 +1,8 @@
 local utils = require("utils")
 local fn = vim.fn
 
-local packer_install_dir = fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
+vim.g.package_home = fn.stdpath("data") .. "/site/pack/packer/"
+local packer_install_dir = vim.g.package_home .. "/opt/packer.nvim"
 
 local plug_url_format = ""
 if vim.g.is_linux then

@@ -43,7 +43,7 @@ let g:semshi#mark_selected_nodes=0
 let g:semshi#error_sign=v:false
 
 """""""""""""""""""""""""" vlime settings """"""""""""""""""""""""""""""""
-command! -nargs=0 StartVlime call jobstart(printf("sbcl --load %s/vlime/lisp/start-vlime.lisp", g:plug_home))
+command! -nargs=0 StartVlime call jobstart(printf("sbcl --load %s/vlime/lisp/start-vlime.lisp", g:package_home))
 
 "}}
 
