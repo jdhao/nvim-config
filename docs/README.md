@@ -186,13 +186,13 @@ plugins. We need to install packer.nvim on our system first.
 For Windows, if curl is installed, use the following command (on PowerShell):
 
 ```
-git clone --depth=1 https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
+git clone --depth=1 https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\opt\packer.nvim"
 ```
 
 For macOS and Linux, use the following command:
 
 ```bash
-git clone --depth=1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+git clone --depth=1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/opt/packer.nvim
 ```
 
 ## How to install this configuration
