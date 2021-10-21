@@ -127,7 +127,6 @@ require("packer").startup({
     use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('config.bufferline')]] })
 
     -- fancy start screen
-    use({ "mhinz/vim-startify", opt = true, setup = [[vim.cmd('packadd vim-startify')]]})
     use({ "lukas-reineke/indent-blankline.nvim", event = "VimEnter", config = [[require('config.indent-blankline')]] })
 
     -- Highlight URLs inside vim
@@ -148,7 +147,7 @@ require("packer").startup({
       -- plugin to manage your tags
       use({"ludovicchabant/vim-gutentags", event = "VimEnter"})
       -- show file tags in vim window
-      use({"liuchengxu/vista.vim", event = "VimEnter"})
+      use({"liuchengxu/vista.vim", cmd = "Vista"})
     end
 
     -- Snippet engine and snippet template
@@ -306,9 +305,6 @@ require("packer").startup({
     if vim.g.is_linux then
       use({"ojroques/vim-oscyank", cmd = {'OSCYank', 'OSCYankReg'}})
     end
-
-    -- REPL for nvim
-    use({ "hkupty/iron.nvim", event = 'BufEnter', config = [[require('config.iron')]] })
 
     -- The missing auto-completion for cmdline!
     use({"gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]]})
