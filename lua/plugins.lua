@@ -38,7 +38,9 @@ require("packer").startup({
 
     use {"hrsh7th/cmp-path", after = "nvim-cmp"}
     use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
-    use {"hrsh7th/cmp-emoji", after = 'nvim-cmp'}
+    if vim.g.is_mac then
+      use {"hrsh7th/cmp-emoji", after = 'nvim-cmp'}
+    end
 
     if vim.g.is_mac then
       use({ "nvim-treesitter/nvim-treesitter", event = 'BufEnter', run = ":TSUpdate", config = [[require('config.treesitter')]] })
