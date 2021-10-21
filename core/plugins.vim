@@ -373,12 +373,10 @@ endif
 " Set airline theme to a random one if it exists
 let s:candidate_airlinetheme = ['ayu_mirage', 'lucius', 'ayu_dark', 'base16_bright',
       \ 'base16_adwaita', 'raven', 'term', 'deus', 'onedark']
-let s:idx = utils#RandInt(0, len(s:candidate_airlinetheme)-1)
-let s:theme = s:candidate_airlinetheme[s:idx]
-let g:airline_theme=s:theme
+let g:airline_theme = utils#RandElement(s:candidate_airlinetheme)
 
 " Whether to show function or other tags on status line
-let g:airline#extensions#vista#enabled = 1
+let g:airline#extensions#vista#enabled = 0
 let g:airline#extensions#gutentags#enabled = 1
 
 " Do not show search index in statusline since it is shown on command line
@@ -386,6 +384,8 @@ let g:airline#extensions#anzu#enabled = 0
 
 " Enable vim-airline extension for nvim-lsp
 let g:airline#extensions#nvimlsp#enabled = 1
+
+let g:airline#extensions#searchcount#enabled = 0
 
 " Skip empty sections if there are nothing to show,
 " extracted from https://vi.stackexchange.com/a/9637/15292
