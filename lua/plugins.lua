@@ -121,8 +121,8 @@ require("packer").startup({
     -- use 'airblade/vim-gitgutter'
 
     -- colorful status line and theme
-    use({"vim-airline/vim-airline-themes", event = 'VimEnter', opt = true})
-    use({"vim-airline/vim-airline", after = 'vim-airline-themes', opt = true})
+    use({"vim-airline/vim-airline-themes", opt = true, setup = [[vim.cmd 'packadd vim-airline-themes']]})
+    use({"vim-airline/vim-airline", opt = true, setup = [[vim.cmd 'packadd vim-airline']]})
 
     use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('config.bufferline')]] })
 
