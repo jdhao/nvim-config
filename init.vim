@@ -16,7 +16,7 @@ let g:config_file_list = ['globals.vim',
   \ 'autocommands.vim',
   \ 'mappings.vim',
   \ 'plugins.vim',
-  \ 'ui.vim'
+  \ 'themes.vim'
   \ ]
 
 let g:nvim_config_root = expand('<sfile>:p:h')
