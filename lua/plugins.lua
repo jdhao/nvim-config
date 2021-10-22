@@ -299,9 +299,6 @@ require("packer").startup({
     -- Session management plugin
     use({"tpope/vim-obsession", cmd = 'Obsession'})
 
-    -- Calculate statistics for visual selection
-    use({"wgurecky/vimSum", event = "BufEnter"})
-
     if vim.g.is_linux then
       use({"ojroques/vim-oscyank", cmd = {'OSCYank', 'OSCYankReg'}})
     end
