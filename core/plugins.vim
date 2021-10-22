@@ -303,20 +303,17 @@ omap s <Nop>
 "{{ LaTeX editing
 """"""""""""""""""""""""""""vimtex settings"""""""""""""""""""""""""""""
 if ( g:is_win || g:is_mac ) && executable('latex')
-  function! SetServerName() abort
-    if has('win32')
-      let nvim_server_file = $TEMP . '/curnvimserver.txt'
-    else
-      let nvim_server_file = '/tmp/curnvimserver.txt'
-    endif
-    let cmd = printf('echo %s > %s', v:servername, nvim_server_file)
-    call system(cmd)
+  " Hacks for inverse serach to work semi-automatically,
+  " see https://jdhao.github.io/2021/02/20/inverse_search_setup_neovim_vimtex/.
+  function! s:write_server_name() abort
+    let nvim_server_file = (has('win32') ? $TEMP : '/tmp') . '/vimtexserver.txt'
+    call writefile([v:servername], nvim_server_file)
   endfunction
 
   augroup vimtex_common
     autocmd!
+    autocmd FileType tex call s:write_server_name()
     autocmd FileType tex nmap <buffer> <F9> <plug>(vimtex-compile)
-    autocmd FileType tex call SetServerName()
   augroup END
 
   let g:vimtex_compiler_latexmk = {
