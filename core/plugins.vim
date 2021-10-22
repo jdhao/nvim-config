@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
-" Plugin installation
-lua require 'plugins'
+" Plugin specification and lua stuff
+lua require('lua-init')
 
 "{ Plugin settings
 "{{ Vim-plug settings
@@ -16,8 +16,6 @@ call utils#Cabbrev('ps', 'PackerSync')
 "}}
 
 "{{ Auto-completion related
-lua require('entrance')
-
 """""""""""""""""""""""""UltiSnips settings"""""""""""""""""""
 " Trigger configuration. Do not use <tab> if you use YouCompleteMe
 let g:UltiSnipsExpandTrigger='<c-j>'
