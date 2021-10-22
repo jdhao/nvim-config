@@ -53,7 +53,7 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
 augroup END
 
-" highlight yanked region, see `:h lua-highlight`
+" Define or override some highlight groups
 augroup custom_highlight
   autocmd!
   autocmd ColorScheme * call s:custom_highlight()
@@ -74,6 +74,7 @@ function! s:custom_highlight() abort
   highlight MatchParen cterm=underline gui=underline
 endfunction
 
+" highlight yanked region, see `:h lua-highlight`
 augroup highlight_yank
   autocmd!
   au TextYankPost * silent! lua vim.highlight.on_yank{higroup="YankColor", timeout=300, on_visual=false}
