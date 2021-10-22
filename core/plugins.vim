@@ -155,16 +155,6 @@ nnoremap <silent> <Space>t :<C-U>Vista!!<CR>
 "}}
 
 "{{ File editing
-""""""""""""""""""""""""vim-auto-save settings"""""""""""""""""""""""
-" Enable autosave on nvim startup
-let g:auto_save = 1
-
-" A list of events to trigger autosave
-let g:auto_save_events = ['InsertLeave', 'TextChanged']
-
-" Whether to show autosave status on command line
-let g:auto_save_silent = 0
-
 """"""""""""""""""""""""vim-mundo settings"""""""""""""""""""""""
 let g:mundo_verbose_graph = 0
 let g:mundo_width = 80
