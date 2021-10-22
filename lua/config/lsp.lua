@@ -61,8 +61,10 @@ local custom_attach = function(client, bufnr)
     ]])
   end
 
-  local msg = string.format("Language server %s started!", client.name)
-  vim.notify(msg, 'info', {title = 'Nvim-config'})
+  if vim.g.logging_level == 'debug' then
+    local msg = string.format("Language server %s started!", client.name)
+    vim.notify(msg, 'info', {title = 'Nvim-config'})
+  end
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
