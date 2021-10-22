@@ -1,5 +1,6 @@
 -- Setup nvim-cmp.
 local cmp = require'cmp'
+local lspkind = require'lspkind'
 
 cmp.setup({
   snippet = {
@@ -31,6 +32,7 @@ cmp.setup({
   sources = {
     { name = 'nvim_lsp' }, -- For nvim-lsp
     { name = 'ultisnips' }, -- For ultisnips user.
+    { name = 'nvim_lua' }, -- for nvim lua function
     { name = 'path' }, -- for path completion
     { name = 'emoji', insert = true, } -- emoji completion
   },
@@ -40,5 +42,19 @@ cmp.setup({
   },
   experimental = {
     ghost_text = false
-  }
+  },
+  formatting = {
+    format = lspkind.cmp_format({
+      with_text = false,
+      menu = {
+        nvim_lsp = "[LSP]",
+        ultisnips = "[US]",
+        nvim_lua = "[Lua]",
+        path = "[Path]",
+        emoji = "[Emoji]",
+      },
+    }),
+  },
 })
+
+vim.cmd("hi link CmpItemMenu Comment")

@@ -27,8 +27,9 @@ require("packer").startup({
   function(use)
     use({"wbthomason/packer.nvim", opt = true})
 
+    use {"onsails/lspkind-nvim", event = "BufEnter"}
     -- auto-completion engine
-    use {"hrsh7th/nvim-cmp", event = "BufEnter", config = [[require('config.nvim-cmp')]]}
+    use {"hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('config.nvim-cmp')]]}
 
     -- nvim-cmp completion sources
     use {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp"}
@@ -36,6 +37,7 @@ require("packer").startup({
     -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
     use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] })
 
+    use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
     use {"hrsh7th/cmp-path", after = "nvim-cmp"}
     use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
     if vim.g.is_mac then
