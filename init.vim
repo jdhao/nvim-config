@@ -11,7 +11,7 @@
 "}
 
 "{ Main configurations
-let g:config_file_list = [
+let g:config_files = [
       \ 'globals.vim',
       \ 'options.vim',
       \ 'autocommands.vim',
@@ -20,7 +20,7 @@ let g:config_file_list = [
       \ 'themes.vim'
       \ ]
 
-for s:fname in g:config_file_list
+for s:fname in g:config_files
   execute printf('source %s/core/%s', stdpath('config'), s:fname)
 endfor
 "}
