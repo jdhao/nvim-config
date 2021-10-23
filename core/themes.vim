@@ -14,13 +14,6 @@ function! s:my_theme_dict.gruvbox8() dict abort
   colorscheme gruvbox8_hard
 endfunction
 
-function! s:my_theme_dict.solarized() dict abort
-  packadd! nvim-solarized-lua
-
-  " Load the colorsheme
-  colorscheme solarized-high
-endfunction
-
 function! s:my_theme_dict.onedark() dict abort
   packadd! onedark.nvim
 
@@ -76,9 +69,8 @@ function! s:my_theme_dict.nightfox() dict abort
   colorscheme nordfox
 endfunction
 
-let s:candidate_theme = ['gruvbox8', 'solarized', 'onedark',
-      \ 'edge', 'sonokai', 'gruvbox_material', 'nord', 'doom_one', 'everforest',
-      \ 'nightfox']
+let s:candidate_theme = ['gruvbox8', 'onedark', 'edge', 'sonokai', 'gruvbox_material',
+      \'nord', 'doom_one', 'everforest', 'nightfox']
 
 let s:theme = utils#RandElement(s:candidate_theme)
 let s:colorscheme_func = printf('s:my_theme_dict.%s()', s:theme)

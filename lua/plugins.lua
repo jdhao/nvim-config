@@ -107,7 +107,6 @@ require("packer").startup({
 
     -- A list of colorscheme plugin you may want to try. Find what suits you.
     use({"lifepillar/vim-gruvbox8", opt = true})
-    use({"ishan9299/nvim-solarized-lua", opt = true})
     use({"navarasu/onedark.nvim", opt = true})
     use({"sainnhe/edge", opt = true})
     use({"sainnhe/sonokai", opt = true})
