@@ -69,8 +69,17 @@ function! s:my_theme_dict.nightfox() dict abort
   colorscheme nordfox
 endfunction
 
-let s:candidate_theme = ['gruvbox8', 'onedark', 'edge', 'sonokai', 'gruvbox_material',
-      \'nord', 'doom_one', 'everforest', 'nightfox']
+let s:candidate_theme = [
+      \ 'gruvbox8',
+      \ 'onedark',
+      \ 'edge',
+      \ 'sonokai',
+      \ 'gruvbox_material',
+      \ 'nord',
+      \ 'doom_one',
+      \ 'everforest',
+      \ 'nightfox'
+      \ ]
 
 let s:theme = utils#RandElement(s:candidate_theme)
 let s:colorscheme_func = printf('s:my_theme_dict.%s()', s:theme)
