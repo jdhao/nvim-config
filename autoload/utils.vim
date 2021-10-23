@@ -182,6 +182,7 @@ function! utils#CaptureCommandOutput(command) abort
   redir @m
   execute a:command
   redir END
+  call v:lua.vim.notify("command output captured to register m", "info", {'title': 'nvim-config'}) 
 endfunction
 
 " Edit all files matching the given patterns.
