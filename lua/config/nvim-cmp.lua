@@ -34,6 +34,7 @@ cmp.setup({
     { name = 'ultisnips' }, -- For ultisnips user.
     { name = 'nvim_lua' }, -- for nvim lua function
     { name = 'path' }, -- for path completion
+    { name = 'buffer', keyword_length = 4 }, -- for buffer word completion
     { name = 'emoji', insert = true, } -- emoji completion
   },
   completion = {
@@ -51,6 +52,7 @@ cmp.setup({
         ultisnips = "[US]",
         nvim_lua = "[Lua]",
         path = "[Path]",
+        buffer = "[Buffer]",
         emoji = "[Emoji]",
       },
     }),
