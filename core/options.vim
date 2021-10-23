@@ -174,4 +174,11 @@ set signcolumn=auto:2
 " Remove certain character from file name pattern matching
 set isfname-==
 set isfname-=,
+
+" diff options
+set diffopt=
+set diffopt+=vertical  " show diff in vertical position
+set diffopt+=filler  " show filler for deleted lines
+set diffopt+=context:3  " context for diff
+set diffopt+=internal,indent-heuristic,algorithm:histogram
 "}
