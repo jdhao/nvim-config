@@ -111,6 +111,9 @@ nnoremap <silent> <leader>t :<C-U>echoerr "Use \<lt>leader>ft instead!"<CR>
 " Switch buffers
 nnoremap <silent> <leader>fb :<C-U>Leaderf buffer --popup<CR>
 
+" Search recent files
+nnoremap <silent> <leader>fr :<C-U>Leaderf mru --popup<CR>
+
 let g:Lf_PopupColorscheme = 'gruvbox_material'
 
 " Change keybinding in LeaderF prompt mode, use ctrl-n and ctrl-p to navigate
