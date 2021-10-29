@@ -69,7 +69,7 @@ export PATH="$HOME/.npm-packages/bin:$PATH"
 
 ## Git
 
-Git is used by the plugin manager packer.nvim to clone plugins from GitHub or
+Git is used by the plugin manager [packer.nvim](https://github.com/wbthomason/packer.nvim) to clone plugins from GitHub or
 other Git repositories.
 
 Since Git is usually pre-installed on Linux and macOS, we do not need to worry
@@ -180,8 +180,8 @@ setups.
 
 ## Install plugin manager packer.nvim
 
-I use [packer.nvim](https://github.com/wbthomason/packer.nvim) to manage my
-plugins. We need to install packer.nvim on our system first.
+I use packer.nvim to manage my plugins. We need to install packer.nvim on our
+system first.
 
 For Windows, if curl is installed, use the following command (on PowerShell):
 
