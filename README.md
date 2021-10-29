@@ -57,10 +57,16 @@ is guaranteed.**
 
 # Demo
 
-## Fuzzy file finding
+## Start screen with alpha-nvim
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/16662357/128589722-322bb97f-f460-4fc2-ba50-a707225d8adc.gif" width="800">
+<img src="https://user-images.githubusercontent.com/16662357/139459989-0537ded4-c119-4749-99bf-b551ca1ba118.jpg" width="800">
+</p>
+
+## fuzzy finding using LeaderF
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/16662357/139462025-7bce98c5-d2d5-413f-9659-20545865cdca.gif" width="800">
 </p>
 
 ## Autocompletion
@@ -86,7 +92,7 @@ is guaranteed.**
 Go to a string starting with `se`
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/16662357/128590570-71dd82b1-b99d-4e82-9a29-aadd9d6ec300.gif" width="800">
+<img src="https://user-images.githubusercontent.com/16662357/139459219-8a7e6ac4-1d24-4008-a370-b56773d7cb85.gif" width="800">
 </p>
 
 ## GUI-style notification
@@ -106,6 +112,7 @@ represents ASCII character `,`.
 |-------------------|---------------|-----------------|------------------------------------------------------------------|
 | `<leader>ff`      | Normal        | Linux/macOS/Win | Fuzzy file searching in a floating window                        |
 | `<leader>fh`      | Normal        | Linux/macOS/Win | Fuzzy help file grepping in a floating window                    |
+| `<leader>fg`      | Normal        | Linux/macOS/Win | Fuzzy project-wide grepping in a floating window                 |
 | `<leader>ft`      | Normal        | Linux/macOS/Win | Fuzzy buffer tag searching in a floating window                  |
 | `<leader>fb`      | Normal        | Linux/macOS/Win | Fuzzy buffer switching in a floating window                      |
 | `<leader><Space>` | Normal        | Linux/macOS/Win | Remove trailing white spaces                                     |
@@ -152,5 +159,6 @@ You may also be interested in my post in configuring Vim on different platforms:
 + [Config nvim on Linux for Python development](https://jdhao.github.io/2018/12/24/centos_nvim_install_use_guide_en/)
 + [Nvim config on Windows 10](https://jdhao.github.io/2018/11/15/neovim_configuration_windows/)
 + [Nvim-qt config on Windows 10](https://jdhao.github.io/2019/01/17/nvim_qt_settings_on_windows/)
++ My nvim notes can be found [here](https://jdhao.github.io/categories/Nvim/)
 
 <b id="f1">1:</b> Not enabled by default for Linux, see [this issue](https://github.com/jdhao/nvim-config/issues/4) on how to enable vimtex on Linux. [↩](#a1)
