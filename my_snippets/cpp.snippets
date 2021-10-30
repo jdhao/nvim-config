@@ -2,18 +2,30 @@ snippet bare "barebone code template"
 #include <iostream>
 #include <vector>
 #include <string>
+#include <map>
+#inlcude <unordered_map>
+#include <set>
+#inlucde <unordered_set>
+#include <stack>
+#include <queue>
 
 using std::cout;
 using std::endl;
 using std::vector;
 using std::string;
+using std::map;
+using std::unordered_map;
+using std::set;
+using std::unordered_set;
+using std::stack;
+using std::queue;
 
 
 
 int main()
 {
 
-  return 0;
+	return 0;
 }
 endsnippet
 
@@ -25,25 +37,25 @@ endsnippet
 snippet plist "print vector" w
 template <class T>
 void printList(const T& arr, const string& desc){
-  std::cout << desc << ": [";
+	std::cout << desc << ": [";
 
-  for (auto it = arr.begin(); it != arr.end(); it++){
-    std::cout << *it << ((std::next(it) != arr.end()) ? ", " : "]\n");
-  }
+	for (auto it = arr.begin(); it != arr.end(); it++){
+		std::cout << *it << ((std::next(it) != arr.end()) ? ", " : "]\n");
+	}
 }
 endsnippet
 
 snippet pmat "print list of list" w
 template <class T>
 void printMat(const vector<vector<T>>& mat, const string& desc){
-  cout << desc << ": " << endl;
+	cout << desc << ": " << endl;
 
-  for (auto it1 = mat.begin(); it1 != mat.end(); it1++){
-    auto cur_vec = *it1;
-    for (auto it2 = cur_vec.begin(); it2 != cur_vec.end(); it2++){
-      cout << *it2 << ((std::next(it2) != cur_vec.end()) ? ", " : "\n");
-    }
-  }
+	for (auto it1 = mat.begin(); it1 != mat.end(); it1++){
+		auto cur_vec = *it1;
+		for (auto it2 = cur_vec.begin(); it2 != cur_vec.end(); it2++){
+			cout << *it2 << ((std::next(it2) != cur_vec.end()) ? ", " : "\n");
+		}
+	}
 }
 endsnippet
 
@@ -55,16 +67,16 @@ snippet random "Generate a random list" b
 // Generate a random sequence of length len, in range(low, high) (inclusive).
 // need to #include<random>
 vector<int> genRandom(int low, int high, int len){
-  std::random_device rd;
-  std::mt19937 gen(rd());
-  std::uniform_int_distribution<int> distribution(low, high);
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<int> distribution(low, high);
 
-  vector<int> arr(len, 0);
-  for (int i = 0; i != len; ++i){
-      arr[i] = distribution(gen);
-  }
+	vector<int> arr(len, 0);
+	for (int i = 0; i != len; ++i){
+		arr[i] = distribution(gen);
+	}
 
-  return arr;
+	return arr;
 }
 endsnippet
 
