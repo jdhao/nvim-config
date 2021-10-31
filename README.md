@@ -55,7 +55,9 @@ is guaranteed.**
 + LaTeX editing via [vimtex](https://github.com/lervag/vimtex) <sup id="a1">[1](#f1)</sup>.
 + ......
 
-# Demo
+# UI Demo
+
+For more UI demos, see [here](https://github.com/jdhao/nvim-config/issues/15).
 
 ## Start screen with alpha-nvim
 
@@ -101,7 +103,6 @@ Go to a string starting with `se`
 <img src="https://user-images.githubusercontent.com/16662357/128589873-aadb8264-1098-4834-9876-fa66a309be05.gif" width="800">
 </p>
 
-For more UI demos, see [here](https://github.com/jdhao/nvim-config/issues/15).
 
 # Shortcuts
 
