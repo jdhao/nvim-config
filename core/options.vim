@@ -1,6 +1,5 @@
 scriptencoding utf-8
 
-"{ Builtin options and settings
 " change fillchars for folding, vertical split, end of buffer, and message separator
 set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 
@@ -182,4 +181,3 @@ set diffopt+=filler  " show filler for deleted lines
 set diffopt+=closeoff  " turn off diff when one file window is closed
 set diffopt+=context:3  " context for diff
 set diffopt+=internal,indent-heuristic,algorithm:histogram
-"}

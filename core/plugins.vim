@@ -3,19 +3,15 @@ scriptencoding utf-8
 " Plugin specification and lua stuff
 lua require('lua-init')
 
-"{ Plugin settings
-"{{ Vim-plug settings
-" Use shortnames for common vim-plug command to reduce typing.
-" To use these shortcut: first activate command line with `:`, then input the
-" short alias, e.g., `pi`, then press <space>, the alias will be expanded
-" to the full command automatically
+" Use short names for common plugin manager commands to simplify typing.
+" To use these shortcuts: first activate command line with `:`, then input the
+" short alias, e.g., `pi`, then press <space>, the alias will be expanded to
+" the full command automatically.
 call utils#Cabbrev('pi', 'PackerInstall')
 call utils#Cabbrev('pud', 'PackerUpdate')
 call utils#Cabbrev('pc', 'PackerClean')
 call utils#Cabbrev('ps', 'PackerSync')
-"}}
 
-"{{ Auto-completion related
 """""""""""""""""""""""""UltiSnips settings"""""""""""""""""""
 " Trigger configuration. Do not use <tab> if you use YouCompleteMe
 let g:UltiSnipsExpandTrigger='<c-j>'
@@ -30,9 +26,7 @@ let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 " Configuration for custom snippets directory, see
 " https://jdhao.github.io/2019/04/17/neovim_snippet_s1/ for details.
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
-"}}
 
-"{{ Language specific plugin
 """""""""""""""""""""""""" semshi settings """""""""""""""""""""""""""""""
 " Do not highlight for all occurrences of variable under cursor
 let g:semshi#mark_selected_nodes=0
@@ -43,9 +37,6 @@ let g:semshi#error_sign=v:false
 """""""""""""""""""""""""" vlime settings """"""""""""""""""""""""""""""""
 command! -nargs=0 StartVlime call jobstart(printf("sbcl --load %s/vlime/lisp/start-vlime.lisp", g:package_home))
 
-"}}
-
-"{{ Search related
 """"""""""""""""""""""""""""" settings for nvim-hlslens"""""""""""""""
 noremap <silent> n <Cmd>execute('normal! ' . v:count1 . 'nzzzv')<CR>
             \<Cmd>lua require('hlslens').start()<CR>
@@ -119,9 +110,7 @@ let g:Lf_PopupColorscheme = 'gruvbox_material'
 " Change keybinding in LeaderF prompt mode, use ctrl-n and ctrl-p to navigate
 " items.
 let g:Lf_CommandMap = {'<C-J>': ['<C-N>'], '<C-K>': ['<C-P>']}
-"}}
 
-"{{ URL related
 """"""""""""""""""""""""""""open-browser.vim settings"""""""""""""""""""
 if g:is_win || g:is_mac
   " Disable netrw's gx mapping.
@@ -131,9 +120,7 @@ if g:is_win || g:is_mac
   nmap ob <Plug>(openbrowser-smart-search)
   xmap ob <Plug>(openbrowser-smart-search)
 endif
-"}}
 
-"{{ Navigation and tags
 """"""""""""""""""""""""""" gutentags settings """"""""""""""""""""""""""""""
 " The path to store tags files, instead of in the project root.
 let g:gutentags_cache_dir = stdpath('cache') . '/ctags'
@@ -153,9 +140,7 @@ let g:vista_echo_cursor = 0
 let g:vista_stay_on_open = 0
 
 nnoremap <silent> <Space>t :<C-U>Vista!!<CR>
-"}}
 
-"{{ File editing
 """"""""""""""""""""""""vim-mundo settings"""""""""""""""""""""""
 let g:mundo_verbose_graph = 0
 let g:mundo_width = 80
@@ -192,9 +177,7 @@ let g:better_escape_interval = 200
 
 """"""""""""""""""""""""""""vim-xkbswitch settings"""""""""""""""""""""""""
 let g:XkbSwitchEnabled = 1
-"}}
 
-"{{ Linting and formatting
 """""""""""""""""""""""""""""" neoformat settings """""""""""""""""""""""
 let g:neoformat_enabled_python = ['black', 'yapf']
 let g:neoformat_cpp_clangformat = {
@@ -208,9 +191,7 @@ let g:neoformat_c_clangformat = {
 
 let g:neoformat_enabled_cpp = ['clangformat']
 let g:neoformat_enabled_c = ['clangformat']
-"}}
 
-"{{ Git-related
 """""""""""""""""""""""""vim-signify settings""""""""""""""""""""""""""""""
 " The VCS to use
 let g:signify_vcs_list = [ 'git' ]
@@ -225,9 +206,7 @@ nnoremap <silent> <leader>gc :Git commit<CR>
 nnoremap <silent> <leader>gpl :Git pull<CR>
 " Note that to use bar literally, we need backslash it, see also `:h :bar`.
 nnoremap <silent> <leader>gpu :15split \| term git push
-"}}
 
-"{{ Markdown writing
 """""""""""""""""""""""""plasticboy/vim-markdown settings"""""""""""""""""""
 " Disable header folding
 let g:vim_markdown_folding_disabled = 1
@@ -282,16 +261,12 @@ endif
 
 """"""""""""""""""""""""unicode.vim settings""""""""""""""""""""""""""""""
 nmap ga <Plug>(UnicodeGA)
-"}}
 
-"{{ text objects
 """"""""""""""""""""""""""""vim-sandwich settings"""""""""""""""""""""""""""""
 " Map s to nop since s in used by vim-sandwich. Use cl instead of s.
 nmap s <Nop>
 omap s <Nop>
-"}}
 
-"{{ LaTeX editing
 """"""""""""""""""""""""""""vimtex settings"""""""""""""""""""""""""""""
 if ( g:is_win || g:is_mac ) && executable('latex')
   " Hacks for inverse serach to work semi-automatically,
@@ -354,9 +329,7 @@ if ( g:is_win || g:is_mac ) && executable('latex')
     endfunction
   endif
 endif
-"}}
 
-"{{ UI: Status line, look
 """""""""""""""""""""""""""vim-airline setting""""""""""""""""""""""""""""""
 " Set airline theme to a random one if it exists
 let s:candidate_airlinetheme = ['ayu_mirage', 'lucius', 'ayu_dark', 'base16_bright',
@@ -413,9 +386,7 @@ let g:airline#extensions#xkblayout#short_codes = {'0': 'CN', '1': 'US'}
 " Do not change working directory when opening files.
 let g:startify_change_to_dir = 0
 let g:startify_fortune_use_unicode = 1
-"}}
 
-"{{ Misc plugin setting
 """"""""""""""""""""""""""""vim-matchup settings"""""""""""""""""""""""""""""
 " Improve performance
 let g:matchup_matchparen_deferred = 1
@@ -519,5 +490,3 @@ function! s:wilder_init() abort
     echohl Error |echomsg "Wilder.nvim missing. Run :PackerInstall to install all plugins."|echohl None
   endtry
 endfunction
-"}}
-"}

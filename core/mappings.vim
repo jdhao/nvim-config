@@ -1,4 +1,3 @@
-"{ Custom key mappings
 " Save key strokes (now we do not need to press shift to enter command mode).
 " Vim-sneak has also mapped `;`, so using the below mapping will break the map
 " used by vim-sneak
@@ -180,4 +179,3 @@ nnoremap J mzJ`z
 for ch in [',', '.', '!', '?', ';', ':']
   execute printf('inoremap %s %s<C-g>u', ch, ch)
 endfor
-"}

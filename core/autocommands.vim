@@ -1,4 +1,3 @@
-"{ Auto commands
 " Do not use smart case in command line mode, extracted from https://vi.stackexchange.com/a/16511/15292.
 augroup dynamic_smartcase
   autocmd!
@@ -104,4 +103,3 @@ augroup packer_auto_compile
   autocmd!
   autocmd BufWritePost */nvim/lua/plugins.lua source <afile> | PackerCompile
 augroup END
-"}

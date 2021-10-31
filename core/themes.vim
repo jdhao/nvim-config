@@ -1,5 +1,3 @@
-"{ UI-related settings
-"{{ Colorscheme settings
 let s:my_theme_dict = {}
 
 function! s:my_theme_dict.gruvbox8() dict abort
@@ -94,5 +92,3 @@ else
   let s:msg = "Invalid colorscheme function: " . s:colorscheme_func
   call v:lua.vim.notify(s:msg, 'error', {'title': 'nvim-config'})
 endif
-"}}
-"}
