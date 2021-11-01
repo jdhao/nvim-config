@@ -1,11 +1,3 @@
-" Remove trailing white space, see https://vi.stackexchange.com/a/456/15292
-function! utils#StripTrailingWhitespaces() abort
-  let l:save = winsaveview()
-  " vint: next-line -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
-  keeppatterns %s/\v\s+$//e
-  call winrestview(l:save)
-endfunction
-
 " Create command alias safely, see https://stackoverflow.com/q/3878692/6064933
 " The following two functions are taken from answer below on SO:
 " https://stackoverflow.com/a/10708687/6064933

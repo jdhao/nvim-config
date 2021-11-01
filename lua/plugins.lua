@@ -312,6 +312,9 @@ require("packer").startup({
 
     -- showing keybindings
     use {"folke/which-key.nvim", event = "VimEnter", config = [[require('config.which-key')]]}
+
+    -- show and trim trailing whitespaces
+    use {'jdhao/whitespace.nvim', event = 'VimEnter'}
   end,
   config = {
     max_jobs = 16,
