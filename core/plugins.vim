@@ -71,8 +71,14 @@ endif
 let g:Lf_DefaultMode = 'NameOnly'
 
 " Popup window settings
-let g:Lf_PopupWidth = 0.5
-let g:Lf_PopupPosition = [0, &columns/4]
+let w = float2nr(&columns * 0.8)
+if w > 140
+  let g:Lf_PopupWidth = 140
+else
+  let g:Lf_PopupWidth = w
+endif
+
+let g:Lf_PopupPosition = [0, float2nr((&columns - g:Lf_PopupWidth)/2)]
 
 " Do not use version control tool to list files under a directory since
 " submodules are not searched by default.
