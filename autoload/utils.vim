@@ -153,6 +153,11 @@ function! utils#Get_titlestr() abort
   return l:title_str
 endfunction
 
+" Output current time in ISO format.
+function! utils#iso_time() abort
+  return strftime('%Y-%m-%d %H:%M:%S%z')
+endfunction
+
 " Check if we are inside a Git repo.
 function! utils#Inside_git_repo() abort
   let res = system('git rev-parse --is-inside-work-tree')
