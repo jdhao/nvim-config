@@ -103,3 +103,9 @@ augroup packer_auto_compile
   autocmd!
   autocmd BufWritePost */nvim/lua/plugins.lua source <afile> | PackerCompile
 augroup END
+
+" Remove trailing whitespaces
+augroup strip_trailing_space
+  autocmd!
+  autocmd BufWritePre,TextChanged * StripTrailingWhitespace
+augroup END
