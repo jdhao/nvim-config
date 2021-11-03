@@ -179,3 +179,6 @@ nnoremap J mzJ`z
 for ch in [',', '.', '!', '?', ';', ':']
   execute printf('inoremap %s %s<C-g>u', ch, ch)
 endfor
+
+" insert semicolon in the end
+inoremap ;; <ESC>miA;<ESC>`ia
