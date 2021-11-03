@@ -181,4 +181,5 @@ for ch in [',', '.', '!', '?', ';', ':']
 endfor
 
 " insert semicolon in the end
-inoremap ;; <ESC>miA;<ESC>`ia
+inoremap <A-;> <ESC>miA;<ESC>`ii
+
