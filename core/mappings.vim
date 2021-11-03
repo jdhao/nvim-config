@@ -183,3 +183,16 @@ endfor
 " insert semicolon in the end
 inoremap <A-;> <ESC>miA;<ESC>`ii
 
+" Keep cursor position after yanking
+nnoremap y myy
+xnoremap y myy
+
+augroup restore_after_yank
+  autocmd!
+  autocmd TextYankPost *  call s:restore_cursor()
+augroup END
+
+function! s:restore_cursor() abort
+  silent! normal `y
+  silent! delmarks y
+endfunction
