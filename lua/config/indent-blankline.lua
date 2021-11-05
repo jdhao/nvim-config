@@ -4,7 +4,7 @@ require("indent_blankline").setup {
   show_end_of_line = false,
   disable_with_nolist = true,
   buftype_exclude = {"terminal"},
-  filetype_exclude = { "help", "startify", "git", "markdown", "snippets" },
+  filetype_exclude = { "help", "git", "markdown", "snippets", "text" },
 }
 
 vim.cmd[[
