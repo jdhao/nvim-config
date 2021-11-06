@@ -148,7 +148,7 @@ configuration is tested against nvim 0.5.
 
 ## Linux
 
-We can directly download the binary release from [here](https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-linux64.tar.gz).
+We can directly download the binary release from [here](https://github.com/neovim/neovim/releases/download/v0.5.1/nvim-linux64.tar.gz).
 
 ## Windows
 
@@ -158,7 +158,7 @@ The easiest way to install Nvim on Windows is via chocolatey:
 choco install neovim
 ```
 
-You may download from [nvim release](https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-win64.zip) from GitHub and manually extract it.
+You may download from [nvim release](https://github.com/neovim/neovim/releases/download/v0.5.1/nvim-win64.zip) from GitHub and manually extract it.
 
 ## macOS
 
@@ -170,8 +170,7 @@ brew install neovim
 ```
 
 After installing Nvim, we need to add the directory where the Nvim executable
-(`nvim` on Linux and macOS, `nvim.exe` on Windows) resides to the system
-`PATH`.
+(`nvim` on Linux and macOS, `nvim.exe` on Windows) resides to the system `PATH`.
 
 Make sure that you can call `nvim` from the command line after all these
 setups.
