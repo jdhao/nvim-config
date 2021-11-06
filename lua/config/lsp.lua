@@ -166,10 +166,14 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 })
 
 -- Refs: https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#show-source-in-diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, _, params, client_id, _)
-  local uri = params.uri
-  local bufnr = vim.uri_to_bufnr(uri)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, result, context, _)
+  -- result contains diagnostics and uri
+  -- context contains client_id and method, but not always buf_nr
+  local client_id = context.client_id
+  local diagnostics = result.diagnostics
+  local uri = result.uri
 
+  local bufnr = vim.uri_to_bufnr(uri)
   if not bufnr then
     return
   end
@@ -178,7 +182,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, _, params, cli
     return
   end
 
-  local diagnostics = params.diagnostics
+  -- change diagnostics format
   for i, v in ipairs(diagnostics) do
     diagnostics[i].message = string.format("%s: %s", v.source, v.message)
   end
