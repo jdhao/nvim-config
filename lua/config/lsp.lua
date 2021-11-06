@@ -1,3 +1,6 @@
+local api = vim.api
+local lsp = vim.lsp
+
 local M = {}
 
 function M.show_line_diagnostics()
@@ -6,15 +9,15 @@ function M.show_line_diagnostics()
     close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
     border = 'single'
   }
-  vim.lsp.diagnostic.show_line_diagnostics(opts)
+  lsp.diagnostic.show_line_diagnostics(opts)
 end
 
 local custom_attach = function(client, bufnr)
   local function buf_set_keymap(...)
-    vim.api.nvim_buf_set_keymap(bufnr, ...)
+    api.nvim_buf_set_keymap(bufnr, ...)
   end
   local function buf_set_option(...)
-    vim.api.nvim_buf_set_option(bufnr, ...)
+    api.nvim_buf_set_option(bufnr, ...)
   end
 
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -67,7 +70,7 @@ local custom_attach = function(client, bufnr)
   end
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').update_capabilities(lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require("lspconfig")
@@ -140,7 +143,7 @@ if vim.g.is_mac or vim.g.is_linux and sumneko_binary_path ~= "" then
         },
         workspace = {
           -- Make the server aware of Neovim runtime files
-          library = vim.api.nvim_get_runtime_file("", true),
+          library = api.nvim_get_runtime_file("", true),
         },
         -- Do not send telemetry data containing a randomized but unique identifier
         telemetry = {
@@ -158,7 +161,7 @@ vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "!", texthl = "LspDiagn
 vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "", texthl = "LspDiagnosticsDefaultInformation" })
 vim.fn.sign_define("LspDiagnosticsSignHint", { text = "", texthl = "LspDiagnosticsDefaultHint" })
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
   underline = false,
   virtual_text = false,
   signs = true,
@@ -166,7 +169,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 })
 
 -- Refs: https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#show-source-in-diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, result, context, _)
+lsp.handlers["textDocument/publishDiagnostics"] = function(_, result, context, _)
   -- result contains diagnostics and uri
   -- context contains client_id and method, but not always buf_nr
   local client_id = context.client_id
@@ -178,7 +181,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, result, contex
     return
   end
 
-  if not vim.api.nvim_buf_is_loaded(bufnr) then
+  if not api.nvim_buf_is_loaded(bufnr) then
     return
   end
 
@@ -186,7 +189,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, result, contex
   for i, v in ipairs(diagnostics) do
     diagnostics[i].message = string.format("%s: %s", v.source, v.message)
   end
-  vim.lsp.diagnostic.save(diagnostics, bufnr, client_id)
+  lsp.diagnostic.save(diagnostics, bufnr, client_id)
 
   local config = {
     underline = false,
@@ -194,12 +197,12 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, result, contex
     signs = true,
     update_in_insert = false,
   }
-  vim.lsp.diagnostic.display(diagnostics, bufnr, client_id, config)
+  lsp.diagnostic.display(diagnostics, bufnr, client_id, config)
 end
 
 -- The following settings works with the bleeding edge neovim.
 -- See https://github.com/neovim/neovim/pull/13998.
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
 })
 
