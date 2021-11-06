@@ -22,6 +22,7 @@ end
 
 -- Load packer.nvim
 vim.cmd("packadd packer.nvim")
+local util = require('packer.util')
 
 require("packer").startup({
   function(use)
@@ -318,8 +319,11 @@ require("packer").startup({
   end,
   config = {
     max_jobs = 16,
+    compile_path = util.join_paths(vim.fn.stdpath('config'), 'lua', 'packer_compiled.lua'),
     git = {
       default_url_format = plug_url_format,
     },
   },
 })
+
+require('packer_compiled')
