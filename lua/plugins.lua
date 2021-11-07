@@ -130,7 +130,9 @@ require("packer").startup({
 
     use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('config.bufferline')]] })
 
-    use { 'goolord/alpha-nvim', config = [[require('config.alpha-nvim')]] }
+    use { 'goolord/alpha-nvim', event = 'VimEnter', config = [[require('config.alpha-nvim')]] }
+    -- use { '~/Projects/alpha-nvim', config = [[require('config.alpha-nvim')]] }
+
     -- fancy start screen
     use({ "lukas-reineke/indent-blankline.nvim", event = "VimEnter", config = [[require('config.indent-blankline')]] })
 
