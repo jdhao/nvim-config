@@ -60,6 +60,17 @@ void printMat(const vector<vector<T>>& mat, const string& desc){
 }
 endsnippet
 
+snippet pqueue "print queue"
+template <class T>
+void printQueue(T q){
+	while(!q.empty()){
+		std::cout << q.top() << " ";
+		q.pop();
+	}
+	std::cout << '\n';
+}
+endsnippet
+
 snippet cout "print a variable" w
 cout << "$1: " << $2 << endl;
 endsnippet
