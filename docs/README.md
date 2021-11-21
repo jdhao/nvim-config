@@ -205,9 +205,10 @@ directory, and run the following command to install this configuration:
 git clone --depth=1 https://github.com/jdhao/nvim-config.git .
 ```
 
-After that, when we first open nvim, run command `:PackerInstall` to install
-all the plugins. Since I use quite a lot of plugins (more than 60), it may take
-some time to install all of them, depending on your network condition.
+After that, when we first open nvim, run command `:PackerSync` to install all
+the plugins and generate `packer_compiled.lua`. Since I use quite a lot of
+plugins (more than 60), it may take some time to install all of them, depending
+on your network condition.
 
 # Automatic installation
 

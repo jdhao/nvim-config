@@ -328,4 +328,7 @@ require("packer").startup({
   },
 })
 
-require('packer_compiled')
+local status, _ = pcall(require, 'packer_compiled')
+if not status then
+  vim.notify("You should run command PackerCompile")
+end

@@ -212,6 +212,6 @@ git clone --depth=1 https://hub.fastgit.org/wbthomason/packer.nvim \
     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 echo "Installing plugins"
-"$NVIM_DIR/bin/nvim" +PackerInstall +qall
+"$NVIM_DIR/bin/nvim" +PackerSync +qall
 
 echo "Finished installing Nvim and its dependencies!"
