@@ -493,6 +493,6 @@ function! s:wilder_init() abort
           \ 'apply_incsearch_fix': 0,
           \ }))
   catch /^Vim\%((\a\+)\)\=:E117/
-    echohl Error |echomsg "Wilder.nvim missing. Run :PackerSync to install all plugins."|echohl None
+    echohl Error |echomsg "Wilder.nvim missing: run :PackerSync to fix."|echohl None
   endtry
 endfunction

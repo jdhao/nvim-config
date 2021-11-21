@@ -330,5 +330,5 @@ require("packer").startup({
 
 local status, _ = pcall(require, 'packer_compiled')
 if not status then
-  vim.notify("You should run command PackerCompile")
+  vim.notify("packer_compile.lua not found: run PackerSync to fix!")
 end
