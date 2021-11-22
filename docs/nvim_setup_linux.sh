@@ -140,6 +140,17 @@ if [[ -z "$(command -v rg)" ]] && [[ ! -f "$RIPGREP_DIR/rg" ]]; then
     if [[ "$ADD_TO_SYSTEM_PATH" = true ]] && [[ "$USE_BASH_SHELL" = true ]]; then
         echo "export PATH=\"$RIPGREP_DIR:\$PATH\"" >> "$HOME/.bash_profile"
     fi
+
+    # set up manpath and zsh completion for ripgrep
+    mkdir -p $HOME/tools/ripgrep/doc/man/man1
+    mv $HOME/tools/ripgrep/doc/rg.1 $HOME/tools/ripgrep/doc/man/man1
+
+    if [[ "$USE_BASH_SHELL" = true ]]; then
+        echo 'export MANPATH=$HOME/tools/ripgrep/doc/man:$MANPATH' >> "$HOME/.bash_profile"
+    else
+        echo 'export MANPATH=$HOME/tools/ripgrep/doc/man:$MANPATH' >> "$HOME/.zshrc"
+        echo 'export FPATH=$HOME/tools/ripgrep/complete:$FPATH' >> "$HOME/.zshrc"
+    fi
 else
     echo "ripgrep is already installed. Skip installing it."
 fi
