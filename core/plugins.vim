@@ -84,6 +84,12 @@ let g:Lf_PopupPosition = [0, float2nr((&columns - g:Lf_PopupWidth)/2)]
 " submodules are not searched by default.
 let g:Lf_UseVersionControlTool = 0
 
+" Use rg as the default search tool
+let g:Lf_DefaultExternalTool = "rg"
+
+" show dot files
+let g:Lf_ShowHidden = 1
+
 " Disable default mapping
 let g:Lf_ShortcutF = ''
 let g:Lf_ShortcutB = ''
