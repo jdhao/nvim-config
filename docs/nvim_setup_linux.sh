@@ -220,9 +220,8 @@ git clone --depth=1 https://hub.fastgit.org/jdhao/nvim-config.git "$NVIM_CONFIG_
 
 echo "Installing packer.nvim"
 git clone --depth=1 https://hub.fastgit.org/wbthomason/packer.nvim \
-    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    ~/.local/share/nvim/site/pack/packer/opt/packer.nvim
 
-echo "Installing plugins"
-"$NVIM_DIR/bin/nvim" +PackerSync +qall
+"$NVIM_DIR/bin/nvim" -c "echomsg 'installing plugins, please wait'" +PackerSync +30sleep +qall
 
 echo "Finished installing Nvim and its dependencies!"
