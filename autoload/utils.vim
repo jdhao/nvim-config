@@ -193,3 +193,14 @@ function! utils#MultiEdit(patterns) abort
     endfor
   endfor
 endfunction
+
+function! utils#add_pack(name) abort
+  let l:success = v:true
+  try
+    execute printf("packadd! %s", a:name)
+  catch /^Vim\%((\a\+)\)\=:E919/
+    let l:success = v:false
+  endtry
+
+  return l:success
+endfunction
