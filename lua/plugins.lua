@@ -76,9 +76,6 @@ require("packer").startup({
     -- Clear highlight search automatically for you
     use({"romainl/vim-cool", event = "VimEnter"})
 
-    -- Show current search term in different color
-    use({"PeterRincker/vim-searchlight", event = "VimEnter"})
-
     -- Show match number for search
     use {'kevinhwang91/nvim-hlslens', branch = 'dev', event = "VimEnter"}
 
@@ -330,5 +327,5 @@ require("packer").startup({
 
 local status, _ = pcall(require, 'packer_compiled')
 if not status then
-  vim.notify("packer_compile.lua not found: run PackerSync to fix!")
+  vim.notify("Error requiring packer_compiled.lua: run PackerSync to fix!")
 end
