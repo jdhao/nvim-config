@@ -1,6 +1,6 @@
-let s:theme_func_dict = {}
+let s:theme_setup_dict = {}
 
-function! s:theme_func_dict.gruvbox8() dict abort
+function! s:theme_setup_dict.gruvbox8() dict abort
   " Italic options should be put before colorscheme setting,
   " see https://github.com/morhetz/gruvbox/wiki/Terminal-specific#1-italics-is-disabled
   let g:gruvbox_italics=1
@@ -10,43 +10,43 @@ function! s:theme_func_dict.gruvbox8() dict abort
   colorscheme gruvbox8_hard
 endfunction
 
-function! s:theme_func_dict.onedark() dict abort
+function! s:theme_setup_dict.onedark() dict abort
   colorscheme onedark
 endfunction
 
-function! s:theme_func_dict.edge() dict abort
+function! s:theme_setup_dict.edge() dict abort
   let g:edge_enable_italic = 1
   let g:edge_better_performance = 1
   colorscheme edge
 endfunction
 
-function! s:theme_func_dict.sonokai() dict abort
+function! s:theme_setup_dict.sonokai() dict abort
   let g:sonokai_enable_italic = 1
   let g:sonokai_better_performance = 1
   colorscheme sonokai
 endfunction
 
-function! s:theme_func_dict.gruvbox_material() dict abort
+function! s:theme_setup_dict.gruvbox_material() dict abort
   let g:gruvbox_material_enable_italic = 1
   let g:gruvbox_material_better_performance = 1
   colorscheme gruvbox-material
 endfunction
 
-function! s:theme_func_dict.nord() dict abort
+function! s:theme_setup_dict.nord() dict abort
   colorscheme nord
 endfunction
 
-function! s:theme_func_dict.doom_one() dict abort
+function! s:theme_setup_dict.doom_one() dict abort
   colorscheme doom-one
 endfunction
 
-function! s:theme_func_dict.everforest() dict abort
+function! s:theme_setup_dict.everforest() dict abort
   let g:everforest_enable_italic = 1
   let g:everforest_better_performance = 1
   colorscheme everforest
 endfunction
 
-function! s:theme_func_dict.nightfox() dict abort
+function! s:theme_setup_dict.nightfox() dict abort
   colorscheme nordfox
 endfunction
 
@@ -65,9 +65,9 @@ let s:theme2dir = {
       \ }
 
 let s:theme = utils#RandElement(keys(s:theme2dir))
-let s:colorscheme_func = printf('s:theme_func_dict.%s()', s:theme)
+let s:colorscheme_func = printf('s:theme_setup_dict.%s()', s:theme)
 
-if !has_key(s:theme_func_dict, s:theme)
+if !has_key(s:theme_setup_dict, s:theme)
   let s:msg = "Invalid colorscheme function: " . s:colorscheme_func
   call v:lua.vim.notify(s:msg, 'error', {'title': 'nvim-config'})
   finish
