@@ -3,3 +3,5 @@ command! -nargs=1 -complete=command Redir call utils#CaptureCommandOutput(<q-arg
 
 command! -bar -bang -nargs=+ -complete=file Edit call utils#MultiEdit([<f-args>])
 call utils#Cabbrev('edit', 'Edit')
+
+call utils#Cabbrev('man', 'Man')
