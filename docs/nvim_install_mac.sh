@@ -2,7 +2,7 @@
 #!/bin/bash
 set -eux
 
-wget https://hub.fastgit.org/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+wget https://github.com/neovim/neovim/releases/download/v0.6.0/nvim-macos.tar.gz
 
 if [[ ! -d "$HOME/tools/"  ]]; then
     mkdir -p "$HOME/tools"
