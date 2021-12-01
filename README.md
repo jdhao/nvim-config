@@ -22,7 +22,7 @@ add it to your own Nvim config.
 See [doc here](docs/README.md) on how to install Nvim's dependencies, Nvim
 itself, and how to set up on different platforms (Linux, macOS and Windows).
 
-**This config is tested against Nvim 0.5.1 release. No backward compatibility
+**This config is tested against [Nvim 0.6.0 release](https://github.com/neovim/neovim/releases/tag/v0.6.0). No backward compatibility
 is guaranteed.**
 
 # Features #
