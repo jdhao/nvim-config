@@ -53,10 +53,6 @@ nnoremap <expr> <Space>O printf('m`%sO<ESC>``', v:count1)
 " Insert a space after current character
 nnoremap <Space><Space> a<Space><ESC>h
 
-" Yank from current cursor position to the end of the line (make it
-" consistent with the behavior of D, C)
-nnoremap Y y$
-
 " Move the cursor based on physical lines, not the actual lines.
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
