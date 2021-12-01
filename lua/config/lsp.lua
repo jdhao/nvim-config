@@ -7,9 +7,11 @@ function M.show_line_diagnostics()
   local opts = {
     focusable = false,
     close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-    border = 'single'
+    border = 'rounded',
+    source = 'always',  -- show source in diagnostic popup window
+    prefix = ' '
   }
-  lsp.diagnostic.show_line_diagnostics(opts)
+  vim.diagnostic.open_float(nil, opts)
 end
 
 local custom_attach = function(client, bufnr)
@@ -28,9 +30,9 @@ local custom_attach = function(client, bufnr)
   buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
   buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-  buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-  buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+  buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+  buf_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setqflist({open = true})<CR>", opts)
   buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
   vim.cmd([[
@@ -39,7 +41,7 @@ local custom_attach = function(client, bufnr)
 
   -- Set some key bindings conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
   end
   if client.resolved_capabilities.document_range_formatting then
     buf_set_keymap("x", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR><ESC>", opts)
@@ -151,52 +153,26 @@ if vim.g.is_mac or vim.g.is_linux and sumneko_binary_path ~= "" then
 end
 
 -- Change diagnostic signs.
-vim.fn.sign_define("LspDiagnosticsSignError", { text = "✗", texthl = "LspDiagnosticsDefaultError" })
-vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "!", texthl = "LspDiagnosticsDefaultWarning" })
-vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "", texthl = "LspDiagnosticsDefaultInformation" })
-vim.fn.sign_define("LspDiagnosticsSignHint", { text = "", texthl = "LspDiagnosticsDefaultHint" })
+vim.fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
-lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
+vim.diagnostic.config({
   underline = false,
   virtual_text = false,
   signs = true,
-  update_in_insert = false,
+  severity = true,
 })
 
--- Refs: https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#show-source-in-diagnostics
-lsp.handlers["textDocument/publishDiagnostics"] = function(_, result, context, _)
-  -- result contains diagnostics and uri
-  -- context contains client_id and method, but not always buf_nr
-  local client_id = context.client_id
-  local diagnostics = result.diagnostics
-  local uri = result.uri
+-- lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
+--   underline = false,
+--   virtual_text = false,
+--   signs = true,
+--   update_in_insert = false,
+-- })
 
-  local bufnr = vim.uri_to_bufnr(uri)
-  if not bufnr then
-    return
-  end
-
-  if not api.nvim_buf_is_loaded(bufnr) then
-    return
-  end
-
-  -- change diagnostics format
-  for i, v in ipairs(diagnostics) do
-    diagnostics[i].message = string.format("%s: %s", v.source, v.message)
-  end
-  lsp.diagnostic.save(diagnostics, bufnr, client_id)
-
-  local config = {
-    underline = false,
-    virtual_text = false,
-    signs = true,
-    update_in_insert = false,
-  }
-  lsp.diagnostic.display(diagnostics, bufnr, client_id, config)
-end
-
--- The following settings works with the bleeding edge neovim.
--- See https://github.com/neovim/neovim/pull/13998.
+-- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
 lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
 })
