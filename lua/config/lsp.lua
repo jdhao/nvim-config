@@ -158,11 +158,12 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignW
 vim.fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
+-- global config for diagnostic
 vim.diagnostic.config({
   underline = false,
   virtual_text = false,
   signs = true,
-  severity = true,
+  severity_sort = true,
 })
 
 -- lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
