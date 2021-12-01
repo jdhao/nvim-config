@@ -35,10 +35,7 @@ set wildignore+=*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex.gz,*.xdv
 set wildignorecase  " ignore file and dir name cases in cmd-completion
 
 " Set up backup directory
-let g:backupdir=expand(stdpath('data') . '/backup')
-if !isdirectory(g:backupdir)
-   call mkdir(g:backupdir, 'p')
-endif
+let g:backupdir=expand(stdpath('data') . '/backup//')
 let &backupdir=g:backupdir
 
 " Skip backup for patterns in option wildignore
