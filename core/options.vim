@@ -81,8 +81,6 @@ set noshowmode
 
 set fileformats=unix,dos  " Fileformats to use for new files
 
-set inccommand=nosplit  " Show the result of substitution in real time for preview
-
 " Ask for confirmation when handling unsaved or read-only files
 set confirm
 
@@ -142,10 +140,6 @@ set formatoptions+=mM
 
 " Tilde (~) is an operator, thus must be followed by motions like `e` or `w`.
 set tildeop
-
-" Do not add two spaces after a period when joining lines or formatting texts,
-" see https://stackoverflow.com/q/4760428/6064933
-set nojoinspaces
 
 set synmaxcol=200  " Text after this column number is not highlighted
 set nostartofline
