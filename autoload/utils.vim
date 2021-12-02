@@ -145,8 +145,12 @@ function! utils#Get_titlestr() abort
   return l:title_str
 endfunction
 
-" Output current time in ISO format.
-function! utils#iso_time() abort
+" Output current time or unix timestamp in human-readable format.
+function! utils#iso_time(timestamp) abort
+  if a:timestamp
+    return strftime('%Y-%m-%d %H:%M:%S%z', a:timestamp)
+  endif
+
   return strftime('%Y-%m-%d %H:%M:%S%z')
 endfunction
 
