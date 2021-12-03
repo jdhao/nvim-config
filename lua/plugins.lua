@@ -315,6 +315,8 @@ require("packer").startup({
 
     -- show and trim trailing whitespaces
     use {'jdhao/whitespace.nvim', event = 'VimEnter'}
+
+    use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
   end,
   config = {
     max_jobs = 16,
