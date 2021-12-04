@@ -77,7 +77,7 @@ require("packer").startup({
     use({"romainl/vim-cool", event = "VimEnter"})
 
     -- Show match number for search
-    use {'kevinhwang91/nvim-hlslens', branch = 'dev', event = "VimEnter"}
+    use {'kevinhwang91/nvim-hlslens', branch = 'main', event = "VimEnter"}
 
     -- Stay after pressing * and search selected text
     use({"haya14busa/vim-asterisk", event = 'VimEnter'})
