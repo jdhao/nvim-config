@@ -42,8 +42,9 @@ void printList(const T& arr, const string& desc){
 	std::cout << desc << ": [";
 
 	for (auto it = arr.begin(); it != arr.end(); it++){
-		std::cout << *it << ((std::next(it) != arr.end()) ? ", " : "]\n");
+		std::cout << *it << ((std::next(it) != arr.end()) ? ", " : "");
 	}
+	std::cout << "]\n";
 }
 endsnippet
 
