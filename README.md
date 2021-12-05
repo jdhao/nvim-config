@@ -130,6 +130,8 @@ represents ASCII character `,`.
 | `<leader>cd`      | Normal        | Linux/macOS/Win | Change current working directory to to the dir of current buffer |
 | `<space>t`        | Normal        | Linux/macOS/Win | Toggle tag window (show project tags in the right window)        |
 | `<leader>gs`      | Normal        | Linux/macOS/Win | Show Git status result                                           |
+| `<leader>gw`      | Normal        | Linux/macOS/Win | Run Git add for current file                                     |
+| `<leader>gd`      | Normal        | Linux/macOS/Win | Run git diff for current file                                    |
 | `<leader>gc`      | Normal        | Linux/macOS/Win | Run git commit                                                   |
 | `<F9>`            | Normal        | Linux/macOS/Win | Run current source file (for Python, C++)                        |
 | `<F11>`           | Normal        | Linux/macOS/Win | Toggle spell checking                                            |
