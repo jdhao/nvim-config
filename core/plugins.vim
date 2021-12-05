@@ -218,7 +218,7 @@ nnoremap <silent> <leader>gc :Git commit<CR>
 nnoremap <silent> <leader>gd :Gdiffsplit<CR>
 nnoremap <silent> <leader>gpl :Git pull<CR>
 " Note that to use bar literally, we need backslash it, see also `:h :bar`.
-nnoremap <silent> <leader>gpu :15split \| term git push
+nnoremap <silent> <leader>gpu :15split \| term git push<CR>
 
 """""""""""""""""""""""""plasticboy/vim-markdown settings"""""""""""""""""""
 " Disable header folding
