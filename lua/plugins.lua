@@ -124,7 +124,7 @@ require("packer").startup({
     use {
       'nvim-lualine/lualine.nvim', event = 'VimEnter',
       requires = {'kyazdani42/nvim-web-devicons', opt = true},
-      config = [[require('config.lualine')]]
+      config = [[require('config.statusline')]]
     }
 
     use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('config.bufferline')]] })
