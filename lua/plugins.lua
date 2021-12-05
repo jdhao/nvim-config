@@ -121,9 +121,11 @@ require("packer").startup({
     -- Another similar plugin
     -- use 'airblade/vim-gitgutter'
 
-    -- colorful status line and theme
-    use({"vim-airline/vim-airline-themes", after = 'vim-signify',})
-    use({"vim-airline/vim-airline", after = 'vim-airline-themes',})
+    use {
+      'nvim-lualine/lualine.nvim', event = 'VimEnter',
+      requires = {'kyazdani42/nvim-web-devicons', opt = true},
+      config = [[require('config.lualine')]]
+    }
 
     use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('config.bufferline')]] })
 

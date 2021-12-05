@@ -343,58 +343,6 @@ if ( g:is_win || g:is_mac ) && executable('latex')
   endif
 endif
 
-"""""""""""""""""""""""""""vim-airline setting""""""""""""""""""""""""""""""
-" Set airline theme to a random one if it exists
-let s:candidate_airlinetheme = ['ayu_mirage', 'lucius', 'ayu_dark', 'base16_bright',
-      \ 'base16_adwaita', 'raven', 'term', 'deus', 'onedark']
-let g:airline_theme = utils#RandElement(s:candidate_airlinetheme)
-
-" Whether to show function or other tags on status line
-let g:airline#extensions#vista#enabled = 0
-let g:airline#extensions#gutentags#enabled = 1
-
-" Do not show search index in statusline since it is shown on command line
-let g:airline#extensions#anzu#enabled = 0
-
-" Enable vim-airline extension for nvim-lsp
-let g:airline#extensions#nvimlsp#enabled = 1
-
-let g:airline#extensions#searchcount#enabled = 0
-
-" Skip empty sections if there are nothing to show,
-" extracted from https://vi.stackexchange.com/a/9637/15292
-let g:airline_skip_empty_sections = 1
-
-" Whether to use powerline symbols, see https://vi.stackexchange.com/q/3359/15292
-let g:airline_powerline_fonts = 0
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.linenr = " L:"
-let g:airline_symbols.colnr = "  C:"
-
-if !g:is_linux
-  let g:airline_symbols.branch = ''
-  let g:airline_symbols.spell = 'Ꞩ'
-endif
-
-" Custom branch name
-let g:airline#extensions#branch#custom_head = 'utils#GetGitBranch'
-
-" Only show git hunks which are non-zero
-let g:airline#extensions#hunks#non_zero_only = 1
-
-" Speed up airline
-let g:airline_highlighting_cache = 1
-
-" The keys in the following shortcode are the layout when we use a specific
-" input method mode. On my macOS, 0 means that we are trying to input Chinese,
-" and 1 means we are using English mode.
-" See also https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/xkblayout.vim#L11
-let g:airline#extensions#xkblayout#short_codes = {'0': 'CN', '1': 'US'}
-
 """"""""""""""""""""""""""""vim-startify settings""""""""""""""""""""""""""""
 " Do not change working directory when opening files.
 let g:startify_change_to_dir = 0
