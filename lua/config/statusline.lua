@@ -1,6 +1,7 @@
 local function spell()
   if vim.o.spell then
-    return "[SPELL]"
+    local spelllang = vim.o.spelllang
+    return string.format("[SPELL][%s]", spelllang)
   end
 
   return ""
@@ -48,8 +49,10 @@ require("lualine").setup({
   options = {
     icons_enabled = true,
     theme = "auto",
-    component_separators = { left = "", right = "" },
-    section_separators = { left = "", right = "" },
+    -- component_separators = { left = "", right = "" },
+    -- section_separators = { left = "", right = "" },
+    section_separators = "",
+    component_separators = "",
     disabled_filetypes = {},
     always_divide_middle = true,
   },
