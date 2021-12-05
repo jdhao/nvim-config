@@ -37,7 +37,7 @@ is guaranteed.**
 + Smarter and faster matching pair management (add, replace or delete) via [vim-sandwich](https://github.com/machakann/vim-sandwich).
 + Fast buffer jump via [hop.nvim](https://github.com/phaazon/hop.nvim).
 + Ultra fast snippet insertion via [Ultisnips](https://github.com/SirVer/ultisnips).
-+ Beautiful status line via [vim-airline](https://github.com/vim-airline/vim-airline).
++ Beautiful status line via [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim).
 + Better quickfix list with [nvim-bqf](https://github.com/kevinhwang91/nvim-bqf).
 + Show search index and count with [nvim-hlslens](https://github.com/kevinhwang91/nvim-hlslens).
 + Command line auto-completion via [wilder.nvim](https://github.com/gelguy/wilder.nvim).

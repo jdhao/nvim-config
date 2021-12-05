@@ -27,12 +27,6 @@ function! utils#HasColorscheme(name) abort
   return !empty(globpath(&runtimepath, l:pat))
 endfunction
 
-" Check if an Airline theme exists in runtimepath.
-function! utils#HasAirlinetheme(name) abort
-  let l:pat = printf('autoload/airline/themes/%s.vim', a:name)
-  return !empty(globpath(&runtimepath, l:pat))
-endfunction
-
 " Generate random integers in the range [Low, High] in pure vim script,
 " adapted from https://stackoverflow.com/a/12739441/6064933
 function! utils#RandInt(Low, High) abort

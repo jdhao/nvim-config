@@ -76,7 +76,7 @@ set scrolloff=3
 set mouse=nic  " Enable mouse in several mode
 set mousemodel=popup  " Set the behaviour of mouse
 
-" Do not show mode on command line since vim-airline can show it
+" Disable showing current mode on command line since statusline plugins can show it.
 set noshowmode
 
 set fileformats=unix,dos  " Fileformats to use for new files

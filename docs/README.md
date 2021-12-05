@@ -136,10 +136,8 @@ Terminal](https://github.com/microsoft/terminal).
 
 ## Font
 
-Since [Vim-airline](https://github.com/vim-airline/vim-airline) uses several
-Unicode symbols not available in normal font, we need to install [fonts
-here](https://github.com/powerline/fonts) to make vim-airline look pretty. I am using [Hack](https://github.com/powerline/fonts/tree/master/Hack), and it looks
-great. Another great resource for programming font is the [nerd-font](https://github.com/ryanoasis/nerd-fonts) project.
+Since statusline or file explorer plugins often use Unicode symbols not
+available in normal font, we need to install a patched font from the [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) project.
 
 # Install Nvim
 
