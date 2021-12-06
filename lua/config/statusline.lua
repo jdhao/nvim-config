@@ -1,7 +1,6 @@
 local function spell()
   if vim.o.spell then
-    local spelllang = vim.o.spelllang
-    return string.format("[SPELL][%s]", spelllang)
+    return string.format("[SPELL]")
   end
 
   return ""
@@ -62,7 +61,7 @@ require("lualine").setup({
     lualine_c = {
       {
         spell,
-        color = "Cursor"
+        color = {fg = 'black', bg = '#a7c080'}
       },
       "filename"
     },
