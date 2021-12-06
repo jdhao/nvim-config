@@ -26,6 +26,9 @@ local util = require('packer.util')
 
 require("packer").startup({
   function(use)
+    -- it is recommened to put impatient.nvim before any other plugins
+    use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
+
     use({"wbthomason/packer.nvim", opt = true})
 
     use {"onsails/lspkind-nvim", event = "BufEnter"}
@@ -346,8 +349,6 @@ require("packer").startup({
 
     -- show and trim trailing whitespaces
     use {'jdhao/whitespace.nvim', event = 'VimEnter'}
-
-    use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
   end,
   config = {
     max_jobs = 16,
