@@ -71,7 +71,13 @@ require("packer").startup({
     end
 
     -- Super fast buffer jump
-    use { 'phaazon/hop.nvim', event = "VimEnter", config = [[require('config.nvim_hop')]] }
+    use {
+      'phaazon/hop.nvim',
+      event = "VimEnter",
+      config = function()
+        vim.defer_fn(function() require('config.nvim_hop') end, 2000)
+      end
+    }
 
     -- Clear highlight search automatically for you
     use({"romainl/vim-cool", event = "VimEnter"})
@@ -129,17 +135,25 @@ require("packer").startup({
 
     use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('config.bufferline')]] })
 
-    use { 'goolord/alpha-nvim', event = 'VimEnter', config = [[require('config.alpha-nvim')]] }
-    -- use { '~/Projects/alpha-nvim', config = [[require('config.alpha-nvim')]] }
-
     -- fancy start screen
-    use({ "lukas-reineke/indent-blankline.nvim", event = "VimEnter", config = [[require('config.indent-blankline')]] })
+    use { 'goolord/alpha-nvim', event = 'VimEnter', config = [[require('config.alpha-nvim')]] }
+
+    use({
+      "lukas-reineke/indent-blankline.nvim",
+      config = [[require('config.indent-blankline')]]
+    })
 
     -- Highlight URLs inside vim
     use({"itchyny/vim-highlighturl", event = "VimEnter"})
 
     -- notification plugin
-    use({ "rcarriga/nvim-notify", event = "BufEnter", config = [[require('config.nvim-notify')]] })
+    use({
+      "rcarriga/nvim-notify",
+      event = "BufEnter",
+      config = function()
+        vim.defer_fn(function() require('config.nvim-notify') end, 2000)
+      end
+    })
 
     -- For Windows and Mac, we can open an URL in the browser. For Linux, it may
     -- not be possible since we maybe in a server which disables GUI.
@@ -168,7 +182,13 @@ require("packer").startup({
     -- use 'mg979/vim-visual-multi'
 
     -- Autosave files on certain events
-    use({"Pocco81/AutoSave.nvim", event = "VimEnter", config = [[require('config.autosave')]]})
+    use({
+      "Pocco81/AutoSave.nvim",
+      event = "VimEnter",
+      config = function()
+        vim.defer_fn(function() require('config.autosave') end, 1500)
+      end
+    })
 
     -- Show undo history visually
     use({"simnalamburt/vim-mundo", cmd = {"MundoToggle", "MundoShow"}})
@@ -274,7 +294,13 @@ require("packer").startup({
 
     -- Smoothie motions
     -- use 'psliwka/vim-smoothie'
-    use({ "karb94/neoscroll.nvim", event = "VimEnter", config = [[require('config.neoscroll')]] })
+    use({
+      "karb94/neoscroll.nvim",
+      event = "VimEnter",
+      config = function()
+        vim.defer_fn(function() require('config.neoscroll') end, 2000)
+      end
+    })
 
     use({"tpope/vim-scriptease", cmd = {"Scriptnames", "Message", "Verbose"}})
 
