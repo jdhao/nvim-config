@@ -133,14 +133,6 @@ if g:is_win || g:is_mac
   xmap ob <Plug>(openbrowser-smart-search)
 endif
 
-""""""""""""""""""""""""""" gutentags settings """"""""""""""""""""""""""""""
-" The path to store tags files, instead of in the project root.
-let g:gutentags_cache_dir = stdpath('cache') . '/ctags'
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-let g:gutentags_ctags_exclude = ['*.md', '*.html', '*.json', '*.toml', '*.css', '*.js',]
-
 """"""""""""""""""""""""""" vista settings """"""""""""""""""""""""""""""""""
 let g:vista#renderer#icons = {
       \ 'member': '',

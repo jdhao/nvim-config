@@ -90,11 +90,11 @@ require("packer").startup({
     end
 
     use {
-      'nvim-telescope/telescope.nvim',
+      'nvim-telescope/telescope.nvim', cmd = 'Telescope',
       requires = { {'nvim-lua/plenary.nvim'} }
     }
     -- search emoji and other symbols
-    use 'nvim-telescope/telescope-symbols.nvim'
+    use {'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim'}
 
     -- Another similar plugin is command-t
     -- use 'wincent/command-t'
@@ -150,8 +150,6 @@ require("packer").startup({
 
     -- Only install these plugins if ctags are installed on the system
     if utils.executable("ctags") then
-      -- plugin to manage your tags
-      use({"ludovicchabant/vim-gutentags", event = "VimEnter"})
       -- show file tags in vim window
       use({"liuchengxu/vista.vim", cmd = "Vista"})
     end
@@ -313,7 +311,12 @@ require("packer").startup({
     use({"gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]]})
 
     -- showing keybindings
-    use {"folke/which-key.nvim", event = "VimEnter", config = [[require('config.which-key')]]}
+    use {"folke/which-key.nvim",
+    event = "VimEnter",
+    config = function()
+      vim.defer_fn(function() require('config.which-key') end, 2000)
+    end
+    }
 
     -- show and trim trailing whitespaces
     use {'jdhao/whitespace.nvim', event = 'VimEnter'}

@@ -78,7 +78,7 @@ and make sure you can call `git` from the command line.
 
 ## ctags
 
-In order to use tags related plugins such as [vista.vim](https://github.com/liuchengxu/vista.vim) and [gutentags](https://github.com/ludovicchabant/vim-gutentags), we need to
+In order to use tags related plugins such as [vista.vim](https://github.com/liuchengxu/vista.vim), we need to
 install a ctags distribution. Universal-ctags is preferred.
 
 To install ctags on macOS, use [Homebrew](https://github.com/universal-ctags/homebrew-universal-ctags):
