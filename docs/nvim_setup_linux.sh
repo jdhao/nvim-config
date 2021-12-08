@@ -222,6 +222,7 @@ echo "Installing packer.nvim"
 git clone --depth=1 https://hub.fastgit.org/wbthomason/packer.nvim \
     ~/.local/share/nvim/site/pack/packer/opt/packer.nvim
 
-"$NVIM_DIR/bin/nvim" -c "echomsg 'installing plugins, please wait'" +PackerSync +30sleep +qall
+echo "Installing nvim plugins, please wait"
+"$NVIM_DIR/bin/nvim" -c "autocmd User PackerComplete quitall" -c "PackerSync"
 
 echo "Finished installing Nvim and its dependencies!"
