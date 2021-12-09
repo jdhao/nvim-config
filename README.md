@@ -11,10 +11,16 @@
       <img alt="Latest release" src="https://img.shields.io/github/v/release/jdhao/nvim-config" />
     </a>
     <a href="https://github.com/jdhao/nvim-config/commits">
-      <img src="https://badgen.net/github/commits/jdhao/nvim-config">
+      <img src="https://badgen.net/github/commits/jdhao/nvim-config" alt="Commit number" />
     </a>
     <a href="https://github.com/jdhao/nvim-config/pulse">
       <img alt="Last commit" src="https://img.shields.io/github/last-commit/jdhao/nvim-config" />
+    </a>
+    <a href="https://github.com/jdhao/nvim-config">
+    <img src="https://img.shields.io/github/repo-size/jdhao/nvim-config?style=flat-square&label=Repo" alt="Repo size">
+    </a>
+    <a href="https://github.com/neovim/neovim/releases/tag/v0.6.0">
+     <img src="https://img.shields.io/badge/Neovim-0.6.0-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
     </a>
     <img src="https://img.shields.io/github/languages/top/jdhao/nvim-config" />
     <a href="https://github.com/jdhao/nvim-config/blob/master/LICENSE">
