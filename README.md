@@ -6,6 +6,23 @@
 ██   ████   ████   ██ ██      ██      ██████  ██████  ██   ████ ██      ██  ██████
 ```
 
+<div align="center"><p>
+    <a href="https://github.com/jdhao/nvim-config/releases/latest">
+      <img alt="Latest release" src="https://img.shields.io/github/v/release/jdhao/nvim-config" />
+    </a>
+    <a href="https://github.com/jdhao/nvim-config/commits">
+      <img src="https://badgen.net/github/commits/jdhao/nvim-config">
+    </a>
+    <a href="https://github.com/jdhao/nvim-config/pulse">
+      <img alt="Last commit" src="https://img.shields.io/github/last-commit/jdhao/nvim-config" />
+    </a>
+    <img src="https://img.shields.io/github/languages/top/jdhao/nvim-config" />
+    <a href="https://github.com/jdhao/nvim-config/blob/master/LICENSE">
+      <img src="https://img.shields.io/github/license/jdhao/nvim-config?style=flat-square&logo=GNU&label=License" alt="License"/>
+    </a>
+</p>
+</div>
+
 # Introduction
 
 This repo hosts my Nvim configuration for all the platforms I am using (Linux,
@@ -22,8 +39,8 @@ add it to your own Nvim config.
 See [doc here](docs/README.md) on how to install Nvim's dependencies, Nvim
 itself, and how to set up on different platforms (Linux, macOS and Windows).
 
-**This config is tested against [Nvim 0.6.0 release](https://github.com/neovim/neovim/releases/tag/v0.6.0). No backward compatibility
-is guaranteed.**
+**This config is tested against [Nvim v0.6.0 release](https://github.com/neovim/neovim/releases/tag/v0.6.0). No backward compatibility is
+guaranteed.**
 
 # Features #
 
