@@ -85,8 +85,13 @@ require("packer").startup({
     -- Clear highlight search automatically for you
     use({"romainl/vim-cool", event = "VimEnter"})
 
-    -- Show match number for search
-    use {'kevinhwang91/nvim-hlslens', branch = 'main', event = "VimEnter"}
+    -- Show match number and index for searching
+    use {
+      'kevinhwang91/nvim-hlslens',
+      branch = 'main',
+      keys = {{'n', '*'}, {'n', '#'}, {'n', 'n'}, {'n', 'N'}},
+      config = [[require('config.hlslens')]]
+    }
 
     -- Stay after pressing * and search selected text
     use({"haya14busa/vim-asterisk", event = 'VimEnter'})

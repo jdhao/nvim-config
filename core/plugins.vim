@@ -37,15 +37,6 @@ let g:semshi#error_sign=v:false
 """""""""""""""""""""""""" vlime settings """"""""""""""""""""""""""""""""
 command! -nargs=0 StartVlime call jobstart(printf("sbcl --load %s/vlime/lisp/start-vlime.lisp", g:package_home))
 
-""""""""""""""""""""""""""""" settings for nvim-hlslens"""""""""""""""
-noremap <silent> n <Cmd>execute('normal! ' . v:count1 . 'nzzzv')<CR>
-            \<Cmd>lua require('hlslens').start()<CR>
-noremap <silent> N <Cmd>execute('normal! ' . v:count1 . 'Nzzzv')<CR>
-            \<Cmd>lua require('hlslens').start()<CR>
-
-map *  <Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>
-map #  <Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>
-
 """""""""""""""""""""""""""""LeaderF settings"""""""""""""""""""""
 " Do not use cache file
 let g:Lf_UseCache = 0
