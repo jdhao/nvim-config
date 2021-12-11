@@ -45,8 +45,6 @@ nnoremap <silent> \d :<C-U>bprevious <bar> bdelete #<CR>
 
 " Insert a blank line below or above current line (do not move the cursor),
 " see https://stackoverflow.com/a/16136133/6064933
-nnoremap oo :echo 'Please use <lt>space>o instead'<CR>
-nnoremap OO :echo 'Please use <lt>space>O instead'<CR>
 nnoremap <expr> <Space>o printf('m`%so<ESC>``', v:count1)
 nnoremap <expr> <Space>O printf('m`%sO<ESC>``', v:count1)
 
