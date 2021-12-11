@@ -135,9 +135,11 @@ require("packer").startup({
     -- Another similar plugin
     -- use 'airblade/vim-gitgutter'
 
+    use {'kyazdani42/nvim-web-devicons', event = 'VimEnter'}
+
     use {
-      'nvim-lualine/lualine.nvim', event = 'VimEnter',
-      requires = {'kyazdani42/nvim-web-devicons', opt = true},
+      'nvim-lualine/lualine.nvim',
+      event = 'VimEnter',
       config = [[require('config.statusline')]]
     }
 
@@ -148,6 +150,7 @@ require("packer").startup({
 
     use({
       "lukas-reineke/indent-blankline.nvim",
+      event = 'VimEnter',
       config = [[require('config.indent-blankline')]]
     })
 
