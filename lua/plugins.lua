@@ -54,11 +54,6 @@ require("packer").startup({
       use({ "nvim-treesitter/nvim-treesitter", event = 'BufEnter', run = ":TSUpdate", config = [[require('config.treesitter')]] })
     end
 
-    -- Python syntax highlighting and more
-    if vim.g.is_win then
-      use({ "numirias/semshi", ft = "python", config = "vim.cmd [[UpdateRemotePlugins]]" })
-    end
-
     -- Python indent (follows the PEP8 style)
     use({ "Vimjas/vim-python-pep8-indent", ft = { "python" } })
 
