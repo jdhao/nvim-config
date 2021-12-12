@@ -78,7 +78,7 @@ require("packer").startup({
     }
 
     -- Clear highlight search automatically for you
-    use({"romainl/vim-cool", event = "VimEnter"})
+    -- use({"romainl/vim-cool", event = "VimEnter"})
 
     -- Show match number and index for searching
     use {
