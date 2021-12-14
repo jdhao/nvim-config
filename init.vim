@@ -1,4 +1,3 @@
-"{ Header info
 " Description: This is my personal Nvim configuration supporting Mac, Linux
 " and Windows, with various plugins configured. This configuration evolves as
 " I learn more about Nvim and becomes more proficient in using Nvim. Since it
@@ -8,9 +7,7 @@
 " built over time with a lot of polish.
 " Author: Jie-dong Hao
 " Email: jdhao@hotmail.com
-"}
 
-"{ Main configurations
 let g:config_files = [
       \ 'globals.vim',
       \ 'options.vim',
@@ -23,4 +20,3 @@ let g:config_files = [
 for s:fname in g:config_files
   execute printf('source %s/core/%s', stdpath('config'), s:fname)
 endfor
-"}
