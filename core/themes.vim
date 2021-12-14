@@ -61,7 +61,7 @@ let s:theme2dir = {
       \ 'nord': 'nord.nvim',
       \ 'doom_one': 'doom-one.nvim',
       \ 'everforest' :'everforest',
-      \ 'nightfox': 'nightfox.nvim'
+      \ 'nightfox': 'nightfox.nvim',
       \ }
 
 let s:theme = utils#RandElement(keys(s:theme2dir))
@@ -73,8 +73,8 @@ if !has_key(s:theme_setup_dict, s:theme)
   finish
 endif
 
-let s:res = utils#add_pack(s:theme2dir[s:theme])
-if !s:res
+let s:status = utils#add_pack(s:theme2dir[s:theme])
+if !s:status
   echomsg printf("Theme %s not installed. Run PackerSync to install.", s:theme)
   finish
 endif
