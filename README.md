@@ -13,9 +13,6 @@
     <a href="https://github.com/jdhao/nvim-config/commits">
       <img src="https://badgen.net/github/commits/jdhao/nvim-config" alt="Commit number" />
     </a>
-    <a href="https://github.com/jdhao/nvim-config/pulse">
-      <img alt="Last commit" src="https://img.shields.io/github/last-commit/jdhao/nvim-config" />
-    </a>
     <a href="https://github.com/jdhao/nvim-config">
     <img src="https://img.shields.io/github/repo-size/jdhao/nvim-config?style=flat-square&label=Repo" alt="Repo size">
     </a>
