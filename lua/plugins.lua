@@ -37,10 +37,6 @@ require("packer").startup({
 
     -- nvim-cmp completion sources
     use {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp"}
-
-    -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
-    use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] })
-
     use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
     use {"hrsh7th/cmp-path", after = "nvim-cmp"}
     use {"hrsh7th/cmp-buffer", after = "nvim-cmp"}
@@ -49,6 +45,9 @@ require("packer").startup({
     if vim.g.is_mac then
       use {"hrsh7th/cmp-emoji", after = 'nvim-cmp'}
     end
+
+    -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
+    use({ "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] })
 
     if vim.g.is_mac then
       use({ "nvim-treesitter/nvim-treesitter", event = 'BufEnter', run = ":TSUpdate", config = [[require('config.treesitter')]] })
