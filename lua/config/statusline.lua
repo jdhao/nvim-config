@@ -70,14 +70,14 @@ require("lualine").setup({
     lualine_a = { "mode" },
     lualine_b = { "branch", "diff" },
     lualine_c = {
-      {
-        spell,
-        color = {fg = 'black', bg = '#a7c080'}
-      },
       "filename",
       {
         ime_state,
         color = {fg = 'black', bg = '#f46868'}
+      },
+      {
+        spell,
+        color = {fg = 'black', bg = '#a7c080'}
       },
     },
     lualine_x = {
