@@ -6,6 +6,17 @@ local function spell()
   return ""
 end
 
+local function ime_state()
+  if vim.g.is_mac then
+    local layout = vim.fn.libcall(vim.g.XkbSwitchLib, 'Xkb_Switch_getXkbLayout', '')
+    if layout == '0' then
+      return '[CN]'
+    end
+  end
+
+  return ""
+end
+
 local function trailing_space()
   -- Get the positions of trailing whitespaces from plugin 'jdhao/whitespace.nvim'.
   local trailing_space_pos = vim.b.trailing_whitespace_pos
@@ -63,7 +74,11 @@ require("lualine").setup({
         spell,
         color = {fg = 'black', bg = '#a7c080'}
       },
-      "filename"
+      "filename",
+      {
+        ime_state,
+        color = {fg = 'black', bg = '#f46868'}
+      },
     },
     lualine_x = {
       "encoding",
