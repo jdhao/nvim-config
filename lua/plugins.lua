@@ -123,6 +123,7 @@ require("packer").startup({
     use({"NTBBloodbath/doom-one.nvim", opt = true})
     use({"sainnhe/everforest", opt = true})
     use({"EdenEast/nightfox.nvim", opt = true})
+    use({"rebelot/kanagawa.nvim", opt = true})
 
     -- Show git change (change, delete, add) signs in vim sign column
     use({"mhinz/vim-signify", event = 'BufEnter'})

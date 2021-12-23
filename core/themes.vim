@@ -50,6 +50,10 @@ function! s:theme_setup_dict.nightfox() dict abort
   colorscheme nordfox
 endfunction
 
+function! s:theme_setup_dict.kanagawa() dict abort
+  colorscheme kanagawa
+endfunction
+
 " Theme to directory name mapping, because theme repo name is not necessarily
 " the same as the theme name itself.
 let s:theme2dir = {
@@ -62,6 +66,7 @@ let s:theme2dir = {
       \ 'doom_one': 'doom-one.nvim',
       \ 'everforest' :'everforest',
       \ 'nightfox': 'nightfox.nvim',
+      \ 'kanagawa': 'kanagawa.nvim',
       \ }
 
 let s:theme = utils#RandElement(keys(s:theme2dir))
