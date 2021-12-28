@@ -50,9 +50,9 @@ local custom_attach = function(client, bufnr)
   -- The blow command will highlight the current variable and its usages in the buffer.
   if client.resolved_capabilities.document_highlight then
     vim.cmd([[
-      hi link LspReferenceRead Visual
-      hi link LspReferenceText Visual
-      hi link LspReferenceWrite Visual
+      hi! link LspReferenceRead Visual
+      hi! link LspReferenceText Visual
+      hi! link LspReferenceWrite Visual
       augroup lsp_document_highlight
         autocmd! * <buffer>
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
