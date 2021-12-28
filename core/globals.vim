@@ -34,7 +34,7 @@ else
 endif
 
 " Custom mapping <leader> (see `:h mapleader` for more info)
-let mapleader = ','
+let g:mapleader = ','
 
 " Enable highlighting for lua HERE doc inside vim script
 let g:vimsyn_embed = 'l'
