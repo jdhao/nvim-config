@@ -106,7 +106,7 @@ For more UI demos, see [here](https://github.com/jdhao/nvim-config/issues/15).
 ## Command-line autocompletion with wilder.nvim
 
 <p align="center">
-<img src="URL" width="https://user-images.githubusercontent.com/16662357/147677787-8e5d229a-a16a-420e-98f5-88f2a1be84a2.gif">
+<img src="https://user-images.githubusercontent.com/16662357/147677787-8e5d229a-a16a-420e-98f5-88f2a1be84a2.gif" width="800">
 </p>
 
 ## Tags
