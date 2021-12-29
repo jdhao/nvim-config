@@ -91,7 +91,7 @@ For more UI demos, see [here](https://github.com/jdhao/nvim-config/issues/15).
 <img src="https://user-images.githubusercontent.com/16662357/139462025-7bce98c5-d2d5-413f-9659-20545865cdca.gif" width="800">
 </p>
 
-## Autocompletion
+## Code autocompletion with nvim-cmp
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/16662357/128590006-0fc1451f-fac1-49b2-bb95-8aba21bfa44e.gif" width="800">
@@ -101,6 +101,12 @@ For more UI demos, see [here](https://github.com/jdhao/nvim-config/issues/15).
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/16662357/128590833-aaa05d53-19ef-441d-a5a9-ba1bbd3936c1.gif" width="800">
+</p>
+
+## Command-line autocompletion with wilder.nvim
+
+<p align="center">
+<img src="URL" width="https://user-images.githubusercontent.com/16662357/147677787-8e5d229a-a16a-420e-98f5-88f2a1be84a2.gif">
 </p>
 
 ## Tags
@@ -117,7 +123,7 @@ Go to a string starting with `se`
 <img src="https://user-images.githubusercontent.com/16662357/139459219-8a7e6ac4-1d24-4008-a370-b56773d7cb85.gif" width="800">
 </p>
 
-## GUI-style notification
+## GUI-style notification with nvim-notify
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/16662357/128589873-aadb8264-1098-4834-9876-fa66a309be05.gif" width="800">
