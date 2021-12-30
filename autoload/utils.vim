@@ -181,7 +181,8 @@ function! utils#CaptureCommandOutput(command) abort
   "create a scratch buffer for dumping the text, ref: https://vi.stackexchange.com/a/11311/15292.
   tabnew | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
 
-  put! m
+  let l:lines = split(@m, '\n')
+  call nvim_buf_set_lines(0, 0, 0, 0, l:lines)
 endfunction
 
 " Edit all files matching the given patterns.
