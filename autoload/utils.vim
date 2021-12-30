@@ -177,7 +177,7 @@ function! utils#CaptureCommandOutput(command) abort
   redir @m
   silent! execute a:command
   redir END
-  call v:lua.vim.notify("command output captured to register m", "info", {'title': 'nvim-config'})
+
   "create a scratch buffer for dumping the text, ref: https://vi.stackexchange.com/a/11311/15292.
   tabnew | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
 
