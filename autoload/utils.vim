@@ -175,7 +175,7 @@ endfunction
 " Ref: https://stackoverflow.com/q/2573021/6064933 and https://unix.stackexchange.com/q/8101/221410 .
 function! utils#CaptureCommandOutput(command) abort
   redir @m
-  execute a:command
+  silent! execute a:command
   redir END
   call v:lua.vim.notify("command output captured to register m", "info", {'title': 'nvim-config'})
   "create a scratch buffer for dumping the text, ref: https://vi.stackexchange.com/a/11311/15292.
