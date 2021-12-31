@@ -172,6 +172,17 @@ represents ASCII character `,`.
 | `ctrl-t`          | Insert        | Linux/macOS/Win | Turn word under cursor to title case                             |
 | `jk`              | Insert        | Linux/macOS/Win | Return to Normal mode without lagging                            |
 
+# Custom commands
+
+In addition to commands provided by various plugins, I have also created
+several custom commands for personal use.
+
+| command    | description                                                             | example                        |
+|------------|-------------------------------------------------------------------------|--------------------------------|
+| `Redir`    | capture command output to a tabpage for easier inspection.              | `Redir hi`                     |
+| `Edit`     | edit multiple files at the same time, supports globing                  | `Edit *.vim`                   |
+| `Datetime` | print current date and time or convert Unix time stamp to date and time | `Datetime 12345` or `Datetime` |
+
 # Trouble shooting
 
 If you come across an issue, you can first use `:checkhealth` command provided
