@@ -182,7 +182,7 @@ If you still have an issue, [open a new issue](https://github.com/jdhao/nvim-con
 
 # Further readings
 
-Some of the resources that I find helpful in mastering Vim is documented [here](docs/vim_resources.md).
+Some of the resources that I find helpful in mastering Vim is documented [here](docs/nvim_resources.md).
 You may also be interested in my post in configuring Vim on different platforms:
 
 + [Config nvim on Linux for Python development](https://jdhao.github.io/2018/12/24/centos_nvim_install_use_guide_en/)
