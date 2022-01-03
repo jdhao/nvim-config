@@ -96,11 +96,9 @@ nnoremap <silent> <leader>fg :<C-U>Leaderf rg --no-messages --popup<CR>
 
 " Search vim help files
 nnoremap <silent> <leader>fh :<C-U>Leaderf help --popup<CR>
-nnoremap <silent> <leader>h :<C-U>echoerr "Use \<lt>leader>fh instead!"<CR>
 
 " Search tags in current buffer
 nnoremap <silent> <leader>ft :<C-U>Leaderf bufTag --popup<CR>
-nnoremap <silent> <leader>t :<C-U>echoerr "Use \<lt>leader>ft instead!"<CR>
 
 " Switch buffers
 nnoremap <silent> <leader>fb :<C-U>Leaderf buffer --popup<CR>
