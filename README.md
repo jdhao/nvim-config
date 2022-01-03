@@ -150,7 +150,6 @@ represents ASCII character `,`.
 | `<leader>q`       | Normal        | Linux/macOS/Win | Quit current window                                              |
 | `<leader>Q`       | Normal        | Linux/macOS/Win | Quit all window and close Nvim                                   |
 | `<leader>w`       | Normal        | Linux/macOS/Win | Save current buffer content                                      |
-| `<leader>cd`      | Normal        | Linux/macOS/Win | Change current directory to where current file is                |
 | `<leader>y`       | Normal        | Linux/macOS/Win | Copy the content of entire buffer to default register            |
 | `<leader>cl`      | Normal        | Linux/macOS/Win | Toggle cursor column                                             |
 | `<leader>cd`      | Normal        | Linux/macOS/Win | Change current working directory to to the dir of current buffer |
@@ -159,6 +158,8 @@ represents ASCII character `,`.
 | `<leader>gw`      | Normal        | Linux/macOS/Win | Run Git add for current file                                     |
 | `<leader>gd`      | Normal        | Linux/macOS/Win | Run git diff for current file                                    |
 | `<leader>gc`      | Normal        | Linux/macOS/Win | Run git commit                                                   |
+| `<leader>gpl`     | Normal        | Linux/macOS/Win | Run git pull                                                     |
+| `<leader>gpu`     | Normal        | Linux/macOS/Win | Run git push                                                     |
 | `<F9>`            | Normal        | Linux/macOS/Win | Run current source file (for Python, C++)                        |
 | `<F11>`           | Normal        | Linux/macOS/Win | Toggle spell checking                                            |
 | `<F12>`           | Normal        | Linux/macOS/Win | Toggle paste mode                                                |
