@@ -142,11 +142,11 @@ available in normal font, we need to install a patched font from the [nerd-fonts
 # Install Nvim
 
 There are various ways to install Nvim depending on your system. Current
-configuration is tested against nvim v0.6.0.
+configuration is tested against nvim v0.6.1.
 
 ## Linux
 
-We can directly download the binary release from [here](https://github.com/neovim/neovim/releases/download/v0.6.0/nvim-linux64.tar.gz).
+We can directly download the binary release from [here](https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz).
 
 ## Windows
 
@@ -156,7 +156,7 @@ The easiest way to install Nvim on Windows is via chocolatey:
 choco install neovim
 ```
 
-You may download from [nvim release](https://github.com/neovim/neovim/releases/download/v0.6.0/nvim-win64.zip) from GitHub and manually extract it.
+You may download from [nvim release](https://github.com/neovim/neovim/releases/download/stable/nvim-win64.zip) from GitHub and manually extract it.
 
 ## macOS
 

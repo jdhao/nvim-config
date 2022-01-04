@@ -26,4 +26,4 @@ pip install 'python-lsp-server[all]' pylsp-mypy pyls-isort
 
 # Install neovim nightly
 scoop bucket add versions
-scoop install neovim-nightly
+scoop install neovim
