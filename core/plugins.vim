@@ -421,6 +421,8 @@ function! s:wilder_init() abort
           \ 'highlights': {
           \   'accent': l:hl,
           \ },
+          \ 'left': [' ', wilder#popupmenu_devicons(),],
+          \ 'right': [' ', wilder#popupmenu_scrollbar(),],
           \ 'apply_incsearch_fix': 0,
           \ }))
   catch /^Vim\%((\a\+)\)\=:E117/
