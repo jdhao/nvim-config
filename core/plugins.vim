@@ -387,7 +387,7 @@ nnoremap <leader>dp :<C-U>GdbStartPDB python -m pdb %<CR>
 """"""""""""""""""""""""""""""wilder.nvim settings""""""""""""""""""""""""""""""
 augroup wilder_init
   autocmd!
-  " CursorHold is suggested here: https: //github.com/gelguy/wilder.nvim/issues/89#issuecomment-934465957.
+  " CursorHold is suggested here: https://github.com/gelguy/wilder.nvim/issues/89#issuecomment-934465957.
   autocmd CursorHold * ++once call s:wilder_init()
 augroup END
 
