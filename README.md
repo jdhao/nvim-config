@@ -184,7 +184,9 @@ several custom commands for personal use.
 | `Edit`     | edit multiple files at the same time, supports globing                  | `Edit *.vim`                   |
 | `Datetime` | print current date and time or convert Unix time stamp to date and time | `Datetime 12345` or `Datetime` |
 
-# Trouble shooting
+# Contributing
+
+If you find anyting that can be improved, do not hesitate to point it out or create a PR.
 
 If you come across an issue, you can first use `:checkhealth` command provided
 by `nvim` to trouble-shoot yourself. Please read carefully the messages
