@@ -27,13 +27,6 @@ let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 " https://jdhao.github.io/2019/04/17/neovim_snippet_s1/ for details.
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
 
-"""""""""""""""""""""""""" semshi settings """""""""""""""""""""""""""""""
-" Do not highlight for all occurrences of variable under cursor
-let g:semshi#mark_selected_nodes=0
-
-" Do not show error sign since linting plugin is specialized for that
-let g:semshi#error_sign=v:false
-
 """""""""""""""""""""""""" vlime settings """"""""""""""""""""""""""""""""
 command! -nargs=0 StartVlime call jobstart(printf("sbcl --load %s/vlime/lisp/start-vlime.lisp", g:package_home))
 
