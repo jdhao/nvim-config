@@ -118,3 +118,8 @@ augroup packer_auto_compile
   autocmd!
   autocmd BufWritePost */nvim/lua/plugins.lua source <afile> | PackerCompile
 augroup END
+
+augroup auto_create_dir
+  autocmd!
+  autocmd BufWritePre * call utils#may_create_dir(expand("<afile>"))
+augroup END
