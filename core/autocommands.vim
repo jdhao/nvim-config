@@ -121,5 +121,5 @@ augroup END
 
 augroup auto_create_dir
   autocmd!
-  autocmd BufWritePre * call utils#may_create_dir(expand("<afile>"))
+  autocmd BufWritePre * lua require('utils').may_create_dir()
 augroup END

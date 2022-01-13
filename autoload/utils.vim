@@ -207,12 +207,3 @@ function! utils#add_pack(name) abort
 
   return l:status
 endfunction
-
-" Create the parent dir for current file if it does not exist
-function! utils#may_create_dir(path) abort
-  let l:parent_dir = fnamemodify(a:path, ':p:h')
-
-  if !isdirectory(l:parent_dir)
-    call mkdir(l:parent_dir, "p")
-  endif
-endfunction
