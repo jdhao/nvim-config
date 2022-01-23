@@ -355,3 +355,12 @@ Keymap
 iCloud
 keyframe
 maskRCNN
+vundle
+ycm
+ftplugin
+vim9
+dotfile
+magit
+xelatex
+subarray
+fvim
