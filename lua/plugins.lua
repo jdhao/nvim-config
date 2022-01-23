@@ -31,7 +31,7 @@ require("packer").startup({
 
     use({"wbthomason/packer.nvim", opt = true})
 
-    use {"onsails/lspkind-nvim", event = "BufEnter"}
+    use({"onsails/lspkind-nvim", event = "VimEnter"})
     -- auto-completion engine
     use {"hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('config.nvim-cmp')]]}
 
