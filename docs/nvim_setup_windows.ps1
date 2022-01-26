@@ -15,6 +15,9 @@ scoop install universal-ctags
 # Install vim-language-server
 npm install -g vim-language-server
 
+# Install bash-language-server
+npm install -g bash-language-server
+
 # Install miniconda3
 scoop install miniconda3
 

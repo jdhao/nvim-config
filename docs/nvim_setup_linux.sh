@@ -117,6 +117,9 @@ fi
 # Install vim-language-server
 "$NODE_DIR/bin/npm" install -g vim-language-server
 
+# Install bash-language-server
+"$NODE_DIR/bin/npm" install -g bash-language-server
+
 #######################################################################
 #                            Ripgrep part                             #
 #######################################################################
