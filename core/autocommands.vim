@@ -85,7 +85,7 @@ function! s:custom_highlight() abort
   highlight FloatBorder guifg=LightGreen guibg=NONE
 
   " highlight for matching parentheses
-  highlight MatchParen cterm=bold,reverse,underline gui=bold,reverse,underline
+  highlight MatchParen cterm=bold,underline gui=bold,underline
 endfunction
 
 " highlight yanked region, see `:h lua-highlight`
