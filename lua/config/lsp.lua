@@ -1,6 +1,8 @@
 local api = vim.api
 local lsp = vim.lsp
 
+local utils = require("utils")
+
 local M = {}
 
 function M.show_line_diagnostics()
@@ -73,54 +75,72 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lspconfig = require("lspconfig")
 
-lspconfig.pylsp.setup({
-  on_attach = custom_attach,
-  settings = {
-    pylsp = {
-      plugins = {
-        pylint = { enabled = true, executable = "pylint" },
-        pyflakes = { enabled = false },
-        pycodestyle = { enabled = false },
-        jedi_completion = { fuzzy = true },
-        pyls_isort = { enabled = true },
-        pylsp_mypy = { enabled = true },
+if utils.executable('pylsp') then
+  lspconfig.pylsp.setup({
+    on_attach = custom_attach,
+    settings = {
+      pylsp = {
+        plugins = {
+          pylint = { enabled = true, executable = "pylint" },
+          pyflakes = { enabled = false },
+          pycodestyle = { enabled = false },
+          jedi_completion = { fuzzy = true },
+          pyls_isort = { enabled = true },
+          pylsp_mypy = { enabled = true },
+        },
       },
     },
-  },
-  flags = {
-    debounce_text_changes = 200,
-  },
-  capabilities = capabilities,
-})
+    flags = {
+      debounce_text_changes = 200,
+    },
+    capabilities = capabilities,
+  })
+else
+  vim.notify("pylsp not found!", 'warn', {title = 'Nvim-config'})
+end
 
--- lspconfig.pyright.setup{
---   on_attach = custom_attach,
---   capabilities = capabilities
--- }
+-- if utils.executable('pyright') then
+--   lspconfig.pyright.setup{
+--     on_attach = custom_attach,
+--     capabilities = capabilities
+--   }
+-- else
+--   vim.notify("pyright not found!", 'warn', {title = 'Nvim-config'})
+-- end
 
-lspconfig.clangd.setup({
-  on_attach = custom_attach,
-  capabilities = capabilities,
-  filetypes = { "c", "cpp", "cc" },
-  flags = {
-    debounce_text_changes = 500,
-  },
-})
+if utils.executable('clangd') then
+  lspconfig.clangd.setup({
+    on_attach = custom_attach,
+    capabilities = capabilities,
+    filetypes = { "c", "cpp", "cc" },
+    flags = {
+      debounce_text_changes = 500,
+    },
+  })
+else
+  vim.notify("clangd not found!", 'warn', {title = 'Nvim-config'})
+end
 
 -- set up vim-language-server
-lspconfig.vimls.setup({
-  on_attach = custom_attach,
-  flags = {
-    debounce_text_changes = 500,
-  },
-  capabilities = capabilities,
-})
+if utils.executable('vim-language-server') then
+  lspconfig.vimls.setup({
+    on_attach = custom_attach,
+    flags = {
+      debounce_text_changes = 500,
+    },
+    capabilities = capabilities,
+  })
+else
+  vim.notify("vim-language-server not found!", 'warn', {title = 'Nvim-config'})
+end
 
 -- set up bash-language-server
-lspconfig.bashls.setup({
-  on_attach = custom_attach,
-  capabilities = capabilities,
-})
+if utils.executable('bash-language-server') then
+  lspconfig.bashls.setup({
+    on_attach = custom_attach,
+    capabilities = capabilities,
+  })
+end
 
 local sumneko_binary_path = vim.fn.exepath("lua-language-server")
 if vim.g.is_mac or vim.g.is_linux and sumneko_binary_path ~= "" then
