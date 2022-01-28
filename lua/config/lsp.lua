@@ -130,7 +130,7 @@ if vim.g.is_mac or vim.g.is_linux and sumneko_binary_path ~= "" then
   table.insert(runtime_path, "lua/?.lua")
   table.insert(runtime_path, "lua/?/init.lua")
 
-  require("lspconfig").sumneko_lua.setup({
+  lspconfig.sumneko_lua.setup({
     on_attach = custom_attach,
     cmd = { sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua" },
     settings = {
