@@ -364,3 +364,6 @@ magit
 xelatex
 subarray
 fvim
+CUDA
+cuda
+cpu
