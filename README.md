@@ -1,17 +1,24 @@
-```
-███    ██ ██    ██ ██ ███    ███      ██████  ██████  ███    ██ ███████ ██  ██████
-████   ██ ██    ██ ██ ████  ████     ██      ██    ██ ████   ██ ██      ██ ██
-██ ██  ██ ██    ██ ██ ██ ████ ██     ██      ██    ██ ██ ██  ██ █████   ██ ██   ███
-██  ██ ██  ██  ██  ██ ██  ██  ██     ██      ██    ██ ██  ██ ██ ██      ██ ██    ██
-██   ████   ████   ██ ██      ██      ██████  ██████  ██   ████ ██      ██  ██████
-```
-
 <div align="center"><p>
-    <a href="https://github.com/jdhao/nvim-config/releases/latest">
-      <img alt="Latest release" src="https://img.shields.io/github/v/release/jdhao/nvim-config" />
+    <a href="">
+      <img alt="macOS" src="https://img.shields.io/badge/macOS-%23.svg?style=flat-square&logo=apple&color=000000&logoColor=white" />
+    </a>
+    <a href="">
+      <img alt="Linux" src="https://img.shields.io/badge/Linux-%23.svg?style=flat-square&logo=linux&color=FCC624&logoColor=black" />
+    </a>
+    <a href="">
+      <img alt="Windows" src="https://img.shields.io/badge/Windows-%23.svg?style=flat-square&logo=windows&color=0078D6&logoColor=white" />
     </a>
     <a href="https://github.com/jdhao/nvim-config/commits">
       <img src="https://badgen.net/github/commits/jdhao/nvim-config" alt="Commit number" />
+    </a>
+    <a href="https://github.com/jdhao/nvim-config/network">
+      <img alt="Forks" src="https://badgen.net/github/forks/jdhao/nvim-config">
+    </a>
+    <a href="https://github.com/jdhao/nvim-config/stargazers">
+      <img alt="Stars" src="https://badgen.net/github/stars/jdhao/nvim-config">
+    </a>
+    <a href="https://github.com/jdhao/nvim-config/releases/latest">
+      <img alt="Latest release" src="https://img.shields.io/github/v/release/jdhao/nvim-config" />
     </a>
     <a href="https://github.com/jdhao/nvim-config">
     <img src="https://img.shields.io/github/repo-size/jdhao/nvim-config?style=flat-square&label=Repo" alt="Repo size">
