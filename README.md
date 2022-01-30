@@ -1,11 +1,11 @@
 <div align="center"><p>
-    <a href="">
+    <a>
       <img alt="macOS" src="https://img.shields.io/badge/macOS-%23.svg?style=flat-square&logo=apple&color=000000&logoColor=white" />
     </a>
-    <a href="">
+    <a>
       <img alt="Linux" src="https://img.shields.io/badge/Linux-%23.svg?style=flat-square&logo=linux&color=FCC624&logoColor=black" />
     </a>
-    <a href="">
+    <a>
       <img alt="Windows" src="https://img.shields.io/badge/Windows-%23.svg?style=flat-square&logo=windows&color=0078D6&logoColor=white" />
     </a>
     <a href="https://github.com/jdhao/nvim-config/commits">
