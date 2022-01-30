@@ -3,7 +3,7 @@
 let g:is_win = (has('win32') || has('win64')) ? v:true : v:false
 let g:is_linux = (has('unix') && !has('macunix')) ? v:true : v:false
 let g:is_mac = has('macunix') ? v:true : v:false
-let g:logging_level = 'info'
+let g:logging_level = 'debug'
 "}}
 
 "{{ Builtin variables
