@@ -1,4 +1,5 @@
-<div align="center"><p>
+<div align="center">
+<p>
     <a>
       <img alt="macOS" src="https://img.shields.io/badge/macOS-%23.svg?style=flat-square&logo=apple&color=000000&logoColor=white" />
     </a>
@@ -21,12 +22,14 @@
       <img alt="Latest release" src="https://img.shields.io/github/v/release/jdhao/nvim-config" />
     </a>
     <a href="https://github.com/jdhao/nvim-config">
-    <img src="https://img.shields.io/github/repo-size/jdhao/nvim-config?style=flat-square&label=Repo" alt="Repo size">
+      <img src="https://img.shields.io/github/repo-size/jdhao/nvim-config?style=flat-square&label=Repo" alt="Repo size">
     </a>
     <a href="https://github.com/neovim/neovim/releases/tag/stable">
-     <img src="https://img.shields.io/badge/Neovim-0.6.1-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
+      <img src="https://img.shields.io/badge/Neovim-0.6.1-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
     </a>
-    <img src="https://img.shields.io/github/languages/top/jdhao/nvim-config" />
+    <a href="https://github.com/jdhao/nvim-config/search?l=vim-script">
+      <img src="https://img.shields.io/github/languages/top/jdhao/nvim-config" alt="Top languages"/>
+    </a>
     <a href="https://github.com/jdhao/nvim-config/blob/master/LICENSE">
       <img src="https://img.shields.io/github/license/jdhao/nvim-config?style=flat-square&logo=GNU&label=License" alt="License"/>
     </a>
