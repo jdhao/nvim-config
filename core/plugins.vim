@@ -52,7 +52,7 @@ if g:is_linux
 endif
 
 " Only fuzzy-search files names
-let g:Lf_DefaultMode = 'NameOnly'
+let g:Lf_DefaultMode = 'FullPath'
 
 " Popup window settings
 let w = float2nr(&columns * 0.8)
