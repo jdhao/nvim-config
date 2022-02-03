@@ -8,7 +8,7 @@
 " Email: jdhao@hotmail.com
 " Blog: https://jdhao.github.io/
 
-let g:config_files = [
+let s:core_conf_files = [
       \ 'globals.vim',
       \ 'options.vim',
       \ 'autocommands.vim',
@@ -17,6 +17,6 @@ let g:config_files = [
       \ 'themes.vim'
       \ ]
 
-for s:fname in g:config_files
+for s:fname in s:core_conf_files
   execute printf('source %s/core/%s', stdpath('config'), s:fname)
 endfor
