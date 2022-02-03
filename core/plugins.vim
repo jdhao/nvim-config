@@ -12,6 +12,10 @@ call utils#Cabbrev('pud', 'PackerUpdate')
 call utils#Cabbrev('pc', 'PackerClean')
 call utils#Cabbrev('ps', 'PackerSync')
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                      configurations for vim script plugin                  "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """""""""""""""""""""""""UltiSnips settings"""""""""""""""""""
 " Trigger configuration. Do not use <tab> if you use YouCompleteMe
 let g:UltiSnipsExpandTrigger='<c-j>'
