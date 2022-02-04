@@ -354,6 +354,14 @@ require("packer").startup({
 
     -- show and trim trailing whitespaces
     use {'jdhao/whitespace.nvim', event = 'VimEnter'}
+
+    -- file explorer
+    use {
+      'kyazdani42/nvim-tree.lua',
+      requires = { 'kyazdani42/nvim-web-devicons' },
+      keys = {{'n', '<space>s'}, },
+      config = [[require('config.nvim-tree')]]
+    }
   end,
   config = {
     max_jobs = 16,
