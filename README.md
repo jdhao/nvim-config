@@ -1,10 +1,10 @@
 <div align="center">
 <p>
     <a>
-      <img alt="macOS" src="https://img.shields.io/badge/macOS-%23.svg?style=flat-square&logo=apple&color=000000&logoColor=white" />
+      <img alt="Linux" src="https://img.shields.io/badge/Linux-%23.svg?style=flat-square&logo=linux&color=FCC624&logoColor=black" />
     </a>
     <a>
-      <img alt="Linux" src="https://img.shields.io/badge/Linux-%23.svg?style=flat-square&logo=linux&color=FCC624&logoColor=black" />
+      <img alt="macOS" src="https://img.shields.io/badge/macOS-%23.svg?style=flat-square&logo=apple&color=000000&logoColor=white" />
     </a>
     <a>
       <img alt="Windows" src="https://img.shields.io/badge/Windows-%23.svg?style=flat-square&logo=windows&color=0078D6&logoColor=white" />
@@ -21,9 +21,6 @@
     <a href="https://github.com/jdhao/nvim-config/releases/latest">
       <img alt="Latest release" src="https://img.shields.io/github/v/release/jdhao/nvim-config" />
     </a>
-    <a href="https://github.com/jdhao/nvim-config">
-      <img src="https://img.shields.io/github/repo-size/jdhao/nvim-config?style=flat-square&label=Repo" alt="Repo size">
-    </a>
     <a href="https://github.com/neovim/neovim/releases/tag/stable">
       <img src="https://img.shields.io/badge/Neovim-0.6.1-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
     </a>
@@ -38,19 +35,19 @@
 
 # Introduction
 
-This repo hosts my Nvim configuration for all the platforms I am using (Linux,
-Windows and macOS). `init.vim` is the config entry point for terminal Nvim,
-and `ginit.vim` is the additional config file for GUI client of Nvim (I am
-using [neovim-qt](https://github.com/equalsraf/neovim-qt) for now on Windows).
+This repo hosts my Nvim configuration for Linux, macOS, and Windows.
+`init.vim` is the config entry point for terminal Nvim,
+and `ginit.vim` is the additional config file for [GUI client of Nvim](https://github.com/neovim/neovim/wiki/Related-projects#gui).
 
-My configurations are heavily documented to make it as clear as possible. While
-you can download the whole repository and use it, it is not recommended though.
-Good configurations are personal. Everyone should have his or her unique config
-file. You are encouraged to copy from this repo the part you feel useful and
-add it to your own Nvim config.
+My configurations are heavily documented to make it as clear as possible.
+While you can download the whole repository and use it, it is not recommended though.
+Good configurations are personal. Everyone should have his or her unique config file.
+You are encouraged to copy from this repo the part you feel useful and add it to your own Nvim config.
 
-See [doc here](docs/README.md) on how to install Nvim's dependencies, Nvim
-itself, and how to set up on different platforms (Linux, macOS and Windows).
+# Install and setup
+
+See [doc here](docs/README.md) on how to install Nvim's dependencies, Nvim itself,
+and how to set up on different platforms (Linux, macOS, and Windows).
 
 **This config is tested against [Nvim v0.6.1 release](https://github.com/neovim/neovim/releases/tag/stable).
 No backward compatibility is guaranteed.**
@@ -139,11 +136,9 @@ Go to a string starting with `se`
 <img src="https://user-images.githubusercontent.com/16662357/128589873-aadb8264-1098-4834-9876-fa66a309be05.gif" width="800">
 </p>
 
-
 # Shortcuts
 
-Some of the shortcuts I use frequently. In the following shortcuts, `<leader>`
-represents ASCII character `,`.
+Some of the shortcuts I use frequently is listed here. In the following shortcuts, `<leader>` represents ASCII character `,`.
 
 | Shortcut          | Mode          | platform        | Description                                                      |
 |-------------------|---------------|-----------------|------------------------------------------------------------------|
@@ -185,8 +180,7 @@ represents ASCII character `,`.
 
 # Custom commands
 
-In addition to commands provided by various plugins, I have also created
-several custom commands for personal use.
+In addition to commands provided by various plugins, I have also created some custom commands for personal use.
 
 | command    | description                                                             | example                        |
 |------------|-------------------------------------------------------------------------|--------------------------------|
@@ -196,11 +190,10 @@ several custom commands for personal use.
 
 # Contributing
 
-If you find anyting that can be improved, do not hesitate to point it out or create a PR.
+If you find anything that can be improved, do not hesitate to point it out or create a PR.
 
-If you come across an issue, you can first use `:checkhealth` command provided
-by `nvim` to trouble-shoot yourself. Please read carefully the messages
-provided by health check.
+If you come across an issue, you can first use `:checkhealth` command provided by `nvim` to trouble-shoot yourself.
+Please read carefully the messages provided by health check.
 
 If you still have an issue, [open a new issue](https://github.com/jdhao/nvim-config/issues).
 
@@ -210,9 +203,9 @@ Some of the resources that I find helpful in mastering Nvim is documented [here]
 You may also be interested in my posts on configuring Nvim:
 
 + My nvim notes can be found [here](https://jdhao.github.io/categories/Nvim/)
++ [Using Neovim for Three years](https://jdhao.github.io/2021/12/31/using_nvim_after_three_years/)
 + [Config nvim on Linux for Python development](https://jdhao.github.io/2018/12/24/centos_nvim_install_use_guide_en/)
 + [Nvim config on Windows 10](https://jdhao.github.io/2018/11/15/neovim_configuration_windows/)
 + [Nvim-qt config on Windows 10](https://jdhao.github.io/2019/01/17/nvim_qt_settings_on_windows/)
-+ [Using Neovim for Three years](https://jdhao.github.io/2021/12/31/using_nvim_after_three_years/)
 
 <b id="f1">1:</b> Not enabled by default for Linux, see [this issue](https://github.com/jdhao/nvim-config/issues/4) on how to enable vimtex on Linux. [↩](#a1)
