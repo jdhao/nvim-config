@@ -4,3 +4,4 @@ en.utf-8.add.spl
 .netrwhist
 packer_compiled.lua
 *.log
+.DS_Store
