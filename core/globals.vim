@@ -46,8 +46,8 @@ language en_US.utf-8
 "{{ Disable loading certain plugins
 " Whether to load netrw by default, see
 " https://github.com/bling/dotvim/issues/4
-" let g:loaded_netrw       = 0
-" let g:loaded_netrwPlugin = 0
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1
 let g:netrw_liststyle = 3
 if g:is_win
   let g:netrw_http_cmd = 'curl --ssl-no-revoke -Lo'
