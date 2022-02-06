@@ -34,11 +34,11 @@ fi
 if [[ "$INSTALL_ANACONDA" = true ]]; then
     CONDA_DIR=$HOME/tools/anaconda
     CONDA_NAME=Anaconda.sh
-    CONDA_LINK="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2021.05-Linux-x86_64.sh"
+    CONDA_LINK="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2021.11-Linux-x86_64.sh"
 else
     CONDA_DIR=$HOME/tools/miniconda
     CONDA_NAME=Miniconda.sh
-    CONDA_LINK="https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+    CONDA_LINK="https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh"
 fi
 
 if [[ ! "$PYTHON_INSTALLED" = true ]]; then
