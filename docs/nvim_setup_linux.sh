@@ -87,21 +87,21 @@ else
 fi
 
 #######################################################################
-#                Install node and vim-language-server                 #
+#                Install node and js-based language server            #
 #######################################################################
 NODE_DIR=$HOME/tools/nodejs
 NODE_SRC_NAME=$HOME/packages/nodejs.tar.gz
 # when download speed is slow, we can also use its mirror site: https://mirrors.ustc.edu.cn/node/v15.0.0/
 NODE_LINK="https://mirrors.ustc.edu.cn/node/v15.0.0/node-v15.0.0-linux-x64.tar.xz"
 if [[ -z "$(command -v node)" ]]; then
-    echo "Install Nodejs"
+    echo "Install Node.js"
     if [[ ! -f $NODE_SRC_NAME ]]; then
-        echo "Downloading nodejs and renaming"
+        echo "Downloading Node.js and renaming"
         wget $NODE_LINK -O "$NODE_SRC_NAME"
     fi
 
     if [[ ! -d "$NODE_DIR" ]]; then
-        echo "Creating nodejs directory under tools directory"
+        echo "Creating Node.js directory under tools directory"
         mkdir -p "$NODE_DIR"
         echo "Extracting to $HOME/tools/nodejs directory"
         tar xvf "$NODE_SRC_NAME" -C "$NODE_DIR" --strip-components 1
@@ -111,7 +111,7 @@ if [[ -z "$(command -v node)" ]]; then
         echo "export PATH=\"$NODE_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
     fi
 else
-    echo "Nodejs is already installed. Skip installing it."
+    echo "Node.js is already installed. Skip installing it."
 fi
 
 # Install vim-language-server
