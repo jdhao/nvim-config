@@ -86,6 +86,6 @@ endif
 
 execute 'call ' . s:colorscheme_func
 if g:logging_level == 'info'
-  let s:msg1 = "Currently loaded theme: " . s:theme
+  let s:msg1 = "Colorscheme: " . s:theme
   call v:lua.vim.notify(s:msg1, 'info', {'title': 'nvim-config'})
 endif
