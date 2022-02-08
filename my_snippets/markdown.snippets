@@ -70,3 +70,95 @@ endsnippet
 snippet yh "直角引号" w
 「$1」
 endsnippet
+
+snippet info "info box"
+<style type="text/css">
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+
+.info-msg {
+	color: #059;
+	background-color: #BEF;
+	margin: 5px 0;
+	margin-bottom: 20px;
+	padding: 10px;
+	border-radius: 5px 5px 5px 5px;
+	border: 2px solid transparent;
+	border-color: transparent;
+}
+</style>
+
+<div class="info-msg">
+	<i class="fa fa-info-circle"></i>
+	${1:info text}
+</div>
+$0
+endsnippet
+
+snippet warn "warning box"
+<style type="text/css">
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+
+.warning-msg {
+	color: #9F6000;
+	background-color: #FEEFB3;
+	margin: 5px 0;
+	margin-bottom: 20px;
+	padding: 10px;
+	border-radius: 5px 5px 5px 5px;
+	border: 2px solid transparent;
+	border-color: transparent;
+}
+</style>
+
+<div class="warning-msg">
+	<i class="fa fa-warning"></i>
+	${1:warning text}
+</div>
+$0
+endsnippet
+
+snippet error "error box"
+<style type="text/css">
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+
+.error-msg {
+	color: #D8000C;
+	background-color: #FFBABA;
+	margin: 5px 0;
+	margin-bottom: 20px;
+	padding: 10px;
+	border-radius: 5px 5px 5px 5px;
+	border: 2px solid transparent;
+	border-color: transparent;
+}
+</style>
+
+<div class="error-msg">
+	<i class="fa fa-times-circle"></i>
+	${1:error text}
+</div>
+$0
+endsnippet
+
+snippet success "success box"
+<style type="text/css">
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+
+.success-msg {
+	color: #270;
+	background-color: #DFF2BF;
+	margin: 5px 0;
+	margin-bottom: 20px;
+	padding: 10px;
+	border-radius: 5px 5px 5px 5px;
+	border: 2px solid transparent;
+	border-color: transparent;
+}
+</style>
+
+<div class="success-msg">
+	<i class="fa fa-check"></i>
+	${1:success text}
+</div>
+$0
+endsnippet
