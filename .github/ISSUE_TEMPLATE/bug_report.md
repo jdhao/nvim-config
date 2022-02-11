@@ -6,7 +6,7 @@ labels: ''
 assignees: ''
 ---
 
-<!-- Before reporting: search existing issues and check the FAQ. -->
+<!-- Before reporting: make sure that you have read the doc (https://github.com/jdhao/nvim-config/tree/master/docs) and searched existing issues. -->
 
 - `nvim --version`:
 - terminal emulator and version:
@@ -16,7 +16,7 @@ assignees: ''
 
 <!-- A clear and concise description of what the bug is. -->
 
-Steps to reproduce the behavior:
+Steps to reproduce the issue:
 
 1.
 2.
