@@ -11,6 +11,8 @@ assignees: ''
 - `nvim --version`:
 - terminal emulator and version:
 - Operating system/version:
+- Have you read and followed all steps in the [doc](https://github.com/jdhao/nvim-config/tree/master/docs):
+- Output of command `set runtimepath`:
 
 **Describe the bug**
 
