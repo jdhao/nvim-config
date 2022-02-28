@@ -1,3 +1,3 @@
-set textwidth=79
+set textwidth=120
 
 set wrap
