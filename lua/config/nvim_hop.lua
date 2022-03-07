@@ -5,6 +5,7 @@ vim.cmd[[ hi HopNextKey2 cterm=bold ctermfg=176 gui=bold guibg=#ff00ff guifg=#ff
 require('hop').setup({
   case_insensitive = true,
   char2_fallback_key = '<CR>',
+  quit_key='<Esc>',
 })
 
 vim.api.nvim_set_keymap('n', 'f', "<cmd>lua require'hop'.hint_char2()<cr>", {noremap = true})
