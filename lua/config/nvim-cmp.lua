@@ -35,6 +35,7 @@ cmp.setup({
     { name = 'nvim_lua' }, -- for nvim lua function
     { name = 'path' }, -- for path completion
     { name = 'buffer', keyword_length = 4 }, -- for buffer word completion
+    { name = 'omni' },
     { name = 'emoji', insert = true, } -- emoji completion
   },
   completion = {
@@ -47,14 +48,15 @@ cmp.setup({
   formatting = {
     format = lspkind.cmp_format({
       mode = "symbol_text",
-      menu = {
+      menu = ({
         nvim_lsp = "[LSP]",
         ultisnips = "[US]",
         nvim_lua = "[Lua]",
         path = "[Path]",
         buffer = "[Buffer]",
         emoji = "[Emoji]",
-      },
+	      omni = "[Omni]",
+      }),
     }),
   },
 })
