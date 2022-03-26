@@ -45,3 +45,25 @@ function! AddListSymbol(type, ...) abort
     call setline(line, new_text)
   endfor
 endfunction
+
+" Add hard line breaks for Markdown
+nnoremap <buffer><silent> \ :set operatorfunc=AddLineBreak<CR>g@
+xnoremap <buffer><silent> \ :<C-U> call AddLineBreak(visualmode(), 1)<CR>
+
+function! AddLineBreak(type, ...) abort
+  if a:0
+    let line_start = line("'<")
+    let line_end = line("'>")
+  else
+    let line_start = line("'[")
+    let line_end = line("']")
+  endif
+
+  for line in range(line_start, line_end)
+    let text = getline(line)
+    " add backslash to each line
+    let new_text = text . "\\"
+
+    call setline(line, new_text)
+  endfor
+endfunction
