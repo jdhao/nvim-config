@@ -230,7 +230,7 @@ require("packer").startup({
 
     use({ "christoomey/vim-conflicted", requires = "tpope/vim-fugitive", cmd = {"Conflicted"}})
 
-    use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = [[require('config.bqf')]] })
+    use({ "kevinhwang91/nvim-bqf", ft = "qf", config = [[require('config.bqf')]] })
 
     -- Better git commit experience
     use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
