@@ -191,7 +191,7 @@ In addition to commands provided by various plugins, I have also created some cu
 
 # Contributing
 
-If you find anything that can be improved, do not hesitate to point it out or create a PR.
+If you find anything that needs improving, do not hesitate to point it out or create a PR.
 
 If you come across an issue, you can first use `:checkhealth` command provided by `nvim` to trouble-shoot yourself.
 Please read carefully the messages provided by health check.
@@ -209,4 +209,4 @@ You may also be interested in my posts on configuring Nvim:
 + [Nvim config on Windows 10](https://jdhao.github.io/2018/11/15/neovim_configuration_windows/)
 + [Nvim-qt config on Windows 10](https://jdhao.github.io/2019/01/17/nvim_qt_settings_on_windows/)
 
-<b id="f1">1:</b> Not enabled by default for Linux, see [this issue](https://github.com/jdhao/nvim-config/issues/4) on how to enable vimtex on Linux. [↩](#a1)
+<b id="f1">1:</b> Not enabled for Linux, you need to tweak [`lua/plugins.lua`](lua/plugins.lua) and change the condition for installing vimtex.[↩](#a1)
