@@ -388,6 +388,10 @@ function! s:wilder_init() abort
   try
     call wilder#setup({
           \ 'modes': [':', '/', '?'],
+          \ 'next_key': '<Tab>',
+          \ 'previous_key': '<S-Tab>',
+          \ 'accept_key': '<C-y>',
+          \ 'reject_key': '<C-e>'
           \ })
 
     call wilder#set_option('pipeline', [
