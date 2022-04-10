@@ -14,6 +14,11 @@ assignees: ''
 - Have you read and followed all steps in the [doc](https://github.com/jdhao/nvim-config/tree/master/docs):
 - Output of command `set runtimepath`:
 
+  <!-- paste your runtimepath below --->
+  ```
+
+  ```
+
 **Describe the bug**
 
 <!-- A clear and concise description of what the bug is. -->
