@@ -97,7 +97,7 @@ To install it Windows, use [chocolatey](https://chocolatey.org/) or [scoop](http
 choco install universal-ctags
 
 # scoop bucket add extras
-# scoop install univeral-ctags
+# scoop install universal-ctags
 ```
 
 Set its PATH properly and make sure you can run `ctags` from command line.
