@@ -38,6 +38,10 @@ let g:vimsyn_embed = 'l'
 
 " Use English as main language
 language en_US.utf-8
+
+" use filetype.lua instead of filetype.vim
+let g:do_filetype_lua = 1
+let g:did_load_filetypes = 0
 "}}
 
 "{{ Disable loading certain plugins
