@@ -22,7 +22,7 @@
       <img alt="Latest release" src="https://img.shields.io/github/v/release/jdhao/nvim-config" />
     </a>
     <a href="https://github.com/neovim/neovim/releases/tag/stable">
-      <img src="https://img.shields.io/badge/Neovim-0.6.1-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
+      <img src="https://img.shields.io/badge/Neovim-0.7.0-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
     </a>
     <a href="https://github.com/jdhao/nvim-config/search?l=vim-script">
       <img src="https://img.shields.io/github/languages/top/jdhao/nvim-config" alt="Top languages"/>
@@ -49,7 +49,7 @@ You are encouraged to copy from this repo the part you feel useful and add it to
 See [doc here](docs/README.md) on how to install Nvim's dependencies, Nvim itself,
 and how to set up on different platforms (Linux, macOS, and Windows).
 
-**This config is tested against [Nvim v0.6.1 release](https://github.com/neovim/neovim/releases/tag/stable).
+**This config is tested against [Nvim v0.7.0 release](https://github.com/neovim/neovim/releases/tag/stable).
 No backward compatibility is guaranteed.**
 
 # Features #
