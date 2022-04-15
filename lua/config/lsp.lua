@@ -18,7 +18,7 @@ end
 
 local custom_attach = function(client, bufnr)
   -- Mappings.
-  local opts = { noremap = true, silent = true, buffer = bufnr }
+  local opts = { silent = true, buffer = bufnr }
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
