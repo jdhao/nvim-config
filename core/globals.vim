@@ -7,9 +7,6 @@ let g:logging_level = 'info'
 "}}
 
 "{{ Builtin variables
-" Disable Python2 support
-let g:loaded_python_provider = 0
-
 " Disable perl provider
 let g:loaded_perl_provider = 0
 
