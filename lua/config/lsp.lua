@@ -3,19 +3,6 @@ local lsp = vim.lsp
 
 local utils = require("utils")
 
-local M = {}
-
-function M.show_line_diagnostics()
-  local opts = {
-    focusable = false,
-    close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-    border = 'rounded',
-    source = 'always',  -- show source in diagnostic popup window
-    prefix = ' '
-  }
-  vim.diagnostic.open_float(nil, opts)
-end
-
 local custom_attach = function(client, bufnr)
   -- Mappings.
   local opts = { silent = true, buffer = bufnr }
@@ -33,9 +20,19 @@ local custom_attach = function(client, bufnr)
   vim.keymap.set("n", "<space>q", function() vim.diagnostic.setqflist({open = true}) end, opts)
   vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
 
-  vim.cmd([[
-    autocmd CursorHold <buffer> lua require('config.lsp').show_line_diagnostics()
-  ]])
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer=bufnr,
+    callback = function()
+      local opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = 'rounded',
+        source = 'always',  -- show source in diagnostic popup window
+        prefix = ' '
+      }
+      vim.diagnostic.open_float(nil, opts)
+    end
+  })
 
   -- Set some key bindings conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
@@ -200,5 +197,3 @@ vim.diagnostic.config({
 lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
 })
-
-return M
