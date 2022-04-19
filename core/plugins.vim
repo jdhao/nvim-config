@@ -101,7 +101,7 @@ nnoremap <silent> <leader>ft :<C-U>Leaderf bufTag --popup<CR>
 nnoremap <silent> <leader>fb :<C-U>Leaderf buffer --popup<CR>
 
 " Search recent files
-nnoremap <silent> <leader>fr :<C-U>Leaderf mru --popup<CR>
+nnoremap <silent> <leader>fr :<C-U>Leaderf mru --popup --absolute-path<CR>
 
 let g:Lf_PopupColorscheme = 'gruvbox_material'
 
