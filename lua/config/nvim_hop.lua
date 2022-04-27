@@ -8,4 +8,7 @@ require('hop').setup({
   quit_key='<Esc>',
 })
 
-vim.api.nvim_set_keymap('n', 'f', "<cmd>lua require'hop'.hint_char2()<cr>", {noremap = true})
+vim.keymap.set('n', 'f', function()
+  return require('hop').hint_char2()
+end,
+{ silent = true, noremap = true, desc = "nvim-hop char2" })

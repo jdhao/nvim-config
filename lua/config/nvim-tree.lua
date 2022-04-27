@@ -113,4 +113,7 @@ nvim_tree.setup({
   },
 })
 
-vim.api.nvim_set_keymap("n", "<space>s", "<cmd>lua require'nvim-tree'.toggle(false, true)<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', '<space>s', function()
+  return require('nvim-tree').toggle(false, true)
+end,
+{ noremap = true, silent = true, desc = "toggle nvim-tree"})
