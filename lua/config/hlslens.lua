@@ -8,7 +8,12 @@ vim.keymap.set('n', 'n', '',
   noremap = true,
   silent = true,
   callback = function()
-    vim.fn.execute("normal! " .. vim.v.count1 .. "nzzzv")
+    local status, msg = pcall(vim.fn.execute, "normal! " .. vim.v.count1 .. "nzzzv")
+
+    if not status then
+      vim.api.nvim_echo({{msg, "ErrorMsg"}}, false, {})
+      return
+    end
     require('hlslens').start()
   end
 })
@@ -18,7 +23,12 @@ vim.keymap.set('n', 'N', '',
   noremap = true,
   silent = true,
   callback = function()
-    vim.fn.execute("normal! " .. vim.v.count1 .. "Nzzzv")
+    local status, msg = pcall(vim.fn.execute, "normal! " .. vim.v.count1 .. "Nzzzv")
+
+    if not status then
+      vim.api.nvim_echo({{msg, "ErrorMsg"}}, false, {})
+      return
+    end
     require('hlslens').start()
   end
 })
