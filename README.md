@@ -44,8 +44,8 @@ While you can clone the whole repository and use it, it is not recommended thoug
 Good configurations are personal. Everyone should have his or her unique config file.
 You are encouraged to copy from this repo the part you want and add it to your own config.
 
-**Note that this config is tested against [Nvim v0.7.0 release](https://github.com/neovim/neovim/releases/tag/stable).
-No backward compatibility is guaranteed.**
+To reduce the possibility of breakage, **this config is only maintained for [the latest nvim stable release](https://github.com/neovim/neovim/releases/tag/stable).
+No effort is spent on maintaining backward compatibility.**
 
 # Install and setup
 

@@ -142,13 +142,13 @@ we need to install a patched font from the [nerd-fonts](https://github.com/ryano
 # Install Nvim
 
 There are various ways to install Nvim depending on your system.
-Current configuration is tested against nvim v0.7.0.
+This config is only maintained for [the latest nvim stable release](https://github.com/neovim/neovim/releases/tag/stable).
 
 ## Linux
 
-We can directly download the binary release from [here](https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz).
+You can directly download the binary release from [here](https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz).
 You can also use the system package manager to install nvim,
-but that is not reliable since latest version may not be available.
+but that is not reliable since the latest version may not be available.
 
 ## Windows
 
@@ -173,7 +173,7 @@ brew install neovim
 ```
 
 After installing Nvim, we need to set the path to nvim correctly.
-Make sure that you can run `nvim` from the command line after all these setups.
+**Make sure that you can run `nvim` from the command line after all these setups**.
 
 # Setting up Nvim
 
