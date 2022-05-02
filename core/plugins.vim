@@ -292,7 +292,6 @@ if ( g:is_win || g:is_mac ) && executable('latex')
   " Viewer settings for different platforms
   if g:is_win
     let g:vimtex_view_general_viewer = 'SumatraPDF'
-    let g:vimtex_view_general_options_latexmk = '-reuse-instance'
     let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
   endif
 
