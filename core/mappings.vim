@@ -95,6 +95,9 @@ nnoremap <silent> <leader>sv :<C-U>silent update $MYVIMRC <bar> source $MYVIMRC 
 " Reselect the text that has just been pasted, see also https://stackoverflow.com/a/4317090/6064933.
 nnoremap <expr> <leader>v printf('`[%s`]', getregtype()[0])
 
+" Always use very magic mode for searching
+nnoremap / /\v
+
 " Search in selected region
 xnoremap / :<C-U>call feedkeys('/\%>'.(line("'<")-1).'l\%<'.(line("'>")+1)."l")<CR>
 
