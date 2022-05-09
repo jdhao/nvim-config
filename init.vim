@@ -8,6 +8,12 @@
 " Email: jdhao@hotmail.com
 " Blog: https://jdhao.github.io/
 
+" check if we have the lastest stable version of nvim
+if !has('nvim-0.7.0')
+  echohl Error | echomsg "Nvim 0.7.0 required, but is missing!" | echohl None
+  finish
+endif
+
 let s:core_conf_files = [
       \ 'globals.vim',
       \ 'options.vim',
