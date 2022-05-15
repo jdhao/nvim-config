@@ -359,7 +359,7 @@ require("packer").startup({
   end,
   config = {
     max_jobs = 16,
-    compile_path = util.join_paths(vim.fn.stdpath('data'), 'site', 'lua', 'packer_compiled.lua'),
+    compile_path = util.join_paths(fn.stdpath('data'), 'site', 'lua', 'packer_compiled.lua'),
   },
 })
 

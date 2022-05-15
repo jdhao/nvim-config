@@ -1,3 +1,5 @@
+local fn = vim.fn
+
 local function spell()
   if vim.o.spell then
     return string.format("[SPELL]")
@@ -9,7 +11,7 @@ end
 local function ime_state()
   if vim.g.is_mac then
     -- ref: https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/xkblayout.vim#L11
-    local layout = vim.fn.libcall(vim.g.XkbSwitchLib, 'Xkb_Switch_getXkbLayout', '')
+    local layout = fn.libcall(vim.g.XkbSwitchLib, 'Xkb_Switch_getXkbLayout', '')
     if layout == '0' then
       return '[CN]'
     end
@@ -35,20 +37,20 @@ end
 local function mixed_indent()
   local space_pat = [[\v^ +]]
   local tab_pat = [[\v^\t+]]
-  local space_indent = vim.fn.search(space_pat, 'nwc')
-  local tab_indent = vim.fn.search(tab_pat, 'nwc')
+  local space_indent = fn.search(space_pat, 'nwc')
+  local tab_indent = fn.search(tab_pat, 'nwc')
   local mixed = (space_indent > 0 and tab_indent > 0)
   local mixed_same_line
   if not mixed then
-    mixed_same_line = vim.fn.search([[\v^(\t+ | +\t)]], 'nwc')
+    mixed_same_line = fn.search([[\v^(\t+ | +\t)]], 'nwc')
     mixed = mixed_same_line > 0
   end
   if not mixed then return '' end
   if mixed_same_line ~= nil and mixed_same_line > 0 then
      return 'MI:'..mixed_same_line
   end
-  local space_indent_cnt = vim.fn.searchcount({pattern=space_pat, max_count=1e3}).total
-  local tab_indent_cnt =  vim.fn.searchcount({pattern=tab_pat, max_count=1e3}).total
+  local space_indent_cnt = fn.searchcount({pattern=space_pat, max_count=1e3}).total
+  local tab_indent_cnt =  fn.searchcount({pattern=tab_pat, max_count=1e3}).total
   if space_indent_cnt > tab_indent_cnt then
     return 'MI:'..tab_indent
   else
