@@ -193,3 +193,6 @@ function! s:restore_cursor() abort
   silent! normal `y
   silent! delmarks y
 endfunction
+
+" for mappings defined in lua
+lua require('custom-map')
