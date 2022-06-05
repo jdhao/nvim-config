@@ -69,4 +69,7 @@ let g:loaded_tutor_mode_plugin = 1  " do not load the tutor plugin
 let g:loaded_matchit = 1
 let g:loaded_matchparen = 1
 "}}
+
+" Disable sql omni completion, it is broken.
+let g:loaded_sql_completion = 1
 "}
