@@ -85,7 +85,7 @@ if !s:status
 endif
 
 execute 'call ' . s:colorscheme_func
-if g:logging_level == 'info'
+if g:logging_level == 'debug'
   let s:msg1 = "Colorscheme: " . s:theme
   call v:lua.vim.notify(s:msg1, 'info', {'title': 'nvim-config'})
 endif
