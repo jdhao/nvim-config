@@ -9,8 +9,9 @@ if [[ ! -d "$HOME/tools/"  ]]; then
 fi
 
 # Delete existing nvim installation.
-if [[ -d "$HOME/tools/nvim-osx64" ]]; then
-    rm -rf "$HOME/tools/nvim-osx64"
+# For newer release, the directory name is nvim-macos
+if [[ -d "$HOME/tools/nvim-macos" ]]; then
+    rm -rf "$HOME/tools/nvim-macos"
 fi
 
 # Extract the tar ball
