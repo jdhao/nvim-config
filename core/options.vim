@@ -112,6 +112,9 @@ set shortmess+=c
 " choice, IMHO.
 set shortmess+=S
 
+" Disable showing intro message (:intro)
+set shortmess+=I
+
 " Completion behaviour
 " set completeopt+=noinsert  " Auto select the first completion entry
 set completeopt+=menuone  " Show menu even if there is only one item
