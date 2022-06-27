@@ -9,8 +9,8 @@
 " Blog: https://jdhao.github.io/
 
 " check if we have the lastest stable version of nvim
-if !has('nvim-0.7.0')
-  echohl Error | echomsg "Nvim 0.7.0 required, but is missing!" | echohl None
+if !has('nvim-0.7.2')
+  echohl Error | echomsg "Nvim 0.7.2 required, but is missing!" | echohl None
   finish
 endif
 
