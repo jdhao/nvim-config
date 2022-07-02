@@ -131,9 +131,11 @@ function! utils#Get_titlestr() abort
   if g:is_linux
       let l:title_str = hostname() . '  '
   endif
-  let l:title_str = l:title_str . expand('%:p:~') . '  '
-  if &buflisted
-    let l:title_str = l:title_str . strftime('%Y-%m-%d %H:%M',getftime(expand('%')))
+
+  let l:buf_path = expand('%:p:~')
+  let l:title_str = l:title_str . l:buf_path . '  '
+  if &buflisted && l:buf_path != ""
+    let l:title_str = l:title_str . strftime('%Y-%m-%d %H:%M %Z',getftime(expand('%')))
   endif
 
   return l:title_str
