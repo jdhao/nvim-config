@@ -1,0 +1,78 @@
+\usepackage{fancyvrb,newverbs}
+\usepackage[top=2cm, bottom=1.5cm, left=2cm, right=2cm]{geometry}
+
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\usepackage{hyperref}
+
+% begin a new page for each section (first level header),
+% we need to combine this with `-V subparagraph` when invoking pandc
+% \usepackage{titlesec}
+% \newcommand{\sectionbreak}{\clearpage}
+
+% change background color for inline code in markdown files.
+% The following code does not work well for long text, because the text will exceed the page boundary.
+\definecolor{bgcolor}{HTML}{DADADA}
+\let\oldtexttt\texttt
+
+\renewcommand{\texttt}[1]{
+  \colorbox{bgcolor}{\oldtexttt{#1}}
+}
+
+% change style of quote, see also https://tex.stackexchange.com/a/436253/114857
+\usepackage[most]{tcolorbox}
+
+\definecolor{linequote}{RGB}{224,215,188}
+\definecolor{backquote}{RGB}{249,245,233}
+\definecolor{bordercolor}{RGB}{221,221,221}
+
+% change left border: https://tex.stackexchange.com/a/475716/114857
+% change left margin: https://tex.stackexchange.com/a/457936/114857
+\newtcolorbox{myquote}[1][]{%
+    enhanced,
+    breakable,
+    size=minimal,
+    left=10pt,
+    top=5pt,
+    bottom=5pt,
+    frame hidden,
+    boxrule=0pt,
+    sharp corners=all,
+    colback=backquote,
+    borderline west={2pt}{0pt}{bordercolor},
+    #1
+}
+
+% redefine quote environment to use the myquote environment, see https://tex.stackexchange.com/a/337587/114857
+\renewenvironment{quote}{\begin{myquote}}{\end{myquote}}
+
+% start a new page after toc, we need to save the old command before defining
+% new one to avoid recursive command calls,
+% see https://tex.stackexchange.com/questions/47351/can-i-redefine-a-command-to-contain-itself
+\let\oldtoc\tableofcontents
+\renewcommand{\tableofcontents}{\oldtoc\newpage}
+
+% fix header level issue
+\usepackage{enumitem}
+\setlistdepth{9}
+
+\setlist[itemize,1]{label=$\bullet$}
+\setlist[itemize,2]{label=$\bullet$}
+\setlist[itemize,3]{label=$\bullet$}
+\setlist[itemize,4]{label=$\bullet$}
+\setlist[itemize,5]{label=$\bullet$}
+\setlist[itemize,6]{label=$\bullet$}
+\setlist[itemize,7]{label=$\bullet$}
+\setlist[itemize,8]{label=$\bullet$}
+\setlist[itemize,9]{label=$\bullet$}
+\renewlist{itemize}{itemize}{9}
+
+\setlist[enumerate,1]{label=$\arabic*.$}
+\setlist[enumerate,2]{label=$\alph*.$}
+\setlist[enumerate,3]{label=$\roman*.$}
+\setlist[enumerate,4]{label=$\arabic*.$}
+\setlist[enumerate,5]{label=$\alpha*$}
+\setlist[enumerate,6]{label=$\roman*.$}
+\setlist[enumerate,7]{label=$\arabic*.$}
+\setlist[enumerate,8]{label=$\alph*.$}
+\setlist[enumerate,9]{label=$\roman*.$}
+\renewlist{enumerate}{enumerate}{9}
