@@ -121,6 +121,7 @@ packer.startup({
     use({"sainnhe/everforest", opt = true})
     use({"EdenEast/nightfox.nvim", opt = true})
     use({"rebelot/kanagawa.nvim", opt = true})
+    use({"catppuccin/nvim", as = "catppuccin", opt = true})
 
     -- Show git change (change, delete, add) signs in vim sign column
     use({"mhinz/vim-signify", event = 'BufEnter'})

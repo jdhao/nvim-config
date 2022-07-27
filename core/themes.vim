@@ -54,6 +54,13 @@ function! s:theme_setup_dict.kanagawa() dict abort
   colorscheme kanagawa
 endfunction
 
+function! s:theme_setup_dict.catppuccin() dict abort
+  let g:catppuccin_flavour = "frappe" " latte, frappe, macchiato, mocha
+
+  lua require("catppuccin").setup()
+  colorscheme catppuccin
+endfunction
+
 " Theme to directory name mapping, because theme repo name is not necessarily
 " the same as the theme name itself.
 let s:theme2dir = {
@@ -67,6 +74,7 @@ let s:theme2dir = {
       \ 'everforest' :'everforest',
       \ 'nightfox': 'nightfox.nvim',
       \ 'kanagawa': 'kanagawa.nvim',
+      \ 'catppuccin': 'catppuccin'
       \ }
 
 let s:theme = utils#RandElement(keys(s:theme2dir))
