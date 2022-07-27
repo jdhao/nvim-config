@@ -15,9 +15,11 @@ end
 
 -- Load packer.nvim
 vim.cmd("packadd packer.nvim")
-local util = require('packer.util')
 
-require("packer").startup({
+local packer = require("packer")
+local packer_util = require('packer.util')
+
+packer.startup({
   function(use)
     -- it is recommened to put impatient.nvim before any other plugins
     use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
@@ -361,7 +363,7 @@ require("packer").startup({
   end,
   config = {
     max_jobs = 16,
-    compile_path = util.join_paths(fn.stdpath('data'), 'site', 'lua', 'packer_compiled.lua'),
+    compile_path = packer_util.join_paths(fn.stdpath('data'), 'site', 'lua', 'packer_compiled.lua'),
   },
 })
 
