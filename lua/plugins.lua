@@ -30,7 +30,7 @@ require("packer").startup({
 
     -- nvim-cmp completion sources
     use {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp"}
-    use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
+    -- use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
     use {"hrsh7th/cmp-path", after = "nvim-cmp"}
     use {"hrsh7th/cmp-buffer", after = "nvim-cmp"}
     use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
@@ -356,6 +356,8 @@ require("packer").startup({
       requires = { 'kyazdani42/nvim-web-devicons' },
       config = [[require('config.nvim-tree')]]
     }
+
+    use { 'ii14/emmylua-nvim', ft = 'lua' }
   end,
   config = {
     max_jobs = 16,
