@@ -21,6 +21,10 @@ local function ime_state()
 end
 
 local function trailing_space()
+  if not vim.o.modifiable then
+    return ""
+  end
+
   local line_num = nil
 
   for i=1, fn.line('$') do
@@ -43,6 +47,10 @@ local function trailing_space()
 end
 
 local function mixed_indent()
+  if not vim.o.modifiable then
+    return ""
+  end
+
   local space_pat = [[\v^ +]]
   local tab_pat = [[\v^\t+]]
   local space_indent = fn.search(space_pat, 'nwc')
