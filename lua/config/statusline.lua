@@ -21,14 +21,22 @@ local function ime_state()
 end
 
 local function trailing_space()
-  -- Get the positions of trailing whitespaces from plugin 'jdhao/whitespace.nvim'.
-  local trailing_space_pos = vim.b.trailing_whitespace_pos
+  local line_num = nil
+
+  for i=1, fn.line('$') do
+    local linetext = fn.getline(i)
+    -- To prevent invalid escape error, we wrap the regex string with `[[]]`.
+    local idx = fn.match(linetext, [[\v\s+$]])
+
+    if idx ~= -1 then
+      line_num = i
+      break
+    end
+  end
 
   local msg = ""
-  if #trailing_space_pos > 0 then
-    -- Note that lua index is 1-based, not zero based!!!
-    local line = trailing_space_pos[1][1]
-    msg = string.format("[%d]trailing", line)
+  if line_num ~= nil then
+    msg = string.format("[%d]trailing", line_num)
   end
 
   return msg
