@@ -88,16 +88,16 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 
 For more UI demos, check [here](https://github.com/jdhao/nvim-config/issues/15).
 
-## Start screen with alpha-nvim
+## Start screen with dashboard-nvim
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/16662357/139459989-0537ded4-c119-4749-99bf-b551ca1ba118.jpg" width="800">
+<img src="https://user-images.githubusercontent.com/16662357/183256752-fb23b215-a6b8-4646-beed-9999f52d53f1.png" width="800">
 </p>
 
-## fuzzy finding using LeaderF
+## File fuzzy finding using LeaderF
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/16662357/139462025-7bce98c5-d2d5-413f-9659-20545865cdca.gif" width="800">
+<img src="https://user-images.githubusercontent.com/16662357/183257017-2d9d7605-3c4b-4e1d-8955-30998f9b6f28.gif" width="800">
 </p>
 
 ## Code autocompletion with nvim-cmp
