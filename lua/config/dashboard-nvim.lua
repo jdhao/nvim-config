@@ -59,7 +59,7 @@ dashboard.custom_center = {
 vim.cmd([[
   augroup dashboard_enter
     au!
-    autocmd FileType dashboard nnoremap q :qa<CR>
-    autocmd FileType dashboard nnoremap e :enew<CR>
+    autocmd FileType dashboard nnoremap <buffer> q :qa<CR>
+    autocmd FileType dashboard nnoremap <buffer> e :enew<CR>
   augroup END
 ]])
