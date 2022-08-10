@@ -101,10 +101,6 @@ nnoremap / /\v
 " Search in selected region
 xnoremap / :<C-U>call feedkeys('/\%>'.(line("'<")-1).'l\%<'.(line("'>")+1)."l")<CR>
 
-" Find and replace (like Sublime Text 3)
-nnoremap <C-H> :%s/
-xnoremap <C-H> :s/
-
 " Change current working directory locally and print cwd after that,
 " see https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
 nnoremap <silent> <leader>cd :<C-U>lcd %:p:h<CR>:pwd<CR>
@@ -171,6 +167,7 @@ onoremap <silent> iB :<C-U>call text_obj#Buffer()<CR>
 
 " Do not move my cursor when joining lines.
 nnoremap J mzJ`z
+nnoremap gJ mzgJ`z
 
 " Break inserted text into smaller undo units.
 for ch in [',', '.', '!', '?', ';', ':']
