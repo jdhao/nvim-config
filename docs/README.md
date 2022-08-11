@@ -1,5 +1,8 @@
 This doc summarizes how to install and use this configuration in detail.
 
+* [Manual installation](#pre-requisite)
+* [Automatic installation](#automatic-installation)
+
 # Pre-requisite
 
 There are a few dependencies if we want to use Nvim for efficient editing and development work.
