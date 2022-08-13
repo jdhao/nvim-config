@@ -139,7 +139,7 @@ packer.startup({
     use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('config.bufferline')]] })
 
     -- fancy start screen
-    use { 'glepnir/dashboard-nvim', config = [[require('config.dashboard-nvim')]] }
+    use { 'glepnir/dashboard-nvim', event = "VimEnter", config = [[require('config.dashboard-nvim')]] }
 
     use({
       "lukas-reineke/indent-blankline.nvim",
