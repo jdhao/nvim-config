@@ -149,10 +149,7 @@ if utils.executable('bash-language-server') then
 end
 
 if utils.executable("lua-language-server") then
-  local runtime_path = vim.split(package.path, ";")
-  table.insert(runtime_path, "lua/?.lua")
-  table.insert(runtime_path, "lua/?/init.lua")
-
+  -- settings for lua-language-server can be found on https://github.com/sumneko/lua-language-server/wiki/Settings .
   lspconfig.sumneko_lua.setup({
     on_attach = custom_attach,
     settings = {
@@ -160,20 +157,18 @@ if utils.executable("lua-language-server") then
         runtime = {
           -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
           version = "LuaJIT",
-          -- Setup your lua path
-          path = runtime_path,
         },
         diagnostics = {
           -- Get the language server to recognize the `vim` global
           globals = { "vim" },
         },
         workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = api.nvim_get_runtime_file("", true),
-        },
-        -- Do not send telemetry data containing a randomized but unique identifier
-        telemetry = {
-          enable = false,
+          -- Make the server aware of Neovim runtime files,
+          -- see also https://github.com/sumneko/lua-language-server/wiki/Libraries#link-to-workspace .
+          -- Lua-dev.nvim also has similar settings for sumneko lua, https://github.com/folke/lua-dev.nvim/blob/main/lua/lua-dev/sumneko.lua .
+          library = { fn.stdpath('data') .. "/site/pack/packer/opt/emmylua-nvim" },
+          maxPreload = 2000,
+          preloadFileSize = 50000,
         },
       },
     },
