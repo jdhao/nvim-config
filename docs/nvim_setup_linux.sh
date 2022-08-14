@@ -121,6 +121,35 @@ fi
 "$NODE_DIR/bin/npm" install -g bash-language-server
 
 #######################################################################
+#                         lua-language-server                         #
+#######################################################################
+SUMNEKO_LUA_DIR=$HOME/tools/lua-language-server
+SUMNEKO_LUA_SRC_NAME=$HOME/packages/lua-language-server.tar.gz
+SUMNEKO_LUA_LINK="https://github.com/sumneko/lua-language-server/releases/download/3.5.3/lua-language-server-3.5.3-linux-x64.tar.gz"
+
+if [[ -z "$(command -v lua-language-server)" ]] && [[ ! -f "$SUMNEKO_LUA_DIR/bin/lua-language-server" ]]; then
+    echo 'Install lua-language-server'
+    if [[ ! -f $SUMNEKO_LUA_SRC_NAME ]]; then
+        echo "Downloading lua-language-server and renaming"
+        wget $SUMNEKO_LUA_LINK -O "$SUMNEKO_LUA_SRC_NAME"
+    fi
+
+    if [[ ! -d "$SUMNEKO_LUA_DIR" ]]; then
+        echo "Creating lua-language-server directory under tools directory"
+        mkdir -p "$SUMNEKO_LUA_DIR"
+        echo "Extracting to directory $SUMNEKO_LUA_DIR"
+
+        tar zxvf "$SUMNEKO_LUA_SRC_NAME" -C "$SUMNEKO_LUA_DIR"
+    fi
+
+    if [[ "$ADD_TO_SYSTEM_PATH" = true ]] && [[ "$USE_BASH_SHELL" = true ]]; then
+        echo "export PATH=\"$SUMNEKO_LUA_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+    fi
+else
+    echo "lua-language-server is already installed. Skip installing it."
+fi
+
+#######################################################################
 #                            Ripgrep part                             #
 #######################################################################
 RIPGREP_DIR=$HOME/tools/ripgrep
@@ -145,8 +174,8 @@ if [[ -z "$(command -v rg)" ]] && [[ ! -f "$RIPGREP_DIR/rg" ]]; then
     fi
 
     # set up manpath and zsh completion for ripgrep
-    mkdir -p $HOME/tools/ripgrep/doc/man/man1
-    mv $HOME/tools/ripgrep/doc/rg.1 $HOME/tools/ripgrep/doc/man/man1
+    mkdir -p "$HOME/tools/ripgrep/doc/man/man1"
+    mv "$HOME/tools/ripgrep/doc/rg.1" "$HOME/tools/ripgrep/doc/man/man1"
 
     if [[ "$USE_BASH_SHELL" = true ]]; then
         echo 'export MANPATH=$HOME/tools/ripgrep/doc/man:$MANPATH' >> "$HOME/.bash_profile"
