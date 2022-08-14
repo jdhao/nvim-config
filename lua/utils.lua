@@ -1,7 +1,7 @@
 local fn = vim.fn
 
 -- inspect something
-function inspect(item)
+function _G.inspect(item)
   vim.pretty_print(item)
 end
 
