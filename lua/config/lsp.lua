@@ -166,7 +166,10 @@ if utils.executable("lua-language-server") then
           -- Make the server aware of Neovim runtime files,
           -- see also https://github.com/sumneko/lua-language-server/wiki/Libraries#link-to-workspace .
           -- Lua-dev.nvim also has similar settings for sumneko lua, https://github.com/folke/lua-dev.nvim/blob/main/lua/lua-dev/sumneko.lua .
-          library = { fn.stdpath('data') .. "/site/pack/packer/opt/emmylua-nvim" },
+          library = {
+            fn.stdpath('data') .. "/site/pack/packer/opt/emmylua-nvim",
+            fn.stdpath('config'),
+          },
           maxPreload = 2000,
           preloadFileSize = 50000,
         },
