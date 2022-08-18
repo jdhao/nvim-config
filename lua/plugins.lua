@@ -1,14 +1,23 @@
 local utils = require("utils")
 local fn = vim.fn
 
-vim.g.package_home = fn.stdpath("data") .. "/site/pack/packer/"
-local packer_install_dir = vim.g.package_home .. "/opt/packer.nvim"
+-- The root dir to install all plugins. Plugins are under opt/ or start/ sub-directory.
+vim.g.plugin_home = fn.stdpath("data") .. "/site/pack/packer"
 
-local packer_repo = "https://github.com/wbthomason/packer.nvim"
-local install_cmd = string.format("10split |term git clone --depth=1 %s %s", packer_repo, packer_install_dir)
+-- Where to install packer.nvim -- the package manager (we make it opt)
+local packer_dir = vim.g.plugin_home .. "/opt/packer.nvim"
+
+-- Whether this is a fresh install, i.e., packer itself and plugins have not been installed.
+local fresh_install = false
 
 -- Auto-install packer in case it hasn't been installed.
-if fn.glob(packer_install_dir) == "" then
+if fn.glob(packer_dir) == "" then
+  fresh_install = true
+
+  -- Now we need to install packer.nvim first.
+  local packer_repo = "https://github.com/wbthomason/packer.nvim"
+  local install_cmd = string.format("!git clone --depth=1 %s %s", packer_repo, packer_dir)
+
   vim.api.nvim_echo({ { "Installing packer.nvim", "Type" } }, true, {})
   vim.cmd(install_cmd)
 end
@@ -364,7 +373,14 @@ packer.startup({
   },
 })
 
-local status, _ = pcall(require, 'packer_compiled')
-if not status then
+-- For fresh install, we need to install plugins. Otherwise, we just need to require `packer_compiled.lua`.
+if fresh_install then
+  -- We can command `PackerSync` here, because only after packer.startup, we can know what plugins to install.
+  -- So plugin install should be done after the startup process.
+  vim.cmd("PackerSync")
+else
+  local status, _ = pcall(require, 'packer_compiled')
+  if not status then
   vim.notify("Error requiring packer_compiled.lua: run PackerSync to fix!")
+  end
 end
