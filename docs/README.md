@@ -31,7 +31,11 @@ should be set properly based on your environment.
 
 ## Automatic installation for Windows
 
-Run script [nvim_setup_windows.ps1](nvim_setup_windows.ps1) under PowerShell.
+Run the script [nvim_setup_windows.ps1](nvim_setup_windows.ps1) in PowerShell **with Administrator rights**:
+
+```
+.\docs\nvim_setup_windows.ps1
+```
 
 # Manual install
 
