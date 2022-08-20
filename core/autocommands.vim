@@ -133,7 +133,7 @@ augroup END
 
 augroup auto_create_dir
   autocmd!
-  autocmd BufWritePre * lua require('utils').may_create_dir()
+  autocmd BufWritePre * lua require('utils').may_create_dir(vim.fn.fnamemodify(vim.fn.expand('<afile>'), ":p:h"))
 augroup END
 
 " ref: https://vi.stackexchange.com/a/169/15292
