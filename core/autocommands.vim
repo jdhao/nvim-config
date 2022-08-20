@@ -41,26 +41,6 @@ function s:resume_cursor_position() abort
   endif
 endfunction
 
-" Display a message when the current file is not in utf-8 format.
-" Note that we need to use `unsilent` command here because of this issue:
-" https://github.com/vim/vim/issues/4379
-augroup non_utf8_file_warn
-  autocmd!
-  " we can not use `lua vim.notify()`: it will error out E5107 parsing lua.
-  autocmd BufRead * if &fileencoding != 'utf-8' | call v:lua.vim.notify('File not in UTF-8 format!', 'warn', {'title': 'nvim-config'}) | endif
-augroup END
-
-" Automatically reload the file if it is changed outside of Nvim, see
-" https://unix.stackexchange.com/a/383044/221410. It seems that `checktime`
-" command does not work in command line. We need to check if we are in command
-" line before executing this command. See also
-" https://vi.stackexchange.com/a/20397/15292.
-augroup auto_read
-  autocmd!
-  autocmd FileChangedShellPost * call v:lua.vim.notify("File changed on disk. Buffer reloaded!", 'warn', {'title': 'nvim-config'})
-  autocmd FocusGained,CursorHold * if getcmdwintype() == '' | checktime | endif
-augroup END
-
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
@@ -87,12 +67,6 @@ function! s:custom_highlight() abort
   " highlight for matching parentheses
   highlight MatchParen cterm=bold,underline gui=bold,underline
 endfunction
-
-" highlight yanked region, see `:h lua-highlight`
-augroup highlight_yank
-  autocmd!
-  au TextYankPost * silent! lua vim.highlight.on_yank{higroup="YankColor", timeout=300, on_visual=false}
-augroup END
 
 augroup auto_close_win
   autocmd!
@@ -125,17 +99,6 @@ augroup git_repo_check
   autocmd VimEnter,DirChanged * call utils#Inside_git_repo()
 augroup END
 
-" Auto-generate packer_compiled.lua file
-augroup packer_auto_compile
-  autocmd!
-  autocmd BufWritePost */nvim/lua/plugins.lua source <afile> | PackerCompile
-augroup END
-
-augroup auto_create_dir
-  autocmd!
-  autocmd BufWritePre * lua require('utils').may_create_dir(vim.fn.fnamemodify(vim.fn.expand('<afile>'), ":p:h"))
-augroup END
-
 " ref: https://vi.stackexchange.com/a/169/15292
 function! s:handle_large_file() abort
   let g:large_file = 10485760 " 10MB
@@ -155,3 +118,6 @@ augroup LargeFile
   autocmd!
   autocmd BufReadPre * call s:handle_large_file()
 augroup END
+
+" Load auto-command defined in Lua
+lua require("custom-autocmd")
