@@ -42,9 +42,8 @@ api.nvim_create_augroup("packer_auto_compile", {
 api.nvim_create_autocmd({ "BufWritePost" }, {
   pattern = "*/nvim/lua/plugins.lua",
   group = "packer_auto_compile",
-  callback = function()
-    local fpath = fn.expand("<afile>")
-    local cmd = "source " .. fpath
+  callback = function(ctx)
+    local cmd = "source " .. ctx.file
     vim.cmd(cmd)
     vim.cmd("PackerCompile")
   end
@@ -58,10 +57,8 @@ api.nvim_create_augroup("auto_create_dir", {
 api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = "*",
   group = "auto_create_dir",
-  callback = function()
-    local fpath = fn.expand('<afile>')
-    local dir = fn.fnamemodify(fpath, ":p:h")
-
+  callback = function(ctx)
+    local dir = fn.fnamemodify(ctx.file, ":p:h")
     utils.may_create_dir(dir)
   end
 })
