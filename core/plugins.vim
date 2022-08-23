@@ -260,7 +260,7 @@ omap s <Nop>
 
 """"""""""""""""""""""""""""vimtex settings"""""""""""""""""""""""""""""
 if ( g:is_win || g:is_mac ) && executable('latex')
-  " Hacks for inverse serach to work semi-automatically,
+  " Hacks for inverse search to work semi-automatically,
   " see https://jdhao.github.io/2021/02/20/inverse_search_setup_neovim_vimtex/.
   function! s:write_server_name() abort
     let nvim_server_file = (has('win32') ? $TEMP : '/tmp') . '/vimtexserver.txt'
