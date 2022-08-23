@@ -15,7 +15,7 @@ function M.executable(name)
   return false
 end
 
---- Create a dir if if does not exist
+--- Create a dir if it does not exist
 function M.may_create_dir(dir)
   local res = fn.isdirectory(dir)
 
