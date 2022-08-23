@@ -8,3 +8,6 @@ set shiftwidth=2    " number of spaces to use for autoindent
 set expandtab       " expand tab to spaces so that tabs are spaces
 
 nnoremap <silent> <F9> :luafile %<CR>
+
+" For delimitMate
+let b:delimitMate_matchpairs = "(:),[:],{:}"
