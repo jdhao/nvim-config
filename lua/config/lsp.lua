@@ -71,7 +71,7 @@ local custom_attach = function(client, bufnr)
 
   if vim.g.logging_level == 'debug' then
     local msg = string.format("Language server %s started!", client.name)
-    vim.notify(msg, 'info', {title = 'Nvim-config'})
+    vim.notify(msg, vim.log.levels.DEBUG, {title = 'Nvim-config'})
   end
 end
 
@@ -102,7 +102,7 @@ if utils.executable('pylsp') then
     capabilities = capabilities,
   })
 else
-  vim.notify("pylsp not found!", 'warn', {title = 'Nvim-config'})
+  vim.notify("pylsp not found!", vim.log.levels.WARN, {title = 'Nvim-config'})
 end
 
 -- if utils.executable('pyright') then
@@ -111,7 +111,7 @@ end
 --     capabilities = capabilities
 --   }
 -- else
---   vim.notify("pyright not found!", 'warn', {title = 'Nvim-config'})
+--   vim.notify("pyright not found!", vim.log.levels.WARN, {title = 'Nvim-config'})
 -- end
 
 if utils.executable('clangd') then
@@ -124,7 +124,7 @@ if utils.executable('clangd') then
     },
   })
 else
-  vim.notify("clangd not found!", 'warn', {title = 'Nvim-config'})
+  vim.notify("clangd not found!", vim.log.levels.WARN, {title = 'Nvim-config'})
 end
 
 -- set up vim-language-server
@@ -137,7 +137,7 @@ if utils.executable('vim-language-server') then
     capabilities = capabilities,
   })
 else
-  vim.notify("vim-language-server not found!", 'warn', {title = 'Nvim-config'})
+  vim.notify("vim-language-server not found!", vim.log.levels.WARN, {title = 'Nvim-config'})
 end
 
 -- set up bash-language-server

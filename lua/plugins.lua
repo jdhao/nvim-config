@@ -381,6 +381,6 @@ if fresh_install then
 else
   local status, _ = pcall(require, 'packer_compiled')
   if not status then
-  vim.notify("Error requiring packer_compiled.lua: run PackerSync to fix!")
+    vim.notify("Error requiring packer_compiled.lua: run PackerSync to fix!", vim.log.levels.ERROR, { title = 'nvim-config' })
   end
 end
