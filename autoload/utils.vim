@@ -27,21 +27,6 @@ function! utils#HasColorscheme(name) abort
   return !empty(globpath(&runtimepath, l:pat))
 endfunction
 
-" Generate random integers in the range [Low, High] in pure vim script,
-" adapted from https://stackoverflow.com/a/12739441/6064933
-function! utils#RandInt(Low, High) abort
-  " Use lua to generate random int. It is faster. Ref: https://stackoverflow.com/a/20157671/6064933
-  call v:lua.math.randomseed(localtime())
-  return v:lua.math.random(a:Low, a:High)
-endfunction
-
-" Selection a random element from a sequence/list
-function! utils#RandElement(seq) abort
-  let l:idx = utils#RandInt(0, len(a:seq)-1)
-
-  return a:seq[l:idx]
-endfunction
-
 " Custom fold expr, adapted from https://vi.stackexchange.com/a/9094/15292
 function! utils#VimFolds(lnum) abort
   " get content of current line and the line below
@@ -197,15 +182,4 @@ function! utils#MultiEdit(patterns) abort
       execute 'edit ' . f
     endfor
   endfor
-endfunction
-
-function! utils#add_pack(name) abort
-  let l:status = v:true
-  try
-    execute printf("packadd! %s", a:name)
-  catch /^Vim\%((\a\+)\)\=:E919/
-    let l:status = v:false
-  endtry
-
-  return l:status
 endfunction
