@@ -245,6 +245,7 @@ fi
 
 echo "Setting up config and installing plugins"
 if [[ -d "$NVIM_CONFIG_DIR" ]]; then
+    rm -rf "$NVIM_CONFIG_DIR.backup"
     mv "$NVIM_CONFIG_DIR" "$NVIM_CONFIG_DIR.backup"
 fi
 
