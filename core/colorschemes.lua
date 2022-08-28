@@ -1,10 +1,12 @@
+--- This module will load a random colorscheme on nvim startup process.
+
 local utils = require('utils')
 
 local M = {}
 
--- Theme to directory name mapping, because theme repo name is not necessarily
--- the same as the theme name itself.
-M.theme2dir = {
+-- Colorscheme to its directory name mapping, because colorscheme repo name is not necessarily
+-- the same as the colorscheme name itself.
+M.colorscheme2dir = {
   gruvbox8 = "vim-gruvbox8",
   onedark = 'onedark.nvim',
   edge = 'edge',
@@ -89,35 +91,36 @@ M.catppuccin = function()
 end
 
 
---- Use a random theme from the pre-defined list of themes.
-M.rand_theme = function ()
-  local theme = utils.rand_element(vim.tbl_keys(M.theme2dir))
+--- Use a random colorscheme from the pre-defined list of colorschemes.
+M.rand_colorscheme = function ()
+  local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme2dir))
 
-  if not vim.tbl_contains(vim.tbl_keys(M), theme) then
-    local msg = "Invalid theme: " .. theme
+  if not vim.tbl_contains(vim.tbl_keys(M), colorscheme) then
+    local msg = "Invalid colorscheme: " .. colorscheme
     vim.notify(msg, vim.log.levels.ERROR, { title = 'nvim-config' })
 
     return
   end
 
-  -- Load the theme, because all the themes are declared as opt plugins, the theme isn't loaded yet.
-  local status = utils.add_pack(M.theme2dir[theme])
+  -- Load the colorscheme, because all the colorschemes are declared as opt plugins, so the colorscheme isn't loaded yet.
+  local status = utils.add_pack(M.colorscheme2dir[colorscheme])
 
   if not status then
-    local msg = string.format("Theme %s is not installed. Run PackerSync to install.", theme)
+    local msg = string.format("Colorscheme %s is not installed. Run PackerSync to install.", colorscheme)
     vim.notify(msg, vim.log.levels.ERROR, { title = 'nvim-config' })
 
     return
   end
 
-  -- Set the theme.
-  M[theme]()
+  -- Load the colorscheme and its settings
+  M[colorscheme]()
 
   if vim.g.logging_level == 'debug' then
-    local msg = "Colorscheme: " .. theme
+    local msg = "Colorscheme: " .. colorscheme
 
     vim.notify(msg, vim.log.levels.DEBUG, { title = 'nvim-config' })
   end
 end
 
-M.rand_theme()
+-- Load a random colorscheme
+M.rand_colorscheme()
