@@ -375,12 +375,13 @@ packer.startup({
 
 -- For fresh install, we need to install plugins. Otherwise, we just need to require `packer_compiled.lua`.
 if fresh_install then
-  -- We can command `PackerSync` here, because only after packer.startup, we can know what plugins to install.
-  -- So plugin install should be done after the startup process.
-  vim.cmd("PackerSync")
+  -- We run packer.sync() here, because only after packer.startup, can we know which plugins to install.
+  -- So plugin installation should be done after the startup process.
+  packer.sync()
 else
   local status, _ = pcall(require, 'packer_compiled')
   if not status then
-    vim.notify("Error requiring packer_compiled.lua: run PackerSync to fix!", vim.log.levels.ERROR, { title = 'nvim-config' })
+    local msg = "File packer_compiled.lua not found: run PackerSync to fix!"
+    vim.notify(msg, vim.log.levels.ERROR, { title = 'nvim-config' })
   end
 end
