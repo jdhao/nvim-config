@@ -8,7 +8,7 @@
 -- Email: jdhao@hotmail.com
 -- Blog: https://jdhao.github.io/
 
-  -- check if we have the latest stable version of nvim
+-- check if we have the latest stable version of nvim
 local expected_ver = "0.7.2"
 
 local utils = require "utils"
