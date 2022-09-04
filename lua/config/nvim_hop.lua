@@ -9,7 +9,7 @@ hop.setup({
   quit_key = "<Esc>",
 })
 
-vim.keymap.set({ "n", "v" }, "f", "", {
+vim.keymap.set({ "n", "v", "o" }, "f", "", {
   silent = true,
   noremap = true,
   callback = function()
