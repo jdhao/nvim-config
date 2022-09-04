@@ -236,6 +236,13 @@ packer.startup({
 
     use({ "christoomey/vim-conflicted", requires = "tpope/vim-fugitive", cmd = {"Conflicted"}})
 
+    use {
+        'ruifm/gitlinker.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        event = "User InGitRepo",
+        config = [[require('config.git-linker')]]
+    }
+
     use({ "kevinhwang91/nvim-bqf", ft = "qf", config = [[require('config.bqf')]] })
 
     -- Better git commit experience
