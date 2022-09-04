@@ -213,7 +213,7 @@ packer.startup({
 
     -- Show the content of register in preview window
     -- Plug 'junegunn/vim-peekaboo'
-    use({ "jdhao/better-escape.vim", event = { "InsertEnter" } })
+    use({ "nvim-zh/better-escape.vim", event = { "InsertEnter" } })
 
     if vim.g.is_mac then
       use({ "lyokha/vim-xkbswitch", event = { "InsertEnter" } })
