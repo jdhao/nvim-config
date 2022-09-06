@@ -1,5 +1,6 @@
 local fn = vim.fn
 local api = vim.api
+local keymap = vim.keymap
 local lsp = vim.lsp
 
 local utils = require("utils")
@@ -7,19 +8,27 @@ local utils = require("utils")
 local custom_attach = function(client, bufnr)
   -- Mappings.
   local opts = { silent = true, buffer = bufnr }
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-  vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, opts)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-  vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-  vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-  vim.keymap.set("n", "<space>wl", function() inspect(vim.lsp.buf.list_workspace_folders()) end, opts)
-  vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-  vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "<space>q", function() vim.diagnostic.setqflist({open = true}) end, opts)
-  vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
+  keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+  keymap.set("n", "<C-]>", vim.lsp.buf.definition, opts)
+  keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+  keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+  keymap.set("n", "gr", vim.lsp.buf.references, opts)
+  keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+  keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+  keymap.set("n", "<space>q", function() vim.diagnostic.setqflist({open = true}) end, opts)
+  keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
+  keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+  keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+  keymap.set("n", "<space>wl", function() inspect(vim.lsp.buf.list_workspace_folders()) end, opts)
+
+  -- Set some key bindings conditional on server capabilities
+  if client.resolved_capabilities.document_formatting then
+    keymap.set("n", "<space>f", vim.lsp.buf.formatting_sync, opts)
+  end
+  if client.resolved_capabilities.document_range_formatting then
+    keymap.set("x", "<space>f", vim.lsp.buf.range_formatting, opts)
+  end
 
   api.nvim_create_autocmd("CursorHold", {
     buffer=bufnr,
@@ -46,14 +55,6 @@ local custom_attach = function(client, bufnr)
       vim.b.diagnostics_pos = cursor_pos
     end
   })
-
-  -- Set some key bindings conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-    vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting_sync, opts)
-  end
-  if client.resolved_capabilities.document_range_formatting then
-    vim.keymap.set("x", "<space>f", vim.lsp.buf.range_formatting, opts)
-  end
 
   -- The blow command will highlight the current variable and its usages in the buffer.
   if client.resolved_capabilities.document_highlight then
