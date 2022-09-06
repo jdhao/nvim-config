@@ -24,7 +24,7 @@ local core_conf_files = {
   "globals.vim",       -- some global settings
   "options.vim",       -- setting options in nvim
   "autocommands.vim",  -- various autocommands
-  "mappings.vim",      -- all the user-defined mappings
+  "mappings.lua",      -- all the user-defined mappings
   "plugins.vim",       -- all the plugins installed and their configurations
   "colorschemes.lua",  -- colorscheme settings
 }
