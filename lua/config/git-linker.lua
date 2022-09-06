@@ -1,10 +1,11 @@
+local keymap = vim.keymap
 local gitlinker = require('gitlinker')
 
 gitlinker.setup({
   mappings = nil,
 })
 
-vim.keymap.set({ 'n', 'v' }, '<leader>gl', '', {
+keymap.set({ 'n', 'v' }, '<leader>gl', '', {
   silent = true,
   desc = "get git permlink",
   callback = function()
