@@ -1,3 +1,4 @@
+local api = vim.api
 local keymap = vim.keymap
 
 require('hlslens').setup({
@@ -12,7 +13,7 @@ local activate_hlslens = function(direction)
   msg = msg:sub(13)
 
   if not status then
-    vim.api.nvim_echo({{msg, "ErrorMsg"}}, false, {})
+    api.nvim_err_writeln(msg)
     return
   end
   require('hlslens').start()
