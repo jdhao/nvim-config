@@ -8,15 +8,16 @@
 -- Email: jdhao@hotmail.com
 -- Blog: https://jdhao.github.io/
 
+local api = vim.api
+local utils = require "utils"
+
 -- check if we have the latest stable version of nvim
 local expected_ver = "0.7.2"
-
-local utils = require "utils"
 local nvim_ver = utils.get_nvim_version()
 
 if nvim_ver ~= expected_ver then
   local msg = string.format("Unsupported nvim version: expect %s, but got %s instead!", expected_ver, nvim_ver)
-  vim.api.nvim_echo({ { msg, "ErrorMsg" } }, false, {})
+  api.nvim_err_writeln(msg)
   return
 end
 
