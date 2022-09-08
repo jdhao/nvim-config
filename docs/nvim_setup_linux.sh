@@ -112,6 +112,7 @@ if [[ -z "$(command -v node)" ]]; then
     fi
 else
     echo "Node.js is already installed. Skip installing it."
+    NODE_DIR="$(realpath $(dirname $(which node))/..)"
 fi
 
 # Install vim-language-server
