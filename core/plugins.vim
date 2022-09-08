@@ -189,15 +189,6 @@ let g:signify_vcs_list = [ 'git' ]
 " Change the sign for certain operations
 let g:signify_sign_change = '~'
 
-"""""""""""""""""""""""""vim-fugitive settings""""""""""""""""""""""""""""""
-nnoremap <silent> <leader>gs :Git<CR>
-nnoremap <silent> <leader>gw :Gwrite<CR>
-nnoremap <silent> <leader>gc :Git commit<CR>
-nnoremap <silent> <leader>gd :Gdiffsplit<CR>
-nnoremap <silent> <leader>gpl :Git pull<CR>
-" Note that to use bar literally, we need backslash it, see also `:h :bar`.
-nnoremap <silent> <leader>gpu :15split \| term git push<CR>
-
 """""""""""""""""""""""""plasticboy/vim-markdown settings"""""""""""""""""""
 " Disable header folding
 let g:vim_markdown_folding_disabled = 1
