@@ -229,7 +229,7 @@ packer.startup({
     -- use 'Chiel92/vim-autoformat'
 
     -- Git command inside vim
-    use({ "tpope/vim-fugitive", event = "User InGitRepo" })
+    use({ "tpope/vim-fugitive", event = "User InGitRepo", config = [[require('config.fugitive')]]})
 
     -- Better git log display
     use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
