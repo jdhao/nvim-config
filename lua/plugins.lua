@@ -132,10 +132,6 @@ packer.startup({
     use({"rebelot/kanagawa.nvim", opt = true})
     use({"catppuccin/nvim", as = "catppuccin", opt = true})
 
-    -- Show git change (change, delete, add) signs in vim sign column
-    use({"mhinz/vim-signify", event = 'BufEnter'})
-    -- Another similar plugin
-    -- use 'airblade/vim-gitgutter'
 
     use {'kyazdani42/nvim-web-devicons', event = 'VimEnter'}
 
@@ -244,6 +240,8 @@ packer.startup({
     }
 
     use({ "kevinhwang91/nvim-bqf", ft = "qf", config = [[require('config.bqf')]] })
+    -- Show git change (change, delete, add) signs in vim sign column
+    use({ 'lewis6991/gitsigns.nvim', config = [[require('config.gitsigns')]] })
 
     -- Better git commit experience
     use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
