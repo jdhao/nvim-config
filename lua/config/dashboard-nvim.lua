@@ -52,8 +52,8 @@ dashboard.custom_center = {
     desc = "Quit Nvim                               ",
     -- desc = "Quit Nvim                               ",
     action = "qa",
-    shortcut = "q           "
-  }
+    shortcut = "q           ",
+  },
 }
 
 vim.cmd([[

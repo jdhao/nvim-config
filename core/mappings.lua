@@ -11,30 +11,30 @@ keymap.set("i", "<c-u>", "<Esc>viwUea")
 keymap.set("i", "<c-u>", "<Esc>b~lea")
 
 -- Paste non-linewise text above or below current line, see https://stackoverflow.com/a/1346777/6064933
-keymap.set("n", "<leader>p", "m`o<ESC>p``", { desc = "paste below current line", })
-keymap.set("n", "<leader>P", "m`O<ESC>p``", { desc = "paste above current line", })
+keymap.set("n", "<leader>p", "m`o<ESC>p``", { desc = "paste below current line" })
+keymap.set("n", "<leader>P", "m`O<ESC>p``", { desc = "paste above current line" })
 
 -- Shortcut for faster save and quit
-keymap.set("n", "<leader>w", "<cmd>update<cr>", { silent = true, desc = "save buffer", })
+keymap.set("n", "<leader>w", "<cmd>update<cr>", { silent = true, desc = "save buffer" })
 
 -- Saves the file if modified and quit
 keymap.set("n", "<leader>q", "<cmd>x<cr>", { silent = true, desc = "quit current window" })
 
 -- Quit all opened buffers
-keymap.set("n", "<leader>Q", "<cmd>qa!<cr>", { silent = true, desc = "quit nvim", })
+keymap.set("n", "<leader>Q", "<cmd>qa!<cr>", { silent = true, desc = "quit nvim" })
 
 -- Navigation in the location and quickfix list
-keymap.set("n", "[l", "<cmd>lprevious<cr>zv", { silent = true, desc = "previous location item", })
-keymap.set("n", "]l", "<cmd>lnext<cr>zv", { silent = true, desc = "next location item", })
+keymap.set("n", "[l", "<cmd>lprevious<cr>zv", { silent = true, desc = "previous location item" })
+keymap.set("n", "]l", "<cmd>lnext<cr>zv", { silent = true, desc = "next location item" })
 
-keymap.set("n", "[L", "<cmd>lfirst<cr>zv", { silent = true, desc = "first location item", })
-keymap.set("n", "]L", "<cmd>llast<cr>zv", { silent = true, desc = "last location item", })
+keymap.set("n", "[L", "<cmd>lfirst<cr>zv", { silent = true, desc = "first location item" })
+keymap.set("n", "]L", "<cmd>llast<cr>zv", { silent = true, desc = "last location item" })
 
-keymap.set("n", "[q", "<cmd>cprevious<cr>zv", { silent = true, desc = "previous qf item", })
-keymap.set("n", "]q", "<cmd>cnext<cr>zv", { silent = true, desc = "next qf item", })
+keymap.set("n", "[q", "<cmd>cprevious<cr>zv", { silent = true, desc = "previous qf item" })
+keymap.set("n", "]q", "<cmd>cnext<cr>zv", { silent = true, desc = "next qf item" })
 
-keymap.set("n", "[Q", "<cmd>cfirst<cr>zv", { silent = true, desc = "first qf item", })
-keymap.set("n", "]Q", "<cmd>clast<cr>zv", { silent = true, desc = "last qf item", })
+keymap.set("n", "[Q", "<cmd>cfirst<cr>zv", { silent = true, desc = "first qf item" })
+keymap.set("n", "]Q", "<cmd>clast<cr>zv", { silent = true, desc = "last qf item" })
 
 -- Close location list or quickfix list if they are present, see https://superuser.com/q/355325/736190
 keymap.set("n", [[\x]], "<cmd>windo lclose <bar> cclose <cr>", {
@@ -89,10 +89,10 @@ keymap.set("n", "<leader>sv", "", {
   silent = true,
   desc = "reload init.lua",
   callback = function()
-    vim.cmd [[
+    vim.cmd([[
       update $MYVIMRC
       source $MYVIMRC
-    ]]
+    ]])
     vim.notify("Nvim config successfully reloaded!", vim.log.levels.INFO, { title = "nvim-config" })
   end,
 })
@@ -111,14 +111,14 @@ keymap.set("n", "/", [[/\v]])
 
 -- Change current working directory locally and print cwd after that,
 -- see https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
-keymap.set("n", "<leader>cd", "<cmd>lcd %:p:h<cr><cmd>pwd<cr>", { desc = "change cwd", })
+keymap.set("n", "<leader>cd", "<cmd>lcd %:p:h<cr><cmd>pwd<cr>", { desc = "change cwd" })
 
 -- Use Esc to quit builtin terminal
 keymap.set("t", "<Esc>", [[<c-\><c-n>]])
 
 -- Toggle spell checking
-keymap.set("n", "<F11>", "<cmd>set spell!<cr>", { desc = "toggle spell", })
-keymap.set("i", "<F11>", "<c-o><cmd>set spell!<cr>", { desc = "toggle spell", })
+keymap.set("n", "<F11>", "<cmd>set spell!<cr>", { desc = "toggle spell" })
+keymap.set("i", "<F11>", "<c-o><cmd>set spell!<cr>", { desc = "toggle spell" })
 
 -- Change text without putting it into the vim register,
 -- see https://stackoverflow.com/q/54255/6064933
@@ -128,25 +128,25 @@ keymap.set("n", "cc", '"_cc')
 keymap.set("x", "c", '"_c')
 
 -- Remove trailing whitespace characters
-keymap.set("n", "<leader><space>", "<cmd>StripTrailingWhitespace<cr>", { desc = "remove trailing space", })
+keymap.set("n", "<leader><space>", "<cmd>StripTrailingWhitespace<cr>", { desc = "remove trailing space" })
 
 -- check the syntax group of current cursor position
-keymap.set("n", "<leader>st", "<cmd>call utils#SynGroup()<cr>", { desc = "check syntax group", })
+keymap.set("n", "<leader>st", "<cmd>call utils#SynGroup()<cr>", { desc = "check syntax group" })
 
 -- Copy entire buffer.
-keymap.set("n", "<leader>y", "<cmd>%yank<cr>", { desc = "yank entire buffer", })
+keymap.set("n", "<leader>y", "<cmd>%yank<cr>", { desc = "yank entire buffer" })
 
 -- Toggle cursor column
-keymap.set("n", "<leader>cl", "<cmd>call utils#ToggleCursorCol()<cr>", { desc = "toggle cursor column", })
+keymap.set("n", "<leader>cl", "<cmd>call utils#ToggleCursorCol()<cr>", { desc = "toggle cursor column" })
 
 -- Move current line up and down
-keymap.set("n", "<A-k>", '<cmd>call utils#SwitchLine(line("."), "up")<cr>', { desc = "move line up", })
-keymap.set("n", "<A-j>", '<cmd>call utils#SwitchLine(line("."), "down")<cr>', { desc = "move line down", })
+keymap.set("n", "<A-k>", '<cmd>call utils#SwitchLine(line("."), "up")<cr>', { desc = "move line up" })
+keymap.set("n", "<A-j>", '<cmd>call utils#SwitchLine(line("."), "down")<cr>', { desc = "move line down" })
 
 -- Move current visual-line selection up and down
-keymap.set("x", "<A-k>", '<cmd>call utils#MoveSelection("up")<cr>', { desc = "move selection up", })
+keymap.set("x", "<A-k>", '<cmd>call utils#MoveSelection("up")<cr>', { desc = "move selection up" })
 
-keymap.set("x", "<A-j>", '<cmd>call utils#MoveSelection("down")<cr>', { desc = "move selection down", })
+keymap.set("x", "<A-j>", '<cmd>call utils#MoveSelection("down")<cr>', { desc = "move selection down" })
 
 -- Replace visual selection with text in register, but not contaminate the register,
 -- see also https://stackoverflow.com/q/10723700/6064933.
@@ -167,19 +167,19 @@ keymap.set("n", "<Up>", "<C-W>k")
 keymap.set("n", "<Down>", "<C-W>j")
 
 -- Text objects for URL
-keymap.set({ "x", "o" }, "iu", "<cmd>call text_obj#URL()<cr>", { desc = "URL text object", })
+keymap.set({ "x", "o" }, "iu", "<cmd>call text_obj#URL()<cr>", { desc = "URL text object" })
 
 -- Text objects for entire buffer
-keymap.set({ "x", "o" }, "iB", "<cmd>call text_obj#Buffer()<cr>", { desc = "buffer text object", })
+keymap.set({ "x", "o" }, "iB", "<cmd>call text_obj#Buffer()<cr>", { desc = "buffer text object" })
 
 -- Do not move my cursor when joining lines.
 keymap.set("n", "J", "", {
   desc = "join line",
   callback = function()
-    vim.cmd [[
+    vim.cmd([[
       normal! mzJ`z
       delmarks z
-    ]]
+    ]])
   end,
 })
 
@@ -187,42 +187,42 @@ keymap.set("n", "gJ", "mzgJ`z", {
   desc = "join visual lines",
   callback = function()
     -- we must use `normal!`, otherwise it will trigger recursive mapping
-    vim.cmd [[
+    vim.cmd([[
       normal! zmgJ`z
       delmarks z
-    ]]
-  end
+    ]])
+  end,
 })
 
 -- Break inserted text into smaller undo units when we insert some punctuation chars.
-local undo_ch = { ',', '.', '!', '?', ';', ':' }
+local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do
-  keymap.set('i', ch, ch .. '<c-g>u')
+  keymap.set("i", ch, ch .. "<c-g>u")
 end
 
 -- insert semicolon in the end
-keymap.set('i', '<A-;>', '<Esc>miA;<Esc>`ii')
+keymap.set("i", "<A-;>", "<Esc>miA;<Esc>`ii")
 
 -- Keep cursor position after yanking
-keymap.set('n', 'y', 'myy')
+keymap.set("n", "y", "myy")
 
-api.nvim_create_autocmd('TextYankPost', {
-  pattern = '*',
+api.nvim_create_autocmd("TextYankPost", {
+  pattern = "*",
   group = api.nvim_create_augroup("restore_after_yank", { clear = true }),
   callback = function()
-    vim.cmd [[
+    vim.cmd([[
       silent! normal! `y
       silent! delmarks y
-    ]]
-  end
+    ]])
+  end,
 })
 
 -- Go to the beginning and end of current line in insert mode quickly
-keymap.set('i', '<C-A>', '<HOME>')
-keymap.set('i', '<C-E>', '<END>')
+keymap.set("i", "<C-A>", "<HOME>")
+keymap.set("i", "<C-E>", "<END>")
 
 -- Go to beginning of command in command-line mode
-keymap.set('c', '<C-A>', '<HOME>')
+keymap.set("c", "<C-A>", "<HOME>")
 
 -- Delete the character to the right of the cursor
-keymap.set('i', '<C-D>', '<DEL>')
+keymap.set("i", "<C-D>", "<DEL>")

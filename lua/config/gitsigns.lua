@@ -1,4 +1,4 @@
-local gs = require "gitsigns"
+local gs = require("gitsigns")
 
 gs.setup {
   signs = {
@@ -25,7 +25,7 @@ gs.setup {
         gs.next_hunk()
       end)
       return "<Ignore>"
-    end, { expr = true, desc = 'next hunk' })
+    end, { expr = true, desc = "next hunk" })
 
     map("n", "[c", function()
       if vim.wo.diff then
@@ -35,10 +35,12 @@ gs.setup {
         gs.prev_hunk()
       end)
       return "<Ignore>"
-    end, { expr = true, desc = 'previous hunk' })
+    end, { expr = true, desc = "previous hunk" })
 
     -- Actions
     map("n", "<leader>hp", gs.preview_hunk)
-    map("n", "<leader>hb", function() gs.blame_line { full = true } end)
+    map("n", "<leader>hb", function()
+      gs.blame_line { full = true }
+    end)
   end,
 }

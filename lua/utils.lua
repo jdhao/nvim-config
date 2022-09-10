@@ -20,7 +20,7 @@ function M.may_create_dir(dir)
   local res = fn.isdirectory(dir)
 
   if res == 0 then
-    fn.mkdir(dir, 'p')
+    fn.mkdir(dir, "p")
   end
 end
 
@@ -30,7 +30,6 @@ function M.get_nvim_version()
   local nvim_ver_str = string.format("%d.%d.%d", actual_ver.major, actual_ver.minor, actual_ver.patch)
   return nvim_ver_str
 end
-
 
 --- Generate random integers in the range [Low, High], inclusive,
 --- adapted from https://stackoverflow.com/a/12739441/6064933

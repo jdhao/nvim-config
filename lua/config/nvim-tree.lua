@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 local nvim_tree = require("nvim-tree")
 
-nvim_tree.setup({
+nvim_tree.setup {
   auto_reload_on_write = true,
   disable_netrw = false,
   hijack_cursor = false,
@@ -112,9 +112,8 @@ nvim_tree.setup({
       profile = false,
     },
   },
-})
+}
 
-keymap.set('n', '<space>s', function()
-  return require('nvim-tree').toggle(false, true)
-end,
-  { silent = true, desc = "toggle nvim-tree" })
+keymap.set("n", "<space>s", function()
+  return require("nvim-tree").toggle(false, true)
+end, { silent = true, desc = "toggle nvim-tree" })
