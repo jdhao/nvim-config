@@ -74,6 +74,21 @@ local function mixed_indent()
   end
 end
 
+local diff = function()
+  local git_status = vim.b.gitsigns_status_dict
+  if git_status == nil then
+    return
+  end
+
+  local modify_num = git_status.changed
+  local remove_num = git_status.removed
+  local add_num = git_status.added
+
+  local info = { added = add_num, modified = modify_num, removed = remove_num }
+  -- vim.pretty_print(info)
+  return info
+end
+
 require("lualine").setup({
   options = {
     icons_enabled = true,
@@ -87,7 +102,13 @@ require("lualine").setup({
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { "branch", "diff" },
+    lualine_b = {
+      "branch",
+      {
+        'diff',
+        source = diff
+      }
+    },
     lualine_c = {
       "filename",
       {
