@@ -1,15 +1,15 @@
 local keymap = vim.keymap
-local gitlinker = require('gitlinker')
+local gitlinker = require("gitlinker")
 
-gitlinker.setup({
+gitlinker.setup {
   mappings = nil,
-})
+}
 
-keymap.set({ 'n', 'v' }, '<leader>gl', '', {
+keymap.set({ "n", "v" }, "<leader>gl", "", {
   silent = true,
   desc = "get git permlink",
   callback = function()
     local mode = string.lower(vim.fn.mode())
     gitlinker.get_buf_range_url(mode)
-  end
+  end,
 })

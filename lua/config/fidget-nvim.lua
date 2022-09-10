@@ -1,1 +1,1 @@
-require"fidget".setup{}
+require("fidget").setup {}

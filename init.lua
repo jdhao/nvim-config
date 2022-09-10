@@ -9,7 +9,7 @@
 -- Blog: https://jdhao.github.io/
 
 local api = vim.api
-local utils = require "utils"
+local utils = require("utils")
 
 -- check if we have the latest stable version of nvim
 local expected_ver = "0.7.2"
@@ -22,17 +22,17 @@ if nvim_ver ~= expected_ver then
 end
 
 local core_conf_files = {
-  "globals.vim",       -- some global settings
-  "options.vim",       -- setting options in nvim
-  "autocommands.vim",  -- various autocommands
-  "mappings.lua",      -- all the user-defined mappings
-  "plugins.vim",       -- all the plugins installed and their configurations
-  "colorschemes.lua",  -- colorscheme settings
+  "globals.vim", -- some global settings
+  "options.vim", -- setting options in nvim
+  "autocommands.vim", -- various autocommands
+  "mappings.lua", -- all the user-defined mappings
+  "plugins.vim", -- all the plugins installed and their configurations
+  "colorschemes.lua", -- colorscheme settings
 }
 
 -- source all the core config files
 for _, name in ipairs(core_conf_files) do
-  local path = string.format("%s/core/%s", vim.fn.stdpath('config'), name)
+  local path = string.format("%s/core/%s", vim.fn.stdpath("config"), name)
   local source_cmd = "source " .. path
   vim.cmd(source_cmd)
 end
