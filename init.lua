@@ -22,7 +22,7 @@ if nvim_ver ~= expected_ver then
 end
 
 local core_conf_files = {
-  "globals.vim", -- some global settings
+  "globals.lua", -- some global settings
   "options.vim", -- setting options in nvim
   "autocommands.vim", -- various autocommands
   "mappings.lua", -- all the user-defined mappings
