@@ -33,6 +33,8 @@ packer.startup {
     -- it is recommended to put impatient.nvim before any other plugins
     use { "lewis6991/impatient.nvim", config = [[require('impatient')]] }
 
+    use { "github/copilot.vim" }
+
     use { "wbthomason/packer.nvim", opt = true }
 
     use { "onsails/lspkind-nvim", event = "VimEnter" }
