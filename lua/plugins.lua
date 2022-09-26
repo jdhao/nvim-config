@@ -33,6 +33,11 @@ packer.startup {
     -- it is recommended to put impatient.nvim before any other plugins
     use { "lewis6991/impatient.nvim", config = [[require('impatient')]] }
 
+    use({
+        "aserowy/tmux.nvim",
+        config = function() require("tmux").setup() end
+    })
+
     use { "github/copilot.vim" }
 
     use { "wbthomason/packer.nvim", opt = true }
