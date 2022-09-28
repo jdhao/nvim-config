@@ -182,13 +182,6 @@ let g:neoformat_c_clangformat = {
 let g:neoformat_enabled_cpp = ['clangformat']
 let g:neoformat_enabled_c = ['clangformat']
 
-"""""""""""""""""""""""""vim-signify settings""""""""""""""""""""""""""""""
-" The VCS to use
-let g:signify_vcs_list = [ 'git' ]
-
-" Change the sign for certain operations
-let g:signify_sign_change = '~'
-
 """""""""""""""""""""""""plasticboy/vim-markdown settings"""""""""""""""""""
 " Disable header folding
 let g:vim_markdown_folding_disabled = 1
@@ -310,11 +303,6 @@ if ( g:is_win || g:is_mac ) && executable('latex')
     endfunction
   endif
 endif
-
-""""""""""""""""""""""""""""vim-startify settings""""""""""""""""""""""""""""
-" Do not change working directory when opening files.
-let g:startify_change_to_dir = 0
-let g:startify_fortune_use_unicode = 1
 
 """"""""""""""""""""""""""""vim-matchup settings"""""""""""""""""""""""""""""
 " Improve performance
