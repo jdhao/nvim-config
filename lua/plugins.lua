@@ -247,16 +247,14 @@ packer.startup {
     -- Markdown JSON header highlight plugin
     use { "elzr/vim-json", ft = { "json", "markdown" } }
 
-    -- Markdown previewing (only for Mac and Windows)
-    if vim.g.is_win or vim.g.is_mac then
-      use {
-        "iamcco/markdown-preview.nvim",
-        run = function()
-          fn["mkdp#util#install"]()
-        end,
-        ft = { "markdown" },
-      }
-    end
+    -- Markdown previewing
+    use {
+      "iamcco/markdown-preview.nvim",
+      run = function()
+        fn["mkdp#util#install"]()
+      end,
+      ft = { "markdown" },
+    }
 
     use { "folke/zen-mode.nvim", cmd = "ZenMode", config = [[require('config.zen-mode')]] }
 
