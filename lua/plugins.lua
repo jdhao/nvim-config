@@ -28,6 +28,11 @@ vim.cmd("packadd packer.nvim")
 local packer = require("packer")
 local packer_util = require("packer.util")
 
+-- check if firenvim is active
+local firenvim_not_active = function()
+  return not vim.g.started_by_firenvim
+end
+
 packer.startup {
   function(use)
     -- it is recommended to put impatient.nvim before any other plugins
@@ -130,13 +135,19 @@ packer.startup {
     use {
       "nvim-lualine/lualine.nvim",
       event = "VimEnter",
+      cond = firenvim_not_active,
       config = [[require('config.statusline')]],
     }
 
-    use { "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('config.bufferline')]] }
+    use { "akinsho/bufferline.nvim", event = "VimEnter",
+      cond = firenvim_not_active,
+      config = [[require('config.bufferline')]] }
 
     -- fancy start screen
-    use { "glepnir/dashboard-nvim", event = "VimEnter", config = [[require('config.dashboard-nvim')]] }
+    use { "glepnir/dashboard-nvim", event = "VimEnter",
+      cond = firenvim_not_active,
+      config = [[require('config.dashboard-nvim')]]
+    }
 
     use {
       "lukas-reineke/indent-blankline.nvim",
