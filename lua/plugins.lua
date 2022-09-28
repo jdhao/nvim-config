@@ -247,7 +247,7 @@ packer.startup {
     use { "kevinhwang91/nvim-bqf", ft = "qf", config = [[require('config.bqf')]] }
 
     -- Another markdown plugin
-    use { "plasticboy/vim-markdown", ft = { "markdown" } }
+    use { "preservim/vim-markdown", ft = { "markdown" } }
 
     -- Faster footnote generation
     use { "vim-pandoc/vim-markdownfootnotes", ft = { "markdown" } }
