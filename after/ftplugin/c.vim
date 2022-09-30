@@ -9,9 +9,9 @@ set expandtab       " expand tab to spaces so that tabs are spaces
 set formatoptions-=o
 set formatoptions-=r
 
-nnoremap <silent> <buffer> <F9> :call <SID>compile_run_cpp()<CR>
+nnoremap <silent> <buffer> <F9> :call <SID>compile_run_c()<CR>
 
-function! s:compile_run_cpp() abort
+function! s:compile_run_c() abort
   let src_path = expand('%:p:~')
   let src_noext = expand('%:p:~:r')
   " The building flags
