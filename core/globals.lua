@@ -47,10 +47,6 @@ if not vim.g.is_mac then
   vim.cmd [[language en_US.utf-8]]
 end
 
--- use filetype.lua instead of filetype.vim
-vim.g.do_filetype_lua = 1
-vim.g.did_load_filetypes = 0
-
 -- Disable loading certain plugins
 
 -- Whether to load netrw by default, see https://github.com/bling/dotvim/issues/4

@@ -33,11 +33,8 @@ local custom_attach = function(client, bufnr)
   end, { desc = "list workspace folder" })
 
   -- Set some key bindings conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-    map("n", "<space>f", vim.lsp.buf.formatting_sync, { desc = "format code" })
-  end
-  if client.resolved_capabilities.document_range_formatting then
-    map("x", "<space>f", vim.lsp.buf.range_formatting, { desc = "range format" })
+  if client.server_capabilities.documentFormattingProvider then
+    map("n", "<space>f", vim.lsp.buf.format, { desc = "format code" })
   end
 
   api.nvim_create_autocmd("CursorHold", {
@@ -56,9 +53,8 @@ local custom_attach = function(client, bufnr)
       end
 
       local cursor_pos = api.nvim_win_get_cursor(0)
-      if
-        (cursor_pos[1] ~= vim.b.diagnostics_pos[1] or cursor_pos[2] ~= vim.b.diagnostics_pos[2])
-        and #vim.diagnostic.get() > 0
+      if (cursor_pos[1] ~= vim.b.diagnostics_pos[1] or cursor_pos[2] ~= vim.b.diagnostics_pos[2])
+          and #vim.diagnostic.get() > 0
       then
         vim.diagnostic.open_float(nil, float_opts)
       end
@@ -68,7 +64,7 @@ local custom_attach = function(client, bufnr)
   })
 
   -- The blow command will highlight the current variable and its usages in the buffer.
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.documentHighlightProvider then
     vim.cmd([[
       hi! link LspReferenceRead Visual
       hi! link LspReferenceText Visual
