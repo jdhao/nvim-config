@@ -262,9 +262,7 @@ packer.startup {
     if vim.g.is_win or vim.g.is_mac then
       use {
         "iamcco/markdown-preview.nvim",
-        run = function()
-          fn["mkdp#util#install"]()
-        end,
+        run = "cd app && npm install",
         ft = { "markdown" },
       }
     end
