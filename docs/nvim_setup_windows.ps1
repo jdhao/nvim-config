@@ -2,7 +2,7 @@
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser
 
 # Install scoop
-Invoke-WebRequest -UseBasicParsing get.scoop.sh | Invoke-Expression
+echo "$((Invoke-WebRequest -UseBasicParsing get.scoop.sh).Content) -RunAsAdmin" |
 
 # Install node
 scoop install nodejs
