@@ -43,9 +43,7 @@ vim.g.mapleader = ','
 vim.g.vimsyn_embed = 'l'
 
 -- Use English as main language
-if not vim.g.is_mac then
-  vim.cmd [[language en_US.utf-8]]
-end
+vim.cmd [[language en_US.utf-8]]
 
 -- Disable loading certain plugins
 
