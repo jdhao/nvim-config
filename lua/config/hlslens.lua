@@ -34,5 +34,15 @@ keymap.set("n", "N", "", {
   end,
 })
 
-keymap.set("n", "*", "<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>")
-keymap.set("n", "#", "<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>")
+keymap.set("n", "*", "", {
+  callback = function()
+    vim.fn.execute("normal! *N")
+    hlslens.start()
+  end,
+})
+keymap.set("n", "#", "", {
+  callback = function()
+    vim.fn.execute("normal! #N")
+    hlslens.start()
+  end,
+})
