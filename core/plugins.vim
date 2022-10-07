@@ -182,6 +182,8 @@ let g:neoformat_c_clangformat = {
 let g:neoformat_enabled_cpp = ['clangformat']
 let g:neoformat_enabled_c = ['clangformat']
 
+nnoremap <silent> <space>f :Neoformat<CR>
+
 """""""""""""""""""""""""vim-markdown settings"""""""""""""""""""
 " Disable header folding
 let g:vim_markdown_folding_disabled = 1

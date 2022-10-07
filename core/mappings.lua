@@ -223,3 +223,6 @@ keymap.set("c", "<C-A>", "<HOME>")
 
 -- Delete the character to the right of the cursor
 keymap.set("i", "<C-D>", "<DEL>")
+
+-- LSP code action
+keymap.set("n", "<C-A>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
