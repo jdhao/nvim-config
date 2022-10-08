@@ -14,6 +14,7 @@ end
 vim.g.is_win = (utils.has("win32") or utils.has("win64")) and true or false
 vim.g.is_linux = (utils.has("unix") and (not utils.has("macunix"))) and true or false
 vim.g.is_mac  = utils.has("macunix") and true or false
+vim.g.is_android = utils.has("android") and true or false
 
 vim.g.logging_level = "info"
 
@@ -43,7 +44,11 @@ vim.g.mapleader = ','
 vim.g.vimsyn_embed = 'l'
 
 -- Use English as main language
-vim.cmd [[language en_US.utf-8]]
+if (vim.g.is_android) then
+  vim.cmd [[language en_US.UTF-8]]
+else
+  vim.cmd [[language en_US.utf-8]]
+end
 
 -- Disable loading certain plugins
 
