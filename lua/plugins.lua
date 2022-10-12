@@ -123,7 +123,7 @@ packer.startup {
     use { "shaunsingh/nord.nvim", opt = true }
     use { "NTBBloodbath/doom-one.nvim", opt = true }
     use { "sainnhe/everforest", opt = true }
-    use { "EdenEast/nightfox.nvim", opt = true }
+    use { "EdenEast/nightfox.nvim", tag = "v1.0.0" } -- Packer
     use { "rebelot/kanagawa.nvim", opt = true }
     use { "catppuccin/nvim", as = "catppuccin", opt = true }
 
@@ -154,7 +154,10 @@ packer.startup {
 
     -- Highlight URLs inside vim
     use { "itchyny/vim-highlighturl", event = "VimEnter" }
-
+    use { 'majutsushi/tagbar' }                        -- code structure
+    use { 'windwp/nvim-autopairs' } 
+    use { 'rafi/awesome-vim-colorschemes' }
+    
     -- notification plugin
     use {
       "rcarriga/nvim-notify",
@@ -385,3 +388,5 @@ else
     vim.notify(msg, vim.log.levels.ERROR, { title = "nvim-config" })
   end
 end
+
+
