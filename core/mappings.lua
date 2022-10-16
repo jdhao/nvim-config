@@ -1,5 +1,6 @@
 local keymap = vim.keymap
 local api = vim.api
+local uv = vim.loop
 
 -- Save key strokes (now we do not need to press shift to enter command mode).
 keymap.set({ "n", "x" }, ";", ":")
@@ -223,3 +224,22 @@ keymap.set("c", "<C-A>", "<HOME>")
 
 -- Delete the character to the right of the cursor
 keymap.set("i", "<C-D>", "<DEL>")
+
+keymap.set("n", "<leader>cb", function()
+  local cnt = 0
+  local blink_times = 7
+  local timer = uv.new_timer()
+
+  timer:start(0, 100, vim.schedule_wrap(function()
+    vim.cmd[[
+      set cursorcolumn!
+      set cursorline!
+    ]]
+
+    if cnt == blink_times then
+      timer:close()
+    end
+
+    cnt = cnt + 1
+  end))
+end)
