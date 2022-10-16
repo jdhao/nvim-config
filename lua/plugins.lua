@@ -4,23 +4,30 @@ local fn = vim.fn
 -- The root dir to install all plugins. Plugins are under opt/ or start/ sub-directory.
 vim.g.plugin_home = fn.stdpath("data") .. "/site/pack/packer"
 
--- Where to install packer.nvim -- the package manager (we make it opt)
-local packer_dir = vim.g.plugin_home .. "/opt/packer.nvim"
+--- Install packer if it has not been installed.
+--- Return:
+--- true: if this is a fresh install of packer
+--- false: if packer has been installed
+local function packer_ensure_install()
+  -- Where to install packer.nvim -- the package manager (we make it opt)
+  local packer_dir = vim.g.plugin_home .. "/opt/packer.nvim"
 
--- Whether this is a fresh install, i.e., packer itself and plugins have not been installed.
-local fresh_install = false
+  if fn.glob(packer_dir) ~= "" then
+    return false
+  end
 
--- Auto-install packer in case it hasn't been installed.
-if fn.glob(packer_dir) == "" then
-  fresh_install = true
+  -- Auto-install packer in case it hasn't been installed.
+  vim.api.nvim_echo({ { "Installing packer.nvim", "Type" } }, true, {})
 
-  -- Now we need to install packer.nvim first.
   local packer_repo = "https://github.com/wbthomason/packer.nvim"
   local install_cmd = string.format("!git clone --depth=1 %s %s", packer_repo, packer_dir)
-
-  vim.api.nvim_echo({ { "Installing packer.nvim", "Type" } }, true, {})
   vim.cmd(install_cmd)
+
+  return true
 end
+
+
+local fresh_install = packer_ensure_install()
 
 -- Load packer.nvim
 vim.cmd("packadd packer.nvim")
