@@ -446,3 +446,9 @@ shada
 async
 localhost
 JetBrains
+localhost
+MariaDB
+SQLite
+Pgadmin
+Datagrip
+mysql
