@@ -259,9 +259,6 @@ packer.startup {
     -- Vim tabular plugin for manipulate tabular, required by markdown plugins
     use { "godlygeek/tabular", cmd = { "Tabularize" } }
 
-    -- Markdown JSON header highlight plugin
-    use { "elzr/vim-json", ft = { "json", "markdown" } }
-
     -- Markdown previewing (only for Mac and Windows)
     if vim.g.is_win or vim.g.is_mac then
       use {
