@@ -145,7 +145,7 @@ set formatoptions+=mM
 " Tilde (~) is an operator, thus must be followed by motions like `e` or `w`.
 set tildeop
 
-set synmaxcol=200  " Text after this column number is not highlighted
+set synmaxcol=250  " Text after this column number is not highlighted
 set nostartofline
 
 " External program to use for grep command
