@@ -9,23 +9,26 @@
     <a>
       <img alt="Windows" src="https://img.shields.io/badge/Windows-%23.svg?style=flat-square&logo=windows&color=0078D6&logoColor=white" />
     </a>
-    <a href="https://github.com/jdhao/nvim-config/commits">
-      <img src="https://badgen.net/github/commits/jdhao/nvim-config" alt="Commit number" />
-    </a>
-    <a href="https://github.com/jdhao/nvim-config/network">
-      <img alt="Forks" src="https://badgen.net/github/forks/jdhao/nvim-config">
-    </a>
-    <a href="https://github.com/jdhao/nvim-config/stargazers">
-      <img alt="Stars" src="https://badgen.net/github/stars/jdhao/nvim-config">
-    </a>
     <a href="https://github.com/jdhao/nvim-config/releases/latest">
       <img alt="Latest release" src="https://img.shields.io/github/v/release/jdhao/nvim-config" />
     </a>
     <a href="https://github.com/neovim/neovim/releases/tag/stable">
-      <img src="https://img.shields.io/badge/Neovim-0.7.2-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
+      <img src="https://img.shields.io/badge/Neovim-0.8.0-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
     </a>
     <a href="https://github.com/jdhao/nvim-config/search?l=vim-script">
       <img src="https://img.shields.io/github/languages/top/jdhao/nvim-config" alt="Top languages"/>
+    </a>
+    <a>
+    <img src="https://img.shields.io/github/commit-activity/m/jdhao/nvim-config?style=flat-square" />
+    </a>
+    <a href="https://github.com/jdhao/nvim-config/releases/tag/v0.8.0">
+    <img src="https://img.shields.io/github/commits-since/jdhao/nvim-config/v0.8.0?style=flat-square" />
+    </a>
+    <a href="https://github.com/jdhao/nvim-config/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/jdhao/nvim-config?style=flat-square" />
+    </a>
+    <a href="">
+    <img src="https://img.shields.io/github/repo-size/jdhao/nvim-config?style=flat-square" />
     </a>
     <a href="https://github.com/jdhao/nvim-config/blob/master/LICENSE">
       <img src="https://img.shields.io/github/license/jdhao/nvim-config?style=flat-square&logo=GNU&label=License" alt="License"/>
