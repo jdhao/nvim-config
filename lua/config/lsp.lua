@@ -2,6 +2,7 @@ local fn = vim.fn
 local api = vim.api
 local keymap = vim.keymap
 local lsp = vim.lsp
+local diagnostic = vim.diagnostic
 
 local utils = require("utils")
 
@@ -20,11 +21,9 @@ local custom_attach = function(client, bufnr)
   map("n", "<C-k>", vim.lsp.buf.signature_help)
   map("n", "<space>rn", vim.lsp.buf.rename, { desc = "varialbe rename" })
   map("n", "gr", vim.lsp.buf.references, { desc = "show references" })
-  map("n", "[d", vim.diagnostic.goto_prev, { desc = "previous diagnostic" })
-  map("n", "]d", vim.diagnostic.goto_next, { desc = "next diagnostic" })
-  map("n", "<space>q", function()
-    vim.diagnostic.setqflist { open = true }
-  end, { desc = "put diagnostic to qf" })
+  map("n", "[d", diagnostic.goto_prev, { desc = "previous diagnostic" })
+  map("n", "]d", diagnostic.goto_next, { desc = "next diagnostic" })
+  map("n", "<space>q", diagnostic.setqflist, { desc = "put diagnostic to qf" })
   map("n", "<space>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })
   map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, { desc = "add workspace folder" })
   map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, { desc = "remove workspace folder" })
@@ -54,9 +53,9 @@ local custom_attach = function(client, bufnr)
 
       local cursor_pos = api.nvim_win_get_cursor(0)
       if (cursor_pos[1] ~= vim.b.diagnostics_pos[1] or cursor_pos[2] ~= vim.b.diagnostics_pos[2])
-          and #vim.diagnostic.get() > 0
+          and #diagnostic.get() > 0
       then
-        vim.diagnostic.open_float(nil, float_opts)
+        diagnostic.open_float(nil, float_opts)
       end
 
       vim.b.diagnostics_pos = cursor_pos
@@ -204,7 +203,7 @@ fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "Diagnostic
 fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 -- global config for diagnostic
-vim.diagnostic.config {
+diagnostic.config {
   underline = false,
   virtual_text = false,
   signs = true,
