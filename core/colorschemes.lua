@@ -7,16 +7,16 @@ local M = {}
 -- Colorscheme to its directory name mapping, because colorscheme repo name is not necessarily
 -- the same as the colorscheme name itself.
 M.colorscheme2dir = {
-  gruvbox8 = "vim-gruvbox8",
-  onedark = "onedark.nvim",
-  edge = "edge",
-  sonokai = "sonokai",
-  gruvbox_material = "gruvbox-material",
-  nord = "nord.nvim",
-  doom_one = "doom-one.nvim",
-  everforest = "everforest",
-  nightfox = "nightfox.nvim",
-  kanagawa = "kanagawa.nvim",
+  -- gruvbox8 = "vim-gruvbox8",
+  -- onedark = "onedark.nvim",
+  -- edge = "edge",
+  -- sonokai = "sonokai",
+  -- gruvbox_material = "gruvbox-material",
+  -- nord = "nord.nvim",
+  -- doom_one = "doom-one.nvim",
+  -- everforest = "everforest",
+  -- nightfox = "nightfox.nvim",
+  -- kanagawa = "kanagawa.nvim",
   catppuccin = "catppuccin",
 }
 

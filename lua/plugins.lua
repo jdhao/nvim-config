@@ -117,21 +117,13 @@ packer.startup {
       "nvim-telescope/telescope.nvim",
       cmd = "Telescope",
       requires = { { "nvim-lua/plenary.nvim" } },
+      config = [[require('config.telescope')]],
     }
+
     -- search emoji and other symbols
     use { "nvim-telescope/telescope-symbols.nvim", after = "telescope.nvim" }
 
     -- A list of colorscheme plugin you may want to try. Find what suits you.
-    use { "lifepillar/vim-gruvbox8", opt = true }
-    use { "navarasu/onedark.nvim", opt = true }
-    use { "sainnhe/edge", opt = true }
-    use { "sainnhe/sonokai", opt = true }
-    use { "sainnhe/gruvbox-material", opt = true }
-    use { "shaunsingh/nord.nvim", opt = true }
-    use { "NTBBloodbath/doom-one.nvim", opt = true }
-    use { "sainnhe/everforest", opt = true }
-    use { "EdenEast/nightfox.nvim", opt = true }
-    use { "rebelot/kanagawa.nvim", opt = true }
     use { "catppuccin/nvim", as = "catppuccin", opt = true }
 
     use { "kyazdani42/nvim-web-devicons", event = "VimEnter" }
@@ -225,7 +217,9 @@ packer.startup {
     end
 
     -- Auto format tools
-    use { "sbdchd/neoformat", cmd = { "Neoformat" } }
+    use { "JamesGardiner/neoformat", branch = "feat/htmldjango", cmd = { "Neoformat" } }
+
+    use { "brentyi/isort.vim", cmd = { "Isort" } }
 
     -- Git command inside vim
     use { "tpope/vim-fugitive", event = "User InGitRepo", config = [[require('config.fugitive')]] }
@@ -296,6 +290,17 @@ packer.startup {
     if utils.executable("tmux") then
       -- .tmux.conf syntax highlighting and setting check
       use { "tmux-plugins/vim-tmux", ft = { "tmux" } }
+      use { 'alexghergh/nvim-tmux-navigation', config = function()
+        require'nvim-tmux-navigation'.setup {
+          disable_when_zoomed = true, -- defaults to false
+          keybindings = {
+            left = "<C-h>",
+            down = "<C-j>",
+            up = "<C-k>",
+            right = "<C-l>",
+          }
+        }
+      end}
     end
 
     -- Modern matchit implementation
@@ -362,8 +367,11 @@ packer.startup {
 
     -- file explorer
     use {
-      "kyazdani42/nvim-tree.lua",
-      requires = { "kyazdani42/nvim-web-devicons" },
+      'nvim-tree/nvim-tree.lua',
+       requires = {
+         'nvim-tree/nvim-web-devicons', -- optional, for file icons
+      },
+      tag = 'nightly', -- optional, updated every week. (see issue #1193)
       config = [[require('config.nvim-tree')]],
     }
 

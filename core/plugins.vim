@@ -103,7 +103,7 @@ nnoremap <silent> <leader>fb :<C-U>Leaderf buffer --popup<CR>
 " Search recent files
 nnoremap <silent> <leader>fr :<C-U>Leaderf mru --popup --absolute-path<CR>
 
-let g:Lf_PopupColorscheme = 'gruvbox_material'
+let g:Lf_PopupColorscheme = 'catppuccin'
 
 " Change keybinding in LeaderF prompt mode, use ctrl-n and ctrl-p to navigate
 " items.
@@ -169,7 +169,7 @@ let g:better_escape_interval = 200
 let g:XkbSwitchEnabled = 1
 
 """""""""""""""""""""""""""""" neoformat settings """""""""""""""""""""""
-let g:neoformat_enabled_python = ['black', 'yapf']
+let g:neoformat_enabled_python = ['black']
 let g:neoformat_cpp_clangformat = {
       \ 'exe': 'clang-format',
       \ 'args': ['--style="{IndentWidth: 4}"']

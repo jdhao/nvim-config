@@ -1,3 +1,16 @@
+" Autoformat on save
+augroup fmt
+  autocmd!
+  au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
+augroup END
+
+" Python import sorting
+augroup IsortMappings
+    autocmd!
+    autocmd FileType python nnoremap <buffer> <Leader>si :Isort<CR>
+    autocmd FileType python vnoremap <buffer> <Leader>si :Isort<CR>
+augroup END
+
 " Do not use smart case in command line mode, extracted from https://vi.stackexchange.com/a/16511/15292.
 augroup dynamic_smartcase
   autocmd!
