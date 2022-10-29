@@ -26,7 +26,6 @@ local function packer_ensure_install()
   return true
 end
 
-
 local fresh_install = packer_ensure_install()
 
 -- Load packer.nvim
@@ -112,9 +111,20 @@ packer.startup {
       requires = { { "nvim-lua/plenary.nvim" } },
       config = [[require('config.telescope')]],
     }
-    use {'nvim-telescope/telescope-ui-select.nvim' }
+    use {
+      "pwntester/octo.nvim",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+        "kyazdani42/nvim-web-devicons",
+      },
+      config = function()
+        require("octo").setup()
+      end,
+    }
+    use { "nvim-telescope/telescope-ui-select.nvim" }
 
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
     use { "junegunn/fzf", run = "./install --all" }
     use { "junegunn/fzf.vim" }
 
@@ -133,14 +143,19 @@ packer.startup {
       config = [[require('config.statusline')]],
     }
 
-    use { "akinsho/bufferline.nvim", event = "VimEnter",
+    use {
+      "akinsho/bufferline.nvim",
+      event = "VimEnter",
       cond = firenvim_not_active,
-      config = [[require('config.bufferline')]] }
+      config = [[require('config.bufferline')]],
+    }
 
     -- fancy start screen
-    use { "glepnir/dashboard-nvim", event = "VimEnter",
+    use {
+      "glepnir/dashboard-nvim",
+      event = "VimEnter",
       cond = firenvim_not_active,
-      config = [[require('config.dashboard-nvim')]]
+      config = [[require('config.dashboard-nvim')]],
     }
 
     use {
@@ -282,17 +297,20 @@ packer.startup {
     if utils.executable("tmux") then
       -- .tmux.conf syntax highlighting and setting check
       use { "tmux-plugins/vim-tmux", ft = { "tmux" } }
-      use { 'alexghergh/nvim-tmux-navigation', config = function()
-        require'nvim-tmux-navigation'.setup {
-          disable_when_zoomed = true, -- defaults to false
-          keybindings = {
-            left = "<C-h>",
-            down = "<C-j>",
-            up = "<C-k>",
-            right = "<C-l>",
+      use {
+        "alexghergh/nvim-tmux-navigation",
+        config = function()
+          require("nvim-tmux-navigation").setup {
+            disable_when_zoomed = true, -- defaults to false
+            keybindings = {
+              left = "<C-h>",
+              down = "<C-j>",
+              up = "<C-k>",
+              right = "<C-l>",
+            },
           }
-        }
-      end}
+        end,
+      }
     end
 
     -- Modern matchit implementation
@@ -359,11 +377,11 @@ packer.startup {
 
     -- file explorer
     use {
-      'nvim-tree/nvim-tree.lua',
-       requires = {
-         'nvim-tree/nvim-web-devicons', -- optional, for file icons
+      "nvim-tree/nvim-tree.lua",
+      requires = {
+        "nvim-tree/nvim-web-devicons", -- optional, for file icons
       },
-      tag = 'nightly', -- optional, updated every week. (see issue #1193)
+      tag = "nightly", -- optional, updated every week. (see issue #1193)
       config = [[require('config.nvim-tree')]],
     }
 
@@ -375,7 +393,6 @@ packer.startup {
       "folke/trouble.nvim",
       requires = "kyazdani42/nvim-web-devicons",
     }
-
   end,
   config = {
     max_jobs = 16,
