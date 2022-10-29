@@ -107,18 +107,16 @@ packer.startup {
     }
 
     -- File search, tag search and more
-    if vim.g.is_win then
-      use { "Yggdroot/LeaderF", cmd = "Leaderf" }
-    else
-      use { "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension" }
-    end
-
     use {
       "nvim-telescope/telescope.nvim",
-      cmd = "Telescope",
       requires = { { "nvim-lua/plenary.nvim" } },
       config = [[require('config.telescope')]],
     }
+    use {'nvim-telescope/telescope-ui-select.nvim' }
+
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use { "junegunn/fzf", run = "./install --all" }
+    use { "junegunn/fzf.vim" }
 
     -- search emoji and other symbols
     use { "nvim-telescope/telescope-symbols.nvim", after = "telescope.nvim" }
@@ -372,6 +370,12 @@ packer.startup {
     use { "ii14/emmylua-nvim", ft = "lua" }
 
     use { "j-hui/fidget.nvim", after = "nvim-lspconfig", config = [[require('config.fidget-nvim')]] }
+
+    use {
+      "folke/trouble.nvim",
+      requires = "kyazdani42/nvim-web-devicons",
+    }
+
   end,
   config = {
     max_jobs = 16,
