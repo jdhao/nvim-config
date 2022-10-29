@@ -209,7 +209,7 @@ packer.startup {
     use { "nvim-zh/better-escape.vim", event = { "InsertEnter" } }
 
     -- Auto format tools
-    use { "JamesGardiner/neoformat", branch = "feat/htmldjango", cmd = { "Neoformat" } }
+    use { "sbdchd/neoformat", cmd = { "Neoformat" } }
 
     use { "brentyi/isort.vim", cmd = { "Isort" } }
 

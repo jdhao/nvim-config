@@ -8,18 +8,6 @@ local function spell()
   return ""
 end
 
-local function ime_state()
-  if vim.g.is_mac then
-    -- ref: https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/xkblayout.vim#L11
-    local layout = fn.libcall(vim.g.XkbSwitchLib, "Xkb_Switch_getXkbLayout", "")
-    if layout == "0" then
-      return "[CN]"
-    end
-  end
-
-  return ""
-end
-
 local function trailing_space()
   if not vim.o.modifiable then
     return ""
