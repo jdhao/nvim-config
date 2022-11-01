@@ -194,7 +194,6 @@ wiki
 backticks
 Reddit
 LeaderF
-gruvbox8
 tabpage
 ccls
 cmake
@@ -203,6 +202,8 @@ llvm
 subsampling
 refactor
 colorschemes
+gruvbox8
+gruvbox
 Gruvbox
 monokai
 NeoSolarized
