@@ -1,5 +1,7 @@
-local utils = require("utils")
+local api = vim.api
 local fn = vim.fn
+
+local utils = require("utils")
 
 -- The root dir to install all plugins. Plugins are under opt/ or start/ sub-directory.
 vim.g.plugin_home = fn.stdpath("data") .. "/site/pack/packer"
@@ -389,3 +391,15 @@ else
     vim.notify(msg, vim.log.levels.ERROR, { title = "nvim-config" })
   end
 end
+
+-- Auto-generate packer_compiled.lua file
+api.nvim_create_autocmd({ "BufWritePost" }, {
+  pattern = "*/nvim/lua/plugins.lua",
+  group = api.nvim_create_augroup("packer_auto_compile", { clear = true }),
+  callback = function(ctx)
+    local cmd = "source " .. ctx.file
+    vim.cmd(cmd)
+    vim.cmd("PackerCompile")
+    vim.notify("PackerCompile done!", vim.log.levels.INFO, { title = "Nvim-config" })
+  end,
+})
