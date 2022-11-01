@@ -81,7 +81,6 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 + Markdown writing and previewing via [vim-markdown](https://github.com/preservim/vim-markdown) and [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
 + LaTeX editing and previewing via [vimtex](https://github.com/lervag/vimtex) <sup id="a1">[1](#f1)</sup>.
 + Animated GUI style notification via [nvim-notify](https://github.com/rcarriga/nvim-notify).
-+ Smooth scroll experience via [neoscroll](https://github.com/karb94/neoscroll.nvim).
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
 + Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).
 + Undo management via [vim-mundo](https://github.com/simnalamburt/vim-mundo)

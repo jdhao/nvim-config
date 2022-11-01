@@ -303,17 +303,6 @@ packer.startup {
     -- Modern matchit implementation
     use { "andymass/vim-matchup", event = "VimEnter" }
 
-    -- Smoothie motions
-    use {
-      "karb94/neoscroll.nvim",
-      event = "VimEnter",
-      config = function()
-        vim.defer_fn(function()
-          require("config.neoscroll")
-        end, 2000)
-      end,
-    }
-
     use { "tpope/vim-scriptease", cmd = { "Scriptnames", "Message", "Verbose" } }
 
     -- Asynchronous command execution
