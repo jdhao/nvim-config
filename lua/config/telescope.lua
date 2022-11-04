@@ -68,7 +68,7 @@ telescope.setup {
           -- prompt_position = "bottom",
         },
         file_sorter = require "telescope.sorters".get_fuzzy_file,
-        file_ignore_patterns = {"^%.git$", "node_modules", "venv"},
+        file_ignore_patterns = {"^%.git$", "node_modules", "venv", "poetry.lock"},
         generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
         path_display = {
           -- "shorten",

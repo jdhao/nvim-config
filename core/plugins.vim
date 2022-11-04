@@ -54,7 +54,8 @@ let g:vista_echo_cursor = 0
 " Stay in current window when vista window is opened
 let g:vista_stay_on_open = 0
 
-nnoremap <silent> <Space>t :<C-U>Vista!!<CR>
+nnoremap <silent> <Space>tt :<C-U>Vista!!<CR>
+nnoremap <silent> <Space>tf :<C-U>Vista focus<CR>
 
 """"""""""""""""""""""""vim-mundo settings"""""""""""""""""""""""
 let g:mundo_verbose_graph = 0
