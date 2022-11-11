@@ -146,6 +146,7 @@ packer.startup {
     }
 
     use { "akinsho/bufferline.nvim", event = "VimEnter",
+      branch = "main",
       cond = firenvim_not_active,
       config = [[require('config.bufferline')]] }
 
