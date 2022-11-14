@@ -12,4 +12,4 @@ set foldmethod=expr foldexpr=utils#VimFolds(v:lnum) foldtext=utils#MyFoldText()
 " see `:h K` and https://stackoverflow.com/q/15867323/6064933
 set keywordprg=:help
 
-nnoremap <silent> <F9> :source %<CR>
+nnoremap <buffer><silent> <F9> :source %<CR>
