@@ -243,7 +243,7 @@ nmap s <Nop>
 omap s <Nop>
 
 """"""""""""""""""""""""""""vimtex settings"""""""""""""""""""""""""""""
-if ( g:is_win || g:is_mac ) && executable('latex')
+if executable('latex')
   " Hacks for inverse search to work semi-automatically,
   " see https://jdhao.github.io/2021/02/20/inverse_search_setup_neovim_vimtex/.
   function! s:write_server_name() abort
