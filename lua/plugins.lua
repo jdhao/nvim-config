@@ -28,7 +28,6 @@ local function packer_ensure_install()
   return true
 end
 
-
 local fresh_install = packer_ensure_install()
 
 -- Load packer.nvim
@@ -124,17 +123,19 @@ packer.startup {
     use { "nvim-telescope/telescope-symbols.nvim", after = "telescope.nvim" }
 
     -- A list of colorscheme plugin you may want to try. Find what suits you.
-    use { "lifepillar/vim-gruvbox8", opt = true }
     use { "navarasu/onedark.nvim", opt = true }
     use { "sainnhe/edge", opt = true }
     use { "sainnhe/sonokai", opt = true }
     use { "sainnhe/gruvbox-material", opt = true }
     use { "shaunsingh/nord.nvim", opt = true }
-    use { "NTBBloodbath/doom-one.nvim", opt = true }
     use { "sainnhe/everforest", opt = true }
     use { "EdenEast/nightfox.nvim", opt = true }
     use { "rebelot/kanagawa.nvim", opt = true }
     use { "catppuccin/nvim", as = "catppuccin", opt = true }
+    use({ "rose-pine/neovim", as = 'rose-pine', opt = true })
+    use { "olimorris/onedarkpro.nvim", opt = true }
+    use { "tanvirtin/monokai.nvim", opt = true }
+    use { "marko-cerovac/material.nvim", opt = true }
 
     use { "kyazdani42/nvim-web-devicons", event = "VimEnter" }
 
