@@ -7,17 +7,19 @@ local M = {}
 -- Colorscheme to its directory name mapping, because colorscheme repo name is not necessarily
 -- the same as the colorscheme name itself.
 M.colorscheme2dir = {
-  gruvbox8 = "vim-gruvbox8",
   onedark = "onedark.nvim",
   edge = "edge",
   sonokai = "sonokai",
   gruvbox_material = "gruvbox-material",
   nord = "nord.nvim",
-  doom_one = "doom-one.nvim",
   everforest = "everforest",
   nightfox = "nightfox.nvim",
   kanagawa = "kanagawa.nvim",
   catppuccin = "catppuccin",
+  rose_pine = "rose-pine",
+  onedarkpro = "onedarkpro.nvim",
+  monokai = "monokai.nvim",
+  material = "material.nvim",
 }
 
 M.gruvbox8 = function()
@@ -50,6 +52,10 @@ M.sonokai = function()
 end
 
 M.gruvbox_material = function()
+  -- foreground option can be material, mix, or original
+  vim.g.gruvbox_material_foreground = "material"
+  --background option can be hard, medium, soft
+  vim.g.gruvbox_material_background = "soft"
   vim.g.gruvbox_material_enable_italic = 1
   vim.g.gruvbox_material_better_performance = 1
 
@@ -86,6 +92,34 @@ M.catppuccin = function()
   require("catppuccin").setup()
 
   vim.cmd([[colorscheme catppuccin]])
+end
+
+M.rose_pine = function()
+  require('rose-pine').setup({
+    --- @usage 'main' | 'moon'
+    dark_variant = 'moon',
+  })
+
+  -- set colorscheme after options
+  vim.cmd('colorscheme rose-pine')
+end
+
+M.onedarkpro = function()
+  require("onedarkpro").setup({
+    dark_theme = "onedark", -- The default dark theme
+  })
+
+  -- set colorscheme after options
+  vim.cmd('colorscheme onedarkpro')
+end
+
+M.monokai = function()
+  vim.cmd('colorscheme monokai_pro')
+end
+
+M.material = function ()
+  vim.g.material_style = "oceanic"
+  vim.cmd('colorscheme material')
 end
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
