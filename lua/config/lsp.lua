@@ -135,13 +135,13 @@ if utils.executable("ltex-ls") then
   lspconfig.ltex.setup {
     on_attach = custom_attach,
     cmd = { "ltex-ls" },
-  filetypes = { "text", "plaintex", "tex", "markdown" },
-  settings = {
-    ltex = {
-      language = "en"
+    filetypes = { "text", "plaintex", "tex", "markdown" },
+    settings = {
+      ltex = {
+        language = "en"
+      },
     },
-  },
-  flags = { debounce_text_changes = 300 },
+    flags = { debounce_text_changes = 300 },
 }
 end
 
