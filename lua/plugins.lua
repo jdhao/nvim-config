@@ -208,10 +208,14 @@ packer.startup {
     -- Show undo history visually
     use { "simnalamburt/vim-mundo", cmd = { "MundoToggle", "MundoShow" } }
 
+    -- better UI for some nvim actions
+    use {'stevearc/dressing.nvim'}
+
     -- Manage your yank history
-    if vim.g.is_win or vim.g.is_mac then
-      use { "svermeulen/vim-yoink", event = "VimEnter" }
-    end
+    use({
+      "gbprod/yanky.nvim",
+      config = [[require('config.yanky')]]
+    })
 
     -- Handy unix command inside Vim (Rename, Move etc.)
     use { "tpope/vim-eunuch", cmd = { "Rename", "Delete" } }
