@@ -453,3 +453,8 @@ SQLite
 Pgadmin
 Datagrip
 mysql
+cwd
+pyright
+stubgen
+pylance
+variadic
