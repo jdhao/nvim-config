@@ -37,7 +37,7 @@ scoop install 7zip
 
 # Install lua-language-server
 $sumneko_lua_link = "https://github.com/sumneko/lua-language-server/releases/download/3.5.3/lua-language-server-3.5.3-win32-x64.zip"
-$sumneko_lua_install_dir = "D:\portable_tools"
+$sumneko_lua_install_dir = "C:\portable_tools"
 $sumneko_lua_src_dir = "$sumneko_lua_install_dir\lua-language-server.zip"
 $sumneko_lua_dir = "$sumneko_lua_install_dir\lua-language-server"
 
