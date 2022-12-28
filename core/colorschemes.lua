@@ -105,12 +105,8 @@ M.rose_pine = function()
 end
 
 M.onedarkpro = function()
-  require("onedarkpro").setup({
-    dark_theme = "onedark", -- The default dark theme
-  })
-
   -- set colorscheme after options
-  vim.cmd('colorscheme onedarkpro')
+  vim.cmd('colorscheme onedark_vivid')
 end
 
 M.monokai = function()
