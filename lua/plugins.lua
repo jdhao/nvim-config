@@ -65,7 +65,7 @@ packer.startup {
     -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
     use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] }
 
-    if vim.g.is_mac then
+    if vim.g.is_mac or vim.g.is_win then
       use {
         "nvim-treesitter/nvim-treesitter",
         event = "BufEnter",
