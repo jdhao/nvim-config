@@ -243,3 +243,7 @@ keymap.set("n", "<leader>cb", function()
     cnt = cnt + 1
   end))
 end)
+
+keymap.set("n", "<F5>", "<cmd>Telescope find_files<CR>")
+keymap.set("n", "<F6>", "<cmd>Telescope live_grep<CR>")
+

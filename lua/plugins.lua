@@ -202,9 +202,6 @@ packer.startup {
     -- Multiple cursor plugin like Sublime Text?
     -- use 'mg979/vim-visual-multi'
 
-    -- Autosave files on certain events
-    use { "907th/vim-auto-save", event = "InsertEnter" }
-
     -- Show undo history visually
     use { "simnalamburt/vim-mundo", cmd = { "MundoToggle", "MundoShow" } }
 
