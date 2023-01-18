@@ -4,9 +4,11 @@
 -- I would not recommend cloning this repo and replace your own config. Good configurations are personal,
 -- built over time with a lot of polish.
 --
--- Author: Jie-dong Hao
+-- Author: Jiedong Hao
 -- Email: jdhao@hotmail.com
 -- Blog: https://jdhao.github.io/
+-- GitHub: https://github.com/jdhao
+-- StackOverflow: https://stackoverflow.com/users/6064933/jdhao
 
 local api = vim.api
 local utils = require("utils")
