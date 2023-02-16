@@ -36,19 +36,19 @@ scoop install vcredist2022
 scoop install 7zip
 
 # Install lua-language-server
-$sumneko_lua_link = "https://github.com/sumneko/lua-language-server/releases/download/3.5.3/lua-language-server-3.5.3-win32-x64.zip"
-$sumneko_lua_install_dir = "D:\portable_tools"
-$sumneko_lua_src_dir = "$sumneko_lua_install_dir\lua-language-server.zip"
-$sumneko_lua_dir = "$sumneko_lua_install_dir\lua-language-server"
+$lua_ls_link = "https://github.com/LuaLS/lua-language-server/releases/download/3.6.11/lua-language-server-3.6.11-win32-x64.zip"
+$lua_ls_install_dir = "D:\portable_tools"
+$lua_ls_src_path = "$lua_ls_install_dir\lua-language-server.zip"
+$lua_ls_dir = "$lua_ls_install_dir\lua-language-server"
 
 # Download file, ref: https://stackoverflow.com/a/51225744/6064933
-Invoke-WebRequest $sumneko_lua_link -OutFile "$sumneko_lua_src_dir"
+Invoke-WebRequest $lua_ls_link -OutFile "$lua_ls_src_path"
 
 # Extract the zip file using 7zip, ref: https://stackoverflow.com/a/41933215/6064933
-7z x "$sumneko_lua_src_dir" -o"$sumneko_lua_dir"
+7z x "$lua_ls_src_path" -o"$lua_ls_dir"
 
 # Setup PATH env variable, ref: https://stackoverflow.com/q/714877/6064933
-[Environment]::SetEnvironmentVariable("Path", $env:Path + ";$sumneko_lua_dir\bin", "Machine")
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";$lua_ls_dir\bin", "Machine")
 
 # Install neovim nightly
 scoop bucket add versions
