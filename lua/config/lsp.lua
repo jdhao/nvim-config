@@ -154,8 +154,6 @@ if utils.executable("clangd") then
       debounce_text_changes = 500,
     },
   }
-else
-  vim.notify("clangd not found!", vim.log.levels.WARN, { title = "Nvim-config" })
 end
 
 -- set up vim-language-server
