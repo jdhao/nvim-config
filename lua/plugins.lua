@@ -137,7 +137,7 @@ packer.startup {
     use { "tanvirtin/monokai.nvim", opt = true }
     use { "marko-cerovac/material.nvim", opt = true }
 
-    use { "kyazdani42/nvim-web-devicons", event = "VimEnter" }
+    use { "nvim-tree/nvim-web-devicons", event = "VimEnter" }
 
     use {
       "nvim-lualine/lualine.nvim",
