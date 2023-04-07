@@ -3,10 +3,6 @@ scriptencoding utf-8
 " change fillchars for folding, vertical split, end of buffer, and message separator
 set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 
-" Paste mode toggle, it seems that Nvim's bracketed paste mode
-" does not work very well for nvim-qt, so we use good-old paste mode
-set pastetoggle=<F12>
-
 " Split window below/right when creating horizontal/vertical windows
 set splitbelow splitright
 
@@ -176,6 +172,7 @@ set diffopt+=filler  " show filler for deleted lines
 set diffopt+=closeoff  " turn off diff when one file window is closed
 set diffopt+=context:3  " context for diff
 set diffopt+=internal,indent-heuristic,algorithm:histogram
+set diffopt+=linematch:60
 
 set nowrap  " do no wrap
 set noruler

@@ -93,7 +93,7 @@ local diff = function()
   local add_num = git_status.added
 
   local info = { added = add_num, modified = modify_num, removed = remove_num }
-  -- vim.pretty_print(info)
+  -- vim.print(info)
   return info
 end
 

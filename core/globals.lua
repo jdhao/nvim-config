@@ -5,7 +5,7 @@ local utils = require('utils')
 
 -- Inspect something
 function _G.inspect(item)
-  vim.pretty_print(item)
+  vim.print(item)
 end
 
 ------------------------------------------------------------------------
