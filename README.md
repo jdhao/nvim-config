@@ -69,7 +69,7 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 + Fast buffer jump via [hop.nvim](https://github.com/phaazon/hop.nvim).
 + Powerful snippet insertion via [Ultisnips](https://github.com/SirVer/ultisnips).
 + Beautiful statusline via [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim).
-+ File tree explorer via [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua).
++ File tree explorer via [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua).
 + Better quickfix list with [nvim-bqf](https://github.com/kevinhwang91/nvim-bqf).
 + Show search index and count with [nvim-hlslens](https://github.com/kevinhwang91/nvim-hlslens).
 + Command line auto-completion via [wilder.nvim](https://github.com/gelguy/wilder.nvim).

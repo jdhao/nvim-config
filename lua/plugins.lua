@@ -137,7 +137,7 @@ packer.startup {
     use { "tanvirtin/monokai.nvim", opt = true }
     use { "marko-cerovac/material.nvim", opt = true }
 
-    use { "kyazdani42/nvim-web-devicons", event = "VimEnter" }
+    use { "nvim-tree/nvim-web-devicons", event = "VimEnter" }
 
     use {
       "nvim-lualine/lualine.nvim",
@@ -358,8 +358,8 @@ packer.startup {
 
     -- file explorer
     use {
-      "kyazdani42/nvim-tree.lua",
-      requires = { "kyazdani42/nvim-web-devicons" },
+      "nvim-tree/nvim-tree.lua",
+      requires = { "nvim-tree/nvim-web-devicons" },
       config = [[require('config.nvim-tree')]],
     }
 
