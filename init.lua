@@ -24,16 +24,46 @@ if version.cmp(ev, actual_ver) ~= 0 then
   api.nvim_err_writeln(msg)
   return
 end
-
+-- local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = "*.go",
+--   callback = function()
+--   require('go.format').goimport()
+--   end,
+--   group = format_sync_grp,
+-- })
+require("go").setup()
+require("plugins")
+require("packer").startup(function ()
+  use "wbthomason/packer.nvim"
+end)
 local core_conf_files = {
   "globals.lua", -- some global settings
   "options.vim", -- setting options in nvim
   "autocommands.vim", -- various autocommands
   "mappings.lua", -- all the user-defined mappings
   "plugins.vim", -- all the plugins installed and their configurations
-  "colorschemes.lua", -- colorscheme settings
+  -- "colorschemes.lua", -- colorscheme settings
 }
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+
+-- empty setup using defaults
+-- require("nvim-tree").setup()
+
+-- OR setup with some options
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
 -- source all the core config files
 for _, name in ipairs(core_conf_files) do
   local path = string.format("%s/core/%s", vim.fn.stdpath("config"), name)

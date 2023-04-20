@@ -25,6 +25,8 @@ api.nvim_create_autocmd({ "TextYankPost" }, {
   end,
 })
 
+
+
 -- Auto-create dir when saving a file, in case some intermediate directory does not exist
 api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = "*",

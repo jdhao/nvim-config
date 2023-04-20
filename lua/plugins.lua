@@ -161,10 +161,13 @@ packer.startup {
       event = "VimEnter",
       config = [[require('config.indent-blankline')]],
     }
-
+    use {'neoclide/coc.nvim', branch = 'release'}
     -- Highlight URLs inside vim
     use { "itchyny/vim-highlighturl", event = "VimEnter" }
-
+    use 'ray-x/go.nvim'
+    use 'ray-x/guihua.lua' -- recommended if need floating window support
+    -- use 'neovim/nvim-lspconfig'
+    use 'nvim-treesitter/nvim-treesitter'
     -- notification plugin
     use {
       "rcarriga/nvim-notify",
