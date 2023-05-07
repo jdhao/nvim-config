@@ -9,6 +9,7 @@
 -- Blog: https://jdhao.github.io/
 -- GitHub: https://github.com/jdhao
 -- StackOverflow: https://stackoverflow.com/users/6064933/jdhao
+vim.loader.enable()
 
 local api = vim.api
 local version = vim.version
