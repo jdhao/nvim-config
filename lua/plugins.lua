@@ -148,7 +148,7 @@ packer.startup {
       config = [[require('config.bufferline')]] }
 
     -- fancy start screen
-    use { "glepnir/dashboard-nvim", event = "VimEnter",
+    use { "nvimdev/dashboard-nvim", event = "VimEnter",
       cond = firenvim_not_active,
       config = [[require('config.dashboard-nvim')]]
     }
