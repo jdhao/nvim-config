@@ -45,3 +45,6 @@ function! s:md_to_pdf() abort
     echoerr "Error running command"
   endif
 endfunction
+
+" json format
+command! -range JSONFormat <line1>,<line2>!python -m json.tool
