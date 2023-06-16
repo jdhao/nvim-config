@@ -362,7 +362,7 @@ packer.startup {
 
     use { "ii14/emmylua-nvim", ft = "lua" }
 
-    use { "j-hui/fidget.nvim", after = "nvim-lspconfig", config = [[require('config.fidget-nvim')]] }
+    use { "j-hui/fidget.nvim", after = "nvim-lspconfig", tag = "legacy", config = [[require('config.fidget-nvim')]] }
   end,
   config = {
     max_jobs = 16,
