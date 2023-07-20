@@ -127,7 +127,6 @@ require("lualine").setup {
         spell,
         color = { fg = "black", bg = "#a7c080" },
       },
-      "location",
       {
         "diagnostics",
         sources = { "nvim_diagnostic" },
@@ -145,7 +144,10 @@ require("lualine").setup {
       },
       "filetype",
     },
-    lualine_y = { "progress" },
+    lualine_y = {
+      "location",
+      "progress",
+    },
     lualine_z = {
       {
         trailing_space,
