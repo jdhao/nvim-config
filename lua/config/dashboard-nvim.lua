@@ -2,7 +2,7 @@ local api = vim.api
 local keymap = vim.keymap
 local dashboard = require("dashboard")
 
-conf = {}
+local conf = {}
 conf.header = {
   "                                                       ",
   "                                                       ",
