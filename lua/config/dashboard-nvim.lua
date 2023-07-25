@@ -21,25 +21,25 @@ conf.header = {
 
 conf.center = {
   {
-    icon = "  ",
+    icon = "󰈞  ",
     desc = "Find  File                              ",
     action = "Leaderf file --popup",
     key = "<Leader> f f",
   },
   {
-    icon = "  ",
+    icon = "󰈢  ",
     desc = "Recently opened files                   ",
     action = "Leaderf mru --popup",
     key = "<Leader> f r",
   },
   {
-    icon = "  ",
+    icon = "󰈬  ",
     desc = "Project grep                            ",
     action = "Leaderf rg --popup",
     key = "<Leader> f g",
   },
   {
-    icon = "  ",
+    icon = "  ",
     desc = "Open Nvim config                        ",
     action = "tabnew $MYVIMRC | tcd %:p:h",
     key = "<Leader> e v",
@@ -51,7 +51,7 @@ conf.center = {
     key = "e",
   },
   {
-    icon = "  ",
+    icon = "󰗼  ",
     desc = "Quit Nvim                               ",
     -- desc = "Quit Nvim                               ",
     action = "qa",
