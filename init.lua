@@ -36,8 +36,13 @@ local core_conf_files = {
 }
 
 -- source all the core config files
-for _, name in ipairs(core_conf_files) do
-  local path = string.format("%s/core/%s", vim.fn.stdpath("config"), name)
-  local source_cmd = "source " .. path
-  vim.cmd(source_cmd)
+for _, file_name in ipairs(core_conf_files) do
+  if vim.endswith(file_name, 'vim') then
+    local path = string.format("%s/core/%s", vim.fn.stdpath("config"), file_name)
+    local source_cmd = "source " .. path
+    vim.cmd(source_cmd)
+  else
+    local module_name, _ = string.gsub(file_name, "%.lua", "")
+    require(module_name)
+  end
 end
