@@ -68,7 +68,7 @@ fi
 
 # Install some Python packages used by Nvim plugins.
 echo "Installing Python packages"
-declare -a PY_PACKAGES=("pynvim" 'python-lsp-server[all]' "black" "vim-vint" "pyls-isort" "pylsp-mypy")
+declare -a PY_PACKAGES=("pynvim" 'python-lsp-server[all]' "vim-vint" "python-lsp-isort" "pylsp-mypy" "python-lsp-black")
 
 if [[ "$SYSTEM_PYTHON" = true ]]; then
     echo "Using system Python to install $(PY_PACKAGES)"
