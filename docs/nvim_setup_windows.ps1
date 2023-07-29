@@ -27,7 +27,7 @@ scoop install miniconda3
 pip install -U pynvim
 
 # Install python-language-server
-pip install 'python-lsp-server[all]' pylsp-mypy pyls-isort
+pip install 'python-lsp-server[all]' pylsp-mypy python-lsp-isort
 
 # Install visual c++ redistribution
 scoop install vcredist2022

@@ -65,7 +65,7 @@ pip install -U pynvim
 [python-lsp-server (pylsp)](https://github.com/python-lsp/python-lsp-server) is a Python [Language Server](https://microsoft.github.io/language-server-protocol/) for completion, linting, go to definition, etc.
 
 ```
-pip install 'python-lsp-server[all]' pylsp-mypy pyls-isort
+pip install 'python-lsp-server[all]' pylsp-mypy python-lsp-isort python-lsp-black
 ```
 
 Note the executable for pylsp is also named `pylsp`. You need to set its PATH correctly.
