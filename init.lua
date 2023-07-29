@@ -43,6 +43,7 @@ for _, file_name in ipairs(core_conf_files) do
     vim.cmd(source_cmd)
   else
     local module_name, _ = string.gsub(file_name, "%.lua", "")
+    package.loaded[module_name] = nil
     require(module_name)
   end
 end
