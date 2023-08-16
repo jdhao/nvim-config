@@ -19,7 +19,8 @@ local expected_ver = "0.9.1"
 local ev = version.parse(expected_ver)
 local actual_ver = version()
 
-if version.cmp(ev, actual_ver) ~= 0 then
+-- sugest to upgrade neovim versin, no lower than expected_ver
+if version.cmp(ev, actual_ver) > 0 then
   local _ver = string.format("%s.%s.%s", actual_ver.major, actual_ver.minor, actual_ver.patch)
   local msg = string.format("Unsupported nvim version: expect %s, but got %s instead!", expected_ver, _ver)
   api.nvim_err_writeln(msg)
