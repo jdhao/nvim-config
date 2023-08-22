@@ -222,7 +222,7 @@ packer.startup {
 
     use { "nvim-zh/better-escape.vim", event = { "InsertEnter" } }
 
-    if vim.g.is_mac then
+    if vim.g.is_mac and utils.executable('xkbswitch') then
       use { "lyokha/vim-xkbswitch", event = { "InsertEnter" } }
     elseif vim.g.is_win then
       use { "Neur1n/neuims", event = { "InsertEnter" } }
