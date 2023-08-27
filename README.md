@@ -57,7 +57,7 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 
 # Features #
 
-+ Plugin management via [Packer.nvim](https://github.com/wbthomason/packer.nvim).
++ Plugin management via [Lazy.nvim](https://github.com/folke/lazy.nvim).
 + Code, snippet, word auto-completion via [nvim-cmp](https://github.com/hrsh7th/nvim-cmp).
 + Language server protocol (LSP) support via [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
 + Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).

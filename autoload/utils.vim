@@ -141,9 +141,7 @@ function! utils#Inside_git_repo() abort
   if match(res, 'true') == -1
     return v:false
   else
-    " Manually trigger a special user autocmd InGitRepo (to use it for
-    " lazyloading of fugitive by packer.nvim).
-    " See also https://github.com/wbthomason/packer.nvim/discussions/534.
+    " Manually trigger a special user autocmd InGitRepo (used lazyloading.
     doautocmd User InGitRepo
     return v:true
   endif
