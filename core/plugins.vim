@@ -7,10 +7,10 @@ lua require('plugins')
 " To use these shortcuts: first activate command line with `:`, then input the
 " short alias, e.g., `pi`, then press <space>, the alias will be expanded to
 " the full command automatically.
-call utils#Cabbrev('pi', 'PackerInstall')
-call utils#Cabbrev('pud', 'PackerUpdate')
-call utils#Cabbrev('pc', 'PackerClean')
-call utils#Cabbrev('ps', 'PackerSync')
+call utils#Cabbrev('pi', 'Lazy install')
+call utils#Cabbrev('pud', 'Lazy update')
+call utils#Cabbrev('pc', 'Lazy clean')
+call utils#Cabbrev('ps', 'Lazy sync')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                      configurations for vim script plugin                  "
@@ -401,7 +401,7 @@ function! s:wilder_init() abort
           \ 'apply_incsearch_fix': 0,
           \ }))
   catch /^Vim\%((\a\+)\)\=:E117/
-    echohl Error |echomsg "Wilder.nvim missing: run :PackerSync to fix."|echohl None
+    echohl Error |echomsg "Wilder.nvim missing"| echohl None
   endtry
 endfunction
 

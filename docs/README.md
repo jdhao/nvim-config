@@ -111,7 +111,7 @@ vim-language-server is installed in the same directory as the node executable.
 
 ### Git
 
-Git is required by plugin manager [packer.nvim](https://github.com/wbthomason/packer.nvim) and other git-related plugins.
+Git is required by plugin manager [lazy.nvim](https://github.com/folke/lazy.nvim) and other git-related plugins.
 
 For Linux and macOS, Git is usually pre-installed.
 The version of Git on the Linux system may be too old so that plugins may break.
@@ -201,22 +201,6 @@ After installing Nvim, we need to set the path to nvim correctly.
 
 After installing nvim and all the dependencies, we will install plugin managers and set up this config.
 
-### Install plugin manager packer.nvim
-
-I use packer.nvim to manage my plugins. We need to install packer.nvim on our system first.
-
-For Windows, if curl is installed, run the following command (on PowerShell):
-
-```
-git clone --depth=1 https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\opt\packer.nvim"
-```
-
-For macOS and Linux, run the following command:
-
-```bash
-git clone --depth=1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/opt/packer.nvim
-```
-
 ### How to install this configuration
 
 On Linux and macOS, the directory is `~/.config/nvim`.
@@ -228,7 +212,7 @@ then go to this directory, and run the following command:
 git clone --depth=1 https://github.com/jdhao/nvim-config.git .
 ```
 
-After that, when we first open nvim, run command `:PackerSync` to install all the plugins.
+After that, when we first open nvim, all the plugins will be installed automatically.
 Since I use quite a lot of plugins (more than 60), it may take some time to install all of them.
 
 [^1]: Use `echo %userprofile%` to see where your `$HOME` is.

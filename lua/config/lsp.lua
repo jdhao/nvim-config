@@ -234,7 +234,7 @@ if utils.executable("lua-language-server") then
           -- see also https://github.com/LuaLS/lua-language-server/wiki/Libraries#link-to-workspace .
           -- Lua-dev.nvim also has similar settings for lua ls, https://github.com/folke/neodev.nvim/blob/main/lua/neodev/luals.lua .
           library = {
-            fn.stdpath("data") .. "/site/pack/packer/opt/emmylua-nvim",
+            fn.stdpath("data") .. "/lazy/emmylua-nvim",
             fn.stdpath("config"),
           },
           maxPreload = 2000,
