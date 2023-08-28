@@ -201,20 +201,6 @@ end
 -- insert semicolon in the end
 keymap.set("i", "<A-;>", "<Esc>miA;<Esc>`ii")
 
--- Keep cursor position after yanking
-keymap.set("n", "y", "myy")
-
-api.nvim_create_autocmd("TextYankPost", {
-  pattern = "*",
-  group = api.nvim_create_augroup("restore_after_yank", { clear = true }),
-  callback = function()
-    vim.cmd([[
-      silent! normal! `y
-      silent! delmarks y
-    ]])
-  end,
-})
-
 -- Go to the beginning and end of current line in insert mode quickly
 keymap.set("i", "<C-A>", "<HOME>")
 keymap.set("i", "<C-E>", "<END>")
