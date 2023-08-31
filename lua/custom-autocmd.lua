@@ -38,7 +38,9 @@ api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   group = yank_group,
   callback = function(ev)
-    vim.fn.setpos('.', vim.g.current_cursor_pos)
+    if vim.v.event.operator == 'y' then
+      vim.fn.setpos('.', vim.g.current_cursor_pos)
+    end
   end,
 })
 
