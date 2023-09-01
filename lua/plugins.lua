@@ -151,7 +151,7 @@ require("lazy").setup {
 
   {
     "akinsho/bufferline.nvim",
-    event = "VeryLazy",
+    event = { "BufRead", "BufNewFile" } ,
     cond = firenvim_not_active,
     config = function()
       require("config.bufferline")
