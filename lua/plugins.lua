@@ -23,7 +23,7 @@ require("lazy").setup {
   -- auto-completion engine
   {
     "hrsh7th/nvim-cmp",
-    event = 'VeryLazy',
+    event = 'InsertEnter',
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "onsails/lspkind-nvim",
@@ -40,7 +40,7 @@ require("lazy").setup {
 
   {
     "neovim/nvim-lspconfig",
-    event = 'VeryLazy',
+    event = { 'BufRead', 'BufNewFile' },
     config = function()
       require("config.lsp")
     end,
