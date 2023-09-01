@@ -12,10 +12,11 @@ local activate_hlslens = function(direction)
   local cmd = string.format("normal! %s%szzzv", vim.v.count1, direction)
   local status, msg = pcall(vim.cmd, cmd)
 
+  -- Deal with the case that there is no such pattern in current buffer.
   if not status then
-    -- 13 is the index where real error message starts
-    msg = msg:sub(13)
-    api.nvim_err_writeln(msg)
+    local start_idx, _ = string.find(msg, 'E486', 1, true)
+    local msg_part = string.sub(msg, start_idx)
+    api.nvim_err_writeln(msg_part)
     return
   end
 
