@@ -23,7 +23,8 @@ require("lazy").setup {
   -- auto-completion engine
   {
     "hrsh7th/nvim-cmp",
-    event = 'InsertEnter',
+    -- event = 'InsertEnter',
+    event = 'VeryLazy',
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "onsails/lspkind-nvim",
@@ -124,19 +125,19 @@ require("lazy").setup {
   },
 
   -- A list of colorscheme plugin you may want to try. Find what suits you.
-  { "navarasu/onedark.nvim" },
-  { "sainnhe/edge" },
-  { "sainnhe/sonokai" },
-  { "sainnhe/gruvbox-material" },
-  { "shaunsingh/nord.nvim" },
-  { "sainnhe/everforest" },
-  { "EdenEast/nightfox.nvim" },
-  { "rebelot/kanagawa.nvim" },
-  { "catppuccin/nvim", name = "catppuccin" },
-  { "rose-pine/neovim", name = "rose-pine" },
-  { "olimorris/onedarkpro.nvim" },
-  { "tanvirtin/monokai.nvim" },
-  { "marko-cerovac/material.nvim" },
+  { "navarasu/onedark.nvim", lazy = true },
+  { "sainnhe/edge", lazy = true },
+  { "sainnhe/sonokai", lazy = true },
+  { "sainnhe/gruvbox-material", lazy = true },
+  { "shaunsingh/nord.nvim", lazy = true },
+  { "sainnhe/everforest", lazy = true },
+  { "EdenEast/nightfox.nvim", lazy = true },
+  { "rebelot/kanagawa.nvim", lazy = true },
+  { "catppuccin/nvim", name = "catppuccin", lazy = true },
+  { "rose-pine/neovim", name = "rose-pine", lazy = true },
+  { "olimorris/onedarkpro.nvim", lazy = true },
+  { "tanvirtin/monokai.nvim", lazy = true },
+  { "marko-cerovac/material.nvim", lazy = true },
 
   { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
 
@@ -151,7 +152,7 @@ require("lazy").setup {
 
   {
     "akinsho/bufferline.nvim",
-    event = { "BufRead", "BufNewFile" } ,
+    event = { "BufEnter" } ,
     cond = firenvim_not_active,
     config = function()
       require("config.bufferline")
@@ -400,7 +401,7 @@ require("lazy").setup {
   },
 
   -- Modern matchit implementation
-  { "andymass/vim-matchup", event = "VeryLazy" },
+  { "andymass/vim-matchup", event = "BufRead" },
   { "tpope/vim-scriptease", cmd = { "Scriptnames", "Message", "Verbose" } },
 
   -- Asynchronous command execution
