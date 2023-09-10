@@ -19,12 +19,12 @@ local firenvim_not_active = function()
   return not vim.g.started_by_firenvim
 end
 
-require("lazy").setup {
+local plugin_specs = {
   -- auto-completion engine
   {
     "hrsh7th/nvim-cmp",
     -- event = 'InsertEnter',
-    event = 'VeryLazy',
+    event = "VeryLazy",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "onsails/lspkind-nvim",
@@ -41,7 +41,7 @@ require("lazy").setup {
 
   {
     "neovim/nvim-lspconfig",
-    event = { 'BufRead', 'BufNewFile' },
+    event = { "BufRead", "BufNewFile" },
     config = function()
       require("config.lsp")
     end,
@@ -152,7 +152,7 @@ require("lazy").setup {
 
   {
     "akinsho/bufferline.nvim",
-    event = { "BufEnter" } ,
+    event = { "BufEnter" },
     cond = firenvim_not_active,
     config = function()
       require("config.bufferline")
@@ -451,7 +451,10 @@ require("lazy").setup {
   },
 
   -- The missing auto-completion for cmdline!
-  { "gelguy/wilder.nvim" },
+  {
+    "gelguy/wilder.nvim",
+    build = ":UpdateRemotePlugins",
+  },
 
   -- showing keybindings
   {
@@ -480,10 +483,21 @@ require("lazy").setup {
   { "ii14/emmylua-nvim", ft = "lua" },
   {
     "j-hui/fidget.nvim",
-    event = 'VeryLazy',
+    event = "VeryLazy",
     tag = "legacy",
     config = function()
       require("config.fidget-nvim")
     end,
   },
 }
+
+-- configuration for lazy itself.
+local lazy_opts = {
+  ui = {
+    border = "rounded",
+    title = "Plugin Manager",
+    title_pos = "center",
+  },
+}
+
+require("lazy").setup(plugin_specs, lazy_opts)
