@@ -88,7 +88,7 @@ local plugin_specs = {
 
   -- Super fast buffer jump
   {
-    "phaazon/hop.nvim",
+    "smoka7/hop.nvim",
     event = "VeryLazy",
     config = function()
       vim.defer_fn(function()

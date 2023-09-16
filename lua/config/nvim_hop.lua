@@ -1,7 +1,3 @@
-vim.cmd([[hi HopNextKey cterm=bold ctermfg=176 gui=bold guibg=#ff00ff guifg=#ffffff]])
-vim.cmd([[hi HopNextKey1 cterm=bold ctermfg=176 gui=bold guibg=#ff00ff guifg=#ffffff]])
-vim.cmd([[hi HopNextKey2 cterm=bold ctermfg=176 gui=bold guibg=#ff00ff guifg=#ffffff]])
-
 local keymap = vim.keymap
 local hop = require("hop")
 hop.setup {
@@ -17,4 +13,15 @@ keymap.set({ "n", "v", "o" }, "f", "", {
     hop.hint_char2()
   end,
   desc = "nvim-hop char2",
+})
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = function ()
+    vim.cmd([[
+      hi HopNextKey cterm=bold ctermfg=176 gui=bold guibg=#ff00ff guifg=#ffffff
+      hi HopNextKey1 cterm=bold ctermfg=176 gui=bold guibg=#ff00ff guifg=#ffffff
+      hi HopNextKey2 cterm=bold ctermfg=176 gui=bold guibg=#ff00ff guifg=#ffffff
+    ]])
+  end
 })
