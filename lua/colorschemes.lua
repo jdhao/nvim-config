@@ -16,7 +16,6 @@ M.colorscheme2dir = {
   nightfox = "nightfox.nvim",
   kanagawa = "kanagawa.nvim",
   catppuccin = "catppuccin",
-  rose_pine = "rose-pine",
   onedarkpro = "onedarkpro.nvim",
   monokai = "monokai.nvim",
   material = "material.nvim",
@@ -92,16 +91,6 @@ M.catppuccin = function()
   require("catppuccin").setup()
 
   vim.cmd([[colorscheme catppuccin]])
-end
-
-M.rose_pine = function()
-  require('rose-pine').setup({
-    --- @usage 'main' | 'moon'
-    dark_variant = 'moon',
-  })
-
-  -- set colorscheme after options
-  vim.cmd('colorscheme rose-pine')
 end
 
 M.onedarkpro = function()
