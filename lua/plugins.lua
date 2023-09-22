@@ -134,7 +134,6 @@ local plugin_specs = {
   { "EdenEast/nightfox.nvim", lazy = true },
   { "rebelot/kanagawa.nvim", lazy = true },
   { "catppuccin/nvim", name = "catppuccin", lazy = true },
-  { "rose-pine/neovim", name = "rose-pine", lazy = true },
   { "olimorris/onedarkpro.nvim", lazy = true },
   { "tanvirtin/monokai.nvim", lazy = true },
   { "marko-cerovac/material.nvim", lazy = true },
