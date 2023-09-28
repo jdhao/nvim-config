@@ -170,6 +170,7 @@ local plugin_specs = {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
+    main = 'ibl',
     config = function()
       require("config.indent-blankline")
     end,
