@@ -12,7 +12,6 @@ require("ibl").setup {
     show_start = false,
     show_end = false,
   },
-  disable_with_nolist = true,
   exclude = {
     filetypes = exclude_ft,
     buftypes = { "terminal" },
