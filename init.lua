@@ -33,10 +33,11 @@ local core_conf_files = {
   "colorschemes.lua", -- colorscheme settings
 }
 
+local viml_conf_dir = vim.fn.stdpath("config") .. "/viml_conf"
 -- source all the core config files
 for _, file_name in ipairs(core_conf_files) do
   if vim.endswith(file_name, 'vim') then
-    local path = string.format("%s/core/%s", vim.fn.stdpath("config"), file_name)
+    local path = string.format("%s/%s", viml_conf_dir, file_name)
     local source_cmd = "source " .. path
     vim.cmd(source_cmd)
   else
