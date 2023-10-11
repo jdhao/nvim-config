@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
 " Plugin specification and lua stuff
-lua require('plugins')
+lua require('plugin_specs')
 
 " Use short names for common plugin manager commands to simplify typing.
 " To use these shortcuts: first activate command line with `:`, then input the
