@@ -309,6 +309,11 @@ local plugin_specs = {
 
   -- Better git commit experience
   { "rhysd/committia.vim", lazy = true },
+
+  {
+    "sindrets/diffview.nvim"
+  },
+
   {
     "kevinhwang91/nvim-bqf",
     ft = "qf",
