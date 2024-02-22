@@ -172,7 +172,6 @@ require("lualine").setup {
     },
     lualine_y = {
       "location",
-      "progress",
     },
     lualine_z = {
       {
