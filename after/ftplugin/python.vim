@@ -15,3 +15,7 @@ set expandtab       " expand tab to spaces so that tabs are spaces
 
 " For delimitMate
 let b:delimitMate_matchpairs = "(:),[:],{:}"
+
+" Use nvim-treesitter for folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
