@@ -480,7 +480,6 @@ local plugin_specs = {
     end,
   },
 
-  { "ii14/emmylua-nvim", ft = "lua" },
   {
     "j-hui/fidget.nvim",
     event = "VeryLazy",
