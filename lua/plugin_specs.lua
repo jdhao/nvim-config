@@ -335,16 +335,10 @@ local plugin_specs = {
   -- Markdown previewing (only for Mac and Windows)
   {
     "iamcco/markdown-preview.nvim",
-    enabled = function()
-      if vim.g.is_win or vim.g.is_mac then
-        return true
-      end
-      return false
-    end,
+    enabled =  true,
     build = "cd app && npm install",
     ft = { "markdown" },
   },
-
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
