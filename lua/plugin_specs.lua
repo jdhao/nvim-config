@@ -87,13 +87,13 @@ local plugin_specs = {
   },
 
   -- Super fast buffer jump
-  {
-    "smoka7/hop.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("config.nvim_hop")
-    end,
-  },
+  -- {
+  --   "smoka7/hop.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("config.nvim_hop")
+  --   end,
+  -- },
 
   -- Show match number and index for searching
   {
@@ -476,15 +476,15 @@ local plugin_specs = {
   { "jdhao/whitespace.nvim", event = "VeryLazy" },
 
   -- file explorer
-  {
-    "nvim-tree/nvim-tree.lua",
-    keys = { "<space>s" },
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("config.nvim-tree")
-    end,
-  },
-
+  -- {
+  --   "nvim-tree/nvim-tree.lua",
+  --   keys = { "<space>s" },
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  --   config = function()
+  --     require("config.nvim-tree")
+  --   end,
+  -- },
+  { "preservim/nerdtree"},
   {
     "j-hui/fidget.nvim",
     event = "VeryLazy",

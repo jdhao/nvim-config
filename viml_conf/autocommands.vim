@@ -39,17 +39,6 @@ autocmd bufnewfile *.md exe "1," . 10 . "g/File Name :.*/s//File Name : " .expan
 autocmd bufnewfile *.md exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
 autocmd Bufwritepre,filewritepre *.md execute "normal ma"
 
-" For bash file templates
-au BufNewFile *.sh 0r ~/.vim/bash.template
-"Insert pdb on , + p
-map <Leader>b :call InsertPdbLine()<CR>
-
-function! InsertPdbLine()
-      let trace = expand("import pdb; pdb.set_trace()")
-        execute "normal o".trace
-endfunction
-
-let g:YUNOcommit_after = 50
 
 " Only resume last cursor position when there is no go-to-line command (something like '+23').
 function s:resume_cursor_position() abort

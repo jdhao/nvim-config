@@ -407,3 +407,33 @@ endfunction
 
 """"""""""""""""""""""""""""""vim-auto-save settings""""""""""""""""""""""""""""""
 let g:auto_save = 1  " enable AutoSave on Vim startup
+" start  Nerdtree on <leader> n
+nnoremap <leader>n <Esc>:NERDTree <CR>
+nnoremap <leader>c <Esc>:NERDTreeToggle <CR>
+"nmap <F6> :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen=0
+let NERDTreeIgnore=['\.pyc$', '\.ipynb$', '\~$'] "ignore files in NERDTree
+let NERDTreeSortOrder=['\.c$', '\.py$']
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Open nerdtree on the file you're editing
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+" Auto close nerd tree if it is the only remaining window
+"autocmd bufenter * if (winnr(â€œ$â€�) == 1 && exists(â€œb:NERDTreeTypeâ€�) && b:NERDTreeType == â€œprimaryâ€�) | q | endif
+"delete propagation of files from nerd tree to buffer.
+let NERDTreeAutoDeleteBuffer = 1
+" Looks stuff
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+" For bash file templates
+au BufNewFile *.sh 0r ~/.vim/bash.template
+"Insert pdb on , + p
+map <Leader>b :call InsertPdbLine()<CR>
+
+function! InsertPdbLine()
+      let trace = expand("import pdb; pdb.set_trace()")
+        execute "normal o".trace
+endfunction
+
+let g:YUNOcommit_after = 50
