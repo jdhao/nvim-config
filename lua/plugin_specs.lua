@@ -208,17 +208,17 @@ local plugin_specs = {
 
   -- Only install these plugins if ctags are installed on the system
   -- show file tags in vim window
-  {
-    "liuchengxu/vista.vim",
-    enabled = function()
-      if utils.executable("ctags") then
-        return true
-      else
-        return false
-      end
-    end,
-    cmd = "Vista",
-  },
+  -- {
+  --   "liuchengxu/vista.vim",
+  --   enabled = function()
+  --     if utils.executable("ctags") then
+  --       return true
+  --     else
+  --       return false
+  --     end
+  --   end,
+  --   cmd = "Vista",
+  -- },
 
   -- Snippet engine and snippet template
   -- { "SirVer/ultisnips", dependencies = {
