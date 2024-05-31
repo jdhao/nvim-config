@@ -157,14 +157,19 @@ local plugin_specs = {
     end,
   },
 
-  -- fancy start screen
+  -- vim-startify
   {
-    "nvimdev/dashboard-nvim",
-    cond = firenvim_not_active,
-    config = function()
-      require("config.dashboard-nvim")
-    end,
+    "mhinz/vim-startify",
   },
+  -- fancy start screen
+  -- {
+
+  --  "nvimdev/dashboard-nvim",
+  --  cond = firenvim_not_active,
+  --  config = function()
+  --    require("config.dashboard-nvim")
+  --  end,
+  --},
 
   {
     "lukas-reineke/indent-blankline.nvim",
