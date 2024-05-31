@@ -32,7 +32,7 @@ local plugin_specs = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-omni",
       "hrsh7th/cmp-emoji",
-      "quangnguyen30192/cmp-nvim-ultisnips",
+      --"quangnguyen30192/cmp-nvim-ultisnips",
     },
     config = function()
       require("config.nvim-cmp")
@@ -216,9 +216,9 @@ local plugin_specs = {
   },
 
   -- Snippet engine and snippet template
-  { "SirVer/ultisnips", dependencies = {
-    "honza/vim-snippets",
-  }, event = "InsertEnter" },
+  -- { "SirVer/ultisnips", dependencies = {
+  --   "honza/vim-snippets",
+  -- }, event = "InsertEnter" },
 
   -- Automatic insertion and deletion of a pair of characters
   { "Raimondi/delimitMate", event = "InsertEnter" },

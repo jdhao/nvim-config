@@ -25,6 +25,32 @@ augroup resume_cursor_position
   autocmd BufReadPost * call s:resume_cursor_position()
 augroup END
 
+"For new python files add headers
+au BufNewFile *.py 0r ~/.vim/pytemplate.txt
+autocmd bufnewfile *.py exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
+autocmd bufnewfile *.py exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
+autocmd Bufwritepre,filewritepre *.py execute "normal ma"
+autocmd Bufwritepre,filewritepre *.py exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
+autocmd bufwritepost,filewritepost *.py execute "normal `a"
+
+"For new markdown files add headers
+au BufNewFile *.md 0r ~/.vim/mdtemplate.txt
+autocmd bufnewfile *.md exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
+autocmd bufnewfile *.md exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
+autocmd Bufwritepre,filewritepre *.md execute "normal ma"
+
+" For bash file templates
+au BufNewFile *.sh 0r ~/.vim/bash.template
+"Insert pdb on , + p
+map <Leader>b :call InsertPdbLine()<CR>
+
+function! InsertPdbLine()
+      let trace = expand("import pdb; pdb.set_trace()")
+        execute "normal o".trace
+endfunction
+
+let g:YUNOcommit_after = 50
+
 " Only resume last cursor position when there is no go-to-line command (something like '+23').
 function s:resume_cursor_position() abort
   if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
