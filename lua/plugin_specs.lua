@@ -235,7 +235,7 @@ local plugin_specs = {
   -- 'mg979/vim-visual-multi'
 
   -- Autosave files on certain events
-  { "907th/vim-auto-save", event = "InsertEnter" },
+  -- { "907th/vim-auto-save", event = "InsertEnter" },
 
   -- Show undo history visually
   { "simnalamburt/vim-mundo", cmd = { "MundoToggle", "MundoShow" } },
