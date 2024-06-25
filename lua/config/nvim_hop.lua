@@ -4,6 +4,7 @@ hop.setup {
   case_insensitive = true,
   char2_fallback_key = "<CR>",
   quit_key = "<Esc>",
+  match_mappings = { "zh_sc" }
 }
 
 keymap.set({ "n", "v", "o" }, "f", "", {
@@ -17,7 +18,7 @@ keymap.set({ "n", "v", "o" }, "f", "", {
 
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
-  callback = function ()
+  callback = function()
     vim.cmd([[
       hi HopNextKey cterm=bold ctermfg=176 gui=bold guibg=#ff00ff guifg=#ffffff
       hi HopNextKey1 cterm=bold ctermfg=176 gui=bold guibg=#ff00ff guifg=#ffffff
