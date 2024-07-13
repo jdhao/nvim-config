@@ -221,7 +221,11 @@ local plugin_specs = {
   }, event = "InsertEnter" },
 
   -- Automatic insertion and deletion of a pair of characters
-  { "Raimondi/delimitMate", event = "InsertEnter" },
+  {
+      'windwp/nvim-autopairs',
+      event = "InsertEnter",
+      config = true
+  },
 
   -- Comment plugin
   { "tpope/vim-commentary", event = "VeryLazy" },
