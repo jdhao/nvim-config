@@ -217,7 +217,7 @@ keymap.set("n", "<leader>cb", function()
   local timer = uv.new_timer()
 
   timer:start(0, 100, vim.schedule_wrap(function()
-    vim.cmd[[
+    vim.cmd [[
       set cursorcolumn!
       set cursorline!
     ]]
@@ -227,5 +227,7 @@ keymap.set("n", "<leader>cb", function()
     end
 
     cnt = cnt + 1
-  end))
-end)
+  end)
+  )
+end,
+  { desc = "show cursor" })
