@@ -169,8 +169,8 @@ Some of the shortcuts I use frequently are listed here. In the following shortcu
 | `<leader>gc`      | Normal        | Linux/macOS/Win | Run git commit                                                           |
 | `<leader>gpl`     | Normal        | Linux/macOS/Win | Run git pull                                                             |
 | `<leader>gpu`     | Normal        | Linux/macOS/Win | Run git push                                                             |
-| `<leader>gl`      | Normal/Visual | Linux/macOS/Win | Get perm link for current/visually-select lines
-| `<leader>gb`      | Normal        | macOS           | Browse current git repo in browser
+| `<leader>gl`      | Normal/Visual | Linux/macOS/Win | Get perm link for current/visually-select lines                          |
+| `<leader>gb`      | Normal        | macOS           | Browse current git repo in browser                                       |
 | `<F9>`            | Normal        | Linux/macOS/Win | Compile&run current source file (for C++, LaTeX, Lua, Python)            |
 | `<F11>`           | Normal        | Linux/macOS/Win | Toggle spell checking                                                    |
 | `<F12>`           | Normal        | Linux/macOS/Win | Toggle paste mode                                                        |
