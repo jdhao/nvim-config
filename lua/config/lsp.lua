@@ -231,11 +231,12 @@ if utils.executable("lua-language-server") then
         },
         workspace = {
           -- Make the server aware of Neovim runtime files,
-          -- see also https://github.com/LuaLS/lua-language-server/wiki/Libraries#link-to-workspace .
-          -- Lua-dev.nvim also has similar settings for lua ls, https://github.com/folke/neodev.nvim/blob/main/lua/neodev/luals.lua .
+          -- see also https://luals.github.io/wiki/settings/#workspacelibrary
           library = {
             vim.env.VIMRUNTIME,
             fn.stdpath("config"),
+            -- make lua_ls aware of functions under vim.uv
+            "${3rd}/luv/library"
           },
           maxPreload = 2000,
           preloadFileSize = 50000,
