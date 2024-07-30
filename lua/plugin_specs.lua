@@ -15,6 +15,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- check if firenvim is active
+-- macOS will reset the PATH when firenvim starts a nvim process, causing the PATH variable to change unexpectedly.
+-- Here we are trying to get the correct PATH and use it for firenvim.
+-- See also https://github.com/glacambre/firenvim/blob/master/TROUBLESHOOTING.md#make-sure-firenvims-path-is-the-same-as-neovims
+local path_env = vim.env.PATH
+local prologue = string.format('export PATH="%s"', path_env)
+
 local firenvim_not_active = function()
   return not vim.g.started_by_firenvim
 end
@@ -419,17 +425,13 @@ local plugin_specs = {
   {
     "glacambre/firenvim",
     enabled = function()
-      if vim.g.is_win or vim.g.is_mac then
-        return true
-      end
-      return false
+      local result = vim.g.is_win or vim.g.is_mac
+      return result
     end,
-    build = function()
-      vim.fn["firenvim#install"](0)
-    end,
-    lazy = true,
+    -- it seems that we can only call the firenvim function directly.
+    -- Using vim.fn or vim.cmd to call this function will fail.
+    build = string.format(":call firenvim#install(0, '%s')", prologue)
   },
-
   -- Debugger plugin
   {
     "sakhnik/nvim-gdb",
