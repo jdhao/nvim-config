@@ -128,10 +128,10 @@ local plugin_specs = {
     },
   },
   {
-      'MeanderingProgrammer/markdown.nvim',
-      main = "render-markdown",
-      opts = {},
-      dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    "MeanderingProgrammer/markdown.nvim",
+    main = "render-markdown",
+    opts = {},
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
   },
   -- A list of colorscheme plugin you may want to try. Find what suits you.
   { "navarasu/onedark.nvim", lazy = true },
@@ -176,7 +176,7 @@ local plugin_specs = {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
-    main = 'ibl',
+    main = "ibl",
     config = function()
       require("config.indent-blankline")
     end,
@@ -229,9 +229,9 @@ local plugin_specs = {
 
   -- Automatic insertion and deletion of a pair of characters
   {
-      'windwp/nvim-autopairs',
-      event = "InsertEnter",
-      config = true
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
   },
 
   -- Comment plugin
@@ -323,7 +323,7 @@ local plugin_specs = {
   { "rhysd/committia.vim", lazy = true },
 
   {
-    "sindrets/diffview.nvim"
+    "sindrets/diffview.nvim",
   },
 
   {
@@ -430,7 +430,7 @@ local plugin_specs = {
     end,
     -- it seems that we can only call the firenvim function directly.
     -- Using vim.fn or vim.cmd to call this function will fail.
-    build = string.format(":call firenvim#install(0, '%s')", prologue)
+    build = string.format(":call firenvim#install(0, '%s')", prologue),
   },
   -- Debugger plugin
   {
@@ -497,13 +497,14 @@ local plugin_specs = {
   },
 }
 
--- configuration for lazy itself.
-local lazy_opts = {
+require("lazy").setup {
+  spec = plugin_specs,
   ui = {
     border = "rounded",
     title = "Plugin Manager",
     title_pos = "center",
   },
+  rocks = {
+    enabled = false
+  },
 }
-
-require("lazy").setup(plugin_specs, lazy_opts)
