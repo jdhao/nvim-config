@@ -1,6 +1,7 @@
 local utils = require("utils")
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local plugin_dir = vim.fn.stdpath("data") .. "/lazy"
+local lazypath = plugin_dir .. "/lazy.nvim"
 
 if not vim.uv.fs_stat(lazypath) then
   vim.fn.system {
@@ -15,12 +16,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- check if firenvim is active
--- macOS will reset the PATH when firenvim starts a nvim process, causing the PATH variable to change unexpectedly.
--- Here we are trying to get the correct PATH and use it for firenvim.
--- See also https://github.com/glacambre/firenvim/blob/master/TROUBLESHOOTING.md#make-sure-firenvims-path-is-the-same-as-neovims
-local path_env = vim.env.PATH
-local prologue = string.format('export PATH="%s"', path_env)
-
 local firenvim_not_active = function()
   return not vim.g.started_by_firenvim
 end
@@ -114,8 +109,12 @@ local plugin_specs = {
     "Yggdroot/LeaderF",
     cmd = "Leaderf",
     build = function()
+      local leaderf_path = plugin_dir .. "/LeaderF"
+      vim.opt.runtimepath:append(leaderf_path)
+      vim.cmd("runtime! plugin/leaderf.vim")
+
       if not vim.g.is_win then
-        vim.cmd(":LeaderfInstallCExtension")
+        vim.cmd("LeaderfInstallCExtension")
       end
     end,
   },
@@ -430,7 +429,20 @@ local plugin_specs = {
     end,
     -- it seems that we can only call the firenvim function directly.
     -- Using vim.fn or vim.cmd to call this function will fail.
-    build = string.format(":call firenvim#install(0, '%s')", prologue),
+    build = function()
+      local firenvim_path = plugin_dir .. "/firenvim"
+      vim.opt.runtimepath:append(firenvim_path)
+      vim.cmd("runtime! firenvim.vim")
+
+      -- macOS will reset the PATH when firenvim starts a nvim process, causing the PATH variable to change unexpectedly.
+      -- Here we are trying to get the correct PATH and use it for firenvim.
+      -- See also https://github.com/glacambre/firenvim/blob/master/TROUBLESHOOTING.md#make-sure-firenvims-path-is-the-same-as-neovims
+      local path_env = vim.env.PATH
+      local prologue = string.format('export PATH="%s"', path_env)
+      -- local prologue = "echo"
+      local cmd_str = string.format(":call firenvim#install(0, '%s')", prologue)
+      vim.cmd(cmd_str)
+    end
   },
   -- Debugger plugin
   {
