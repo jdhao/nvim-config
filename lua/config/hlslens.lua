@@ -35,14 +35,28 @@ keymap.set("n", "N", "", {
   end,
 })
 
+local no_word_under_cursor = function()
+  local word_under_cursor = vim.fn.expand("<cword>")
+
+  local msg = "E348: No string under cursor"
+  api.nvim_err_writeln(msg)
+  return word_under_cursor == ""
+end
+
 keymap.set("n", "*", "", {
   callback = function()
+    if no_word_under_cursor() then
+      return
+    end
     vim.fn.execute("normal! *N")
     hlslens.start()
   end,
 })
 keymap.set("n", "#", "", {
   callback = function()
+    if no_word_under_cursor() then
+      return
+    end
     vim.fn.execute("normal! #N")
     hlslens.start()
   end,
