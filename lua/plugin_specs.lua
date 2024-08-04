@@ -142,6 +142,12 @@ local plugin_specs = {
   { "catppuccin/nvim", name = "catppuccin", lazy = true },
   { "olimorris/onedarkpro.nvim", lazy = true },
   { "marko-cerovac/material.nvim", lazy = true },
+  {
+    "rockyzhang24/arctic.nvim",
+    dependencies = { "rktjmp/lush.nvim" },
+    name = "arctic",
+    branch = "v2",
+  },
 
   { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
 

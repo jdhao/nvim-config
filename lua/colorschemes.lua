@@ -56,6 +56,9 @@ M.colorscheme_conf = {
     vim.g.material_style = "oceanic"
     vim.cmd('colorscheme material')
   end,
+  arctic = function ()
+    vim.cmd("colorscheme arctic")
+  end
 }
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
