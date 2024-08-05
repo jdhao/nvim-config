@@ -148,7 +148,7 @@ local plugin_specs = {
     name = "arctic",
     branch = "v2",
   },
-
+  { "rebelot/kanagawa.nvim", lazy = true },
   { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
 
   {
