@@ -58,6 +58,9 @@ M.colorscheme_conf = {
   end,
   arctic = function ()
     vim.cmd("colorscheme arctic")
+  end,
+  kanagawa = function()
+    vim.cmd("colorscheme kanagawa-wave")
   end
 }
 
