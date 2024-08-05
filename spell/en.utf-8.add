@@ -467,3 +467,6 @@ pylintrc
 PYTHONPATH
 Uvicorn
 qpdf
+Elasticsearch
+kibana
+submodule
