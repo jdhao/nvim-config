@@ -127,6 +127,7 @@ local get_active_lsp = function()
   end
 
   for _, client in ipairs(clients) do
+    ---@diagnostic disable-next-line: undefined-field
     local filetypes = client.config.filetypes
     if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
       return client.name
@@ -149,7 +150,7 @@ require("lualine").setup {
     lualine_b = {
       {
         "branch",
-        fmt = function(name, context)
+        fmt = function(name, _)
           -- truncate branch name in case the name is too long
           return string.sub(name, 1, 20)
         end,
