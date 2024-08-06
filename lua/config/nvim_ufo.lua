@@ -30,10 +30,9 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
   return newVirtText
 end
 
-local opts = {}
-opts["fold_virt_text_handler"] = handler
-
-require("ufo").setup(opts)
+require("ufo").setup {
+  fold_virt_text_handler = handler,
+}
 
 vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
