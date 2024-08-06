@@ -534,6 +534,11 @@ local plugin_specs = {
       require("config.fidget-nvim")
     end,
   },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {},
+  },
 }
 
 require("lazy").setup {
