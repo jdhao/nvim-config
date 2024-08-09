@@ -24,14 +24,14 @@ keymap.set({ "n", "v" }, "<leader>gl", function()
   gitlinker.get_buf_range_url(mode)
 end, {
   silent = true,
-  desc = "get git permlink",
+  desc = "Git: get permlink",
 })
 
-keymap.set("n", "<leader>gb", function()
+keymap.set("n", "<leader>gbr", function()
   gitlinker.get_repo_url({
     action_callback = gitlinker.actions.open_in_browser
   })
 end, {
   silent = true,
-  desc = "browse repo in browser",
+  desc = "Git: browse repo in browser",
 })
