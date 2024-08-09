@@ -23,5 +23,5 @@ end, {
   desc = "Git: create new branch",
 })
 
-keymap.set("n", "<leader>gf", "<cmd>Git fetch", { desc = "Git: prune branches" })
+keymap.set("n", "<leader>gf", ":Git fetch ", { desc = "Git: prune branches" })
 keymap.set("n", "<leader>gbd", ":Git branch -D ", { desc = "Git: delete branch" })
