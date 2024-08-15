@@ -118,16 +118,16 @@ The version of Git on the Linux system may be too old so that plugins may break.
 Check [here](https://jdhao.github.io/2021/03/27/upgrade_git_on_linux/) on how to install and set up the latest version of Git.
 For Windows, install [Git for Windows](https://git-scm.com/download/win) and make sure you can run `git` from command line.
 
-### ctags
+### universal-ctags
 
 In order to use tags related plugins such as [vista.vim](https://github.com/liuchengxu/vista.vim), we need to install a ctags distribution.
 Universal-ctags is preferred.
 
 To install it on Linux, we need to build it from source. See [here](https://askubuntu.com/a/836521/768311) for the details.
-To install ctags on macOS, use [Homebrew](https://github.com/universal-ctags/homebrew-universal-ctags):
+To install ctags on macOS, use [Homebrew](https://formulae.brew.sh/formula/universal-ctags):
 
 ```bash
-brew install ctags
+brew install universal-ctags
 ```
 
 To install it Windows, use [chocolatey](https://chocolatey.org/) or [scoop](https://scoop.sh/)
@@ -166,35 +166,9 @@ Set their PATH properly and make sure you can run `pylint`, `flake8` and `vint` 
 There are various ways to install Nvim depending on your system.
 This config is only maintained for [the latest nvim stable release](https://github.com/neovim/neovim/releases/tag/stable).
 
-### Linux
+Please check the official doc on how to install Neovim on different systems: https://github.com/neovim/neovim/blob/master/INSTALL.md
 
-You can directly download the binary release from [here](https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz).
-You can also use the system package manager to install nvim,
-but that is not reliable since the latest version may not be available.
-
-### Windows
-
-You may download from [nvim release](https://github.com/neovim/neovim/releases/download/stable/nvim-win64.zip) from GitHub and manually extract it.
-
-Another way to install Nvim on Windows is via chocolatey or scoop:
-
-```
-choco install neovim
-
-# via scoop
-# scoop bucket add versions
-# scoop install neovim
-```
-
-### macOS
-
-It is recommended to install neovim via [Homebrew](https://brew.sh/) on macOS. Simply run the following command:
-
-```bash
-brew install neovim
-```
-
-After installing Nvim, we need to set the path to nvim correctly.
+After installing Nvim, we need to set the PATH to nvim correctly.
 **Make sure that you can run `nvim` from the command line after all these setups**.
 
 ## Setting up Nvim

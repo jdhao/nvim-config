@@ -1,6 +1,7 @@
 local utils = require("utils")
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local plugin_dir = vim.fn.stdpath("data") .. "/lazy"
+local lazypath = plugin_dir .. "/lazy.nvim"
 
 if not vim.uv.fs_stat(lazypath) then
   vim.fn.system {
@@ -108,8 +109,12 @@ local plugin_specs = {
     "Yggdroot/LeaderF",
     cmd = "Leaderf",
     build = function()
+      local leaderf_path = plugin_dir .. "/LeaderF"
+      vim.opt.runtimepath:append(leaderf_path)
+      vim.cmd("runtime! plugin/leaderf.vim")
+
       if not vim.g.is_win then
-        vim.cmd(":LeaderfInstallCExtension")
+        vim.cmd("LeaderfInstallCExtension")
       end
     end,
   },
@@ -122,9 +127,10 @@ local plugin_specs = {
     },
   },
   {
-    "lukas-reineke/headlines.nvim",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = true, -- or `opts = {}`
+    "MeanderingProgrammer/markdown.nvim",
+    main = "render-markdown",
+    opts = {},
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
   },
   -- A list of colorscheme plugin you may want to try. Find what suits you.
   { "navarasu/onedark.nvim", lazy = true },
@@ -136,7 +142,13 @@ local plugin_specs = {
   { "catppuccin/nvim", name = "catppuccin", lazy = true },
   { "olimorris/onedarkpro.nvim", lazy = true },
   { "marko-cerovac/material.nvim", lazy = true },
-
+  {
+    "rockyzhang24/arctic.nvim",
+    dependencies = { "rktjmp/lush.nvim" },
+    name = "arctic",
+    branch = "v2",
+  },
+  { "rebelot/kanagawa.nvim", lazy = true },
   { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
 
   {
@@ -144,7 +156,7 @@ local plugin_specs = {
     event = "VeryLazy",
     cond = firenvim_not_active,
     config = function()
-      require("config.statusline")
+      require("config.lualine")
     end,
   },
 
@@ -174,12 +186,33 @@ local plugin_specs = {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
-    main = 'ibl',
+    main = "ibl",
     config = function()
       require("config.indent-blankline")
     end,
   },
-
+  {
+    "luukvbaal/statuscol.nvim",
+    opts = {},
+    config = function()
+      require("config.nvim-statuscol")
+    end,
+  },
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = "kevinhwang91/promise-async",
+    event = "VeryLazy",
+    opts = {},
+    init = function()
+      vim.o.foldcolumn = "1" -- '0' is not bad
+      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+    end,
+    config = function()
+      require("config.nvim_ufo")
+    end,
+  },
   -- Highlight URLs inside vim
   { "itchyny/vim-highlighturl", event = "VeryLazy" },
 
@@ -226,7 +259,11 @@ local plugin_specs = {
   -- }, event = "InsertEnter" },
 
   -- Automatic insertion and deletion of a pair of characters
-  { "Raimondi/delimitMate", event = "InsertEnter" },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+  },
 
   -- Comment plugin
   { "tpope/vim-commentary", event = "VeryLazy" },
@@ -317,7 +354,7 @@ local plugin_specs = {
   { "rhysd/committia.vim", lazy = true },
 
   {
-    "sindrets/diffview.nvim"
+    "sindrets/diffview.nvim",
   },
 
   {
@@ -419,17 +456,26 @@ local plugin_specs = {
   {
     "glacambre/firenvim",
     enabled = function()
-      if vim.g.is_win or vim.g.is_mac then
-        return true
-      end
-      return false
+      local result = vim.g.is_win or vim.g.is_mac
+      return result
     end,
+    -- it seems that we can only call the firenvim function directly.
+    -- Using vim.fn or vim.cmd to call this function will fail.
     build = function()
-      vim.fn["firenvim#install"](0)
-    end,
-    lazy = true,
-  },
+      local firenvim_path = plugin_dir .. "/firenvim"
+      vim.opt.runtimepath:append(firenvim_path)
+      vim.cmd("runtime! firenvim.vim")
 
+      -- macOS will reset the PATH when firenvim starts a nvim process, causing the PATH variable to change unexpectedly.
+      -- Here we are trying to get the correct PATH and use it for firenvim.
+      -- See also https://github.com/glacambre/firenvim/blob/master/TROUBLESHOOTING.md#make-sure-firenvims-path-is-the-same-as-neovims
+      local path_env = vim.env.PATH
+      local prologue = string.format('export PATH="%s"', path_env)
+      -- local prologue = "echo"
+      local cmd_str = string.format(":call firenvim#install(0, '%s')", prologue)
+      vim.cmd(cmd_str)
+    end,
+  },
   -- Debugger plugin
   {
     "sakhnik/nvim-gdb",
@@ -476,15 +522,16 @@ local plugin_specs = {
   { "jdhao/whitespace.nvim", event = "VeryLazy" },
 
   -- file explorer
-  -- {
-  --   "nvim-tree/nvim-tree.lua",
-  --   keys = { "<space>s" },
-  --   dependencies = { "nvim-tree/nvim-web-devicons" },
-  --   config = function()
-  --     require("config.nvim-tree")
-  --   end,
-  -- },
-  { "preservim/nerdtree"},
+  {
+    "nvim-tree/nvim-tree.lua",
+    event = "VeryLazy",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("config.nvim-tree")
+    end,
+  },
+
+
   {
     "j-hui/fidget.nvim",
     event = "VeryLazy",
@@ -493,15 +540,21 @@ local plugin_specs = {
       require("config.fidget-nvim")
     end,
   },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {},
+  },
 }
 
--- configuration for lazy itself.
-local lazy_opts = {
+require("lazy").setup {
+  spec = plugin_specs,
   ui = {
     border = "rounded",
     title = "Plugin Manager",
     title_pos = "center",
   },
+  rocks = {
+    enabled = false,
+  },
 }
-
-require("lazy").setup(plugin_specs, lazy_opts)

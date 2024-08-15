@@ -1,10 +1,13 @@
 scriptencoding utf-8
 
 " change fillchars for folding, vertical split, end of buffer, and message separator
-set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾,diff:╱
+set fillchars=fold:\ ,foldsep:\ ,foldopen:,foldclose:,vert:\│,eob:\ ,msgsep:‾,diff:╱
 
 " Split window below/right when creating horizontal/vertical windows
 set splitbelow splitright
+
+" avoid the flickering when splitting window horizontal
+set splitkeep=screen
 
 " Time in milliseconds to wait for a mapped sequence to complete,
 " see https://unix.stackexchange.com/q/36882/221410 for more info

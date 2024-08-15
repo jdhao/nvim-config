@@ -1,5 +1,4 @@
 local keymap = vim.keymap
-local api = vim.api
 local uv = vim.uv
 
 -- Save key strokes (now we do not need to press shift to enter command mode).
@@ -215,9 +214,12 @@ keymap.set("n", "<leader>cb", function()
   local cnt = 0
   local blink_times = 7
   local timer = uv.new_timer()
+  if timer == nil then
+    return
+  end
 
   timer:start(0, 100, vim.schedule_wrap(function()
-    vim.cmd[[
+    vim.cmd [[
       set cursorcolumn!
       set cursorline!
     ]]
@@ -227,5 +229,7 @@ keymap.set("n", "<leader>cb", function()
     end
 
     cnt = cnt + 1
-  end))
-end)
+  end)
+  )
+end,
+  { desc = "show cursor" })

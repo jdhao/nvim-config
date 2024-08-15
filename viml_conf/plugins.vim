@@ -58,16 +58,6 @@ endif
 " Only fuzzy-search files names
 let g:Lf_DefaultMode = 'FullPath'
 
-" Popup window settings
-let w = float2nr(&columns * 0.8)
-if w > 140
-  let g:Lf_PopupWidth = 140
-else
-  let g:Lf_PopupWidth = w
-endif
-
-let g:Lf_PopupPosition = [0, float2nr((&columns - g:Lf_PopupWidth)/2)]
-
 " Do not use version control tool to list files under a directory since
 " submodules are not searched by default.
 let g:Lf_UseVersionControlTool = 0
@@ -129,8 +119,9 @@ if g:is_win || g:is_mac
   let g:netrw_nogx = 1
 
   " Use another mapping for the open URL method
-  nmap ob <Plug>(openbrowser-smart-search)
-  xmap ob <Plug>(openbrowser-smart-search)
+  nmap <leader>ob <Plug>(openbrowser-smart-search)
+  xmap <leader>ob <Plug>(openbrowser-smart-search)
+  nmap ob <cmd>echoerr "Use <leader>ob instead!"<CR>
 endif
 
 """"""""""""""""""""""""""" vista settings """"""""""""""""""""""""""""""""""
