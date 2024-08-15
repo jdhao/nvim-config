@@ -230,22 +230,6 @@ if utils.executable("lua-language-server") then
           -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
           version = "LuaJIT",
         },
-        diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = { "vim" },
-        },
-        workspace = {
-          -- Make the server aware of Neovim runtime files,
-          -- see also https://luals.github.io/wiki/settings/#workspacelibrary
-          library = {
-            vim.env.VIMRUNTIME,
-            fn.stdpath("config"),
-            -- make lua_ls aware of functions under vim.uv
-            "${3rd}/luv/library"
-          },
-          maxPreload = 2000,
-          preloadFileSize = 50000,
-        },
       },
     },
     capabilities = capabilities,
