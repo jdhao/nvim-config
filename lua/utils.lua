@@ -1,4 +1,5 @@
 local fn = vim.fn
+local version = vim.version
 
 local M = {}
 
@@ -48,6 +49,34 @@ function M.rand_element(seq)
   local idx = M.rand_int(1, #seq)
 
   return seq[idx]
+end
+
+--- check if the current nvim version is compatible with the allowed version
+--- @param expected_version string
+--- @return boolean
+function M.is_compatible_version(expected_version)
+  -- check if we have the latest stable version of nvim
+  local expect_ver = version.parse(expected_version)
+  local actual_ver = vim.version()
+
+  if expect_ver == nil then
+    local msg = string.format("Unsupported version string: %s", expected_version)
+    vim.api.nvim_err_writeln(msg)
+    return false
+  end
+
+  local result = version.cmp(expect_ver, actual_ver)
+  if result ~= 0 then
+    local _ver = string.format("%s.%s.%s", actual_ver.major, actual_ver.minor, actual_ver.patch)
+    local msg = string.format(
+      "Expect nvim version %s, but your current nvim version is %s. Use at your own risk!",
+      expected_version,
+      _ver
+    )
+    vim.api.nvim_err_writeln(msg)
+  end
+
+  return true
 end
 
 return M

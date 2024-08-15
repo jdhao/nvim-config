@@ -11,26 +11,10 @@
 -- StackOverflow: https://stackoverflow.com/users/6064933/jdhao
 vim.loader.enable()
 
-local version = vim.version
+local utils = require("utils")
 
--- check if we have the latest stable version of nvim
-local expected_ver_str = "0.10.1"
-local expect_ver = version.parse(expected_ver_str)
-local actual_ver = vim.version()
-
-if expect_ver == nil then
-  local msg = string.format("Unsupported version string: %s", expected_ver_str)
-  vim.api.nvim_err_writeln(msg)
-  return
-end
-
-local result = version.cmp(expect_ver, actual_ver)
-
-if  result ~= 0 then
-  local _ver = string.format("%s.%s.%s", actual_ver.major, actual_ver.minor, actual_ver.patch)
-  local msg = string.format("Expect nvim %s, but got %s instead. Use at your own risk!", expected_ver_str, _ver)
-  vim.api.nvim_err_writeln(msg)
-end
+local expected_version = "0.10.1"
+utils.is_compatible_version(expected_version)
 
 local core_conf_files = {
   "globals.lua", -- some global settings
