@@ -113,17 +113,6 @@ let g:Lf_PreviewResult = {
       \ 'Gtags': 0
       \}
 
-""""""""""""""""""""""""""""open-browser.vim settings"""""""""""""""""""
-if g:is_win || g:is_mac
-  " Disable netrw's gx mapping.
-  let g:netrw_nogx = 1
-
-  " Use another mapping for the open URL method
-  nmap <leader>ob <Plug>(openbrowser-smart-search)
-  xmap <leader>ob <Plug>(openbrowser-smart-search)
-  nmap ob <cmd>echoerr "Use <leader>ob instead!"<CR>
-endif
-
 """"""""""""""""""""""""""" vista settings """"""""""""""""""""""""""""""""""
 let g:vista#renderer#icons = {
       \ 'member': '',
