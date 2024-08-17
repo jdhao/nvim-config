@@ -10,8 +10,8 @@ keymap.set("v", "<leader>gb", ":Git blame<cr>", { desc = "Git: blame selected li
 -- convert git to Git in command line mode
 vim.fn["utils#Cabbrev"]("git", "Git")
 
-keymap.set("n", "<leader>gnb", function()
-  vim.ui.input({ prompt = "Enter the new branch nmae" }, function(user_input)
+keymap.set("n", "<leader>gbn", function()
+  vim.ui.input({ prompt = "Enter a new branch name" }, function(user_input)
     if user_input == nil or user_input == "" then
       return
     end
