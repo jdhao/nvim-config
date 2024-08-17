@@ -1,6 +1,6 @@
 require("bufferline").setup {
   options = {
-    numbers = "buffer_id",
+    numbers = "none",
     close_command = "bdelete! %d",
     right_mouse_command = nil,
     left_mouse_command = "buffer %d",
@@ -44,3 +44,7 @@ require("bufferline").setup {
     sort_by = "id",
   },
 }
+
+vim.keymap.set("n", "<space>bp", "<cmd>BufferLinePick<CR>", {
+  desc = "pick a buffer",
+})
