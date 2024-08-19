@@ -101,16 +101,14 @@ augroup END
 
 " ref: https://vi.stackexchange.com/a/169/15292
 function! s:handle_large_file() abort
-  let g:large_file = 10485760 " 10MB
+  let g:file_size_limit = 524288 " 0.5MB
   let f = expand("<afile>")
 
-  if getfsize(f) > g:large_file || getfsize(f) == -2
-    set eventignore+=all
+  if getfsize(f) > g:file_size_limit || getfsize(f) == -2
+    setlocal eventignore=all
     " turning off relative number helps a lot
-    set norelativenumber
-    setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1
-  else
-    set eventignore-=all relativenumber
+    setlocal norelativenumber
+    setlocal noswapfile bufhidden=unload undolevels=-1
   endif
 endfunction
 
