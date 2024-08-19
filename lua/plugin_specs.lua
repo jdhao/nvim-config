@@ -127,6 +127,15 @@ local plugin_specs = {
     },
   },
   {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      -- calling `setup` is optional for customization
+      require("fzf-lua").setup {}
+    end,
+  },
+  {
     "MeanderingProgrammer/markdown.nvim",
     main = "render-markdown",
     opts = {},
@@ -545,6 +554,26 @@ local plugin_specs = {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
     opts = {},
+  },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    dependencies = {
+      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+    },
+    opts = {
+      debug = true, -- Enable debugging
+      -- See Configuration section for rest
+    },
+    -- See Commands section for default commands if you want to lazy load on them
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    config = function()
+      require("copilot").setup {}
+    end,
   },
 }
 
