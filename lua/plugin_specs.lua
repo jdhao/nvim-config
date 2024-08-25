@@ -62,9 +62,6 @@ local plugin_specs = {
     end,
   },
 
-  -- Python indent (follows the PEP8 style)
-  { "Vimjas/vim-python-pep8-indent", ft = { "python" } },
-
   -- Python-related text object
   { "jeetsukumaran/vim-pythonsense", ft = { "python" } },
 
@@ -398,14 +395,6 @@ local plugin_specs = {
   },
 
   {
-    "folke/zen-mode.nvim",
-    cmd = "ZenMode",
-    config = function()
-      require("config.zen-mode")
-    end,
-  },
-
-  {
     "rhysd/vim-grammarous",
     enabled = function()
       if vim.g.is_mac then
@@ -456,7 +445,7 @@ local plugin_specs = {
 
   -- Modern matchit implementation
   { "andymass/vim-matchup", event = "BufRead" },
-  { "tpope/vim-scriptease", cmd = { "Scriptnames", "Message", "Verbose" } },
+  { "tpope/vim-scriptease", cmd = { "Scriptnames", "Messages", "Verbose" } },
 
   -- Asynchronous command execution
   { "skywind3000/asyncrun.vim", lazy = true, cmd = { "AsyncRun" } },
