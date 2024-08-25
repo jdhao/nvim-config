@@ -293,10 +293,10 @@ local plugin_specs = {
   -- Manage your yank history
   {
     "gbprod/yanky.nvim",
-    cmd = { "YankyRingHistory" },
     config = function()
       require("config.yanky")
     end,
+    event = "VeryLazy",
   },
 
   -- Handy unix command inside Vim (Rename, Move etc.)
