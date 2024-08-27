@@ -19,7 +19,7 @@ utils.is_compatible_version(expected_version)
 local core_conf_files = {
   "globals.lua", -- some global settings
   "options.vim", -- setting options in nvim
-  "autocommands.vim", -- various autocommands
+  "custom-autocmd.lua", -- various autocommands
   "mappings.lua", -- all the user-defined mappings
   "plugins.vim", -- all the plugins installed and their configurations
   "colorschemes.lua", -- colorscheme settings

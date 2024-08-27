@@ -38,8 +38,8 @@ api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   group = yank_group,
   callback = function(ev)
-    if vim.v.event.operator == 'y' then
-      vim.fn.setpos('.', vim.g.current_cursor_pos)
+    if vim.v.event.operator == "y" then
+      vim.fn.setpos(".", vim.g.current_cursor_pos)
     end
   end,
 })
@@ -102,4 +102,166 @@ local function open_nvim_tree(data)
   require("nvim-tree.api").tree.open()
 end
 
-vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+-- Do not use smart case in command line mode, extracted from https://vi.stackexchange.com/a/16511/15292.
+api.nvim_create_augroup("dynamic_smartcase", { clear = true })
+api.nvim_create_autocmd("CmdLineEnter", {
+  group = "dynamic_smartcase",
+  pattern = ":",
+  callback = function()
+    vim.o.smartcase = false
+  end,
+})
+
+api.nvim_create_autocmd("CmdLineLeave", {
+  group = "dynamic_smartcase",
+  pattern = ":",
+  callback = function()
+    vim.o.smartcase = true
+  end,
+})
+
+api.nvim_create_autocmd("TermOpen", {
+  group = api.nvim_create_augroup("term_start", { clear = true }),
+  pattern = "*",
+  callback = function()
+    -- Do not use number and relative number for terminal inside nvim
+    vim.wo.relativenumber = false
+    vim.wo.number = false
+
+    -- Go to insert mode by default to start typing command
+    vim.cmd("startinsert")
+  end,
+})
+
+-- Return to last cursor position when opening a file, note that here we cannot use BufReadPost
+-- as event. It seems that when BufReadPost is triggered, FileType event is still not run.
+-- So the filetype for this buffer is empty string.
+api.nvim_create_autocmd("FileType", {
+  group = api.nvim_create_augroup("resume_cursor_position", { clear = true }),
+  pattern = "*",
+  callback = function(ev)
+    local mark_pos = api.nvim_buf_get_mark(ev.buf, '"')
+    local last_cursor_line = mark_pos[1]
+
+    local max_line = vim.fn.line("$")
+    local buf_filetype = api.nvim_get_option_value("filetype", { buf = ev.buf })
+    local buftype = api.nvim_get_option_value("buftype", { buf = ev.buf })
+
+    -- only handle normal files
+    if buf_filetype == "" or buftype ~= "" then
+      return
+    end
+
+    -- Only resume last cursor position when there is no go-to-line command (something like '+23').
+    if vim.fn.match(vim.v.argv, [[\v^\+(\d){1,}$]]) ~= -1 then
+      return
+    end
+
+    if last_cursor_line > 1 and last_cursor_line <= max_line then
+      -- vim.print(string.format("mark_pos: %s", vim.inspect(mark_pos)))
+      -- it seems that without vim.schedule, the cursor position can not be set correctly
+      vim.schedule(function()
+        api.nvim_win_set_cursor(0, mark_pos)
+      end)
+    end
+  end,
+})
+
+local number_toggle_group = api.nvim_create_augroup("numbertoggle", { clear = true })
+api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
+  pattern = "*",
+  group = number_toggle_group,
+  desc = "togger line number",
+  callback = function()
+    if vim.wo.number then
+      vim.wo.relativenumber = true
+    end
+  end,
+})
+
+api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
+  group = number_toggle_group,
+  desc = "togger line number",
+  callback = function()
+    if vim.wo.number then
+      vim.wo.relativenumber = false
+    end
+  end,
+})
+
+api.nvim_create_autocmd("ColorScheme", {
+  group = api.nvim_create_augroup("custom_highlight", { clear = true }),
+  pattern = "*",
+  desc = "Define or overrride some highlight groups",
+  callback = function()
+    vim.cmd([[
+      " For yank highlight
+      highlight YankColor ctermfg=59 ctermbg=41 guifg=#34495E guibg=#2ECC71
+
+      " For cursor colors
+      highlight Cursor cterm=bold gui=bold guibg=#00c918 guifg=black
+      highlight Cursor2 guifg=red guibg=red
+
+      " For floating windows border highlight
+      highlight FloatBorder guifg=LightGreen guibg=NONE
+
+      " highlight for matching parentheses
+      highlight MatchParen cterm=bold,underline gui=bold,underline
+    ]])
+  end,
+})
+
+api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  group = api.nvim_create_augroup("auto_close_win", { clear = true }),
+  desc = "Quit Nvim if we have only one window, and its filetype match our pattern",
+  callback = function(ev)
+    local quit_filetypes = {'qf', 'vista', 'NvimTree'}
+
+    local should_quit = true
+    local tabwins = api.nvim_tabpage_list_wins(0)
+
+    for _, win in pairs(tabwins) do
+      local buf = api.nvim_win_get_buf(win)
+      local bf = fn.getbufvar(buf, '&filetype')
+
+      if fn.index(quit_filetypes, bf) == -1 then
+        should_quit = false
+      end
+    end
+
+    if should_quit then
+      vim.cmd("qall")
+    end
+  end
+})
+
+api.nvim_create_autocmd({"VimEnter", "DirChanged"}, {
+  group = api.nvim_create_augroup("git_repo_check", { clear = true }),
+  pattern = "*",
+  desc = "check if we are inside Git repo",
+  command = "call utils#Inside_git_repo()"
+})
+
+-- ref: https://vi.stackexchange.com/a/169/15292
+api.nvim_create_autocmd("BufReadPre", {
+  group = api.nvim_create_augroup("large_file", { clear = true }),
+  pattern = "*",
+  desc = "check if we are inside Git repo",
+  callback = function (ev)
+    local file_size_limit =524288 -- 0.5MB
+    local f = ev.file
+
+    if fn.getfsize(f) > file_size_limit or fn.getfsize(f) == -2 then
+      vim.o.eventignore = "all"
+      --  turning off relative number helps a lot
+      vim.bo.relativenumber = false
+
+      vim.bo.swapfile = false
+      vim.bo.bufhidden = "unload"
+      vim.bo.undolevels = -1
+    end
+  end
+})
