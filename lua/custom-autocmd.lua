@@ -163,7 +163,11 @@ api.nvim_create_autocmd("FileType", {
       -- vim.print(string.format("mark_pos: %s", vim.inspect(mark_pos)))
       -- it seems that without vim.schedule, the cursor position can not be set correctly
       vim.schedule(function()
-        api.nvim_win_set_cursor(0, mark_pos)
+        local status, result = pcall(api.nvim_win_set_cursor, 0, mark_pos)
+        if not status then
+          api.nvim_err_writeln(string.format("Failed to resume cursor position. Context %s, error: %s",
+          vim.inspect(ev), result))
+        end
       end)
     end
   end,
