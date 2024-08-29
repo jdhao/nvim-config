@@ -169,6 +169,10 @@ api.nvim_create_autocmd("FileType", {
           vim.inspect(ev), result))
         end
       end)
+      -- the following two ways also seem to work,
+      -- ref: https://www.reddit.com/r/neovim/comments/104lc26/how_can_i_press_escape_key_using_lua/
+      -- vim.api.nvim_feedkeys("g`\"", "n", true)
+      -- vim.fn.execute("normal! g`\"")
     end
   end,
 })
