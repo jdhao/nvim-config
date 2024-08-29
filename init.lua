@@ -9,6 +9,10 @@
 -- Blog: https://jdhao.github.io/
 -- GitHub: https://github.com/jdhao
 -- StackOverflow: https://stackoverflow.com/users/6064933/jdhao
+if vim.g.vscode then
+    -- VSCode extension
+else
+    -- ordinary Neovim
 vim.loader.enable()
 
 local version = vim.version
@@ -47,4 +51,6 @@ for _, file_name in ipairs(core_conf_files) do
     package.loaded[module_name] = nil
     require(module_name)
   end
+end
+
 end
