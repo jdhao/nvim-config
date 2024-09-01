@@ -3,11 +3,6 @@ local api = vim.api
 
 local utils = require('utils')
 
--- Inspect something
-function _G.inspect(item)
-  vim.print(item)
-end
-
 ------------------------------------------------------------------------
 --                          custom variables                          --
 ------------------------------------------------------------------------

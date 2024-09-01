@@ -43,7 +43,7 @@ local custom_attach = function(client, bufnr)
   map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, { desc = "add workspace folder" })
   map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, { desc = "remove workspace folder" })
   map("n", "<space>wl", function()
-    inspect(vim.lsp.buf.list_workspace_folders())
+    vim.print(vim.lsp.buf.list_workspace_folders())
   end, { desc = "list workspace folder" })
 
   -- Set some key bindings conditional on server capabilities
