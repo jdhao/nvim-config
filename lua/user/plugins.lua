@@ -43,8 +43,12 @@ return packer.startup(function(use)
   use { "wbthomason/packer.nvim" } -- Have packer manage itselfpu
   use { "nvim-lua/plenary.nvim" } -- Useful lua functions used by lots of plugins
   use { "numToStr/Comment.nvim" }
-  use { "kyazdani42/nvim-web-devicons" }
-  use { "kyazdani42/nvim-tree.lua" }
+  use { "nvim-tree/nvim-web-devicons" }
+  use { 'nvim-tree/nvim-tree.lua',
+    requires = {
+    'nvim-tree/nvim-web-devicons', -- optional
+    },
+  }
   use { "moll/vim-bbye" }
   use { "nvim-lualine/lualine.nvim" }
   use { "akinsho/toggleterm.nvim" }
