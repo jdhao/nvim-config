@@ -563,6 +563,16 @@ local plugin_specs = {
       require("copilot").setup {}
     end,
   },
+  {
+    "smjonas/live-command.nvim",
+    -- live-command supports semantic versioning via Git tags
+    -- tag = "2.*",
+    cmd = "Preview",
+    config = function()
+      require("config.live-command")
+    end,
+    event = "VeryLazy"
+  },
 }
 
 require("lazy").setup {
