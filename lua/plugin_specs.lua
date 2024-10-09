@@ -23,7 +23,8 @@ end
 local plugin_specs = {
   -- auto-completion engine
   {
-    "hrsh7th/nvim-cmp",
+    "iguanacucumber/magazine.nvim",
+    name = "nvim-cmp",
     -- event = 'InsertEnter',
     event = "VeryLazy",
     dependencies = {
@@ -38,7 +39,6 @@ local plugin_specs = {
       require("config.nvim-cmp")
     end,
   },
-
   {
     "neovim/nvim-lspconfig",
     event = { "BufRead", "BufNewFile" },
@@ -571,7 +571,7 @@ local plugin_specs = {
     config = function()
       require("config.live-command")
     end,
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
 }
 
