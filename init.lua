@@ -13,7 +13,7 @@ vim.loader.enable()
 
 local utils = require("utils")
 
-local expected_version = "0.10.1"
+local expected_version = "0.10.2"
 utils.is_compatible_version(expected_version)
 
 local config_dir = vim.fn.stdpath("config")
