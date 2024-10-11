@@ -58,6 +58,7 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 # Features #
 
 + Copilot via [GitHub Copilot Vim](https://github.com/github/copilot.vim).
++ Multiple cursors selection via [vim-visual-multi](https://github.com/mg979/vim-visual-multi).
 + Plugin management via [Lazy.nvim](https://github.com/folke/lazy.nvim).
 + Code, snippet, word auto-completion via [nvim-cmp](https://github.com/hrsh7th/nvim-cmp).
 + Language server protocol (LSP) support via [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
