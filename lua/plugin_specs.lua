@@ -21,6 +21,9 @@ local firenvim_not_active = function()
 end
 
 local plugin_specs = {
+  {
+    "github/copilot.vim",
+  },
   -- auto-completion engine
   {
     "iguanacucumber/magazine.nvim",

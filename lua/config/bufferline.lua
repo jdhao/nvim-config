@@ -5,6 +5,7 @@ require("bufferline").setup {
     right_mouse_command = nil,
     left_mouse_command = "buffer %d",
     middle_mouse_command = nil,
+    version = "v4.7.0",
     indicator = {
       icon = "▎", -- this should be omitted if indicator style is not 'icon'
       style = "icon",
