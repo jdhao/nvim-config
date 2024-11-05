@@ -573,6 +573,14 @@ local plugin_specs = {
     end,
     event = "VeryLazy",
   },
+  {
+    -- show hint for code actions, the user can also implement code actions themselves,
+    -- see discussion here: https://github.com/neovim/neovim/issues/14869
+    "kosayoda/nvim-lightbulb",
+    config = function()
+      require("nvim-lightbulb").setup { autocmd = { enabled = true } }
+    end,
+  },
 }
 
 require("lazy").setup {
