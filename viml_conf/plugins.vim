@@ -79,7 +79,7 @@ let g:Lf_WorkingDirectoryMode = 'a'
 nnoremap <silent> <leader>ff :<C-U>Leaderf file --popup<CR>
 
 " Grep project files in popup window
-nnoremap <silent> <leader>fg :<C-U>Leaderf rg --no-messages --popup<CR>
+nnoremap <silent> <leader>fg :<C-U>Leaderf rg --no-messages --popup  --nameOnly<CR>
 
 " Search vim help files
 nnoremap <silent> <leader>fh :<C-U>Leaderf help --popup<CR>
