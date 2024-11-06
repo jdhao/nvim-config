@@ -144,8 +144,7 @@ if utils.executable('pyright') then
   lspconfig.pyright.setup {
     cmd = { "delance-langserver", "--stdio" },
     on_attach = custom_attach,
-    -- capabilities = merged_capability,
-    capabilities = capabilities,
+    capabilities = merged_capability,
     settings = {
       pyright = {
         -- disable import sorting and use Ruff for this
