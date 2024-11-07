@@ -136,7 +136,11 @@ if utils.executable('pyright') then
         tagSupport = {
           valueSet = { 2 }
         }
-      }
+      },
+      hover = {
+        contentFormat = { "plaintext" },
+        dynamicRegistration = true,
+      },
     }
   }
   local merged_capability = vim.tbl_deep_extend("force", capabilities, new_capability)
