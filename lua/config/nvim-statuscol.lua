@@ -3,7 +3,7 @@ local ffi = require("statuscol.ffidef")
 local C = ffi.C
 
 -- only show fold level up to this level
-local fold_level_limit = 2
+local fold_level_limit = 3
 local function foldfunc(args)
   local foldinfo = C.fold_info(args.wp, args.lnum)
   if foldinfo.level > fold_level_limit then
