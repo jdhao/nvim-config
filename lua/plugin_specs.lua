@@ -363,9 +363,6 @@ local plugin_specs = {
     end,
   },
 
-  -- Better git commit experience
-  { "rhysd/committia.vim", lazy = true },
-
   {
     "sindrets/diffview.nvim",
   },
@@ -578,6 +575,14 @@ local plugin_specs = {
       require("config.live-command")
     end,
     event = "VeryLazy",
+  },
+  {
+    -- show hint for code actions, the user can also implement code actions themselves,
+    -- see discussion here: https://github.com/neovim/neovim/issues/14869
+    "kosayoda/nvim-lightbulb",
+    config = function()
+      require("nvim-lightbulb").setup { autocmd = { enabled = true } }
+    end,
   },
 }
 
