@@ -191,7 +191,6 @@ Some of the shortcuts I use frequently are listed here. In the following shortcu
 | `Alt-j`           | Normal        | Linux/macOS/Win | Move current line or selected lines down                                 |
 | `Alt-m`           | Normal        | macOS/Win       | Markdown previewing in system browser                                    |
 | `Alt-Shift-m`     | Normal        | macOS/Win       | Stopping Markdown previewing in system browser                           |
-| `ob`              | Normal/Visual | macOS/Win       | Open link under cursor or search visual selection                        |
 | `ctrl-u`          | Insert        | Linux/macOS/Win | Turn word under cursor to upper case                                     |
 | `ctrl-t`          | Insert        | Linux/macOS/Win | Turn word under cursor to title case                                     |
 | `jk`              | Insert        | Linux/macOS/Win | Return to Normal mode without lagging                                    |
@@ -206,6 +205,7 @@ In addition to commands provided by various plugins, I have also created some cu
 | `Edit`       | edit multiple files at the same time, supports globing                  | `Edit *.vim`                   |
 | `Datetime`   | print current date and time or convert Unix time stamp to date and time | `Datetime 12345` or `Datetime` |
 | `JSONFormat` | format a JSON file                                                      | `JSONFormat`                   |
+| `CopyPath`   | copy current file path to clipboard                                     | `CopyPath relative`            |
 
 # Contributing
 
