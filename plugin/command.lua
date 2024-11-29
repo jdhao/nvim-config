@@ -16,7 +16,7 @@ vim.api.nvim_create_user_command("CopyPath", function(context)
       return
     end
 
-    file_path = string.gsub(full_path, project_root, "<project-root>")
+    file_path = vim.fn.substitute(full_path, project_root, "<project-root>", "g")
   end
 
   if context["args"] == "absolute" then
