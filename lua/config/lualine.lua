@@ -175,8 +175,8 @@ require("lualine").setup {
         source = diff,
       },
       {
-        ime_state,
-        color = { fg = "black", bg = "#f46868" },
+        "%S",
+        color = { gui = "bold", fg = "cyan" },
       },
       {
         spell,
@@ -184,6 +184,10 @@ require("lualine").setup {
       },
     },
     lualine_x = {
+      {
+        ime_state,
+        color = { fg = "black", bg = "#f46868" },
+      },
       {
         get_active_lsp,
         icon = " LSP:",
