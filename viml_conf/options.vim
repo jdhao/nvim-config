@@ -179,3 +179,5 @@ set diffopt+=linematch:60
 
 set nowrap  " do no wrap
 set noruler
+
+set showcmdloc=statusline
