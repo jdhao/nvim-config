@@ -59,17 +59,17 @@ conf.center = {
   },
 }
 
-dashboard.setup({
-  theme = 'doom',
-  shortcut_type = 'number',
-  config = conf
-})
+dashboard.setup {
+  theme = "doom",
+  shortcut_type = "number",
+  config = conf,
+}
 
 api.nvim_create_autocmd("FileType", {
   pattern = "dashboard",
   group = api.nvim_create_augroup("dashboard_enter", { clear = true }),
-  callback = function ()
+  callback = function()
     keymap.set("n", "q", ":qa<CR>", { buffer = true, silent = true })
     keymap.set("n", "e", ":enew<CR>", { buffer = true, silent = true })
-  end
+  end,
 })

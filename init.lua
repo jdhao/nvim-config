@@ -28,6 +28,6 @@ require("custom-autocmd")
 -- all the user-defined mappings
 require("mappings")
 -- all the plugins installed and their configurations
-vim.cmd("source ".. vim.fs.joinpath(config_dir, "viml_conf/plugins.vim"))
+vim.cmd("source " .. vim.fs.joinpath(config_dir, "viml_conf/plugins.vim"))
 -- colorscheme settings
 require("colorschemes")
