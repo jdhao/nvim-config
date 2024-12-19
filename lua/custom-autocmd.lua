@@ -165,8 +165,9 @@ api.nvim_create_autocmd("FileType", {
       vim.schedule(function()
         local status, result = pcall(api.nvim_win_set_cursor, 0, mark_pos)
         if not status then
-          api.nvim_err_writeln(string.format("Failed to resume cursor position. Context %s, error: %s",
-          vim.inspect(ev), result))
+          api.nvim_err_writeln(
+            string.format("Failed to resume cursor position. Context %s, error: %s", vim.inspect(ev), result)
+          )
         end
       end)
       -- the following two ways also seem to work,
@@ -204,20 +205,18 @@ api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   desc = "Define or overrride some highlight groups",
   callback = function()
-    vim.cmd([[
-      " For yank highlight
-      highlight YankColor ctermfg=59 ctermbg=41 guifg=#34495E guibg=#2ECC71
+    -- For yank highlight
+    vim.api.nvim_set_hl(0, "YankColor", { fg = "#34495E", bg = "#2ECC71", ctermfg = 59, ctermbg = 41 })
 
-      " For cursor colors
-      highlight Cursor cterm=bold gui=bold guibg=#00c918 guifg=black
-      highlight Cursor2 guifg=red guibg=red
+    -- For cursor colors
+    vim.api.nvim_set_hl(0, "Cursor", { fg = "black", bg = "#00c918", bold = true })
+    vim.api.nvim_set_hl(0, "Cursor2", { fg = "red", bg = "red" })
 
-      " For floating windows border highlight
-      highlight FloatBorder guifg=LightGreen guibg=NONE
+    -- For floating windows border highlight
+    vim.api.nvim_set_hl(0, "FloatBorder", { fg = "LightGreen" })
 
-      " highlight for matching parentheses
-      highlight MatchParen cterm=bold,underline gui=bold,underline
-    ]])
+    -- highlight for matching parentheses
+    vim.api.nvim_set_hl(0, "MatchParen", { bold = true, underline = true })
   end,
 })
 
@@ -226,14 +225,14 @@ api.nvim_create_autocmd("BufEnter", {
   group = api.nvim_create_augroup("auto_close_win", { clear = true }),
   desc = "Quit Nvim if we have only one window, and its filetype match our pattern",
   callback = function(ev)
-    local quit_filetypes = {'qf', 'vista', 'NvimTree'}
+    local quit_filetypes = { "qf", "vista", "NvimTree" }
 
     local should_quit = true
     local tabwins = api.nvim_tabpage_list_wins(0)
 
     for _, win in pairs(tabwins) do
       local buf = api.nvim_win_get_buf(win)
-      local bf = fn.getbufvar(buf, '&filetype')
+      local bf = fn.getbufvar(buf, "&filetype")
 
       if fn.index(quit_filetypes, bf) == -1 then
         should_quit = false
@@ -243,14 +242,14 @@ api.nvim_create_autocmd("BufEnter", {
     if should_quit then
       vim.cmd("qall")
     end
-  end
+  end,
 })
 
-api.nvim_create_autocmd({"VimEnter", "DirChanged"}, {
+api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
   group = api.nvim_create_augroup("git_repo_check", { clear = true }),
   pattern = "*",
   desc = "check if we are inside Git repo",
-  command = "call utils#Inside_git_repo()"
+  command = "call utils#Inside_git_repo()",
 })
 
 -- ref: https://vi.stackexchange.com/a/169/15292
@@ -258,8 +257,8 @@ api.nvim_create_autocmd("BufReadPre", {
   group = api.nvim_create_augroup("large_file", { clear = true }),
   pattern = "*",
   desc = "check if we are inside Git repo",
-  callback = function (ev)
-    local file_size_limit =524288 -- 0.5MB
+  callback = function(ev)
+    local file_size_limit = 524288 -- 0.5MB
     local f = ev.file
 
     if fn.getfsize(f) > file_size_limit or fn.getfsize(f) == -2 then
@@ -271,5 +270,5 @@ api.nvim_create_autocmd("BufReadPre", {
       vim.bo.bufhidden = "unload"
       vim.bo.undolevels = -1
     end
-  end
+  end,
 })
