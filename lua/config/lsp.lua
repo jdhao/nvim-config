@@ -50,7 +50,7 @@ local custom_attach = function(client, bufnr)
   end, { desc = "list workspace folder" })
 
   -- Set some key bindings conditional on server capabilities
-  if client.server_capabilities.documentFormattingProvider then
+  if client.server_capabilities.documentFormattingProvider and client.name ~= "lua_ls" then
     map({ "n", "x" }, "<space>f", vim.lsp.buf.format, { desc = "format code" })
   end
 
