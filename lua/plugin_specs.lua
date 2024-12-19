@@ -542,7 +542,6 @@ local plugin_specs = {
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
@@ -578,6 +577,17 @@ local plugin_specs = {
       require("nvim-lightbulb").setup { autocmd = { enabled = true } }
     end,
   },
+  {
+    "Bekaboo/dropbar.nvim",
+  },
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
+    opts = {
+      rocks = { "lua-toml" }, -- specifies a list of rocks to install
+      -- luarocks_build_args = { "--with-lua=/my/path" }, -- extra options to pass to luarocks's configuration script
+    },
+  },
 }
 
 require("lazy").setup {
@@ -589,5 +599,6 @@ require("lazy").setup {
   },
   rocks = {
     enabled = false,
+    hererocks = false,
   },
 }
