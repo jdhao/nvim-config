@@ -50,18 +50,18 @@ M.colorscheme_conf = {
   end,
   onedarkpro = function()
     -- set colorscheme after options
-    vim.cmd('colorscheme onedark_vivid')
+    vim.cmd("colorscheme onedark_vivid")
   end,
   material = function()
     vim.g.material_style = "oceanic"
-    vim.cmd('colorscheme material')
+    vim.cmd("colorscheme material")
   end,
-  arctic = function ()
+  arctic = function()
     vim.cmd("colorscheme arctic")
   end,
   kanagawa = function()
     vim.cmd("colorscheme kanagawa-wave")
-  end
+  end,
 }
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.

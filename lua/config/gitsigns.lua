@@ -45,13 +45,13 @@ gs.setup {
   end,
 }
 
-vim.api.nvim_create_autocmd('ColorScheme', {
+vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   callback = function()
-    vim.cmd [[
+    vim.cmd([[
       hi GitSignsChangeInline gui=reverse
       hi GitSignsAddInline gui=reverse
       hi GitSignsDeleteInline gui=reverse
-    ]]
-  end
+    ]])
+  end,
 })

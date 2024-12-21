@@ -4,4 +4,4 @@ set formatoptions-=r
 
 nnoremap <buffer><silent> <F9> :luafile %<CR>
 
-nnoremap <buffer><silent> <space>f <cmd>!stylua %<CR>
+nnoremap <buffer><silent> <space>f <cmd>silent !stylua %<CR>
