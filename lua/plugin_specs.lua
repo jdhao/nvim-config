@@ -594,6 +594,31 @@ local plugin_specs = {
     version = '^5', -- Recommended
     lazy = false, -- This plugin is already lazy
   },
+  -- Lazygit
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+      -- map <Ctrl-g> to Esc for cancel
+      { "<C-g>", "<Esc>", mode = "t"},
+      -- remap <Esc> ensure its behaviors not conflict by other keymap
+      { "<Esc>", "<Esc>", mode = "t"},
+    }
+  },
 }
 
 require("lazy").setup {
