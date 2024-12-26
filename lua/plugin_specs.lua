@@ -588,6 +588,12 @@ local plugin_specs = {
       -- luarocks_build_args = { "--with-lua=/my/path" }, -- extra options to pass to luarocks's configuration script
     },
   },
+  -- Rust
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^5', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
 }
 
 require("lazy").setup {
