@@ -512,7 +512,16 @@ local plugin_specs = {
     priority = 1000,
     lazy = false,
     opts = {
-      input = { enabled = true },
+      -- more beautiful vim.ui.input
+      input = {
+        enabled = true,
+        win = {
+          relative = "cursor",
+          backdrop = true,
+        },
+      },
+      -- more beautiful vim.ui.select
+      picker = { enabled = true },
     },
   },
   -- show and trim trailing whitespaces
