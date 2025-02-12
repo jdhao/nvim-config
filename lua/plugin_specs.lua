@@ -278,14 +278,8 @@ local plugin_specs = {
   -- Multiple cursor plugin like Sublime Text?
   -- 'mg979/vim-visual-multi'
 
-  -- Autosave files on certain events
-  { "907th/vim-auto-save", event = "InsertEnter" },
-
   -- Show undo history visually
   { "simnalamburt/vim-mundo", cmd = { "MundoToggle", "MundoShow" } },
-
-  -- better UI for some nvim actions
-  { "stevearc/dressing.nvim" },
 
   -- Manage your yank history
   {
@@ -513,7 +507,14 @@ local plugin_specs = {
       require("config.which-key")
     end,
   },
-
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      input = { enabled = true },
+    },
+  },
   -- show and trim trailing whitespaces
   { "jdhao/whitespace.nvim", event = "VeryLazy" },
 
