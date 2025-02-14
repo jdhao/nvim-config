@@ -135,49 +135,6 @@ api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
--- Return to last cursor position when opening a file, note that here we cannot use BufReadPost
--- as event. It seems that when BufReadPost is triggered, FileType event is still not run.
--- So the filetype for this buffer is empty string.
-api.nvim_create_autocmd("FileType", {
-  group = api.nvim_create_augroup("resume_cursor_position", { clear = true }),
-  pattern = "*",
-  callback = function(ev)
-    local mark_pos = api.nvim_buf_get_mark(ev.buf, '"')
-    local last_cursor_line = mark_pos[1]
-
-    local max_line = vim.fn.line("$")
-    local buf_filetype = api.nvim_get_option_value("filetype", { buf = ev.buf })
-    local buftype = api.nvim_get_option_value("buftype", { buf = ev.buf })
-
-    -- only handle normal files
-    if buf_filetype == "" or buftype ~= "" then
-      return
-    end
-
-    -- Only resume last cursor position when there is no go-to-line command (something like '+23').
-    if vim.fn.match(vim.v.argv, [[\v^\+(\d){1,}$]]) ~= -1 then
-      return
-    end
-
-    if last_cursor_line > 1 and last_cursor_line <= max_line then
-      -- vim.print(string.format("mark_pos: %s", vim.inspect(mark_pos)))
-      -- it seems that without vim.schedule, the cursor position can not be set correctly
-      vim.schedule(function()
-        local status, result = pcall(api.nvim_win_set_cursor, 0, mark_pos)
-        if not status then
-          api.nvim_err_writeln(
-            string.format("Failed to resume cursor position. Context %s, error: %s", vim.inspect(ev), result)
-          )
-        end
-      end)
-      -- the following two ways also seem to work,
-      -- ref: https://www.reddit.com/r/neovim/comments/104lc26/how_can_i_press_escape_key_using_lua/
-      -- vim.api.nvim_feedkeys("g`\"", "n", true)
-      -- vim.fn.execute("normal! g`\"")
-    end
-  end,
-})
-
 local number_toggle_group = api.nvim_create_augroup("numbertoggle", { clear = true })
 api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
   pattern = "*",
