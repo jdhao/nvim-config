@@ -1,5 +1,111 @@
 local fn = vim.fn
 
+local git_status_cache = {}
+
+local get_cmd_out = function(cmd)
+  local result = vim.system(cmd, { text = true }):wait()
+
+  if result.code ~= 0 then
+    -- vim.print(vim.inspect(result))
+    return false, result.stderr
+  end
+
+  return true, result.stdout
+end
+
+local function split_cmd_string(cmd_str)
+  return vim.tbl_filter(function(element)
+    if element ~= "" then
+      return true
+    end
+    return false
+  end, vim.split(cmd_str, " "))
+end
+
+local function get_branch_name()
+  local branch_cmd_str = "git rev-parse --abbrev-ref HEAD"
+  local branch_cmd = split_cmd_string(branch_cmd_str)
+  local success, branch_output = get_cmd_out(branch_cmd)
+
+  if not success then
+    return
+  end
+  local branch_name = string.gsub(branch_output, "\n$", "")
+  -- print(string.format("branch: %s", branch_name))
+
+  return branch_name
+end
+
+local function update_git_status()
+  -- Fetch the latest changes from the remote repository (replace 'origin' if needed)
+  local fetch_cmd = split_cmd_string("git fetch origin")
+
+  local fetch_success, _ = get_cmd_out(fetch_cmd)
+  if not fetch_success then
+    return
+  end
+
+  local branch_name = get_branch_name()
+  if branch_name == nil then
+    return
+  end
+
+  -- Get the number of commits behind
+  local behind_cmd_str = string.format("git rev-list --count %s..origin/%s", branch_name, branch_name)
+  local behind_cmd = split_cmd_string(behind_cmd_str)
+  local behind_success, behind_output = get_cmd_out(behind_cmd)
+  if behind_success then
+    local behind_count = tonumber(behind_output:match("(%d+)")) or 0
+    git_status_cache.behind = behind_count
+  end
+
+  -- Get the number of commits ahead
+  local ahead_cmd_str = string.format("git rev-list --count origin/%s..%s", branch_name, branch_name)
+  local ahead_cmd = split_cmd_string(ahead_cmd_str)
+  local ahead_success, ahead_output = get_cmd_out(ahead_cmd)
+  if ahead_success then
+    local ahead_count = tonumber(ahead_output:match("(%d+)")) or 0
+    git_status_cache.ahead = ahead_count
+  end
+end
+
+local function get_ahead_behind_info()
+  local status = git_status_cache
+  if not status then
+    return ""
+  end
+
+  local msg = ""
+
+  if type(status.behind) == "number" and status.behind > 0 then
+    local behind_str = string.format("↓[%d] ", status.behind)
+    msg = msg .. behind_str
+  end
+
+  if type(status.ahead) == "number" and status.ahead > 0 then
+    local ahead_str = string.format("↑[%d] ", status.ahead)
+    msg = msg .. ahead_str
+  end
+
+  return msg
+end
+
+local timer = vim.uv.new_timer()
+
+local branch_name = get_branch_name()
+-- run frequency in seconds
+local interval = 30
+local ms = interval * 1000
+if branch_name ~= nil then
+  timer:start(
+    0,
+    ms,
+    vim.schedule_wrap(function()
+      update_git_status()
+    end)
+  )
+end
+
 local function spell()
   if vim.o.spell then
     return string.format("[SPELL]")
@@ -119,7 +225,7 @@ local virtual_env = function()
 end
 
 local get_active_lsp = function()
-  local msg = "No Active Lsp"
+  local msg = "🚫"
   local buf_ft = vim.api.nvim_get_option_value("filetype", {})
   local clients = vim.lsp.get_clients { bufnr = 0 }
   if next(clients) == nil then
@@ -147,7 +253,12 @@ require("lualine").setup {
   },
   sections = {
     lualine_a = {
-      "mode",
+      {
+        "filename",
+        symbols = {
+          readonly = "[🔒]",
+        },
+      },
     },
     lualine_b = {
       {
@@ -159,21 +270,20 @@ require("lualine").setup {
         color = { gui = "italic,bold" },
       },
       {
-        virtual_env,
-        color = { fg = "black", bg = "#F1CA81" },
-      },
-    },
-    lualine_c = {
-      {
-        "filename",
-        symbols = {
-          readonly = "[🔒]",
-        },
+        get_ahead_behind_info,
+        -- "",
+        color = { fg = "#E0C479" },
       },
       {
         "diff",
         source = diff,
       },
+      {
+        virtual_env,
+        color = { fg = "black", bg = "#F1CA81" },
+      },
+    },
+    lualine_c = {
       {
         "%S",
         color = { gui = "bold", fg = "cyan" },
@@ -185,21 +295,28 @@ require("lualine").setup {
     },
     lualine_x = {
       {
-        ime_state,
-        color = { fg = "black", bg = "#f46868" },
-      },
-      {
         get_active_lsp,
-        icon = " LSP:",
+        icon = "📡",
       },
       {
         "diagnostics",
         sources = { "nvim_diagnostic" },
         symbols = { error = "🆇 ", warn = "⚠️ ", info = "ℹ️ ", hint = " " },
       },
+      {
+        trailing_space,
+        color = "WarningMsg",
+      },
+      {
+        mixed_indent,
+        color = "WarningMsg",
+      },
     },
     lualine_y = {
-      { "encoding", fmt = string.upper },
+      {
+        "encoding",
+        fmt = string.upper,
+      },
       {
         "fileformat",
         symbols = {
@@ -209,16 +326,12 @@ require("lualine").setup {
         },
       },
       "filetype",
+      {
+        ime_state,
+        color = { fg = "black", bg = "#f46868" },
+      },
     },
     lualine_z = {
-      {
-        trailing_space,
-        color = "WarningMsg",
-      },
-      {
-        mixed_indent,
-        color = "WarningMsg",
-      },
       "location",
       "progress",
     },
