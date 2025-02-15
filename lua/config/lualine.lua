@@ -90,7 +90,7 @@ local function get_ahead_behind_info()
   return msg
 end
 
-local timer = vim.loop.new_timer()
+local timer = vim.uv.new_timer()
 
 local branch_name = get_branch_name()
 -- run frequency in seconds
