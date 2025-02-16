@@ -61,10 +61,14 @@ local plugin_specs = {
       require("config.treesitter")
     end,
   },
-
-  -- Python-related text object
-  { "jeetsukumaran/vim-pythonsense", ft = { "python" } },
-
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    event = "VeryLazy",
+    branch = "master",
+    config = function()
+      require("config.treesitter-textobjects")
+    end,
+  },
   { "machakann/vim-swap", event = "VeryLazy" },
 
   -- IDE for Lisp
