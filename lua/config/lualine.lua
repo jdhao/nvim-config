@@ -32,6 +32,8 @@ local async_git_status_update = function()
   end
 
   -- Get the number of commits behind
+  -- the @{upstream} notation is inspired by post: https://www.reddit.com/r/neovim/comments/t48x5i/git_branch_aheadbehind_info_status_line_component/
+  -- note that here we should use double dots instead of triple dots
   local behind_cmd_str = "git rev-list --count HEAD..@{upstream}"
   async_cmd(behind_cmd_str, handle_numeric_result("behind_count"))
 
