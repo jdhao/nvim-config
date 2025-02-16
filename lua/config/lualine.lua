@@ -2,12 +2,6 @@ local fn = vim.fn
 
 local git_status_cache = {}
 
-local on_exit_branch_name = function(result)
-  if result.code == 0 then
-    git_status_cache.branch_name = string.gsub(result.stdout, "\n$", "")
-  end
-end
-
 local on_exit_fetch = function(result)
   if result.code == 0 then
     git_status_cache.fetch_success = true
@@ -31,31 +25,18 @@ local async_cmd = function(cmd_str, on_exit)
 end
 
 local async_git_status_update = function()
-  -- Get branch name
-  local branch_cmd_str = "git rev-parse --abbrev-ref HEAD"
-  async_cmd(branch_cmd_str, on_exit_branch_name)
-
-  if git_status_cache.branch_name == nil then
-    return
-  end
-
   -- Fetch the latest changes from the remote repository (replace 'origin' if needed)
   async_cmd("git fetch origin", on_exit_fetch)
   if not git_status_cache.fetch_success then
     return
   end
 
-  local branch_name = git_status_cache.branch_name
-  if not branch_name then
-    return
-  end
-
   -- Get the number of commits behind
-  local behind_cmd_str = string.format("git rev-list --count %s..origin/%s", branch_name, branch_name)
+  local behind_cmd_str = "git rev-list --count HEAD..@{upstream}"
   async_cmd(behind_cmd_str, handle_numeric_result("behind_count"))
 
   -- Get the number of commits ahead
-  local ahead_cmd_str = string.format("git rev-list --count origin/%s..%s", branch_name, branch_name)
+  local ahead_cmd_str = "git rev-list --count @{upstream}..HEAD"
   async_cmd(ahead_cmd_str, handle_numeric_result("ahead_count"))
 end
 
