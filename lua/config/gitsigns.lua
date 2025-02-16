@@ -8,7 +8,7 @@ gs.setup {
     topdelete = { text = "‾" },
     changedelete = { text = "│" },
   },
-  word_diff = true,
+  word_diff = false,
   on_attach = function(bufnr)
     local function map(mode, l, r, opts)
       opts = opts or {}
@@ -38,10 +38,10 @@ gs.setup {
     end, { expr = true, desc = "previous hunk" })
 
     -- Actions
-    map("n", "<leader>hp", gs.preview_hunk)
+    map("n", "<leader>hp", gs.preview_hunk, { desc = "preview hunk" })
     map("n", "<leader>hb", function()
       gs.blame_line { full = true }
-    end)
+    end, { desc = "blame hunk" })
   end,
 }
 

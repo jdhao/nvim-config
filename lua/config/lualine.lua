@@ -42,7 +42,9 @@ local async_git_status_update = function()
   async_cmd(ahead_cmd_str, handle_numeric_result("ahead_count"))
 end
 
-local function get_ahead_behind_info()
+local function get_git_ahead_behind_info()
+  async_git_status_update()
+
   local status = git_status_cache
   if not status then
     return ""
@@ -62,9 +64,6 @@ local function get_ahead_behind_info()
 
   return msg
 end
-
-local timer = vim.loop.new_timer()
-timer:start(0, 1000, async_git_status_update)
 
 local function spell()
   if vim.o.spell then
@@ -210,6 +209,9 @@ require("lualine").setup {
     section_separators = "",
     disabled_filetypes = {},
     always_divide_middle = true,
+    refresh = {
+      statusline = 500,
+    },
   },
   sections = {
     lualine_a = {
@@ -230,7 +232,7 @@ require("lualine").setup {
         color = { gui = "italic,bold" },
       },
       {
-        get_ahead_behind_info,
+        get_git_ahead_behind_info,
         color = { fg = "#E0C479" },
       },
       {
