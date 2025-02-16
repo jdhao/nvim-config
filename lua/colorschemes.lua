@@ -1,5 +1,4 @@
 --- This module will load a random colorscheme on nvim startup process.
-
 local utils = require("utils")
 
 local M = {}
@@ -8,9 +7,14 @@ local M = {}
 -- the same as the colorscheme name itself.
 M.colorscheme_conf = {
   onedark = function()
-    vim.cmd([[colorscheme onedark]])
+    -- Lua
+    require("onedark").setup {
+      style = "darker",
+    }
+    require("onedark").load()
   end,
   edge = function()
+    vim.g.edge_style = "default"
     vim.g.edge_enable_italic = 1
     vim.g.edge_better_performance = 1
 
@@ -26,13 +30,14 @@ M.colorscheme_conf = {
     -- foreground option can be material, mix, or original
     vim.g.gruvbox_material_foreground = "original"
     --background option can be hard, medium, soft
-    vim.g.gruvbox_material_background = "medium"
+    vim.g.gruvbox_material_background = "hard"
     vim.g.gruvbox_material_enable_italic = 1
     vim.g.gruvbox_material_better_performance = 1
 
     vim.cmd([[colorscheme gruvbox-material]])
   end,
   everforest = function()
+    vim.g.everforest_background = "hard"
     vim.g.everforest_enable_italic = 1
     vim.g.everforest_better_performance = 1
 
@@ -50,10 +55,11 @@ M.colorscheme_conf = {
   end,
   onedarkpro = function()
     -- set colorscheme after options
-    vim.cmd("colorscheme onedark_vivid")
+    -- onedark_vivid does not enough contrast
+    vim.cmd("colorscheme onedark_dark")
   end,
   material = function()
-    vim.g.material_style = "oceanic"
+    vim.g.material_style = "darker"
     vim.cmd("colorscheme material")
   end,
   arctic = function()
@@ -67,6 +73,7 @@ M.colorscheme_conf = {
 --- Use a random colorscheme from the pre-defined list of colorschemes.
 M.rand_colorscheme = function()
   local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme_conf))
+  colorscheme = "gruvbox_material"
 
   if not vim.tbl_contains(vim.tbl_keys(M.colorscheme_conf), colorscheme) then
     local msg = "Invalid colorscheme: " .. colorscheme
