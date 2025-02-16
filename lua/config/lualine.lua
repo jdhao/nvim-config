@@ -2,71 +2,61 @@ local fn = vim.fn
 
 local git_status_cache = {}
 
-local get_cmd_out = function(cmd)
-  local result = vim.system(cmd, { text = true }):wait()
-
-  if result.code ~= 0 then
-    -- vim.print(vim.inspect(result))
-    return false, result.stderr
+local on_exit_branch_name = function(result)
+  if result.code == 0 then
+    git_status_cache.branch_name = string.gsub(result.stdout, "\n$", "")
   end
-
-  return true, result.stdout
 end
 
-local function split_cmd_string(cmd_str)
-  return vim.tbl_filter(function(element)
-    if element ~= "" then
-      return true
+local on_exit_fetch = function(result)
+  if result.code == 0 then
+    git_status_cache.fetch_success = true
+  end
+end
+
+local function handle_numeric_result(cache_key)
+  return function(result)
+    if result.code == 0 then
+      git_status_cache[cache_key] = tonumber(result.stdout:match("(%d+)")) or 0
     end
-    return false
+  end
+end
+
+local async_cmd = function(cmd_str, on_exit)
+  local cmd = vim.tbl_filter(function(element)
+    return element ~= ""
   end, vim.split(cmd_str, " "))
+
+  vim.system(cmd, { text = true }, on_exit)
 end
 
-local function get_branch_name()
+local async_git_status_update = function()
+  -- Get branch name
   local branch_cmd_str = "git rev-parse --abbrev-ref HEAD"
-  local branch_cmd = split_cmd_string(branch_cmd_str)
-  local success, branch_output = get_cmd_out(branch_cmd)
+  async_cmd(branch_cmd_str, on_exit_branch_name)
 
-  if not success then
+  if git_status_cache.branch_name == nil then
     return
   end
-  local branch_name = string.gsub(branch_output, "\n$", "")
-  -- print(string.format("branch: %s", branch_name))
 
-  return branch_name
-end
-
-local function update_git_status()
   -- Fetch the latest changes from the remote repository (replace 'origin' if needed)
-  local fetch_cmd = split_cmd_string("git fetch origin")
-
-  local fetch_success, _ = get_cmd_out(fetch_cmd)
-  if not fetch_success then
+  async_cmd("git fetch origin", on_exit_fetch)
+  if not git_status_cache.fetch_success then
     return
   end
 
-  local branch_name = get_branch_name()
-  if branch_name == nil then
+  local branch_name = git_status_cache.branch_name
+  if not branch_name then
     return
   end
 
   -- Get the number of commits behind
   local behind_cmd_str = string.format("git rev-list --count %s..origin/%s", branch_name, branch_name)
-  local behind_cmd = split_cmd_string(behind_cmd_str)
-  local behind_success, behind_output = get_cmd_out(behind_cmd)
-  if behind_success then
-    local behind_count = tonumber(behind_output:match("(%d+)")) or 0
-    git_status_cache.behind = behind_count
-  end
+  async_cmd(behind_cmd_str, handle_numeric_result("behind_count"))
 
   -- Get the number of commits ahead
   local ahead_cmd_str = string.format("git rev-list --count origin/%s..%s", branch_name, branch_name)
-  local ahead_cmd = split_cmd_string(ahead_cmd_str)
-  local ahead_success, ahead_output = get_cmd_out(ahead_cmd)
-  if ahead_success then
-    local ahead_count = tonumber(ahead_output:match("(%d+)")) or 0
-    git_status_cache.ahead = ahead_count
-  end
+  async_cmd(ahead_cmd_str, handle_numeric_result("ahead_count"))
 end
 
 local function get_ahead_behind_info()
@@ -77,34 +67,21 @@ local function get_ahead_behind_info()
 
   local msg = ""
 
-  if type(status.behind) == "number" and status.behind > 0 then
-    local behind_str = string.format("↓[%d] ", status.behind)
-    msg = msg .. behind_str
+  if type(status.ahead_count) == "number" and status.ahead_count > 0 then
+    local ahead_str = string.format("↑[%d] ", status.ahead_count)
+    msg = msg .. ahead_str
   end
 
-  if type(status.ahead) == "number" and status.ahead > 0 then
-    local ahead_str = string.format("↑[%d] ", status.ahead)
-    msg = msg .. ahead_str
+  if type(status.behind_count) == "number" and status.behind_count > 0 then
+    local behind_str = string.format("↓[%d] ", status.behind_count)
+    msg = msg .. behind_str
   end
 
   return msg
 end
 
-local timer = vim.uv.new_timer()
-
-local branch_name = get_branch_name()
--- run frequency in seconds
-local interval = 30
-local ms = interval * 1000
-if branch_name ~= nil then
-  timer:start(
-    0,
-    ms,
-    vim.schedule_wrap(function()
-      update_git_status()
-    end)
-  )
-end
+local timer = vim.loop.new_timer()
+timer:start(0, 1000, async_git_status_update)
 
 local function spell()
   if vim.o.spell then
@@ -271,7 +248,6 @@ require("lualine").setup {
       },
       {
         get_ahead_behind_info,
-        -- "",
         color = { fg = "#E0C479" },
       },
       {
