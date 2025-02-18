@@ -1,5 +1,70 @@
 local fn = vim.fn
 
+local git_status_cache = {}
+
+local on_exit_fetch = function(result)
+  if result.code == 0 then
+    git_status_cache.fetch_success = true
+  end
+end
+
+local function handle_numeric_result(cache_key)
+  return function(result)
+    if result.code == 0 then
+      git_status_cache[cache_key] = tonumber(result.stdout:match("(%d+)")) or 0
+    end
+  end
+end
+
+local async_cmd = function(cmd_str, on_exit)
+  local cmd = vim.tbl_filter(function(element)
+    return element ~= ""
+  end, vim.split(cmd_str, " "))
+
+  vim.system(cmd, { text = true }, on_exit)
+end
+
+local async_git_status_update = function()
+  -- Fetch the latest changes from the remote repository (replace 'origin' if needed)
+  async_cmd("git fetch origin", on_exit_fetch)
+  if not git_status_cache.fetch_success then
+    return
+  end
+
+  -- Get the number of commits behind
+  -- the @{upstream} notation is inspired by post: https://www.reddit.com/r/neovim/comments/t48x5i/git_branch_aheadbehind_info_status_line_component/
+  -- note that here we should use double dots instead of triple dots
+  local behind_cmd_str = "git rev-list --count HEAD..@{upstream}"
+  async_cmd(behind_cmd_str, handle_numeric_result("behind_count"))
+
+  -- Get the number of commits ahead
+  local ahead_cmd_str = "git rev-list --count @{upstream}..HEAD"
+  async_cmd(ahead_cmd_str, handle_numeric_result("ahead_count"))
+end
+
+local function get_git_ahead_behind_info()
+  async_git_status_update()
+
+  local status = git_status_cache
+  if not status then
+    return ""
+  end
+
+  local msg = ""
+
+  if type(status.ahead_count) == "number" and status.ahead_count > 0 then
+    local ahead_str = string.format("↑[%d] ", status.ahead_count)
+    msg = msg .. ahead_str
+  end
+
+  if type(status.behind_count) == "number" and status.behind_count > 0 then
+    local behind_str = string.format("↓[%d] ", status.behind_count)
+    msg = msg .. behind_str
+  end
+
+  return msg
+end
+
 local function spell()
   if vim.o.spell then
     return string.format("[SPELL]")
@@ -119,7 +184,7 @@ local virtual_env = function()
 end
 
 local get_active_lsp = function()
-  local msg = "No Active Lsp"
+  local msg = "🚫"
   local buf_ft = vim.api.nvim_get_option_value("filetype", {})
   local clients = vim.lsp.get_clients { bufnr = 0 }
   if next(clients) == nil then
@@ -144,10 +209,18 @@ require("lualine").setup {
     section_separators = "",
     disabled_filetypes = {},
     always_divide_middle = true,
+    refresh = {
+      statusline = 500,
+    },
   },
   sections = {
     lualine_a = {
-      "mode",
+      {
+        "filename",
+        symbols = {
+          readonly = "[🔒]",
+        },
+      },
     },
     lualine_b = {
       {
@@ -159,21 +232,19 @@ require("lualine").setup {
         color = { gui = "italic,bold" },
       },
       {
-        virtual_env,
-        color = { fg = "black", bg = "#F1CA81" },
-      },
-    },
-    lualine_c = {
-      {
-        "filename",
-        symbols = {
-          readonly = "[🔒]",
-        },
+        get_git_ahead_behind_info,
+        color = { fg = "#E0C479" },
       },
       {
         "diff",
         source = diff,
       },
+      {
+        virtual_env,
+        color = { fg = "black", bg = "#F1CA81" },
+      },
+    },
+    lualine_c = {
       {
         "%S",
         color = { gui = "bold", fg = "cyan" },
@@ -185,21 +256,28 @@ require("lualine").setup {
     },
     lualine_x = {
       {
-        ime_state,
-        color = { fg = "black", bg = "#f46868" },
-      },
-      {
         get_active_lsp,
-        icon = " LSP:",
+        icon = "📡",
       },
       {
         "diagnostics",
         sources = { "nvim_diagnostic" },
         symbols = { error = "🆇 ", warn = "⚠️ ", info = "ℹ️ ", hint = " " },
       },
+      {
+        trailing_space,
+        color = "WarningMsg",
+      },
+      {
+        mixed_indent,
+        color = "WarningMsg",
+      },
     },
     lualine_y = {
-      { "encoding", fmt = string.upper },
+      {
+        "encoding",
+        fmt = string.upper,
+      },
       {
         "fileformat",
         symbols = {
@@ -209,16 +287,12 @@ require("lualine").setup {
         },
       },
       "filetype",
+      {
+        ime_state,
+        color = { fg = "black", bg = "#f46868" },
+      },
     },
     lualine_z = {
-      {
-        trailing_space,
-        color = "WarningMsg",
-      },
-      {
-        mixed_indent,
-        color = "WarningMsg",
-      },
       "location",
       "progress",
     },
