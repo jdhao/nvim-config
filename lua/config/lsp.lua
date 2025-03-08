@@ -278,6 +278,32 @@ if utils.executable("lua-language-server") then
   }
 end
 
+-- settings for rust-analyzer is copied from https://rust-analyzer.github.io/manual.html#nvim-lsp
+if utils.executable("rust-analyzer") then
+  lspconfig.rust_analyzer.setup {
+    on_attach = custom_attach,
+    settings = {
+      ['rust-analyzer'] = {
+        imports = {
+          granularity = {
+            group = "module",
+          },
+          prefix = "self",
+        },
+        cargo = {
+          buildScripts = {
+            enable = true,
+          },
+        },
+        procMacro = {
+          enable = true
+        },
+      },
+    },
+    capabilities = capabilities,
+  }
+end
+
 -- Change diagnostic signs.
 fn.sign_define("DiagnosticSignError", { text = "🆇", texthl = "DiagnosticSignError" })
 fn.sign_define("DiagnosticSignWarn", { text = "⚠️", texthl = "DiagnosticSignWarn" })
