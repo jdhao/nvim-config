@@ -213,3 +213,8 @@ if utils.executable("lua-language-server") then
     capabilities = capabilities,
   }
 end
+
+lspconfig.elixirls.setup {
+  cmd = { "~/.lsp/elixir/language_server.sh" }
+}
+
