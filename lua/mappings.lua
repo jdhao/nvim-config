@@ -126,6 +126,7 @@ keymap.set("n", "/", [[/\v]])
 -- see https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
 keymap.set("n", "<leader>cd", "<cmd>lcd %:p:h<cr><cmd>pwd<cr>", { desc = "change cwd" })
 
+keymap.set("n", "<C-t>", ":terminal<CR>", { noremap = true })
 -- Use Esc to quit builtin terminal
 keymap.set("t", "<Esc>", [[<c-\><c-n>]])
 
@@ -171,10 +172,21 @@ keymap.set("n", "gB", '<cmd>call buf_utils#GoToBuffer(v:count, "backward")<cr>',
 })
 
 -- Switch windows
-keymap.set("n", "<left>", "<c-w>h")
-keymap.set("n", "<Right>", "<C-W>l")
-keymap.set("n", "<Up>", "<C-W>k")
-keymap.set("n", "<Down>", "<C-W>j")
+keymap.set("n", "<C-h>", "<C-w>h")
+keymap.set("n", "<C-l>", "<C-W>l")
+keymap.set("n", "<C-k>", "<C-W>k")
+keymap.set("n", "<C-j>", "<C-W>j")
+
+-- Switch windows
+keymap.set("n", "<left>", ":vertical resize +1<cr>")
+keymap.set("n", "<Right>", ":vertical resize -1<cr>")
+keymap.set("n", "<Up>", ":resize +1<cr>")
+keymap.set("n", "<Down>", ":resize -1<cr>")
+
+-- NvimTree
+keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>")
+keymap.set("n", "<leader>f", ":NvimTreeRefresh<CR>")
+keymap.set("n", "<leader>n", ":NvimTreeFindFile<CR>")
 
 -- Text objects for URL
 keymap.set({ "x", "o" }, "iu", "<cmd>call text_obj#URL()<cr>", { desc = "URL text object" })

@@ -29,7 +29,9 @@ local custom_attach = function(client, bufnr)
   end
 
   map("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
+  map("n", "gds", ":vsplit<CR><Cmd>lua vim.lsp.buf.definition()<CR>")
   map("n", "<C-]>", vim.lsp.buf.definition)
+  map("n", "gi", vim.lsp.buf.implementation, { desc = "go to implementation" })
   map("n", "K", vim.lsp.buf.hover)
   map("n", "<C-k>", vim.lsp.buf.signature_help)
   map("n", "<space>rn", vim.lsp.buf.rename, { desc = "varialbe rename" })
@@ -277,6 +279,10 @@ if utils.executable("lua-language-server") then
     capabilities = capabilities,
   }
 end
+
+lspconfig.elixirls.setup {
+  cmd = { "~/.lsp/elixir/language_server.sh" }
+}
 
 -- Change diagnostic signs.
 fn.sign_define("DiagnosticSignError", { text = "🆇", texthl = "DiagnosticSignError" })
