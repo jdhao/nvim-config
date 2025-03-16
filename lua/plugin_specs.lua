@@ -602,14 +602,6 @@ local plugin_specs = {
     "Bekaboo/dropbar.nvim",
   },
   {
-    "vhyrro/luarocks.nvim",
-    priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
-    opts = {
-      rocks = { "lua-toml" }, -- specifies a list of rocks to install
-      -- luarocks_build_args = { "--with-lua=/my/path" }, -- extra options to pass to luarocks's configuration script
-    },
-  },
-  {
     "catgoose/nvim-colorizer.lua",
     event = "BufReadPre",
     opts = { -- set to setup table
