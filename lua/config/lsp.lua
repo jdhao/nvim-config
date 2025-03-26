@@ -30,12 +30,18 @@ local custom_attach = function(client, bufnr)
 
   map("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
   map("n", "<C-]>", vim.lsp.buf.definition)
-  map("n", "K", vim.lsp.buf.hover)
+  map("n", "K", function()
+    vim.lsp.buf.hover { border = "rounded" }
+  end)
   map("n", "<C-k>", vim.lsp.buf.signature_help)
   map("n", "<space>rn", vim.lsp.buf.rename, { desc = "varialbe rename" })
   map("n", "gr", vim.lsp.buf.references, { desc = "show references" })
-  map("n", "[d", diagnostic.goto_prev, { desc = "previous diagnostic" })
-  map("n", "]d", diagnostic.goto_next, { desc = "next diagnostic" })
+  map("n", "[d", function()
+    diagnostic.jump { count = -1, float = true }
+  end, { desc = "previous diagnostic" })
+  map("n", "]d", function()
+    diagnostic.jump { count = 1, float = true }
+  end, { desc = "next diagnostic" })
   -- this puts diagnostics from opened files to quickfix
   map("n", "<space>qw", diagnostic.setqflist, { desc = "put window diagnostics to qf" })
   -- this puts diagnostics from current buffer to quickfix
@@ -291,15 +297,3 @@ diagnostic.config {
   signs = true,
   severity_sort = true,
 }
-
--- lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
---   underline = false,
---   virtual_text = false,
---   signs = true,
---   update_in_insert = false,
--- })
-
--- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
-lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-})

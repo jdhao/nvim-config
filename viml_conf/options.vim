@@ -124,6 +124,7 @@ set pumheight=10  " Maximum number of items to show in popup menu
 set pumblend=5  " pseudo transparency for completion menu
 
 set winblend=0  " pseudo transparency for floating window
+set winborder=none
 
 " Insert mode key word completion setting
 set complete+=kspell complete-=w complete-=b complete-=u complete-=t
