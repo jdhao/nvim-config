@@ -27,7 +27,8 @@ if utils.executable("python3") then
     vim.g.python3_host_prog = fn.exepath("python3")
   end
 else
-  api.nvim_err_writeln("Python3 executable not found! You must install Python3 and set its PATH correctly!")
+  local msg = "Python3 executable not found! You must install Python3 and set its PATH correctly!"
+  api.nvim_echo({ { msg } }, true, { err = true })
   return
 end
 
