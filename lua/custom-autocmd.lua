@@ -170,7 +170,11 @@ api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "Cursor2", { fg = "red", bg = "red" })
 
     -- For floating windows border highlight
-    vim.api.nvim_set_hl(0, "FloatBorder", { fg = "LightGreen" })
+    vim.api.nvim_set_hl(0, "FloatBorder", { fg = "LightGreen", bg = "None", bold = true })
+
+    local hl = vim.api.nvim_get_hl(0, { name = "NormalFloat" })
+    -- change the background color of floating window to None, so it blenders better
+    vim.api.nvim_set_hl(0, "NormalFloat", { fg = hl.fg, bg = "None" })
 
     -- highlight for matching parentheses
     vim.api.nvim_set_hl(0, "MatchParen", { bold = true, underline = true })
