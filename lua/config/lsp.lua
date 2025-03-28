@@ -1,4 +1,3 @@
-local fn = vim.fn
 local api = vim.api
 local keymap = vim.keymap
 local lsp = vim.lsp
@@ -31,16 +30,16 @@ local custom_attach = function(client, bufnr)
   map("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
   map("n", "<C-]>", vim.lsp.buf.definition)
   map("n", "K", function()
-    vim.lsp.buf.hover { border = "rounded" }
+    vim.lsp.buf.hover { border = "single", max_height = 25 }
   end)
   map("n", "<C-k>", vim.lsp.buf.signature_help)
   map("n", "<space>rn", vim.lsp.buf.rename, { desc = "varialbe rename" })
   map("n", "gr", vim.lsp.buf.references, { desc = "show references" })
   map("n", "[d", function()
-    diagnostic.jump { count = -1, float = true }
+    diagnostic.jump { count = -1 }
   end, { desc = "previous diagnostic" })
   map("n", "]d", function()
-    diagnostic.jump { count = 1, float = true }
+    diagnostic.jump { count = 1 }
   end, { desc = "next diagnostic" })
   -- this puts diagnostics from opened files to quickfix
   map("n", "<space>qw", diagnostic.setqflist, { desc = "put window diagnostics to qf" })
@@ -63,33 +62,6 @@ local custom_attach = function(client, bufnr)
   -- Uncomment code below to enable inlay hint from language server, some LSP server supports inlay hint,
   -- but disable this feature by default, so you may need to enable inlay hint in the LSP server config.
   -- vim.lsp.inlay_hint.enable(true, {buffer=bufnr})
-
-  api.nvim_create_autocmd("CursorHold", {
-    buffer = bufnr,
-    callback = function()
-      local float_opts = {
-        focusable = false,
-        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-        border = "rounded",
-        source = "always", -- show source in diagnostic popup window
-        prefix = " ",
-      }
-
-      if not vim.b.diagnostics_pos then
-        vim.b.diagnostics_pos = { nil, nil }
-      end
-
-      local cursor_pos = api.nvim_win_get_cursor(0)
-      if
-        (cursor_pos[1] ~= vim.b.diagnostics_pos[1] or cursor_pos[2] ~= vim.b.diagnostics_pos[2])
-        and #diagnostic.get() > 0
-      then
-        diagnostic.open_float(nil, float_opts)
-      end
-
-      vim.b.diagnostics_pos = cursor_pos
-    end,
-  })
 
   -- The blow command will highlight the current variable and its usages in the buffer.
   if client.server_capabilities.documentHighlightProvider then
@@ -288,6 +260,7 @@ end
 diagnostic.config {
   underline = false,
   virtual_text = false,
+  virtual_lines = false,
   signs = {
     text = {
       [diagnostic.severity.ERROR] = "🆇",
@@ -297,4 +270,30 @@ diagnostic.config {
     },
   },
   severity_sort = true,
+  float = {
+    source = true,
+    header = "Diagnostics:",
+    prefix = " ",
+    border = "single",
+  },
 }
+
+api.nvim_create_autocmd("CursorHold", {
+  pattern = "*",
+  callback = function()
+    if #vim.diagnostic.get(0) == 0 then
+      return
+    end
+
+    if not vim.b.diagnostics_pos then
+      vim.b.diagnostics_pos = { nil, nil }
+    end
+
+    local cursor_pos = api.nvim_win_get_cursor(0)
+    if cursor_pos[1] ~= vim.b.diagnostics_pos[1] or cursor_pos[2] ~= vim.b.diagnostics_pos[2] then
+      diagnostic.open_float()
+    end
+
+    vim.b.diagnostics_pos = cursor_pos
+  end,
+})
