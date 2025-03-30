@@ -1,7 +1,6 @@
 local api = vim.api
 local keymap = vim.keymap
 local lsp = vim.lsp
-local diagnostic = vim.diagnostic
 local lspconfig = require("lspconfig")
 
 local utils = require("utils")
