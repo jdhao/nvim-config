@@ -37,7 +37,8 @@ api.nvim_create_autocmd({ "CursorMoved" }, {
 api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   group = yank_group,
-  callback = function(ev)
+  ---@diagnostic disable-next-line: unused-local
+  callback = function(context)
     if vim.v.event.operator == "y" then
       vim.fn.setpos(".", vim.g.current_cursor_pos)
     end
@@ -185,7 +186,8 @@ api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
   group = api.nvim_create_augroup("auto_close_win", { clear = true }),
   desc = "Quit Nvim if we have only one window, and its filetype match our pattern",
-  callback = function(ev)
+  ---@diagnostic disable-next-line: unused-local
+  callback = function(context)
     local quit_filetypes = { "qf", "vista", "NvimTree" }
 
     local should_quit = true
@@ -193,9 +195,9 @@ api.nvim_create_autocmd("BufEnter", {
 
     for _, win in pairs(tabwins) do
       local buf = api.nvim_win_get_buf(win)
-      local bf = fn.getbufvar(buf, "&filetype")
+      local buf_type = vim.api.nvim_get_option_value("filetype", { buf = buf })
 
-      if fn.index(quit_filetypes, bf) == -1 then
+      if not vim.tbl_contains(quit_filetypes, buf_type) then
         should_quit = false
       end
     end
