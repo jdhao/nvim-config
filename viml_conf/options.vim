@@ -115,7 +115,7 @@ set shortmess+=S
 " Disable showing intro message (:intro)
 set shortmess+=I
 
-set messagesopt=wait:5000,history:500
+set messagesopt=hit-enter,history:500
 
 " Completion behaviour
 " set completeopt+=noinsert  " Auto select the first completion entry
