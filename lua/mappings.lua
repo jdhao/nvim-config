@@ -36,6 +36,10 @@ keymap.set("n", "]q", "<cmd>cnext<cr>zv", { silent = true, desc = "next qf item"
 keymap.set("n", "[Q", "<cmd>cfirst<cr>zv", { silent = true, desc = "first qf item" })
 keymap.set("n", "]Q", "<cmd>clast<cr>zv", { silent = true, desc = "last qf item" })
 
+keymap.set("n", "<leader>p", "m`o<ESC>p``", { desc = "paste below current line" })
+
+keymap.set("n", "<leader>tfc", ":Telescope flutter commands<cr>", { desc = "open telescope flutter commands" })
+
 -- Close location list or quickfix list if they are present, see https://superuser.com/q/355325/736190
 keymap.set("n", [[\x]], "<cmd>windo lclose <bar> cclose <cr>", {
   silent = true,

@@ -29,8 +29,6 @@ local custom_attach = function(client, bufnr)
   end
 
   map("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
-  map("n", "gds", ":vsplit<CR><Cmd>lua vim.lsp.buf.definition()<CR>")
-  map("n", "<C-]>", vim.lsp.buf.definition)
   map("n", "gi", vim.lsp.buf.implementation, { desc = "go to implementation" })
   map("n", "K", vim.lsp.buf.hover)
   map("n", "<C-k>", vim.lsp.buf.signature_help)
@@ -281,7 +279,8 @@ if utils.executable("lua-language-server") then
 end
 
 lspconfig.elixirls.setup {
-  cmd = { "~/.lsp/elixir/language_server.sh" }
+  cmd = { "~/.lsp/elixir/language_server.sh" },
+  on_attach = custom_attach,
 }
 
 -- Change diagnostic signs.
@@ -309,3 +308,9 @@ diagnostic.config {
 lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
 })
+
+lspconfig.dartls.setup{
+  on_attach = custom_attach,
+}
+
+lspconfig.gopls.setup{}

@@ -652,7 +652,7 @@ local plugin_specs = {
                 },
             })
         end
-    }
+  }
 }
 
 require("lazy").setup {
