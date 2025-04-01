@@ -33,6 +33,7 @@ require("flutter-tools").setup {
   },
 }
 require("telescope").load_extension("flutter")
+require('telescope').extensions.flutter.commands()
 require("dapui").setup({
     icons = { expanded = "▾", collapsed = "▸" },
     layouts = {

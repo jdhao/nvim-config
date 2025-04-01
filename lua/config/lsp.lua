@@ -25,6 +25,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       keymap.set(mode, l, r, opts)
     end
 
+<<<<<<< HEAD
     map("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
     map("n", "<C-]>", vim.lsp.buf.definition)
     map("n", "K", function()
@@ -38,6 +39,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "<space>wl", function()
       vim.print(vim.lsp.buf.list_workspace_folders())
     end, { desc = "list workspace folder" })
+=======
+  map("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
+  map("n", "gi", vim.lsp.buf.implementation, { desc = "go to implementation" })
+  map("n", "K", vim.lsp.buf.hover)
+  map("n", "<C-k>", vim.lsp.buf.signature_help)
+  map("n", "<space>rn", vim.lsp.buf.rename, { desc = "varialbe rename" })
+  map("n", "gr", vim.lsp.buf.references, { desc = "show references" })
+  map("n", "[d", diagnostic.goto_prev, { desc = "previous diagnostic" })
+  map("n", "]d", diagnostic.goto_next, { desc = "next diagnostic" })
+  -- this puts diagnostics from opened files to quickfix
+  map("n", "<space>qw", diagnostic.setqflist, { desc = "put window diagnostics to qf" })
+  -- this puts diagnostics from current buffer to quickfix
+  map("n", "<space>qb", function()
+    set_qflist(bufnr)
+  end, { desc = "put buffer diagnostics to qf" })
+  map("n", "<space>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })
+  map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, { desc = "add workspace folder" })
+  map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, { desc = "remove workspace folder" })
+  map("n", "<space>wl", function()
+    vim.print(vim.lsp.buf.list_workspace_folders())
+  end, { desc = "list workspace folder" })
+>>>>>>> 373e71b (Adds configuretion)
 
     -- Set some key bindings conditional on server capabilities
     if client.server_capabilities.documentFormattingProvider and client.name ~= "lua_ls" then
@@ -215,6 +238,41 @@ if utils.executable("lua-language-server") then
 end
 
 lspconfig.elixirls.setup {
-  cmd = { "~/.lsp/elixir/language_server.sh" }
+  cmd = { "~/.lsp/elixir/language_server.sh" },
+  on_attach = custom_attach,
 }
 
+<<<<<<< HEAD
+=======
+-- Change diagnostic signs.
+fn.sign_define("DiagnosticSignError", { text = "🆇", texthl = "DiagnosticSignError" })
+fn.sign_define("DiagnosticSignWarn", { text = "⚠️", texthl = "DiagnosticSignWarn" })
+fn.sign_define("DiagnosticSignInfo", { text = "ℹ️", texthl = "DiagnosticSignInfo" })
+fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+
+-- global config for diagnostic
+diagnostic.config {
+  underline = false,
+  virtual_text = false,
+  signs = true,
+  severity_sort = true,
+}
+
+-- lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
+--   underline = false,
+--   virtual_text = false,
+--   signs = true,
+--   update_in_insert = false,
+-- })
+
+-- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
+lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
+
+lspconfig.dartls.setup{
+  on_attach = custom_attach,
+}
+
+lspconfig.gopls.setup{}
+>>>>>>> 373e71b (Adds configuretion)

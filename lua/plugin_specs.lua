@@ -622,7 +622,7 @@ local plugin_specs = {
                 },
             })
         end
-    }
+  }
 }
 
 ---@diagnostic disable-next-line: missing-fields
