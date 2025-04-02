@@ -3,12 +3,11 @@ local version = vim.version
 
 local M = {}
 
+--- Check if an executable exists
+--- @param name string An executable name/path
+--- @return boolean
 function M.executable(name)
-  if fn.executable(name) > 0 then
-    return true
-  end
-
-  return false
+  return fn.executable(name) > 0
 end
 
 --- check whether a feature exists in Nvim
