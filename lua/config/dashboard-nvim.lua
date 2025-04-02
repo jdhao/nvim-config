@@ -23,19 +23,19 @@ conf.center = {
   {
     icon = "󰈞  ",
     desc = "Find  File                              ",
-    action = "Leaderf file --popup",
+    action = "FzfLua files",
     key = "<Leader> f f",
   },
   {
     icon = "󰈢  ",
     desc = "Recently opened files                   ",
-    action = "Leaderf mru --popup",
+    action = "FzfLua oldfiles",
     key = "<Leader> f r",
   },
   {
     icon = "󰈬  ",
     desc = "Project grep                            ",
-    action = "Leaderf rg --popup",
+    action = "FzfLua live_grep",
     key = "<Leader> f g",
   },
   {
