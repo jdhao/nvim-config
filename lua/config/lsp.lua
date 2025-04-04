@@ -237,6 +237,16 @@ if utils.executable("lua-language-server") then
   }
 end
 
+lspconfig.sourcekit.setup {
+  capabilities = {
+    workspace = {
+      didChangeWatchedFiles = {
+        dynamicRegistration = true,
+      },
+    },
+  },
+}
+
 lspconfig.elixirls.setup {
   cmd = { "~/.lsp/elixir/language_server.sh" },
   on_attach = custom_attach,
