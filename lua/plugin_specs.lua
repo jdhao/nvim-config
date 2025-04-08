@@ -110,11 +110,13 @@ local plugin_specs = {
     config = function()
       require("config.fzf-lua")
     end,
+    event = "VeryLazy",
   },
   {
     "MeanderingProgrammer/markdown.nvim",
     main = "render-markdown",
     opts = {},
+    ft = { "markdown" },
   },
   -- A list of colorscheme plugin you may want to try. Find what suits you.
   { "navarasu/onedark.nvim", lazy = true },
@@ -148,7 +150,7 @@ local plugin_specs = {
 
   {
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
+    event = "BufRead",
     cond = firenvim_not_active,
     config = function()
       require("config.lualine")
@@ -334,10 +336,12 @@ local plugin_specs = {
     config = function()
       require("config.gitsigns")
     end,
+    event = "BufRead",
   },
 
   {
     "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen" },
   },
 
   {
@@ -548,7 +552,7 @@ local plugin_specs = {
     config = function()
       require("config.lightbulb")
     end,
-    event = "VeryLazy",
+    event = "LspAttach",
   },
   {
     "Bekaboo/dropbar.nvim",
