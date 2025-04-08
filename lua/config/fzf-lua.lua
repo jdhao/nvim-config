@@ -1,4 +1,7 @@
 require("fzf-lua").setup {
+  defaults = {
+    file_icons = "mini",
+  },
   winopts = {
     row = 0.5,
     height = 0.7,

@@ -22,24 +22,19 @@ end
 
 local plugin_specs = {
   -- auto-completion engine
+  { "hrsh7th/cmp-nvim-lsp", lazy = true },
+  { "hrsh7th/cmp-path", lazy = true },
+  { "hrsh7th/cmp-buffer", lazy = true },
+  { "hrsh7th/cmp-omni", lazy = true },
+  { "quangnguyen30192/cmp-nvim-ultisnips", lazy = true },
   {
     "hrsh7th/nvim-cmp",
     name = "nvim-cmp",
-    -- event = 'InsertEnter',
-    event = "VeryLazy",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "onsails/lspkind-nvim",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-omni",
-      "quangnguyen30192/cmp-nvim-ultisnips",
-    },
+    event = "InsertEnter",
     config = function()
       require("config.nvim-cmp")
     end,
   },
-
   {
     "neovim/nvim-lspconfig",
     event = { "BufRead", "BufNewFile" },
@@ -56,7 +51,7 @@ local plugin_specs = {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    event = "VeryLazy",
+    lazy = true,
     build = ":TSUpdate",
     config = function()
       require("config.treesitter")
@@ -88,7 +83,7 @@ local plugin_specs = {
   -- Super fast buffer jump
   {
     "smoka7/hop.nvim",
-    event = "VeryLazy",
+    keys = { "f" },
     config = function()
       require("config.nvim_hop")
     end,
@@ -112,8 +107,6 @@ local plugin_specs = {
   },
   {
     "ibhagwan/fzf-lua",
-    -- optional for icon support
-    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("config.fzf-lua")
     end,
@@ -122,7 +115,6 @@ local plugin_specs = {
     "MeanderingProgrammer/markdown.nvim",
     main = "render-markdown",
     opts = {},
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
   },
   -- A list of colorscheme plugin you may want to try. Find what suits you.
   { "navarasu/onedark.nvim", lazy = true },
@@ -141,7 +133,18 @@ local plugin_specs = {
     branch = "v2",
   },
   { "rebelot/kanagawa.nvim", lazy = true },
-  { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
+
+  -- plugins to provide nerdfont icons
+  {
+    "echasnovski/mini.icons",
+    version = false,
+    config = function()
+      -- this is the compatibility fix for plugins that only support nvim-web-devicons
+      require("mini.icons").mock_nvim_web_devicons()
+      require("mini.icons").tweak_lsp_kind()
+    end,
+    lazy = true,
+  },
 
   {
     "nvim-lualine/lualine.nvim",
@@ -171,11 +174,16 @@ local plugin_specs = {
   },
 
   {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "VeryLazy",
-    main = "ibl",
+    "echasnovski/mini.indentscope",
+    version = false,
     config = function()
-      require("config.indent-blankline")
+      local mini_indent = require("mini.indentscope")
+      mini_indent.setup {
+        draw = {
+          animation = mini_indent.gen_animation.none(),
+        },
+        symbol = "▏",
+      }
     end,
   },
   {
@@ -201,7 +209,7 @@ local plugin_specs = {
     end,
   },
   -- Highlight URLs inside vim
-  { "itchyny/vim-highlighturl", event = "VeryLazy" },
+  { "itchyny/vim-highlighturl", event = "BufReadPost" },
 
   -- notification plugin
   {
@@ -211,6 +219,8 @@ local plugin_specs = {
       require("config.nvim-notify")
     end,
   },
+
+  { "nvim-lua/plenary.nvim", lazy = true },
 
   -- For Windows and Mac, we can open an URL in the browser. For Linux, it may
   -- not be possible since we maybe in a server which disables GUI.
@@ -224,7 +234,6 @@ local plugin_specs = {
     enabled = function()
       return vim.g.is_win or vim.g.is_mac
     end,
-    dependencies = { "nvim-lua/plenary.nvim" },
     config = true, -- default settings
     submodules = false, -- not needed, submodules are required only for tests
   },
@@ -252,7 +261,10 @@ local plugin_specs = {
   },
 
   -- Comment plugin
-  { "tpope/vim-commentary", event = "VeryLazy" },
+  { "tpope/vim-commentary", keys = {
+    { "gc", mode = "n" },
+    { "gc", mode = "v" },
+  } },
 
   -- Multiple cursor plugin like Sublime Text?
   -- 'mg979/vim-visual-multi'
@@ -266,7 +278,7 @@ local plugin_specs = {
     config = function()
       require("config.yanky")
     end,
-    event = "VeryLazy",
+    cmd = "YankyRingHistory",
   },
 
   -- Handy unix command inside Vim (Rename, Move etc.)
@@ -360,7 +372,7 @@ local plugin_specs = {
     ft = { "markdown" },
   },
 
-  { "chrisbra/unicode.vim", event = "VeryLazy" },
+  { "chrisbra/unicode.vim", keys = { "ga" }, cmd = { "UnicodeSearch" } },
 
   -- Additional powerful text object for vim, this plugin should be studied
   -- carefully to use its full power
@@ -368,9 +380,6 @@ local plugin_specs = {
 
   -- Plugin to manipulate character pairs quickly
   { "machakann/vim-sandwich", event = "VeryLazy" },
-
-  -- Add indent object for vim (useful for languages like Python)
-  { "michaeljsmith/vim-indent-object", event = "VeryLazy" },
 
   -- Only use these plugin on Windows and Mac and when LaTeX is installed
   {
@@ -481,8 +490,7 @@ local plugin_specs = {
   -- file explorer
   {
     "nvim-tree/nvim-tree.lua",
-    event = "VeryLazy",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = { "<space>s" },
     config = function()
       require("config.nvim-tree")
     end,
@@ -490,8 +498,7 @@ local plugin_specs = {
 
   {
     "j-hui/fidget.nvim",
-    event = "VeryLazy",
-    tag = "legacy",
+    event = "BufRead",
     config = function()
       require("config.fidget-nvim")
     end,
@@ -511,13 +518,12 @@ local plugin_specs = {
     "CopilotC-Nvim/CopilotChat.nvim",
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
     },
     opts = {
       debug = true, -- Enable debugging
       -- See Configuration section for rest
     },
-    -- See Commands section for default commands if you want to lazy load on them
+    cmd = { "CopilotChat" },
   },
   {
     "zbirenbaum/copilot.lua",
@@ -534,7 +540,6 @@ local plugin_specs = {
     config = function()
       require("config.live-command")
     end,
-    event = "VeryLazy",
   },
   {
     -- show hint for code actions, the user can also implement code actions themselves,
@@ -543,9 +548,11 @@ local plugin_specs = {
     config = function()
       require("config.lightbulb")
     end,
+    event = "VeryLazy",
   },
   {
     "Bekaboo/dropbar.nvim",
+    event = "VeryLazy",
   },
   {
     "catgoose/nvim-colorizer.lua",

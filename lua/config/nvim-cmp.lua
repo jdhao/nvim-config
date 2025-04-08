@@ -1,6 +1,14 @@
 -- Setup nvim-cmp.
 local cmp = require("cmp")
-local lspkind = require("lspkind")
+
+-- The extentions needed by nvim-cmp should be loaded beforehand
+require("cmp_nvim_lsp")
+require("cmp_path")
+require("cmp_buffer")
+require("cmp_omni")
+require("cmp_nvim_ultisnips")
+
+local MiniIcons = require("mini.icons")
 
 cmp.setup {
   snippet = {
@@ -43,21 +51,14 @@ cmp.setup {
   view = {
     entries = "custom",
   },
+  -- solution taken from https://github.com/echasnovski/mini.nvim/issues/1007#issuecomment-2258929830
   formatting = {
-    format = lspkind.cmp_format {
-      mode = "symbol_text",
-      menu = {
-        nvim_lsp = "[LSP]",
-        ultisnips = "[US]",
-        path = "[Path]",
-        buffer = "[Buffer]",
-        emoji = "[Emoji]",
-        omni = "[Omni]",
-      },
-      show_labelDetails = true,
-      maxwidth = 40,
-      ellipsis_char = "...",
-    },
+    format = function(_, vim_item)
+      local icon, hl = MiniIcons.get("lsp", vim_item.kind)
+      vim_item.kind = icon .. " " .. vim_item.kind
+      vim_item.kind_hl_group = hl
+      return vim_item
+    end,
   },
 }
 
