@@ -321,7 +321,14 @@ local plugin_specs = {
 
   -- Better git log display
   { "rbong/vim-flog", cmd = { "Flog" } },
-  { "akinsho/git-conflict.nvim", version = "*", config = true },
+  {
+    "akinsho/git-conflict.nvim",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("config.git-conflict")
+    end,
+  },
   {
     "ruifm/gitlinker.nvim",
     event = "User InGitRepo",
