@@ -44,14 +44,7 @@ M.colorscheme_conf = {
     vim.cmd([[colorscheme everforest]])
   end,
   nightfox = function()
-    vim.cmd([[colorscheme nordfox]])
-  end,
-  catppuccin = function()
-    -- available option: latte, frappe, macchiato, mocha
-    vim.g.catppuccin_flavour = "frappe"
-    require("catppuccin").setup()
-
-    vim.cmd([[colorscheme catppuccin]])
+    vim.cmd([[colorscheme carbonfox]])
   end,
   onedarkpro = function()
     -- set colorscheme after options
@@ -84,13 +77,6 @@ M.rand_colorscheme = function()
 
   -- Load the colorscheme and its settings
   M.colorscheme_conf[colorscheme]()
-
-  if vim.g.logging_level == "debug" then
-    local msg = "Colorscheme: " .. colorscheme
-
-    vim.notify(msg, vim.log.levels.DEBUG, { title = "nvim-config" })
-  end
 end
 
--- Load a random colorscheme
-M.rand_colorscheme()
+return M

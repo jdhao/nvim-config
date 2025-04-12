@@ -16,7 +16,7 @@ local activate_hlslens = function(direction)
   if not status then
     local start_idx, _ = string.find(msg, "E486", 1, true)
     local msg_part = string.sub(msg, start_idx)
-    api.nvim_err_writeln(msg_part)
+    api.nvim_echo({ { msg_part } }, true, { err = true })
     return
   end
 
@@ -40,7 +40,7 @@ local check_cursor_word = function()
   local result = cursor_word == ""
   if result then
     local msg = "E348: No string under cursor"
-    api.nvim_err_writeln(msg)
+    api.nvim_echo({ { msg } }, true, { err = true })
   end
 
   return result, cursor_word

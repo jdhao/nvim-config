@@ -22,7 +22,7 @@ api.nvim_create_autocmd({ "TextYankPost" }, {
   pattern = "*",
   group = yank_group,
   callback = function()
-    vim.highlight.on_yank { higroup = "YankColor", timeout = 300 }
+    vim.hl.on_yank { higroup = "YankColor", timeout = 300 }
   end,
 })
 
@@ -37,7 +37,8 @@ api.nvim_create_autocmd({ "CursorMoved" }, {
 api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   group = yank_group,
-  callback = function(ev)
+  ---@diagnostic disable-next-line: unused-local
+  callback = function(context)
     if vim.v.event.operator == "y" then
       vim.fn.setpos(".", vim.g.current_cursor_pos)
     end
@@ -170,7 +171,11 @@ api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "Cursor2", { fg = "red", bg = "red" })
 
     -- For floating windows border highlight
-    vim.api.nvim_set_hl(0, "FloatBorder", { fg = "LightGreen" })
+    vim.api.nvim_set_hl(0, "FloatBorder", { fg = "LightGreen", bg = "None", bold = true })
+
+    local hl = vim.api.nvim_get_hl(0, { name = "NormalFloat" })
+    -- change the background color of floating window to None, so it blenders better
+    vim.api.nvim_set_hl(0, "NormalFloat", { fg = hl.fg, bg = "None" })
 
     -- highlight for matching parentheses
     vim.api.nvim_set_hl(0, "MatchParen", { bold = true, underline = true })
@@ -181,7 +186,8 @@ api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
   group = api.nvim_create_augroup("auto_close_win", { clear = true }),
   desc = "Quit Nvim if we have only one window, and its filetype match our pattern",
-  callback = function(ev)
+  ---@diagnostic disable-next-line: unused-local
+  callback = function(context)
     local quit_filetypes = { "qf", "vista", "NvimTree" }
 
     local should_quit = true
@@ -189,9 +195,9 @@ api.nvim_create_autocmd("BufEnter", {
 
     for _, win in pairs(tabwins) do
       local buf = api.nvim_win_get_buf(win)
-      local bf = fn.getbufvar(buf, "&filetype")
+      local buf_type = vim.api.nvim_get_option_value("filetype", { buf = buf })
 
-      if fn.index(quit_filetypes, bf) == -1 then
+      if not vim.tbl_contains(quit_filetypes, buf_type) then
         should_quit = false
       end
     end
@@ -222,8 +228,13 @@ api.nvim_create_autocmd("BufReadPre", {
 
     if fn.getfsize(f) > file_size_limit or fn.getfsize(f) == -2 then
       vim.o.eventignore = "all"
+
+      -- show ruler
+      vim.o.ruler = true
+
       --  turning off relative number helps a lot
       vim.wo.relativenumber = false
+      vim.wo.number = false
 
       vim.bo.swapfile = false
       vim.bo.bufhidden = "unload"

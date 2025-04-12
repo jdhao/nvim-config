@@ -3,12 +3,11 @@ local version = vim.version
 
 local M = {}
 
+--- Check if an executable exists
+--- @param name string An executable name/path
+--- @return boolean
 function M.executable(name)
-  if fn.executable(name) > 0 then
-    return true
-  end
-
-  return false
+  return fn.executable(name) > 0
 end
 
 --- check whether a feature exists in Nvim
@@ -61,7 +60,7 @@ function M.is_compatible_version(expected_version)
 
   if expect_ver == nil then
     local msg = string.format("Unsupported version string: %s", expected_version)
-    vim.api.nvim_err_writeln(msg)
+    vim.api.nvim_echo({ { msg } }, true, { err = true })
     return false
   end
 
@@ -73,7 +72,7 @@ function M.is_compatible_version(expected_version)
       expected_version,
       _ver
     )
-    vim.api.nvim_err_writeln(msg)
+    vim.api.nvim_echo({ { msg } }, true, { err = true })
   end
 
   return true
