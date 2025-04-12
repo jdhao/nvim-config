@@ -34,8 +34,8 @@ local custom_attach = function(client, bufnr)
   map("n", "<C-k>", vim.lsp.buf.signature_help)
   map("n", "<space>rn", vim.lsp.buf.rename, { desc = "varialbe rename" })
   map("n", "gr", vim.lsp.buf.references, { desc = "show references" })
-  map("n", "[d", diagnostic.goto_prev, { desc = "previous diagnostic" })
-  map("n", "]d", diagnostic.goto_next, { desc = "next diagnostic" })
+  map("n", "[d", diagnostic.get_prev, { desc = "previous diagnostic" })
+  map("n", "]d", diagnostic.get_next, { desc = "next diagnostic" })
   -- this puts diagnostics from opened files to quickfix
   map("n", "<space>qw", diagnostic.setqflist, { desc = "put window diagnostics to qf" })
   -- this puts diagnostics from current buffer to quickfix
@@ -324,3 +324,5 @@ lspconfig.dartls.setup{
 }
 
 lspconfig.gopls.setup{}
+
+lspconfig.ruby_lsp.setup{}

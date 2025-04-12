@@ -22,7 +22,7 @@ gs.setup {
         return "]c"
       end
       vim.schedule(function()
-        gs.next_hunk()
+        gs.nav_hunk('next')
       end)
       return "<Ignore>"
     end, { expr = true, desc = "next hunk" })
@@ -32,7 +32,7 @@ gs.setup {
         return "[c"
       end
       vim.schedule(function()
-        gs.prev_hunk()
+        gs.nav_hunk('next')
       end)
       return "<Ignore>"
     end, { expr = true, desc = "previous hunk" })

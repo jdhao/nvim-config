@@ -325,7 +325,7 @@ local plugin_specs = {
     event = { "InsertEnter" },
   },
 
-  -- Auto format tools
+-- Auto format tools
   { "sbdchd/neoformat", cmd = { "Neoformat" } },
 
   -- Git command inside vim
@@ -556,25 +556,6 @@ local plugin_specs = {
     opts = {},
   },
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-    },
-    opts = {
-      debug = true, -- Enable debugging
-      -- See Configuration section for rest
-    },
-    -- See Commands section for default commands if you want to lazy load on them
-  },
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    config = function()
-      require("copilot").setup {}
-    end,
-  },
-  {
     "smjonas/live-command.nvim",
     -- live-command supports semantic versioning via Git tags
     -- tag = "2.*",
@@ -652,6 +633,45 @@ local plugin_specs = {
                 },
             })
         end
+  },
+  {
+    "Exafunction/windsurf.nvim",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "hrsh7th/nvim-cmp",
+    },
+    config = function ()
+      require("codeium").setup({
+        enable_cmp_source = false,
+        virtual_text = {
+            enabled = true,
+            manual = false,
+            filetypes = {},
+            default_filetype_enabled = true,
+            idle_delay = 75,
+            virtual_text_priority = 65535,
+            map_keys = true,
+            accept_fallback = nil,
+            key_bindings = {
+                -- Accept the current completion.
+                accept = "<M-l>",
+                -- Accept the next word.
+                accept_word = false,
+                -- Accept the next line.
+                accept_line = false,
+                -- Clear the virtual text.
+                clear = false,
+                -- Cycle to the next completion.
+                next = "<M-]>",
+                -- Cycle to the previous completion.
+                prev = "<M-[>",
+            }
+        },
+        workspace_root = {
+          use_lsp = true,
+        },
+    })
+    end
   }
 }
 
