@@ -574,36 +574,38 @@ local plugin_specs = {
         'nvim-lua/plenary.nvim',
         'stevearc/dressing.nvim', -- optional for vim.ui.select
     },
-    config = true,
+    config = function()
+      require("config.flutter")
+    end,
   },
   {
     'stevearc/dressing.nvim',
     opts = {},
   },
   {
-        "mfussenegger/nvim-dap",
-        dependencies = {
-            'nvim-neotest/nvim-nio',
-            'rcarriga/nvim-dap-ui',
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+      'rcarriga/nvim-dap-ui',
+    },
+    event = 'VeryLazy',
+    config = function()
+      require("dapui").setup({
+        icons = { expanded = "▾", collapsed = "▸" },
+        layouts = {
+          {
+            elements = {
+              { id = "scopes", size = 0.25 },
+              "breakpoints",
+              "stacks",
+              "watches",
+            },
+            size = 10, -- columns
+            position = "bottom",
+          },
         },
-        event = 'VeryLazy',
-        config = function()
-            require("dapui").setup({
-                icons = { expanded = "▾", collapsed = "▸" },
-                layouts = {
-                    {
-                        elements = {
-                            { id = "scopes", size = 0.25 },
-                            "breakpoints",
-                            "stacks",
-                            "watches",
-                        },
-                        size = 10, -- columns
-                        position = "bottom",
-                    },
-                },
-            })
-        end
+      })
+    end
   },
   {
     "Exafunction/windsurf.nvim",
@@ -643,6 +645,17 @@ local plugin_specs = {
         },
     })
     end
+  },
+  {
+    "wojciech-kulik/xcodebuild.nvim",
+      dependencies = {
+        "nvim-telescope/telescope.nvim",
+        "MunifTanjim/nui.nvim",
+        "j-hui/fidget.nvim",
+      },
+      config = function()
+        require("config.xcodebuild")
+      end
   }
 }
 

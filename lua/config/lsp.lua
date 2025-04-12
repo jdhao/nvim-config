@@ -218,23 +218,30 @@ if utils.executable("lua-language-server") then
   }
 end
 
-lspconfig.sourcekit.setup {
-  capabilities = {
-    workspace = {
-      didChangeWatchedFiles = {
-        dynamicRegistration = true,
-      },
+local swift_capability = {
+  workspace = {
+    didChangeWatchedFiles = {
+      dynamicRegistration = true,
     },
   },
+}
+local merged_swift_capability = vim.tbl_deep_extend("force", capabilities, swift_capability)
+
+lspconfig.sourcekit.setup {
+  cmd = { vim.trim(vim.fn.system("xcrun -f sourcekit-lsp")), },
+  capabilities = capabilities,
+  on_init = function(client)
+    -- HACK: to fix some issues with LSP
+    -- more details: https://github.com/neovim/neovim/issues/19237#issuecomment-2237037154
+    client.offset_encoding = "utf-8"
+  end
 }
 
 lspconfig.elixirls.setup {
   cmd = { "~/.lsp/elixir/language_server.sh" },
-  on_attach = custom_attach,
 }
 
 lspconfig.dartls.setup{
-  on_attach = custom_attach,
 }
 
 lspconfig.gopls.setup{}
