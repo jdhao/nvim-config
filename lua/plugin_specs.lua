@@ -307,8 +307,14 @@ local plugin_specs = {
     event = { "InsertEnter" },
   },
 
--- Auto format tools
-  { "sbdchd/neoformat", cmd = { "Neoformat" } },
+  -- Auto format tools
+  {
+    "stevearc/conform.nvim",
+    opts = {},
+    config = function()
+      require("config.conform")
+    end,
+  },
 
   -- Git command inside vim
   {
@@ -555,7 +561,7 @@ local plugin_specs = {
   },
   {
     "ray-x/go.nvim",
-    dependencies = {  -- optional packages
+    dependencies = { -- optional packages
       "ray-x/guihua.lua",
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
@@ -563,34 +569,34 @@ local plugin_specs = {
     config = function()
       require("go").setup()
     end,
-    event = {"CmdlineEnter"},
-    ft = {"go", 'gomod'},
-    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+    event = { "CmdlineEnter" },
+    ft = { "go", "gomod" },
+    build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   },
   {
-    'nvim-flutter/flutter-tools.nvim',
+    "nvim-flutter/flutter-tools.nvim",
     lazy = false,
     dependencies = {
-        'nvim-lua/plenary.nvim',
-        'stevearc/dressing.nvim', -- optional for vim.ui.select
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim", -- optional for vim.ui.select
     },
     config = function()
       require("config.flutter")
     end,
   },
   {
-    'stevearc/dressing.nvim',
+    "stevearc/dressing.nvim",
     opts = {},
   },
   {
     "mfussenegger/nvim-dap",
     dependencies = {
-      'nvim-neotest/nvim-nio',
-      'rcarriga/nvim-dap-ui',
+      "nvim-neotest/nvim-nio",
+      "rcarriga/nvim-dap-ui",
     },
-    event = 'VeryLazy',
+    event = "VeryLazy",
     config = function()
-      require("dapui").setup({
+      require("dapui").setup {
         icons = { expanded = "▾", collapsed = "▸" },
         layouts = {
           {
@@ -604,59 +610,59 @@ local plugin_specs = {
             position = "bottom",
           },
         },
-      })
-    end
+      }
+    end,
   },
   {
     "Exafunction/windsurf.nvim",
     dependencies = {
-        "nvim-lua/plenary.nvim",
-        "hrsh7th/nvim-cmp",
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
     },
-    config = function ()
-      require("codeium").setup({
+    config = function()
+      require("codeium").setup {
         enable_cmp_source = false,
         virtual_text = {
-            enabled = true,
-            manual = false,
-            filetypes = {},
-            default_filetype_enabled = true,
-            idle_delay = 75,
-            virtual_text_priority = 65535,
-            map_keys = true,
-            accept_fallback = nil,
-            key_bindings = {
-                -- Accept the current completion.
-                accept = "<M-l>",
-                -- Accept the next word.
-                accept_word = false,
-                -- Accept the next line.
-                accept_line = false,
-                -- Clear the virtual text.
-                clear = false,
-                -- Cycle to the next completion.
-                next = "<M-]>",
-                -- Cycle to the previous completion.
-                prev = "<M-[>",
-            }
+          enabled = true,
+          manual = false,
+          filetypes = {},
+          default_filetype_enabled = true,
+          idle_delay = 75,
+          virtual_text_priority = 65535,
+          map_keys = true,
+          accept_fallback = nil,
+          key_bindings = {
+            -- Accept the current completion.
+            accept = "<M-l>",
+            -- Accept the next word.
+            accept_word = false,
+            -- Accept the next line.
+            accept_line = false,
+            -- Clear the virtual text.
+            clear = false,
+            -- Cycle to the next completion.
+            next = "<M-]>",
+            -- Cycle to the previous completion.
+            prev = "<M-[>",
+          },
         },
         workspace_root = {
           use_lsp = true,
         },
-    })
-    end
+      }
+    end,
   },
   {
     "wojciech-kulik/xcodebuild.nvim",
-      dependencies = {
-        "nvim-telescope/telescope.nvim",
-        "MunifTanjim/nui.nvim",
-        "j-hui/fidget.nvim",
-      },
-      config = function()
-        require("config.xcodebuild")
-      end
-  }
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "MunifTanjim/nui.nvim",
+      "j-hui/fidget.nvim",
+    },
+    config = function()
+      require("config.xcodebuild")
+    end,
+  },
 }
 
 ---@diagnostic disable-next-line: missing-fields

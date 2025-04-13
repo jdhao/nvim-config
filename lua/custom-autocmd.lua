@@ -242,12 +242,3 @@ api.nvim_create_autocmd("BufReadPre", {
     end
   end,
 })
-
-api.nvim_create_autocmd("BufWritePre", {
-  group = api.nvim_create_augroup("fmt", { clear = true}),
-  pattern = "*",
-  desc = "format on save",
-  command = "undojoin | Neoformat",
-})
-
-
