@@ -52,7 +52,7 @@ M.colorscheme_conf = {
     vim.cmd("colorscheme onedark_dark")
   end,
   material = function()
-    vim.g.material_style = "darker"
+    vim.g.material_style = "oceanic"
     vim.cmd("colorscheme material")
   end,
   arctic = function()
@@ -70,7 +70,7 @@ M.rand_colorscheme = function()
 
   if not vim.tbl_contains(vim.tbl_keys(M.colorscheme_conf), colorscheme) then
     local msg = "Invalid colorscheme: " .. colorscheme
-    vim.notify(msg, vim.log.levels.ERROR, { title = "nvim-config" })
+    vim.notify(msg, vim.log.levels { title = "nvim-config" })
 
     return
   end
