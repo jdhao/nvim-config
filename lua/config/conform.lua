@@ -10,6 +10,8 @@ require("conform").setup {
     go = { "goimports", "gofmt" },
     dart = { "dart_format" },
     swift = { "swiftformat" },
+    ruby = { "rubocop" },
+    -- Use the "*" filetype to run formatters on all filetypes
     ["*"] = { "codespell" },
     -- Use the "_" filetype to run formatters on filetypes that don't
     -- have other formatters configured.
