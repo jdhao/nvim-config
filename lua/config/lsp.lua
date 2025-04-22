@@ -1,8 +1,3 @@
-local api = vim.api
-local keymap = vim.keymap
-local lsp = vim.lsp
-local lspconfig = require("lspconfig")
-
 local utils = require("utils")
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -22,7 +17,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       opts = opts or {}
       opts.silent = true
       opts.buffer = bufnr
-      keymap.set(mode, l, r, opts)
+      vim.keymap.set(mode, l, r, opts)
     end
 
     map("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
@@ -55,20 +50,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- The blow command will highlight the current variable and its usages in the buffer.
     if client.server_capabilities.documentHighlightProvider then
-      local gid = api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-      api.nvim_create_autocmd("CursorHold", {
+      local gid = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+      vim.api.nvim_create_autocmd("CursorHold", {
         group = gid,
         buffer = bufnr,
         callback = function()
-          lsp.buf.document_highlight()
+          vim.lsp.buf.document_highlight()
         end,
       })
 
-      api.nvim_create_autocmd("CursorMoved", {
+      vim.api.nvim_create_autocmd("CursorMoved", {
         group = gid,
         buffer = bufnr,
         callback = function()
-          lsp.buf.clear_references()
+          vim.lsp.buf.clear_references()
         end,
       })
     end
@@ -108,7 +103,7 @@ if utils.executable("pyright") then
   }
   local merged_capability = vim.tbl_deep_extend("force", capabilities, new_capability)
 
-  lspconfig.pyright.setup {
+  vim.lsp.config("pyright", {
     cmd = { "delance-langserver", "--stdio" },
     capabilities = merged_capability,
     settings = {
@@ -137,13 +132,15 @@ if utils.executable("pyright") then
         },
       },
     },
-  }
+  })
+
+  vim.lsp.enable("pyright")
 else
   vim.notify("pyright not found!", vim.log.levels.WARN, { title = "Nvim-config" })
 end
 
 if utils.executable("ruff") then
-  require("lspconfig").ruff.setup {
+  vim.lsp.config("ruff", {
     capabilities = capabilities,
     init_options = {
       -- the settings can be found here: https://docs.astral.sh/ruff/editors/settings/
@@ -151,12 +148,12 @@ if utils.executable("ruff") then
         organizeImports = true,
       },
     },
-  }
+  })
+  vim.lsp.enable("ruff")
 end
 
 if utils.executable("ltex-ls") then
-  lspconfig.ltex.setup {
-    cmd = { "ltex-ls" },
+  vim.lsp.config("ltex", {
     filetypes = { "text", "plaintex", "tex", "markdown" },
     settings = {
       ltex = {
@@ -164,41 +161,49 @@ if utils.executable("ltex-ls") then
       },
     },
     flags = { debounce_text_changes = 300 },
-  }
+  })
+
+  vim.lsp.enable("ltex")
 end
 
 if utils.executable("clangd") then
-  lspconfig.clangd.setup {
+  vim.lsp.config("clangd", {
     capabilities = capabilities,
     filetypes = { "c", "cpp", "cc" },
     flags = {
       debounce_text_changes = 500,
     },
-  }
+  })
+
+  vim.lsp.enable("clangd")
 end
 
 -- set up vim-language-server
 if utils.executable("vim-language-server") then
-  lspconfig.vimls.setup {
+  vim.lsp.config("vimls", {
     flags = {
       debounce_text_changes = 500,
     },
     capabilities = capabilities,
-  }
+  })
+
+  vim.lsp.enable("vimls")
 else
   vim.notify("vim-language-server not found!", vim.log.levels.WARN, { title = "Nvim-config" })
 end
 
 -- set up bash-language-server
 if utils.executable("bash-language-server") then
-  lspconfig.bashls.setup {
+  vim.lsp.config("bashls", {
     capabilities = capabilities,
-  }
+  })
+
+  vim.lsp.enable("bashls")
 end
 
 -- settings for lua-language-server can be found on https://luals.github.io/wiki/settings/
 if utils.executable("lua-language-server") then
-  lspconfig.lua_ls.setup {
+  vim.lsp.config("lua_ls", {
     settings = {
       Lua = {
         runtime = {
@@ -211,5 +216,7 @@ if utils.executable("lua-language-server") then
       },
     },
     capabilities = capabilities,
-  }
+  })
+
+  vim.lsp.enable("lua_ls")
 end
