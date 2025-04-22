@@ -237,10 +237,6 @@ lspconfig.sourcekit.setup {
   end
 }
 
-lspconfig.elixirls.setup {
-  cmd = { "~/.lsp/elixir/language_server.sh" },
-}
-
 lspconfig.dartls.setup{
 }
 
