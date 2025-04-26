@@ -1,5 +1,3 @@
-local lsp_utils = require("lsp_utils")
-
 -- settings for lua-language-server can be found on https://luals.github.io/wiki/settings/
 return {
   settings = {
@@ -13,5 +11,4 @@ return {
       },
     },
   },
-  capabilities = lsp_utils.get_default_capabilities(),
 }
