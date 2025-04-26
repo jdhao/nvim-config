@@ -78,11 +78,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 local enabled_lsp_servers = {
   pyright = "delance-langserver",
   ruff = "ruff",
-  ltex = "ltex-ls",
-  clangd = "clangd",
+  lua_ls = "lua-language-server",
+  -- ltex = "ltex-ls",
+  -- clangd = "clangd",
   vimls = "vim-language-server",
   bashls = "bash-language-server",
-  lua_ls = "lua-language-server",
 }
 
 for server_name, lsp_executable in pairs(enabled_lsp_servers) do
