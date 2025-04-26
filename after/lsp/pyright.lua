@@ -1,5 +1,3 @@
-local lsp_utils = require("lsp_utils")
-
 -- For what diagnostic is enabled in which type checking mode, check doc:
 -- https://github.com/microsoft/pyright/blob/main/docs/configuration.md#diagnostic-settings-defaults
 -- Currently, the pyright also has some issues displaying hover documentation:
@@ -20,9 +18,6 @@ local new_capability = {
     },
   },
 }
-
-local capabilities = lsp_utils.get_default_capabilities()
-local merged_capability = vim.tbl_deep_extend("force", capabilities, new_capability)
 
 return {
   cmd = { "delance-langserver", "--stdio" },
@@ -52,5 +47,5 @@ return {
       },
     },
   },
-  capabilities = merged_capability,
+  capabilities = new_capability,
 }

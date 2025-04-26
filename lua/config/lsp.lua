@@ -74,6 +74,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Enable lsp servers when they are available
 
+local capabilities = require("lsp_utils").get_default_capabilities()
+
+vim.lsp.config("*", {
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 500,
+  },
+})
+
 -- A mapping from lsp server name to the executable name
 local enabled_lsp_servers = {
   pyright = "delance-langserver",
