@@ -12,9 +12,6 @@
     <a href="https://github.com/neovim/neovim/releases/tag/stable">
       <img src="https://img.shields.io/badge/Neovim-0.11.1-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
     </a>
-    <a href="https://github.com/jdhao/nvim-config/releases/latest">
-      <img alt="Latest release" src="https://img.shields.io/github/v/release/jdhao/nvim-config" />
-    </a>
     <a href="https://github.com/jdhao/nvim-config/search?l=vim-script">
       <img src="https://img.shields.io/github/languages/top/jdhao/nvim-config" alt="Top languages"/>
     </a>
