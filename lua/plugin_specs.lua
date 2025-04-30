@@ -26,15 +26,79 @@ local plugin_specs = {
   { "hrsh7th/cmp-path", lazy = true },
   { "hrsh7th/cmp-buffer", lazy = true },
   { "hrsh7th/cmp-omni", lazy = true },
+  { "hrsh7th/cmp-cmdline", lazy = true },
   { "quangnguyen30192/cmp-nvim-ultisnips", lazy = true },
   {
     "hrsh7th/nvim-cmp",
     name = "nvim-cmp",
-    event = "InsertEnter",
+    event = "VeryLazy",
     config = function()
       require("config.nvim-cmp")
     end,
   },
+  --{
+  --  "saghen/blink.cmp",
+  --  -- optional: provides snippets for the snippet source
+  --  dependencies = { "rafamadriz/friendly-snippets" },
+
+  --  -- use a release tag to download pre-built binaries
+  --  version = "1.*",
+
+  --  ---@module 'blink.cmp'
+  --  ---@type blink.cmp.Config
+  --  opts = {
+  --    -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+  --    -- 'super-tab' for mappings similar to vscode (tab to accept)
+  --    -- 'enter' for enter to accept
+  --    -- 'none' for no mappings
+  --    --
+  --    keymap = {
+  --      preset = "default",
+  --      ["<Tab>"] = { "select_next", "fallback" },
+  --      ["<S-Tab>"] = { "select_prev", "fallback" },
+  --      ["<Enter>"] = { "select_and_accept", "fallback" },
+  --      ["<C-U>"] = { "scroll_documentation_up", "fallback" },
+  --      ["<C-D>"] = { "scroll_documentation_down", "fallback" },
+  --    },
+
+  --    appearance = {
+  --      -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+  --      -- Adjusts spacing to ensure icons are aligned
+  --      nerd_font_variant = "mono",
+  --    },
+
+  --    -- (Default) Only show the documentation popup when manually triggered
+  --    completion = {
+  --      documentation = {
+  --        auto_show = true,
+  --      },
+  --    },
+
+  --    -- Default list of enabled providers defined so that you can extend it
+  --    -- elsewhere in your config, without redefining it, due to `opts_extend`
+  --    sources = {
+  --      default = { "lsp", "path", "buffer" },
+  --    },
+
+  --    -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+  --    -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+  --    -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+  --    --
+  --    -- See the fuzzy documentation for more information
+  --    fuzzy = { implementation = "prefer_rust_with_warning" },
+  --    cmdline = {
+  --      completion = {
+  --        menu = {
+  --          auto_show = true,
+  --        },
+  --      },
+  --      keymap = {
+  --        ["<Enter>"] = { "select_and_accept", "fallback" },
+  --      },
+  --    },
+  --  },
+  --  opts_extend = { "sources.default" },
+  --},
   {
     "neovim/nvim-lspconfig",
     event = { "BufRead", "BufNewFile" },
@@ -251,9 +315,13 @@ local plugin_specs = {
   },
 
   -- Snippet engine and snippet template
-  { "SirVer/ultisnips", dependencies = {
-    "honza/vim-snippets",
-  }, event = "InsertEnter" },
+  {
+    "SirVer/ultisnips",
+    dependencies = {
+      "honza/vim-snippets",
+    },
+    event = "InsertEnter",
+  },
 
   -- Automatic insertion and deletion of a pair of characters
   {
@@ -263,10 +331,13 @@ local plugin_specs = {
   },
 
   -- Comment plugin
-  { "tpope/vim-commentary", keys = {
-    { "gc", mode = "n" },
-    { "gc", mode = "v" },
-  } },
+  {
+    "tpope/vim-commentary",
+    keys = {
+      { "gc", mode = "n" },
+      { "gc", mode = "v" },
+    },
+  },
 
   -- Multiple cursor plugin like Sublime Text?
   -- 'mg979/vim-visual-multi'
@@ -306,9 +377,6 @@ local plugin_specs = {
     end,
     event = { "InsertEnter" },
   },
-
-  -- Auto format tools
-  { "sbdchd/neoformat", cmd = { "Neoformat" } },
 
   -- Git command inside vim
   {
@@ -462,12 +530,6 @@ local plugin_specs = {
       return vim.g.is_linux
     end,
     cmd = { "OSCYank", "OSCYankReg" },
-  },
-
-  -- The missing auto-completion for cmdline!
-  {
-    "gelguy/wilder.nvim",
-    build = ":UpdateRemotePlugins",
   },
 
   -- showing keybindings
