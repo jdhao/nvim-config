@@ -35,10 +35,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, { desc = "list workspace folder" })
 
     -- Set some key bindings conditional on server capabilities
-    if client.server_capabilities.documentFormattingProvider and client.name ~= "lua_ls" then
-      map({ "n", "x" }, "<space>f", vim.lsp.buf.format, { desc = "format code" })
-    end
-
     -- Disable ruff hover feature in favor of Pyright
     if client.name == "ruff" then
       client.server_capabilities.hoverProvider = false
