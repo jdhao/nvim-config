@@ -13,6 +13,7 @@ require("flutter-tools").setup {
           renamefileswithclasses = "prompt",
           updateimportsonrename = true,
           enablesnippets = false,
+          lineLength = 120,
       },
   },
   debugger = {

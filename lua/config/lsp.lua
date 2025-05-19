@@ -238,8 +238,20 @@ lspconfig.sourcekit.setup {
 }
 
 lspconfig.dartls.setup{
+  settings = {
+    dart = {
+      completeFunctionCalls = true,
+      lineLength = 120,
+      showTodos = true,
+    }
+  }
 }
 
 lspconfig.gopls.setup{}
 
 lspconfig.ruby_lsp.setup{}
+
+lspconfig.kotlin_language_server.setup{
+  filetypes = { "kotlin" , "kt", "kts"},
+  cmd = { os.getenv( "HOME" ) .."/Developer/language_servers/kotlin-language-server/server/bin/kotlin-language-server" },
+}

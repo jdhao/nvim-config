@@ -72,3 +72,7 @@ vim.g.loaded_sql_completion = 1
 
 -- control how to show health check window
 vim.g.health = { style = nil }
+
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
+
