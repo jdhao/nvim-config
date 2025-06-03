@@ -199,6 +199,15 @@ local plugin_specs = {
     branch = "v2",
   },
   { "rebelot/kanagawa.nvim", lazy = true },
+  { "miikanissi/modus-themes.nvim", priority = 1000 },
+  { "wtfox/jellybeans.nvim", priority = 1000 },
+  { "projekt0n/github-nvim-theme", name = "github-theme" },
+  { "e-ink-colorscheme/e-ink.nvim", priority = 1000 },
+  { "ficcdaf/ashen.nvim", priority = 1000 },
+  { "savq/melange-nvim", priority = 1000 },
+  { "Skardyy/makurai-nvim", priority = 1000 },
+  { "vague2k/vague.nvim", priority = 1000 },
+  { "webhooked/kanso.nvim", priority = 1000 },
 
   -- plugins to provide nerdfont icons
   {

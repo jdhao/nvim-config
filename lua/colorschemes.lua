@@ -61,6 +61,34 @@ M.colorscheme_conf = {
   kanagawa = function()
     vim.cmd("colorscheme kanagawa-dragon")
   end,
+  modus = function()
+    vim.cmd([[colorscheme modus]])
+  end,
+  jellybeans = function()
+    vim.cmd([[colorscheme jellybeans]])
+  end,
+  github = function()
+    vim.cmd([[colorscheme github_dark_default]])
+  end,
+  e_ink = function()
+    require("e-ink").setup()
+    vim.cmd.colorscheme("e-ink")
+  end,
+  ashen = function()
+    vim.cmd([[colorscheme ashen]])
+  end,
+  melange = function()
+    vim.cmd([[colorscheme melange]])
+  end,
+  makurai = function()
+    vim.cmd.colorscheme("makurai_warrior")
+  end,
+  vague = function()
+    vim.cmd([[colorscheme vague]])
+  end,
+  kanso = function()
+    vim.cmd([[colorscheme kanso]])
+  end,
 }
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
