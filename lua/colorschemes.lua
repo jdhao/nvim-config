@@ -89,6 +89,9 @@ M.colorscheme_conf = {
   kanso = function()
     vim.cmd([[colorscheme kanso]])
   end,
+  citruszest = function()
+    vim.cmd([[colorscheme citruszest]])
+  end,
 }
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
