@@ -208,6 +208,7 @@ local plugin_specs = {
   { "Skardyy/makurai-nvim", priority = 1000 },
   { "vague2k/vague.nvim", priority = 1000 },
   { "webhooked/kanso.nvim", priority = 1000 },
+  { "zootedb0t/citruszest.nvim", priority = 1000 },
 
   -- plugins to provide nerdfont icons
   {
