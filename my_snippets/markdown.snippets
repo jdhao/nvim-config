@@ -54,6 +54,10 @@ snippet link "Markdown links"
 [$1]($2)$0
 endsnippet
 
+snippet rlink "Markdown ref link"
+[${1:link_text}][${2:label}]
+endsnippet
+
 post_jump "gen_header(snip)"
 snippet "h([1-6])" "Markdown header" br
 `!p snip.rv = match.group(1)`
