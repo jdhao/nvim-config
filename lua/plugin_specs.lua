@@ -628,7 +628,7 @@ local plugin_specs = {
     "smjonas/live-command.nvim",
     -- live-command supports semantic versioning via Git tags
     -- tag = "2.*",
-    cmd = "Preview",
+    event = "VeryLazy",
     config = function()
       require("config.live-command")
     end,
