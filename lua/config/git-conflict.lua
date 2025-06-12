@@ -7,6 +7,6 @@ vim.api.nvim_create_autocmd("User", {
     vim.fn.setqflist({}, "r")
 
     -- reopen it?
-    vim.cmd([[GitConflictListQf]])
+    vim.cmd([[silent! GitConflictListQf]])
   end,
 })
