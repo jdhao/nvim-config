@@ -27,6 +27,9 @@
     <a href="https://github.com/jdhao/nvim-config/blob/master/LICENSE">
       <img src="https://img.shields.io/github/license/jdhao/nvim-config?style=flat-square&logo=GNU&label=License" alt="License"/>
     </a>
+    <a href="https://deepwiki.com/jdhao/nvim-config">
+      <img src="https://deepwiki.com/badge.svg" alt="deepwiki"/>
+    </a>
 </p>
 </div>
 
