@@ -599,6 +599,15 @@ local plugin_specs = {
       })
     end,
   },
+    {
+        "andrewferrier/wrapping.nvim",
+        config = function()
+            require("wrapping").setup()
+        end
+    },
+    {
+        "Pocco81/auto-save.nvim",
+    }
 }
 
 ---@diagnostic disable-next-line: missing-fields
