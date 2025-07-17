@@ -233,3 +233,10 @@ keymap.set("n", "<leader>cb", function()
     end)
   )
 end, { desc = "show cursor" })
+
+-- Next/Prev errors
+keymap.set("n", "g]", vim.diagnostic.goto_next, { desc = "go to the next problem"} )
+keymap.set("n", "g[", vim.diagnostic.goto_prev, { desc = "go to the previous problem"} )
+
+-- Show references
+keymap.set("n", "<leader>r", vim.lsp.buf.references, { desc = "show all references" })
