@@ -98,6 +98,7 @@ M.colorscheme_conf = {
 M.rand_colorscheme = function()
   local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme_conf))
 
+  vim.g.transparent=true
   -- Load the colorscheme and its settings
   M.colorscheme_conf[colorscheme]()
 end

@@ -607,7 +607,10 @@ local plugin_specs = {
     },
     {
         "Pocco81/auto-save.nvim",
-    }
+    },
+  {
+      "xiyaowong/transparent.nvim",
+  },
 }
 
 ---@diagnostic disable-next-line: missing-fields
