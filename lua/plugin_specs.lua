@@ -611,6 +611,15 @@ local plugin_specs = {
   {
       "xiyaowong/transparent.nvim",
   },
+    {
+        "smjonas/live-command.nvim",
+        -- live-command supports semantic versioning via Git tags
+        -- tag = "2.*",
+        event = "VeryLazy",
+        config = function()
+        require("config.live-command")
+        end,
+    },
 }
 
 ---@diagnostic disable-next-line: missing-fields
