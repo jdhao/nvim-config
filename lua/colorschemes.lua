@@ -81,7 +81,7 @@ M.colorscheme_conf = {
     vim.cmd([[colorscheme melange]])
   end,
   makurai = function()
-    vim.cmd.colorscheme("makurai_warrior")
+    vim.cmd.colorscheme("makurai_dark")
   end,
   vague = function()
     vim.cmd([[colorscheme vague]])
