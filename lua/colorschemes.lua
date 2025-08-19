@@ -70,10 +70,10 @@ M.colorscheme_conf = {
   github = function()
     vim.cmd([[colorscheme github_dark_default]])
   end,
-  e_ink = function()
-    require("e-ink").setup()
-    vim.cmd.colorscheme("e-ink")
-  end,
+  -- e_ink = function()
+  --   require("e-ink").setup()
+  --   vim.cmd.colorscheme("e-ink")
+  -- end,
   ashen = function()
     vim.cmd([[colorscheme ashen]])
   end,
