@@ -233,3 +233,10 @@ keymap.set("n", "<leader>cb", function()
     end)
   )
 end, { desc = "show cursor" })
+
+keymap.set("n", "q", function()
+  vim.print("q is remapped to Q in Normal mode!")
+end)
+keymap.set("n", "Q", "q", {
+  desc = "Record macro",
+})
