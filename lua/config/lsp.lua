@@ -61,7 +61,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, { desc = "go to definition" })
     map("n", "<C-]>", vim.lsp.buf.definition)
     map("n", "K", function()
-      vim.lsp.buf.hover { border = "single", max_height = 25, max_width = 120 }
+      vim.lsp.buf.hover {
+        border = "single",
+        max_height = 20,
+        max_width = 130,
+        close_events = { "CursorMoved", "BufLeave", "WinLeave", "LSPDetach" },
+      }
     end)
     map("n", "<C-k>", vim.lsp.buf.signature_help)
     map("n", "<space>rn", vim.lsp.buf.rename, { desc = "varialbe rename" })

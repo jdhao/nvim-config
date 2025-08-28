@@ -240,3 +240,9 @@ end)
 keymap.set("n", "Q", "q", {
   desc = "Record macro",
 })
+
+keymap.set("n", "<Esc>", function()
+  vim.cmd("fclose!")
+end, {
+  desc = "close floating win",
+})
