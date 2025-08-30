@@ -159,7 +159,7 @@ local plugin_specs = {
 
   -- plugins to provide nerdfont icons
   {
-    "echasnovski/mini.icons",
+    "nvim-mini/mini.icons",
     version = false,
     config = function()
       -- this is the compatibility fix for plugins that only support nvim-web-devicons
@@ -197,7 +197,7 @@ local plugin_specs = {
   },
 
   {
-    "echasnovski/mini.indentscope",
+    "nvim-mini/mini.indentscope",
     version = false,
     config = function()
       local mini_indent = require("mini.indentscope")
