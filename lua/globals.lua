@@ -1,6 +1,3 @@
-local fn = vim.fn
-local api = vim.api
-
 local utils = require("utils")
 
 ------------------------------------------------------------------------
@@ -19,18 +16,6 @@ vim.g.loaded_perl_provider = 0 -- Disable perl provider
 vim.g.loaded_ruby_provider = 0 -- Disable ruby provider
 vim.g.loaded_node_provider = 0 -- Disable node provider
 vim.g.did_install_default_menus = 1 -- do not load menu
-
-if utils.executable("python3") then
-  if vim.g.is_win then
-    vim.g.python3_host_prog = fn.substitute(fn.exepath("python3"), ".exe$", "", "g")
-  else
-    vim.g.python3_host_prog = fn.exepath("python3")
-  end
-else
-  local msg = "Python3 executable not found! You must install Python3 and set its PATH correctly!"
-  api.nvim_echo({ { msg } }, true, { err = true })
-  return
-end
 
 -- Custom mapping <leader> (see `:h mapleader` for more info)
 vim.g.mapleader = ","
