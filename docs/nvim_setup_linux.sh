@@ -59,8 +59,12 @@ if [[ ! "$PYTHON_INSTALLED" = true ]]; then
     bash "$HOME/packages/$CONDA_NAME" -b -p "$CONDA_DIR"
 
     # Setting up environment variables
-    if [[ "$ADD_TO_SYSTEM_PATH" = true ]] && [[ "$USE_BASH_SHELL" = true ]]; then
-        echo "export PATH=\"$CONDA_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+    if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
+        if [[ "$USE_BASH_SHELL" = true ]]; then
+            echo "export PATH=\"$CONDA_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+        elif [[ "$USE_ZSH_SHELL" = true ]]; then
+            echo "export PATH=\"$CONDA_DIR/bin:\$PATH\"" >> "$HOME/.zshrc"
+        fi
     fi
 else
     echo "Python is already installed. Skip installing it."
@@ -107,8 +111,12 @@ if [[ -z "$(command -v node)" ]]; then
         tar xvf "$NODE_SRC_NAME" -C "$NODE_DIR" --strip-components 1
     fi
 
-    if [[ "$ADD_TO_SYSTEM_PATH" = true ]] && [[ "$USE_BASH_SHELL" = true ]]; then
-        echo "export PATH=\"$NODE_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+    if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
+        if [[ "$USE_BASH_SHELL" = true ]]; then
+            echo "export PATH=\"$NODE_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+        elif [[ "$USE_ZSH_SHELL" = true ]]; then
+            echo "export PATH=\"$NODE_DIR/bin:\$PATH\"" >> "$HOME/.zshrc"
+        fi
     fi
 else
     echo "Node.js is already installed. Skip installing it."
@@ -143,8 +151,12 @@ if [[ -z "$(command -v lua-language-server)" ]] && [[ ! -f "$LUA_LS_DIR/bin/lua-
         tar zxvf "$LUA_LS_SRC" -C "$LUA_LS_DIR"
     fi
 
-    if [[ "$ADD_TO_SYSTEM_PATH" = true ]] && [[ "$USE_BASH_SHELL" = true ]]; then
-        echo "export PATH=\"$LUA_LS_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+    if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
+        if [[ "$USE_BASH_SHELL" = true ]]; then
+            echo "export PATH=\"$LUA_LS_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+        elif [[ "$USE_ZSH_SHELL" = true ]]; then
+            echo "export PATH=\"$LUA_LS_DIR/bin:\$PATH\"" >> "$HOME/.zshrc"
+        fi
     fi
 else
     echo "lua-language-server is already installed. Skip installing it."
@@ -170,8 +182,12 @@ if [[ -z "$(command -v rg)" ]] && [[ ! -f "$RIPGREP_DIR/rg" ]]; then
         tar zxvf "$RIPGREP_SRC_NAME" -C "$RIPGREP_DIR" --strip-components 1
     fi
 
-    if [[ "$ADD_TO_SYSTEM_PATH" = true ]] && [[ "$USE_BASH_SHELL" = true ]]; then
-        echo "export PATH=\"$RIPGREP_DIR:\$PATH\"" >> "$HOME/.bash_profile"
+    if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
+        if [[ "$USE_BASH_SHELL" = true ]]; then
+            echo "export PATH=\"$RIPGREP_DIR:\$PATH\"" >> "$HOME/.bash_profile"
+        elif [[ "$USE_ZSH_SHELL" = true ]]; then
+            echo "export PATH=\"$RIPGREP_DIR:\$PATH\"" >> "$HOME/.zshrc"
+        fi
     fi
 
     # set up manpath and zsh completion for ripgrep
@@ -208,8 +224,12 @@ if [[ ! -f "$CTAGS_DIR/bin/ctags" ]]; then
     ./autogen.sh && ./configure --prefix="$CTAGS_DIR"
     make -j && make install
 
-    if [[ "$ADD_TO_SYSTEM_PATH" = true ]] && [[ "$USE_BASH_SHELL" = true ]]; then
-        echo "export PATH=\"$CTAGS_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+    if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
+        if [[ "$USE_BASH_SHELL" = true ]]; then
+            echo "export PATH=\"$CTAGS_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+        elif [[ "$USE_ZSH_SHELL" = true ]]; then
+            echo "export PATH=\"$CTAGS_DIR/bin:\$PATH\"" >> "$HOME/.zshrc"
+        fi
     fi
 else
     echo "ctags is already installed. Skip installing it."
@@ -237,8 +257,12 @@ if [[ ! -f "$NVIM_DIR/bin/nvim" ]]; then
     echo "Extracting neovim"
     tar zxvf "$NVIM_SRC_NAME" --strip-components 1 -C "$NVIM_DIR"
 
-    if [[ "$ADD_TO_SYSTEM_PATH" = true ]] && [[ "$USE_BASH_SHELL" = true ]]; then
-        echo "export PATH=\"$NVIM_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+    if [[ "$ADD_TO_SYSTEM_PATH" = true ]]; then
+        if [[ "$USE_BASH_SHELL" = true ]]; then
+            echo "export PATH=\"$NVIM_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
+        elif [[ "$USE_ZSH_SHELL" = true ]]; then
+            echo "export PATH=\"$NVIM_DIR/bin:\$PATH\"" >> "$HOME/.zshrc"
+        fi
     fi
 else
     echo "Nvim is already installed. Skip installing it."
