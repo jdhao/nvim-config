@@ -124,7 +124,7 @@ local plugin_specs = {
     event = "VeryLazy",
   },
   {
-    "MeanderingProgrammer/markdown.nvim",
+    "MeanderingProgrammer/render-markdown.nvim",
     main = "render-markdown",
     opts = {},
     ft = { "markdown" },
