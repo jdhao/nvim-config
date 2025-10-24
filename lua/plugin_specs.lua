@@ -257,7 +257,9 @@ local plugin_specs = {
     enabled = function()
       return vim.g.is_win or vim.g.is_mac
     end,
-    config = true, -- default settings
+    config = function()
+      require("config.gx")
+    end,
     submodules = false, -- not needed, submodules are required only for tests
   },
 
