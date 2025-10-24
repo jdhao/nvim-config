@@ -8,6 +8,8 @@ require("fzf-lua").setup {
   },
   files = {
     previewer = false,
+    git_icons = true,
+    no_ignore = true,
   },
 }
 
