@@ -5,3 +5,4 @@ en.utf-8.add.spl
 *.log
 .DS_Store
 lazy-lock.json
+.env*
