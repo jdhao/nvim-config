@@ -1,7 +1,7 @@
 local utils = require("utils")
 
-local plugin_dir = vim.fn.stdpath("data") .. "/lazy"
-local lazypath = plugin_dir .. "/lazy.nvim"
+local plugin_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
+local lazypath = vim.fs.joinpath(plugin_dir, "lazy.nvim")
 
 if not vim.uv.fs_stat(lazypath) then
   vim.fn.system {
@@ -467,7 +467,7 @@ local plugin_specs = {
     -- it seems that we can only call the firenvim function directly.
     -- Using vim.fn or vim.cmd to call this function will fail.
     build = function()
-      local firenvim_path = plugin_dir .. "/firenvim"
+      local firenvim_path = vim.fs.joinpath(plugin_dir, "firenvim")
       vim.opt.runtimepath:append(firenvim_path)
       vim.cmd("runtime! firenvim.vim")
 
