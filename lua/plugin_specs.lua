@@ -612,7 +612,6 @@ local plugin_specs = {
   },
 }
 
----@diagnostic disable-next-line: missing-fields
 require("lazy").setup {
   spec = plugin_specs,
   ui = {

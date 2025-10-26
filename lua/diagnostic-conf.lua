@@ -22,7 +22,7 @@ diagnostic.config {
     border = "single",
     max_height = 10,
     max_width = 130,
-    close_events = { "CursorMoved", "BufLeave", "WinLeave" },
+    close_events = { "CursorMoved", "BufLeave", "WinLeave", "InsertEnter" },
   },
 }
 
