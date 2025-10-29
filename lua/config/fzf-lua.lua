@@ -9,7 +9,11 @@ require("fzf-lua").setup {
   files = {
     previewer = false,
     git_icons = true,
-    no_ignore = true,
+    -- using .gitignore is usually good, but still we may want to include some files,
+    -- you can create a file `.rgignore` to "unignore" those files, e.g., `.env` files.
+    -- see also https://github.com/BurntSushi/ripgrep/discussions/2512
+    -- and https://www.reddit.com/r/linuxquestions/comments/zycvud/ripgrep_respect_gitignore_but_show_env_files/
+    no_ignore = false,
   },
 }
 
