@@ -74,7 +74,7 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 + Code highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 + Code editing using true nvim inside browser via [firenvim](https://github.com/glacambre/firenvim).
 + Beautiful colorscheme via [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material) and other colorschemes.
-+ Markdown writing and previewing via [vim-markdown](https://github.com/preservim/vim-markdown) and [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
++ Markdown previewing via [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
 + LaTeX editing and previewing via [vimtex](https://github.com/lervag/vimtex)
 + Animated GUI style notification via [nvim-notify](https://github.com/rcarriga/nvim-notify).
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
@@ -178,8 +178,6 @@ Some of the shortcuts I use frequently are listed here. In the following shortcu
 | `{operator}iB`    | Normal        | Linux/macOS/Win | Operate in the whole buffer, `{operator}` can be `v`, `y`, `c`, `d` etc. |
 | `Alt-k`           | Normal        | Linux/macOS/Win | Move current line or selected lines up                                   |
 | `Alt-j`           | Normal        | Linux/macOS/Win | Move current line or selected lines down                                 |
-| `Alt-m`           | Normal        | macOS/Win       | Markdown previewing in system browser                                    |
-| `Alt-Shift-m`     | Normal        | macOS/Win       | Stopping Markdown previewing in system browser                           |
 | `ctrl-u`          | Insert        | Linux/macOS/Win | Turn word under cursor to upper case                                     |
 | `ctrl-t`          | Insert        | Linux/macOS/Win | Turn word under cursor to title case                                     |
 | `jk`              | Insert        | Linux/macOS/Win | Return to Normal mode without lagging                                    |
