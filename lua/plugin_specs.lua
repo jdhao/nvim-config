@@ -78,19 +78,6 @@ local plugin_specs = {
   },
   { "machakann/vim-swap", event = "VeryLazy" },
 
-  -- IDE for Lisp
-  -- 'kovisoft/slimv'
-  {
-    "vlime/vlime",
-    enabled = function()
-      return utils.executable("sbcl")
-    end,
-    config = function(plugin)
-      vim.opt.rtp:append(plugin.dir .. "/vim")
-    end,
-    ft = { "lisp" },
-  },
-
   -- Super fast buffer jump
   {
     "smoka7/hop.nvim",
@@ -267,6 +254,19 @@ local plugin_specs = {
   -- show file tags in vim window
   {
     "liuchengxu/vista.vim",
+    init = function()
+      vim.cmd([[
+        let g:vista#renderer#icons = {
+              \ 'member': '',
+              \ }
+        " Do not echo message on command line
+        let g:vista_echo_cursor = 0
+        " Stay in current window when vista window is opened
+        let g:vista_stay_on_open = 0
+
+        nnoremap <silent> <Space>t :<C-U>Vista!!<CR>
+      ]])
+    end,
     enabled = function()
       return utils.executable("ctags")
     end,
@@ -276,6 +276,23 @@ local plugin_specs = {
   -- Snippet engine and snippet template
   {
     "SirVer/ultisnips",
+    init = function()
+      vim.cmd([[
+        " Trigger configuration. Do not use <tab> if you use YouCompleteMe
+        let g:UltiSnipsExpandTrigger='<c-j>'
+
+        " Do not look for SnipMate snippets
+        let g:UltiSnipsEnableSnipMate = 0
+
+        " Shortcut to jump forward and backward in tabstop positions
+        let g:UltiSnipsJumpForwardTrigger='<c-j>'
+        let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+
+        " Configuration for custom snippets directory, see
+        " https://jdhao.github.io/2019/04/17/neovim_snippet_s1/ for details.
+        let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
+      ]])
+    end,
     dependencies = {
       "honza/vim-snippets",
     },
@@ -301,9 +318,6 @@ local plugin_specs = {
   -- Multiple cursor plugin like Sublime Text?
   -- 'mg979/vim-visual-multi'
 
-  -- Show undo history visually
-  { "simnalamburt/vim-mundo", cmd = { "MundoToggle", "MundoShow" } },
-
   -- Manage your yank history
   {
     "gbprod/yanky.nvim",
@@ -319,10 +333,23 @@ local plugin_specs = {
   -- Repeat vim motions
   { "tpope/vim-repeat", event = "VeryLazy" },
 
-  { "nvim-zh/better-escape.vim", event = { "InsertEnter" } },
+  {
+    "nvim-zh/better-escape.vim",
+    init = function()
+      vim.cmd([[
+      let g:better_escape_interval = 200
+    ]])
+    end,
+    event = { "InsertEnter" },
+  },
 
   {
     "lyokha/vim-xkbswitch",
+    init = function()
+      vim.cmd([[
+        let g:XkbSwitchEnabled = 1
+      ]])
+    end,
     enabled = function()
       return vim.g.is_mac and utils.executable("xkbswitch")
     end,
@@ -403,36 +430,100 @@ local plugin_specs = {
   -- Vim tabular plugin for manipulate tabular, required by markdown plugins
   { "godlygeek/tabular", ft = { "markdown" } },
 
-  -- Markdown previewing (only for Mac and Windows)
   {
-    "iamcco/markdown-preview.nvim",
-    enabled = function()
-      return vim.g.is_win or vim.g.is_mac
+    "chrisbra/unicode.vim",
+    init = function()
+      vim.cmd([[
+        nmap ga <Plug>(UnicodeGA)
+      ]])
     end,
-    build = "cd app && npm install && git restore .",
-    ft = { "markdown" },
+    event = "VeryLazy",
   },
-
-  {
-    "rhysd/vim-grammarous",
-    enabled = function()
-      return vim.g.is_mac
-    end,
-    ft = { "markdown" },
-  },
-
-  { "chrisbra/unicode.vim", keys = { "ga" }, cmd = { "UnicodeSearch" } },
 
   -- Additional powerful text object for vim, this plugin should be studied
   -- carefully to use its full power
   { "wellle/targets.vim", event = "VeryLazy" },
 
   -- Plugin to manipulate character pairs quickly
-  { "machakann/vim-sandwich", event = "VeryLazy" },
+  {
+    "machakann/vim-sandwich",
+    init = function()
+      vim.cmd([[
+        " Map s to nop since s in used by vim-sandwich. Use cl instead of s.
+        nmap s <Nop>
+        omap s <Nop>
+      ]])
+    end,
+    event = "VeryLazy",
+  },
 
   -- Only use these plugin on Windows and Mac and when LaTeX is installed
   {
     "lervag/vimtex",
+    init = function()
+      vim.cmd([[
+        if executable('latex')
+          " Hacks for inverse search to work semi-automatically,
+          " see https://jdhao.github.io/2021/02/20/inverse_search_setup_neovim_vimtex/.
+          function! s:write_server_name() abort
+            let nvim_server_file = (has('win32') ? $TEMP : '/tmp') . '/vimtexserver.txt'
+            call writefile([v:servername], nvim_server_file)
+          endfunction
+
+          augroup vimtex_common
+            autocmd!
+            autocmd FileType tex call s:write_server_name()
+            autocmd FileType tex nmap <buffer> <F9> <plug>(vimtex-compile)
+          augroup END
+
+          let g:vimtex_compiler_latexmk = {
+                \ 'build_dir' : 'build',
+                \ }
+
+          " TOC settings
+          let g:vimtex_toc_config = {
+                \ 'name' : 'TOC',
+                \ 'layers' : ['content', 'todo', 'include'],
+                \ 'resize' : 1,
+                \ 'split_width' : 30,
+                \ 'todo_sorted' : 0,
+                \ 'show_help' : 1,
+                \ 'show_numbers' : 1,
+                \ 'mode' : 2,
+                \ }
+
+          " Viewer settings for different platforms
+          if g:is_win
+            let g:vimtex_view_general_viewer = 'SumatraPDF'
+            let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
+          endif
+
+          if g:is_mac
+            " let g:vimtex_view_method = "skim"
+            let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+            let g:vimtex_view_general_options = '-r @line @pdf @tex'
+
+            augroup vimtex_mac
+              autocmd!
+              autocmd User VimtexEventCompileSuccess call UpdateSkim()
+            augroup END
+
+            " The following code is adapted from https://gist.github.com/skulumani/7ea00478c63193a832a6d3f2e661a536.
+            function! UpdateSkim() abort
+              let l:out = b:vimtex.out()
+              let l:src_file_path = expand('%:p')
+              let l:cmd = [g:vimtex_view_general_viewer, '-r']
+
+              if !empty(system('pgrep Skim'))
+                call extend(l:cmd, ['-g'])
+              endif
+
+              call jobstart(l:cmd + [line('.'), l:out, l:src_file_path])
+            endfunction
+          endif
+        endif
+      ]])
+    end,
     enabled = function()
       return utils.executable("latex")
     end,
@@ -451,16 +542,92 @@ local plugin_specs = {
   },
 
   -- Modern matchit implementation
-  { "andymass/vim-matchup", event = "BufRead" },
+  {
+    "andymass/vim-matchup",
+    init = function()
+      vim.cmd([[
+        " Improve performance
+        let g:matchup_matchparen_deferred = 1
+        let g:matchup_matchparen_timeout = 100
+        let g:matchup_matchparen_insert_timeout = 30
+
+        " Enhanced matching with matchup plugin
+        let g:matchup_override_vimtex = 1
+
+        " Whether to enable matching inside comment or string
+        let g:matchup_delim_noskips = 0
+
+        " Show offscreen match pair in popup window
+        let g:matchup_matchparen_offscreen = {'method': 'popup'}
+    ]])
+    end,
+    event = "BufRead",
+  },
   { "tpope/vim-scriptease", cmd = { "Scriptnames", "Messages", "Verbose" } },
 
   -- Asynchronous command execution
-  { "skywind3000/asyncrun.vim", lazy = true, cmd = { "AsyncRun" } },
+  {
+    "skywind3000/asyncrun.vim",
+    init = function()
+      vim.cmd([[
+        " Automatically open quickfix window of 6 line tall after asyncrun starts
+        let g:asyncrun_open = 6
+        if g:is_win
+          " Command output encoding for Windows
+          let g:asyncrun_encs = 'gbk'
+        endif
+      ]])
+    end,
+    cmd = { "AsyncRun" },
+  },
   { "cespare/vim-toml", ft = { "toml" }, branch = "main" },
 
   -- Edit text area in browser using nvim
   {
     "glacambre/firenvim",
+    init = function()
+      vim.cmd([[
+        """"""""""""""""""""""""""""""firenvim settings""""""""""""""""""""""""""""""
+        if exists('g:started_by_firenvim') && g:started_by_firenvim
+          if g:is_mac
+            set guifont=Iosevka\ Nerd\ Font:h18
+          else
+            set guifont=Consolas
+          endif
+
+          " general config for firenvim
+          let g:firenvim_config = {
+              \ 'globalSettings': {
+                  \ 'alt': 'all',
+              \  },
+              \ 'localSettings': {
+                  \ '.*': {
+                      \ 'cmdline': 'neovim',
+                      \ 'priority': 0,
+                      \ 'selector': 'textarea',
+                      \ 'takeover': 'never',
+                  \ },
+              \ }
+          \ }
+
+          function s:setup_firenvim() abort
+            set signcolumn=no
+            set noruler
+            set noshowcmd
+            set laststatus=0
+            set showtabline=0
+          endfunction
+
+          augroup firenvim
+            autocmd!
+            autocmd BufEnter * call s:setup_firenvim()
+            autocmd BufEnter sqlzoo*.txt set filetype=sql
+            autocmd BufEnter github.com_*.txt set filetype=markdown
+            autocmd BufEnter stackoverflow.com_*.txt set filetype=markdown
+          augroup END
+        endif
+      ]])
+    end,
     enabled = function()
       return vim.g.is_win or vim.g.is_mac
     end,
@@ -480,15 +647,6 @@ local plugin_specs = {
       local cmd_str = string.format(":call firenvim#install(0, '%s')", prologue)
       vim.cmd(cmd_str)
     end,
-  },
-  -- Debugger plugin
-  {
-    "sakhnik/nvim-gdb",
-    enabled = function()
-      return vim.g.is_win or vim.g.is_linux
-    end,
-    build = { "bash install.sh" },
-    lazy = true,
   },
 
   -- Session management plugin
@@ -624,3 +782,12 @@ require("lazy").setup {
     hererocks = false,
   },
 }
+
+-- Use short names for common plugin manager commands to simplify typing.
+-- To use these shortcuts: first activate command line with `:`, then input the
+-- short alias, e.g., `pi`, then press <space>, the alias will be expanded to
+-- the full command automatically.
+vim.fn["utils#Cabbrev"]("pi", "Lazy install")
+vim.fn["utils#Cabbrev"]("pud", "Lazy update")
+vim.fn["utils#Cabbrev"]("pc", "Lazy clean")
+vim.fn["utils#Cabbrev"]("ps", "Lazy sync")
