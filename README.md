@@ -151,7 +151,6 @@ Some of the shortcuts I use frequently are listed here. In the following shortcu
 | `<leader>v`       | Normal        | Linux/macOS/Win | Reselect last pasted text                                                |
 | `<leader>ev`      | Normal        | Linux/macOS/Win | Edit Nvim config in a new tabpage                                        |
 | `<leader>sv`      | Normal        | Linux/macOS/Win | Reload Nvim config                                                       |
-| `<leader>st`      | Normal        | Linux/macOS/Win | Show highlight group for cursor text                                     |
 | `<leader>q`       | Normal        | Linux/macOS/Win | Quit current window                                                      |
 | `<leader>Q`       | Normal        | Linux/macOS/Win | Quit all window and close Nvim                                           |
 | `<leader>w`       | Normal        | Linux/macOS/Win | Save current buffer content                                              |
