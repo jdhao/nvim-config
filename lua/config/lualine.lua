@@ -1,6 +1,11 @@
 local fn = vim.fn
 
-local git_status_cache = {}
+-- cache for git states
+local git_status_cache = {
+  fetch_success = false,
+  behind_count = 0,
+  ahead_count = 0,
+}
 
 local on_exit_fetch = function(result)
   if result.code == 0 then
@@ -12,6 +17,12 @@ local function handle_numeric_result(cache_key)
   return function(result)
     if result.code == 0 then
       git_status_cache[cache_key] = tonumber(result.stdout:match("(%d+)")) or 0
+    else
+      -- when the git command fails, it usually means there are some changes in your branch. For example, you
+      -- on branchA, for this one, you have upstream branch. Then you changed to branchB, and there is no upstream
+      -- branch, the git rev-list command will error out. In this case, we should clear the cache
+      -- vim.print("Error running git command", result)
+      git_status_cache[cache_key] = 0
     end
   end
 end
