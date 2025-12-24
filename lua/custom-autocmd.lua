@@ -64,7 +64,11 @@ api.nvim_create_autocmd({ "FileChangedShellPost" }, {
   pattern = "*",
   group = "auto_read",
   callback = function()
-    vim.notify("File changed on disk. Buffer reloaded!", vim.log.levels.WARN, { title = "nvim-config" })
+    vim.notify(
+      "File changed on disk. Buffer reloaded!",
+      vim.log.levels.WARN,
+      { title = "nvim-config" }
+    )
   end,
 })
 
@@ -164,7 +168,11 @@ api.nvim_create_autocmd("ColorScheme", {
   desc = "Define or overrride some highlight groups",
   callback = function()
     -- For yank highlight
-    vim.api.nvim_set_hl(0, "YankColor", { fg = "#34495E", bg = "#2ECC71", ctermfg = 59, ctermbg = 41 })
+    vim.api.nvim_set_hl(
+      0,
+      "YankColor",
+      { fg = "#34495E", bg = "#2ECC71", ctermfg = 59, ctermbg = 41 }
+    )
 
     -- For cursor colors
     vim.api.nvim_set_hl(0, "Cursor", { fg = "black", bg = "#00c918", bold = true })
