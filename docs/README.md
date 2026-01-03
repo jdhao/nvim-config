@@ -32,6 +32,7 @@ should be set properly based on your environment.
 ## Automatic installation for Windows
 
 **Requires Powershell 7**
+
 From the top level of the cloned repo, run the script [nvim_setup_windows.ps1](nvim_setup_windows.ps1) in PowerShell:
 
 ```
