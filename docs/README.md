@@ -31,11 +31,25 @@ should be set properly based on your environment.
 
 ## Automatic installation for Windows
 
-Run the script [nvim_setup_windows.ps1](nvim_setup_windows.ps1) in PowerShell **with Administrator rights**:
+**Requires Powershell 7**
+From the top level of the cloned repo, run the script [nvim_setup_windows.ps1](nvim_setup_windows.ps1) in PowerShell:
 
 ```
 .\docs\nvim_setup_windows.ps1
 ```
+
+There is an option to "Dry Run" the script to preview what actions would be taken by using the -DryRun flag.
+
+```
+.\docs\nvim_setup_windows.ps1 -DryRun
+```
+
+There is also a -Force option. 
+
+If Powershell complains about execution policy and the script not able to run 
+because it was downloaded from the internet you can unblock the script from 
+the properties dialogue accessed in the windows file manager.
+
 
 # Manual install
 
