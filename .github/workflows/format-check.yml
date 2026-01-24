@@ -1,4 +1,13 @@
 name: Format Check
+on:
+  pull_request:
+    paths:
+      - '**.lua'
+  push:
+    branches:
+      - main
+    paths:
+      - '**.lua'
 
 on:
   pull_request:
