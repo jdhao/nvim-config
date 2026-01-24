@@ -4,7 +4,7 @@
 -- I would not recommend cloning this repo and replace your own config. Good configurations are personal,
 -- built over time with a lot of polish.
 --
--- Author: Jiedong Hao
+-- Author:    Jiedong Hao
 -- Email: jdhao@hotmail.com
 -- Blog: https://jdhao.github.io/
 -- GitHub: https://github.com/jdhao
