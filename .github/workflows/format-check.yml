@@ -9,16 +9,6 @@ on:
     paths:
       - '**.lua'
 
-on:
-  pull_request:
-    paths:
-      - '**.lua'
-  push:
-    branches:
-      - main
-    paths:
-      - '**.lua'
-
 jobs:
   format-check:
     runs-on: ubuntu-latest
