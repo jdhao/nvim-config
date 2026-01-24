@@ -250,3 +250,27 @@ api.nvim_create_autocmd("BufReadPre", {
     end
   end,
 })
+
+-- check if current file is formatted
+local ft_to_command = {
+  python = { "black", "--check" },
+  lua = { "stylua", "--check" },
+}
+
+api.nvim_create_autocmd("BufWritePost", {
+  group = api.nvim_create_augroup("format check", { clear = true }),
+  pattern = { "*.py", "*.lua" },
+  desc = "Check if file needs reformat",
+  callback = function(ev)
+    local fpath = ev.file
+    local ft = vim.api.nvim_get_option_value("filetype", { buf = ev.buf })
+    local cmd = vim.deepcopy(ft_to_command[ft])
+    table.insert(cmd, fpath)
+
+    local result = vim.system(cmd, { text = true }):wait()
+
+    if result.code ~= 0 then
+      vim.notify("This file is not formatted!")
+    end
+  end,
+})
