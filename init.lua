@@ -11,7 +11,7 @@
 -- StackOverflow: https://stackoverflow.com/users/6064933/jdhao
 vim.loader.enable()
 
-local utils = require("utils")
+local utils = require('utils')
 
 local expected_version = "0.11.5"
 utils.is_compatible_version(expected_version)
