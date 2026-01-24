@@ -1,0 +1,17 @@
+name: Format Check
+
+on:
+  pull_request:
+
+jobs:
+  format-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install stylua
+        run: |
+          wget https://github.com/JohnnyMorganz/StyLua/releases/download/v0.18.0/stylua-linux.zip
+          unzip stylua-linux.zip
+          sudo mv stylua /usr/local/bin/
+      - name: Run stylua
+        run: stylua --check .
