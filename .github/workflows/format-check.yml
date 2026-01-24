@@ -10,8 +10,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install stylua
         run: |
-          wget https://github.com/JohnnyMorganz/StyLua/releases/download/v2.3.1/stylua-linux.zip
-          unzip stylua-linux.zip
+          wget https://github.com/JohnnyMorganz/StyLua/releases/download/v2.3.1/stylua-linux-x86_64.zip
+          unzip stylua-linux-x86_64.zip
           sudo mv stylua /usr/local/bin/
       - name: Run stylua
         run: stylua --check .
