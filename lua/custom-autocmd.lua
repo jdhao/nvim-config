@@ -267,6 +267,11 @@ api.nvim_create_autocmd("BufWritePost", {
     local cmd = vim.deepcopy(ft_to_command[ft])
     table.insert(cmd, fpath)
 
+    local exe_path = cmd[1]
+    if not utils.executable(exe_path) then
+      return
+    end
+
     local result = vim.system(cmd, { text = true }):wait()
 
     if result.code ~= 0 then
