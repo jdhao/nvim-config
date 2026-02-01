@@ -22,9 +22,6 @@ end
 
 local plugin_specs = {
   {
-    "github/copilot.vim",
-  },
-  {
     "mg979/vim-visual-multi",
   },
   -- auto-completion engine
