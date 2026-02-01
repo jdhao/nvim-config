@@ -115,6 +115,8 @@ set shortmess+=S
 " Disable showing intro message (:intro)
 set shortmess+=I
 
+set messagesopt=hit-enter,history:500
+
 " Completion behaviour
 " set completeopt+=noinsert  " Auto select the first completion entry
 set completeopt+=menuone  " Show menu even if there is only one item
@@ -124,6 +126,7 @@ set pumheight=10  " Maximum number of items to show in popup menu
 set pumblend=5  " pseudo transparency for completion menu
 
 set winblend=0  " pseudo transparency for floating window
+set winborder=none
 
 " Insert mode key word completion setting
 set complete+=kspell complete-=w complete-=b complete-=u complete-=t
@@ -175,7 +178,13 @@ set diffopt+=filler  " show filler for deleted lines
 set diffopt+=closeoff  " turn off diff when one file window is closed
 set diffopt+=context:3  " context for diff
 set diffopt+=internal,indent-heuristic,algorithm:histogram
-set diffopt+=linematch:60
+" inline diff makes changes in a line more noticeable, the author suggests to
+" remove linematch option if you use inline option, see also https://www.reddit.com/r/neovim/comments/1myfvla/comment/najy4s3/
+if has('nvim-0.12')
+  set diffopt+=inline:char
+else
+  set diffopt+=linematch:60
+endif
 
 set nowrap  " do no wrap
 set noruler

@@ -30,6 +30,9 @@
     <a href="https://github.com/jdhao/nvim-config/blob/master/LICENSE">
       <img src="https://img.shields.io/github/license/jdhao/nvim-config?style=flat-square&logo=GNU&label=License" alt="License"/>
     </a>
+    <a href="https://deepwiki.com/jdhao/nvim-config">
+      <img src="https://deepwiki.com/badge.svg" alt="deepwiki"/>
+    </a>
 </p>
 </div>
 
@@ -61,7 +64,7 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 + Language server protocol (LSP) support via [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
 + Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
 + Better escaping from insert mode via [better-escape.vim](https://github.com/nvim-zh/better-escape.vim).
-+ Ultra-fast project-wide fuzzy searching via [LeaderF](https://github.com/Yggdroot/LeaderF).
++ Ultra-fast project-wide fuzzy searching via [fzf-lua](https://github.com/ibhagwan/fzf-lua).
 + Faster code commenting via [vim-commentary](https://github.com/tpope/vim-commentary).
 + Faster matching pair insertion and jump via [nvim-autopairs](https://github.com/windwp/nvim-autopairs).
 + Smarter and faster matching pair management (add, replace or delete) via [vim-sandwich](https://github.com/machakann/vim-sandwich).
@@ -71,17 +74,15 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 + File tree explorer via [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua).
 + Better quickfix list with [nvim-bqf](https://github.com/kevinhwang91/nvim-bqf).
 + Show search index and count with [nvim-hlslens](https://github.com/kevinhwang91/nvim-hlslens).
-+ Command line auto-completion via [wilder.nvim](https://github.com/gelguy/wilder.nvim).
 + User-defined mapping hint via [which-key.nvim](https://github.com/folke/which-key.nvim).
 + Asynchronous code execution via [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim).
 + Code highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 + Code editing using true nvim inside browser via [firenvim](https://github.com/glacambre/firenvim).
 + Beautiful colorscheme via [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material) and other colorschemes.
-+ Markdown writing and previewing via [vim-markdown](https://github.com/preservim/vim-markdown) and [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
++ Markdown previewing via [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
 + LaTeX editing and previewing via [vimtex](https://github.com/lervag/vimtex)
 + Animated GUI style notification via [nvim-notify](https://github.com/rcarriga/nvim-notify).
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
-+ Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).
 + Undo management via [vim-mundo](https://github.com/simnalamburt/vim-mundo)
 + Code folding with [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) and [statuscol.nvim](https://github.com/luukvbaal/statuscol.nvim)
 + ......
@@ -96,10 +97,10 @@ For more UI demos, check [here](https://github.com/jdhao/nvim-config/issues/15).
 <img src="https://user-images.githubusercontent.com/16662357/183256752-fb23b215-a6b8-4646-beed-9999f52d53f1.png" width="800">
 </p>
 
-## File fuzzy finding using LeaderF
+## File fuzzy finding using fzf-lua
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/16662357/183257017-2d9d7605-3c4b-4e1d-8955-30998f9b6f28.gif" width="800">
+<img src="https://github.com/user-attachments/assets/3199e35d-121a-487b-bfd1-58eb69b0b48a" width="800">
 </p>
 
 ## Code autocompletion with nvim-cmp
@@ -112,12 +113,6 @@ For more UI demos, check [here](https://github.com/jdhao/nvim-config/issues/15).
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/16662357/128590833-aaa05d53-19ef-441d-a5a9-ba1bbd3936c1.gif" width="800">
-</p>
-
-## Command-line autocompletion with wilder.nvim
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/16662357/147677787-8e5d229a-a16a-420e-98f5-88f2a1be84a2.gif" width="800">
 </p>
 
 ## Tags
@@ -161,7 +156,6 @@ Some of the shortcuts I use frequently are listed here. In the following shortcu
 | `<leader>v`       | Normal        | Linux/macOS/Win | Reselect last pasted text                                                |
 | `<leader>ev`      | Normal        | Linux/macOS/Win | Edit Nvim config in a new tabpage                                        |
 | `<leader>sv`      | Normal        | Linux/macOS/Win | Reload Nvim config                                                       |
-| `<leader>st`      | Normal        | Linux/macOS/Win | Show highlight group for cursor text                                     |
 | `<leader>q`       | Normal        | Linux/macOS/Win | Quit current window                                                      |
 | `<leader>Q`       | Normal        | Linux/macOS/Win | Quit all window and close Nvim                                           |
 | `<leader>w`       | Normal        | Linux/macOS/Win | Save current buffer content                                              |
@@ -188,8 +182,6 @@ Some of the shortcuts I use frequently are listed here. In the following shortcu
 | `{operator}iB`    | Normal        | Linux/macOS/Win | Operate in the whole buffer, `{operator}` can be `v`, `y`, `c`, `d` etc. |
 | `Alt-k`           | Normal        | Linux/macOS/Win | Move current line or selected lines up                                   |
 | `Alt-j`           | Normal        | Linux/macOS/Win | Move current line or selected lines down                                 |
-| `Alt-m`           | Normal        | macOS/Win       | Markdown previewing in system browser                                    |
-| `Alt-Shift-m`     | Normal        | macOS/Win       | Stopping Markdown previewing in system browser                           |
 | `ctrl-u`          | Insert        | Linux/macOS/Win | Turn word under cursor to upper case                                     |
 | `ctrl-t`          | Insert        | Linux/macOS/Win | Turn word under cursor to title case                                     |
 | `jk`              | Insert        | Linux/macOS/Win | Return to Normal mode without lagging                                    |

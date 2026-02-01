@@ -1,0 +1,25 @@
+name: Format Check
+on:
+  pull_request:
+    paths:
+      - '**.lua'
+  push:
+    branches:
+      - main
+    paths:
+      - '**.lua'
+
+jobs:
+  format-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install StyLua
+        uses: JohnnyMorganz/stylua-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: latest
+          args: false
+      - name: Run stylua
+        run: |
+          stylua --check .

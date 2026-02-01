@@ -23,19 +23,6 @@ keymap.set("n", "<leader>q", "<cmd>x<cr>", { silent = true, desc = "quit current
 -- Quit all opened buffers
 keymap.set("n", "<leader>Q", "<cmd>qa!<cr>", { silent = true, desc = "quit nvim" })
 
--- Navigation in the location and quickfix list
-keymap.set("n", "[l", "<cmd>lprevious<cr>zv", { silent = true, desc = "previous location item" })
-keymap.set("n", "]l", "<cmd>lnext<cr>zv", { silent = true, desc = "next location item" })
-
-keymap.set("n", "[L", "<cmd>lfirst<cr>zv", { silent = true, desc = "first location item" })
-keymap.set("n", "]L", "<cmd>llast<cr>zv", { silent = true, desc = "last location item" })
-
-keymap.set("n", "[q", "<cmd>cprevious<cr>zv", { silent = true, desc = "previous qf item" })
-keymap.set("n", "]q", "<cmd>cnext<cr>zv", { silent = true, desc = "next qf item" })
-
-keymap.set("n", "[Q", "<cmd>cfirst<cr>zv", { silent = true, desc = "first qf item" })
-keymap.set("n", "]Q", "<cmd>clast<cr>zv", { silent = true, desc = "last qf item" })
-
 -- Close location list or quickfix list if they are present, see https://superuser.com/q/355325/736190
 keymap.set("n", [[\x]], "<cmd>windo lclose <bar> cclose <cr>", {
   silent = true,
@@ -60,18 +47,6 @@ keymap.set("n", [[\D]], function()
   end
 end, {
   desc = "delete other buffers",
-})
-
--- Insert a blank line below or above current line (do not move the cursor),
--- see https://stackoverflow.com/a/16136133/6064933
-keymap.set("n", "<space>o", "printf('m`%so<ESC>``', v:count1)", {
-  expr = true,
-  desc = "insert line below",
-})
-
-keymap.set("n", "<space>O", "printf('m`%sO<ESC>``', v:count1)", {
-  expr = true,
-  desc = "insert line above",
 })
 
 -- Move the cursor based on physical lines, not the actual lines.
@@ -117,7 +92,7 @@ keymap.set("n", "<leader>v", "printf('`[%s`]', getregtype()[0])", {
 })
 
 -- Always use very magic mode for searching
-keymap.set("n", "/", [[/\v]])
+-- keymap.set("n", "/", [[/\v]])
 
 -- Search in selected region
 -- xnoremap / :<C-U>call feedkeys('/\%>'.(line("'<")-1).'l\%<'.(line("'>")+1)."l")<CR>
@@ -141,22 +116,47 @@ keymap.set("n", "cc", '"_cc')
 keymap.set("x", "c", '"_c')
 
 -- Remove trailing whitespace characters
-keymap.set("n", "<leader><space>", "<cmd>StripTrailingWhitespace<cr>", { desc = "remove trailing space" })
+keymap.set(
+  "n",
+  "<leader><space>",
+  "<cmd>StripTrailingWhitespace<cr>",
+  { desc = "remove trailing space" }
+)
 
 -- Copy entire buffer.
 keymap.set("n", "<leader>y", "<cmd>%yank<cr>", { desc = "yank entire buffer" })
 
 -- Toggle cursor column
-keymap.set("n", "<leader>cl", "<cmd>call utils#ToggleCursorCol()<cr>", { desc = "toggle cursor column" })
+keymap.set(
+  "n",
+  "<leader>cl",
+  "<cmd>call utils#ToggleCursorCol()<cr>",
+  { desc = "toggle cursor column" }
+)
 
 -- Move current line up and down
-keymap.set("n", "<A-k>", '<cmd>call utils#SwitchLine(line("."), "up")<cr>', { desc = "move line up" })
-keymap.set("n", "<A-j>", '<cmd>call utils#SwitchLine(line("."), "down")<cr>', { desc = "move line down" })
+keymap.set(
+  "n",
+  "<A-k>",
+  '<cmd>call utils#SwitchLine(line("."), "up")<cr>',
+  { desc = "move line up" }
+)
+keymap.set(
+  "n",
+  "<A-j>",
+  '<cmd>call utils#SwitchLine(line("."), "down")<cr>',
+  { desc = "move line down" }
+)
 
 -- Move current visual-line selection up and down
 keymap.set("x", "<A-k>", '<cmd>call utils#MoveSelection("up")<cr>', { desc = "move selection up" })
 
-keymap.set("x", "<A-j>", '<cmd>call utils#MoveSelection("down")<cr>', { desc = "move selection down" })
+keymap.set(
+  "x",
+  "<A-j>",
+  '<cmd>call utils#MoveSelection("down")<cr>',
+  { desc = "move selection down" }
+)
 
 -- Replace visual selection with text in register, but not contaminate the register,
 -- see also https://stackoverflow.com/q/10723700/6064933.
@@ -246,3 +246,16 @@ keymap.set("n", "<leader>cb", function()
     end)
   )
 end, { desc = "show cursor" })
+
+keymap.set("n", "q", function()
+  vim.print("q is remapped to Q in Normal mode!")
+end)
+keymap.set("n", "Q", "q", {
+  desc = "Record macro",
+})
+
+keymap.set("n", "<Esc>", function()
+  vim.cmd("fclose!")
+end, {
+  desc = "close floating win",
+})
