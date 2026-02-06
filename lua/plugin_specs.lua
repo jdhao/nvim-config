@@ -148,7 +148,6 @@ local plugin_specs = {
   { "miikanissi/modus-themes.nvim", priority = 1000 },
   { "wtfox/jellybeans.nvim", priority = 1000 },
   { "projekt0n/github-nvim-theme", name = "github-theme" },
-  { "e-ink-colorscheme/e-ink.nvim", priority = 1000 },
   { "ficcdaf/ashen.nvim", priority = 1000 },
   { "savq/melange-nvim", priority = 1000 },
   { "Skardyy/makurai-nvim", priority = 1000 },
