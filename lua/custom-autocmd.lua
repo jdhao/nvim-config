@@ -259,21 +259,28 @@ local ft_to_command = {
 
 api.nvim_create_autocmd("BufWritePost", {
   group = api.nvim_create_augroup("format check", { clear = true }),
-  pattern = { "*.py", "*.lua" },
+  pattern = { "*" },
   desc = "Check if file needs reformat",
   callback = function(ev)
     local fpath = ev.file
     local ft = vim.api.nvim_get_option_value("filetype", { buf = ev.buf })
-    local cmd = vim.deepcopy(ft_to_command[ft])
-    table.insert(cmd, fpath)
+
+    local cmd_partial = ft_to_command[ft]
+    local cmd = nil
+    if cmd_partial ~= nil then
+      cmd = vim.deepcopy(cmd_partial)
+      table.insert(cmd, fpath)
+    else
+      return
+    end
 
     local exe_path = cmd[1]
     if not utils.executable(exe_path) then
+      vim.print(string.format("%s not found!", exe_path))
       return
     end
 
     local result = vim.system(cmd, { text = true }):wait()
-
     if result.code ~= 0 then
       vim.notify("This file is not formatted!")
     end
