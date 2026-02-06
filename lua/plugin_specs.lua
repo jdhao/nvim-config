@@ -185,15 +185,6 @@ local plugin_specs = {
     end,
   },
 
-  -- fancy start screen
-  {
-    "nvimdev/dashboard-nvim",
-    cond = firenvim_not_active,
-    config = function()
-      require("config.dashboard-nvim")
-    end,
-  },
-
   {
     "nvim-mini/mini.indentscope",
     version = false,
@@ -683,18 +674,10 @@ local plugin_specs = {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
-    opts = {
-      -- more beautiful vim.ui.input
-      input = {
-        enabled = true,
-        win = {
-          relative = "cursor",
-          backdrop = true,
-        },
-      },
-      -- more beautiful vim.ui.select
-      picker = { enabled = true },
-    },
+    opts = {},
+    config = function()
+      require("config.snacks")
+    end,
   },
   -- show and trim trailing whitespaces
   { "jdhao/whitespace.nvim", event = "VeryLazy" },
