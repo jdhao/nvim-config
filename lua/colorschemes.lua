@@ -72,10 +72,6 @@ M.colorscheme_conf = {
   github = function()
     use_theme("github_dark_default")
   end,
-  e_ink = function()
-    require("e-ink").setup()
-    use_theme("e-ink")
-  end,
   ashen = function()
     use_theme("ashen")
   end,
