@@ -677,7 +677,7 @@ local plugin_specs = {
     opts = {},
     config = function()
       require("config.snacks")
-    end
+    end,
   },
   -- show and trim trailing whitespaces
   { "jdhao/whitespace.nvim", event = "VeryLazy" },
