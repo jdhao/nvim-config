@@ -93,6 +93,9 @@ set list listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
 " Auto-write the file based on some condition
 set autowrite
 
+" Auto reload file if changed outside nvim
+set autoread
+
 " Show hostname, full path of file and last-mod time on the window title. The
 " meaning of the format str for strftime can be found in
 " http://man7.org/linux/man-pages/man3/strftime.3.html. The function to get
