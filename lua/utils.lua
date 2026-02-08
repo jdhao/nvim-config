@@ -92,4 +92,23 @@ function M.inside_git_repo()
   return true
 end
 
+--- Get custom title string for the window title.
+--- Shows hostname (on Linux), buffer path, and last modified time.
+--- @return string
+function M.get_titlestr()
+  local title_str = ""
+  if vim.g.is_linux then
+    title_str = vim.fn.hostname() .. "  "
+  end
+
+  local buf_path = vim.fn.expand("%:p:~")
+  title_str = title_str .. buf_path .. "  "
+  if vim.bo.buflisted and buf_path ~= "" then
+    local mod_time = vim.fn.strftime("%Y-%m-%d %H:%M:%S%z", vim.fn.getftime(vim.fn.expand("%")))
+    title_str = title_str .. mod_time
+  end
+
+  return title_str
+end
+
 return M

@@ -16,13 +16,10 @@ local utils = require("utils")
 local expected_version = "0.11.6"
 utils.is_compatible_version(expected_version)
 
-local config_dir = vim.fn.stdpath("config")
----@cast config_dir string
-
 -- some global settings
 require("globals")
 -- setting options in nvim
-vim.cmd("source " .. vim.fs.joinpath(config_dir, "viml_conf/options.vim"))
+require("options")
 -- various autocommands
 require("custom-autocmd")
 -- all the user-defined mappings
