@@ -39,7 +39,10 @@ local plugin_specs = {
   -- {
   --   "saghen/blink.cmp",
   --   -- optional: provides snippets for the snippet source
-  --   dependencies = { "rafamadriz/friendly-snippets" },
+  --   dependencies = {
+  --     "rafamadriz/friendly-snippets",
+  --     "archie-judd/blink-cmp-words",
+  --   },
   --   -- use a release tag to download pre-built binaries
   --   version = "1.*",
   --   config = function()
@@ -743,6 +746,18 @@ local plugin_specs = {
     ---@module "quicker"
     ---@type quicker.SetupOptions
     opts = {},
+  },
+  {
+    "nickjvandyke/opencode.nvim",
+    config = function()
+      ---@type opencode.Opts
+      vim.g.opencode_opts = {
+        -- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition" on the type or field.
+      }
+
+      -- Required for `opts.events.reload`.
+      vim.o.autoread = true
+    end,
   },
 }
 
