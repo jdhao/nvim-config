@@ -750,6 +750,7 @@ local plugin_specs = {
   {
     "nickjvandyke/opencode.nvim",
     config = function()
+      ---@module "opencode"
       ---@type opencode.Opts
       vim.g.opencode_opts = {
         -- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition" on the type or field.
@@ -762,6 +763,19 @@ local plugin_specs = {
   {
     "RRethy/vim-illuminate",
     event = "VeryLazy",
+    config = function()
+      require("illuminate").configure {
+        filetypes_denylist = {},
+        filetypes_allowlist = {
+          "lua",
+          "python",
+          "sh",
+          "yaml",
+          "json",
+          "toml",
+        },
+      }
+    end,
   },
 }
 
