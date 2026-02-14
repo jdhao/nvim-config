@@ -759,6 +759,10 @@ local plugin_specs = {
       vim.o.autoread = true
     end,
   },
+  {
+    "RRethy/vim-illuminate",
+    event = "VeryLazy",
+  },
 }
 
 require("lazy").setup {

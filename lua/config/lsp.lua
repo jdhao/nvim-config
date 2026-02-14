@@ -86,26 +86,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Uncomment code below to enable inlay hint from language server, some LSP server supports inlay hint,
     -- but disable this feature by default, so you may need to enable inlay hint in the LSP server config.
     -- vim.lsp.inlay_hint.enable(true, {buffer=bufnr})
-
-    -- The blow command will highlight the current variable and its usages in the buffer.
-    if client.server_capabilities.documentHighlightProvider then
-      local gid = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-      vim.api.nvim_create_autocmd("CursorHold", {
-        group = gid,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.document_highlight()
-        end,
-      })
-
-      vim.api.nvim_create_autocmd("CursorMoved", {
-        group = gid,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.clear_references()
-        end,
-      })
-    end
   end,
   nested = true,
   desc = "Configure buffer keymap and behavior based on LSP",
