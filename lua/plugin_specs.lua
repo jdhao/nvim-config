@@ -774,6 +774,7 @@ local plugin_specs = {
           "json",
           "toml",
         },
+        min_count_to_highlight = 2,
       }
     end,
   },
