@@ -13,7 +13,7 @@ end
 --- check whether a feature exists in Nvim
 --- @param feat string the feature name, like `nvim-0.7` or `unix`.
 --- @return boolean
-M.has = function(feat)
+function M.has(feat)
   if fn.has(feat) == 1 then
     return true
   end
