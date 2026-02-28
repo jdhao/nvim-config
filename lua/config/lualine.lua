@@ -1,3 +1,4 @@
+local utils = require("utils")
 local fn = vim.fn
 
 -- cache for git states
@@ -174,23 +175,12 @@ local diff = function()
 end
 
 local virtual_env = function()
-  -- only show virtual env for Python
-  if vim.bo.filetype ~= "python" then
-    return ""
-  end
+  local venv_name = utils.get_virtual_env()
 
-  local conda_env = os.getenv("CONDA_DEFAULT_ENV")
-  local venv_path = os.getenv("VIRTUAL_ENV")
-
-  if venv_path == nil then
-    if conda_env == nil then
-      return ""
-    else
-      return string.format("  %s (conda)", conda_env)
-    end
+  if venv_name ~= "" then
+    return string.format(" (%s)", venv_name)
   else
-    local venv_name = vim.fn.fnamemodify(venv_path, ":t")
-    return string.format("  %s (venv)", venv_name)
+    return ""
   end
 end
 
