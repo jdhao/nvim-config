@@ -298,9 +298,6 @@ local plugin_specs = {
         let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
       ]])
     end,
-    dependencies = {
-      "honza/vim-snippets",
-    },
     event = "InsertEnter",
   },
 
