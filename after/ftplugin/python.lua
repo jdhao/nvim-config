@@ -11,6 +11,11 @@ opt.softtabstop = 4 -- Number of spaces in tab when editing
 opt.shiftwidth = 4 -- Number of spaces to use for autoindent
 opt.expandtab = true -- Expand tab to spaces so that tabs are spaces
 
+-- when we run `:compiler ruff`, then followed by `:make`,
+-- Nvim will run ruff in the current directory. By default, `--preview` option is used.
+-- The following option is used to customize the option passed to ruff.
+vim.g.ruff_makeprg_params = ""
+
 local get_proj_root = function()
   local project_marker = { ".git", "pyproject.toml" }
   local project_root = vim.fs.root(0, project_marker)
@@ -20,6 +25,9 @@ end
 
 local get_py_env = function()
   local project_root = get_proj_root()
+  if project_root == nil then
+    return
+  end
 
   local venv_name = utils.get_virtual_env()
 
