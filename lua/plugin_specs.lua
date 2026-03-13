@@ -408,6 +408,9 @@ local plugin_specs = {
   {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen" },
+    config = function()
+      require("config.diffview")
+    end,
   },
 
   {
@@ -734,7 +737,11 @@ local plugin_specs = {
     event = "FileType qf",
     ---@module "quicker"
     ---@type quicker.SetupOptions
-    opts = {},
+    opts = {
+      max_filename_width = function()
+        return math.floor(math.min(40, vim.o.columns / 2))
+      end,
+    },
   },
   {
     "nickjvandyke/opencode.nvim",
