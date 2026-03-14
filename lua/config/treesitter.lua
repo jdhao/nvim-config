@@ -1,17 +1,18 @@
 -- a list of filetypes to install treesitter parsers and queries
 local ensure_installed = {
-  "python",
   "cpp",
-  "lua",
-  "vim",
-  "json",
-  "toml",
-  "yaml",
-  "javascript",
+  "diff",
   "go",
-  "typescript",
+  "javascript",
+  "json",
+  "lua",
   "markdown",
+  "python",
   "sh",
+  "toml",
+  "typescript",
+  "vim",
+  "yaml",
   "zsh",
 }
 
