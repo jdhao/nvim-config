@@ -52,9 +52,6 @@ local plugin_specs = {
   -- },
   {
     "neovim/nvim-lspconfig",
-    config = function()
-      require("config.lsp")
-    end,
   },
   {
     "dnlhc/glance.nvim",

@@ -95,6 +95,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 local capabilities = require("lsp_utils").get_default_capabilities()
 
+-- `*` will set default config for all lsp
 vim.lsp.config("*", {
   capabilities = capabilities,
   flags = {

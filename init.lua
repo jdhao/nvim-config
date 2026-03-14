@@ -28,6 +28,9 @@ require("mappings")
 -- all the plugins installed and their configurations
 require("plugin_specs")
 
+-- This is done after plugin_specs, since lsp-config is loaded in that step
+require("lsp_conf")
+
 -- diagnostic related config
 require("diagnostic-conf")
 
