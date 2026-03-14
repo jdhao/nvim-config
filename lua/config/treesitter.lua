@@ -22,6 +22,9 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function(args)
     local ft = vim.bo[args.buf].filetype
     local lang = vim.treesitter.language.get_lang(ft)
+    if lang == nil then
+      return
+    end
 
     -- check if parser is available
     if not vim.treesitter.language.add(lang) then
