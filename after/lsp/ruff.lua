@@ -1,3 +1,4 @@
+---@type vim.lsp.Config
 return {
   init_options = {
     -- the settings can be found here: https://docs.astral.sh/ruff/editors/settings/

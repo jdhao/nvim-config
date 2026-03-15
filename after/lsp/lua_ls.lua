@@ -1,5 +1,7 @@
 -- settings for lua-language-server can be found on https://luals.github.io/wiki/settings/
+---@type vim.lsp.Config
 return {
+  ---@type lspconfig.settings.lua_ls
   settings = {
     Lua = {
       runtime = {
@@ -8,6 +10,11 @@ return {
       },
       hint = {
         enable = true,
+      },
+      workspace = {
+        library = {
+          vim.env.VIMRUNTIME .. "/lua",
+        },
       },
     },
   },

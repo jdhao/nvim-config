@@ -19,8 +19,10 @@ local new_capability = {
   },
 }
 
+---@type vim.lsp.Config
 return {
   cmd = { "delance-langserver", "--stdio" },
+  ---@type lspconfig.settings.pyright
   settings = {
     pyright = {
       -- disable import sorting and use Ruff for this
