@@ -90,6 +90,9 @@ M.colorscheme_conf = {
   citruszest = function()
     use_theme("citruszest")
   end,
+  oxocarbon = function()
+    use_theme("oxocarbon")
+  end,
 }
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
