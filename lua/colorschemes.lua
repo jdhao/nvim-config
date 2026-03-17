@@ -92,7 +92,7 @@ M.colorscheme_conf = {
   end,
   oxocarbon = function()
     use_theme("oxocarbon")
-  end
+  end,
 }
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
