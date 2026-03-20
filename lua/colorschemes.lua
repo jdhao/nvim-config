@@ -3,7 +3,18 @@ local utils = require("utils")
 
 local M = {}
 
-local use_theme = vim.cmd.colorscheme
+local use_theme = function(name)
+  local ok, err = pcall(vim.cmd.colorscheme, name)
+
+  if not ok then
+    vim.notify(
+      string.format("Failed to load colorscheme %s, err: %s", name, err),
+      vim.log.levels.WARN
+    )
+
+    vim.cmd.colorscheme("default")
+  end
+end
 
 -- Colorscheme to its directory name mapping, because colorscheme repo name is not necessarily
 -- the same as the colorscheme name itself.
@@ -97,10 +108,18 @@ M.colorscheme_conf = {
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
 M.rand_colorscheme = function()
-  local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme_conf))
+  local colorscheme_names = vim.tbl_keys(M.colorscheme_conf)
+  local colorscheme = utils.rand_element(colorscheme_names)
 
   -- Load the colorscheme and its settings
-  M.colorscheme_conf[colorscheme]()
+
+  local color_scheme_loader = M.colorscheme_conf[colorscheme]
+
+  color_scheme_loader()
+
+  return colorscheme
 end
+
+M.rand_colorscheme()
 
 return M

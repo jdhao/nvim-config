@@ -9,19 +9,22 @@
 -- Blog: https://jdhao.github.io/
 -- GitHub: https://github.com/jdhao
 -- StackOverflow: https://stackoverflow.com/users/6064933/jdhao
-vim.loader.enable()
-
 local utils = require("utils")
+
+vim.loader.enable()
 
 local expected_version = "0.11.6"
 utils.is_compatible_version(expected_version)
 
 -- some global settings
 require("globals")
+
 -- setting options in nvim
 require("options")
+
 -- various autocommands
 require("custom-autocmd")
+
 -- all the user-defined mappings
 require("mappings")
 
@@ -35,7 +38,4 @@ require("lsp_conf")
 require("diagnostic-conf")
 
 -- colorscheme settings
-local color_scheme = require("colorschemes")
-
--- Load a random colorscheme
-color_scheme.rand_colorscheme()
+require("colorschemes")
