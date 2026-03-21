@@ -415,6 +415,24 @@ local plugin_specs = {
   },
 
   {
+    "barrettruth/diffs.nvim",
+    init = function()
+      vim.g.diffs = {
+        integrations = {
+          fugitive = true,
+          neogit = true,
+          gitsigns = true,
+        },
+      }
+    end,
+  },
+
+  {
+    "esmuellert/codediff.nvim",
+    cmd = "CodeDiff",
+  },
+
+  {
     "kevinhwang91/nvim-bqf",
     ft = "qf",
     config = function()
