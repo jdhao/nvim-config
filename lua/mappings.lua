@@ -30,12 +30,12 @@ keymap.set("n", [[\x]], "<cmd>windo lclose <bar> cclose <cr>", {
 })
 
 -- Delete a buffer, without closing the window, see https://stackoverflow.com/q/4465095/6064933
-keymap.set("n", [[\d]], "<cmd>bprevious <bar> bdelete #<cr>", {
+keymap.set("n", [[\db]], "<cmd>bprevious <bar> bdelete #<cr>", {
   silent = true,
-  desc = "delete current buffer",
+  desc = "Delete current buffer",
 })
 
-keymap.set("n", [[\D]], function()
+keymap.set("n", [[\dB]], function()
   local buf_ids = vim.api.nvim_list_bufs()
   local cur_buf = vim.api.nvim_win_get_buf(0)
 
@@ -46,7 +46,17 @@ keymap.set("n", [[\D]], function()
     end
   end
 end, {
-  desc = "delete other buffers",
+  desc = "Delete other buffers",
+})
+
+keymap.set("n", [[\dt]], "<cmd>tabclose<CR>", {
+  silent = true,
+  desc = "Delete current tab",
+})
+
+keymap.set("n", [[\dT]], "<cmd>tabonly<CR>", {
+  silent = true,
+  desc = "Delete other tabs",
 })
 
 -- Move the cursor based on physical lines, not the actual lines.
