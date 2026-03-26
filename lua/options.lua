@@ -180,7 +180,7 @@ opt.pumheight = 10 -- Maximum number of items to show in popup menu
 opt.pumblend = 5 -- Pseudo transparency for completion menu
 
 opt.winblend = 0 -- Pseudo transparency for floating window
-opt.winborder = "none"
+opt.winborder = "single"
 
 -- Insert mode key word completion setting
 opt.complete:append("kspell")
