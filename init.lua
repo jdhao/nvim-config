@@ -13,7 +13,7 @@ local utils = require("utils")
 
 vim.loader.enable()
 
-local expected_version = "0.11.6"
+local expected_version = "0.12.0"
 utils.is_compatible_version(expected_version)
 
 -- some global settings
@@ -38,4 +38,4 @@ require("lsp_conf")
 require("diagnostic-conf")
 
 -- colorscheme settings
-require("colorschemes")
+require("ui")
