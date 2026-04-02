@@ -88,7 +88,13 @@ local plugin_specs = {
       require("config.treesitter-textobjects")
     end,
   },
-  { "machakann/vim-swap", event = "VeryLazy" },
+  {
+    "mizlan/iswap.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("config.iswap")
+    end,
+  },
 
   -- Super fast buffer jump
   {

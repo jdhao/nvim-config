@@ -174,23 +174,25 @@ api.nvim_create_autocmd("ColorScheme", {
       { fg = "#34495E", bg = "#2ECC71", ctermfg = 59, ctermbg = 41 }
     )
 
-    -- For cursor colors
-    vim.api.nvim_set_hl(0, "Cursor", { fg = "black", bg = "#00c918", bold = true })
-    vim.api.nvim_set_hl(0, "Cursor2", { fg = "red", bg = "red" })
+    -- For cursor colors, see option guicursor for more info
+    vim.api.nvim_set_hl(0, "Cursor", { fg = "black", bg = "#00c918", update = true })
+    vim.api.nvim_set_hl(0, "Cursor2", { fg = "None", bg = "yellow", update = true })
 
     -- For floating windows border highlight
-    vim.api.nvim_set_hl(0, "FloatBorder", { fg = "LightGreen", bg = "None", bold = true })
+    vim.api.nvim_set_hl(0, "FloatBorder", { fg = "LightGreen", update = true })
 
-    local hl = vim.api.nvim_get_hl(0, { name = "NormalFloat" })
     -- change the background color of floating window to None, so it blenders better
-    vim.api.nvim_set_hl(0, "NormalFloat", { fg = hl.fg, bg = "None" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "None", update = true })
+
+    -- this is the highlight used by nvim-cmp for cmdline completion window border
+    vim.api.nvim_set_hl(0, "Pmenu", { bg = "None", update = true })
 
     -- highlight for matching parentheses
-    vim.api.nvim_set_hl(0, "MatchParen", { bold = true, underline = true })
+    vim.api.nvim_set_hl(0, "MatchParen", { bold = true, underline = true, update = true })
 
-    vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { underline = true, reverse = true })
-    vim.api.nvim_set_hl(0, "IlluminatedWordRead", { underline = true, reverse = true })
-    vim.api.nvim_set_hl(0, "IlluminatedWordText", { underline = true, reverse = true })
+    vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { reverse = true, update = true })
+    vim.api.nvim_set_hl(0, "IlluminatedWordRead", { reverse = true, update = true })
+    vim.api.nvim_set_hl(0, "IlluminatedWordText", { reverse = true, update = true })
   end,
 })
 
