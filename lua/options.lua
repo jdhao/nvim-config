@@ -217,8 +217,8 @@ end
 opt.termguicolors = true
 
 -- Set up cursor color and shape in various mode, ref:
--- https://github.com/neovim/neovim/wiki/FAQ#how-to-change-cursor-color-in-the-terminal
-opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor20"
+-- https://neovim.io/doc/user/faq/#_how-to-change-cursor-color-in-the-terminal%3f
+opt.guicursor = "n-v:block-Cursor/lCursor,i-c-ci-ve:ver50-blinkwait50-blinkoff100-blinkon175-Cursor2/lCursor2,r-cr:hor20,o:hor20"
 
 opt.signcolumn = "yes:1"
 
