@@ -184,6 +184,9 @@ api.nvim_create_autocmd("ColorScheme", {
     -- change the background color of floating window to None, so it blenders better
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "None", update = true })
 
+    -- this is the highlight used by nvim-cmp for cmdline completion window border
+    vim.api.nvim_set_hl(0, "Pmenu", { bg = "None", update = true })
+
     -- highlight for matching parentheses
     vim.api.nvim_set_hl(0, "MatchParen", { bold = true, underline = true, update = true })
 
