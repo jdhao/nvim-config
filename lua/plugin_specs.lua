@@ -91,9 +91,9 @@ local plugin_specs = {
   {
     "mizlan/iswap.nvim",
     event = "VeryLazy",
-    config = function ()
+    config = function()
       require("config.iswap")
-    end
+    end,
   },
 
   -- Super fast buffer jump
