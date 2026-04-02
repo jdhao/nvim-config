@@ -142,7 +142,7 @@ require("vim._core.ui2").enable {
       timeout = 4000, -- Time a message is visible in the message window.
     },
     pager = { -- Options related to message window.
-      height = 1, -- Maximum height.
+      height = 0.5, -- Maximum height.
     },
   },
 }
