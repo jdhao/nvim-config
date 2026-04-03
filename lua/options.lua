@@ -168,8 +168,7 @@ opt.undofile = true
 -- Do not show search match count on bottom right (seriously, I would strain my
 -- neck looking at it). Using plugins like vim-anzu or nvim-hlslens is a better
 -- choice, IMHO.
--- Disable showing intro message (:intro)
-opt.shortmess:append("cSI")
+opt.shortmess:append("cS")
 
 opt.messagesopt = "hit-enter,history:500"
 
@@ -224,6 +223,7 @@ opt.guicursor =
   "n-v:block-Cursor/lCursor,i-c-ci-ve:ver50-blinkwait50-blinkoff100-blinkon175-Cursor2/lCursor2,r-cr:hor20,o:hor20"
 
 opt.signcolumn = "yes:1"
+opt.colorcolumn = "100"
 
 -- Remove certain character from file name pattern matching
 opt.isfname:remove { "=", "," }
