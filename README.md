@@ -86,12 +86,6 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 
 For more UI demos, check [here](https://github.com/jdhao/nvim-config/issues/15).
 
-## Start screen with dashboard-nvim
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/16662357/183256752-fb23b215-a6b8-4646-beed-9999f52d53f1.png" width="800">
-</p>
-
 ## File fuzzy finding using fzf-lua
 
 <p align="center">
@@ -208,7 +202,3 @@ Some of the resources that I find helpful in mastering Nvim is documented [here]
 You may also be interested in my posts on configuring Nvim:
 
 + My nvim notes can be found [here](https://jdhao.github.io/categories/Nvim/)
-+ [Using Neovim for Three years](https://jdhao.github.io/2021/12/31/using_nvim_after_three_years/)
-+ [Config nvim on Linux for Python development](https://jdhao.github.io/2018/12/24/centos_nvim_install_use_guide_en/)
-+ [Nvim config on Windows 10](https://jdhao.github.io/2018/11/15/neovim_configuration_windows/)
-+ [Nvim-qt config on Windows 10](https://jdhao.github.io/2019/01/17/nvim_qt_settings_on_windows/)
