@@ -495,3 +495,7 @@ Lucene
 replia
 #hitespaces
 whitespaces/!
+venv
+lockfile
+uv
+ref
