@@ -1,8 +1,12 @@
 -- a list of filetypes to install treesitter parsers and queries
+local nvim_treesitter = require("nvim-treesitter")
+
 local ensure_installed = {
   "cpp",
   "diff",
   "go",
+  "gomod",
+  "gosum",
   "javascript",
   "json",
   "lua",
@@ -27,13 +31,14 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 
     -- check if parser is available
-    if not vim.treesitter.language.add(lang) then
-      local available = vim.g.ts_available or require("nvim-treesitter").get_available()
+    local is_parser_available = vim.treesitter.language.add(lang)
+    if not is_parser_available then
+      local available_langs = vim.g.ts_available or nvim_treesitter.get_available()
       if not vim.g.ts_available then
-        vim.g.ts_available = available
+        vim.g.ts_available = available_langs
       end
 
-      if vim.tbl_contains(available, lang) then
+      if vim.tbl_contains(available_langs, lang) then
         -- install treesitter parsers and queries
         local install_msg = string.format("Installing parsers and queries for %s", lang)
         vim.print(install_msg)
