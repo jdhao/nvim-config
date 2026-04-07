@@ -113,6 +113,10 @@ local enabled_lsp_servers = {
   vimls = "vim-language-server",
   bashls = "bash-language-server",
   yamlls = "yaml-language-server",
+  gopls = "gopls",
+  -- the server can be install via homebrew: brew install golangci-lint-langserver
+  -- golangci-lint also needs to be installed: https://github.com/golangci/golangci-lint
+  golangci_lint_ls = "golangci-lint-langserver",
 }
 
 for server_name, lsp_executable in pairs(enabled_lsp_servers) do
