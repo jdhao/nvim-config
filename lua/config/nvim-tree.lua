@@ -40,10 +40,6 @@ nvim_tree.setup {
     update_cwd = false,
     ignore_list = {},
   },
-  system_open = {
-    cmd = "",
-    args = {},
-  },
   diagnostics = {
     enable = false,
     show_on_dirs = false,
