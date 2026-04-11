@@ -78,18 +78,15 @@ keymap.set({ "n", "x" }, "L", "g_")
 keymap.set("x", "<", "<gv")
 keymap.set("x", ">", ">gv")
 
--- Edit and reload nvim config file quickly
-keymap.set("n", "<leader>ev", "<cmd>tabnew $MYVIMRC <bar> tcd %:h<cr>", {
-  silent = true,
-  desc = "open init.lua",
-})
-
+-- Restart nvim
 keymap.set("n", "<leader>sv", function()
+  vim.print("Use ZR to restart nvim instead!")
+end)
+
+keymap.set("n", "ZR", function()
   local current_buf_path = vim.fn.expand("%")
   local restart_cmd = string.format("restart edit %s", current_buf_path)
-
   vim.cmd(restart_cmd)
-  vim.notify("Nvim restarted!", vim.log.levels.INFO, { title = "nvim-config" })
 end, {
   silent = true,
   desc = "Restart nvim",
