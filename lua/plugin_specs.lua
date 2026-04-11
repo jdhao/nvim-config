@@ -305,7 +305,7 @@ local plugin_specs = {
         let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
       ]])
     end,
-    event = "InsertEnter",
+    event = "VeryLazy",
   },
 
   -- Automatic insertion and deletion of a pair of characters
