@@ -11,3 +11,10 @@ opt.expandtab = false -- Expand tab to spaces so that tabs are spaces
 vim.keymap.set("n", "<Space>f", function()
   vim.cmd([[silent !gofumpt -w %]])
 end, { buffer = true, silent = true })
+
+vim.keymap.set("n", "<F9>", function()
+  vim.cmd[[!go run %]]
+end, {
+  buffer = true,
+  silent = true,
+})
