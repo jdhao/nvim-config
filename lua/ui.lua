@@ -104,6 +104,9 @@ M.colorscheme_conf = {
   oxocarbon = function()
     use_theme("oxocarbon")
   end,
+  ember = function()
+    use_theme("ember")
+  end,
 }
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
