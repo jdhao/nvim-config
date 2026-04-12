@@ -13,7 +13,7 @@ vim.keymap.set("n", "<Space>f", function()
 end, { buffer = true, silent = true })
 
 vim.keymap.set("n", "<F9>", function()
-  vim.cmd[[!go run %]]
+  vim.cmd([[!go run %]])
 end, {
   buffer = true,
   silent = true,
