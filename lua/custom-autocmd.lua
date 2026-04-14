@@ -292,3 +292,17 @@ api.nvim_create_autocmd("BufWritePost", {
     end
   end,
 })
+
+api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+  group = api.nvim_create_augroup("auto_save", { clear = true }),
+  pattern = { "*" },
+  desc = "Auto save current file",
+  callback = function(ev)
+    local is_readonly = vim.api.nvim_get_option_value("readonly", { buf = ev.buf })
+    local is_modifiable = vim.api.nvim_get_option_value("modifiable", { buf = ev.buf })
+
+    if not is_readonly and is_modifiable then
+      vim.cmd([[silent! update]])
+    end
+  end,
+})
