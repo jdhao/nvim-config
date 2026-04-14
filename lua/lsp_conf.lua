@@ -117,6 +117,9 @@ local enabled_lsp_servers = {
   -- the server can be install via homebrew: brew install golangci-lint-langserver
   -- golangci-lint also needs to be installed: https://github.com/golangci/golangci-lint
   golangci_lint_ls = "golangci-lint-langserver",
+
+  -- to install codebook, run `brew install codebook-lsp`
+  -- codebook = "codebook-lsp"
 }
 
 for server_name, lsp_executable in pairs(enabled_lsp_servers) do
