@@ -63,7 +63,7 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 + Faster code commenting via [vim-commentary](https://github.com/tpope/vim-commentary).
 + Faster matching pair insertion and jump via [nvim-autopairs](https://github.com/windwp/nvim-autopairs).
 + Smarter and faster matching pair management (add, replace or delete) via [vim-sandwich](https://github.com/machakann/vim-sandwich).
-+ Fast buffer jump via [hop.nvim](https://github.com/phaazon/hop.nvim).
++ Fast buffer jump via [hop.nvim](https://github.com/smoka7/hop.nvim).
 + Powerful snippet insertion via [Ultisnips](https://github.com/SirVer/ultisnips).
 + Beautiful statusline via [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim).
 + File tree explorer via [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua).
@@ -78,7 +78,6 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 + LaTeX editing and previewing via [vimtex](https://github.com/lervag/vimtex)
 + Animated GUI style notification via [nvim-notify](https://github.com/rcarriga/nvim-notify).
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
-+ Undo management via [vim-mundo](https://github.com/simnalamburt/vim-mundo)
 + Code folding with [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) and [statuscol.nvim](https://github.com/luukvbaal/statuscol.nvim)
 + ......
 
@@ -180,6 +179,8 @@ Some of the shortcuts I use frequently are listed here. In the following shortcu
 | `ctrl-u`          | Insert        | Linux/macOS/Win | Turn word under cursor to upper case                                     |
 | `ctrl-t`          | Insert        | Linux/macOS/Win | Turn word under cursor to title case                                     |
 | `jk`              | Insert        | Linux/macOS/Win | Return to Normal mode without lagging                                    |
+| `ZR`              | Normal        | Linux/macOS/Win | Restart nvim without quitting                                    |
+
 
 # Custom commands
 
@@ -205,10 +206,4 @@ If you still have an issue, [open a new issue](https://github.com/jdhao/nvim-con
 # Further readings
 
 Some of the resources that I find helpful in mastering Nvim is documented [here](docs/nvim_resources.md).
-You may also be interested in my posts on configuring Nvim:
-
-+ My nvim notes can be found [here](https://jdhao.github.io/categories/Nvim/)
-+ [Using Neovim for Three years](https://jdhao.github.io/2021/12/31/using_nvim_after_three_years/)
-+ [Config nvim on Linux for Python development](https://jdhao.github.io/2018/12/24/centos_nvim_install_use_guide_en/)
-+ [Nvim config on Windows 10](https://jdhao.github.io/2018/11/15/neovim_configuration_windows/)
-+ [Nvim-qt config on Windows 10](https://jdhao.github.io/2019/01/17/nvim_qt_settings_on_windows/)
+You may also be interested in my posts on configuring Nvim [here](https://jdhao.github.io/categories/Nvim/).
