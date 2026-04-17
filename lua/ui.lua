@@ -107,6 +107,16 @@ M.colorscheme_conf = {
   ember = function()
     use_theme("ember")
   end,
+  lake_dweller = function()
+    require("lake-dweller").setup {
+      -- "lake-dweller", "pond-dweller", or "ocean-dweller"
+      variant = "lake-dweller",
+    }
+    use_theme("lake-dweller")
+  end,
+  alabaster = function()
+    use_theme("alabaster")
+  end,
 }
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
