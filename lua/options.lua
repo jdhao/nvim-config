@@ -119,7 +119,7 @@ opt.showbreak = "↪"
 opt.wildmode = "list:longest"
 
 -- Minimum lines to keep above and below cursor when scrolling
-opt.scrolloff = 3
+opt.scrolloff = 999
 
 -- Use mouse to select and resize windows, etc.
 opt.mouse = "n"
