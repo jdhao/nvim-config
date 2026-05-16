@@ -807,6 +807,12 @@ local plugin_specs = {
       require("config.nvim-lint")
     end,
   },
+  {
+    "xzbdmw/colorful-menu.nvim",
+    config = function()
+      require("config.colorful_menu")
+    end,
+  },
 }
 
 require("lazy").setup {

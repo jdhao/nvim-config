@@ -10,6 +10,7 @@ require("cmp_nvim_ultisnips")
 require("cmp_cmdline")
 
 local MiniIcons = require("mini.icons")
+local colorful_menu = require("colorful-menu")
 
 cmp.setup {
   snippet = {
@@ -54,10 +55,22 @@ cmp.setup {
   },
   -- solution taken from https://github.com/echasnovski/mini.nvim/issues/1007#issuecomment-2258929830
   formatting = {
-    format = function(_, vim_item)
+    format = function(entry, vim_item)
+      -- Add icon to the kind of completion items
       local icon, hl = MiniIcons.get("lsp", vim_item.kind)
       vim_item.kind = icon .. " " .. vim_item.kind
       vim_item.kind_hl_group = hl
+
+      local highlights_info = colorful_menu.cmp_highlights(entry)
+
+      -- highlight_info is nil means we are missing the ts parser, it's
+      -- better to fallback to use default `vim_item.abbr`. What this plugin
+      -- offers is two fields: `vim_item.abbr_hl_group` and `vim_item.abbr`.
+      if highlights_info ~= nil then
+        vim_item.abbr_hl_group = highlights_info.highlights
+        vim_item.abbr = highlights_info.text
+      end
+
       return vim_item
     end,
   },
