@@ -66,6 +66,13 @@ M.colorscheme_conf = {
   end,
   material = function()
     vim.g.material_style = "darker"
+
+    local material = require("material")
+    material.setup {
+      custom_highlights = {
+        Pmenu = { bg = "None", fg = "LightGreen" },
+      },
+    }
     use_theme("material")
   end,
   arctic = function()
