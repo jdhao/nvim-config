@@ -787,18 +787,7 @@ local plugin_specs = {
     "RRethy/vim-illuminate",
     event = "VeryLazy",
     config = function()
-      require("illuminate").configure {
-        filetypes_denylist = {},
-        filetypes_allowlist = {
-          "lua",
-          "python",
-          "sh",
-          "yaml",
-          "json",
-          "toml",
-        },
-        min_count_to_highlight = 2,
-      }
+      require("config.vim-illuminate")
     end,
   },
   {
