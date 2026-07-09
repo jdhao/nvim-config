@@ -28,7 +28,12 @@ vim.keymap.set(
   "<cmd>FzfLua helptags<cr>",
   { desc = "Fuzzy grep tags in help files" }
 )
-vim.keymap.set("n", "<leader>ft", "<cmd>FzfLua btags<cr>", { desc = "Fuzzy search buffer tags" })
+vim.keymap.set(
+  "n",
+  "<leader>ft",
+  "<cmd>FzfLua lsp_document_symbols<cr>",
+  { desc = "Fuzzy search buffer tags" }
+)
 vim.keymap.set(
   "n",
   "<leader>fb",
