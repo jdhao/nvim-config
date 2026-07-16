@@ -111,11 +111,12 @@ local enabled_lsp_servers = {
   -- the server can be install via homebrew: brew install golangci-lint-langserver
   -- golangci-lint also needs to be installed: https://github.com/golangci/golangci-lint
   golangci_lint_ls = { exe = "golangci-lint-langserver", optional = true },
-  gopls = { exe = "gopls", optional = false },
+  gopls = { exe = "gopls", optional = true },
 
   lua_ls = { exe = "lua-language-server", optional = false },
 
   pyright = { exe = "delance-langserver", optional = false },
+  pyrefly = { exe = "pyrefly", optional = true },
   ruff = { exe = "ruff", optional = false },
 
   vimls = { exe = "vim-language-server", optional = true },
