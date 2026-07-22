@@ -263,27 +263,15 @@ local plugin_specs = {
     submodules = false, -- not needed, submodules are required only for tests
   },
 
-  -- Only install these plugins if ctags are installed on the system
-  -- show file tags in vim window
   {
-    "liuchengxu/vista.vim",
-    init = function()
-      vim.cmd([[
-        let g:vista#renderer#icons = {
-              \ 'member': '',
-              \ }
-        " Do not echo message on command line
-        let g:vista_echo_cursor = 0
-        " Stay in current window when vista window is opened
-        let g:vista_stay_on_open = 0
-
-        nnoremap <silent> <Space>t :<C-U>Vista!!<CR>
-      ]])
+    "stevearc/aerial.nvim",
+    -- Optional dependencies
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("config.aerial")
     end,
-    enabled = function()
-      return utils.executable("ctags")
-    end,
-    cmd = "Vista",
   },
 
   -- Snippet engine and snippet template

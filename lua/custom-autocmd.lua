@@ -202,7 +202,7 @@ api.nvim_create_autocmd("BufEnter", {
   desc = "Quit Nvim if we have only one window, and its filetype match our pattern",
   ---@diagnostic disable-next-line: unused-local
   callback = function(context)
-    local quit_filetypes = { "qf", "vista", "NvimTree" }
+    local quit_filetypes = { "qf", "NvimTree" }
 
     local should_quit = true
     local tabwins = api.nvim_tabpage_list_wins(0)

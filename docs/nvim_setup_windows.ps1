@@ -10,10 +10,6 @@ scoop install nodejs
 # Install ripgrep
 scoop install ripgrep
 
-# Install universal-ctags
-scoop bucket add extras
-scoop install universal-ctags
-
 # Install vim-language-server
 npm install -g vim-language-server
 

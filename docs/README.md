@@ -118,29 +118,6 @@ The version of Git on the Linux system may be too old so that plugins may break.
 Check [here](https://jdhao.github.io/2021/03/27/upgrade_git_on_linux/) on how to install and set up the latest version of Git.
 For Windows, install [Git for Windows](https://git-scm.com/download/win) and make sure you can run `git` from command line.
 
-### universal-ctags
-
-In order to use tags related plugins such as [vista.vim](https://github.com/liuchengxu/vista.vim), we need to install a ctags distribution.
-Universal-ctags is preferred.
-
-To install it on Linux, we need to build it from source. See [here](https://askubuntu.com/a/836521/768311) for the details.
-To install ctags on macOS, use [Homebrew](https://formulae.brew.sh/formula/universal-ctags):
-
-```bash
-brew install universal-ctags
-```
-
-To install it Windows, use [chocolatey](https://chocolatey.org/) or [scoop](https://scoop.sh/)
-
-```
-choco install universal-ctags
-
-# scoop bucket add extras
-# scoop install universal-ctags
-```
-
-Set its PATH properly and make sure you can run `ctags` from command line.
-
 ### Ripgrep
 
 [Ripgrep](https://github.com/BurntSushi/ripgrep), aka, `rg`, is a fast grepping tool available for both Linux, Windows and macOS.

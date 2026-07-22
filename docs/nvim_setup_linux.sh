@@ -189,33 +189,6 @@ else
 fi
 
 #######################################################################
-#                            Ctags install                            #
-#######################################################################
-CTAGS_SRC_DIR=$HOME/packages/ctags
-CTAGS_DIR=$HOME/tools/ctags
-CTAGS_LINK="https://github.com/universal-ctags/ctags.git"
-if [[ ! -f "$CTAGS_DIR/bin/ctags" ]]; then
-    echo "Install ctags"
-
-    if [[ ! -d $CTAGS_SRC_DIR ]]; then
-        mkdir -p "$CTAGS_SRC_DIR"
-    else
-        # Prevent an incomplete download.
-        rm -rf "$CTAGS_SRC_DIR"
-    fi
-
-    git clone --depth=1 "$CTAGS_LINK" "$CTAGS_SRC_DIR" && cd "$CTAGS_SRC_DIR"
-    ./autogen.sh && ./configure --prefix="$CTAGS_DIR"
-    make -j && make install
-
-    if [[ "$ADD_TO_SYSTEM_PATH" = true ]] && [[ "$USE_BASH_SHELL" = true ]]; then
-        echo "export PATH=\"$CTAGS_DIR/bin:\$PATH\"" >> "$HOME/.bash_profile"
-    fi
-else
-    echo "ctags is already installed. Skip installing it."
-fi
-
-#######################################################################
 #                                Nvim install                         #
 #######################################################################
 NVIM_DIR=$HOME/tools/nvim
