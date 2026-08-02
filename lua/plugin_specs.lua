@@ -746,6 +746,9 @@ local plugin_specs = {
     event = "BufReadPre",
     opts = { -- set to setup table
     },
+    config = function()
+      require("config.nvim-colorizer")
+    end,
   },
   {
     "stevearc/quicker.nvim",
