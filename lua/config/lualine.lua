@@ -247,6 +247,10 @@ require("lualine").setup {
     },
     lualine_c = {
       {
+        ime_state,
+        color = { fg = "black", bg = "#f46868" },
+      },
+      {
         "%S",
         color = { gui = "bold", fg = "cyan" },
       },
@@ -288,10 +292,6 @@ require("lualine").setup {
         },
       },
       "filetype",
-      {
-        ime_state,
-        color = { fg = "black", bg = "#f46868" },
-      },
     },
     lualine_z = {
       "location",
