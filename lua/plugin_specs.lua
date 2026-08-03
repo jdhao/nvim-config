@@ -753,13 +753,9 @@ local plugin_specs = {
   {
     "stevearc/quicker.nvim",
     event = "FileType qf",
-    ---@module "quicker"
-    ---@type quicker.SetupOptions
-    opts = {
-      max_filename_width = function()
-        return math.floor(math.min(40, vim.o.columns / 2))
-      end,
-    },
+    config = function()
+      require("config.quicker")
+    end,
   },
   {
     "nickjvandyke/opencode.nvim",
