@@ -13,6 +13,7 @@ local ensure_installed = {
   "markdown",
   "python",
   "sh",
+  "tex",
   "toml",
   "typescript",
   "vim",
