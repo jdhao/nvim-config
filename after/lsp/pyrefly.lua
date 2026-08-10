@@ -3,6 +3,7 @@ return {
   init_options = {
     pyrefly = {
       typeCheckingMode = "default",
+      -- see documentation here: https://pyrefly.org/en/docs/IDE/#lsp-initializationoptions
       disabledLanguageServices = {
         rename = true,
       },
