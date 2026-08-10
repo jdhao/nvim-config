@@ -8,6 +8,8 @@ repos:
     rev: v1.49.0
     hooks:
       - id: typos
+        args: []
+        pass_filenames: true
   - repo: local
     hooks:
       - id: stylua
