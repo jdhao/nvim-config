@@ -116,4 +116,3 @@ let s:aulist = [
       \ 'CompleteDone',
       \ 'User',
       \ ]
-
