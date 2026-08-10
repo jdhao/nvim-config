@@ -1,7 +1,7 @@
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 
--- The extentions needed by nvim-cmp should be loaded beforehand
+-- The extensions needed by nvim-cmp should be loaded beforehand
 require("cmp_nvim_lsp")
 require("cmp_path")
 require("cmp_buffer")

@@ -165,7 +165,7 @@ api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, 
 api.nvim_create_autocmd("ColorScheme", {
   group = api.nvim_create_augroup("custom_highlight", { clear = true }),
   pattern = "*",
-  desc = "Define or overrride some highlight groups",
+  desc = "Define or override some highlight groups",
   callback = function()
     -- For yank highlight
     vim.api.nvim_set_hl(

@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
           -- each item in options.items contain the location info for a definition provided by LSP server
           for _, def_location in pairs(options.items) do
-            -- use filename and line number to uniquelly indentify a definition,
+            -- use filename and line number to uniquely identify a definition,
             -- we do not expect/want multiple definition in single line!
             local hash_key = def_location.filename .. def_location.lnum
 
@@ -69,7 +69,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       }
     end)
     map("n", "<C-k>", vim.lsp.buf.signature_help)
-    map("n", "<space>rn", vim.lsp.buf.rename, { desc = "varialbe rename" })
+    map("n", "<space>rn", vim.lsp.buf.rename, { desc = "variable rename" })
     map("n", "<space>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })
     map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, { desc = "add workspace folder" })
     map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, { desc = "remove workspace folder" })
