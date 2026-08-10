@@ -1,9 +1,10 @@
 ---@type vim.lsp.Config
 return {
-  settings = {
-    python = {
-      pyrefly = {
-        typeCheckingMode = "default",
+  init_options = {
+    pyrefly = {
+      typeCheckingMode = "default",
+      disabledLanguageServices = {
+        rename = true,
       },
     },
   },
