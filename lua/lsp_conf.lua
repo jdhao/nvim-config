@@ -122,6 +122,7 @@ local enabled_lsp_servers = {
 
   vimls = { exe = "vim-language-server", optional = true },
   yamlls = { exe = "yaml-language-server", optional = true },
+  typos_lsp = { exe = "typos-lsp", optional = true },
 }
 
 for server_name, server_info in pairs(enabled_lsp_servers) do
