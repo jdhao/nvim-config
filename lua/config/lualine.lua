@@ -186,20 +186,26 @@ end
 
 local get_active_lsp = function()
   local msg = "🚫"
-  local buf_ft = vim.api.nvim_get_option_value("filetype", {})
   local clients = vim.lsp.get_clients { bufnr = 0 }
   if next(clients) == nil then
     return msg
   end
 
+  local client_names = {}
   for _, client in ipairs(clients) do
-    ---@diagnostic disable-next-line: undefined-field
-    local filetypes = client.config.filetypes
-    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-      return client.name
-    end
+    local client_name = client.name
+    table.insert(client_names, client_name)
   end
-  return msg
+
+  local cnt = #client_names
+  local lsp_infos = nil
+  if cnt == 1 then
+    lsp_infos = client_names[1]
+  else
+    lsp_infos = string.format("%s (+%s)", client_names[1], cnt - 1)
+  end
+
+  return lsp_infos
 end
 
 require("lualine").setup {
