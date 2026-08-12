@@ -778,12 +778,6 @@ local plugin_specs = {
     end,
   },
   {
-    "mfussenegger/nvim-lint",
-    config = function()
-      require("config.nvim-lint")
-    end,
-  },
-  {
     "xzbdmw/colorful-menu.nvim",
     config = function()
       require("config.colorful_menu")
