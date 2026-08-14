@@ -1,0 +1,25 @@
+# typos config for this Neovim config repo.
+# Strategy:
+#   - [default.extend-words] allowlists specific tokens (vim commands, regex
+#     artifacts). These words become valid, but the REST of each file is still
+#     spell-checked normally.
+#   - [files].extend-exclude skips files whose entire content is a word-list
+#     (not prose), so checking them is meaningless.
+
+[files]
+# Files whose whole purpose is intentional misspellings / word lists:
+#   - plugin/abbrev.vim  -> vim iabbrev auto-correction pairs (deliberate typos)
+#   - spell/**           -> your personal vim spell-add dictionary (a word list)
+extend-exclude = ["plugin/abbrev.vim", "spell/**"]
+
+[default.extend-words]
+# Real Vim/Neovim commands & functions that look like English typos.
+# Syntax: token = "token"  means "treat this exact token as a valid word".
+enew = "enew"          # :enew -> open a new empty buffer
+matchend = "matchend"  # VimL matchend() function
+viw = "viw"            # visual-inner-word text object
+windo = "windo"        # :windo window command
+
+# One-off artifact: typos tokenizes the Lua pattern "[Rr]eferences" in
+# after/ftplugin/markdown.lua and extracts "eferences" as if it were a word.
+eferences = "eferences"
