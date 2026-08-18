@@ -9,7 +9,9 @@ opt.expandtab = false -- Expand tab to spaces so that tabs are spaces
 -- gofumpt adds more rule to gofmt, and is compatible with gofmt,
 -- so also https://github.com/mvdan/gofumpt
 vim.keymap.set("n", "<Space>f", function()
-  vim.cmd([[silent !gofumpt -w %]])
+  vim.lsp.buf.format {
+    async = false,
+  }
 end, { buffer = true, silent = true })
 
 vim.keymap.set("n", "<F9>", function()
