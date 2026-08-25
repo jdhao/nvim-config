@@ -10,7 +10,7 @@ For a list of terminals that support true colors, see [here](https://github.com/
 
 For macOS, we can use [kitty](https://sw.kovidgoyal.net/kitty/), [iterm2](https://www.iterm2.com/), [wezterm](https://wezfurlong.org/wezterm/) or [Alacritty](https://github.com/jwilm/alacritty).
 
-If you ssh to Linux server on Windows, I recommend [wsltty](https://github.com/mintty/wsltty) and [Cygwin](https://www.cygwin.com/),
+If you ssh to Linux server on Windows, or use [WSL2 (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/about) I recommend [wsltty](https://github.com/mintty/wsltty) and [Cygwin](https://www.cygwin.com/),
 both of them use [mintty](https://github.com/mintty/mintty) as the terminal emulator.
 For the latest version of Windows 10, you can also try [Windows Terminal](https://github.com/microsoft/terminal).
 
