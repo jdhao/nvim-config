@@ -1,7 +1,10 @@
---- This module will load a random colorscheme on nvim startup process.
-local utils = require("utils")
-
+--- This module loads a static colorscheme on nvim startup.
+--- Use `:colorscheme <name>` to switch between the configured schemes below.
 local M = {}
+
+--- The colorscheme to load on startup. Change this key to any of the names
+--- defined in M.colorscheme_conf below.
+M.default_colorscheme = "onedark"
 
 local use_theme = function(name)
   local ok, err = pcall(vim.cmd.colorscheme, name)
@@ -129,21 +132,46 @@ M.colorscheme_conf = {
   end,
 }
 
---- Use a random colorscheme from the pre-defined list of colorschemes.
-M.rand_colorscheme = function()
-  local colorscheme_names = vim.tbl_keys(M.colorscheme_conf)
-  local colorscheme = utils.rand_element(colorscheme_names)
+--- Apply a colorscheme by name, running its pre-defined setup (options like
+--- background, italics, etc.) if one exists in M.colorscheme_conf, or falling
+--- back to a plain `:colorscheme` for anything else installed.
+M.apply_colorscheme = function(name)
+  local loader = M.colorscheme_conf[name]
 
-  -- Load the colorscheme and its settings
-
-  local color_scheme_loader = M.colorscheme_conf[colorscheme]
-
-  color_scheme_loader()
-
-  return colorscheme
+  if loader then
+    loader()
+  else
+    use_theme(name)
+  end
 end
 
-M.rand_colorscheme()
+-- Let `:colorscheme <name>` pick up the pre-defined setup for known schemes
+-- (e.g. italics, background variant) instead of just switching highlights.
+vim.api.nvim_create_autocmd("ColorSchemePre", {
+  callback = function(args)
+    local loader = M.colorscheme_conf[args.match]
+    if loader and not M._applying then
+      M._applying = true
+      loader()
+      M._applying = false
+    end
+  end,
+})
+
+M.apply_colorscheme(M.default_colorscheme)
+
+-- `:Colorscheme <name>` accepts the friendly keys from M.colorscheme_conf
+-- (which may differ from the actual installed colorscheme name), applying
+-- their pre-defined setup. Native `:colorscheme` still works for any
+-- installed theme by its real name.
+vim.api.nvim_create_user_command("Colorscheme", function(opts)
+  M.apply_colorscheme(opts.args)
+end, {
+  nargs = 1,
+  complete = function()
+    return vim.tbl_keys(M.colorscheme_conf)
+  end,
+})
 
 -- enable the experiment UI
 require("vim._core.ui2").enable {
