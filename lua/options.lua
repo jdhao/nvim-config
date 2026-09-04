@@ -147,9 +147,10 @@ opt.listchars = {
   nbsp = "␣",
 }
 
--- Auto-write the file based on some condition
-opt.autowrite = true
-opt.autowriteall = true
+-- Keep vanilla behavior: `:q` should refuse and warn on unsaved changes,
+-- only `:q!` should discard them.
+opt.autowrite = false
+opt.autowriteall = false
 
 -- Auto reload file if changed outside nvim
 opt.autoread = true
