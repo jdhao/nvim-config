@@ -196,32 +196,6 @@ api.nvim_create_autocmd("ColorScheme", {
   end,
 })
 
-api.nvim_create_autocmd("BufEnter", {
-  pattern = "*",
-  group = api.nvim_create_augroup("auto_close_win", { clear = true }),
-  desc = "Quit Nvim if we have only one window, and its filetype match our pattern",
-  ---@diagnostic disable-next-line: unused-local
-  callback = function(context)
-    local quit_filetypes = { "qf", "NvimTree" }
-
-    local should_quit = true
-    local tabwins = api.nvim_tabpage_list_wins(0)
-
-    for _, win in pairs(tabwins) do
-      local buf = api.nvim_win_get_buf(win)
-      local buf_type = vim.api.nvim_get_option_value("filetype", { buf = buf })
-
-      if not vim.tbl_contains(quit_filetypes, buf_type) then
-        should_quit = false
-      end
-    end
-
-    if should_quit then
-      vim.cmd("qall")
-    end
-  end,
-})
-
 api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
   group = api.nvim_create_augroup("git_repo_check", { clear = true }),
   pattern = "*",
@@ -289,20 +263,6 @@ api.nvim_create_autocmd("BufWritePost", {
     local result = vim.system(cmd, { text = true }):wait()
     if result.code ~= 0 then
       vim.notify("This file is not formatted!")
-    end
-  end,
-})
-
-api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
-  group = api.nvim_create_augroup("auto_save", { clear = true }),
-  pattern = { "*" },
-  desc = "Auto save current file",
-  callback = function(ev)
-    local is_readonly = vim.api.nvim_get_option_value("readonly", { buf = ev.buf })
-    local is_modifiable = vim.api.nvim_get_option_value("modifiable", { buf = ev.buf })
-
-    if not is_readonly and is_modifiable then
-      vim.cmd([[silent! update]])
     end
   end,
 })
