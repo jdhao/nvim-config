@@ -25,7 +25,7 @@ require("blink.cmp").setup {
       winhighlight = "Normal:BlinkCmpMenu,FloatBorder:FloatBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
     },
     documentation = {
-      auto_show = true,
+      auto_show = false,
     },
   },
 
@@ -95,14 +95,4 @@ require("blink.cmp").setup {
   --
   -- See the fuzzy documentation for more information
   fuzzy = { implementation = "prefer_rust_with_warning" },
-  cmdline = {
-    completion = {
-      menu = {
-        auto_show = true,
-      },
-    },
-    keymap = {
-      ["<CR>"] = { "select_and_accept", "fallback" },
-    },
-  },
 }
