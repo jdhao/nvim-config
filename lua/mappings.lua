@@ -257,3 +257,58 @@ keymap.set("n", "<Esc>", function()
 end, {
   desc = "close floating win",
 })
+
+-- Debugging (nvim-dap), mirrors VS Code's common debug keys/behavior
+keymap.set("n", "<F5>", function()
+  require("dap").continue()
+end, { desc = "debug: continue/start" })
+
+keymap.set("n", "<F10>", function()
+  require("dap").step_over()
+end, { desc = "debug: step over" })
+
+keymap.set("n", "<F12>", function()
+  require("dap").step_out()
+end, { desc = "debug: step out" })
+
+-- F11 is commonly intercepted by the terminal/window manager for fullscreen
+-- before it ever reaches Neovim, so step-into lives under <leader>d instead.
+keymap.set("n", "<leader>di", function()
+  require("dap").step_into()
+end, { desc = "debug: step into (enters imported modules)" })
+
+keymap.set("n", "<leader>do", function()
+  require("dap").step_over()
+end, { desc = "debug: step over" })
+
+keymap.set("n", "<leader>dO", function()
+  require("dap").step_out()
+end, { desc = "debug: step out" })
+
+keymap.set("n", "<leader>db", function()
+  require("dap").toggle_breakpoint()
+end, { desc = "debug: toggle breakpoint" })
+
+keymap.set("n", "<leader>dB", function()
+  require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end, { desc = "debug: conditional breakpoint" })
+
+keymap.set("n", "<leader>dr", function()
+  require("dap").repl.toggle()
+end, { desc = "debug: toggle REPL" })
+
+keymap.set("n", "<leader>dl", function()
+  require("dap").run_last()
+end, { desc = "debug: run last session" })
+
+keymap.set("n", "<leader>dt", function()
+  require("dap").terminate()
+end, { desc = "debug: terminate session" })
+
+keymap.set("n", "<leader>du", function()
+  require("dapui").toggle()
+end, { desc = "debug: toggle UI (variables/stack/breakpoints)" })
+
+keymap.set("n", "<leader>dh", function()
+  require("dap.ui.widgets").hover()
+end, { desc = "debug: hover variable value" })
