@@ -26,7 +26,7 @@ local function add_reference_at_end(label, url, title)
       if #lines_to_add == 0 then
         table.insert(lines_to_add, "")
       end
-      table.insert(lines_to_add, "<!-- References -->")
+      table.insert(lines_to_add, "<!-- Reference links -->")
     end
 
     table.insert(lines_to_add, ref_def)
