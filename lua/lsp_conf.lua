@@ -113,7 +113,9 @@ local enabled_lsp_servers = {
   gopls = { exe = "gopls", optional = false },
   golangci_lint_ls = { exe = "golangci-lint-langserver", optional = true },
 
+  -- language server for lua
   lua_ls = { exe = "lua-language-server", optional = false },
+  emmylua_ls = { exe = "emmylua_ls", optional = true },
 
   -- python related LSP
   pyright = { exe = "delance-langserver", optional = false },
