@@ -1,4 +1,8 @@
 require("illuminate").configure {
+  providers = {
+    "lsp",
+    "treesitter",
+  },
   filetypes_denylist = {},
   filetypes_allowlist = {
     "go",
