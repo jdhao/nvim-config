@@ -801,6 +801,20 @@ local plugin_specs = {
       require("config.colorful_menu")
     end,
   },
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
+      "mfussenegger/nvim-dap-python",
+      "theHamsta/nvim-dap-virtual-text",
+    },
+    event = "VeryLazy",
+    config = function()
+      require("config.dap")
+      require("config.dap-python")
+    end,
+  },
 }
 
 if completion_engine == "nvim-cmp" then
