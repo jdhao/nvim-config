@@ -9,6 +9,7 @@ return {
       },
       staticcheck = true,
       gofumpt = true,
+      semanticTokens = true,
       -- inlayHints settings, see https://go.dev/gopls/inlayHints
       hints = {
         compositeLiteralFields = true,
