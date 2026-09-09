@@ -198,7 +198,6 @@ local plugin_specs = {
 
   {
     "nvim-lualine/lualine.nvim",
-    event = "BufRead",
     cond = firenvim_not_active,
     config = function()
       require("config.lualine")
