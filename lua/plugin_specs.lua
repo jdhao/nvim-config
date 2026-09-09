@@ -801,6 +801,14 @@ local plugin_specs = {
       require("config.colorful_menu")
     end,
   },
+  {
+    "Wansmer/treesj",
+    event = "VeryLazy",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("config.treesj")
+    end,
+  },
 }
 
 if completion_engine == "nvim-cmp" then
