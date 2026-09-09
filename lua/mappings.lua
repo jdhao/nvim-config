@@ -78,11 +78,6 @@ keymap.set({ "n", "x" }, "L", "g_")
 keymap.set("x", "<", "<gv")
 keymap.set("x", ">", ">gv")
 
--- Restart nvim
-keymap.set("n", "<leader>sv", function()
-  vim.print("Use ZR to restart nvim instead!")
-end)
-
 -- Reselect the text that has just been pasted, see also https://stackoverflow.com/a/4317090/6064933.
 keymap.set("n", "<leader>v", "printf('`[%s`]', getregtype()[0])", {
   expr = true,
