@@ -95,7 +95,7 @@ local capabilities = require("lsp_utils").get_default_capabilities()
 vim.lsp.config("*", {
   capabilities = capabilities,
   flags = {
-    debounce_text_changes = 500,
+    debounce_text_changes = 150,
   },
 })
 
@@ -115,7 +115,7 @@ local enabled_lsp_servers = {
 
   -- language server for lua
   lua_ls = { exe = "lua-language-server", optional = false },
-  emmylua_ls = { exe = "emmylua_ls", optional = true },
+  -- emmylua_ls = { exe = "emmylua_ls", optional = true },
 
   -- python related LSP
   pyright = { exe = "delance-langserver", optional = false },
