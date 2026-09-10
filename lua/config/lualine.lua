@@ -213,7 +213,7 @@ require("lualine").setup {
     icons_enabled = true,
     theme = "auto",
     component_separators = { left = "", right = "" },
-    section_separators = "",
+    section_separators = { left = "", right = "" },
     disabled_filetypes = {},
     always_divide_middle = true,
     refresh = {
@@ -222,6 +222,14 @@ require("lualine").setup {
   },
   sections = {
     lualine_a = {
+      {
+        "filename",
+        symbols = {
+          readonly = "󰈡",
+        },
+      },
+    },
+    lualine_b = {
       {
         "branch",
         icon = "",
@@ -234,8 +242,6 @@ require("lualine").setup {
       {
         get_git_ahead_behind_info,
       },
-    },
-    lualine_b = {
       {
         "diff",
         source = diff,
@@ -246,11 +252,6 @@ require("lualine").setup {
         sources = { "nvim_diagnostic" },
         symbols = { error = "🆇 ", warn = "⚠️ ", info = "ℹ️ ", hint = " " },
         color = { gui = "bold" },
-      },
-      {
-        symbols = {
-          readonly = "[🔒]",
-        },
       },
     },
     lualine_c = {
@@ -270,7 +271,7 @@ require("lualine").setup {
     lualine_x = {
       {
         get_active_lsp,
-        icon = "📡",
+        icon = "",
       },
       {
         trailing_space,
