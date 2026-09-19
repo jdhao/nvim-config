@@ -164,4 +164,14 @@ function M.get_py_env()
   return ""
 end
 
+---@param buf integer buf number
+---@return boolean
+function M.buf_writable(buf)
+  local is_readonly = vim.api.nvim_get_option_value("readonly", { buf = buf })
+  local is_modifiable = vim.api.nvim_get_option_value("modifiable", { buf = buf })
+  local buftype = vim.api.nvim_get_option_value("buftype", { buf = buf })
+
+  return not is_readonly and is_modifiable and buftype == ""
+end
+
 return M
