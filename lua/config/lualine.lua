@@ -129,6 +129,18 @@ local function trailing_space()
   return msg
 end
 
+local function show_encoding()
+  local fileencoding = vim.api.nvim_get_option_value("fileencoding", { buf = 0 })
+  -- normalize the format
+  fileencoding = string.upper(fileencoding)
+
+  if fileencoding ~= "UTF-8" then
+    return fileencoding
+  else
+    return ""
+  end
+end
+
 local function mixed_indent()
   if not vim.o.modifiable then
     return ""
@@ -293,8 +305,8 @@ require("lualine").setup {
     },
     lualine_y = {
       {
-        "encoding",
-        fmt = string.upper,
+        show_encoding,
+        color = "ErrorMsg",
       },
       {
         "fileformat",
