@@ -174,4 +174,26 @@ function M.buf_writable(buf)
   return not is_readonly and is_modifiable and buftype == ""
 end
 
+---Put element to the front of a list it exists in this list (This assumes that the list has
+---items)
+---
+---@param items string[] the list to reorder
+---@param ele string the element to put to the front
+---@return string[]
+function M.reorder_list_element(items, ele)
+  if not vim.list_contains(items, ele) then
+    return items
+  end
+
+  local new_items = {}
+  table.insert(new_items, ele)
+  for _, v in ipairs(items) do
+    if v ~= ele then
+      table.insert(new_items, v)
+    end
+  end
+
+  return new_items
+end
+
 return M

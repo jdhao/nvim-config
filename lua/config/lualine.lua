@@ -184,6 +184,12 @@ local virtual_env = function()
   end
 end
 
+local main_lsp_by_filetype = {
+  python = "pyright",
+  go = "gopls",
+  lua = "lua_ls",
+}
+
 local get_active_lsp = function()
   local msg = "🚫"
   local clients = vim.lsp.get_clients { bufnr = 0 }
@@ -191,11 +197,14 @@ local get_active_lsp = function()
     return msg
   end
 
-  local client_names = {}
+  local client_names_unordered = {}
   for _, client in ipairs(clients) do
     local client_name = client.name
-    table.insert(client_names, client_name)
+    table.insert(client_names_unordered, client_name)
   end
+
+  local main_lsp = main_lsp_by_filetype[vim.bo.filetype]
+  local client_names = utils.reorder_list_element(client_names_unordered, main_lsp)
 
   local cnt = #client_names
   local lsp_infos = nil
