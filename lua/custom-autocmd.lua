@@ -130,7 +130,12 @@ api.nvim_create_autocmd("CmdLineLeave", {
 api.nvim_create_autocmd("TermOpen", {
   group = api.nvim_create_augroup("term_start", { clear = true }),
   pattern = "*",
-  callback = function()
+  callback = function(args)
+    -- for the ansi preview buffer, insert is not possible
+    if vim.b[args.buf].ansi_preview then
+      return
+    end
+
     -- Do not use number and relative number for terminal inside nvim
     vim.wo.relativenumber = false
     vim.wo.number = false

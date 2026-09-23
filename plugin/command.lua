@@ -73,3 +73,27 @@ end, {
   desc = "Format JSON string",
   range = "%",
 })
+
+-- modified from solution here: https://github.com/neovim/neovim/issues/30415#issuecomment-2368519968
+vim.api.nvim_create_user_command("TermHL", function(args)
+  local buf_cur = vim.api.nvim_get_current_buf()
+  local buf_new = vim.api.nvim_create_buf(false, true)
+  if buf_new == 0 then
+    vim._log("Can not create new buffer!")
+  end
+
+  vim.b[buf_new].ansi_preview = true
+
+  -- create a "virtual" terminal: it can not accept user input
+  local chan = vim.api.nvim_open_term(buf_new, {})
+  if chan == 0 then
+    vim._log("can not create new channel")
+  end
+
+  local data = table.concat(vim.api.nvim_buf_get_lines(buf_cur, 0, -1, false), "\n")
+  vim.api.nvim_chan_send(chan, data)
+
+  vim.api.nvim_win_set_buf(0, buf_new)
+end, {
+  desc = "Highlight buffer with ANSI color",
+})
