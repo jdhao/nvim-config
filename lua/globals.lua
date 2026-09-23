@@ -21,6 +21,11 @@ vim.g.is_mac = utils.has("macunix") and true or false
 
 vim.g.logging_level = vim.log.levels.INFO
 
+---@param msg string
+vim._log = function(msg)
+  vim.print(msg)
+end
+
 ------------------------------------------------------------------------
 --                         builtin variables                          --
 ------------------------------------------------------------------------
