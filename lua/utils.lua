@@ -196,4 +196,42 @@ function M.reorder_list_element(items, ele)
   return new_items
 end
 
+---@class BranchInfo
+---@field local string[]
+---@field remote string[]
+
+---@param is_local boolean
+---@return string[]
+function M._get_branch(is_local)
+  local git_cmd = {}
+  if is_local then
+    git_cmd = { "git", "branch", "--list", "--format=%(refname:short)" }
+  else
+    git_cmd = {
+      "git",
+      "for-each-ref",
+      "--exclude=refs/remotes/*/HEAD",
+      "--format=%(refname:short)",
+      "refs/remotes/",
+    }
+  end
+
+  local result = vim.system(git_cmd, { text = true }):wait()
+  if result.code ~= 0 then
+    vim._log("error fetching git branch")
+  end
+
+  local branches = vim.split(result.stdout, "\n", { trimempty = true })
+  return branches
+end
+
+--- Get a list of local and remote branches
+---@return BranchInfo
+function M.get_git_branches()
+  return {
+    ["local"] = M._get_branch(true),
+    remote = M._get_branch(false),
+  }
+end
+
 return M

@@ -1,4 +1,5 @@
 local utils = require("utils")
+local lsp_utils = require("lsp_utils")
 local fn = vim.fn
 
 -- cache for git states
@@ -201,27 +202,71 @@ local virtual_env = function()
   end
 end
 
-local main_lsp_by_filetype = {
-  python = "pyright",
-  go = "gopls",
-  lua = "lua_ls",
-}
+local show_lsp_menu = function()
+  local Menu = require("nui.menu")
+  local NuiLine = require("nui.line")
+
+  --- @type nui_popup_options
+  local popup_options = {
+    relative = "win",
+    position = {
+      row = 69,
+      col = 130,
+    },
+    size = {
+      width = 20,
+      height = 5,
+    },
+    border = {
+      style = "single",
+      text = {
+        top = "[LSP attached]",
+        top_align = "center",
+      },
+    },
+    win_options = {
+      winhighlight = "Normal:Normal,FloatBorder:Normal",
+    },
+  }
+
+  local lsp_names = lsp_utils.get_attached_lsp()
+  local menu_items = {}
+  for _, name in ipairs(lsp_names) do
+    local line = NuiLine()
+    local text = string.format("󰒋 %s", name)
+    line:append(text)
+
+    local menu_item = Menu.item(line)
+    table.insert(menu_items, menu_item)
+  end
+
+  local menu_options = {
+    lines = menu_items,
+    max_width = 30,
+    keymap = {
+      focus_next = { "j", "<Down>", "<Tab>" },
+      focus_prev = { "k", "<Up>", "<S-Tab>" },
+      close = { "<Esc>", "<C-c>", "q" },
+      submit = { "<CR>", "<Space>" },
+    },
+  }
+
+  local menu = Menu(popup_options, menu_options)
+
+  -- mount the component
+  menu:mount()
+end
 
 local get_active_lsp = function()
   local msg = "🚫"
-  local clients = vim.lsp.get_clients { bufnr = 0 }
-  if next(clients) == nil then
+
+  local lsp_names_unordered = lsp_utils.get_attached_lsp()
+  if next(lsp_names_unordered) == nil then
     return msg
   end
 
-  local client_names_unordered = {}
-  for _, client in ipairs(clients) do
-    local client_name = client.name
-    table.insert(client_names_unordered, client_name)
-  end
-
-  local main_lsp = main_lsp_by_filetype[vim.bo.filetype]
-  local client_names = utils.reorder_list_element(client_names_unordered, main_lsp)
+  local main_lsp = lsp_utils.main_lsp_by_filetype[vim.bo.filetype]
+  local client_names = utils.reorder_list_element(lsp_names_unordered, main_lsp)
 
   local cnt = #client_names
   local lsp_infos = nil
@@ -232,6 +277,99 @@ local get_active_lsp = function()
   end
 
   return lsp_infos
+end
+
+local show_branch_menu = function()
+  local Menu = require("nui.menu")
+
+  --- @type nui_popup_options
+  local popup_options = {
+    relative = "win",
+    position = {
+      row = 70,
+      col = 10,
+    },
+    size = {
+      width = 50,
+      height = 5,
+    },
+    border = {
+      style = "single",
+      text = {
+        top = "[Git branches]",
+        top_align = "center",
+      },
+    },
+    win_options = {
+      winhighlight = "Normal:Normal,FloatBorder:Normal",
+    },
+  }
+
+  local branch_info = utils.get_git_branches()
+  local local_branches = branch_info["local"]
+  local remote_branches = branch_info["remote"]
+
+  if #local_branches == 0 and #remote_branches == 0 then
+    return
+  end
+
+  local menu_items = {}
+  for _, branch in ipairs(local_branches) do
+    local menu_item = Menu.item(branch, { is_local = true })
+    table.insert(menu_items, menu_item)
+  end
+
+  table.insert(
+    menu_items,
+    Menu.separator("Remote", {
+      char = "-",
+      text_align = "center",
+    })
+  )
+
+  for _, branch in ipairs(remote_branches) do
+    local menu_item = Menu.item(branch, { is_local = false })
+    table.insert(menu_items, menu_item)
+  end
+
+  local menu_options = {
+    lines = menu_items,
+    max_width = 30,
+    keymap = {
+      focus_next = { "j", "<Down>", "<Tab>" },
+      focus_prev = { "k", "<Up>", "<S-Tab>" },
+      close = { "<Esc>", "<C-c>", "q" },
+      submit = { "<CR>", "<Space>" },
+    },
+    on_close = function()
+      print("Menu Closed!")
+    end,
+    on_submit = function(item)
+      ---@type string
+      local branch_name = item.text
+
+      ---@type boolean
+      local is_local = item.is_local
+
+      local cmd = {}
+      if is_local then
+        cmd = { "git", "checkout", branch_name }
+      else
+        cmd = { "git", "checkout", "--track", branch_name }
+      end
+
+      local r = vim.system(cmd, { text = true }):wait()
+      if r.code ~= 0 then
+        vim._log("failed to switch branch:")
+        vim._log(r.stderr)
+      end
+    end,
+  }
+
+  local menu = Menu(popup_options, menu_options)
+
+  -- mount the component
+  menu:mount()
 end
 
 require("lualine").setup {
@@ -264,6 +402,7 @@ require("lualine").setup {
           return string.sub(name, 1, 20)
         end,
         color = { gui = "italic,bold" },
+        on_click = show_branch_menu,
       },
       {
         get_git_ahead_behind_info,
@@ -298,6 +437,7 @@ require("lualine").setup {
       {
         get_active_lsp,
         icon = "",
+        on_click = show_lsp_menu,
       },
       {
         trailing_space,

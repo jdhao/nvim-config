@@ -808,6 +808,10 @@ local plugin_specs = {
       require("config.treesj")
     end,
   },
+  {
+    "MunifTanjim/nui.nvim",
+    event = "VeryLazy",
+  },
 }
 
 if completion_engine == "nvim-cmp" then
