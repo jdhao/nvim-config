@@ -1,3 +1,5 @@
+local symbol_icon = require("symbol_icon")
+
 require("bufferline").setup {
   options = {
     numbers = "none",
@@ -9,11 +11,11 @@ require("bufferline").setup {
       icon = "▎", -- this should be omitted if indicator style is not 'icon'
       style = "icon",
     },
-    buffer_close_icon = "",
-    modified_icon = "●",
-    close_icon = "",
-    left_trunc_marker = "",
-    right_trunc_marker = "",
+    buffer_close_icon = symbol_icon.tabline.buffer_close,
+    modified_icon = symbol_icon.tabline.buffer_modified,
+    close_icon = symbol_icon.tabline.close,
+    left_trunc_marker = symbol_icon.tabline.left_trunc_marker,
+    right_trunc_marker = symbol_icon.tabline.right_trunc_marker,
     max_name_length = 18,
     max_prefix_length = 15,
     tab_size = 10,

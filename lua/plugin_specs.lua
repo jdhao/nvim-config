@@ -1,4 +1,5 @@
 local utils = require("utils")
+local symbol_icon = require("symbol_icon")
 
 local plugin_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
 local lazypath = vim.fs.joinpath(plugin_dir, "lazy.nvim")
@@ -222,7 +223,7 @@ local plugin_specs = {
         draw = {
           animation = mini_indent.gen_animation.none(),
         },
-        symbol = "▏",
+        symbol = symbol_icon.indent,
       }
     end,
   },

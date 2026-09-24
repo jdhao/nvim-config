@@ -1,7 +1,9 @@
+local symbol_icon = require("symbol_icon")
+
 local handler = function(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}
   local foldedLines = endLnum - lnum
-  local suffix = (" 󰁂  %d"):format(foldedLines)
+  local suffix = (" %s  %d"):format(symbol_icon.fold_indicator, foldedLines)
   local sufWidth = vim.fn.strdisplaywidth(suffix)
   local targetWidth = width - sufWidth
   local curWidth = 0

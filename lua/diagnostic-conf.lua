@@ -1,3 +1,4 @@
+local symbol_icon = require("symbol_icon")
 local diagnostic = vim.diagnostic
 local api = vim.api
 
@@ -8,10 +9,10 @@ diagnostic.config {
   virtual_lines = false,
   signs = {
     text = {
-      [diagnostic.severity.ERROR] = "🆇",
-      [diagnostic.severity.WARN] = "⚠️",
-      [diagnostic.severity.INFO] = "ℹ️",
-      [diagnostic.severity.HINT] = "",
+      [diagnostic.severity.ERROR] = symbol_icon.diagnostic.error,
+      [diagnostic.severity.WARN] = symbol_icon.diagnostic.warn,
+      [diagnostic.severity.INFO] = symbol_icon.diagnostic.info,
+      [diagnostic.severity.HINT] = symbol_icon.diagnostic.hint,
     },
   },
   severity_sort = true,

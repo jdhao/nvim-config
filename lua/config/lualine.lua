@@ -1,5 +1,6 @@
 local utils = require("utils")
 local lsp_utils = require("lsp_utils")
+local symbol_icon = require("symbol_icon")
 local fn = vim.fn
 
 -- cache for git states
@@ -66,12 +67,12 @@ local function get_git_ahead_behind_info()
   local msg = ""
 
   if type(status.ahead_count) == "number" and status.ahead_count > 0 then
-    local ahead_str = string.format("↑[%d] ", status.ahead_count)
+    local ahead_str = string.format("%s[%d] ", symbol_icon.git.commit.ahead, status.ahead_count)
     msg = msg .. ahead_str
   end
 
   if type(status.behind_count) == "number" and status.behind_count > 0 then
-    local behind_str = string.format("↓[%d] ", status.behind_count)
+    local behind_str = string.format("%s[%d] ", symbol_icon.git.commit.behind, status.behind_count)
     msg = msg .. behind_str
   end
 
@@ -97,7 +98,7 @@ local function ime_state()
     -- mode for Rime: im.rime.inputmethod.Squirrel.Rime
     local res = fn.match(layout, [[\v(Squirrel\.Rime|SCIM.ITABC)]])
     if res ~= -1 then
-      return "[CN]"
+      return symbol_icon.IME.chinese
     end
   end
 
@@ -196,7 +197,7 @@ local virtual_env = function()
   local venv_name = utils.get_virtual_env()
 
   if venv_name ~= "" then
-    return string.format(" (%s)", venv_name)
+    return string.format("%s (%s)", symbol_icon.python, venv_name)
   else
     return ""
   end
@@ -233,7 +234,7 @@ local show_lsp_menu = function()
   local menu_items = {}
   for _, name in ipairs(lsp_names) do
     local line = NuiLine()
-    local text = string.format("󰒋 %s", name)
+    local text = string.format("%s %s", symbol_icon.lsp.icon, name)
     line:append(text)
 
     local menu_item = Menu.item(line)
@@ -258,11 +259,9 @@ local show_lsp_menu = function()
 end
 
 local get_active_lsp = function()
-  local msg = "🚫"
-
   local lsp_names_unordered = lsp_utils.get_attached_lsp()
   if next(lsp_names_unordered) == nil then
-    return msg
+    return symbol_icon.lsp.not_exist
   end
 
   local main_lsp = lsp_utils.main_lsp_by_filetype[vim.bo.filetype]
@@ -376,8 +375,8 @@ require("lualine").setup {
   options = {
     icons_enabled = true,
     theme = "auto",
-    component_separators = { left = "\\", right = "/" },
-    section_separators = { left = "", right = "" },
+    component_separators = symbol_icon.statusline.component_separators,
+    section_separators = symbol_icon.statusline.section_separators,
     disabled_filetypes = {},
     always_divide_middle = false,
     refresh = {
@@ -389,14 +388,14 @@ require("lualine").setup {
       {
         "filename",
         symbols = {
-          readonly = "󰈡",
+          readonly = symbol_icon.file.readonly,
         },
       },
     },
     lualine_b = {
       {
         "branch",
-        icon = "",
+        icon = symbol_icon.git.branch,
         fmt = function(name, _)
           -- truncate branch name in case the name is too long
           return string.sub(name, 1, 20)
@@ -409,13 +408,13 @@ require("lualine").setup {
       },
       {
         "diff",
-        symbols = { added = "+", modified = "~", removed = "-" },
+        symbols = symbol_icon.git.diff,
         source = diff,
       },
       {
         "diagnostics",
         sources = { "nvim_diagnostic" },
-        symbols = { error = "🆇 ", warn = "⚠️ ", info = "ℹ️ ", hint = " " },
+        symbols = symbol_icon.diagnostic,
         color = { gui = "bold" },
       },
     },
@@ -436,7 +435,7 @@ require("lualine").setup {
     lualine_x = {
       {
         get_active_lsp,
-        icon = "",
+        icon = symbol_icon.lsp.icon,
         on_click = show_lsp_menu,
       },
       {
@@ -455,6 +454,7 @@ require("lualine").setup {
       },
       {
         "fileformat",
+        symbols = symbol_icon.fileformat,
       },
     },
     lualine_z = {

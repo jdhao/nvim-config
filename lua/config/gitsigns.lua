@@ -1,12 +1,13 @@
 local gs = require("gitsigns")
+local symbol_icon = require("symbol_icon")
 
 gs.setup {
   signs = {
-    add = { text = "+" },
-    change = { text = "~" },
-    delete = { text = "_" },
-    topdelete = { text = "‾" },
-    changedelete = { text = "│" },
+    add = { text = symbol_icon.git.diff.added },
+    change = { text = symbol_icon.git.diff.modified },
+    delete = { text = symbol_icon.git.diff.delete },
+    topdelete = { text = symbol_icon.git.diff.topdelete },
+    changedelete = { text = symbol_icon.git.diff.changedelete },
   },
   word_diff = false,
   on_attach = function(bufnr)

@@ -1,5 +1,6 @@
 local keymap = vim.keymap
 local nvim_tree = require("nvim-tree")
+local symbol_icon = require("symbol_icon")
 
 nvim_tree.setup {
   auto_reload_on_write = true,
@@ -19,14 +20,6 @@ nvim_tree.setup {
     signcolumn = "yes",
   },
   renderer = {
-    indent_markers = {
-      enable = false,
-      icons = {
-        corner = "└ ",
-        edge = "│ ",
-        none = "  ",
-      },
-    },
     icons = {
       webdev_colors = true,
     },
@@ -43,12 +36,7 @@ nvim_tree.setup {
   diagnostics = {
     enable = false,
     show_on_dirs = false,
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    },
+    icons = symbol_icon.diagnostic,
   },
   filters = {
     dotfiles = false,
