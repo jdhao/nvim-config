@@ -3,6 +3,17 @@ local lsp_utils = require("lsp_utils")
 local symbol_icon = require("symbol_icon")
 local fn = vim.fn
 
+local function show_fileformat()
+  local fileformat = vim.api.nvim_get_option_value("fileformat", { buf = 0 })
+
+  -- do not show unix format, this is common, there is no value
+  if fileformat == "unix" then
+    return ""
+  end
+
+  return symbol_icon.fileformat[fileformat]
+end
+
 -- cache for git states
 local git_status_cache = {
   fetch_success = false,
@@ -424,20 +435,16 @@ require("lualine").setup {
         color = { fg = "black", bg = "#f46868" },
       },
       {
-        "%S",
-        color = { gui = "bold", fg = "cyan" },
-      },
-      {
         spell,
         color = { fg = "black", bg = "#a7c080" },
       },
+      {
+        -- show currently typed command in statusline
+        "%S",
+        color = { gui = "bold", fg = "cyan" },
+      },
     },
     lualine_x = {
-      {
-        get_active_lsp,
-        icon = symbol_icon.lsp.icon,
-        on_click = show_lsp_menu,
-      },
       {
         trailing_space,
         color = "WarningMsg",
@@ -446,6 +453,11 @@ require("lualine").setup {
         mixed_indent,
         color = "WarningMsg",
       },
+      {
+        get_active_lsp,
+        icon = symbol_icon.lsp.icon,
+        on_click = show_lsp_menu,
+      },
     },
     lualine_y = {
       {
@@ -453,8 +465,8 @@ require("lualine").setup {
         color = "ErrorMsg",
       },
       {
-        "fileformat",
-        symbols = symbol_icon.fileformat,
+        show_fileformat,
+        color = "ErrorMsg",
       },
     },
     lualine_z = {
