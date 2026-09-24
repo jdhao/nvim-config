@@ -414,7 +414,7 @@ local plugin_specs = {
     config = function()
       require("config.gitsigns")
     end,
-    event = "BufRead",
+    event = "VeryLazy",
     version = "*",
   },
 
