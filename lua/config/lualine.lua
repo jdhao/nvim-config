@@ -104,6 +104,11 @@ local function ime_state()
 end
 
 local function trailing_space()
+  local r = vim.api.nvim_get_mode()
+  if r.mode == "i" then
+    return ""
+  end
+
   if not vim.o.modifiable then
     return ""
   end
