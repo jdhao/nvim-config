@@ -46,3 +46,10 @@ vim.keymap.set(
   "<cmd>FzfLua oldfiles<cr>",
   { desc = "Fuzzy search opened files history" }
 )
+
+vim.keymap.set(
+  "n",
+  "<leader>gbl",
+  "<cmd>FzfLua git_branches<cr>",
+  { desc = "Fuzzy search git branches" }
+)
