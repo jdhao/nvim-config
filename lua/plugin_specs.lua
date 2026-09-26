@@ -813,6 +813,12 @@ local plugin_specs = {
     "MunifTanjim/nui.nvim",
     event = "VeryLazy",
   },
+  {
+    "tadaa/vimade",
+    config = function()
+      require("config.vimade")
+    end,
+  },
 }
 
 if completion_engine == "nvim-cmp" then
