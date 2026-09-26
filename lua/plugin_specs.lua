@@ -831,6 +831,7 @@ end
 
 require("lazy").setup {
   spec = plugin_specs,
+  concurrency = 5,
   ui = {
     border = "rounded",
     title = "Plugin Manager",
