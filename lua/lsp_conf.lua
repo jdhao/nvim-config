@@ -1,4 +1,5 @@
 local utils = require("utils")
+local lsp_utils = require("lsp_utils")
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp_buf_conf", { clear = true }),
@@ -207,4 +208,24 @@ end, {
   complete = function()
     return { "enable", "disable" }
   end,
+})
+
+vim.api.nvim_create_user_command("LspAttached", function()
+  local size = {
+    width = 40,
+    height = 10,
+  }
+
+  local win_width, win_height = vim.api.nvim_win_get_width(0), vim.api.nvim_win_get_height(0)
+  local pos_col = win_width / 2 - size.width / 2
+  local pos_row = win_height / 2 - size.height / 2
+
+  local position = {
+    col = pos_col,
+    row = pos_row,
+  }
+
+  lsp_utils.show_lsp_menu(size, position)
+end, {
+  desc = "Show LSP attached to current buffer",
 })
