@@ -18,7 +18,11 @@ vim.keymap.set("n", "<Space>f", function()
     context = { only = { "source.organizeImports" } },
     apply = true,
   }
-end, { buffer = true, silent = true })
+end, {
+  desc = "format file",
+  buffer = true,
+  silent = true,
+})
 
 vim.keymap.set("n", "<F9>", function()
   vim.cmd([[!go run %]])

@@ -6,6 +6,7 @@ vim.keymap.set("n", "<F9>", "<cmd>luafile %<CR>", {
   silent = true,
 })
 vim.keymap.set("n", "<Space>f", "<cmd>silent !stylua %<CR>", {
+  desc = "format file",
   buffer = true,
   silent = true,
 })
