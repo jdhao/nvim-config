@@ -275,10 +275,14 @@ local show_branch_menu = function()
   end
 
   local menu_items = {}
-  for _, branch in ipairs(local_branches) do
-    local menu_item = Menu.item(branch, { is_local = true })
-    table.insert(menu_items, menu_item)
-  end
+  local branches_l = vim
+    .iter(local_branches)
+    :map(function(v)
+      return Menu.item(string.format(" %s %s", symbol_icon.git.branch, v), { is_local = true })
+    end)
+    :totable()
+
+  vim.list_extend(menu_items, branches_l)
 
   table.insert(
     menu_items,
@@ -288,10 +292,13 @@ local show_branch_menu = function()
     })
   )
 
-  for _, branch in ipairs(remote_branches) do
-    local menu_item = Menu.item(branch, { is_local = false })
-    table.insert(menu_items, menu_item)
-  end
+  local branches_r = vim
+    .iter(remote_branches)
+    :map(function(v)
+      return Menu.item(string.format(" %s %s", symbol_icon.git.branch, v), { is_local = false })
+    end)
+    :totable()
+  vim.list_extend(menu_items, branches_r)
 
   local menu_options = {
     lines = menu_items,

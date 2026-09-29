@@ -62,7 +62,7 @@ M.show_lsp_menu = function(size, position)
   local menu_items = {}
   for _, name in ipairs(lsp_names) do
     local line = NuiLine()
-    local text = string.format("%s %s", symbol_icon.lsp.icon, name)
+    local text = string.format(" %s %s", symbol_icon.lsp.icon, name)
     line:append(text)
 
     local menu_item = Menu.item(line)
