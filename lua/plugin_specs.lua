@@ -712,7 +712,7 @@ local plugin_specs = {
   -- file explorer
   {
     "nvim-tree/nvim-tree.lua",
-    keys = { "<space>s" },
+    event = "VeryLazy",
     config = function()
       require("config.nvim-tree")
     end,
