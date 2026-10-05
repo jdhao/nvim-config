@@ -164,6 +164,23 @@ function M.get_py_env()
   return ""
 end
 
+--- Get python command to run
+--- @return string | nil
+function M.get_py_cmd()
+  local py_cmd = nil
+
+  local py_env = M.get_py_env()
+  if py_env == "uv" then
+    py_cmd = "uv run python"
+  elseif M.executable("python") then
+    py_cmd = "python"
+  elseif M.executable("python3") then
+    py_cmd = "python3"
+  end
+
+  return py_cmd
+end
+
 ---@param buf integer buf number
 ---@return boolean
 function M.buf_writable(buf)
