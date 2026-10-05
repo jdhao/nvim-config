@@ -251,4 +251,23 @@ function M.get_git_branches()
   }
 end
 
+--- Throttle a function run
+--- @param callback function
+--- @param delay_ms integer delay in milliseconds
+function M.throttle(callback, delay_ms)
+  --- @type integer
+  local start
+
+  return function(...)
+    local now = vim.uv.hrtime()
+
+    if start and (now - start) / 1e6 < delay_ms then
+      return
+    end
+
+    callback(...)
+    start = now
+  end
+end
+
 return M

@@ -3,6 +3,11 @@ local lsp_utils = require("lsp_utils")
 local symbol_icon = require("symbol_icon")
 local fn = vim.fn
 
+-- the timeout for running git related command
+local GIT_CMD_TIMEOUT_FETCH = 5000
+local GIT_CMD_TIMEOUT_OTHER = 200
+local GIT_STATUS_UPDATE_THROTTLE_DELAY = 1000 * 10
+
 local BRANCH_MAX_LEN = 30
 
 local function show_fileformat()
@@ -23,6 +28,7 @@ local git_status_cache = {
   ahead_count = 0,
 }
 
+--- @param result vim.SystemCompleted
 local on_exit_fetch = function(result)
   if result.code == 0 then
     git_status_cache.fetch_success = true
@@ -30,6 +36,7 @@ local on_exit_fetch = function(result)
 end
 
 local function handle_numeric_result(cache_key)
+  --- @param result vim.SystemCompleted
   return function(result)
     if result.code == 0 then
       git_status_cache[cache_key] = tonumber(result.stdout:match("(%d+)")) or 0
@@ -43,17 +50,21 @@ local function handle_numeric_result(cache_key)
   end
 end
 
-local async_cmd = function(cmd_str, on_exit)
+--- @param cmd_str string the command to run
+--- @param timeout integer timeout for running command, in milliseconds
+--- @param on_exit function callback function to run when finishing the command
+local async_cmd = function(cmd_str, timeout, on_exit)
   local cmd = vim.tbl_filter(function(element)
     return element ~= ""
   end, vim.split(cmd_str, " "))
 
-  vim.system(cmd, { text = true }, on_exit)
+  vim.system(cmd, { text = true, timeout = timeout }, on_exit)
 end
 
 local async_git_status_update = function()
   -- Fetch the latest changes from the remote repository (replace 'origin' if needed)
-  async_cmd("git fetch origin", on_exit_fetch)
+  async_cmd("git fetch origin", GIT_CMD_TIMEOUT_FETCH, on_exit_fetch)
+
   if not git_status_cache.fetch_success then
     return
   end
@@ -62,30 +73,33 @@ local async_git_status_update = function()
   -- the @{upstream} notation is inspired by post: https://www.reddit.com/r/neovim/s/OWNFzqE7nO
   -- note that here we should use double dots instead of triple dots
   local behind_cmd_str = "git rev-list --count HEAD..@{upstream}"
-  async_cmd(behind_cmd_str, handle_numeric_result("behind_count"))
+  async_cmd(behind_cmd_str, GIT_CMD_TIMEOUT_OTHER, handle_numeric_result("behind_count"))
 
   -- Get the number of commits ahead
   local ahead_cmd_str = "git rev-list --count @{upstream}..HEAD"
-  async_cmd(ahead_cmd_str, handle_numeric_result("ahead_count"))
+  async_cmd(ahead_cmd_str, GIT_CMD_TIMEOUT_OTHER, handle_numeric_result("ahead_count"))
 end
 
+-- slow down the pace of calling git update, this is an expensive operation
+local throttled_git_update =
+  utils.throttle(async_git_status_update, GIT_STATUS_UPDATE_THROTTLE_DELAY)
+
 local function get_git_ahead_behind_info()
-  async_git_status_update()
+  throttled_git_update()
 
   local status = git_status_cache
-  if not status then
-    return ""
-  end
 
   local msg = ""
 
-  if type(status.ahead_count) == "number" and status.ahead_count > 0 then
-    local ahead_str = string.format("%s[%d] ", symbol_icon.git.commit.ahead, status.ahead_count)
+  local ahead_cnt = status.ahead_count
+  if ahead_cnt > 0 then
+    local ahead_str = string.format("%s[%d] ", symbol_icon.git.commit.ahead, ahead_cnt)
     msg = msg .. ahead_str
   end
 
-  if type(status.behind_count) == "number" and status.behind_count > 0 then
-    local behind_str = string.format("%s[%d] ", symbol_icon.git.commit.behind, status.behind_count)
+  local behind_cnt = status.behind_count
+  if behind_cnt > 0 then
+    local behind_str = string.format("%s[%d] ", symbol_icon.git.commit.behind, behind_cnt)
     msg = msg .. behind_str
   end
 
@@ -370,6 +384,7 @@ require("lualine").setup {
     disabled_filetypes = {},
     always_divide_middle = false,
     refresh = {
+      -- refresh statusline every 1000 milliseconds
       statusline = 1000,
     },
   },
