@@ -3,6 +3,8 @@ local lsp_utils = require("lsp_utils")
 local symbol_icon = require("symbol_icon")
 local fn = vim.fn
 
+local BRANCH_MAX_LEN = 30
+
 local function show_fileformat()
   local fileformat = vim.api.nvim_get_option_value("fileformat", { buf = 0 })
 
@@ -386,7 +388,7 @@ require("lualine").setup {
         icon = symbol_icon.git.branch,
         fmt = function(name, _)
           -- truncate branch name in case the name is too long
-          return string.sub(name, 1, 20)
+          return string.sub(name, 1, BRANCH_MAX_LEN)
         end,
         color = { gui = "italic,bold" },
         on_click = show_branch_menu,
