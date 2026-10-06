@@ -28,28 +28,6 @@ local git_status_cache = {
   ahead_count = 0,
 }
 
---- @param result vim.SystemCompleted
-local on_exit_fetch = function(result)
-  if result.code == 0 then
-    git_status_cache.fetch_success = true
-  end
-end
-
-local function handle_numeric_result(cache_key)
-  --- @param result vim.SystemCompleted
-  return function(result)
-    if result.code == 0 then
-      git_status_cache[cache_key] = tonumber(result.stdout:match("(%d+)")) or 0
-    else
-      -- when the git command fails, it usually means there are some changes in your branch. For example, you
-      -- on branchA, for this one, you have upstream branch. Then you changed to branchB, and there is no upstream
-      -- branch, the git rev-list command will error out. In this case, we should clear the cache
-      -- vim.print("Error running git command", result)
-      git_status_cache[cache_key] = 0
-    end
-  end
-end
-
 --- @param cmd_str string the command to run
 --- @param timeout integer timeout for running command, in milliseconds
 --- @param on_exit function callback function to run when finishing the command
@@ -61,6 +39,42 @@ local async_cmd = function(cmd_str, timeout, on_exit)
   vim.system(cmd, { text = true, timeout = timeout }, on_exit)
 end
 
+--- @param result vim.SystemCompleted
+local function update_ahead_behind_info(result)
+  if result.code == 0 then
+    local ahead, behind = result.stdout:match("^(%d+)%s+(%d+)%s*$")
+
+    ahead = tonumber(ahead) or 0
+    behind = tonumber(behind) or 0
+
+    git_status_cache.ahead_count = ahead
+    git_status_cache.behind_count = behind
+  else
+    -- when the git command fails, it usually means there are some changes in your branch. For example, you
+    -- on branchA, for this one, you have upstream branch. Then you changed to branchB, and there is no upstream
+    -- branch, the git rev-list command will error out. In this case, we should clear the cache
+    -- vim.print("Error running git command", result)
+    git_status_cache.ahead_count = 0
+    git_status_cache.behind_count = 0
+  end
+end
+
+--- @param result vim.SystemCompleted
+local on_exit_fetch = function(result)
+  if result.code == 0 then
+    git_status_cache.fetch_success = true
+  end
+
+  if git_status_cache.fetch_success then
+    -- Get the number of commits ahead and behind
+    -- the @{upstream} notation is inspired by post: https://www.reddit.com/r/neovim/s/OWNFzqE7nO
+
+    -- this shows the ahead and behind info in one line in this format: `<ahead><tab><behin>`
+    local ahead_behind_cmd = "git rev-list --left-right --count HEAD...@{upstream}"
+    async_cmd(ahead_behind_cmd, GIT_CMD_TIMEOUT_OTHER, update_ahead_behind_info)
+  end
+end
+
 local async_git_status_update = function()
   -- Fetch the latest changes from the remote repository (replace 'origin' if needed)
   async_cmd("git fetch origin", GIT_CMD_TIMEOUT_FETCH, on_exit_fetch)
@@ -68,16 +82,6 @@ local async_git_status_update = function()
   if not git_status_cache.fetch_success then
     return
   end
-
-  -- Get the number of commits behind
-  -- the @{upstream} notation is inspired by post: https://www.reddit.com/r/neovim/s/OWNFzqE7nO
-  -- note that here we should use double dots instead of triple dots
-  local behind_cmd_str = "git rev-list --count HEAD..@{upstream}"
-  async_cmd(behind_cmd_str, GIT_CMD_TIMEOUT_OTHER, handle_numeric_result("behind_count"))
-
-  -- Get the number of commits ahead
-  local ahead_cmd_str = "git rev-list --count @{upstream}..HEAD"
-  async_cmd(ahead_cmd_str, GIT_CMD_TIMEOUT_OTHER, handle_numeric_result("ahead_count"))
 end
 
 -- slow down the pace of calling git update, this is an expensive operation
