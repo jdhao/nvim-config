@@ -6,7 +6,7 @@ local fn = vim.fn
 -- the timeout for running git related command
 local GIT_CMD_TIMEOUT_FETCH = 5000
 local GIT_CMD_TIMEOUT_OTHER = 200
-local GIT_STATUS_UPDATE_THROTTLE_DELAY = 1000 * 10
+local GIT_STATUS_UPDATE_THROTTLE_DELAY = 1000 * 3
 
 local BRANCH_MAX_LEN = 30
 
