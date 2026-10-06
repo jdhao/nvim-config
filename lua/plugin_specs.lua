@@ -184,6 +184,7 @@ local plugin_specs = {
   { "yonatanperel/lake-dweller.nvim", priority = 1000 },
   { "dchinmay2/alabaster.nvim", priority = 1000 },
   { "jpwol/thorn.nvim", priority = 1000 },
+  { "VerticalHeretic/AzulejoBrutalism", priority = 1000 },
 
   -- plugins to provide nerdfont icons
   {
@@ -424,19 +425,6 @@ local plugin_specs = {
     cmd = { "DiffviewOpen" },
     config = function()
       require("config.diffview")
-    end,
-  },
-
-  {
-    "https://forge.barrettruth.com/barrettruth/diffs.nvim",
-    init = function()
-      vim.g.diffs = {
-        integrations = {
-          fugitive = true,
-          neogit = true,
-          gitsigns = true,
-        },
-      }
     end,
   },
 
