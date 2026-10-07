@@ -111,7 +111,7 @@ api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
 -- Do not use smart case in command line mode, extracted from https://vi.stackexchange.com/a/16511/15292.
 api.nvim_create_augroup("dynamic_smartcase", { clear = true })
-api.nvim_create_autocmd("CmdLineEnter", {
+api.nvim_create_autocmd("CmdlineEnter", {
   group = "dynamic_smartcase",
   pattern = ":",
   callback = function()
@@ -119,7 +119,7 @@ api.nvim_create_autocmd("CmdLineEnter", {
   end,
 })
 
-api.nvim_create_autocmd("CmdLineLeave", {
+api.nvim_create_autocmd("CmdlineLeave", {
   group = "dynamic_smartcase",
   pattern = ":",
   callback = function()
