@@ -270,4 +270,18 @@ function M.throttle(callback, delay_ms)
   end
 end
 
+--- Get the file size in bytes
+--- @param fpath string the file path
+--- @return integer|nil # The file size in bytes, or nil if error happens or file does not exist
+function M.filesize(fpath)
+  local stat, _, _ = vim.uv.fs_stat(fpath)
+
+  if stat then
+    return stat.size
+  end
+
+  vim._log(string.format("error getting file size: %s", fpath))
+  return nil
+end
+
 return M

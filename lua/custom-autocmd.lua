@@ -242,10 +242,12 @@ api.nvim_create_autocmd("BufReadPre", {
   pattern = "*",
   desc = "optimize for large file",
   callback = function(ev)
-    local file_size_limit = 524288 -- 0.5MB
-    local f = ev.file
+    local file_size_limit = 4.0 -- unit in MB
+    local fpath = ev.file
 
-    if fn.getfsize(f) > file_size_limit or fn.getfsize(f) == -2 then
+    local filesize = utils.filesize(fpath)
+
+    if filesize and filesize / (1024 * 1024) > file_size_limit then
       vim.o.eventignore = "all"
 
       -- show ruler
