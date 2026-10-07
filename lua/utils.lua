@@ -280,7 +280,6 @@ function M.filesize(fpath)
     return stat.size
   end
 
-  vim._log(string.format("error getting file size: %s", fpath))
   return nil
 end
 
