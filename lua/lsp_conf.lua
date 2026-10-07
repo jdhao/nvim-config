@@ -120,8 +120,8 @@ local enabled_lsp_servers = {
 
   -- python related LSP
   pyright = { exe = "delance-langserver", optional = false },
-  pyrefly = { exe = "pyrefly", optional = true },
-  ty = { exe = "ty", optional = true },
+  -- pyrefly = { exe = "pyrefly", optional = true },
+  -- ty = { exe = "ty", optional = true },
   ruff = { exe = "ruff", optional = true },
 
   vimls = { exe = "vim-language-server", optional = true },
