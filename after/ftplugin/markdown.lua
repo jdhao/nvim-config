@@ -14,7 +14,7 @@ local function add_reference_at_end(label, url, title)
 
     local has_ref_section = false
     for _, line in ipairs(buffer_lines) do
-      if line:match("^%s*<!%-%-.*[Rr]eferences.*%-%->[%s]*$") then
+      if line:match("^%s*<!%-%-.*Reference.*%-%->[%s]*$") then
         has_ref_section = true
         break
       end
