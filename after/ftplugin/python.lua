@@ -54,7 +54,6 @@ local format_py_file = function()
     vim.notify("black not available!")
   end
 
-  vim.print(black_cmd)
   local format_cmd = string.format("silent %s %%", black_cmd)
 
   vim.cmd(format_cmd)
