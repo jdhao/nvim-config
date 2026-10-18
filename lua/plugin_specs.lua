@@ -184,7 +184,7 @@ local plugin_specs = {
   { "yonatanperel/lake-dweller.nvim", priority = 1000 },
   { "dchinmay2/alabaster.nvim", priority = 1000 },
   { "jpwol/thorn.nvim", priority = 1000 },
-  { "VerticalHeretic/AzulejoBrutalism", priority = 1000 },
+  { "https://codeberg.org/navahas/sanzo.nvim", priority = 1000 },
 
   -- plugins to provide nerdfont icons
   {

@@ -127,6 +127,9 @@ M.colorscheme_conf = {
   thorn = function()
     use_theme("thorn")
   end,
+  sanzo = function()
+    use_theme("sanzo")
+  end,
 }
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
