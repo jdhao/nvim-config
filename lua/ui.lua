@@ -108,9 +108,6 @@ M.colorscheme_conf = {
   citruszest = function()
     use_theme("citruszest")
   end,
-  oxocarbon = function()
-    use_theme("oxocarbon")
-  end,
   ember = function()
     use_theme("ember")
   end,

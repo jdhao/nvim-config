@@ -179,7 +179,6 @@ local plugin_specs = {
   { "vague2k/vague.nvim", priority = 1000 },
   { "webhooked/kanso.nvim", priority = 1000 },
   { "zootedb0t/citruszest.nvim", priority = 1000 },
-  { "nyoom-engineering/oxocarbon.nvim", priority = 1000 },
   { "ember-theme/nvim", name = "ember", priority = 1000 },
   { "yonatanperel/lake-dweller.nvim", priority = 1000 },
   { "dchinmay2/alabaster.nvim", priority = 1000 },
