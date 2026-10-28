@@ -24,6 +24,9 @@ end
 --- can be `blink` or `nvim-cmp`
 local completion_engine = "blink"
 
+--- can be gitsigns or minidiff
+local git_sign_engine = "minidiff"
+
 local cmp_plugin_specs = {
   { "hrsh7th/cmp-nvim-lsp", lazy = true },
   { "hrsh7th/cmp-path", lazy = true },
@@ -65,6 +68,28 @@ local blink_plugin_specs = {
       require("config.blink-cmp")
     end,
     opts_extend = { "sources.default" },
+  },
+}
+
+-- Show git change (change, delete, add) signs in vim sign column
+local gitsigns_specs = {
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("config.gitsigns")
+    end,
+    event = "VeryLazy",
+    version = "*",
+  },
+}
+
+local minidiff_specs = {
+  {
+    "nvim-mini/mini.diff",
+    version = "*",
+    config = function()
+      require("config.mini_diff")
+    end,
   },
 }
 
@@ -407,16 +432,6 @@ local plugin_specs = {
     config = function()
       require("config.git-linker")
     end,
-  },
-
-  -- Show git change (change, delete, add) signs in vim sign column
-  {
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require("config.gitsigns")
-    end,
-    event = "VeryLazy",
-    version = "*",
   },
 
   {
@@ -814,6 +829,14 @@ elseif completion_engine == "blink" then
   vim.list_extend(plugin_specs, blink_plugin_specs)
 else
   vim.print(string.format("Unknown completion engine: %s!", completion_engine))
+end
+
+if git_sign_engine == "gitsigns" then
+  vim.list_extend(plugin_specs, gitsigns_specs)
+elseif git_sign_engine == "minidiff" then
+  vim.list_extend(plugin_specs, minidiff_specs)
+else
+  vim.print(string.format("Unknown git sign engine: %s!", git_sign_engine))
 end
 
 require("lazy").setup {
