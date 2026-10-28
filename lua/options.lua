@@ -200,7 +200,7 @@ opt.startofline = false
 
 -- External program to use for grep command
 if utils.executable("rg") then
-  opt.grepprg = "rg --vimgrep --no-heading --smart-case"
+  opt.grepprg = "rg --vimgrep --no-heading --smart-case --color=never"
   opt.grepformat = "%f:%l:%c:%m"
 end
 
