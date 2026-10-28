@@ -1,4 +1,3 @@
-local api = vim.api
 local keymap = vim.keymap
 
 local hlslens = require("hlslens")
@@ -10,13 +9,19 @@ hlslens.setup {
 
 local activate_hlslens = function(direction)
   local cmd = string.format("normal! %s%szzzv", vim.v.count1, direction)
+
   local status, msg = pcall(vim.cmd, cmd)
 
   -- Deal with the case that there is no such pattern in current buffer.
   if not status then
     local start_idx, _ = string.find(msg, "E486", 1, true)
+
+    if start_idx == nil then
+      return
+    end
+
     local msg_part = string.sub(msg, start_idx)
-    api.nvim_echo({ { msg_part } }, true, { err = true })
+    vim._log(msg_part, vim.log.levels.ERROR)
     return
   end
 
@@ -40,7 +45,7 @@ local check_cursor_word = function()
   local result = cursor_word == ""
   if result then
     local msg = "E348: No string under cursor"
-    api.nvim_echo({ { msg } }, true, { err = true })
+    vim._log(msg, vim.log.levels.ERROR)
   end
 
   return result, cursor_word

@@ -1,5 +1,28 @@
 local utils = require("utils")
 
+vim.g.log_level = vim.log.levels.INFO
+
+local log_hl = {
+  [vim.log.levels.TRACE] = "Comment",
+  [vim.log.levels.DEBUG] = "Comment",
+  [vim.log.levels.INFO] = "Normal",
+  [vim.log.levels.WARN] = "WarningMsg",
+  [vim.log.levels.ERROR] = "ErrorMsg",
+}
+
+---@param msg string
+---@param level? integer one of vim.log.levels, defaults to INFO
+vim._log = function(msg, level)
+  level = level or vim.log.levels.INFO
+  if level < vim.g.log_level then
+    return
+  end
+
+  vim.api.nvim_echo({ { msg, log_hl[level] or "Normal" } }, true, {
+    err = level == vim.log.levels.ERROR,
+  })
+end
+
 -- python3_host_prog is needed for python plugins, see also https://jdhao.github.io/2026/05/11/nvim_python_provider_setup/
 local config_path = vim.fn.stdpath("config")
 local python3_path = vim.fs.joinpath(config_path, ".venv/bin/python3")
@@ -7,7 +30,7 @@ if not vim.uv.fs_stat(python3_path) then
   local msg = string.format(
     "Python provider missing:\n  create a virtual env under nvim config and install pynvim!"
   )
-  vim.api.nvim_echo({ { msg } }, true, { err = true })
+  vim._log(msg, vim.log.levels.WARN)
 else
   vim.g.python3_host_prog = python3_path
 end
@@ -18,13 +41,6 @@ end
 vim.g.is_win = (utils.has("win32") or utils.has("win64")) and true or false
 vim.g.is_linux = (utils.has("unix") and (not utils.has("macunix"))) and true or false
 vim.g.is_mac = utils.has("macunix") and true or false
-
-vim.g.logging_level = vim.log.levels.INFO
-
----@param msg string
-vim._log = function(msg)
-  vim.print(msg)
-end
 
 ------------------------------------------------------------------------
 --                         builtin variables                          --

@@ -60,7 +60,7 @@ function M.is_compatible_version(expected_version)
 
   if expect_ver == nil then
     local msg = string.format("Unsupported version string: %s", expected_version)
-    vim.api.nvim_echo({ { msg } }, true, { err = true })
+    vim._log(msg, vim.log.levels.ERROR)
     return false
   end
 
@@ -72,7 +72,7 @@ function M.is_compatible_version(expected_version)
       expected_version,
       _ver
     )
-    vim.api.nvim_echo({ { msg } }, true, { err = true })
+    vim._log(msg, vim.log.levels.WARN)
   end
 
   return true
@@ -235,7 +235,7 @@ function M._get_branch(is_local)
 
   local result = vim.system(git_cmd, { text = true }):wait()
   if result.code ~= 0 then
-    vim._log("error fetching git branch")
+    vim._log("Error fetching git branch", vim.log.levels.ERROR)
   end
 
   local branches = vim.split(result.stdout, "\n", { trimempty = true })

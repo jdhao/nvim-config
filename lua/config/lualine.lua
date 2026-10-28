@@ -348,8 +348,8 @@ local show_branch_menu = function()
 
       local r = vim.system(cmd, { text = true }):wait()
       if r.code ~= 0 then
-        vim._log("failed to switch branch:")
-        vim._log(r.stderr)
+        vim._log("failed to switch branch:", vim.log.levels.WARN)
+        vim._log(r.stderr, vim.log.levels.WARN)
       end
     end,
   }
