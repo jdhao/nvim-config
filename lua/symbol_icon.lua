@@ -11,9 +11,9 @@ M.git = {
     added = "+",
     modified = "~",
     removed = "-",
-    delete = { text = "_" },
-    topdelete = { text = "‾" },
-    changedelete = { text = "│" },
+    delete = "_",
+    topdelete = "‾",
+    changedelete = "│",
   },
   commit = {
     ahead = "↑",
