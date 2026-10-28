@@ -64,11 +64,7 @@ api.nvim_create_autocmd({ "FileChangedShellPost" }, {
   pattern = "*",
   group = "auto_read",
   callback = function()
-    vim.notify(
-      "File changed on disk. Buffer reloaded!",
-      vim.log.levels.WARN,
-      { title = "nvim-config" }
-    )
+    vim._log("File changed on disk: buffer reloaded!", vim.log.levels.INFO)
   end,
 })
 
@@ -293,10 +289,11 @@ api.nvim_create_autocmd("BufWritePost", {
       return
     end
 
-    local result = vim.system(cmd, { text = true }):wait()
-    if result.code ~= 0 then
-      vim.notify("This file is not formatted!")
-    end
+    vim.system(cmd, { text = true }, function(result)
+      if result.code ~= 0 then
+        vim._log("This file is not formatted!", vim.log.levels.WARN)
+      end
+    end)
   end,
 })
 
