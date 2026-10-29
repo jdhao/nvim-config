@@ -1,3 +1,4 @@
+local utils = require("utils")
 local opt = vim.opt
 
 -- General tab settings
@@ -12,12 +13,13 @@ vim.keymap.set("n", "<Space>f", function()
   vim.lsp.buf.format {
     async = false,
   }
-  -- The following code action requires gopls to be installed.
-  -- Install gopls with: go install golang.org/x/tools/gopls@latest
-  vim.lsp.buf.code_action {
-    context = { only = { "source.organizeImports" } },
-    apply = true,
-  }
+
+  -- format and add missing imports
+  if utils.executable("goimports") then
+    vim.cmd("silent !goimports -w %")
+  else
+    vim._log("goimports missing in PATH", vim.log.levels.WARN)
+  end
 end, {
   desc = "format file",
   buffer = true,
