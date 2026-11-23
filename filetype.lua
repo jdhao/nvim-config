@@ -4,5 +4,6 @@ vim.filetype.add {
   },
   filename = {
     ["supervisord.conf"] = "dosini",
+    [".snyk"] = "yaml",
   },
 }
